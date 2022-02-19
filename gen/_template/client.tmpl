@@ -70,23 +70,26 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 		{{- end }}
 	{{- end }}{{/* Request validation */}}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+	{{- if $op.Spec.OperationID }}
+		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
+	{{- end }}
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
-		{{- if $op.Spec.OperationID }}
-		trace.WithAttributes(otelogen.OperationID({{ quote $op.Spec.OperationID }})),
-		{{- end }}
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 
 	{{- if $op.Request }}
 	var (

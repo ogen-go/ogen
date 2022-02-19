@@ -30,6 +30,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
@@ -59,6 +60,7 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 	_ = otelogen.Version
+	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
@@ -106,21 +108,24 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
 func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) (res string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("dataGetFormat"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "DataGetFormat",
-		trace.WithAttributes(otelogen.OperationID("dataGetFormat")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/name/"
 	{
@@ -228,21 +233,24 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("defaultTest"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "DefaultTest",
-		trace.WithAttributes(otelogen.OperationID("defaultTest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -303,21 +311,24 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 // GET /error
 func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("errorGet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ErrorGet",
-		trace.WithAttributes(otelogen.OperationID("errorGet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/error"
 
@@ -345,21 +356,24 @@ func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) 
 // GET /foobar
 func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res FoobarGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("foobarGet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarGet",
-		trace.WithAttributes(otelogen.OperationID("foobarGet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
@@ -432,21 +446,24 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("foobarPost"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPost",
-		trace.WithAttributes(otelogen.OperationID("foobarPost")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -486,20 +503,22 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 // PUT /foobar
 func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPut",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
@@ -527,21 +546,24 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err
 // GET /test/header
 func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Hash, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getHeader"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetHeader",
-		trace.WithAttributes(otelogen.OperationID("getHeader")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test/header"
 
@@ -581,21 +603,24 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 // GET /multipleGenericResponses
 func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGenericResponsesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("multipleGenericResponses"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MultipleGenericResponses",
-		trace.WithAttributes(otelogen.OperationID("multipleGenericResponses")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/multipleGenericResponses"
 
@@ -621,21 +646,24 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 // GET /nullableDefaultResponse
 func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusCode, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("nullableDefaultResponse"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "NullableDefaultResponse",
-		trace.WithAttributes(otelogen.OperationID("nullableDefaultResponse")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/nullableDefaultResponse"
 
@@ -661,21 +689,24 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 // GET /octetStreamBinaryStringSchema
 func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetStreamBinaryStringSchemaOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("octetStreamBinaryStringSchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamBinaryStringSchema",
-		trace.WithAttributes(otelogen.OperationID("octetStreamBinaryStringSchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/octetStreamBinaryStringSchema"
 
@@ -701,21 +732,24 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetSt
 // GET /octetStreamEmptySchema
 func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmptySchemaOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("octetStreamEmptySchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamEmptySchema",
-		trace.WithAttributes(otelogen.OperationID("octetStreamEmptySchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/octetStreamEmptySchema"
 
@@ -749,21 +783,24 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oneofBug"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OneofBug",
-		trace.WithAttributes(otelogen.OperationID("oneofBug")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -821,21 +858,24 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petCreate"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetCreate",
-		trace.WithAttributes(otelogen.OperationID("petCreate")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -877,21 +917,24 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 // GET /pet/friendNames/{id}
 func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNamesByIDParams) (res []string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petFriendsNamesByID"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetFriendsNamesByID",
-		trace.WithAttributes(otelogen.OperationID("petFriendsNamesByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/friendNames/"
 	{
@@ -933,21 +976,24 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 // GET /pet
 func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petGet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGet",
-		trace.WithAttributes(otelogen.OperationID("petGet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
@@ -1049,21 +1095,24 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 // GET /pet/avatar
 func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDParams) (res PetGetAvatarByIDRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petGetAvatarByID"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetAvatarByID",
-		trace.WithAttributes(otelogen.OperationID("petGetAvatarByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/avatar"
 
@@ -1107,21 +1156,24 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 // GET /pet/{name}/avatar
 func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNameParams) (res PetGetAvatarByNameRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petGetAvatarByName"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetAvatarByName",
-		trace.WithAttributes(otelogen.OperationID("petGetAvatarByName")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/"
 	{
@@ -1164,21 +1216,24 @@ func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNa
 // GET /pet/{name}
 func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (res Pet, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petGetByName"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetByName",
-		trace.WithAttributes(otelogen.OperationID("petGetByName")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/"
 	{
@@ -1220,21 +1275,24 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 // GET /pet/name/{id}
 func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res string, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petNameByID"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetNameByID",
-		trace.WithAttributes(otelogen.OperationID("petNameByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/name/"
 	{
@@ -1290,20 +1348,22 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNameAliasPost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1367,20 +1427,22 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNamePost",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1422,21 +1484,24 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 // POST /pet/avatar
 func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvatarByIDReq, params PetUploadAvatarByIDParams) (res PetUploadAvatarByIDRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("petUploadAvatarByID"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUploadAvatarByID",
-		trace.WithAttributes(otelogen.OperationID("petUploadAvatarByID")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1491,20 +1556,22 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 // GET /recursiveArray
 func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveArrayGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/recursiveArray"
 
@@ -1530,20 +1597,22 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 // GET /recursiveMap
 func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveMapGet",
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/recursiveMap"
 
@@ -1577,21 +1646,24 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testFloatValidation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestFloatValidation",
-		trace.WithAttributes(otelogen.OperationID("testFloatValidation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1631,21 +1703,24 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 // GET /testObjectQueryParameter
 func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObjectQueryParameterParams) (res TestObjectQueryParameterOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testObjectQueryParameter"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestObjectQueryParameter",
-		trace.WithAttributes(otelogen.OperationID("testObjectQueryParameter")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/testObjectQueryParameter"
 

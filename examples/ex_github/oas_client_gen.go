@@ -30,6 +30,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
@@ -59,6 +60,7 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 	_ = otelogen.Version
+	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
@@ -114,21 +116,24 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/add-repo-access-to-self-hosted-runner-group-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -204,21 +209,24 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params ActionsAddSelectedRepoToOrgSecretParams) (res ActionsAddSelectedRepoToOrgSecretRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/add-selected-repo-to-org-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddSelectedRepoToOrgSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/add-selected-repo-to-org-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -295,21 +303,24 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, params ActionsAddSelfHostedRunnerToGroupForOrgParams) (res ActionsAddSelfHostedRunnerToGroupForOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddSelfHostedRunnerToGroupForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/add-self-hosted-runner-to-group-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -385,21 +396,24 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsApproveWorkflowRunParams) (res ActionsApproveWorkflowRunRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/approve-workflow-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsApproveWorkflowRun",
-		trace.WithAttributes(otelogen.OperationID("actions/approve-workflow-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -474,21 +488,24 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
 func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCancelWorkflowRunParams) (res ActionsCancelWorkflowRunAccepted, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/cancel-workflow-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCancelWorkflowRun",
-		trace.WithAttributes(otelogen.OperationID("actions/cancel-workflow-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -622,21 +639,24 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-or-update-environment-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateEnvironmentSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/create-or-update-environment-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -783,21 +803,24 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-or-update-org-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateOrgSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/create-or-update-org-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -929,21 +952,24 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-or-update-repo-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateRepoSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/create-or-update-repo-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1036,21 +1062,24 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 // POST /orgs/{org}/actions/runners/registration-token
 func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, params ActionsCreateRegistrationTokenForOrgParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-registration-token-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRegistrationTokenForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/create-registration-token-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -1101,21 +1130,24 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
 func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, params ActionsCreateRegistrationTokenForRepoParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-registration-token-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRegistrationTokenForRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/create-registration-token-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -1182,21 +1214,24 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 // POST /orgs/{org}/actions/runners/remove-token
 func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params ActionsCreateRemoveTokenForOrgParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-remove-token-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRemoveTokenForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/create-remove-token-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -1247,21 +1282,24 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
 func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params ActionsCreateRemoveTokenForRepoParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-remove-token-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRemoveTokenForRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/create-remove-token-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -1331,21 +1369,24 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/create-self-hosted-runner-group-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateSelfHostedRunnerGroupForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/create-self-hosted-runner-group-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -1404,21 +1445,24 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDeleteArtifactParams) (res ActionsDeleteArtifactNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-artifact"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteArtifact",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-artifact")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -1492,21 +1536,24 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params ActionsDeleteEnvironmentSecretParams) (res ActionsDeleteEnvironmentSecretNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-environment-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteEnvironmentSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-environment-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories/"
 	{
@@ -1580,21 +1627,24 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDeleteOrgSecretParams) (res ActionsDeleteOrgSecretNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-org-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteOrgSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-org-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -1653,21 +1703,24 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDeleteRepoSecretParams) (res ActionsDeleteRepoSecretNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-repo-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteRepoSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-repo-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -1741,21 +1794,24 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 // DELETE /orgs/{org}/actions/runners/{runner_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromOrgParams) (res ActionsDeleteSelfHostedRunnerFromOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-self-hosted-runner-from-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerFromOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-self-hosted-runner-from-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -1815,21 +1871,24 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, params ActionsDeleteSelfHostedRunnerFromRepoParams) (res ActionsDeleteSelfHostedRunnerFromRepoNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-self-hosted-runner-from-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerFromRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-self-hosted-runner-from-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -1905,21 +1964,24 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) (res ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerGroupFromOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-self-hosted-runner-group-from-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -1980,21 +2042,24 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDeleteWorkflowRunParams) (res ActionsDeleteWorkflowRunNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-workflow-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteWorkflowRun",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-workflow-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -2068,21 +2133,24 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params ActionsDeleteWorkflowRunLogsParams) (res ActionsDeleteWorkflowRunLogsNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/delete-workflow-run-logs"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteWorkflowRunLogs",
-		trace.WithAttributes(otelogen.OperationID("actions/delete-workflow-run-logs")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -2160,21 +2228,24 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/disable-selected-repository-github-actions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDisableSelectedRepositoryGithubActionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/disable-selected-repository-github-actions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -2237,21 +2308,24 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDownloadArtifactParams) (res ActionsDownloadArtifactFound, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/download-artifact"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadArtifact",
-		trace.WithAttributes(otelogen.OperationID("actions/download-artifact")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -2344,21 +2418,24 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, params ActionsDownloadJobLogsForWorkflowRunParams) (res ActionsDownloadJobLogsForWorkflowRunFound, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/download-job-logs-for-workflow-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadJobLogsForWorkflowRun",
-		trace.WithAttributes(otelogen.OperationID("actions/download-job-logs-for-workflow-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -2437,21 +2514,24 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params ActionsDownloadWorkflowRunLogsParams) (res ActionsDownloadWorkflowRunLogsFound, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/download-workflow-run-logs"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadWorkflowRunLogs",
-		trace.WithAttributes(otelogen.OperationID("actions/download-workflow-run-logs")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -2529,21 +2609,24 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx context.Context, params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) (res ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/enable-selected-repository-github-actions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsEnableSelectedRepositoryGithubActionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/enable-selected-repository-github-actions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -2605,21 +2688,24 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 // GET /orgs/{org}/actions/permissions/selected-actions
 func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, params ActionsGetAllowedActionsOrganizationParams) (res SelectedActions, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-allowed-actions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetAllowedActionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/get-allowed-actions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -2667,21 +2753,24 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params ActionsGetAllowedActionsRepositoryParams) (res SelectedActions, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-allowed-actions-repository"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetAllowedActionsRepository",
-		trace.WithAttributes(otelogen.OperationID("actions/get-allowed-actions-repository")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -2741,21 +2830,24 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifactParams) (res Artifact, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-artifact"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetArtifact",
-		trace.WithAttributes(otelogen.OperationID("actions/get-artifact")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -2830,21 +2922,24 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params ActionsGetEnvironmentPublicKeyParams) (res ActionsPublicKey, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-environment-public-key"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetEnvironmentPublicKey",
-		trace.WithAttributes(otelogen.OperationID("actions/get-environment-public-key")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories/"
 	{
@@ -2904,21 +2999,24 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params ActionsGetEnvironmentSecretParams) (res ActionsSecret, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-environment-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetEnvironmentSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/get-environment-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories/"
 	{
@@ -2992,21 +3090,24 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 // GET /orgs/{org}/actions/permissions
 func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Context, params ActionsGetGithubActionsPermissionsOrganizationParams) (res ActionsOrganizationPermissions, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-github-actions-permissions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetGithubActionsPermissionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/get-github-actions-permissions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -3052,21 +3153,24 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 // GET /repos/{owner}/{repo}/actions/permissions
 func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Context, params ActionsGetGithubActionsPermissionsRepositoryParams) (res ActionsRepositoryPermissions, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-github-actions-permissions-repository"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetGithubActionsPermissionsRepository",
-		trace.WithAttributes(otelogen.OperationID("actions/get-github-actions-permissions-repository")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -3126,21 +3230,24 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}
 func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params ActionsGetJobForWorkflowRunParams) (res Job, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-job-for-workflow-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetJobForWorkflowRun",
-		trace.WithAttributes(otelogen.OperationID("actions/get-job-for-workflow-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -3215,21 +3322,24 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 // GET /orgs/{org}/actions/secrets/public-key
 func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOrgPublicKeyParams) (res ActionsPublicKey, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-org-public-key"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetOrgPublicKey",
-		trace.WithAttributes(otelogen.OperationID("actions/get-org-public-key")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -3274,21 +3384,24 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 // GET /orgs/{org}/actions/secrets/{secret_name}
 func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSecretParams) (res OrganizationActionsSecret, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-org-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetOrgSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/get-org-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -3348,21 +3461,24 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
 func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetRepoPublicKeyParams) (res ActionsPublicKey, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-repo-public-key"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetRepoPublicKey",
-		trace.WithAttributes(otelogen.OperationID("actions/get-repo-public-key")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -3422,21 +3538,24 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 // GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepoSecretParams) (res ActionsSecret, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-repo-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetRepoSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/get-repo-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -3510,21 +3629,24 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetReviewsForRunParams) (res []EnvironmentApprovals, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-reviews-for-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetReviewsForRun",
-		trace.WithAttributes(otelogen.OperationID("actions/get-reviews-for-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -3598,21 +3720,24 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 // GET /orgs/{org}/actions/runners/{runner_id}
 func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerForOrgParams) (res Runner, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-self-hosted-runner-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/get-self-hosted-runner-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -3671,21 +3796,24 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params ActionsGetSelfHostedRunnerForRepoParams) (res Runner, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-self-hosted-runner-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerForRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/get-self-hosted-runner-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -3761,21 +3889,24 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, params ActionsGetSelfHostedRunnerGroupForOrgParams) (res RunnerGroupsOrg, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-self-hosted-runner-group-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerGroupForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/get-self-hosted-runner-group-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -3834,21 +3965,24 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
 func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWorkflowRunParams) (res WorkflowRun, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-workflow-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetWorkflowRun",
-		trace.WithAttributes(otelogen.OperationID("actions/get-workflow-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -3929,21 +4063,24 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsGetWorkflowRunUsageParams) (res WorkflowRunUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/get-workflow-run-usage"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetWorkflowRunUsage",
-		trace.WithAttributes(otelogen.OperationID("actions/get-workflow-run-usage")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -4018,21 +4155,24 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 // GET /repos/{owner}/{repo}/actions/artifacts
 func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (res ActionsListArtifactsForRepoOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-artifacts-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListArtifactsForRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/list-artifacts-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -4127,21 +4267,24 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
 func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (res ActionsListEnvironmentSecretsOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-environment-secrets"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListEnvironmentSecrets",
-		trace.WithAttributes(otelogen.OperationID("actions/list-environment-secrets")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories/"
 	{
@@ -4238,21 +4381,24 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (res ActionsListJobsForWorkflowRunOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-jobs-for-workflow-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListJobsForWorkflowRun",
-		trace.WithAttributes(otelogen.OperationID("actions/list-jobs-for-workflow-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -4378,21 +4524,24 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 // GET /orgs/{org}/actions/secrets
 func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (res ActionsListOrgSecretsOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-org-secrets"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListOrgSecrets",
-		trace.WithAttributes(otelogen.OperationID("actions/list-org-secrets")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4474,21 +4623,24 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/list-repo-access-to-self-hosted-runner-group-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4583,21 +4735,24 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 // GET /repos/{owner}/{repo}/actions/secrets
 func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (res ActionsListRepoSecretsOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-repo-secrets"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoSecrets",
-		trace.WithAttributes(otelogen.OperationID("actions/list-repo-secrets")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -4692,21 +4847,24 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 // GET /repos/{owner}/{repo}/actions/workflows
 func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (res ActionsListRepoWorkflowsOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-repo-workflows"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoWorkflows",
-		trace.WithAttributes(otelogen.OperationID("actions/list-repo-workflows")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -4800,21 +4958,24 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 // GET /orgs/{org}/actions/runners/downloads
 func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params ActionsListRunnerApplicationsForOrgParams) (res []RunnerApplication, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-runner-applications-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRunnerApplicationsForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/list-runner-applications-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -4858,21 +5019,24 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 // GET /repos/{owner}/{repo}/actions/runners/downloads
 func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, params ActionsListRunnerApplicationsForRepoParams) (res []RunnerApplication, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-runner-applications-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRunnerApplicationsForRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/list-runner-applications-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -4933,21 +5097,24 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, params ActionsListSelectedReposForOrgSecretParams) (res ActionsListSelectedReposForOrgSecretOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-selected-repos-for-org-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelectedReposForOrgSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/list-selected-repos-for-org-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5045,21 +5212,24 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 // GET /orgs/{org}/actions/permissions/repositories
 func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx context.Context, params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) (res ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/list-selected-repositories-enabled-github-actions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5141,21 +5311,24 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 // GET /orgs/{org}/actions/runner-groups
 func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, params ActionsListSelfHostedRunnerGroupsForOrgParams) (res ActionsListSelfHostedRunnerGroupsForOrgOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnerGroupsForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/list-self-hosted-runner-groups-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5234,21 +5407,24 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 // GET /orgs/{org}/actions/runners
 func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (res ActionsListSelfHostedRunnersForOrgOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-self-hosted-runners-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/list-self-hosted-runners-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5327,21 +5503,24 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 // GET /repos/{owner}/{repo}/actions/runners
 func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (res ActionsListSelfHostedRunnersForRepoOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-self-hosted-runners-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersForRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/list-self-hosted-runners-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -5438,21 +5617,24 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (res ActionsListSelfHostedRunnersInGroupForOrgOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersInGroupForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/list-self-hosted-runners-in-group-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -5547,21 +5729,24 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (res ActionsListWorkflowRunArtifactsOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-workflow-run-artifacts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListWorkflowRunArtifacts",
-		trace.WithAttributes(otelogen.OperationID("actions/list-workflow-run-artifacts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -5674,21 +5859,24 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 // GET /repos/{owner}/{repo}/actions/runs
 func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (res ActionsListWorkflowRunsForRepoOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/list-workflow-runs-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListWorkflowRunsForRepo",
-		trace.WithAttributes(otelogen.OperationID("actions/list-workflow-runs-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -5866,21 +6054,24 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWorkflowParams) (res ActionsReRunWorkflowCreated, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/re-run-workflow"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsReRunWorkflow",
-		trace.WithAttributes(otelogen.OperationID("actions/re-run-workflow")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -5960,21 +6151,24 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Context, params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) (res ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/remove-repo-access-to-self-hosted-runner-group-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -6050,21 +6244,24 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 // DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, params ActionsRemoveSelectedRepoFromOrgSecretParams) (res ActionsRemoveSelectedRepoFromOrgSecretRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/remove-selected-repo-from-org-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveSelectedRepoFromOrgSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/remove-selected-repo-from-org-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -6141,21 +6338,24 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Context, params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) (res ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/remove-self-hosted-runner-from-group-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -6229,21 +6429,24 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWorkflowParams) (res ActionsRetryWorkflowCreated, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/retry-workflow"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRetryWorkflow",
-		trace.WithAttributes(otelogen.OperationID("actions/retry-workflow")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -6325,21 +6528,24 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/review-pending-deployments-for-run"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsReviewPendingDeploymentsForRun",
-		trace.WithAttributes(otelogen.OperationID("actions/review-pending-deployments-for-run")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6436,21 +6642,24 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 // PUT /orgs/{org}/actions/permissions/selected-actions
 func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsOrganizationParams) (res ActionsSetAllowedActionsOrganizationNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-allowed-actions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetAllowedActionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/set-allowed-actions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6516,21 +6725,24 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request OptSelectedActions, params ActionsSetAllowedActionsRepositoryParams) (res ActionsSetAllowedActionsRepositoryNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-allowed-actions-repository"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetAllowedActionsRepository",
-		trace.WithAttributes(otelogen.OperationID("actions/set-allowed-actions-repository")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6615,21 +6827,24 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-github-actions-permissions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetGithubActionsPermissionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/set-github-actions-permissions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6700,21 +6915,24 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-github-actions-permissions-repository"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetGithubActionsPermissionsRepository",
-		trace.WithAttributes(otelogen.OperationID("actions/set-github-actions-permissions-repository")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6799,21 +7017,24 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/set-repo-access-to-self-hosted-runner-group-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6897,21 +7118,24 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-selected-repos-for-org-secret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelectedReposForOrgSecret",
-		trace.WithAttributes(otelogen.OperationID("actions/set-selected-repos-for-org-secret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -6996,21 +7220,24 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
-		trace.WithAttributes(otelogen.OperationID("actions/set-selected-repositories-enabled-github-actions-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7079,21 +7306,24 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelfHostedRunnersInGroupForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/set-self-hosted-runners-in-group-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7177,21 +7407,24 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("actions/update-self-hosted-runner-group-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsUpdateSelfHostedRunnerGroupForOrg",
-		trace.WithAttributes(otelogen.OperationID("actions/update-self-hosted-runner-group-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -7260,21 +7493,24 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 // GET /user/starred/{owner}/{repo}
 func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Context, params ActivityCheckRepoIsStarredByAuthenticatedUserParams) (res ActivityCheckRepoIsStarredByAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityCheckRepoIsStarredByAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/check-repo-is-starred-by-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred/"
 	{
@@ -7333,21 +7569,24 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 // DELETE /repos/{owner}/{repo}/subscription
 func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params ActivityDeleteRepoSubscriptionParams) (res ActivityDeleteRepoSubscriptionNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/delete-repo-subscription"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityDeleteRepoSubscription",
-		trace.WithAttributes(otelogen.OperationID("activity/delete-repo-subscription")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -7409,21 +7648,24 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 // DELETE /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params ActivityDeleteThreadSubscriptionParams) (res ActivityDeleteThreadSubscriptionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/delete-thread-subscription"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityDeleteThreadSubscription",
-		trace.WithAttributes(otelogen.OperationID("activity/delete-thread-subscription")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -7480,21 +7722,24 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 // GET /feeds
 func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/get-feeds"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetFeeds",
-		trace.WithAttributes(otelogen.OperationID("activity/get-feeds")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/feeds"
 
@@ -7520,21 +7765,24 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 // GET /repos/{owner}/{repo}/subscription
 func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params ActivityGetRepoSubscriptionParams) (res ActivityGetRepoSubscriptionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/get-repo-subscription"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetRepoSubscription",
-		trace.WithAttributes(otelogen.OperationID("activity/get-repo-subscription")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -7590,21 +7838,24 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 // GET /notifications/threads/{thread_id}
 func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThreadParams) (res ActivityGetThreadRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/get-thread"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetThread",
-		trace.WithAttributes(otelogen.OperationID("activity/get-thread")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -7649,21 +7900,24 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 // GET /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.Context, params ActivityGetThreadSubscriptionForAuthenticatedUserParams) (res ActivityGetThreadSubscriptionForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetThreadSubscriptionForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/get-thread-subscription-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -7707,21 +7961,24 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 // GET /users/{username}/events
 func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, params ActivityListEventsForAuthenticatedUserParams) (res []Event, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-events-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListEventsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-events-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -7799,21 +8056,24 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 // GET /notifications
 func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListNotificationsForAuthenticatedUserParams) (res ActivityListNotificationsForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-notifications-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListNotificationsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-notifications-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications"
 
@@ -7940,21 +8200,24 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 // GET /users/{username}/events/orgs/{org}
 func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, params ActivityListOrgEventsForAuthenticatedUserParams) (res []Event, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-org-events-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListOrgEventsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-org-events-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -8047,21 +8310,24 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 // GET /events
 func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityListPublicEventsParams) (res ActivityListPublicEventsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-public-events"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEvents",
-		trace.WithAttributes(otelogen.OperationID("activity/list-public-events")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/events"
 
@@ -8122,21 +8388,24 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 // GET /networks/{owner}/{repo}/events
 func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, params ActivityListPublicEventsForRepoNetworkParams) (res ActivityListPublicEventsForRepoNetworkRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-public-events-for-repo-network"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEventsForRepoNetwork",
-		trace.WithAttributes(otelogen.OperationID("activity/list-public-events-for-repo-network")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/networks/"
 	{
@@ -8227,21 +8496,24 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 // GET /users/{username}/events/public
 func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params ActivityListPublicEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-public-events-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEventsForUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-public-events-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -8317,21 +8589,24 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 // GET /orgs/{org}/events
 func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params ActivityListPublicOrgEventsParams) (res []Event, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-public-org-events"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicOrgEvents",
-		trace.WithAttributes(otelogen.OperationID("activity/list-public-org-events")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -8411,21 +8686,24 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 // GET /users/{username}/received_events
 func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params ActivityListReceivedEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-received-events-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReceivedEventsForUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-received-events-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -8501,21 +8779,24 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 // GET /users/{username}/received_events/public
 func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, params ActivityListReceivedPublicEventsForUserParams) (res []Event, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-received-public-events-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReceivedPublicEventsForUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-received-public-events-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -8591,21 +8872,24 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 // GET /repos/{owner}/{repo}/events
 func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityListRepoEventsParams) (res []Event, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-repo-events"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListRepoEvents",
-		trace.WithAttributes(otelogen.OperationID("activity/list-repo-events")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -8698,21 +8982,24 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 // GET /repos/{owner}/{repo}/notifications
 func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (res []Thread, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListRepoNotificationsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-repo-notifications-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -8871,21 +9158,24 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 // GET /user/starred
 func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context, params ActivityListReposStarredByAuthenticatedUserParams) (res ActivityListReposStarredByAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-repos-starred-by-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReposStarredByAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-repos-starred-by-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred"
 
@@ -8980,21 +9270,24 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 // GET /users/{username}/subscriptions
 func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-repos-watched-by-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReposWatchedByUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-repos-watched-by-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -9072,21 +9365,24 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 // GET /user/subscriptions
 func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Context, params ActivityListWatchedReposForAuthenticatedUserParams) (res ActivityListWatchedReposForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-watched-repos-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListWatchedReposForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/list-watched-repos-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/subscriptions"
 
@@ -9149,21 +9445,24 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 // GET /repos/{owner}/{repo}/subscribers
 func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/list-watchers-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListWatchersForRepo",
-		trace.WithAttributes(otelogen.OperationID("activity/list-watchers-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -9262,21 +9561,24 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 // PUT /notifications
 func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request OptActivityMarkNotificationsAsReadReq) (res ActivityMarkNotificationsAsReadRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/mark-notifications-as-read"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkNotificationsAsRead",
-		trace.WithAttributes(otelogen.OperationID("activity/mark-notifications-as-read")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9324,21 +9626,24 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 // PUT /repos/{owner}/{repo}/notifications
 func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, request OptActivityMarkRepoNotificationsAsReadReq, params ActivityMarkRepoNotificationsAsReadParams) (res ActivityMarkRepoNotificationsAsReadRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/mark-repo-notifications-as-read"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkRepoNotificationsAsRead",
-		trace.WithAttributes(otelogen.OperationID("activity/mark-repo-notifications-as-read")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9408,21 +9713,24 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 // PATCH /notifications/threads/{thread_id}
 func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMarkThreadAsReadParams) (res ActivityMarkThreadAsReadRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/mark-thread-as-read"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkThreadAsRead",
-		trace.WithAttributes(otelogen.OperationID("activity/mark-thread-as-read")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
 	{
@@ -9467,21 +9775,24 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 // PUT /repos/{owner}/{repo}/subscription
 func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptActivitySetRepoSubscriptionReq, params ActivitySetRepoSubscriptionParams) (res RepositorySubscription, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/set-repo-subscription"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivitySetRepoSubscription",
-		trace.WithAttributes(otelogen.OperationID("activity/set-repo-subscription")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9560,21 +9871,24 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 // PUT /notifications/threads/{thread_id}/subscription
 func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptActivitySetThreadSubscriptionReq, params ActivitySetThreadSubscriptionParams) (res ActivitySetThreadSubscriptionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/set-thread-subscription"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivitySetThreadSubscription",
-		trace.WithAttributes(otelogen.OperationID("activity/set-thread-subscription")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9633,21 +9947,24 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 // PUT /user/starred/{owner}/{repo}
 func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, params ActivityStarRepoForAuthenticatedUserParams) (res ActivityStarRepoForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/star-repo-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityStarRepoForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/star-repo-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred/"
 	{
@@ -9702,21 +10019,24 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 // DELETE /user/starred/{owner}/{repo}
 func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, params ActivityUnstarRepoForAuthenticatedUserParams) (res ActivityUnstarRepoForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("activity/unstar-repo-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityUnstarRepoForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("activity/unstar-repo-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred/"
 	{
@@ -9778,21 +10098,24 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 // PUT /user/installations/{installation_id}/repositories/{repository_id}
 func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRepoToInstallationParams) (res AppsAddRepoToInstallationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/add-repo-to-installation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsAddRepoToInstallation",
-		trace.WithAttributes(otelogen.OperationID("apps/add-repo-to-installation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/installations/"
 	{
@@ -9854,21 +10177,24 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 // POST /applications/{client_id}/token
 func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, params AppsCheckTokenParams) (res AppsCheckTokenRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/check-token"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCheckToken",
-		trace.WithAttributes(otelogen.OperationID("apps/check-token")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -9942,21 +10268,24 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/create-content-attachment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateContentAttachment",
-		trace.WithAttributes(otelogen.OperationID("apps/create-content-attachment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10068,21 +10397,24 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/create-installation-access-token"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateInstallationAccessToken",
-		trace.WithAttributes(otelogen.OperationID("apps/create-installation-access-token")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10148,21 +10480,24 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 // DELETE /applications/{client_id}/grant
 func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDeleteAuthorizationReq, params AppsDeleteAuthorizationParams) (res AppsDeleteAuthorizationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/delete-authorization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteAuthorization",
-		trace.WithAttributes(otelogen.OperationID("apps/delete-authorization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10224,21 +10559,24 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 // DELETE /app/installations/{installation_id}
 func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteInstallationParams) (res AppsDeleteInstallationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/delete-installation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteInstallation",
-		trace.WithAttributes(otelogen.OperationID("apps/delete-installation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
 	{
@@ -10283,21 +10621,24 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 // DELETE /applications/{client_id}/token
 func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq, params AppsDeleteTokenParams) (res AppsDeleteTokenRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/delete-token"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteToken",
-		trace.WithAttributes(otelogen.OperationID("apps/delete-token")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -10361,21 +10702,24 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 // GET /app
 func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/get-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("apps/get-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app"
 
@@ -10410,21 +10754,24 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 // GET /apps/{app_slug}
 func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) (res AppsGetBySlugRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/get-by-slug"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetBySlug",
-		trace.WithAttributes(otelogen.OperationID("apps/get-by-slug")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apps/"
 	{
@@ -10473,21 +10820,24 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 // GET /marketplace_listing/accounts/{account_id}
 func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params AppsGetSubscriptionPlanForAccountParams) (res AppsGetSubscriptionPlanForAccountRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/get-subscription-plan-for-account"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetSubscriptionPlanForAccount",
-		trace.WithAttributes(otelogen.OperationID("apps/get-subscription-plan-for-account")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/accounts/"
 	{
@@ -10536,21 +10886,24 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 // GET /marketplace_listing/stubbed/accounts/{account_id}
 func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, params AppsGetSubscriptionPlanForAccountStubbedParams) (res AppsGetSubscriptionPlanForAccountStubbedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetSubscriptionPlanForAccountStubbed",
-		trace.WithAttributes(otelogen.OperationID("apps/get-subscription-plan-for-account-stubbed")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/stubbed/accounts/"
 	{
@@ -10596,21 +10949,24 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 // GET /app/hook/config
 func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookConfig, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/get-webhook-config-for-app"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetWebhookConfigForApp",
-		trace.WithAttributes(otelogen.OperationID("apps/get-webhook-config-for-app")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/config"
 
@@ -10641,21 +10997,24 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 // GET /app/hook/deliveries/{delivery_id}
 func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebhookDeliveryParams) (res AppsGetWebhookDeliveryRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/get-webhook-delivery"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetWebhookDelivery",
-		trace.WithAttributes(otelogen.OperationID("apps/get-webhook-delivery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/deliveries/"
 	{
@@ -10705,21 +11064,24 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 // GET /marketplace_listing/plans/{plan_id}/accounts
 func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAccountsForPlanParams) (res AppsListAccountsForPlanRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-accounts-for-plan"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListAccountsForPlan",
-		trace.WithAttributes(otelogen.OperationID("apps/list-accounts-for-plan")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/plans/"
 	{
@@ -10837,21 +11199,24 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 // GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params AppsListAccountsForPlanStubbedParams) (res AppsListAccountsForPlanStubbedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-accounts-for-plan-stubbed"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListAccountsForPlanStubbed",
-		trace.WithAttributes(otelogen.OperationID("apps/list-accounts-for-plan-stubbed")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/stubbed/plans/"
 	{
@@ -10967,21 +11332,24 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 // GET /user/installations/{installation_id}/repositories
 func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Context, params AppsListInstallationReposForAuthenticatedUserParams) (res AppsListInstallationReposForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-installation-repos-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListInstallationReposForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("apps/list-installation-repos-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/installations/"
 	{
@@ -11064,21 +11432,24 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 // GET /marketplace_listing/plans
 func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) (res AppsListPlansRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-plans"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListPlans",
-		trace.WithAttributes(otelogen.OperationID("apps/list-plans")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/plans"
 
@@ -11146,21 +11517,24 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 // GET /marketplace_listing/stubbed/plans
 func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansStubbedParams) (res AppsListPlansStubbedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-plans-stubbed"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListPlansStubbed",
-		trace.WithAttributes(otelogen.OperationID("apps/list-plans-stubbed")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/stubbed/plans"
 
@@ -11226,21 +11600,24 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 // GET /installation/repositories
 func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, params AppsListReposAccessibleToInstallationParams) (res AppsListReposAccessibleToInstallationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-repos-accessible-to-installation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListReposAccessibleToInstallation",
-		trace.WithAttributes(otelogen.OperationID("apps/list-repos-accessible-to-installation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/installation/repositories"
 
@@ -11305,21 +11682,24 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 // GET /user/marketplace_purchases
 func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserParams) (res AppsListSubscriptionsForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListSubscriptionsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("apps/list-subscriptions-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/marketplace_purchases"
 
@@ -11384,21 +11764,24 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 // GET /user/marketplace_purchases/stubbed
 func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Context, params AppsListSubscriptionsForAuthenticatedUserStubbedParams) (res AppsListSubscriptionsForAuthenticatedUserStubbedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListSubscriptionsForAuthenticatedUserStubbed",
-		trace.WithAttributes(otelogen.OperationID("apps/list-subscriptions-for-authenticated-user-stubbed")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/marketplace_purchases/stubbed"
 
@@ -11464,21 +11847,24 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 // GET /app/hook/deliveries
 func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListWebhookDeliveriesParams) (res AppsListWebhookDeliveriesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/list-webhook-deliveries"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListWebhookDeliveries",
-		trace.WithAttributes(otelogen.OperationID("apps/list-webhook-deliveries")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/deliveries"
 
@@ -11544,21 +11930,24 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 // POST /app/hook/deliveries/{delivery_id}/attempts
 func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRedeliverWebhookDeliveryParams) (res AppsRedeliverWebhookDeliveryRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/redeliver-webhook-delivery"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRedeliverWebhookDelivery",
-		trace.WithAttributes(otelogen.OperationID("apps/redeliver-webhook-delivery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/deliveries/"
 	{
@@ -11606,21 +11995,24 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
 func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params AppsRemoveRepoFromInstallationParams) (res AppsRemoveRepoFromInstallationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/remove-repo-from-installation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRemoveRepoFromInstallation",
-		trace.WithAttributes(otelogen.OperationID("apps/remove-repo-from-installation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/installations/"
 	{
@@ -11682,21 +12074,24 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 // PATCH /applications/{client_id}/token
 func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, params AppsResetTokenParams) (res AppsResetTokenRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/reset-token"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsResetToken",
-		trace.WithAttributes(otelogen.OperationID("apps/reset-token")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11762,21 +12157,24 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 // DELETE /installation/token
 func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res AppsRevokeInstallationAccessTokenNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/revoke-installation-access-token"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRevokeInstallationAccessToken",
-		trace.WithAttributes(otelogen.OperationID("apps/revoke-installation-access-token")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/installation/token"
 
@@ -11817,21 +12215,24 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/scope-token"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsScopeToken",
-		trace.WithAttributes(otelogen.OperationID("apps/scope-token")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -11893,21 +12294,24 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 // PUT /app/installations/{installation_id}/suspended
 func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspendInstallationParams) (res AppsSuspendInstallationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/suspend-installation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsSuspendInstallation",
-		trace.WithAttributes(otelogen.OperationID("apps/suspend-installation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
 	{
@@ -11953,21 +12357,24 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 // DELETE /app/installations/{installation_id}/suspended
 func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsuspendInstallationParams) (res AppsUnsuspendInstallationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/unsuspend-installation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsUnsuspendInstallation",
-		trace.WithAttributes(otelogen.OperationID("apps/unsuspend-installation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
 	{
@@ -12030,21 +12437,24 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("apps/update-webhook-config-for-app"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsUpdateWebhookConfigForApp",
-		trace.WithAttributes(otelogen.OperationID("apps/update-webhook-config-for-app")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12093,21 +12503,24 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 // GET /enterprises/{enterprise}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params BillingGetGithubActionsBillingGheParams) (res ActionsBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-github-actions-billing-ghe"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingGhe",
-		trace.WithAttributes(otelogen.OperationID("billing/get-github-actions-billing-ghe")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -12157,21 +12570,24 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 // GET /orgs/{org}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params BillingGetGithubActionsBillingOrgParams) (res ActionsBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-github-actions-billing-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingOrg",
-		trace.WithAttributes(otelogen.OperationID("billing/get-github-actions-billing-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -12221,21 +12637,24 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 // GET /users/{username}/settings/billing/actions
 func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params BillingGetGithubActionsBillingUserParams) (res ActionsBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-github-actions-billing-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingUser",
-		trace.WithAttributes(otelogen.OperationID("billing/get-github-actions-billing-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -12282,21 +12701,24 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 // GET /enterprises/{enterprise}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params BillingGetGithubPackagesBillingGheParams) (res PackagesBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-github-packages-billing-ghe"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingGhe",
-		trace.WithAttributes(otelogen.OperationID("billing/get-github-packages-billing-ghe")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -12343,21 +12765,24 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 // GET /orgs/{org}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params BillingGetGithubPackagesBillingOrgParams) (res PackagesBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-github-packages-billing-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingOrg",
-		trace.WithAttributes(otelogen.OperationID("billing/get-github-packages-billing-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -12404,21 +12829,24 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 // GET /users/{username}/settings/billing/packages
 func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params BillingGetGithubPackagesBillingUserParams) (res PackagesBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-github-packages-billing-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingUser",
-		trace.WithAttributes(otelogen.OperationID("billing/get-github-packages-billing-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -12465,21 +12893,24 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params BillingGetSharedStorageBillingGheParams) (res CombinedBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-shared-storage-billing-ghe"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingGhe",
-		trace.WithAttributes(otelogen.OperationID("billing/get-shared-storage-billing-ghe")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -12526,21 +12957,24 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 // GET /orgs/{org}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params BillingGetSharedStorageBillingOrgParams) (res CombinedBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-shared-storage-billing-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingOrg",
-		trace.WithAttributes(otelogen.OperationID("billing/get-shared-storage-billing-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -12587,21 +13021,24 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 // GET /users/{username}/settings/billing/shared-storage
 func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params BillingGetSharedStorageBillingUserParams) (res CombinedBillingUsage, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("billing/get-shared-storage-billing-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingUser",
-		trace.WithAttributes(otelogen.OperationID("billing/get-shared-storage-billing-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -12652,21 +13089,24 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 // POST /repos/{owner}/{repo}/check-suites
 func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuiteReq, params ChecksCreateSuiteParams) (res ChecksCreateSuiteRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/create-suite"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksCreateSuite",
-		trace.WithAttributes(otelogen.OperationID("checks/create-suite")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -12743,21 +13183,24 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}
 func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res CheckRun, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksGet",
-		trace.WithAttributes(otelogen.OperationID("checks/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12834,21 +13277,24 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
 func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams) (res CheckSuite, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/get-suite"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksGetSuite",
-		trace.WithAttributes(otelogen.OperationID("checks/get-suite")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -12923,21 +13369,24 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (res []CheckAnnotation, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/list-annotations"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListAnnotations",
-		trace.WithAttributes(otelogen.OperationID("checks/list-annotations")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13051,21 +13500,24 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (res ChecksListForRefOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/list-for-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListForRef",
-		trace.WithAttributes(otelogen.OperationID("checks/list-for-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13242,21 +13694,24 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (res ChecksListForSuiteOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/list-for-suite"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListForSuite",
-		trace.WithAttributes(otelogen.OperationID("checks/list-for-suite")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13418,21 +13873,24 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (res ChecksListSuitesForRefOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/list-suites-for-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListSuitesForRef",
-		trace.WithAttributes(otelogen.OperationID("checks/list-suites-for-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13577,21 +14035,24 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRerequestSuiteParams) (res ChecksRerequestSuiteCreated, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/rerequest-suite"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksRerequestSuite",
-		trace.WithAttributes(otelogen.OperationID("checks/rerequest-suite")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13668,21 +14129,24 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
 func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksSetSuitesPreferencesReq, params ChecksSetSuitesPreferencesParams) (res CheckSuitePreference, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("checks/set-suites-preferences"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksSetSuitesPreferences",
-		trace.WithAttributes(otelogen.OperationID("checks/set-suites-preferences")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -13810,21 +14274,24 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScanningDeleteAnalysisParams) (res CodeScanningDeleteAnalysisRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/delete-analysis"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningDeleteAnalysis",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/delete-analysis")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -13921,21 +14388,24 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGetAlertParams) (res CodeScanningGetAlertRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/get-alert"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetAlert",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/get-alert")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14028,21 +14498,24 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScanningGetAnalysisParams) (res CodeScanningGetAnalysisRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/get-analysis"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetAnalysis",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/get-analysis")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14119,21 +14592,24 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 // GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGetSarifParams) (res CodeScanningGetSarifRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/get-sarif"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetSarif",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/get-sarif")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14207,21 +14683,24 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params CodeScanningListAlertInstancesParams) (res CodeScanningListAlertInstancesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/list-alert-instances"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListAlertInstances",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/list-alert-instances")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14358,21 +14837,24 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 // GET /repos/{owner}/{repo}/code-scanning/alerts
 func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeScanningListAlertsForRepoParams) (res CodeScanningListAlertsForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/list-alerts-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListAlertsForRepo",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/list-alerts-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14552,21 +15034,24 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 // GET /repos/{owner}/{repo}/code-scanning/analyses
 func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params CodeScanningListRecentAnalysesParams) (res CodeScanningListRecentAnalysesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/list-recent-analyses"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListRecentAnalyses",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/list-recent-analyses")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -14745,21 +15230,24 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/update-alert"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningUpdateAlert",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/update-alert")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14882,21 +15370,24 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("code-scanning/upload-sarif"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningUploadSarif",
-		trace.WithAttributes(otelogen.OperationID("code-scanning/upload-sarif")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -14966,21 +15457,24 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 // GET /codes_of_conduct
 func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res CodesOfConductGetAllCodesOfConductRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodesOfConductGetAllCodesOfConduct",
-		trace.WithAttributes(otelogen.OperationID("codes-of-conduct/get-all-codes-of-conduct")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/codes_of_conduct"
 
@@ -15006,21 +15500,24 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 // GET /codes_of_conduct/{key}
 func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesOfConductGetConductCodeParams) (res CodesOfConductGetConductCodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("codes-of-conduct/get-conduct-code"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodesOfConductGetConductCode",
-		trace.WithAttributes(otelogen.OperationID("codes-of-conduct/get-conduct-code")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/codes_of_conduct/"
 	{
@@ -15062,21 +15559,24 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 // GET /emojis
 func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("emojis/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EmojisGet",
-		trace.WithAttributes(otelogen.OperationID("emojis/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/emojis"
 
@@ -15108,21 +15608,24 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15196,21 +15699,24 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx context.Context, params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) (res EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/add-self-hosted-runner-to-group-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15289,21 +15795,24 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 // POST /enterprises/{enterprise}/actions/runners/registration-token
 func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateRegistrationTokenForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/create-registration-token-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15355,21 +15864,24 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 // POST /enterprises/{enterprise}/actions/runners/remove-token
 func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Context, params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) (res AuthenticationToken, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateRemoveTokenForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/create-remove-token-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15421,21 +15933,24 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/create-self-hosted-runner-group-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -15493,21 +16008,24 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) (res EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteScimGroupFromEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/delete-scim-group-from-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
 	{
@@ -15566,21 +16084,24 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
 func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-from-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15638,21 +16159,24 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) (res EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/delete-self-hosted-runner-group-from-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15710,21 +16234,24 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, params EnterpriseAdminDeleteUserFromEnterpriseParams) (res EnterpriseAdminDeleteUserFromEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/delete-user-from-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteUserFromEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/delete-user-from-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
 	{
@@ -15785,21 +16312,24 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/disable-selected-organization-github-actions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15860,21 +16390,24 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) (res EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/enable-selected-organization-github-actions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15935,21 +16468,24 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
 func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context, params EnterpriseAdminGetAllowedActionsEnterpriseParams) (res SelectedActions, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetAllowedActionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/get-allowed-actions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -15993,21 +16529,24 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 // GET /enterprises/{enterprise}/audit-log
 func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params EnterpriseAdminGetAuditLogParams) (res []AuditLogEvent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/get-audit-log"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetAuditLog",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/get-audit-log")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -16166,21 +16705,24 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 // GET /enterprises/{enterprise}/actions/permissions
 func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx context.Context, params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) (res ActionsEnterprisePermissions, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/get-github-actions-permissions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -16224,21 +16766,24 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) (res ScimEnterpriseGroup, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-group")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
 	{
@@ -16315,21 +16860,24 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx context.Context, params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) (res ScimEnterpriseUser, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/get-provisioning-information-for-enterprise-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
 	{
@@ -16387,21 +16935,24 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
 func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) (res Runner, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/get-self-hosted-runner-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -16459,21 +17010,24 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx context.Context, params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) (res RunnerGroupsEnterprise, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/get-self-hosted-runner-group-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -16531,21 +17085,24 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -16639,21 +17196,24 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 // GET /scim/v2/enterprises/{enterprise}/Groups
 func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedGroupsEnterpriseParams) (res ScimGroupListEnterprise, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListProvisionedGroupsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-provisioned-groups-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
 	{
@@ -16789,21 +17349,24 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 // GET /scim/v2/enterprises/{enterprise}/Users
 func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.Context, params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) (res ScimUserListEnterprise, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListProvisionedIdentitiesEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-provisioned-identities-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
 	{
@@ -16898,21 +17461,24 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 // GET /enterprises/{enterprise}/actions/runners/downloads
 func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.Context, params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) (res []RunnerApplication, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListRunnerApplicationsForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-runner-applications-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -16959,21 +17525,24 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 // GET /enterprises/{enterprise}/actions/permissions/organizations
 func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx context.Context, params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) (res EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -17052,21 +17621,24 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 // GET /enterprises/{enterprise}/actions/runner-groups
 func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-self-hosted-runner-groups-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -17145,21 +17717,24 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 // GET /enterprises/{enterprise}/actions/runners
 func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnersForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-self-hosted-runners-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -17238,21 +17813,24 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (res EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/list-self-hosted-runners-in-group-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -17357,21 +17935,24 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-group")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17442,21 +18023,24 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminProvisionAndInviteEnterpriseUser",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/provision-and-invite-enterprise-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17517,21 +18101,24 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx context.Context, params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) (res EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -17605,21 +18192,24 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx context.Context, params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) (res EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
 	{
@@ -17695,21 +18285,24 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context, request SelectedActions, params EnterpriseAdminSetAllowedActionsEnterpriseParams) (res EnterpriseAdminSetAllowedActionsEnterpriseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetAllowedActionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/set-allowed-actions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17775,21 +18368,24 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/set-github-actions-permissions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17860,21 +18456,24 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-group")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -17962,21 +18561,24 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/set-information-for-provisioned-enterprise-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18057,21 +18659,24 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18155,21 +18760,24 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18235,21 +18843,24 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/set-self-hosted-runners-in-group-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18334,21 +18945,24 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-group")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18447,21 +19061,24 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateAttributeForEnterpriseUser",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/update-attribute-for-enterprise-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18549,21 +19166,24 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
-		trace.WithAttributes(otelogen.OperationID("enterprise-admin/update-self-hosted-runner-group-for-enterprise")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18632,21 +19252,24 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 // GET /gists/{gist_id}/star
 func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsStarredParams) (res GistsCheckIsStarredRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/check-is-starred"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCheckIsStarred",
-		trace.WithAttributes(otelogen.OperationID("gists/check-is-starred")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -18699,21 +19322,24 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/create"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCreate",
-		trace.WithAttributes(otelogen.OperationID("gists/create")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18761,21 +19387,24 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/create-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCreateComment",
-		trace.WithAttributes(otelogen.OperationID("gists/create-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -18830,21 +19459,24 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 // DELETE /gists/{gist_id}
 func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res GistsDeleteRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/delete"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsDelete",
-		trace.WithAttributes(otelogen.OperationID("gists/delete")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -18884,21 +19516,24 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 // DELETE /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteCommentParams) (res GistsDeleteCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/delete-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsDeleteComment",
-		trace.WithAttributes(otelogen.OperationID("gists/delete-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -18955,21 +19590,24 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 // POST /gists/{gist_id}/forks
 func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res GistsForkRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/fork"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsFork",
-		trace.WithAttributes(otelogen.OperationID("gists/fork")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19010,21 +19648,24 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 // GET /gists/{gist_id}
 func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res GistsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGet",
-		trace.WithAttributes(otelogen.OperationID("gists/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19064,21 +19705,24 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 // GET /gists/{gist_id}/comments/{comment_id}
 func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentParams) (res GistsGetCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/get-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGetComment",
-		trace.WithAttributes(otelogen.OperationID("gists/get-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19133,21 +19777,24 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 // GET /gists/{gist_id}/{sha}
 func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionParams) (res GistsGetRevisionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/get-revision"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGetRevision",
-		trace.WithAttributes(otelogen.OperationID("gists/get-revision")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19205,21 +19852,24 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 // GET /gists
 func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res GistsListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/list"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsList",
-		trace.WithAttributes(otelogen.OperationID("gists/list")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists"
 
@@ -19296,21 +19946,24 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 // GET /gists/{gist_id}/comments
 func (c *Client) GistsListComments(ctx context.Context, params GistsListCommentsParams) (res GistsListCommentsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/list-comments"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListComments",
-		trace.WithAttributes(otelogen.OperationID("gists/list-comments")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19386,21 +20039,24 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 // GET /gists/{gist_id}/commits
 func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsParams) (res GistsListCommitsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/list-commits"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListCommits",
-		trace.WithAttributes(otelogen.OperationID("gists/list-commits")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19478,21 +20134,24 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 // GET /users/{username}/gists
 func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserParams) (res GistsListForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/list-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListForUser",
-		trace.WithAttributes(otelogen.OperationID("gists/list-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -19584,21 +20243,24 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 // GET /gists/{gist_id}/forks
 func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams) (res GistsListForksRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/list-forks"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListForks",
-		trace.WithAttributes(otelogen.OperationID("gists/list-forks")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19679,21 +20341,24 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 // GET /gists/public
 func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicParams) (res GistsListPublicRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/list-public"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListPublic",
-		trace.WithAttributes(otelogen.OperationID("gists/list-public")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/public"
 
@@ -19772,21 +20437,24 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 // GET /gists/starred
 func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredParams) (res GistsListStarredRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/list-starred"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListStarred",
-		trace.WithAttributes(otelogen.OperationID("gists/list-starred")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/starred"
 
@@ -19867,21 +20535,24 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 // PUT /gists/{gist_id}/star
 func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res GistsStarRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/star"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsStar",
-		trace.WithAttributes(otelogen.OperationID("gists/star")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19922,21 +20593,24 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 // DELETE /gists/{gist_id}/star
 func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res GistsUnstarRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/unstar"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsUnstar",
-		trace.WithAttributes(otelogen.OperationID("gists/unstar")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
 	{
@@ -19985,21 +20659,24 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gists/update-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsUpdateComment",
-		trace.WithAttributes(otelogen.OperationID("gists/update-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20068,21 +20745,24 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 // POST /repos/{owner}/{repo}/git/blobs
 func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, params GitCreateBlobParams) (res GitCreateBlobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/create-blob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateBlob",
-		trace.WithAttributes(otelogen.OperationID("git/create-blob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20187,21 +20867,24 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 // POST /repos/{owner}/{repo}/git/commits
 func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq, params GitCreateCommitParams) (res GitCreateCommitRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/create-commit"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateCommit",
-		trace.WithAttributes(otelogen.OperationID("git/create-commit")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20275,21 +20958,24 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 // POST /repos/{owner}/{repo}/git/refs
 func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, params GitCreateRefParams) (res GitCreateRefRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/create-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateRef",
-		trace.WithAttributes(otelogen.OperationID("git/create-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20405,21 +21091,24 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/create-tag"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateTag",
-		trace.WithAttributes(otelogen.OperationID("git/create-tag")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20505,21 +21194,24 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/create-tree"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateTree",
-		trace.WithAttributes(otelogen.OperationID("git/create-tree")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -20589,21 +21281,24 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 // DELETE /repos/{owner}/{repo}/git/refs/{ref}
 func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (res GitDeleteRefRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/delete-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitDeleteRef",
-		trace.WithAttributes(otelogen.OperationID("git/delete-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -20676,21 +21371,24 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (r
 // GET /repos/{owner}/{repo}/git/blobs/{file_sha}
 func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res GitGetBlobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/get-blob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetBlob",
-		trace.WithAttributes(otelogen.OperationID("git/get-blob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -20795,21 +21493,24 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res G
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
 func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (res GitGetCommitRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/get-commit"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetCommit",
-		trace.WithAttributes(otelogen.OperationID("git/get-commit")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -20888,21 +21589,24 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 // GET /repos/{owner}/{repo}/git/ref/{ref}
 func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res GitGetRefRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/get-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetRef",
-		trace.WithAttributes(otelogen.OperationID("git/get-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -21005,21 +21709,24 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 // GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res GitGetTagRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/get-tag"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetTag",
-		trace.WithAttributes(otelogen.OperationID("git/get-tag")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -21094,21 +21801,24 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 // GET /repos/{owner}/{repo}/git/trees/{tree_sha}
 func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res GitGetTreeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/get-tree"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetTree",
-		trace.WithAttributes(otelogen.OperationID("git/get-tree")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -21213,21 +21923,24 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (res []GitRef, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/list-matching-refs"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitListMatchingRefs",
-		trace.WithAttributes(otelogen.OperationID("git/list-matching-refs")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -21332,21 +22045,24 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
 func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, params GitUpdateRefParams) (res GitUpdateRefRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("git/update-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitUpdateRef",
-		trace.WithAttributes(otelogen.OperationID("git/update-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21433,21 +22149,24 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 // GET /gitignore/templates
 func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGetAllTemplatesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gitignore/get-all-templates"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitignoreGetAllTemplates",
-		trace.WithAttributes(otelogen.OperationID("gitignore/get-all-templates")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gitignore/templates"
 
@@ -21477,21 +22196,24 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 // GET /gitignore/templates/{name}
 func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTemplateParams) (res GitignoreGetTemplateRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("gitignore/get-template"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitignoreGetTemplate",
-		trace.WithAttributes(otelogen.OperationID("gitignore/get-template")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gitignore/templates/"
 	{
@@ -21533,21 +22255,24 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 // DELETE /user/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.Context) (res InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("interactions/remove-restrictions-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/interaction-limits"
 
@@ -21576,21 +22301,24 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 // DELETE /orgs/{org}/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, params InteractionsRemoveRestrictionsForOrgParams) (res InteractionsRemoveRestrictionsForOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/remove-restrictions-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForOrg",
-		trace.WithAttributes(otelogen.OperationID("interactions/remove-restrictions-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -21636,21 +22364,24 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 // DELETE /repos/{owner}/{repo}/interaction-limits
 func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, params InteractionsRemoveRestrictionsForRepoParams) (res InteractionsRemoveRestrictionsForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/remove-restrictions-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForRepo",
-		trace.WithAttributes(otelogen.OperationID("interactions/remove-restrictions-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -21718,21 +22449,24 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/set-restrictions-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("interactions/set-restrictions-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21785,21 +22519,24 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/set-restrictions-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForOrg",
-		trace.WithAttributes(otelogen.OperationID("interactions/set-restrictions-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21867,21 +22604,24 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("interactions/set-restrictions-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForRepo",
-		trace.WithAttributes(otelogen.OperationID("interactions/set-restrictions-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -21953,21 +22693,24 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAssigneesReq, params IssuesAddAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/add-assignees"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesAddAssignees",
-		trace.WithAttributes(otelogen.OperationID("issues/add-assignees")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22057,21 +22800,24 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 // GET /repos/{owner}/{repo}/assignees/{assignee}
 func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params IssuesCheckUserCanBeAssignedParams) (res IssuesCheckUserCanBeAssignedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/check-user-can-be-assigned"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCheckUserCanBeAssigned",
-		trace.WithAttributes(otelogen.OperationID("issues/check-user-can-be-assigned")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -22152,21 +22898,24 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 // POST /repos/{owner}/{repo}/issues
 func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, params IssuesCreateParams) (res IssuesCreateRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/create"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreate",
-		trace.WithAttributes(otelogen.OperationID("issues/create")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22244,21 +22993,24 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCommentReq, params IssuesCreateCommentParams) (res IssuesCreateCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/create-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateComment",
-		trace.WithAttributes(otelogen.OperationID("issues/create-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22343,21 +23095,24 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 // POST /repos/{owner}/{repo}/labels
 func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabelReq, params IssuesCreateLabelParams) (res IssuesCreateLabelRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/create-label"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateLabel",
-		trace.WithAttributes(otelogen.OperationID("issues/create-label")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22435,21 +23190,24 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/create-milestone"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateMilestone",
-		trace.WithAttributes(otelogen.OperationID("issues/create-milestone")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -22519,21 +23277,24 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCommentParams) (res IssuesDeleteCommentNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/delete-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteComment",
-		trace.WithAttributes(otelogen.OperationID("issues/delete-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -22603,21 +23364,24 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 // DELETE /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabelParams) (res IssuesDeleteLabelNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/delete-label"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteLabel",
-		trace.WithAttributes(otelogen.OperationID("issues/delete-label")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -22687,21 +23451,24 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 // DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteMilestoneParams) (res IssuesDeleteMilestoneRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/delete-milestone"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteMilestone",
-		trace.WithAttributes(otelogen.OperationID("issues/delete-milestone")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -22791,21 +23558,24 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 // GET /repos/{owner}/{repo}/issues/{issue_number}
 func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res IssuesGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGet",
-		trace.WithAttributes(otelogen.OperationID("issues/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -22875,21 +23645,24 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentParams) (res IssuesGetCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/get-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetComment",
-		trace.WithAttributes(otelogen.OperationID("issues/get-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -22959,21 +23732,24 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 // GET /repos/{owner}/{repo}/issues/events/{event_id}
 func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams) (res IssuesGetEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/get-event"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetEvent",
-		trace.WithAttributes(otelogen.OperationID("issues/get-event")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -23043,21 +23819,24 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 // GET /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams) (res IssuesGetLabelRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/get-label"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetLabel",
-		trace.WithAttributes(otelogen.OperationID("issues/get-label")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -23127,21 +23906,24 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}
 func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilestoneParams) (res IssuesGetMilestoneRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/get-milestone"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetMilestone",
-		trace.WithAttributes(otelogen.OperationID("issues/get-milestone")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -23225,21 +24007,24 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 // GET /issues
 func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res IssuesListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesList",
-		trace.WithAttributes(otelogen.OperationID("issues/list")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/issues"
 
@@ -23463,21 +24248,24 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 // GET /repos/{owner}/{repo}/assignees
 func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssigneesParams) (res IssuesListAssigneesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-assignees"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListAssignees",
-		trace.WithAttributes(otelogen.OperationID("issues/list-assignees")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -23570,21 +24358,24 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 // GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommentsParams) (res IssuesListCommentsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-comments"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListComments",
-		trace.WithAttributes(otelogen.OperationID("issues/list-comments")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -23708,21 +24499,24 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 // GET /repos/{owner}/{repo}/issues/comments
 func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesListCommentsForRepoParams) (res IssuesListCommentsForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-comments-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListCommentsForRepo",
-		trace.WithAttributes(otelogen.OperationID("issues/list-comments-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -23861,21 +24655,24 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 // GET /repos/{owner}/{repo}/issues/events
 func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListEventsForRepoParams) (res IssuesListEventsForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-events-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListEventsForRepo",
-		trace.WithAttributes(otelogen.OperationID("issues/list-events-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -23976,21 +24773,24 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 // GET /user/issues
 func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params IssuesListForAuthenticatedUserParams) (res IssuesListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("issues/list-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/issues"
 
@@ -24157,21 +24957,24 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 // GET /orgs/{org}/issues
 func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgParams) (res IssuesListForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForOrg",
-		trace.WithAttributes(otelogen.OperationID("issues/list-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -24353,21 +25156,24 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 // GET /repos/{owner}/{repo}/issues
 func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepoParams) (res IssuesListForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForRepo",
-		trace.WithAttributes(otelogen.OperationID("issues/list-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -24602,21 +25408,24 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (res []Label, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-labels-for-milestone"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsForMilestone",
-		trace.WithAttributes(otelogen.OperationID("issues/list-labels-for-milestone")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -24722,21 +25531,24 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 // GET /repos/{owner}/{repo}/labels
 func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListLabelsForRepoParams) (res IssuesListLabelsForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-labels-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsForRepo",
-		trace.WithAttributes(otelogen.OperationID("issues/list-labels-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -24827,21 +25639,24 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 // GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListLabelsOnIssueParams) (res IssuesListLabelsOnIssueRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-labels-on-issue"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsOnIssue",
-		trace.WithAttributes(otelogen.OperationID("issues/list-labels-on-issue")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -24947,21 +25762,24 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 // GET /repos/{owner}/{repo}/milestones
 func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMilestonesParams) (res IssuesListMilestonesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/list-milestones"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListMilestones",
-		trace.WithAttributes(otelogen.OperationID("issues/list-milestones")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -25121,21 +25939,24 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/lock"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesLock",
-		trace.WithAttributes(otelogen.OperationID("issues/lock")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25220,21 +26041,24 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveAllLabelsParams) (res IssuesRemoveAllLabelsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/remove-all-labels"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveAllLabels",
-		trace.WithAttributes(otelogen.OperationID("issues/remove-all-labels")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -25307,21 +26131,24 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRemoveAssigneesReq, params IssuesRemoveAssigneesParams) (res IssueSimple, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/remove-assignees"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveAssignees",
-		trace.WithAttributes(otelogen.OperationID("issues/remove-assignees")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25409,21 +26236,24 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
 func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabelParams) (res IssuesRemoveLabelRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/remove-label"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveLabel",
-		trace.WithAttributes(otelogen.OperationID("issues/remove-label")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -25510,21 +26340,24 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (res IssuesUnlockRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/unlock"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUnlock",
-		trace.WithAttributes(otelogen.OperationID("issues/unlock")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -25613,21 +26446,24 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/update"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdate",
-		trace.WithAttributes(otelogen.OperationID("issues/update")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25711,21 +26547,24 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCommentReq, params IssuesUpdateCommentParams) (res IssuesUpdateCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/update-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateComment",
-		trace.WithAttributes(otelogen.OperationID("issues/update-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25809,21 +26648,24 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 // PATCH /repos/{owner}/{repo}/labels/{name}
 func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateLabelReq, params IssuesUpdateLabelParams) (res Label, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/update-label"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateLabel",
-		trace.WithAttributes(otelogen.OperationID("issues/update-label")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -25923,21 +26765,24 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("issues/update-milestone"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateMilestone",
-		trace.WithAttributes(otelogen.OperationID("issues/update-milestone")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -26021,21 +26866,24 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 // GET /licenses/{license}
 func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res LicensesGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("licenses/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGet",
-		trace.WithAttributes(otelogen.OperationID("licenses/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/licenses/"
 	{
@@ -26075,21 +26923,24 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 // GET /licenses
 func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params LicensesGetAllCommonlyUsedParams) (res LicensesGetAllCommonlyUsedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("licenses/get-all-commonly-used"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGetAllCommonlyUsed",
-		trace.WithAttributes(otelogen.OperationID("licenses/get-all-commonly-used")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/licenses"
 
@@ -26172,21 +27023,24 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 // GET /repos/{owner}/{repo}/license
 func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRepoParams) (res LicenseContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("licenses/get-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGetForRepo",
-		trace.WithAttributes(otelogen.OperationID("licenses/get-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -26248,21 +27102,24 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 // GET /meta
 func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("meta/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGet",
-		trace.WithAttributes(otelogen.OperationID("meta/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/meta"
 
@@ -26290,21 +27147,24 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 // GET /
 func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("meta/root"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MetaRoot",
-		trace.WithAttributes(otelogen.OperationID("meta/root")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/"
 
@@ -26332,21 +27192,24 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 // DELETE /repos/{owner}/{repo}/import
 func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCancelImportParams) (res MigrationsCancelImportNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/cancel-import"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsCancelImport",
-		trace.WithAttributes(otelogen.OperationID("migrations/cancel-import")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -26408,21 +27271,24 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 // DELETE /user/migrations/{migration_id}/archive
 func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context, params MigrationsDeleteArchiveForAuthenticatedUserParams) (res MigrationsDeleteArchiveForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/delete-archive-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDeleteArchiveForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("migrations/delete-archive-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -26466,21 +27332,24 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 // DELETE /orgs/{org}/migrations/{migration_id}/archive
 func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params MigrationsDeleteArchiveForOrgParams) (res MigrationsDeleteArchiveForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/delete-archive-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDeleteArchiveForOrg",
-		trace.WithAttributes(otelogen.OperationID("migrations/delete-archive-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -26538,21 +27407,24 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 // GET /orgs/{org}/migrations/{migration_id}/archive
 func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params MigrationsDownloadArchiveForOrgParams) (res MigrationsDownloadArchiveForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/download-archive-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDownloadArchiveForOrg",
-		trace.WithAttributes(otelogen.OperationID("migrations/download-archive-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -26630,21 +27502,24 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 // GET /user/migrations/{migration_id}/archive
 func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, params MigrationsGetArchiveForAuthenticatedUserParams) (res MigrationsGetArchiveForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/get-archive-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetArchiveForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("migrations/get-archive-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -26694,21 +27569,24 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 // GET /repos/{owner}/{repo}/import/authors
 func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params MigrationsGetCommitAuthorsParams) (res MigrationsGetCommitAuthorsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/get-commit-authors"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetCommitAuthors",
-		trace.WithAttributes(otelogen.OperationID("migrations/get-commit-authors")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -26837,21 +27715,24 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 // GET /repos/{owner}/{repo}/import
 func (c *Client) MigrationsGetImportStatus(ctx context.Context, params MigrationsGetImportStatusParams) (res MigrationsGetImportStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/get-import-status"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetImportStatus",
-		trace.WithAttributes(otelogen.OperationID("migrations/get-import-status")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -26909,21 +27790,24 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 // GET /repos/{owner}/{repo}/import/large_files
 func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsGetLargeFilesParams) (res []PorterLargeFile, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/get-large-files"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetLargeFiles",
-		trace.WithAttributes(otelogen.OperationID("migrations/get-large-files")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -26988,21 +27872,24 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 // GET /user/migrations/{migration_id}
 func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, params MigrationsGetStatusForAuthenticatedUserParams) (res MigrationsGetStatusForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/get-status-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetStatusForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("migrations/get-status-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -27074,21 +27961,24 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 // GET /orgs/{org}/migrations/{migration_id}
 func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params MigrationsGetStatusForOrgParams) (res MigrationsGetStatusForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/get-status-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetStatusForOrg",
-		trace.WithAttributes(otelogen.OperationID("migrations/get-status-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -27170,21 +28060,24 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 // GET /user/migrations
 func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params MigrationsListForAuthenticatedUserParams) (res MigrationsListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/list-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("migrations/list-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations"
 
@@ -27247,21 +28140,24 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 // GET /orgs/{org}/migrations
 func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (res []Migration, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/list-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListForOrg",
-		trace.WithAttributes(otelogen.OperationID("migrations/list-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -27361,21 +28257,24 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 // GET /orgs/{org}/migrations/{migration_id}/repositories
 func (c *Client) MigrationsListReposForOrg(ctx context.Context, params MigrationsListReposForOrgParams) (res MigrationsListReposForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/list-repos-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListReposForOrg",
-		trace.WithAttributes(otelogen.OperationID("migrations/list-repos-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -27468,21 +28367,24 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 // GET /user/migrations/{migration_id}/repositories
 func (c *Client) MigrationsListReposForUser(ctx context.Context, params MigrationsListReposForUserParams) (res MigrationsListReposForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/list-repos-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListReposForUser",
-		trace.WithAttributes(otelogen.OperationID("migrations/list-repos-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -27561,21 +28463,24 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 // PATCH /repos/{owner}/{repo}/import/authors/{author_id}
 func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigrationsMapCommitAuthorReq, params MigrationsMapCommitAuthorParams) (res MigrationsMapCommitAuthorRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/map-commit-author"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsMapCommitAuthor",
-		trace.WithAttributes(otelogen.OperationID("migrations/map-commit-author")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27672,21 +28577,24 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/set-lfs-preference"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsSetLfsPreference",
-		trace.WithAttributes(otelogen.OperationID("migrations/set-lfs-preference")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27766,21 +28674,24 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/start-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("migrations/start-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27830,21 +28741,24 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/start-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartForOrg",
-		trace.WithAttributes(otelogen.OperationID("migrations/start-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27909,21 +28823,24 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/start-import"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartImport",
-		trace.WithAttributes(otelogen.OperationID("migrations/start-import")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -27999,21 +28916,24 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, params MigrationsUnlockRepoForAuthenticatedUserParams) (res MigrationsUnlockRepoForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/unlock-repo-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUnlockRepoForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("migrations/unlock-repo-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations/"
 	{
@@ -28073,21 +28993,24 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 // DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params MigrationsUnlockRepoForOrgParams) (res MigrationsUnlockRepoForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/unlock-repo-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUnlockRepoForOrg",
-		trace.WithAttributes(otelogen.OperationID("migrations/unlock-repo-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -28162,21 +29085,24 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 // PATCH /repos/{owner}/{repo}/import
 func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigrationsUpdateImportReq, params MigrationsUpdateImportParams) (res Import, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("migrations/update-import"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUpdateImport",
-		trace.WithAttributes(otelogen.OperationID("migrations/update-import")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -28291,21 +29217,24 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/create-authorization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsCreateAuthorization",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/create-authorization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -28354,21 +29283,24 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 // DELETE /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, params OAuthAuthorizationsDeleteAuthorizationParams) (res OAuthAuthorizationsDeleteAuthorizationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/delete-authorization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsDeleteAuthorization",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/delete-authorization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/"
 	{
@@ -28420,21 +29352,24 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 // DELETE /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAuthAuthorizationsDeleteGrantParams) (res OAuthAuthorizationsDeleteGrantRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/delete-grant"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsDeleteGrant",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/delete-grant")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/grants/"
 	{
@@ -28483,21 +29418,24 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 // GET /authorizations/{authorization_id}
 func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params OAuthAuthorizationsGetAuthorizationParams) (res OAuthAuthorizationsGetAuthorizationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/get-authorization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetAuthorization",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/get-authorization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/"
 	{
@@ -28546,21 +29484,24 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 // GET /applications/grants/{grant_id}
 func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAuthorizationsGetGrantParams) (res OAuthAuthorizationsGetGrantRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/get-grant"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetGrant",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/get-grant")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/grants/"
 	{
@@ -28636,21 +29577,24 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -28735,21 +29679,24 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -28827,21 +29774,24 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 // GET /authorizations
 func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, params OAuthAuthorizationsListAuthorizationsParams) (res OAuthAuthorizationsListAuthorizationsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/list-authorizations"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsListAuthorizations",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/list-authorizations")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations"
 
@@ -28936,21 +29886,24 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 // GET /applications/grants
 func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuthAuthorizationsListGrantsParams) (res OAuthAuthorizationsListGrantsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/list-grants"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsListGrants",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/list-grants")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/grants"
 
@@ -29056,21 +30009,24 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("oauth-authorizations/update-authorization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsUpdateAuthorization",
-		trace.WithAttributes(otelogen.OperationID("oauth-authorizations/update-authorization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -29124,21 +30080,24 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 // PUT /orgs/{org}/blocks/{username}
 func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) (res OrgsBlockUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/block-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsBlockUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/block-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29198,21 +30157,24 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 // DELETE /orgs/{org}/invitations/{invitation_id}
 func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvitationParams) (res OrgsCancelInvitationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/cancel-invitation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCancelInvitation",
-		trace.WithAttributes(otelogen.OperationID("orgs/cancel-invitation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29267,21 +30229,24 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 // GET /orgs/{org}/blocks/{username}
 func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlockedUserParams) (res OrgsCheckBlockedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/check-blocked-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckBlockedUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/check-blocked-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29338,21 +30303,24 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 // GET /orgs/{org}/members/{username}
 func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsCheckMembershipForUserParams) (res OrgsCheckMembershipForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/check-membership-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckMembershipForUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/check-membership-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29407,21 +30375,24 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 // GET /orgs/{org}/public_members/{username}
 func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params OrgsCheckPublicMembershipForUserParams) (res OrgsCheckPublicMembershipForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/check-public-membership-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckPublicMembershipForUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/check-public-membership-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29482,21 +30453,24 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 // PUT /orgs/{org}/outside_collaborators/{username}
 func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, params OrgsConvertMemberToOutsideCollaboratorParams) (res OrgsConvertMemberToOutsideCollaboratorRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/convert-member-to-outside-collaborator"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsConvertMemberToOutsideCollaborator",
-		trace.WithAttributes(otelogen.OperationID("orgs/convert-member-to-outside-collaborator")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29577,21 +30551,24 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/create-invitation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCreateInvitation",
-		trace.WithAttributes(otelogen.OperationID("orgs/create-invitation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -29656,21 +30633,24 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/create-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCreateWebhook",
-		trace.WithAttributes(otelogen.OperationID("orgs/create-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -29725,21 +30705,24 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 // DELETE /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhookParams) (res OrgsDeleteWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/delete-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsDeleteWebhook",
-		trace.WithAttributes(otelogen.OperationID("orgs/delete-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29804,21 +30787,24 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 // GET /orgs/{org}
 func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGet",
-		trace.WithAttributes(otelogen.OperationID("orgs/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -29865,21 +30851,24 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 // GET /orgs/{org}/audit-log
 func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogParams) (res []AuditLogEvent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/get-audit-log"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetAuditLog",
-		trace.WithAttributes(otelogen.OperationID("orgs/get-audit-log")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30035,21 +31024,24 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 // GET /user/memberships/orgs/{org}
 func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, params OrgsGetMembershipForAuthenticatedUserParams) (res OrgsGetMembershipForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/get-membership-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetMembershipForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/get-membership-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/memberships/orgs/"
 	{
@@ -30093,21 +31085,24 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 // GET /orgs/{org}/memberships/{username}
 func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMembershipForUserParams) (res OrgsGetMembershipForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/get-membership-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetMembershipForUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/get-membership-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30166,21 +31161,24 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 // GET /orgs/{org}/hooks/{hook_id}
 func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams) (res OrgsGetWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/get-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhook",
-		trace.WithAttributes(otelogen.OperationID("orgs/get-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30241,21 +31239,24 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 // GET /orgs/{org}/hooks/{hook_id}/config
 func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetWebhookConfigForOrgParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/get-webhook-config-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhookConfigForOrg",
-		trace.WithAttributes(otelogen.OperationID("orgs/get-webhook-config-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30313,21 +31314,24 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 // GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
 func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebhookDeliveryParams) (res OrgsGetWebhookDeliveryRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/get-webhook-delivery"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhookDelivery",
-		trace.WithAttributes(otelogen.OperationID("orgs/get-webhook-delivery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30402,21 +31406,24 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 // GET /organizations
 func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsList",
-		trace.WithAttributes(otelogen.OperationID("orgs/list")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/organizations"
 
@@ -30479,21 +31486,24 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 // GET /orgs/{org}/blocks
 func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlockedUsersParams) (res OrgsListBlockedUsersRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-blocked-users"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListBlockedUsers",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-blocked-users")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30537,21 +31547,24 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 // GET /orgs/{org}/failed_invitations
 func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListFailedInvitationsParams) (res OrgsListFailedInvitationsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-failed-invitations"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListFailedInvitations",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-failed-invitations")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30634,21 +31647,24 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 // GET /user/orgs
 func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsListForAuthenticatedUserParams) (res OrgsListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/orgs"
 
@@ -30716,21 +31732,24 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 // GET /users/{username}/orgs
 func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (res []OrganizationSimple, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListForUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -30809,21 +31828,24 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 // GET /orgs/{org}/invitations/{invitation_id}/teams
 func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInvitationTeamsParams) (res OrgsListInvitationTeamsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-invitation-teams"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListInvitationTeams",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-invitation-teams")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -30917,21 +31939,24 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 // GET /orgs/{org}/members
 func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersParams) (res OrgsListMembersRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-members"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListMembers",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-members")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31039,21 +32064,24 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 // GET /user/memberships/orgs
 func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, params OrgsListMembershipsForAuthenticatedUserParams) (res OrgsListMembershipsForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-memberships-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListMembershipsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-memberships-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/memberships/orgs"
 
@@ -31132,21 +32160,24 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 // GET /orgs/{org}/outside_collaborators
 func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-outside-collaborators"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListOutsideCollaborators",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-outside-collaborators")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31243,21 +32274,24 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 // GET /orgs/{org}/invitations
 func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsListPendingInvitationsParams) (res OrgsListPendingInvitationsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-pending-invitations"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListPendingInvitations",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-pending-invitations")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31335,21 +32369,24 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 // GET /orgs/{org}/public_members
 func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-public-members"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListPublicMembers",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-public-members")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31434,21 +32471,24 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 // GET /orgs/{org}/credential-authorizations
 func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsListSamlSSOAuthorizationsParams) (res []CredentialAuthorization, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-saml-sso-authorizations"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListSamlSSOAuthorizations",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-saml-sso-authorizations")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31491,21 +32531,24 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 // GET /orgs/{org}/hooks/{hook_id}/deliveries
 func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListWebhookDeliveriesParams) (res OrgsListWebhookDeliveriesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-webhook-deliveries"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListWebhookDeliveries",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-webhook-deliveries")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31596,21 +32639,24 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 // GET /orgs/{org}/hooks
 func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksParams) (res OrgsListWebhooksRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/list-webhooks"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListWebhooks",
-		trace.WithAttributes(otelogen.OperationID("orgs/list-webhooks")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31689,21 +32735,24 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 // POST /orgs/{org}/hooks/{hook_id}/pings
 func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookParams) (res OrgsPingWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/ping-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsPingWebhook",
-		trace.WithAttributes(otelogen.OperationID("orgs/ping-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31761,21 +32810,24 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 // POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
 func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRedeliverWebhookDeliveryParams) (res OrgsRedeliverWebhookDeliveryRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/redeliver-webhook-delivery"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRedeliverWebhookDelivery",
-		trace.WithAttributes(otelogen.OperationID("orgs/redeliver-webhook-delivery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31849,21 +32901,24 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 // DELETE /orgs/{org}/members/{username}
 func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberParams) (res OrgsRemoveMemberRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/remove-member"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveMember",
-		trace.WithAttributes(otelogen.OperationID("orgs/remove-member")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31924,21 +32979,24 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 // DELETE /orgs/{org}/memberships/{username}
 func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRemoveMembershipForUserParams) (res OrgsRemoveMembershipForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/remove-membership-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveMembershipForUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/remove-membership-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -31995,21 +33053,24 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 // DELETE /orgs/{org}/outside_collaborators/{username}
 func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsRemoveOutsideCollaboratorParams) (res OrgsRemoveOutsideCollaboratorRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/remove-outside-collaborator"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveOutsideCollaborator",
-		trace.WithAttributes(otelogen.OperationID("orgs/remove-outside-collaborator")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -32064,21 +33125,24 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 // DELETE /orgs/{org}/public_members/{username}
 func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsRemovePublicMembershipForAuthenticatedUserParams) (res OrgsRemovePublicMembershipForAuthenticatedUserNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemovePublicMembershipForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/remove-public-membership-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -32141,21 +33205,24 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 // DELETE /orgs/{org}/credential-authorizations/{credential_id}
 func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params OrgsRemoveSamlSSOAuthorizationParams) (res OrgsRemoveSamlSSOAuthorizationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/remove-saml-sso-authorization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveSamlSSOAuthorization",
-		trace.WithAttributes(otelogen.OperationID("orgs/remove-saml-sso-authorization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -32241,21 +33308,24 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/set-membership-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsSetMembershipForUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/set-membership-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -32330,21 +33400,24 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 // PUT /orgs/{org}/public_members/{username}
 func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context, params OrgsSetPublicMembershipForAuthenticatedUserParams) (res OrgsSetPublicMembershipForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/set-public-membership-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsSetPublicMembershipForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/set-public-membership-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -32399,21 +33472,24 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 // DELETE /orgs/{org}/blocks/{username}
 func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserParams) (res OrgsUnblockUserNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/unblock-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUnblockUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/unblock-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -32476,21 +33552,24 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/update-membership-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateMembershipForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("orgs/update-membership-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -32566,21 +33645,24 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/update-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateWebhook",
-		trace.WithAttributes(otelogen.OperationID("orgs/update-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -32655,21 +33737,24 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 // PATCH /orgs/{org}/hooks/{hook_id}/config
 func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptOrgsUpdateWebhookConfigForOrgReq, params OrgsUpdateWebhookConfigForOrgParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("orgs/update-webhook-config-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateWebhookConfigForOrg",
-		trace.WithAttributes(otelogen.OperationID("orgs/update-webhook-config-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -32746,21 +33831,24 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 // DELETE /user/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageForAuthenticatedUserParams) (res PackagesDeletePackageForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/delete-package-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/delete-package-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages/"
 	{
@@ -32824,21 +33912,24 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params PackagesDeletePackageForOrgParams) (res PackagesDeletePackageForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/delete-package-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForOrg",
-		trace.WithAttributes(otelogen.OperationID("packages/delete-package-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -32917,21 +34008,24 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 // DELETE /users/{username}/packages/{package_type}/{package_name}
 func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params PackagesDeletePackageForUserParams) (res PackagesDeletePackageForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/delete-package-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForUser",
-		trace.WithAttributes(otelogen.OperationID("packages/delete-package-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -33008,21 +34102,24 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 // DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesDeletePackageVersionForAuthenticatedUserParams) (res PackagesDeletePackageVersionForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/delete-package-version-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/delete-package-version-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages/"
 	{
@@ -33101,21 +34198,24 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params PackagesDeletePackageVersionForOrgParams) (res PackagesDeletePackageVersionForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/delete-package-version-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForOrg",
-		trace.WithAttributes(otelogen.OperationID("packages/delete-package-version-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -33209,21 +34309,24 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 // DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params PackagesDeletePackageVersionForUserParams) (res PackagesDeletePackageVersionForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/delete-package-version-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForUser",
-		trace.WithAttributes(otelogen.OperationID("packages/delete-package-version-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -33312,21 +34415,24 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 // GET /user/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages/"
 	{
@@ -33437,21 +34543,24 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) (res PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
-		trace.WithAttributes(otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -33577,21 +34686,24 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 // GET /users/{username}/packages/{package_type}/{package_name}/versions
 func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.Context, params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) (res PackagesGetAllPackageVersionsForPackageOwnedByUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByUser",
-		trace.WithAttributes(otelogen.OperationID("packages/get-all-package-versions-for-package-owned-by-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -33666,21 +34778,24 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 // GET /user/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, params PackagesGetPackageForAuthenticatedUserParams) (res Package, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-package-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/get-package-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages/"
 	{
@@ -33739,21 +34854,24 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 // GET /orgs/{org}/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params PackagesGetPackageForOrganizationParams) (res Package, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-package-for-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForOrganization",
-		trace.WithAttributes(otelogen.OperationID("packages/get-package-for-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -33827,21 +34945,24 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 // GET /users/{username}/packages/{package_type}/{package_name}
 func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesGetPackageForUserParams) (res Package, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-package-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForUser",
-		trace.WithAttributes(otelogen.OperationID("packages/get-package-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -33915,21 +35036,24 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Context, params PackagesGetPackageVersionForAuthenticatedUserParams) (res PackageVersion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-package-version-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/get-package-version-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages/"
 	{
@@ -34003,21 +35127,24 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, params PackagesGetPackageVersionForOrganizationParams) (res PackageVersion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-package-version-for-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForOrganization",
-		trace.WithAttributes(otelogen.OperationID("packages/get-package-version-for-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -34107,21 +35234,24 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params PackagesGetPackageVersionForUserParams) (res PackageVersion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/get-package-version-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForUser",
-		trace.WithAttributes(otelogen.OperationID("packages/get-package-version-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -34210,21 +35340,24 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 // GET /user/packages
 func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, params PackagesListPackagesForAuthenticatedUserParams) (res []Package, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/list-packages-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/list-packages-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages"
 
@@ -34286,21 +35419,24 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 // GET /orgs/{org}/packages
 func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params PackagesListPackagesForOrganizationParams) (res PackagesListPackagesForOrganizationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/list-packages-for-organization"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForOrganization",
-		trace.WithAttributes(otelogen.OperationID("packages/list-packages-for-organization")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -34377,21 +35513,24 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 // GET /users/{username}/packages
 func (c *Client) PackagesListPackagesForUser(ctx context.Context, params PackagesListPackagesForUserParams) (res PackagesListPackagesForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/list-packages-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForUser",
-		trace.WithAttributes(otelogen.OperationID("packages/list-packages-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -34475,21 +35614,24 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 // POST /user/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageForAuthenticatedUserParams) (res PackagesRestorePackageForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/restore-package-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/restore-package-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages/"
 	{
@@ -34577,21 +35719,24 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 // POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params PackagesRestorePackageForOrgParams) (res PackagesRestorePackageForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/restore-package-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForOrg",
-		trace.WithAttributes(otelogen.OperationID("packages/restore-package-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -34694,21 +35839,24 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 // POST /users/{username}/packages/{package_type}/{package_name}/restore
 func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params PackagesRestorePackageForUserParams) (res PackagesRestorePackageForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/restore-package-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForUser",
-		trace.WithAttributes(otelogen.OperationID("packages/restore-package-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -34809,21 +35957,24 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 // POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.Context, params PackagesRestorePackageVersionForAuthenticatedUserParams) (res PackagesRestorePackageVersionForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/restore-package-version-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("packages/restore-package-version-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages/"
 	{
@@ -34907,21 +36058,24 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 // POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params PackagesRestorePackageVersionForOrgParams) (res PackagesRestorePackageVersionForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/restore-package-version-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForOrg",
-		trace.WithAttributes(otelogen.OperationID("packages/restore-package-version-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -35020,21 +36174,24 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 // POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, params PackagesRestorePackageVersionForUserParams) (res PackagesRestorePackageVersionForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("packages/restore-package-version-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForUser",
-		trace.WithAttributes(otelogen.OperationID("packages/restore-package-version-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -35139,21 +36296,24 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/add-collaborator"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsAddCollaborator",
-		trace.WithAttributes(otelogen.OperationID("projects/add-collaborator")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -35222,21 +36382,24 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 // POST /projects/{project_id}/columns
 func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreateColumnReq, params ProjectsCreateColumnParams) (res ProjectsCreateColumnRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/create-column"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateColumn",
-		trace.WithAttributes(otelogen.OperationID("projects/create-column")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -35291,21 +36454,24 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 // POST /user/projects
 func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request ProjectsCreateForAuthenticatedUserReq) (res ProjectsCreateForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/create-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("projects/create-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -35349,21 +36515,24 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 // POST /orgs/{org}/projects
 func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreateForOrgReq, params ProjectsCreateForOrgParams) (res ProjectsCreateForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/create-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForOrg",
-		trace.WithAttributes(otelogen.OperationID("projects/create-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -35422,21 +36591,24 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 // POST /repos/{owner}/{repo}/projects
 func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCreateForRepoReq, params ProjectsCreateForRepoParams) (res ProjectsCreateForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/create-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForRepo",
-		trace.WithAttributes(otelogen.OperationID("projects/create-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -35508,21 +36680,24 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 // DELETE /projects/{project_id}
 func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams) (res ProjectsDeleteRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/delete"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDelete",
-		trace.WithAttributes(otelogen.OperationID("projects/delete")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -35562,21 +36737,24 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 // DELETE /projects/columns/cards/{card_id}
 func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCardParams) (res ProjectsDeleteCardRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/delete-card"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDeleteCard",
-		trace.WithAttributes(otelogen.OperationID("projects/delete-card")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
 	{
@@ -35616,21 +36794,24 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 // DELETE /projects/columns/{column_id}
 func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDeleteColumnParams) (res ProjectsDeleteColumnRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/delete-column"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDeleteColumn",
-		trace.WithAttributes(otelogen.OperationID("projects/delete-column")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
 	{
@@ -35674,21 +36855,24 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 // GET /projects/{project_id}
 func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res ProjectsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGet",
-		trace.WithAttributes(otelogen.OperationID("projects/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -35728,21 +36912,24 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 // GET /projects/columns/cards/{card_id}
 func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardParams) (res ProjectsGetCardRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/get-card"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetCard",
-		trace.WithAttributes(otelogen.OperationID("projects/get-card")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
 	{
@@ -35782,21 +36969,24 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 // GET /projects/columns/{column_id}
 func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumnParams) (res ProjectsGetColumnRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/get-column"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetColumn",
-		trace.WithAttributes(otelogen.OperationID("projects/get-column")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
 	{
@@ -35840,21 +37030,24 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 // GET /projects/{project_id}/collaborators/{username}/permission
 func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params ProjectsGetPermissionForUserParams) (res ProjectsGetPermissionForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/get-permission-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetPermissionForUser",
-		trace.WithAttributes(otelogen.OperationID("projects/get-permission-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -35910,21 +37103,24 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 // GET /projects/columns/{column_id}/cards
 func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCardsParams) (res ProjectsListCardsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/list-cards"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListCards",
-		trace.WithAttributes(otelogen.OperationID("projects/list-cards")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
 	{
@@ -36022,21 +37218,24 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 // GET /projects/{project_id}/collaborators
 func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsListCollaboratorsParams) (res ProjectsListCollaboratorsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/list-collaborators"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListCollaborators",
-		trace.WithAttributes(otelogen.OperationID("projects/list-collaborators")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -36128,21 +37327,24 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 // GET /projects/{project_id}/columns
 func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListColumnsParams) (res ProjectsListColumnsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/list-columns"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListColumns",
-		trace.WithAttributes(otelogen.OperationID("projects/list-columns")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -36222,21 +37424,24 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 // GET /orgs/{org}/projects
 func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForOrgParams) (res ProjectsListForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/list-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForOrg",
-		trace.WithAttributes(otelogen.OperationID("projects/list-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -36332,21 +37537,24 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 // GET /repos/{owner}/{repo}/projects
 func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListForRepoParams) (res ProjectsListForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/list-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForRepo",
-		trace.WithAttributes(otelogen.OperationID("projects/list-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -36453,21 +37661,24 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 // GET /users/{username}/projects
 func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListForUserParams) (res ProjectsListForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/list-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForUser",
-		trace.WithAttributes(otelogen.OperationID("projects/list-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -36567,21 +37778,24 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/move-card"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsMoveCard",
-		trace.WithAttributes(otelogen.OperationID("projects/move-card")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -36644,21 +37858,24 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/move-column"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsMoveColumn",
-		trace.WithAttributes(otelogen.OperationID("projects/move-column")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -36716,21 +37933,24 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 // DELETE /projects/{project_id}/collaborators/{username}
 func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params ProjectsRemoveCollaboratorParams) (res ProjectsRemoveCollaboratorRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/remove-collaborator"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsRemoveCollaborator",
-		trace.WithAttributes(otelogen.OperationID("projects/remove-collaborator")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
 	{
@@ -36805,21 +38025,24 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/update"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdate",
-		trace.WithAttributes(otelogen.OperationID("projects/update")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -36873,21 +38096,24 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 // PATCH /projects/columns/cards/{card_id}
 func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpdateCardReq, params ProjectsUpdateCardParams) (res ProjectsUpdateCardRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/update-card"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdateCard",
-		trace.WithAttributes(otelogen.OperationID("projects/update-card")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -36941,21 +38167,24 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 // PATCH /projects/columns/{column_id}
 func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdateColumnReq, params ProjectsUpdateColumnParams) (res ProjectsUpdateColumnRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("projects/update-column"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdateColumn",
-		trace.WithAttributes(otelogen.OperationID("projects/update-column")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -37009,21 +38238,24 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMergedParams) (res PullsCheckIfMergedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/check-if-merged"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCheckIfMerged",
-		trace.WithAttributes(otelogen.OperationID("pulls/check-if-merged")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -37111,21 +38343,24 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 // POST /repos/{owner}/{repo}/pulls
 func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params PullsCreateParams) (res PullsCreateRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/create"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreate",
-		trace.WithAttributes(otelogen.OperationID("pulls/create")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -37206,21 +38441,24 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request PullsCreateReplyForReviewCommentReq, params PullsCreateReplyForReviewCommentParams) (res PullsCreateReplyForReviewCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/create-reply-for-review-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReplyForReviewComment",
-		trace.WithAttributes(otelogen.OperationID("pulls/create-reply-for-review-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -37356,21 +38594,24 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/create-review"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReview",
-		trace.WithAttributes(otelogen.OperationID("pulls/create-review")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -37484,21 +38725,24 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/create-review-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReviewComment",
-		trace.WithAttributes(otelogen.OperationID("pulls/create-review-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -37583,21 +38827,24 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDeletePendingReviewParams) (res PullsDeletePendingReviewRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/delete-pending-review"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDeletePendingReview",
-		trace.WithAttributes(otelogen.OperationID("pulls/delete-pending-review")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -37684,21 +38931,24 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDeleteReviewCommentParams) (res PullsDeleteReviewCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/delete-review-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDeleteReviewComment",
-		trace.WithAttributes(otelogen.OperationID("pulls/delete-review-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -37772,21 +39022,24 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissReviewReq, params PullsDismissReviewParams) (res PullsDismissReviewRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/dismiss-review"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDismissReview",
-		trace.WithAttributes(otelogen.OperationID("pulls/dismiss-review")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -37920,21 +39173,24 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 // GET /repos/{owner}/{repo}/pulls/{pull_number}
 func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res PullsGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGet",
-		trace.WithAttributes(otelogen.OperationID("pulls/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38004,21 +39260,24 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams) (res PullsGetReviewRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/get-review"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGetReview",
-		trace.WithAttributes(otelogen.OperationID("pulls/get-review")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38105,21 +39364,24 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetReviewCommentParams) (res PullsGetReviewCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/get-review-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGetReviewComment",
-		trace.WithAttributes(otelogen.OperationID("pulls/get-review-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38195,21 +39457,24 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 // GET /repos/{owner}/{repo}/pulls
 func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res PullsListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsList",
-		trace.WithAttributes(otelogen.OperationID("pulls/list")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38382,21 +39647,24 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsListCommentsForReviewParams) (res PullsListCommentsForReviewRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list-comments-for-review"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListCommentsForReview",
-		trace.WithAttributes(otelogen.OperationID("pulls/list-comments-for-review")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38521,21 +39789,24 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (res []Commit, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list-commits"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListCommits",
-		trace.WithAttributes(otelogen.OperationID("pulls/list-commits")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38644,21 +39915,24 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/files
 func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams) (res PullsListFilesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list-files"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListFiles",
-		trace.WithAttributes(otelogen.OperationID("pulls/list-files")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38764,21 +40038,24 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (res PullRequestReviewRequest, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list-requested-reviewers"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListRequestedReviewers",
-		trace.WithAttributes(otelogen.OperationID("pulls/list-requested-reviewers")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -38887,21 +40164,24 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (res []PullRequestReviewComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list-review-comments"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviewComments",
-		trace.WithAttributes(otelogen.OperationID("pulls/list-review-comments")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -39058,21 +40338,24 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 // GET /repos/{owner}/{repo}/pulls/comments
 func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (res []PullRequestReviewComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list-review-comments-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviewCommentsForRepo",
-		trace.WithAttributes(otelogen.OperationID("pulls/list-review-comments-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -39213,21 +40496,24 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (res []PullRequestReview, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/list-reviews"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviews",
-		trace.WithAttributes(otelogen.OperationID("pulls/list-reviews")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -39357,21 +40643,24 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/merge"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsMerge",
-		trace.WithAttributes(otelogen.OperationID("pulls/merge")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -39464,21 +40753,24 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/remove-requested-reviewers"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsRemoveRequestedReviewers",
-		trace.WithAttributes(otelogen.OperationID("pulls/remove-requested-reviewers")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -39571,21 +40863,24 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/submit-review"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsSubmitReview",
-		trace.WithAttributes(otelogen.OperationID("pulls/submit-review")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -39710,21 +41005,24 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/update"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdate",
-		trace.WithAttributes(otelogen.OperationID("pulls/update")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -39811,21 +41109,24 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
 func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdateBranchReq, params PullsUpdateBranchParams) (res PullsUpdateBranchRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/update-branch"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateBranch",
-		trace.WithAttributes(otelogen.OperationID("pulls/update-branch")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -39912,21 +41213,24 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateReviewReq, params PullsUpdateReviewParams) (res PullsUpdateReviewRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/update-review"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateReview",
-		trace.WithAttributes(otelogen.OperationID("pulls/update-review")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40027,21 +41331,24 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 // PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpdateReviewCommentReq, params PullsUpdateReviewCommentParams) (res PullRequestReviewComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pulls/update-review-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateReviewComment",
-		trace.WithAttributes(otelogen.OperationID("pulls/update-review-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40130,21 +41437,24 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 // GET /rate_limit
 func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("rate-limit/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "RateLimitGet",
-		trace.WithAttributes(otelogen.OperationID("rate-limit/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/rate_limit"
 
@@ -40182,21 +41492,24 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-commit-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForCommitComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-commit-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40292,21 +41605,24 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-issue"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForIssue",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-issue")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40403,21 +41719,24 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-issue-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForIssueComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-issue-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40514,21 +41833,24 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-pull-request-review-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForPullRequestReviewComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-pull-request-review-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40624,21 +41946,24 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-release"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForRelease",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-release")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40739,21 +42064,24 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionCommentInOrg",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-team-discussion-comment-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40871,21 +42199,24 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionCommentLegacy",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-team-discussion-comment-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -40985,21 +42316,24 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionInOrg",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-team-discussion-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -41101,21 +42435,24 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/create-for-team-discussion-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionLegacy",
-		trace.WithAttributes(otelogen.OperationID("reactions/create-for-team-discussion-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -41189,21 +42526,24 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params ReactionsDeleteForCommitCommentParams) (res ReactionsDeleteForCommitCommentNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/delete-for-commit-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForCommitComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/delete-for-commit-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -41292,21 +42632,24 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDeleteForIssueParams) (res ReactionsDeleteForIssueNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/delete-for-issue"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForIssue",
-		trace.WithAttributes(otelogen.OperationID("reactions/delete-for-issue")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -41395,21 +42738,24 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params ReactionsDeleteForIssueCommentParams) (res ReactionsDeleteForIssueCommentNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/delete-for-issue-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForIssueComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/delete-for-issue-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -41499,21 +42845,24 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, params ReactionsDeleteForPullRequestCommentParams) (res ReactionsDeleteForPullRequestCommentNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/delete-for-pull-request-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForPullRequestComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/delete-for-pull-request-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -41605,21 +42954,24 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params ReactionsDeleteForTeamDiscussionParams) (res ReactionsDeleteForTeamDiscussionNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/delete-for-team-discussion"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForTeamDiscussion",
-		trace.WithAttributes(otelogen.OperationID("reactions/delete-for-team-discussion")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -41711,21 +43063,24 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
 func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, params ReactionsDeleteForTeamDiscussionCommentParams) (res ReactionsDeleteForTeamDiscussionCommentNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/delete-for-team-discussion-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForTeamDiscussionComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/delete-for-team-discussion-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -41834,21 +43189,24 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 // DELETE /reactions/{reaction_id}
 func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDeleteLegacyParams) (res ReactionsDeleteLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/delete-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteLegacy",
-		trace.WithAttributes(otelogen.OperationID("reactions/delete-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/reactions/"
 	{
@@ -41890,21 +43248,24 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 // GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForCommitComment(ctx context.Context, params ReactionsListForCommitCommentParams) (res ReactionsListForCommitCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-commit-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForCommitComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-commit-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -42028,21 +43389,24 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 // GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsListForIssueParams) (res ReactionsListForIssueRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-issue"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForIssue",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-issue")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -42166,21 +43530,24 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForIssueComment(ctx context.Context, params ReactionsListForIssueCommentParams) (res ReactionsListForIssueCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-issue-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForIssueComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-issue-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -42305,21 +43672,24 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, params ReactionsListForPullRequestReviewCommentParams) (res ReactionsListForPullRequestReviewCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-pull-request-review-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForPullRequestReviewComment",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-pull-request-review-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -42447,21 +43817,24 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (res []Reaction, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionCommentInOrg",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-team-discussion-comment-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -42606,21 +43979,24 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (res []Reaction, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionCommentLegacy",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-team-discussion-comment-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -42748,21 +44124,24 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (res []Reaction, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-team-discussion-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionInOrg",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-team-discussion-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -42892,21 +44271,24 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
 func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (res []Reaction, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("reactions/list-for-team-discussion-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionLegacy",
-		trace.WithAttributes(otelogen.OperationID("reactions/list-for-team-discussion-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -43013,21 +44395,24 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 // PATCH /user/repository_invitations/{invitation_id}
 func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptInvitationParams) (res ReposAcceptInvitationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/accept-invitation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAcceptInvitation",
-		trace.WithAttributes(otelogen.OperationID("repos/accept-invitation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repository_invitations/"
 	{
@@ -43097,21 +44482,24 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-app-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddAppAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/add-app-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -43233,21 +44621,24 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-collaborator"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddCollaborator",
-		trace.WithAttributes(otelogen.OperationID("repos/add-collaborator")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -43353,21 +44744,24 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-status-check-contexts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddStatusCheckContexts",
-		trace.WithAttributes(otelogen.OperationID("repos/add-status-check-contexts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -43482,21 +44876,24 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-team-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddTeamAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/add-team-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -43610,21 +45007,24 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/add-user-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddUserAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/add-user-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -43715,21 +45115,24 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 // GET /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCollaboratorParams) (res ReposCheckCollaboratorRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/check-collaborator"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCheckCollaborator",
-		trace.WithAttributes(otelogen.OperationID("repos/check-collaborator")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -43804,21 +45207,24 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 // GET /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params ReposCheckVulnerabilityAlertsParams) (res ReposCheckVulnerabilityAlertsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/check-vulnerability-alerts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCheckVulnerabilityAlerts",
-		trace.WithAttributes(otelogen.OperationID("repos/check-vulnerability-alerts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -43928,21 +45334,24 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 // GET /repos/{owner}/{repo}/compare/{basehead}
 func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCommitsParams) (res ReposCompareCommitsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/compare-commits"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCompareCommits",
-		trace.WithAttributes(otelogen.OperationID("repos/compare-commits")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -44049,21 +45458,24 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 // POST /repos/{owner}/{repo}/autolinks
 func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAutolinkReq, params ReposCreateAutolinkParams) (res ReposCreateAutolinkRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-autolink"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateAutolink",
-		trace.WithAttributes(otelogen.OperationID("repos/create-autolink")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44142,21 +45554,24 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCreateCommitCommentReq, params ReposCreateCommitCommentParams) (res ReposCreateCommitCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-commit-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitComment",
-		trace.WithAttributes(otelogen.OperationID("repos/create-commit-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44249,21 +45664,24 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, params ReposCreateCommitSignatureProtectionParams) (res ReposCreateCommitSignatureProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-commit-signature-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitSignatureProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/create-commit-signature-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -44346,21 +45764,24 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-commit-status"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitStatus",
-		trace.WithAttributes(otelogen.OperationID("repos/create-commit-status")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44446,21 +45867,24 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 // POST /repos/{owner}/{repo}/keys
 func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDeployKeyReq, params ReposCreateDeployKeyParams) (res ReposCreateDeployKeyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-deploy-key"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeployKey",
-		trace.WithAttributes(otelogen.OperationID("repos/create-deploy-key")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44585,21 +46009,24 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 // POST /repos/{owner}/{repo}/deployments
 func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateDeploymentReq, params ReposCreateDeploymentParams) (res ReposCreateDeploymentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-deployment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeployment",
-		trace.WithAttributes(otelogen.OperationID("repos/create-deployment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44681,21 +46108,24 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-deployment-status"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeploymentStatus",
-		trace.WithAttributes(otelogen.OperationID("repos/create-deployment-status")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44805,21 +46235,24 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-dispatch-event"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDispatchEvent",
-		trace.WithAttributes(otelogen.OperationID("repos/create-dispatch-event")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44897,21 +46330,24 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 // POST /user/repos
 func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request ReposCreateForAuthenticatedUserReq) (res ReposCreateForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("repos/create-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -44956,21 +46392,24 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 // POST /repos/{owner}/{repo}/forks
 func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateForkReq, params ReposCreateForkParams) (res ReposCreateForkRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-fork"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateFork",
-		trace.WithAttributes(otelogen.OperationID("repos/create-fork")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -45057,21 +46496,24 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateInOrg",
-		trace.WithAttributes(otelogen.OperationID("repos/create-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -45128,21 +46570,24 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 // PUT /repos/{owner}/{repo}/contents/{path}
 func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request ReposCreateOrUpdateFileContentsReq, params ReposCreateOrUpdateFileContentsParams) (res ReposCreateOrUpdateFileContentsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-or-update-file-contents"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateOrUpdateFileContents",
-		trace.WithAttributes(otelogen.OperationID("repos/create-or-update-file-contents")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -45238,21 +46683,24 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-pages-site"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreatePagesSite",
-		trace.WithAttributes(otelogen.OperationID("repos/create-pages-site")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -45331,21 +46779,24 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 // POST /repos/{owner}/{repo}/releases
 func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateReleaseReq, params ReposCreateReleaseParams) (res ReposCreateReleaseRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-release"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateRelease",
-		trace.WithAttributes(otelogen.OperationID("repos/create-release")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -45428,21 +46879,24 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 // POST /repos/{template_owner}/{template_repo}/generate
 func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (res Repository, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-using-template"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateUsingTemplate",
-		trace.WithAttributes(otelogen.OperationID("repos/create-using-template")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -45516,21 +46970,24 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 // POST /repos/{owner}/{repo}/hooks
 func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCreateWebhookReq, params ReposCreateWebhookParams) (res ReposCreateWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/create-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateWebhook",
-		trace.WithAttributes(otelogen.OperationID("repos/create-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -45600,21 +47057,24 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 // DELETE /user/repository_invitations/{invitation_id}
 func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDeclineInvitationParams) (res ReposDeclineInvitationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/decline-invitation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeclineInvitation",
-		trace.WithAttributes(otelogen.OperationID("repos/decline-invitation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repository_invitations/"
 	{
@@ -45659,21 +47119,24 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 // DELETE /repos/{owner}/{repo}
 func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res ReposDeleteRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDelete",
-		trace.WithAttributes(otelogen.OperationID("repos/delete")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -45735,21 +47198,24 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params ReposDeleteAccessRestrictionsParams) (res ReposDeleteAccessRestrictionsNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -45828,21 +47294,24 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params ReposDeleteAdminBranchProtectionParams) (res ReposDeleteAdminBranchProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-admin-branch-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAdminBranchProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-admin-branch-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -45915,21 +47384,24 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
 func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDeleteAnEnvironmentParams) (res ReposDeleteAnEnvironmentNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-an-environment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAnEnvironment",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-an-environment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46002,21 +47474,24 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 // DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAutolinkParams) (res ReposDeleteAutolinkRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-autolink"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAutolink",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-autolink")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46092,21 +47567,24 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDeleteBranchProtectionParams) (res ReposDeleteBranchProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-branch-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteBranchProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-branch-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46177,21 +47655,24 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDeleteCommitCommentParams) (res ReposDeleteCommitCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-commit-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteCommitComment",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-commit-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46270,21 +47751,24 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, params ReposDeleteCommitSignatureProtectionParams) (res ReposDeleteCommitSignatureProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-commit-signature-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteCommitSignatureProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-commit-signature-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46358,21 +47842,24 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
 func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDeployKeyParams) (res ReposDeleteDeployKeyNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-deploy-key"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteDeployKey",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-deploy-key")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46452,21 +47939,24 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 // DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDeploymentParams) (res ReposDeleteDeploymentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-deployment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteDeployment",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-deployment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46545,21 +48035,24 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 // DELETE /repos/{owner}/{repo}/contents/{path}
 func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq, params ReposDeleteFileParams) (res ReposDeleteFileRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-file"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteFile",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-file")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -46643,21 +48136,24 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteInvitationParams) (res ReposDeleteInvitationNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-invitation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteInvitation",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-invitation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46727,21 +48223,24 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 // DELETE /repos/{owner}/{repo}/pages
 func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePagesSiteParams) (res ReposDeletePagesSiteRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-pages-site"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeletePagesSite",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-pages-site")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46803,21 +48302,24 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, params ReposDeletePullRequestReviewProtectionParams) (res ReposDeletePullRequestReviewProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-pull-request-review-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeletePullRequestReviewProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-pull-request-review-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46890,21 +48392,24 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteReleaseParams) (res ReposDeleteReleaseNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-release"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteRelease",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-release")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -46974,21 +48479,24 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDeleteReleaseAssetParams) (res ReposDeleteReleaseAssetNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-release-asset"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteReleaseAsset",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-release-asset")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47058,21 +48566,24 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 // DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebhookParams) (res ReposDeleteWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/delete-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteWebhook",
-		trace.WithAttributes(otelogen.OperationID("repos/delete-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47146,21 +48657,24 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
 func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params ReposDisableAutomatedSecurityFixesParams) (res ReposDisableAutomatedSecurityFixesNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/disable-automated-security-fixes"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableAutomatedSecurityFixes",
-		trace.WithAttributes(otelogen.OperationID("repos/disable-automated-security-fixes")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47218,21 +48732,24 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 // DELETE /repos/{owner}/{repo}/lfs
 func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisableLfsForRepoParams) (res ReposDisableLfsForRepoNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/disable-lfs-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableLfsForRepo",
-		trace.WithAttributes(otelogen.OperationID("repos/disable-lfs-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47293,21 +48810,24 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params ReposDisableVulnerabilityAlertsParams) (res ReposDisableVulnerabilityAlertsNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/disable-vulnerability-alerts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableVulnerabilityAlerts",
-		trace.WithAttributes(otelogen.OperationID("repos/disable-vulnerability-alerts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47370,21 +48890,24 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 // GET /repos/{owner}/{repo}/tarball/{ref}
 func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDownloadTarballArchiveParams) (res ReposDownloadTarballArchiveFound, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/download-tarball-archive"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDownloadTarballArchive",
-		trace.WithAttributes(otelogen.OperationID("repos/download-tarball-archive")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47461,21 +48984,24 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 // GET /repos/{owner}/{repo}/zipball/{ref}
 func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDownloadZipballArchiveParams) (res ReposDownloadZipballArchiveFound, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/download-zipball-archive"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDownloadZipballArchive",
-		trace.WithAttributes(otelogen.OperationID("repos/download-zipball-archive")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47549,21 +49075,24 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 // PUT /repos/{owner}/{repo}/automated-security-fixes
 func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params ReposEnableAutomatedSecurityFixesParams) (res ReposEnableAutomatedSecurityFixesNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/enable-automated-security-fixes"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableAutomatedSecurityFixes",
-		trace.WithAttributes(otelogen.OperationID("repos/enable-automated-security-fixes")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47621,21 +49150,24 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 // PUT /repos/{owner}/{repo}/lfs
 func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLfsForRepoParams) (res ReposEnableLfsForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/enable-lfs-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableLfsForRepo",
-		trace.WithAttributes(otelogen.OperationID("repos/enable-lfs-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47696,21 +49228,24 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
 func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params ReposEnableVulnerabilityAlertsParams) (res ReposEnableVulnerabilityAlertsNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/enable-vulnerability-alerts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableVulnerabilityAlerts",
-		trace.WithAttributes(otelogen.OperationID("repos/enable-vulnerability-alerts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47769,21 +49304,24 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}
 func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res ReposGetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGet",
-		trace.WithAttributes(otelogen.OperationID("repos/get")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47847,21 +49385,24 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGetAccessRestrictionsParams) (res ReposGetAccessRestrictionsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/get-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -47938,21 +49479,24 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params ReposGetAdminBranchProtectionParams) (res ProtectedBranchAdminEnforced, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-admin-branch-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAdminBranchProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/get-admin-branch-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48029,21 +49573,24 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params ReposGetAllStatusCheckContextsParams) (res ReposGetAllStatusCheckContextsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-all-status-check-contexts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAllStatusCheckContexts",
-		trace.WithAttributes(otelogen.OperationID("repos/get-all-status-check-contexts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48114,21 +49661,24 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/topics
 func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopicsParams) (res ReposGetAllTopicsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-all-topics"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAllTopics",
-		trace.WithAttributes(otelogen.OperationID("repos/get-all-topics")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48228,21 +49778,24 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, params ReposGetAppsWithAccessToProtectedBranchParams) (res ReposGetAppsWithAccessToProtectedBranchRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-apps-with-access-to-protected-branch"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAppsWithAccessToProtectedBranch",
-		trace.WithAttributes(otelogen.OperationID("repos/get-apps-with-access-to-protected-branch")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48316,21 +49869,24 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 // GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkParams) (res ReposGetAutolinkRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-autolink"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAutolink",
-		trace.WithAttributes(otelogen.OperationID("repos/get-autolink")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48400,21 +49956,24 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 // GET /repos/{owner}/{repo}/branches/{branch}
 func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams) (res ReposGetBranchRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-branch"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetBranch",
-		trace.WithAttributes(otelogen.OperationID("repos/get-branch")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48490,21 +50049,24 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 // GET /repos/{owner}/{repo}/branches/{branch}/protection
 func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBranchProtectionParams) (res ReposGetBranchProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-branch-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetBranchProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/get-branch-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48578,21 +50140,24 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 // GET /repos/{owner}/{repo}/traffic/clones
 func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams) (res ReposGetClonesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-clones"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetClones",
-		trace.WithAttributes(otelogen.OperationID("repos/get-clones")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48669,21 +50234,24 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 // GET /repos/{owner}/{repo}/stats/code_frequency
 func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGetCodeFrequencyStatsParams) (res ReposGetCodeFrequencyStatsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-code-frequency-stats"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCodeFrequencyStats",
-		trace.WithAttributes(otelogen.OperationID("repos/get-code-frequency-stats")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48742,21 +50310,24 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 // GET /repos/{owner}/{repo}/collaborators/{username}/permission
 func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params ReposGetCollaboratorPermissionLevelParams) (res ReposGetCollaboratorPermissionLevelRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-collaborator-permission-level"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCollaboratorPermissionLevel",
-		trace.WithAttributes(otelogen.OperationID("repos/get-collaborator-permission-level")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -48837,21 +50408,24 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 // GET /repos/{owner}/{repo}/commits/{ref}/status
 func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposGetCombinedStatusForRefParams) (res ReposGetCombinedStatusForRefRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-combined-status-for-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCombinedStatusForRef",
-		trace.WithAttributes(otelogen.OperationID("repos/get-combined-status-for-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49003,21 +50577,24 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 // GET /repos/{owner}/{repo}/commits/{ref}
 func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams) (res ReposGetCommitRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-commit"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommit",
-		trace.WithAttributes(otelogen.OperationID("repos/get-commit")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49125,21 +50702,24 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 // GET /repos/{owner}/{repo}/stats/commit_activity
 func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGetCommitActivityStatsParams) (res ReposGetCommitActivityStatsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-commit-activity-stats"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitActivityStats",
-		trace.WithAttributes(otelogen.OperationID("repos/get-commit-activity-stats")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49195,21 +50775,24 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 // GET /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommitCommentParams) (res ReposGetCommitCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-commit-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitComment",
-		trace.WithAttributes(otelogen.OperationID("repos/get-commit-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49290,21 +50873,24 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params ReposGetCommitSignatureProtectionParams) (res ReposGetCommitSignatureProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-commit-signature-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitSignatureProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/get-commit-signature-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49386,21 +50972,24 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 // GET /repos/{owner}/{repo}/community/profile
 func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params ReposGetCommunityProfileMetricsParams) (res CommunityProfile, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-community-profile-metrics"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommunityProfileMetrics",
-		trace.WithAttributes(otelogen.OperationID("repos/get-community-profile-metrics")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49463,21 +51052,24 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 // GET /repos/{owner}/{repo}/stats/contributors
 func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetContributorsStatsParams) (res ReposGetContributorsStatsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-contributors-stats"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetContributorsStats",
-		trace.WithAttributes(otelogen.OperationID("repos/get-contributors-stats")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49533,21 +51125,24 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 // GET /repos/{owner}/{repo}/keys/{key_id}
 func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKeyParams) (res ReposGetDeployKeyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-deploy-key"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeployKey",
-		trace.WithAttributes(otelogen.OperationID("repos/get-deploy-key")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49617,21 +51212,24 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}
 func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeploymentParams) (res ReposGetDeploymentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-deployment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeployment",
-		trace.WithAttributes(otelogen.OperationID("repos/get-deployment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49703,21 +51301,24 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDeploymentStatusParams) (res ReposGetDeploymentStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-deployment-status"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeploymentStatus",
-		trace.WithAttributes(otelogen.OperationID("repos/get-deployment-status")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49802,21 +51403,24 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 // GET /repos/{owner}/{repo}/pages/builds/latest
 func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLatestPagesBuildParams) (res PageBuild, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-latest-pages-build"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetLatestPagesBuild",
-		trace.WithAttributes(otelogen.OperationID("repos/get-latest-pages-build")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49877,21 +51481,24 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 // GET /repos/{owner}/{repo}/releases/latest
 func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLatestReleaseParams) (res Release, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-latest-release"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetLatestRelease",
-		trace.WithAttributes(otelogen.OperationID("repos/get-latest-release")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -49947,21 +51554,24 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 // GET /repos/{owner}/{repo}/pages
 func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) (res ReposGetPagesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-pages"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPages",
-		trace.WithAttributes(otelogen.OperationID("repos/get-pages")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50017,21 +51627,24 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
 func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBuildParams) (res PageBuild, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-pages-build"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPagesBuild",
-		trace.WithAttributes(otelogen.OperationID("repos/get-pages-build")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50109,21 +51722,24 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 // GET /repos/{owner}/{repo}/pages/health
 func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPagesHealthCheckParams) (res ReposGetPagesHealthCheckRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-pages-health-check"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPagesHealthCheck",
-		trace.WithAttributes(otelogen.OperationID("repos/get-pages-health-check")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50184,21 +51800,24 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 // GET /repos/{owner}/{repo}/stats/participation
 func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGetParticipationStatsParams) (res ReposGetParticipationStatsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-participation-stats"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetParticipationStats",
-		trace.WithAttributes(otelogen.OperationID("repos/get-participation-stats")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50260,21 +51879,24 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params ReposGetPullRequestReviewProtectionParams) (res ProtectedBranchPullRequestReview, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-pull-request-review-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPullRequestReviewProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/get-pull-request-review-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50352,21 +51974,24 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 // GET /repos/{owner}/{repo}/stats/punch_card
 func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunchCardStatsParams) (res ReposGetPunchCardStatsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-punch-card-stats"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPunchCardStats",
-		trace.WithAttributes(otelogen.OperationID("repos/get-punch-card-stats")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50426,21 +52051,24 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 // GET /repos/{owner}/{repo}/readme
 func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams) (res ReposGetReadmeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-readme"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReadme",
-		trace.WithAttributes(otelogen.OperationID("repos/get-readme")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50519,21 +52147,24 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 // GET /repos/{owner}/{repo}/readme/{dir}
 func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetReadmeInDirectoryParams) (res ReposGetReadmeInDirectoryRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-readme-in-directory"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReadmeInDirectory",
-		trace.WithAttributes(otelogen.OperationID("repos/get-readme-in-directory")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50626,21 +52257,24 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 // GET /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleaseParams) (res ReposGetReleaseRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-release"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetRelease",
-		trace.WithAttributes(otelogen.OperationID("repos/get-release")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50715,21 +52349,24 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 // GET /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleaseAssetParams) (res ReposGetReleaseAssetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-release-asset"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReleaseAsset",
-		trace.WithAttributes(otelogen.OperationID("repos/get-release-asset")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50801,21 +52438,24 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 // GET /repos/{owner}/{repo}/releases/tags/{tag}
 func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleaseByTagParams) (res ReposGetReleaseByTagRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-release-by-tag"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReleaseByTag",
-		trace.WithAttributes(otelogen.OperationID("repos/get-release-by-tag")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50891,21 +52531,24 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params ReposGetStatusChecksProtectionParams) (res ReposGetStatusChecksProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-status-checks-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetStatusChecksProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/get-status-checks-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -50983,21 +52626,24 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, params ReposGetTeamsWithAccessToProtectedBranchParams) (res ReposGetTeamsWithAccessToProtectedBranchRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-teams-with-access-to-protected-branch"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTeamsWithAccessToProtectedBranch",
-		trace.WithAttributes(otelogen.OperationID("repos/get-teams-with-access-to-protected-branch")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51070,21 +52716,24 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 // GET /repos/{owner}/{repo}/traffic/popular/paths
 func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsParams) (res ReposGetTopPathsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-top-paths"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTopPaths",
-		trace.WithAttributes(otelogen.OperationID("repos/get-top-paths")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51142,21 +52791,24 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 // GET /repos/{owner}/{repo}/traffic/popular/referrers
 func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopReferrersParams) (res ReposGetTopReferrersRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-top-referrers"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTopReferrers",
-		trace.WithAttributes(otelogen.OperationID("repos/get-top-referrers")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51219,21 +52871,24 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, params ReposGetUsersWithAccessToProtectedBranchParams) (res ReposGetUsersWithAccessToProtectedBranchRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-users-with-access-to-protected-branch"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetUsersWithAccessToProtectedBranch",
-		trace.WithAttributes(otelogen.OperationID("repos/get-users-with-access-to-protected-branch")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51307,21 +52962,24 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 // GET /repos/{owner}/{repo}/traffic/views
 func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) (res ReposGetViewsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-views"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetViews",
-		trace.WithAttributes(otelogen.OperationID("repos/get-views")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51400,21 +53058,24 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 // GET /repos/{owner}/{repo}/hooks/{hook_id}
 func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookParams) (res ReposGetWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhook",
-		trace.WithAttributes(otelogen.OperationID("repos/get-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51490,21 +53151,24 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposGetWebhookConfigForRepoParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-webhook-config-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhookConfigForRepo",
-		trace.WithAttributes(otelogen.OperationID("repos/get-webhook-config-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51577,21 +53241,24 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
 func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWebhookDeliveryParams) (res ReposGetWebhookDeliveryRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/get-webhook-delivery"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhookDelivery",
-		trace.WithAttributes(otelogen.OperationID("repos/get-webhook-delivery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51679,21 +53346,24 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 // GET /repos/{owner}/{repo}/autolinks
 func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolinksParams) (res []Autolink, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-autolinks"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListAutolinks",
-		trace.WithAttributes(otelogen.OperationID("repos/list-autolinks")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51768,21 +53438,24 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 // GET /repos/{owner}/{repo}/branches
 func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranchesParams) (res ReposListBranchesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-branches"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListBranches",
-		trace.WithAttributes(otelogen.OperationID("repos/list-branches")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51896,21 +53569,24 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
 func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params ReposListBranchesForHeadCommitParams) (res ReposListBranchesForHeadCommitRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-branches-for-head-commit"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListBranchesForHeadCommit",
-		trace.WithAttributes(otelogen.OperationID("repos/list-branches-for-head-commit")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -51987,21 +53663,24 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/collaborators
 func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCollaboratorsParams) (res ReposListCollaboratorsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-collaborators"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCollaborators",
-		trace.WithAttributes(otelogen.OperationID("repos/list-collaborators")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -52110,21 +53789,24 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (res []CommitComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-comments-for-commit"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommentsForCommit",
-		trace.WithAttributes(otelogen.OperationID("repos/list-comments-for-commit")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -52235,21 +53917,24 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 // GET /repos/{owner}/{repo}/comments
 func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (res []CommitComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-commit-comments-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommitCommentsForRepo",
-		trace.WithAttributes(otelogen.OperationID("repos/list-commit-comments-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -52345,21 +54030,24 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 // GET /repos/{owner}/{repo}/commits/{ref}/statuses
 func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params ReposListCommitStatusesForRefParams) (res ReposListCommitStatusesForRefRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-commit-statuses-for-ref"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommitStatusesForRef",
-		trace.WithAttributes(otelogen.OperationID("repos/list-commit-statuses-for-ref")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -52498,21 +54186,24 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 // GET /repos/{owner}/{repo}/commits
 func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsParams) (res ReposListCommitsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-commits"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommits",
-		trace.WithAttributes(otelogen.OperationID("repos/list-commits")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -52691,21 +54382,24 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 // GET /repos/{owner}/{repo}/contributors
 func (c *Client) ReposListContributors(ctx context.Context, params ReposListContributorsParams) (res ReposListContributorsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-contributors"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListContributors",
-		trace.WithAttributes(otelogen.OperationID("repos/list-contributors")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -52812,21 +54506,24 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 // GET /repos/{owner}/{repo}/keys
 func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (res []DeployKey, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-deploy-keys"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeployKeys",
-		trace.WithAttributes(otelogen.OperationID("repos/list-deploy-keys")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -52919,21 +54616,24 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposListDeploymentStatusesParams) (res ReposListDeploymentStatusesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-deployment-statuses"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeploymentStatuses",
-		trace.WithAttributes(otelogen.OperationID("repos/list-deployment-statuses")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -53041,21 +54741,24 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 // GET /repos/{owner}/{repo}/deployments
 func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (res []Deployment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-deployments"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeployments",
-		trace.WithAttributes(otelogen.OperationID("repos/list-deployments")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -53215,21 +54918,24 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 // GET /user/repos
 func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params ReposListForAuthenticatedUserParams) (res ReposListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("repos/list-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repos"
 
@@ -53404,21 +55110,24 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 // GET /orgs/{org}/repos
 func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForOrg",
-		trace.WithAttributes(otelogen.OperationID("repos/list-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -53545,21 +55254,24 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 // GET /users/{username}/repos
 func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForUser",
-		trace.WithAttributes(otelogen.OperationID("repos/list-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -53683,21 +55395,24 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 // GET /repos/{owner}/{repo}/forks
 func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams) (res ReposListForksRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-forks"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForks",
-		trace.WithAttributes(otelogen.OperationID("repos/list-forks")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -53807,21 +55522,24 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 // GET /repos/{owner}/{repo}/invitations
 func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (res []RepositoryInvitation, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-invitations"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListInvitations",
-		trace.WithAttributes(otelogen.OperationID("repos/list-invitations")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -53915,21 +55633,24 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 // GET /user/repository_invitations
 func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, params ReposListInvitationsForAuthenticatedUserParams) (res ReposListInvitationsForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-invitations-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListInvitationsForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("repos/list-invitations-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repository_invitations"
 
@@ -53993,21 +55714,24 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 // GET /repos/{owner}/{repo}/languages
 func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguagesParams) (res Language, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-languages"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListLanguages",
-		trace.WithAttributes(otelogen.OperationID("repos/list-languages")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54063,21 +55787,24 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 // GET /repos/{owner}/{repo}/pages/builds
 func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (res []PageBuild, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-pages-builds"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPagesBuilds",
-		trace.WithAttributes(otelogen.OperationID("repos/list-pages-builds")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54176,21 +55903,24 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 // GET /repositories
 func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicParams) (res ReposListPublicRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-public"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPublic",
-		trace.WithAttributes(otelogen.OperationID("repos/list-public")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories"
 
@@ -54242,21 +55972,24 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (res []PullRequestSimple, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-pull-requests-associated-with-commit"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPullRequestsAssociatedWithCommit",
-		trace.WithAttributes(otelogen.OperationID("repos/list-pull-requests-associated-with-commit")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54362,21 +56095,24 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
 func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (res []ReleaseAsset, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-release-assets"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListReleaseAssets",
-		trace.WithAttributes(otelogen.OperationID("repos/list-release-assets")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54488,21 +56224,24 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 // GET /repos/{owner}/{repo}/releases
 func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleasesParams) (res ReposListReleasesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-releases"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListReleases",
-		trace.WithAttributes(otelogen.OperationID("repos/list-releases")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54593,21 +56332,24 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 // GET /repos/{owner}/{repo}/tags
 func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) (res []Tag, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-tags"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListTags",
-		trace.WithAttributes(otelogen.OperationID("repos/list-tags")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54698,21 +56440,24 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 // GET /repos/{owner}/{repo}/teams
 func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (res []Team, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-teams"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListTeams",
-		trace.WithAttributes(otelogen.OperationID("repos/list-teams")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54805,21 +56550,24 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
 func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposListWebhookDeliveriesParams) (res ReposListWebhookDeliveriesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-webhook-deliveries"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListWebhookDeliveries",
-		trace.WithAttributes(otelogen.OperationID("repos/list-webhook-deliveries")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -54925,21 +56673,24 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 // GET /repos/{owner}/{repo}/hooks
 func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooksParams) (res ReposListWebhooksRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/list-webhooks"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListWebhooks",
-		trace.WithAttributes(otelogen.OperationID("repos/list-webhooks")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -55030,21 +56781,24 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 // POST /repos/{owner}/{repo}/merges
 func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params ReposMergeParams) (res ReposMergeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/merge"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposMerge",
-		trace.WithAttributes(otelogen.OperationID("repos/merge")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -55117,21 +56871,24 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 // POST /repos/{owner}/{repo}/merge-upstream
 func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstreamReq, params ReposMergeUpstreamParams) (res ReposMergeUpstreamRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/merge-upstream"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposMergeUpstream",
-		trace.WithAttributes(otelogen.OperationID("repos/merge-upstream")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -55204,21 +56961,24 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookParams) (res ReposPingWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/ping-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposPingWebhook",
-		trace.WithAttributes(otelogen.OperationID("repos/ping-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -55291,21 +57051,24 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
 func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params ReposRedeliverWebhookDeliveryParams) (res ReposRedeliverWebhookDeliveryRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/redeliver-webhook-delivery"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRedeliverWebhookDelivery",
-		trace.WithAttributes(otelogen.OperationID("repos/redeliver-webhook-delivery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -55421,21 +57184,24 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-app-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveAppAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/remove-app-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -55520,21 +57286,24 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
 func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemoveCollaboratorParams) (res ReposRemoveCollaboratorNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-collaborator"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveCollaborator",
-		trace.WithAttributes(otelogen.OperationID("repos/remove-collaborator")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -55626,21 +57395,24 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-status-check-contexts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveStatusCheckContexts",
-		trace.WithAttributes(otelogen.OperationID("repos/remove-status-check-contexts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -55731,21 +57503,24 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params ReposRemoveStatusCheckProtectionParams) (res ReposRemoveStatusCheckProtectionNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-status-check-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveStatusCheckProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/remove-status-check-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -55846,21 +57621,24 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-team-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveTeamAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/remove-team-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -55974,21 +57752,24 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/remove-user-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveUserAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/remove-user-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -56087,21 +57868,24 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 // POST /repos/{owner}/{repo}/branches/{branch}/rename
 func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBranchReq, params ReposRenameBranchParams) (res ReposRenameBranchRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/rename-branch"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRenameBranch",
-		trace.WithAttributes(otelogen.OperationID("repos/rename-branch")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -56194,21 +57978,24 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/replace-all-topics"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposReplaceAllTopics",
-		trace.WithAttributes(otelogen.OperationID("repos/replace-all-topics")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -56285,21 +58072,24 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 // POST /repos/{owner}/{repo}/pages/builds
 func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequestPagesBuildParams) (res PageBuildStatus, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/request-pages-build"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRequestPagesBuild",
-		trace.WithAttributes(otelogen.OperationID("repos/request-pages-build")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -56363,21 +58153,24 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params ReposSetAdminBranchProtectionParams) (res ProtectedBranchAdminEnforced, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-admin-branch-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetAdminBranchProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/set-admin-branch-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -56480,21 +58273,24 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-app-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetAppAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/set-app-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -56601,21 +58397,24 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-status-check-contexts"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetStatusCheckContexts",
-		trace.WithAttributes(otelogen.OperationID("repos/set-status-check-contexts")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -56731,21 +58530,24 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-team-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetTeamAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/set-team-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -56860,21 +58662,24 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/set-user-access-restrictions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetUserAccessRestrictions",
-		trace.WithAttributes(otelogen.OperationID("repos/set-user-access-restrictions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -56964,21 +58769,24 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushWebhookParams) (res ReposTestPushWebhookRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/test-push-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposTestPushWebhook",
-		trace.WithAttributes(otelogen.OperationID("repos/test-push-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -57055,21 +58863,24 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 // POST /repos/{owner}/{repo}/transfer
 func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, params ReposTransferParams) (res MinimalRepository, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/transfer"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposTransfer",
-		trace.WithAttributes(otelogen.OperationID("repos/transfer")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57158,21 +58969,24 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdate",
-		trace.WithAttributes(otelogen.OperationID("repos/update")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57258,21 +59072,24 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-branch-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateBranchProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/update-branch-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57357,21 +59174,24 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
 func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpdateCommitCommentReq, params ReposUpdateCommitCommentParams) (res ReposUpdateCommitCommentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-commit-comment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateCommitComment",
-		trace.WithAttributes(otelogen.OperationID("repos/update-commit-comment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57471,21 +59291,24 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-invitation"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateInvitation",
-		trace.WithAttributes(otelogen.OperationID("repos/update-invitation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57578,21 +59401,24 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, request OptReposUpdatePullRequestReviewProtectionReq, params ReposUpdatePullRequestReviewProtectionParams) (res ReposUpdatePullRequestReviewProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-pull-request-review-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdatePullRequestReviewProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/update-pull-request-review-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57679,21 +59505,24 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
 func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateReleaseReq, params ReposUpdateReleaseParams) (res ReposUpdateReleaseRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-release"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateRelease",
-		trace.WithAttributes(otelogen.OperationID("repos/update-release")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57779,21 +59608,24 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUpdateReleaseAssetReq, params ReposUpdateReleaseAssetParams) (res ReleaseAsset, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-release-asset"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateReleaseAsset",
-		trace.WithAttributes(otelogen.OperationID("repos/update-release-asset")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -57885,21 +59717,24 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request OptReposUpdateStatusCheckProtectionReq, params ReposUpdateStatusCheckProtectionParams) (res ReposUpdateStatusCheckProtectionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-status-check-protection"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateStatusCheckProtection",
-		trace.WithAttributes(otelogen.OperationID("repos/update-status-check-protection")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -58005,21 +59840,24 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-webhook"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateWebhook",
-		trace.WithAttributes(otelogen.OperationID("repos/update-webhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -58109,21 +59947,24 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request OptReposUpdateWebhookConfigForRepoReq, params ReposUpdateWebhookConfigForRepoParams) (res WebhookConfig, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("repos/update-webhook-config-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateWebhookConfigForRepo",
-		trace.WithAttributes(otelogen.OperationID("repos/update-webhook-config-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -58208,21 +60049,24 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 // DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUserFromOrgParams) (res ScimDeleteUserFromOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("scim/delete-user-from-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ScimDeleteUserFromOrg",
-		trace.WithAttributes(otelogen.OperationID("scim/delete-user-from-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/organizations/"
 	{
@@ -58298,21 +60142,24 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 // GET /search/code
 func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res SearchCodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search/code"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchCode",
-		trace.WithAttributes(otelogen.OperationID("search/code")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/code"
 
@@ -58430,21 +60277,24 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 // GET /search/commits
 func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) (res SearchCommitsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search/commits"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchCommits",
-		trace.WithAttributes(otelogen.OperationID("search/commits")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/commits"
 
@@ -58572,21 +60422,24 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 // GET /search/issues
 func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchIssuesAndPullRequestsParams) (res SearchIssuesAndPullRequestsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search/issues-and-pull-requests"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchIssuesAndPullRequests",
-		trace.WithAttributes(otelogen.OperationID("search/issues-and-pull-requests")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/issues"
 
@@ -58703,21 +60556,24 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 // GET /search/labels
 func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (res SearchLabelsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search/labels"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchLabels",
-		trace.WithAttributes(otelogen.OperationID("search/labels")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/labels"
 
@@ -58853,21 +60709,24 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 // GET /search/repositories
 func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res SearchReposRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search/repos"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchRepos",
-		trace.WithAttributes(otelogen.OperationID("search/repos")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/repositories"
 
@@ -58988,21 +60847,24 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 // GET /search/topics
 func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (res SearchTopicsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search/topics"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchTopics",
-		trace.WithAttributes(otelogen.OperationID("search/topics")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/topics"
 
@@ -59089,21 +60951,24 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 // GET /search/users
 func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res SearchUsersRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("search/users"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchUsers",
-		trace.WithAttributes(otelogen.OperationID("search/users")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/users"
 
@@ -59214,21 +61079,24 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 // GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanningGetAlertParams) (res SecretScanningGetAlertRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("secret-scanning/get-alert"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningGetAlert",
-		trace.WithAttributes(otelogen.OperationID("secret-scanning/get-alert")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -59307,21 +61175,24 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 // GET /orgs/{org}/secret-scanning/alerts
 func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params SecretScanningListAlertsForOrgParams) (res SecretScanningListAlertsForOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("secret-scanning/list-alerts-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningListAlertsForOrg",
-		trace.WithAttributes(otelogen.OperationID("secret-scanning/list-alerts-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -59434,21 +61305,24 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 // GET /repos/{owner}/{repo}/secret-scanning/alerts
 func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params SecretScanningListAlertsForRepoParams) (res SecretScanningListAlertsForRepoRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("secret-scanning/list-alerts-for-repo"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningListAlertsForRepo",
-		trace.WithAttributes(otelogen.OperationID("secret-scanning/list-alerts-for-repo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
 	{
@@ -59584,21 +61458,24 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("secret-scanning/update-alert"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningUpdateAlert",
-		trace.WithAttributes(otelogen.OperationID("secret-scanning/update-alert")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -59706,21 +61583,24 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 // PUT /teams/{team_id}/members/{username}
 func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMemberLegacyParams) (res TeamsAddMemberLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-member-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddMemberLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/add-member-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -59814,21 +61694,24 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-membership-for-user-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateMembershipForUserInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/add-or-update-membership-for-user-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -59954,21 +61837,24 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-membership-for-user-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateMembershipForUserLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/add-or-update-membership-for-user-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -60059,21 +61945,24 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-project-permissions-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateProjectPermissionsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/add-or-update-project-permissions-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -60181,21 +62070,24 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-project-permissions-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateProjectPermissionsLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/add-or-update-project-permissions-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -60293,21 +62185,24 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-repo-permissions-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateRepoPermissionsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/add-or-update-repo-permissions-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -60435,21 +62330,24 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/add-or-update-repo-permissions-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateRepoPermissionsLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/add-or-update-repo-permissions-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -60538,21 +62436,24 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 // GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, params TeamsCheckPermissionsForProjectInOrgParams) (res TeamsCheckPermissionsForProjectInOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/check-permissions-for-project-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForProjectInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/check-permissions-for-project-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -60629,21 +62530,24 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 // GET /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, params TeamsCheckPermissionsForProjectLegacyParams) (res TeamsCheckPermissionsForProjectLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/check-permissions-for-project-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForProjectLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/check-permissions-for-project-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -60708,21 +62612,24 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 // GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params TeamsCheckPermissionsForRepoInOrgParams) (res TeamsCheckPermissionsForRepoInOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/check-permissions-for-repo-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForRepoInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/check-permissions-for-repo-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -60816,21 +62723,24 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 // GET /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params TeamsCheckPermissionsForRepoLegacyParams) (res TeamsCheckPermissionsForRepoLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/check-permissions-for-repo-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForRepoLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/check-permissions-for-repo-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -60917,21 +62827,24 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreate",
-		trace.WithAttributes(otelogen.OperationID("teams/create")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -60998,21 +62911,24 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request TeamsCreateDiscussionCommentInOrgReq, params TeamsCreateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create-discussion-comment-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionCommentInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/create-discussion-comment-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -61110,21 +63026,24 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request TeamsCreateDiscussionCommentLegacyReq, params TeamsCreateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create-discussion-comment-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionCommentLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/create-discussion-comment-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -61206,21 +63125,24 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 // POST /orgs/{org}/teams/{team_slug}/discussions
 func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCreateDiscussionInOrgReq, params TeamsCreateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create-discussion-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/create-discussion-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -61303,21 +63225,24 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 // POST /teams/{team_id}/discussions
 func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsCreateDiscussionLegacyReq, params TeamsCreateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create-discussion-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/create-discussion-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -61381,21 +63306,24 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context, request TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) (res GroupMapping, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/create-or-update-idp-group-connections-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -61484,21 +63412,24 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/create-or-update-idp-group-connections-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -61558,21 +63489,24 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params TeamsDeleteDiscussionCommentInOrgParams) (res TeamsDeleteDiscussionCommentInOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/delete-discussion-comment-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionCommentInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/delete-discussion-comment-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -61663,21 +63597,24 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params TeamsDeleteDiscussionCommentLegacyParams) (res TeamsDeleteDiscussionCommentLegacyNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/delete-discussion-comment-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionCommentLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/delete-discussion-comment-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -61752,21 +63689,24 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDeleteDiscussionInOrgParams) (res TeamsDeleteDiscussionInOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/delete-discussion-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/delete-discussion-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -61842,21 +63782,24 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 // DELETE /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDeleteDiscussionLegacyParams) (res TeamsDeleteDiscussionLegacyNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/delete-discussion-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/delete-discussion-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -61917,21 +63860,24 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 // DELETE /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgParams) (res TeamsDeleteInOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/delete-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/delete-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -61993,21 +63939,24 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 // DELETE /teams/{team_id}
 func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacyParams) (res TeamsDeleteLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/delete-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/delete-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -62051,21 +64000,24 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 // GET /orgs/{org}/teams/{team_slug}
 func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams) (res TeamsGetByNameRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-by-name"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetByName",
-		trace.WithAttributes(otelogen.OperationID("teams/get-by-name")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -62125,21 +64077,24 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params TeamsGetDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-discussion-comment-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionCommentInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/get-discussion-comment-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -62230,21 +64185,24 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params TeamsGetDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-discussion-comment-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionCommentLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/get-discussion-comment-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -62319,21 +64277,24 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-discussion-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/get-discussion-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -62409,21 +64370,24 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 // GET /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-discussion-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/get-discussion-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -62482,21 +64446,24 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 // GET /teams/{team_id}
 func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams) (res TeamsGetLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/get-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -62542,21 +64509,24 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 // GET /teams/{team_id}/members/{username}
 func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMemberLegacyParams) (res TeamsGetMemberLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-member-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMemberLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/get-member-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -62620,21 +64590,24 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 // GET /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params TeamsGetMembershipForUserInOrgParams) (res TeamsGetMembershipForUserInOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-membership-for-user-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMembershipForUserInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/get-membership-for-user-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -62714,21 +64687,24 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 // GET /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params TeamsGetMembershipForUserLegacyParams) (res TeamsGetMembershipForUserLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/get-membership-for-user-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMembershipForUserLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/get-membership-for-user-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -62785,21 +64761,24 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 // GET /orgs/{org}/teams
 func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res TeamsListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsList",
-		trace.WithAttributes(otelogen.OperationID("teams/list")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -62879,21 +64858,24 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 // GET /orgs/{org}/teams/{team_slug}/teams
 func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (res []Team, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-child-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListChildInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-child-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -62988,21 +64970,24 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 // GET /teams/{team_id}/teams
 func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChildLegacyParams) (res TeamsListChildLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-child-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListChildLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-child-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -63083,21 +65068,24 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (res []TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-discussion-comments-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionCommentsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-discussion-comments-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -63225,21 +65213,24 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
 func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (res []TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-discussion-comments-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionCommentsLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-discussion-comments-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -63351,21 +65342,24 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 // GET /orgs/{org}/teams/{team_slug}/discussions
 func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (res []TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-discussions-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-discussions-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -63494,21 +65488,24 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 // GET /teams/{team_id}/discussions
 func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (res []TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-discussions-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionsLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-discussions-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -63605,21 +65602,24 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 // GET /user/teams
 func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params TeamsListForAuthenticatedUserParams) (res TeamsListForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("teams/list-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/teams"
 
@@ -63688,21 +65688,24 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 // GET /teams/{team_id}/team-sync/group-mappings
 func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsListIdpGroupsForLegacyParams) (res TeamsListIdpGroupsForLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-idp-groups-for-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsForLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-idp-groups-for-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -63751,21 +65754,24 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 // GET /orgs/{org}/team-sync/groups
 func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (res GroupMapping, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-idp-groups-for-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsForOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-idp-groups-for-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -63848,21 +65854,24 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListIdpGroupsInOrgParams) (res GroupMapping, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-idp-groups-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-idp-groups-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -63921,21 +65930,24 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 // GET /orgs/{org}/teams/{team_slug}/members
 func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-members-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListMembersInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-members-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -64047,21 +66059,24 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 // GET /teams/{team_id}/members
 func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMembersLegacyParams) (res TeamsListMembersLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-members-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListMembersLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-members-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -64160,21 +66175,24 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 // GET /orgs/{org}/teams/{team_slug}/invitations
 func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (res []OrganizationInvitation, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-pending-invitations-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListPendingInvitationsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-pending-invitations-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -64273,21 +66291,24 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 // GET /teams/{team_id}/invitations
 func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (res []OrganizationInvitation, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-pending-invitations-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListPendingInvitationsLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-pending-invitations-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -64367,21 +66388,24 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 // GET /orgs/{org}/teams/{team_slug}/projects
 func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (res []TeamProject, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-projects-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListProjectsInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-projects-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -64477,21 +66501,24 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 // GET /teams/{team_id}/projects
 func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListProjectsLegacyParams) (res TeamsListProjectsLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-projects-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListProjectsLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-projects-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -64571,21 +66598,24 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 // GET /orgs/{org}/teams/{team_slug}/repos
 func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (res []MinimalRepository, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-repos-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListReposInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/list-repos-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -64680,21 +66710,24 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 // GET /teams/{team_id}/repos
 func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListReposLegacyParams) (res TeamsListReposLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/list-repos-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListReposLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/list-repos-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -64788,21 +66821,24 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 // DELETE /teams/{team_id}/members/{username}
 func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemoveMemberLegacyParams) (res TeamsRemoveMemberLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/remove-member-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMemberLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/remove-member-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -64873,21 +66909,24 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 // DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params TeamsRemoveMembershipForUserInOrgParams) (res TeamsRemoveMembershipForUserInOrgRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/remove-membership-for-user-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMembershipForUserInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/remove-membership-for-user-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -64974,21 +67013,24 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 // DELETE /teams/{team_id}/memberships/{username}
 func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params TeamsRemoveMembershipForUserLegacyParams) (res TeamsRemoveMembershipForUserLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/remove-membership-for-user-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMembershipForUserLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/remove-membership-for-user-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -65050,21 +67092,24 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemoveProjectInOrgParams) (res TeamsRemoveProjectInOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/remove-project-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveProjectInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/remove-project-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -65142,21 +67187,24 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 // DELETE /teams/{team_id}/projects/{project_id}
 func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemoveProjectLegacyParams) (res TeamsRemoveProjectLegacyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/remove-project-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveProjectLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/remove-project-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -65218,21 +67266,24 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRepoInOrgParams) (res TeamsRemoveRepoInOrgNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/remove-repo-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveRepoInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/remove-repo-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
 	{
@@ -65325,21 +67376,24 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
 func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRepoLegacyParams) (res TeamsRemoveRepoLegacyNoContent, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/remove-repo-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveRepoLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/remove-repo-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
 	{
@@ -65414,21 +67468,24 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request TeamsUpdateDiscussionCommentInOrgReq, params TeamsUpdateDiscussionCommentInOrgParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-discussion-comment-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionCommentInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/update-discussion-comment-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -65533,21 +67590,24 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request TeamsUpdateDiscussionCommentLegacyReq, params TeamsUpdateDiscussionCommentLegacyParams) (res TeamDiscussionComment, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-discussion-comment-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionCommentLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/update-discussion-comment-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -65637,21 +67697,24 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeamsUpdateDiscussionInOrgReq, params TeamsUpdateDiscussionInOrgParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-discussion-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/update-discussion-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -65742,21 +67805,24 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 // PATCH /teams/{team_id}/discussions/{discussion_number}
 func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTeamsUpdateDiscussionLegacyReq, params TeamsUpdateDiscussionLegacyParams) (res TeamDiscussion, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-discussion-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/update-discussion-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -65845,21 +67911,24 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-in-org"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateInOrg",
-		trace.WithAttributes(otelogen.OperationID("teams/update-in-org")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -65942,21 +68011,24 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("teams/update-legacy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateLegacy",
-		trace.WithAttributes(otelogen.OperationID("teams/update-legacy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -66028,21 +68100,24 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/add-email-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersAddEmailForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/add-email-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -66082,21 +68157,24 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 // PUT /user/blocks/{username}
 func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res UsersBlockRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/block"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersBlock",
-		trace.WithAttributes(otelogen.OperationID("users/block")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/blocks/"
 	{
@@ -66136,21 +68214,24 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 // GET /user/blocks/{username}
 func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlockedParams) (res UsersCheckBlockedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/check-blocked"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckBlocked",
-		trace.WithAttributes(otelogen.OperationID("users/check-blocked")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/blocks/"
 	{
@@ -66190,21 +68271,24 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 // GET /users/{username}/following/{target_user}
 func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersCheckFollowingForUserParams) (res UsersCheckFollowingForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/check-following-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckFollowingForUser",
-		trace.WithAttributes(otelogen.OperationID("users/check-following-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -66259,21 +68343,24 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 // GET /user/following/{username}
 func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, params UsersCheckPersonIsFollowedByAuthenticatedParams) (res UsersCheckPersonIsFollowedByAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/check-person-is-followed-by-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckPersonIsFollowedByAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/check-person-is-followed-by-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following/"
 	{
@@ -66317,21 +68404,24 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 // POST /user/gpg_keys
 func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request UsersCreateGpgKeyForAuthenticatedReq) (res UsersCreateGpgKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/create-gpg-key-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCreateGpgKeyForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/create-gpg-key-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -66383,21 +68473,24 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/create-public-ssh-key-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCreatePublicSSHKeyForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/create-public-ssh-key-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -66455,21 +68548,24 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/delete-email-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeleteEmailForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/delete-email-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -66513,21 +68609,24 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 // DELETE /user/gpg_keys/{gpg_key_id}
 func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params UsersDeleteGpgKeyForAuthenticatedParams) (res UsersDeleteGpgKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/delete-gpg-key-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeleteGpgKeyForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/delete-gpg-key-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys/"
 	{
@@ -66571,21 +68670,24 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 // DELETE /user/keys/{key_id}
 func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, params UsersDeletePublicSSHKeyForAuthenticatedParams) (res UsersDeletePublicSSHKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/delete-public-ssh-key-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeletePublicSSHKeyForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/delete-public-ssh-key-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys/"
 	{
@@ -66631,21 +68733,24 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 // PUT /user/following/{username}
 func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res UsersFollowRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/follow"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersFollow",
-		trace.WithAttributes(otelogen.OperationID("users/follow")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following/"
 	{
@@ -66690,21 +68795,24 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 // GET /user
 func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/get-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/get-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user"
 
@@ -66746,21 +68854,24 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 // GET /users/{username}
 func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUsernameParams) (res UsersGetByUsernameRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/get-by-username"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetByUsername",
-		trace.WithAttributes(otelogen.OperationID("users/get-by-username")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -66811,21 +68922,24 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 // GET /users/{username}/hovercard
 func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetContextForUserParams) (res UsersGetContextForUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/get-context-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetContextForUser",
-		trace.WithAttributes(otelogen.OperationID("users/get-context-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -66905,21 +69019,24 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 // GET /user/gpg_keys/{gpg_key_id}
 func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params UsersGetGpgKeyForAuthenticatedParams) (res UsersGetGpgKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/get-gpg-key-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetGpgKeyForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/get-gpg-key-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys/"
 	{
@@ -66963,21 +69080,24 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 // GET /user/keys/{key_id}
 func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, params UsersGetPublicSSHKeyForAuthenticatedParams) (res UsersGetPublicSSHKeyForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/get-public-ssh-key-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetPublicSSHKeyForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/get-public-ssh-key-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys/"
 	{
@@ -67023,21 +69143,24 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 // GET /users
 func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res UsersListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersList",
-		trace.WithAttributes(otelogen.OperationID("users/list")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users"
 
@@ -67100,21 +69223,24 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 // GET /user/blocks
 func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res UsersListBlockedByAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-blocked-by-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListBlockedByAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/list-blocked-by-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/blocks"
 
@@ -67143,21 +69269,24 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 // GET /user/emails
 func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params UsersListEmailsForAuthenticatedParams) (res UsersListEmailsForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-emails-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListEmailsForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/list-emails-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
 
@@ -67220,21 +69349,24 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 // GET /user/following
 func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params UsersListFollowedByAuthenticatedParams) (res UsersListFollowedByAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-followed-by-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowedByAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/list-followed-by-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following"
 
@@ -67297,21 +69429,24 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 // GET /user/followers
 func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, params UsersListFollowersForAuthenticatedUserParams) (res UsersListFollowersForAuthenticatedUserRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-followers-for-authenticated-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowersForAuthenticatedUser",
-		trace.WithAttributes(otelogen.OperationID("users/list-followers-for-authenticated-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/followers"
 
@@ -67374,21 +69509,24 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 // GET /users/{username}/followers
 func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-followers-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowersForUser",
-		trace.WithAttributes(otelogen.OperationID("users/list-followers-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -67466,21 +69604,24 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 // GET /users/{username}/following
 func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (res []SimpleUser, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-following-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowingForUser",
-		trace.WithAttributes(otelogen.OperationID("users/list-following-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -67560,21 +69701,24 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 // GET /user/gpg_keys
 func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params UsersListGpgKeysForAuthenticatedParams) (res UsersListGpgKeysForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-gpg-keys-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListGpgKeysForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/list-gpg-keys-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys"
 
@@ -67637,21 +69781,24 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 // GET /users/{username}/gpg_keys
 func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (res []GpgKey, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-gpg-keys-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListGpgKeysForUser",
-		trace.WithAttributes(otelogen.OperationID("users/list-gpg-keys-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -67732,21 +69879,24 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 // GET /user/public_emails
 func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, params UsersListPublicEmailsForAuthenticatedParams) (res UsersListPublicEmailsForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-public-emails-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicEmailsForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/list-public-emails-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/public_emails"
 
@@ -67809,21 +69959,24 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 // GET /users/{username}/keys
 func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (res []KeySimple, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-public-keys-for-user"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicKeysForUser",
-		trace.WithAttributes(otelogen.OperationID("users/list-public-keys-for-user")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users/"
 	{
@@ -67903,21 +70056,24 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 // GET /user/keys
 func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, params UsersListPublicSSHKeysForAuthenticatedParams) (res UsersListPublicSSHKeysForAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/list-public-ssh-keys-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicSSHKeysForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/list-public-ssh-keys-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys"
 
@@ -67988,21 +70144,24 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 		return res, errors.Wrap(err, "validate")
 	}
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/set-primary-email-visibility-for-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersSetPrimaryEmailVisibilityForAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/set-primary-email-visibility-for-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader
@@ -68042,21 +70201,24 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 // DELETE /user/blocks/{username}
 func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (res UsersUnblockRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/unblock"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUnblock",
-		trace.WithAttributes(otelogen.OperationID("users/unblock")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/blocks/"
 	{
@@ -68099,21 +70261,24 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 // DELETE /user/following/{username}
 func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) (res UsersUnfollowRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/unfollow"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUnfollow",
-		trace.WithAttributes(otelogen.OperationID("users/unfollow")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following/"
 	{
@@ -68157,21 +70322,24 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 // PATCH /user
 func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersUpdateAuthenticatedReq) (res UsersUpdateAuthenticatedRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("users/update-authenticated"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUpdateAuthenticated",
-		trace.WithAttributes(otelogen.OperationID("users/update-authenticated")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	var (
 		contentType string
 		reqBody     io.Reader

@@ -30,6 +30,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/trace"
@@ -59,6 +60,7 @@ var (
 	_ = ht.NewRequest
 	_ = net.IP{}
 	_ = otelogen.Version
+	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
 	_ = metric.NewNoopMeterProvider
@@ -106,21 +108,24 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 // GET /apis/
 func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAPIVersions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAPIVersions",
-		trace.WithAttributes(otelogen.OperationID("getAPIVersions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/"
 
@@ -148,21 +153,24 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 // GET /apis/admissionregistration.k8s.io/
 func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetAdmissionregistrationAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAdmissionregistrationAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAdmissionregistrationAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getAdmissionregistrationAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/"
 
@@ -190,21 +198,24 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 // GET /apis/admissionregistration.k8s.io/v1/
 func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (res GetAdmissionregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAdmissionregistrationV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAdmissionregistrationV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getAdmissionregistrationV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/"
 
@@ -232,21 +243,24 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 // GET /apis/apiextensions.k8s.io/
 func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextensionsAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getApiextensionsAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiextensionsAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getApiextensionsAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/"
 
@@ -274,21 +288,24 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 // GET /apis/apiextensions.k8s.io/v1/
 func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApiextensionsV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getApiextensionsV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiextensionsV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getApiextensionsV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/"
 
@@ -316,21 +333,24 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 // GET /apis/apiregistration.k8s.io/
 func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregistrationAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getApiregistrationAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiregistrationAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getApiregistrationAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/"
 
@@ -358,21 +378,24 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 // GET /apis/apiregistration.k8s.io/v1/
 func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetApiregistrationV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getApiregistrationV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetApiregistrationV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getApiregistrationV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/"
 
@@ -400,21 +423,24 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 // GET /apis/apps/
 func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAppsAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAppsAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getAppsAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/"
 
@@ -442,21 +468,24 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 // GET /apis/apps/v1/
 func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAppsV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAppsV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getAppsV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/"
 
@@ -484,21 +513,24 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 // GET /apis/authentication.k8s.io/
 func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenticationAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAuthenticationAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthenticationAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getAuthenticationAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authentication.k8s.io/"
 
@@ -526,21 +558,24 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 // GET /apis/authentication.k8s.io/v1/
 func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAuthenticationV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAuthenticationV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthenticationV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getAuthenticationV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authentication.k8s.io/v1/"
 
@@ -568,21 +603,24 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 // GET /apis/authorization.k8s.io/
 func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthorizationAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAuthorizationAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthorizationAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getAuthorizationAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/"
 
@@ -610,21 +648,24 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 // GET /apis/authorization.k8s.io/v1/
 func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAuthorizationV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAuthorizationV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getAuthorizationV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/authorization.k8s.io/v1/"
 
@@ -652,21 +693,24 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 // GET /apis/autoscaling/
 func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscalingAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAutoscalingAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getAutoscalingAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/"
 
@@ -694,21 +738,24 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 // GET /apis/autoscaling/v1/
 func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutoscalingV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAutoscalingV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getAutoscalingV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/"
 
@@ -736,21 +783,24 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 // GET /apis/autoscaling/v2beta1/
 func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res GetAutoscalingV2beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAutoscalingV2beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingV2beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getAutoscalingV2beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/"
 
@@ -778,21 +828,24 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 // GET /apis/autoscaling/v2beta2/
 func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res GetAutoscalingV2beta2APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getAutoscalingV2beta2APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetAutoscalingV2beta2APIResources",
-		trace.WithAttributes(otelogen.OperationID("getAutoscalingV2beta2APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/"
 
@@ -820,21 +873,24 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 // GET /apis/batch/
 func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getBatchAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetBatchAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getBatchAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/"
 
@@ -862,21 +918,24 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 // GET /apis/batch/v1/
 func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getBatchV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetBatchV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getBatchV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/"
 
@@ -904,21 +963,24 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 // GET /apis/batch/v1beta1/
 func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getBatchV1beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetBatchV1beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getBatchV1beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/"
 
@@ -946,21 +1008,24 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 // GET /apis/certificates.k8s.io/
 func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificatesAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getCertificatesAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetCertificatesAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getCertificatesAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/"
 
@@ -988,21 +1053,24 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 // GET /apis/certificates.k8s.io/v1/
 func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCertificatesV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getCertificatesV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetCertificatesV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getCertificatesV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/"
 
@@ -1030,21 +1098,24 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 // GET /version/
 func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getCodeVersion"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetCodeVersion",
-		trace.WithAttributes(otelogen.OperationID("getCodeVersion")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/version/"
 
@@ -1072,21 +1143,24 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 // GET /apis/coordination.k8s.io/
 func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinationAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getCoordinationAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoordinationAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getCoordinationAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/"
 
@@ -1114,21 +1188,24 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 // GET /apis/coordination.k8s.io/v1/
 func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoordinationV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getCoordinationV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoordinationV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getCoordinationV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/"
 
@@ -1156,21 +1233,24 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 // GET /api/
 func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersionsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getCoreAPIVersions"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoreAPIVersions",
-		trace.WithAttributes(otelogen.OperationID("getCoreAPIVersions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/"
 
@@ -1198,21 +1278,24 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 // GET /api/v1/
 func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getCoreV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetCoreV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getCoreV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/"
 
@@ -1240,21 +1323,24 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 // GET /apis/discovery.k8s.io/
 func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getDiscoveryAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetDiscoveryAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getDiscoveryAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/"
 
@@ -1282,21 +1368,24 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 // GET /apis/discovery.k8s.io/v1/
 func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscoveryV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getDiscoveryV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetDiscoveryV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getDiscoveryV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/"
 
@@ -1324,21 +1413,24 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 // GET /apis/discovery.k8s.io/v1beta1/
 func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDiscoveryV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getDiscoveryV1beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetDiscoveryV1beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getDiscoveryV1beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/"
 
@@ -1366,21 +1458,24 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 // GET /apis/events.k8s.io/
 func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getEventsAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetEventsAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getEventsAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/"
 
@@ -1408,21 +1503,24 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 // GET /apis/events.k8s.io/v1/
 func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getEventsV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetEventsV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getEventsV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/"
 
@@ -1450,21 +1548,24 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 // GET /apis/events.k8s.io/v1beta1/
 func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEventsV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getEventsV1beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetEventsV1beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getEventsV1beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/"
 
@@ -1492,21 +1593,24 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 // GET /apis/flowcontrol.apiserver.k8s.io/
 func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFlowcontrolApiserverAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getFlowcontrolApiserverAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetFlowcontrolApiserverAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getFlowcontrolApiserverAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/"
 
@@ -1534,21 +1638,24 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
 func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getFlowcontrolApiserverV1beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetFlowcontrolApiserverV1beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getFlowcontrolApiserverV1beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
 
@@ -1576,21 +1683,24 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
 func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context) (res GetFlowcontrolApiserverV1beta2APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getFlowcontrolApiserverV1beta2APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetFlowcontrolApiserverV1beta2APIResources",
-		trace.WithAttributes(otelogen.OperationID("getFlowcontrolApiserverV1beta2APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
 
@@ -1618,21 +1728,24 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 // GET /apis/internal.apiserver.k8s.io/
 func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInternalApiserverAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getInternalApiserverAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetInternalApiserverAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getInternalApiserverAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/"
 
@@ -1660,21 +1773,24 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/
 func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (res GetInternalApiserverV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getInternalApiserverV1alpha1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetInternalApiserverV1alpha1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getInternalApiserverV1alpha1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/"
 
@@ -1702,21 +1818,24 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 // GET /apis/networking.k8s.io/
 func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getNetworkingAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetNetworkingAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getNetworkingAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/"
 
@@ -1744,21 +1863,24 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 // GET /apis/networking.k8s.io/v1/
 func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetworkingV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getNetworkingV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetNetworkingV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getNetworkingV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/"
 
@@ -1786,21 +1908,24 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 // GET /apis/node.k8s.io/
 func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getNodeAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getNodeAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/"
 
@@ -1828,21 +1953,24 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 // GET /apis/node.k8s.io/v1/
 func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getNodeV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getNodeV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/"
 
@@ -1870,21 +1998,24 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 // GET /apis/node.k8s.io/v1alpha1/
 func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getNodeV1alpha1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeV1alpha1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getNodeV1alpha1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/"
 
@@ -1912,21 +2043,24 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 // GET /apis/node.k8s.io/v1beta1/
 func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getNodeV1beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetNodeV1beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getNodeV1beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/"
 
@@ -1954,21 +2088,24 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 // GET /apis/policy/
 func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getPolicyAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPolicyAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getPolicyAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/"
 
@@ -1996,21 +2133,24 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 // GET /apis/policy/v1/
 func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getPolicyV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPolicyV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getPolicyV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/"
 
@@ -2038,21 +2178,24 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 // GET /apis/policy/v1beta1/
 func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolicyV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getPolicyV1beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPolicyV1beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getPolicyV1beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/"
 
@@ -2080,21 +2223,24 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 // GET /apis/rbac.authorization.k8s.io/
 func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacAuthorizationAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getRbacAuthorizationAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetRbacAuthorizationAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getRbacAuthorizationAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/"
 
@@ -2122,21 +2268,24 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 // GET /apis/rbac.authorization.k8s.io/v1/
 func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res GetRbacAuthorizationV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getRbacAuthorizationV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetRbacAuthorizationV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getRbacAuthorizationV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/"
 
@@ -2164,21 +2313,24 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 // GET /apis/scheduling.k8s.io/
 func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getSchedulingAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetSchedulingAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getSchedulingAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/"
 
@@ -2206,21 +2358,24 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 // GET /apis/scheduling.k8s.io/v1/
 func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedulingV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getSchedulingV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetSchedulingV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getSchedulingV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/"
 
@@ -2248,21 +2403,24 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 // GET /.well-known/openid-configuration/
 func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context) (res GetServiceAccountIssuerOpenIDConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getServiceAccountIssuerOpenIDConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetServiceAccountIssuerOpenIDConfiguration",
-		trace.WithAttributes(otelogen.OperationID("getServiceAccountIssuerOpenIDConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/.well-known/openid-configuration/"
 
@@ -2290,21 +2448,24 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 // GET /apis/storage.k8s.io/
 func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroupRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getStorageAPIGroup"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageAPIGroup",
-		trace.WithAttributes(otelogen.OperationID("getStorageAPIGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/"
 
@@ -2332,21 +2493,24 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 // GET /apis/storage.k8s.io/v1/
 func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getStorageV1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageV1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getStorageV1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/"
 
@@ -2374,21 +2538,24 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 // GET /apis/storage.k8s.io/v1alpha1/
 func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetStorageV1alpha1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getStorageV1alpha1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageV1alpha1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getStorageV1alpha1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/"
 
@@ -2416,21 +2583,24 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 // GET /apis/storage.k8s.io/v1beta1/
 func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStorageV1beta1APIResourcesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getStorageV1beta1APIResources"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetStorageV1beta1APIResources",
-		trace.WithAttributes(otelogen.OperationID("getStorageV1beta1APIResources")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/"
 
@@ -2458,21 +2628,24 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ListAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAdmissionregistrationV1MutatingWebhookConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration",
-		trace.WithAttributes(otelogen.OperationID("listAdmissionregistrationV1MutatingWebhookConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
@@ -2663,21 +2836,24 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
 func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAdmissionregistrationV1ValidatingWebhookConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
-		trace.WithAttributes(otelogen.OperationID("listAdmissionregistrationV1ValidatingWebhookConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
@@ -2868,21 +3044,24 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
 func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context, params ListApiextensionsV1CustomResourceDefinitionParams) (res ListApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listApiextensionsV1CustomResourceDefinition"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListApiextensionsV1CustomResourceDefinition",
-		trace.WithAttributes(otelogen.OperationID("listApiextensionsV1CustomResourceDefinition")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
@@ -3073,21 +3252,24 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 // GET /apis/apiregistration.k8s.io/v1/apiservices
 func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params ListApiregistrationV1APIServiceParams) (res ListApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listApiregistrationV1APIService"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListApiregistrationV1APIService",
-		trace.WithAttributes(otelogen.OperationID("listApiregistrationV1APIService")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
@@ -3278,21 +3460,24 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 // GET /apis/apps/v1/controllerrevisions
 func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Context, params ListAppsV1ControllerRevisionForAllNamespacesParams) (res ListAppsV1ControllerRevisionForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1ControllerRevisionForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1ControllerRevisionForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1ControllerRevisionForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/controllerrevisions"
 
@@ -3483,21 +3668,24 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 // GET /apis/apps/v1/daemonsets
 func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params ListAppsV1DaemonSetForAllNamespacesParams) (res ListAppsV1DaemonSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1DaemonSetForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1DaemonSetForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1DaemonSetForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/daemonsets"
 
@@ -3688,21 +3876,24 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 // GET /apis/apps/v1/deployments
 func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, params ListAppsV1DeploymentForAllNamespacesParams) (res ListAppsV1DeploymentForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1DeploymentForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1DeploymentForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1DeploymentForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/deployments"
 
@@ -3893,21 +4084,24 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
 func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, params ListAppsV1NamespacedControllerRevisionParams) (res ListAppsV1NamespacedControllerRevisionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1NamespacedControllerRevision"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedControllerRevision",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1NamespacedControllerRevision")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -4113,21 +4307,24 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets
 func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListAppsV1NamespacedDaemonSetParams) (res ListAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1NamespacedDaemonSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedDaemonSet",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1NamespacedDaemonSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -4333,21 +4530,24 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 // GET /apis/apps/v1/namespaces/{namespace}/deployments
 func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params ListAppsV1NamespacedDeploymentParams) (res ListAppsV1NamespacedDeploymentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1NamespacedDeployment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedDeployment",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1NamespacedDeployment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -4553,21 +4753,24 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets
 func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params ListAppsV1NamespacedReplicaSetParams) (res ListAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1NamespacedReplicaSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedReplicaSet",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1NamespacedReplicaSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -4773,21 +4976,24 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets
 func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params ListAppsV1NamespacedStatefulSetParams) (res ListAppsV1NamespacedStatefulSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1NamespacedStatefulSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1NamespacedStatefulSet",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1NamespacedStatefulSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -4993,21 +5199,24 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 // GET /apis/apps/v1/replicasets
 func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, params ListAppsV1ReplicaSetForAllNamespacesParams) (res ListAppsV1ReplicaSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1ReplicaSetForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1ReplicaSetForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1ReplicaSetForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/replicasets"
 
@@ -5198,21 +5407,24 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 // GET /apis/apps/v1/statefulsets
 func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, params ListAppsV1StatefulSetForAllNamespacesParams) (res ListAppsV1StatefulSetForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAppsV1StatefulSetForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAppsV1StatefulSetForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAppsV1StatefulSetForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/statefulsets"
 
@@ -5403,21 +5615,24 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 // GET /apis/autoscaling/v1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/horizontalpodautoscalers"
 
@@ -5608,21 +5823,24 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("listAutoscalingV1NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/namespaces/"
 	{
@@ -5828,21 +6046,24 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 // GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
 
@@ -6033,21 +6254,24 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
 	{
@@ -6253,21 +6477,24 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 // GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx context.Context, params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) (res ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
 
@@ -6458,21 +6685,24 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
 	{
@@ -6678,21 +6908,24 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 // GET /apis/batch/v1/cronjobs
 func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1CronJobForAllNamespacesParams) (res ListBatchV1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listBatchV1CronJobForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1CronJobForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listBatchV1CronJobForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/cronjobs"
 
@@ -6883,21 +7116,24 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 // GET /apis/batch/v1/jobs
 func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params ListBatchV1JobForAllNamespacesParams) (res ListBatchV1JobForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listBatchV1JobForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1JobForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listBatchV1JobForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/jobs"
 
@@ -7088,21 +7324,24 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBatchV1NamespacedCronJobParams) (res ListBatchV1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listBatchV1NamespacedCronJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1NamespacedCronJob",
-		trace.WithAttributes(otelogen.OperationID("listBatchV1NamespacedCronJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
@@ -7308,21 +7547,24 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 // GET /apis/batch/v1/namespaces/{namespace}/jobs
 func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV1NamespacedJobParams) (res ListBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listBatchV1NamespacedJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1NamespacedJob",
-		trace.WithAttributes(otelogen.OperationID("listBatchV1NamespacedJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
@@ -7528,21 +7770,24 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 // GET /apis/batch/v1beta1/cronjobs
 func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, params ListBatchV1beta1CronJobForAllNamespacesParams) (res ListBatchV1beta1CronJobForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listBatchV1beta1CronJobForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1beta1CronJobForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listBatchV1beta1CronJobForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/cronjobs"
 
@@ -7733,21 +7978,24 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
 func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params ListBatchV1beta1NamespacedCronJobParams) (res ListBatchV1beta1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listBatchV1beta1NamespacedCronJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListBatchV1beta1NamespacedCronJob",
-		trace.WithAttributes(otelogen.OperationID("listBatchV1beta1NamespacedCronJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/namespaces/"
 	{
@@ -7953,21 +8201,24 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests
 func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context, params ListCertificatesV1CertificateSigningRequestParams) (res ListCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCertificatesV1CertificateSigningRequest"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCertificatesV1CertificateSigningRequest",
-		trace.WithAttributes(otelogen.OperationID("listCertificatesV1CertificateSigningRequest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
@@ -8158,21 +8409,24 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 // GET /apis/coordination.k8s.io/v1/leases
 func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, params ListCoordinationV1LeaseForAllNamespacesParams) (res ListCoordinationV1LeaseForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoordinationV1LeaseForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoordinationV1LeaseForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoordinationV1LeaseForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/leases"
 
@@ -8363,21 +8617,24 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
 func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params ListCoordinationV1NamespacedLeaseParams) (res ListCoordinationV1NamespacedLeaseRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoordinationV1NamespacedLease"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoordinationV1NamespacedLease",
-		trace.WithAttributes(otelogen.OperationID("listCoordinationV1NamespacedLease")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/namespaces/"
 	{
@@ -8583,21 +8840,24 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 // GET /api/v1/componentstatuses
 func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV1ComponentStatusParams) (res ListCoreV1ComponentStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1ComponentStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ComponentStatus",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1ComponentStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/componentstatuses"
 
@@ -8788,21 +9048,24 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 // GET /api/v1/configmaps
 func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params ListCoreV1ConfigMapForAllNamespacesParams) (res ListCoreV1ConfigMapForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1ConfigMapForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ConfigMapForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1ConfigMapForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/configmaps"
 
@@ -8993,21 +9256,24 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 // GET /api/v1/endpoints
 func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params ListCoreV1EndpointsForAllNamespacesParams) (res ListCoreV1EndpointsForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1EndpointsForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1EndpointsForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1EndpointsForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/endpoints"
 
@@ -9198,21 +9464,24 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 // GET /api/v1/events
 func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params ListCoreV1EventForAllNamespacesParams) (res ListCoreV1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1EventForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1EventForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1EventForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/events"
 
@@ -9403,21 +9672,24 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 // GET /api/v1/limitranges
 func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, params ListCoreV1LimitRangeForAllNamespacesParams) (res ListCoreV1LimitRangeForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1LimitRangeForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1LimitRangeForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1LimitRangeForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/limitranges"
 
@@ -9608,21 +9880,24 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 // GET /api/v1/namespaces
 func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1NamespaceParams) (res ListCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1Namespace"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1Namespace",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1Namespace")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces"
 
@@ -9813,21 +10088,24 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 // GET /api/v1/namespaces/{namespace}/configmaps
 func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListCoreV1NamespacedConfigMapParams) (res ListCoreV1NamespacedConfigMapRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedConfigMap"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedConfigMap",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedConfigMap")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -10033,21 +10311,24 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 // GET /api/v1/namespaces/{namespace}/endpoints
 func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListCoreV1NamespacedEndpointsParams) (res ListCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedEndpoints"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedEndpoints",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedEndpoints")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -10253,21 +10534,24 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 // GET /api/v1/namespaces/{namespace}/events
 func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV1NamespacedEventParams) (res ListCoreV1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -10473,21 +10757,24 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 // GET /api/v1/namespaces/{namespace}/limitranges
 func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params ListCoreV1NamespacedLimitRangeParams) (res ListCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedLimitRange"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedLimitRange",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedLimitRange")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -10693,21 +10980,24 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ListCoreV1NamespacedPersistentVolumeClaimParams) (res ListCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedPersistentVolumeClaim"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedPersistentVolumeClaim",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedPersistentVolumeClaim")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -10913,21 +11203,24 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 // GET /api/v1/namespaces/{namespace}/pods
 func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1NamespacedPodParams) (res ListCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedPod"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedPod",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedPod")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -11133,21 +11426,24 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 // GET /api/v1/namespaces/{namespace}/podtemplates
 func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params ListCoreV1NamespacedPodTemplateParams) (res ListCoreV1NamespacedPodTemplateRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedPodTemplate"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedPodTemplate",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedPodTemplate")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -11353,21 +11649,24 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers
 func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, params ListCoreV1NamespacedReplicationControllerParams) (res ListCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedReplicationController"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedReplicationController",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedReplicationController")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -11573,21 +11872,24 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 // GET /api/v1/namespaces/{namespace}/resourcequotas
 func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params ListCoreV1NamespacedResourceQuotaParams) (res ListCoreV1NamespacedResourceQuotaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedResourceQuota"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedResourceQuota",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedResourceQuota")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -11793,21 +12095,24 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 // GET /api/v1/namespaces/{namespace}/secrets
 func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCoreV1NamespacedSecretParams) (res ListCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedSecret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedSecret",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedSecret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -12013,21 +12318,24 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 // GET /api/v1/namespaces/{namespace}/services
 func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCoreV1NamespacedServiceParams) (res ListCoreV1NamespacedServiceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedService"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedService",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedService")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -12233,21 +12541,24 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 // GET /api/v1/namespaces/{namespace}/serviceaccounts
 func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params ListCoreV1NamespacedServiceAccountParams) (res ListCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1NamespacedServiceAccount"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1NamespacedServiceAccount",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1NamespacedServiceAccount")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -12453,21 +12764,24 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 // GET /api/v1/nodes
 func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams) (res ListCoreV1NodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1Node"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1Node",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1Node")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
 
@@ -12658,21 +12972,24 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 // GET /api/v1/persistentvolumes
 func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCoreV1PersistentVolumeParams) (res ListCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1PersistentVolume"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PersistentVolume",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1PersistentVolume")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
 
@@ -12863,21 +13180,24 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 // GET /api/v1/persistentvolumeclaims
 func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Context, params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) (res ListCoreV1PersistentVolumeClaimForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1PersistentVolumeClaimForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1PersistentVolumeClaimForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumeclaims"
 
@@ -13068,21 +13388,24 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 // GET /api/v1/pods
 func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListCoreV1PodForAllNamespacesParams) (res ListCoreV1PodForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1PodForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PodForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1PodForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/pods"
 
@@ -13273,21 +13596,24 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 // GET /api/v1/podtemplates
 func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, params ListCoreV1PodTemplateForAllNamespacesParams) (res ListCoreV1PodTemplateForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1PodTemplateForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1PodTemplateForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1PodTemplateForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/podtemplates"
 
@@ -13478,21 +13804,24 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 // GET /api/v1/replicationcontrollers
 func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Context, params ListCoreV1ReplicationControllerForAllNamespacesParams) (res ListCoreV1ReplicationControllerForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1ReplicationControllerForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ReplicationControllerForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1ReplicationControllerForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/replicationcontrollers"
 
@@ -13683,21 +14012,24 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 // GET /api/v1/resourcequotas
 func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, params ListCoreV1ResourceQuotaForAllNamespacesParams) (res ListCoreV1ResourceQuotaForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1ResourceQuotaForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ResourceQuotaForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1ResourceQuotaForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/resourcequotas"
 
@@ -13888,21 +14220,24 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 // GET /api/v1/secrets
 func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params ListCoreV1SecretForAllNamespacesParams) (res ListCoreV1SecretForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1SecretForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1SecretForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1SecretForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/secrets"
 
@@ -14093,21 +14428,24 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 // GET /api/v1/serviceaccounts
 func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, params ListCoreV1ServiceAccountForAllNamespacesParams) (res ListCoreV1ServiceAccountForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1ServiceAccountForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ServiceAccountForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1ServiceAccountForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/serviceaccounts"
 
@@ -14298,21 +14636,24 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 // GET /api/v1/services
 func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params ListCoreV1ServiceForAllNamespacesParams) (res ListCoreV1ServiceForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listCoreV1ServiceForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListCoreV1ServiceForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listCoreV1ServiceForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/services"
 
@@ -14503,21 +14844,24 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 // GET /apis/discovery.k8s.io/v1/endpointslices
 func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listDiscoveryV1EndpointSliceForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listDiscoveryV1EndpointSliceForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/endpointslices"
 
@@ -14708,21 +15052,24 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1NamespacedEndpointSliceParams) (res ListDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listDiscoveryV1NamespacedEndpointSlice"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1NamespacedEndpointSlice",
-		trace.WithAttributes(otelogen.OperationID("listDiscoveryV1NamespacedEndpointSlice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/namespaces/"
 	{
@@ -14928,21 +15275,24 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 // GET /apis/discovery.k8s.io/v1beta1/endpointslices
 func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.Context, params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) (res ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listDiscoveryV1beta1EndpointSliceForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listDiscoveryV1beta1EndpointSliceForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
 
@@ -15133,21 +15483,24 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
 func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ListDiscoveryV1beta1NamespacedEndpointSliceParams) (res ListDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listDiscoveryV1beta1NamespacedEndpointSlice"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice",
-		trace.WithAttributes(otelogen.OperationID("listDiscoveryV1beta1NamespacedEndpointSlice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/namespaces/"
 	{
@@ -15353,21 +15706,24 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 // GET /apis/events.k8s.io/v1/events
 func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params ListEventsV1EventForAllNamespacesParams) (res ListEventsV1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listEventsV1EventForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1EventForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listEventsV1EventForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/events"
 
@@ -15558,21 +15914,24 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEventsV1NamespacedEventParams) (res ListEventsV1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listEventsV1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("listEventsV1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/namespaces/"
 	{
@@ -15778,21 +16137,24 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 // GET /apis/events.k8s.io/v1beta1/events
 func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, params ListEventsV1beta1EventForAllNamespacesParams) (res ListEventsV1beta1EventForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listEventsV1beta1EventForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1beta1EventForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listEventsV1beta1EventForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/events"
 
@@ -15983,21 +16345,24 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
 func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params ListEventsV1beta1NamespacedEventParams) (res ListEventsV1beta1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listEventsV1beta1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListEventsV1beta1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("listEventsV1beta1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/namespaces/"
 	{
@@ -16203,21 +16568,24 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta1FlowSchemaParams) (res ListFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listFlowcontrolApiserverV1beta1FlowSchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema",
-		trace.WithAttributes(otelogen.OperationID("listFlowcontrolApiserverV1beta1FlowSchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
@@ -16408,21 +16776,24 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-		trace.WithAttributes(otelogen.OperationID("listFlowcontrolApiserverV1beta1PriorityLevelConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
@@ -16613,21 +16984,24 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
 func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ListFlowcontrolApiserverV1beta2FlowSchemaParams) (res ListFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listFlowcontrolApiserverV1beta2FlowSchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema",
-		trace.WithAttributes(otelogen.OperationID("listFlowcontrolApiserverV1beta2FlowSchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
@@ -16818,21 +17192,24 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
 func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-		trace.WithAttributes(otelogen.OperationID("listFlowcontrolApiserverV1beta2PriorityLevelConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
@@ -17023,21 +17400,24 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
 func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ListInternalApiserverV1alpha1StorageVersionParams) (res ListInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listInternalApiserverV1alpha1StorageVersion"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListInternalApiserverV1alpha1StorageVersion",
-		trace.WithAttributes(otelogen.OperationID("listInternalApiserverV1alpha1StorageVersion")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
@@ -17228,21 +17608,24 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 // GET /apis/networking.k8s.io/v1/ingressclasses
 func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNetworkingV1IngressClassParams) (res ListNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNetworkingV1IngressClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1IngressClass",
-		trace.WithAttributes(otelogen.OperationID("listNetworkingV1IngressClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
@@ -17433,21 +17816,24 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 // GET /apis/networking.k8s.io/v1/ingresses
 func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, params ListNetworkingV1IngressForAllNamespacesParams) (res ListNetworkingV1IngressForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNetworkingV1IngressForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1IngressForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listNetworkingV1IngressForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingresses"
 
@@ -17638,21 +18024,24 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
 func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params ListNetworkingV1NamespacedIngressParams) (res ListNetworkingV1NamespacedIngressRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNetworkingV1NamespacedIngress"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1NamespacedIngress",
-		trace.WithAttributes(otelogen.OperationID("listNetworkingV1NamespacedIngress")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
@@ -17858,21 +18247,24 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
 func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ListNetworkingV1NamespacedNetworkPolicyParams) (res ListNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNetworkingV1NamespacedNetworkPolicy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1NamespacedNetworkPolicy",
-		trace.WithAttributes(otelogen.OperationID("listNetworkingV1NamespacedNetworkPolicy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
@@ -18078,21 +18470,24 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 // GET /apis/networking.k8s.io/v1/networkpolicies
 func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Context, params ListNetworkingV1NetworkPolicyForAllNamespacesParams) (res ListNetworkingV1NetworkPolicyForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNetworkingV1NetworkPolicyForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listNetworkingV1NetworkPolicyForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/networkpolicies"
 
@@ -18283,21 +18678,24 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 // GET /apis/node.k8s.io/v1/runtimeclasses
 func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1RuntimeClassParams) (res ListNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNodeV1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNodeV1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("listNodeV1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
@@ -18488,21 +18886,24 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses
 func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNodeV1alpha1RuntimeClassParams) (res ListNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNodeV1alpha1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNodeV1alpha1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("listNodeV1alpha1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
@@ -18693,21 +19094,24 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses
 func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNodeV1beta1RuntimeClassParams) (res ListNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listNodeV1beta1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListNodeV1beta1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("listNodeV1beta1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
@@ -18898,21 +19302,24 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listPolicyV1NamespacedPodDisruptionBudget"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1NamespacedPodDisruptionBudget",
-		trace.WithAttributes(otelogen.OperationID("listPolicyV1NamespacedPodDisruptionBudget")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/namespaces/"
 	{
@@ -19118,21 +19525,24 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 // GET /apis/policy/v1/poddisruptionbudgets
 func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listPolicyV1PodDisruptionBudgetForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listPolicyV1PodDisruptionBudgetForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/poddisruptionbudgets"
 
@@ -19323,21 +19733,24 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listPolicyV1beta1NamespacedPodDisruptionBudget"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget",
-		trace.WithAttributes(otelogen.OperationID("listPolicyV1beta1NamespacedPodDisruptionBudget")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/namespaces/"
 	{
@@ -19543,21 +19956,24 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 // GET /apis/policy/v1beta1/poddisruptionbudgets
 func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx context.Context, params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) (res ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listPolicyV1beta1PodDisruptionBudgetForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/poddisruptionbudgets"
 
@@ -19748,21 +20164,24 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 // GET /apis/policy/v1beta1/podsecuritypolicies
 func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ListPolicyV1beta1PodSecurityPolicyParams) (res ListPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listPolicyV1beta1PodSecurityPolicy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPolicyV1beta1PodSecurityPolicy",
-		trace.WithAttributes(otelogen.OperationID("listPolicyV1beta1PodSecurityPolicy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
@@ -19953,21 +20372,24 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles
 func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleParams) (res ListRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listRbacAuthorizationV1ClusterRole"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1ClusterRole",
-		trace.WithAttributes(otelogen.OperationID("listRbacAuthorizationV1ClusterRole")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
@@ -20158,21 +20580,24 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
 func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ListRbacAuthorizationV1ClusterRoleBindingParams) (res ListRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listRbacAuthorizationV1ClusterRoleBinding"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1ClusterRoleBinding",
-		trace.WithAttributes(otelogen.OperationID("listRbacAuthorizationV1ClusterRoleBinding")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
@@ -20363,21 +20788,24 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
 func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleParams) (res ListRbacAuthorizationV1NamespacedRoleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listRbacAuthorizationV1NamespacedRole"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1NamespacedRole",
-		trace.WithAttributes(otelogen.OperationID("listRbacAuthorizationV1NamespacedRole")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
@@ -20583,21 +21011,24 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
 func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ListRbacAuthorizationV1NamespacedRoleBindingParams) (res ListRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listRbacAuthorizationV1NamespacedRoleBinding"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding",
-		trace.WithAttributes(otelogen.OperationID("listRbacAuthorizationV1NamespacedRoleBinding")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
@@ -20803,21 +21234,24 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 // GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) (res ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listRbacAuthorizationV1RoleBindingForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listRbacAuthorizationV1RoleBindingForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
 
@@ -21008,21 +21442,24 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 // GET /apis/rbac.authorization.k8s.io/v1/roles
 func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context, params ListRbacAuthorizationV1RoleForAllNamespacesParams) (res ListRbacAuthorizationV1RoleForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listRbacAuthorizationV1RoleForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listRbacAuthorizationV1RoleForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/roles"
 
@@ -21213,21 +21650,24 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 // GET /apis/scheduling.k8s.io/v1/priorityclasses
 func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListSchedulingV1PriorityClassParams) (res ListSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listSchedulingV1PriorityClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListSchedulingV1PriorityClass",
-		trace.WithAttributes(otelogen.OperationID("listSchedulingV1PriorityClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
@@ -21418,21 +21858,24 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 // GET /apis/storage.k8s.io/v1/csidrivers
 func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV1CSIDriverParams) (res ListStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1CSIDriver"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1CSIDriver",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1CSIDriver")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
@@ -21623,21 +22066,24 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 // GET /apis/storage.k8s.io/v1/csinodes
 func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1CSINodeParams) (res ListStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1CSINode"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1CSINode",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1CSINode")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
@@ -21828,21 +22274,24 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 // GET /apis/storage.k8s.io/v1/storageclasses
 func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStorageV1StorageClassParams) (res ListStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1StorageClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1StorageClass",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1StorageClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
@@ -22033,21 +22482,24 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 // GET /apis/storage.k8s.io/v1/volumeattachments
 func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListStorageV1VolumeAttachmentParams) (res ListStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1VolumeAttachment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1VolumeAttachment",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1VolumeAttachment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
@@ -22238,21 +22690,24 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 // GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1alpha1CSIStorageCapacityForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1alpha1CSIStorageCapacityForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
 
@@ -22443,21 +22898,24 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ListStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1alpha1NamespacedCSIStorageCapacity"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1alpha1NamespacedCSIStorageCapacity")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/namespaces/"
 	{
@@ -22663,21 +23121,24 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 // GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx context.Context, params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) (res ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1beta1CSIStorageCapacityForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1beta1CSIStorageCapacityForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
 
@@ -22868,21 +23329,24 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
 func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ListStorageV1beta1NamespacedCSIStorageCapacityParams) (res ListStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("listStorageV1beta1NamespacedCSIStorageCapacity"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity",
-		trace.WithAttributes(otelogen.OperationID("listStorageV1beta1NamespacedCSIStorageCapacity")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/namespaces/"
 	{
@@ -23086,21 +23550,24 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 // GET /logs/{logpath}
 func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams) (res LogFileHandlerUnauthorized, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("logFileHandler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "LogFileHandler",
-		trace.WithAttributes(otelogen.OperationID("logFileHandler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logs/"
 	{
@@ -23140,21 +23607,24 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 // GET /logs/
 func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandlerUnauthorized, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("logFileListHandler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "LogFileListHandler",
-		trace.WithAttributes(otelogen.OperationID("logFileListHandler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logs/"
 
@@ -23182,21 +23652,24 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAdmissionregistrationV1MutatingWebhookConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
-		trace.WithAttributes(otelogen.OperationID("readAdmissionregistrationV1MutatingWebhookConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/"
 	{
@@ -23257,21 +23730,24 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAdmissionregistrationV1ValidatingWebhookConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
-		trace.WithAttributes(otelogen.OperationID("readAdmissionregistrationV1ValidatingWebhookConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/"
 	{
@@ -23332,21 +23808,24 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
 func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionParams) (res ReadApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readApiextensionsV1CustomResourceDefinition"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiextensionsV1CustomResourceDefinition",
-		trace.WithAttributes(otelogen.OperationID("readApiextensionsV1CustomResourceDefinition")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
 	{
@@ -23407,21 +23886,24 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.Context, params ReadApiextensionsV1CustomResourceDefinitionStatusParams) (res ReadApiextensionsV1CustomResourceDefinitionStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readApiextensionsV1CustomResourceDefinitionStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus",
-		trace.WithAttributes(otelogen.OperationID("readApiextensionsV1CustomResourceDefinitionStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
 	{
@@ -23483,21 +23965,24 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
 func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params ReadApiregistrationV1APIServiceParams) (res ReadApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readApiregistrationV1APIService"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiregistrationV1APIService",
-		trace.WithAttributes(otelogen.OperationID("readApiregistrationV1APIService")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices/"
 	{
@@ -23558,21 +24043,24 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, params ReadApiregistrationV1APIServiceStatusParams) (res ReadApiregistrationV1APIServiceStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readApiregistrationV1APIServiceStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadApiregistrationV1APIServiceStatus",
-		trace.WithAttributes(otelogen.OperationID("readApiregistrationV1APIServiceStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices/"
 	{
@@ -23634,21 +24122,24 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, params ReadAppsV1NamespacedControllerRevisionParams) (res ReadAppsV1NamespacedControllerRevisionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedControllerRevision"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedControllerRevision",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedControllerRevision")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -23724,21 +24215,24 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadAppsV1NamespacedDaemonSetParams) (res ReadAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedDaemonSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDaemonSet",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedDaemonSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -23814,21 +24308,24 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params ReadAppsV1NamespacedDaemonSetStatusParams) (res ReadAppsV1NamespacedDaemonSetStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedDaemonSetStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDaemonSetStatus",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedDaemonSetStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -23905,21 +24402,24 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
 func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params ReadAppsV1NamespacedDeploymentParams) (res ReadAppsV1NamespacedDeploymentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedDeployment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDeployment",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedDeployment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -23995,21 +24495,24 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params ReadAppsV1NamespacedDeploymentScaleParams) (res ReadAppsV1NamespacedDeploymentScaleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedDeploymentScale"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDeploymentScale",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedDeploymentScale")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24086,21 +24589,24 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, params ReadAppsV1NamespacedDeploymentStatusParams) (res ReadAppsV1NamespacedDeploymentStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedDeploymentStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedDeploymentStatus",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedDeploymentStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24177,21 +24683,24 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
 func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params ReadAppsV1NamespacedReplicaSetParams) (res ReadAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedReplicaSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedReplicaSet",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedReplicaSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24267,21 +24776,24 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params ReadAppsV1NamespacedReplicaSetScaleParams) (res ReadAppsV1NamespacedReplicaSetScaleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedReplicaSetScale"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedReplicaSetScale",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedReplicaSetScale")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24358,21 +24870,24 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, params ReadAppsV1NamespacedReplicaSetStatusParams) (res ReadAppsV1NamespacedReplicaSetStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedReplicaSetStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedReplicaSetStatus",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedReplicaSetStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24449,21 +24964,24 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params ReadAppsV1NamespacedStatefulSetParams) (res ReadAppsV1NamespacedStatefulSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedStatefulSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedStatefulSet",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedStatefulSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24539,21 +25057,24 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, params ReadAppsV1NamespacedStatefulSetScaleParams) (res ReadAppsV1NamespacedStatefulSetScaleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedStatefulSetScale"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedStatefulSetScale",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedStatefulSetScale")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24630,21 +25151,24 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, params ReadAppsV1NamespacedStatefulSetStatusParams) (res ReadAppsV1NamespacedStatefulSetStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAppsV1NamespacedStatefulSetStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAppsV1NamespacedStatefulSetStatus",
-		trace.WithAttributes(otelogen.OperationID("readAppsV1NamespacedStatefulSetStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
@@ -24721,21 +25245,24 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/namespaces/"
 	{
@@ -24811,21 +25338,24 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
-		trace.WithAttributes(otelogen.OperationID("readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/namespaces/"
 	{
@@ -24902,21 +25432,24 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
 	{
@@ -24992,21 +25525,24 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
-		trace.WithAttributes(otelogen.OperationID("readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
 	{
@@ -25083,21 +25619,24 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
 	{
@@ -25173,21 +25712,24 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx context.Context, params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) (res ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
-		trace.WithAttributes(otelogen.OperationID("readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
 	{
@@ -25264,21 +25806,24 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBatchV1NamespacedCronJobParams) (res ReadBatchV1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readBatchV1NamespacedCronJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedCronJob",
-		trace.WithAttributes(otelogen.OperationID("readBatchV1NamespacedCronJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
@@ -25354,21 +25899,24 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1NamespacedCronJobStatusParams) (res ReadBatchV1NamespacedCronJobStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readBatchV1NamespacedCronJobStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedCronJobStatus",
-		trace.WithAttributes(otelogen.OperationID("readBatchV1NamespacedCronJobStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
@@ -25445,21 +25993,24 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
 func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV1NamespacedJobParams) (res ReadBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readBatchV1NamespacedJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedJob",
-		trace.WithAttributes(otelogen.OperationID("readBatchV1NamespacedJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
@@ -25535,21 +26086,24 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params ReadBatchV1NamespacedJobStatusParams) (res ReadBatchV1NamespacedJobStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readBatchV1NamespacedJobStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1NamespacedJobStatus",
-		trace.WithAttributes(otelogen.OperationID("readBatchV1NamespacedJobStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
@@ -25626,21 +26180,24 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobParams) (res ReadBatchV1beta1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readBatchV1beta1NamespacedCronJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1beta1NamespacedCronJob",
-		trace.WithAttributes(otelogen.OperationID("readBatchV1beta1NamespacedCronJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/namespaces/"
 	{
@@ -25716,21 +26273,24 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, params ReadBatchV1beta1NamespacedCronJobStatusParams) (res ReadBatchV1beta1NamespacedCronJobStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readBatchV1beta1NamespacedCronJobStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadBatchV1beta1NamespacedCronJobStatus",
-		trace.WithAttributes(otelogen.OperationID("readBatchV1beta1NamespacedCronJobStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/namespaces/"
 	{
@@ -25807,21 +26367,24 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
 func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestParams) (res ReadCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCertificatesV1CertificateSigningRequest"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCertificatesV1CertificateSigningRequest",
-		trace.WithAttributes(otelogen.OperationID("readCertificatesV1CertificateSigningRequest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
@@ -25882,21 +26445,24 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestApprovalParams) (res ReadCertificatesV1CertificateSigningRequestApprovalRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCertificatesV1CertificateSigningRequestApproval"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCertificatesV1CertificateSigningRequestApproval",
-		trace.WithAttributes(otelogen.OperationID("readCertificatesV1CertificateSigningRequestApproval")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
@@ -25958,21 +26524,24 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.Context, params ReadCertificatesV1CertificateSigningRequestStatusParams) (res ReadCertificatesV1CertificateSigningRequestStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCertificatesV1CertificateSigningRequestStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCertificatesV1CertificateSigningRequestStatus",
-		trace.WithAttributes(otelogen.OperationID("readCertificatesV1CertificateSigningRequestStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
@@ -26034,21 +26603,24 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params ReadCoordinationV1NamespacedLeaseParams) (res ReadCoordinationV1NamespacedLeaseRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoordinationV1NamespacedLease"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoordinationV1NamespacedLease",
-		trace.WithAttributes(otelogen.OperationID("readCoordinationV1NamespacedLease")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/namespaces/"
 	{
@@ -26124,21 +26696,24 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 // GET /api/v1/componentstatuses/{name}
 func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV1ComponentStatusParams) (res ReadCoreV1ComponentStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1ComponentStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1ComponentStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1ComponentStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/componentstatuses/"
 	{
@@ -26199,21 +26774,24 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 // GET /api/v1/namespaces/{name}
 func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1NamespaceParams) (res ReadCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1Namespace"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1Namespace",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1Namespace")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26274,21 +26852,24 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 // GET /api/v1/namespaces/{name}/status
 func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV1NamespaceStatusParams) (res ReadCoreV1NamespaceStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespaceStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespaceStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespaceStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26350,21 +26931,24 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 // GET /api/v1/namespaces/{namespace}/configmaps/{name}
 func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadCoreV1NamespacedConfigMapParams) (res ReadCoreV1NamespacedConfigMapRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedConfigMap"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedConfigMap",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedConfigMap")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26440,21 +27024,24 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 // GET /api/v1/namespaces/{namespace}/endpoints/{name}
 func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadCoreV1NamespacedEndpointsParams) (res ReadCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedEndpoints"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedEndpoints",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedEndpoints")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26530,21 +27117,24 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 // GET /api/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV1NamespacedEventParams) (res ReadCoreV1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26620,21 +27210,24 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 // GET /api/v1/namespaces/{namespace}/limitranges/{name}
 func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params ReadCoreV1NamespacedLimitRangeParams) (res ReadCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedLimitRange"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedLimitRange",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedLimitRange")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26710,21 +27303,24 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimParams) (res ReadCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaim"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaim")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26800,21 +27396,24 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Context, params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) (res ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaimStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedPersistentVolumeClaimStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26891,21 +27490,24 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 // GET /api/v1/namespaces/{namespace}/pods/{name}
 func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1NamespacedPodParams) (res ReadCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedPod"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPod",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedPod")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -26981,21 +27583,24 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 // GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context, params ReadCoreV1NamespacedPodEphemeralcontainersParams) (res ReadCoreV1NamespacedPodEphemeralcontainersRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedPodEphemeralcontainers"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedPodEphemeralcontainers")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27072,21 +27677,24 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 // GET /api/v1/namespaces/{namespace}/pods/{name}/log
 func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCoreV1NamespacedPodLogParams) (res ReadCoreV1NamespacedPodLogRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedPodLog"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodLog",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedPodLog")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27291,21 +27899,24 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 // GET /api/v1/namespaces/{namespace}/pods/{name}/status
 func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadCoreV1NamespacedPodStatusParams) (res ReadCoreV1NamespacedPodStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedPodStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedPodStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27382,21 +27993,24 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 // GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params ReadCoreV1NamespacedPodTemplateParams) (res ReadCoreV1NamespacedPodTemplateRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedPodTemplate"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedPodTemplate",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedPodTemplate")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27472,21 +28086,24 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerParams) (res ReadCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedReplicationController"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedReplicationController",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedReplicationController")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27562,21 +28179,24 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerScaleParams) (res ReadCoreV1NamespacedReplicationControllerScaleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedReplicationControllerScale"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedReplicationControllerScale",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedReplicationControllerScale")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27653,21 +28273,24 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Context, params ReadCoreV1NamespacedReplicationControllerStatusParams) (res ReadCoreV1NamespacedReplicationControllerStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedReplicationControllerStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedReplicationControllerStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedReplicationControllerStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27744,21 +28367,24 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaParams) (res ReadCoreV1NamespacedResourceQuotaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedResourceQuota"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedResourceQuota",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedResourceQuota")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27834,21 +28460,24 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, params ReadCoreV1NamespacedResourceQuotaStatusParams) (res ReadCoreV1NamespacedResourceQuotaStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedResourceQuotaStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedResourceQuotaStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedResourceQuotaStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -27925,21 +28554,24 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 // GET /api/v1/namespaces/{namespace}/secrets/{name}
 func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCoreV1NamespacedSecretParams) (res ReadCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedSecret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedSecret",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedSecret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -28015,21 +28647,24 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 // GET /api/v1/namespaces/{namespace}/services/{name}
 func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCoreV1NamespacedServiceParams) (res ReadCoreV1NamespacedServiceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedService"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedService",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedService")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -28105,21 +28740,24 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 // GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params ReadCoreV1NamespacedServiceAccountParams) (res ReadCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedServiceAccount"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedServiceAccount",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedServiceAccount")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -28195,21 +28833,24 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 // GET /api/v1/namespaces/{namespace}/services/{name}/status
 func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params ReadCoreV1NamespacedServiceStatusParams) (res ReadCoreV1NamespacedServiceStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NamespacedServiceStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NamespacedServiceStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NamespacedServiceStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces/"
 	{
@@ -28286,21 +28927,24 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 // GET /api/v1/nodes/{name}
 func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams) (res ReadCoreV1NodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1Node"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1Node",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1Node")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes/"
 	{
@@ -28361,21 +29005,24 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 // GET /api/v1/nodes/{name}/status
 func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1NodeStatusParams) (res ReadCoreV1NodeStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1NodeStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1NodeStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1NodeStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes/"
 	{
@@ -28437,21 +29084,24 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 // GET /api/v1/persistentvolumes/{name}
 func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCoreV1PersistentVolumeParams) (res ReadCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1PersistentVolume"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1PersistentVolume",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1PersistentVolume")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes/"
 	{
@@ -28512,21 +29162,24 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 // GET /api/v1/persistentvolumes/{name}/status
 func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params ReadCoreV1PersistentVolumeStatusParams) (res ReadCoreV1PersistentVolumeStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readCoreV1PersistentVolumeStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadCoreV1PersistentVolumeStatus",
-		trace.WithAttributes(otelogen.OperationID("readCoreV1PersistentVolumeStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes/"
 	{
@@ -28588,21 +29241,24 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1NamespacedEndpointSliceParams) (res ReadDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readDiscoveryV1NamespacedEndpointSlice"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadDiscoveryV1NamespacedEndpointSlice",
-		trace.WithAttributes(otelogen.OperationID("readDiscoveryV1NamespacedEndpointSlice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/namespaces/"
 	{
@@ -28678,21 +29334,24 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) (res ReadDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readDiscoveryV1beta1NamespacedEndpointSlice"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice",
-		trace.WithAttributes(otelogen.OperationID("readDiscoveryV1beta1NamespacedEndpointSlice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/namespaces/"
 	{
@@ -28768,21 +29427,24 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEventsV1NamespacedEventParams) (res ReadEventsV1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readEventsV1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadEventsV1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("readEventsV1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/namespaces/"
 	{
@@ -28858,21 +29520,24 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params ReadEventsV1beta1NamespacedEventParams) (res ReadEventsV1beta1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readEventsV1beta1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadEventsV1beta1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("readEventsV1beta1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/namespaces/"
 	{
@@ -28948,21 +29613,24 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
 	{
@@ -29023,21 +29691,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchemaStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta1FlowSchemaStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
 	{
@@ -29099,21 +29770,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
 	{
@@ -29174,21 +29848,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
 	{
@@ -29250,21 +29927,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
 	{
@@ -29325,21 +30005,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) (res ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchemaStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta2FlowSchemaStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
 	{
@@ -29401,21 +30084,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
 	{
@@ -29476,21 +30162,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx context.Context, params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) (res ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
-		trace.WithAttributes(otelogen.OperationID("readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
 	{
@@ -29552,21 +30241,24 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionParams) (res ReadInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersion"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadInternalApiserverV1alpha1StorageVersion",
-		trace.WithAttributes(otelogen.OperationID("readInternalApiserverV1alpha1StorageVersion")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
 	{
@@ -29627,21 +30319,24 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.Context, params ReadInternalApiserverV1alpha1StorageVersionStatusParams) (res ReadInternalApiserverV1alpha1StorageVersionStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readInternalApiserverV1alpha1StorageVersionStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus",
-		trace.WithAttributes(otelogen.OperationID("readInternalApiserverV1alpha1StorageVersionStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
 	{
@@ -29703,21 +30398,24 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 // GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNetworkingV1IngressClassParams) (res ReadNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readNetworkingV1IngressClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1IngressClass",
-		trace.WithAttributes(otelogen.OperationID("readNetworkingV1IngressClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses/"
 	{
@@ -29778,21 +30476,24 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
 func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params ReadNetworkingV1NamespacedIngressParams) (res ReadNetworkingV1NamespacedIngressRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readNetworkingV1NamespacedIngress"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1NamespacedIngress",
-		trace.WithAttributes(otelogen.OperationID("readNetworkingV1NamespacedIngress")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
@@ -29868,21 +30569,24 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, params ReadNetworkingV1NamespacedIngressStatusParams) (res ReadNetworkingV1NamespacedIngressStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readNetworkingV1NamespacedIngressStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1NamespacedIngressStatus",
-		trace.WithAttributes(otelogen.OperationID("readNetworkingV1NamespacedIngressStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
@@ -29959,21 +30663,24 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params ReadNetworkingV1NamespacedNetworkPolicyParams) (res ReadNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readNetworkingV1NamespacedNetworkPolicy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNetworkingV1NamespacedNetworkPolicy",
-		trace.WithAttributes(otelogen.OperationID("readNetworkingV1NamespacedNetworkPolicy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
@@ -30049,21 +30756,24 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 // GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1RuntimeClassParams) (res ReadNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readNodeV1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNodeV1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("readNodeV1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses/"
 	{
@@ -30124,21 +30834,24 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNodeV1alpha1RuntimeClassParams) (res ReadNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readNodeV1alpha1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNodeV1alpha1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("readNodeV1alpha1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses/"
 	{
@@ -30199,21 +30912,24 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNodeV1beta1RuntimeClassParams) (res ReadNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readNodeV1beta1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadNodeV1beta1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("readNodeV1beta1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses/"
 	{
@@ -30274,21 +30990,24 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudget"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget",
-		trace.WithAttributes(otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudget")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/namespaces/"
 	{
@@ -30364,21 +31083,24 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudgetStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
-		trace.WithAttributes(otelogen.OperationID("readPolicyV1NamespacedPodDisruptionBudgetStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/namespaces/"
 	{
@@ -30455,21 +31177,24 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudget"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
-		trace.WithAttributes(otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudget")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/namespaces/"
 	{
@@ -30545,21 +31270,24 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx context.Context, params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) (res ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
-		trace.WithAttributes(otelogen.OperationID("readPolicyV1beta1NamespacedPodDisruptionBudgetStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/namespaces/"
 	{
@@ -30636,21 +31364,24 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 // GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params ReadPolicyV1beta1PodSecurityPolicyParams) (res ReadPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readPolicyV1beta1PodSecurityPolicy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPolicyV1beta1PodSecurityPolicy",
-		trace.WithAttributes(otelogen.OperationID("readPolicyV1beta1PodSecurityPolicy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies/"
 	{
@@ -30711,21 +31442,24 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleParams) (res ReadRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readRbacAuthorizationV1ClusterRole"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1ClusterRole",
-		trace.WithAttributes(otelogen.OperationID("readRbacAuthorizationV1ClusterRole")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles/"
 	{
@@ -30786,21 +31520,24 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1ClusterRoleBindingParams) (res ReadRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readRbacAuthorizationV1ClusterRoleBinding"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding",
-		trace.WithAttributes(otelogen.OperationID("readRbacAuthorizationV1ClusterRoleBinding")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/"
 	{
@@ -30861,21 +31598,24 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleParams) (res ReadRbacAuthorizationV1NamespacedRoleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readRbacAuthorizationV1NamespacedRole"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1NamespacedRole",
-		trace.WithAttributes(otelogen.OperationID("readRbacAuthorizationV1NamespacedRole")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
@@ -30951,21 +31691,24 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params ReadRbacAuthorizationV1NamespacedRoleBindingParams) (res ReadRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readRbacAuthorizationV1NamespacedRoleBinding"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding",
-		trace.WithAttributes(otelogen.OperationID("readRbacAuthorizationV1NamespacedRoleBinding")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
@@ -31041,21 +31784,24 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 // GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadSchedulingV1PriorityClassParams) (res ReadSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readSchedulingV1PriorityClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadSchedulingV1PriorityClass",
-		trace.WithAttributes(otelogen.OperationID("readSchedulingV1PriorityClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses/"
 	{
@@ -31116,21 +31862,24 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 // GET /apis/storage.k8s.io/v1/csidrivers/{name}
 func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV1CSIDriverParams) (res ReadStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readStorageV1CSIDriver"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1CSIDriver",
-		trace.WithAttributes(otelogen.OperationID("readStorageV1CSIDriver")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers/"
 	{
@@ -31191,21 +31940,24 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 // GET /apis/storage.k8s.io/v1/csinodes/{name}
 func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1CSINodeParams) (res ReadStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readStorageV1CSINode"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1CSINode",
-		trace.WithAttributes(otelogen.OperationID("readStorageV1CSINode")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes/"
 	{
@@ -31266,21 +32018,24 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 // GET /apis/storage.k8s.io/v1/storageclasses/{name}
 func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStorageV1StorageClassParams) (res ReadStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readStorageV1StorageClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1StorageClass",
-		trace.WithAttributes(otelogen.OperationID("readStorageV1StorageClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses/"
 	{
@@ -31341,21 +32096,24 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}
 func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadStorageV1VolumeAttachmentParams) (res ReadStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readStorageV1VolumeAttachment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1VolumeAttachment",
-		trace.WithAttributes(otelogen.OperationID("readStorageV1VolumeAttachment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments/"
 	{
@@ -31416,21 +32174,24 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params ReadStorageV1VolumeAttachmentStatusParams) (res ReadStorageV1VolumeAttachmentStatusRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readStorageV1VolumeAttachmentStatus"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1VolumeAttachmentStatus",
-		trace.WithAttributes(otelogen.OperationID("readStorageV1VolumeAttachmentStatus")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments/"
 	{
@@ -31492,21 +32253,24 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) (res ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readStorageV1alpha1NamespacedCSIStorageCapacity"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
-		trace.WithAttributes(otelogen.OperationID("readStorageV1alpha1NamespacedCSIStorageCapacity")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/namespaces/"
 	{
@@ -31582,21 +32346,24 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) (res ReadStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("readStorageV1beta1NamespacedCSIStorageCapacity"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity",
-		trace.WithAttributes(otelogen.OperationID("readStorageV1beta1NamespacedCSIStorageCapacity")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/namespaces/"
 	{
@@ -31674,21 +32441,24 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
-		trace.WithAttributes(otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/"
 	{
@@ -31894,21 +32664,24 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfigurationList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
-		trace.WithAttributes(otelogen.OperationID("watchAdmissionregistrationV1MutatingWebhookConfigurationList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
 
@@ -32101,21 +32874,24 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
-		trace.WithAttributes(otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/"
 	{
@@ -32321,21 +33097,24 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
 func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx context.Context, params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) (res WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfigurationList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
-		trace.WithAttributes(otelogen.OperationID("watchAdmissionregistrationV1ValidatingWebhookConfigurationList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
 
@@ -32527,21 +33306,24 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionParams) (res WatchApiextensionsV1CustomResourceDefinitionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinition"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiextensionsV1CustomResourceDefinition",
-		trace.WithAttributes(otelogen.OperationID("watchApiextensionsV1CustomResourceDefinition")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/"
 	{
@@ -32747,21 +33529,24 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
 func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Context, params WatchApiextensionsV1CustomResourceDefinitionListParams) (res WatchApiextensionsV1CustomResourceDefinitionListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchApiextensionsV1CustomResourceDefinitionList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiextensionsV1CustomResourceDefinitionList",
-		trace.WithAttributes(otelogen.OperationID("watchApiextensionsV1CustomResourceDefinitionList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
 
@@ -32953,21 +33738,24 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params WatchApiregistrationV1APIServiceParams) (res WatchApiregistrationV1APIServiceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchApiregistrationV1APIService"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiregistrationV1APIService",
-		trace.WithAttributes(otelogen.OperationID("watchApiregistrationV1APIService")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices/"
 	{
@@ -33173,21 +33961,24 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, params WatchApiregistrationV1APIServiceListParams) (res WatchApiregistrationV1APIServiceListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchApiregistrationV1APIServiceList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchApiregistrationV1APIServiceList",
-		trace.WithAttributes(otelogen.OperationID("watchApiregistrationV1APIServiceList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
 
@@ -33379,21 +34170,24 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 // GET /apis/apps/v1/watch/controllerrevisions
 func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.Context, params WatchAppsV1ControllerRevisionListForAllNamespacesParams) (res WatchAppsV1ControllerRevisionListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1ControllerRevisionListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1ControllerRevisionListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/controllerrevisions"
 
@@ -33585,21 +34379,24 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 // GET /apis/apps/v1/watch/daemonsets
 func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, params WatchAppsV1DaemonSetListForAllNamespacesParams) (res WatchAppsV1DaemonSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1DaemonSetListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1DaemonSetListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1DaemonSetListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/daemonsets"
 
@@ -33791,21 +34588,24 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 // GET /apis/apps/v1/watch/deployments
 func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, params WatchAppsV1DeploymentListForAllNamespacesParams) (res WatchAppsV1DeploymentListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1DeploymentListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1DeploymentListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1DeploymentListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/deployments"
 
@@ -33997,21 +34797,24 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionParams) (res WatchAppsV1NamespacedControllerRevisionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedControllerRevision"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedControllerRevision",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedControllerRevision")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -34232,21 +35035,24 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context, params WatchAppsV1NamespacedControllerRevisionListParams) (res WatchAppsV1NamespacedControllerRevisionListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedControllerRevisionList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedControllerRevisionList",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedControllerRevisionList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -34453,21 +35259,24 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params WatchAppsV1NamespacedDaemonSetParams) (res WatchAppsV1NamespacedDaemonSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedDaemonSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDaemonSet",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedDaemonSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -34688,21 +35497,24 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
 func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params WatchAppsV1NamespacedDaemonSetListParams) (res WatchAppsV1NamespacedDaemonSetListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedDaemonSetList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDaemonSetList",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedDaemonSetList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -34909,21 +35721,24 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params WatchAppsV1NamespacedDeploymentParams) (res WatchAppsV1NamespacedDeploymentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedDeployment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDeployment",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedDeployment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -35144,21 +35959,24 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params WatchAppsV1NamespacedDeploymentListParams) (res WatchAppsV1NamespacedDeploymentListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedDeploymentList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedDeploymentList",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedDeploymentList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -35365,21 +36183,24 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params WatchAppsV1NamespacedReplicaSetParams) (res WatchAppsV1NamespacedReplicaSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedReplicaSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedReplicaSet",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedReplicaSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -35600,21 +36421,24 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params WatchAppsV1NamespacedReplicaSetListParams) (res WatchAppsV1NamespacedReplicaSetListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedReplicaSetList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedReplicaSetList",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedReplicaSetList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -35821,21 +36645,24 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params WatchAppsV1NamespacedStatefulSetParams) (res WatchAppsV1NamespacedStatefulSetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedStatefulSet"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedStatefulSet",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedStatefulSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -36056,21 +36883,24 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, params WatchAppsV1NamespacedStatefulSetListParams) (res WatchAppsV1NamespacedStatefulSetListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1NamespacedStatefulSetList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1NamespacedStatefulSetList",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1NamespacedStatefulSetList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
@@ -36277,21 +37107,24 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 // GET /apis/apps/v1/watch/replicasets
 func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, params WatchAppsV1ReplicaSetListForAllNamespacesParams) (res WatchAppsV1ReplicaSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1ReplicaSetListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1ReplicaSetListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/replicasets"
 
@@ -36483,21 +37316,24 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 // GET /apis/apps/v1/watch/statefulsets
 func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context, params WatchAppsV1StatefulSetListForAllNamespacesParams) (res WatchAppsV1StatefulSetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAppsV1StatefulSetListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAppsV1StatefulSetListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAppsV1StatefulSetListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/statefulsets"
 
@@ -36689,21 +37525,24 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
 
@@ -36895,21 +37734,24 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/watch/namespaces/"
 	{
@@ -37130,21 +37972,24 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV1NamespacedHorizontalPodAutoscalerList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/watch/namespaces/"
 	{
@@ -37351,21 +38196,24 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
 
@@ -37557,21 +38405,24 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/watch/namespaces/"
 	{
@@ -37792,21 +38643,24 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/watch/namespaces/"
 	{
@@ -38013,21 +38867,24 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx context.Context, params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) (res WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
 
@@ -38219,21 +39076,24 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/watch/namespaces/"
 	{
@@ -38454,21 +39314,24 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx context.Context, params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) (res WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
-		trace.WithAttributes(otelogen.OperationID("watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/watch/namespaces/"
 	{
@@ -38675,21 +39538,24 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 // GET /apis/batch/v1/watch/cronjobs
 func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1CronJobListForAllNamespacesParams) (res WatchBatchV1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1CronJobListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1CronJobListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1CronJobListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/cronjobs"
 
@@ -38881,21 +39747,24 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 // GET /apis/batch/v1/watch/jobs
 func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params WatchBatchV1JobListForAllNamespacesParams) (res WatchBatchV1JobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1JobListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1JobListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1JobListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/jobs"
 
@@ -39087,21 +39956,24 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params WatchBatchV1NamespacedCronJobParams) (res WatchBatchV1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1NamespacedCronJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedCronJob",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1NamespacedCronJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
@@ -39322,21 +40194,24 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params WatchBatchV1NamespacedCronJobListParams) (res WatchBatchV1NamespacedCronJobListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1NamespacedCronJobList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedCronJobList",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1NamespacedCronJobList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
@@ -39543,21 +40418,24 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatchV1NamespacedJobParams) (res WatchBatchV1NamespacedJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1NamespacedJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedJob",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1NamespacedJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
@@ -39778,21 +40656,24 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
 func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params WatchBatchV1NamespacedJobListParams) (res WatchBatchV1NamespacedJobListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1NamespacedJobList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1NamespacedJobList",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1NamespacedJobList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
@@ -39999,21 +40880,24 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 // GET /apis/batch/v1beta1/watch/cronjobs
 func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Context, params WatchBatchV1beta1CronJobListForAllNamespacesParams) (res WatchBatchV1beta1CronJobListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1beta1CronJobListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1beta1CronJobListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/watch/cronjobs"
 
@@ -40205,21 +41089,24 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobParams) (res WatchBatchV1beta1NamespacedCronJobRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1beta1NamespacedCronJob"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1beta1NamespacedCronJob",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1beta1NamespacedCronJob")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/watch/namespaces/"
 	{
@@ -40440,21 +41327,24 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
 func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, params WatchBatchV1beta1NamespacedCronJobListParams) (res WatchBatchV1beta1NamespacedCronJobListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchBatchV1beta1NamespacedCronJobList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchBatchV1beta1NamespacedCronJobList",
-		trace.WithAttributes(otelogen.OperationID("watchBatchV1beta1NamespacedCronJobList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/watch/namespaces/"
 	{
@@ -40662,21 +41552,24 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestParams) (res WatchCertificatesV1CertificateSigningRequestRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCertificatesV1CertificateSigningRequest"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCertificatesV1CertificateSigningRequest",
-		trace.WithAttributes(otelogen.OperationID("watchCertificatesV1CertificateSigningRequest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/"
 	{
@@ -40882,21 +41775,24 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
 func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Context, params WatchCertificatesV1CertificateSigningRequestListParams) (res WatchCertificatesV1CertificateSigningRequestListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCertificatesV1CertificateSigningRequestList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCertificatesV1CertificateSigningRequestList",
-		trace.WithAttributes(otelogen.OperationID("watchCertificatesV1CertificateSigningRequestList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
 
@@ -41088,21 +41984,24 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 // GET /apis/coordination.k8s.io/v1/watch/leases
 func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Context, params WatchCoordinationV1LeaseListForAllNamespacesParams) (res WatchCoordinationV1LeaseListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoordinationV1LeaseListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoordinationV1LeaseListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoordinationV1LeaseListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/watch/leases"
 
@@ -41294,21 +42193,24 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params WatchCoordinationV1NamespacedLeaseParams) (res WatchCoordinationV1NamespacedLeaseRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoordinationV1NamespacedLease"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoordinationV1NamespacedLease",
-		trace.WithAttributes(otelogen.OperationID("watchCoordinationV1NamespacedLease")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/watch/namespaces/"
 	{
@@ -41529,21 +42431,24 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
 func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, params WatchCoordinationV1NamespacedLeaseListParams) (res WatchCoordinationV1NamespacedLeaseListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoordinationV1NamespacedLeaseList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoordinationV1NamespacedLeaseList",
-		trace.WithAttributes(otelogen.OperationID("watchCoordinationV1NamespacedLeaseList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/watch/namespaces/"
 	{
@@ -41750,21 +42655,24 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 // GET /api/v1/watch/configmaps
 func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, params WatchCoreV1ConfigMapListForAllNamespacesParams) (res WatchCoreV1ConfigMapListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1ConfigMapListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ConfigMapListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1ConfigMapListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/configmaps"
 
@@ -41956,21 +42864,24 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 // GET /api/v1/watch/endpoints
 func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, params WatchCoreV1EndpointsListForAllNamespacesParams) (res WatchCoreV1EndpointsListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1EndpointsListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1EndpointsListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1EndpointsListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/endpoints"
 
@@ -42162,21 +43073,24 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 // GET /api/v1/watch/events
 func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, params WatchCoreV1EventListForAllNamespacesParams) (res WatchCoreV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1EventListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1EventListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1EventListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/events"
 
@@ -42368,21 +43282,24 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 // GET /api/v1/watch/limitranges
 func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, params WatchCoreV1LimitRangeListForAllNamespacesParams) (res WatchCoreV1LimitRangeListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1LimitRangeListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1LimitRangeListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1LimitRangeListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/limitranges"
 
@@ -42574,21 +43491,24 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 // GET /api/v1/watch/namespaces/{name}
 func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1NamespaceParams) (res WatchCoreV1NamespaceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1Namespace"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1Namespace",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1Namespace")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -42794,21 +43714,24 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 // GET /api/v1/watch/namespaces
 func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV1NamespaceListParams) (res WatchCoreV1NamespaceListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespaceList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespaceList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespaceList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces"
 
@@ -43000,21 +43923,24 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 // GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params WatchCoreV1NamespacedConfigMapParams) (res WatchCoreV1NamespacedConfigMapRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedConfigMap"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedConfigMap",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedConfigMap")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -43235,21 +44161,24 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 // GET /api/v1/watch/namespaces/{namespace}/configmaps
 func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params WatchCoreV1NamespacedConfigMapListParams) (res WatchCoreV1NamespacedConfigMapListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedConfigMapList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedConfigMapList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedConfigMapList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -43456,21 +44385,24 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 // GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params WatchCoreV1NamespacedEndpointsParams) (res WatchCoreV1NamespacedEndpointsRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedEndpoints"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEndpoints",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedEndpoints")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -43691,21 +44623,24 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 // GET /api/v1/watch/namespaces/{namespace}/endpoints
 func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params WatchCoreV1NamespacedEndpointsListParams) (res WatchCoreV1NamespacedEndpointsListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedEndpointsList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEndpointsList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedEndpointsList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -43912,21 +44847,24 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 // GET /api/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCoreV1NamespacedEventParams) (res WatchCoreV1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -44147,21 +45085,24 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 // GET /api/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params WatchCoreV1NamespacedEventListParams) (res WatchCoreV1NamespacedEventListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedEventList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedEventList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedEventList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -44368,21 +45309,24 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 // GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params WatchCoreV1NamespacedLimitRangeParams) (res WatchCoreV1NamespacedLimitRangeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedLimitRange"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedLimitRange",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedLimitRange")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -44603,21 +45547,24 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
 func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params WatchCoreV1NamespacedLimitRangeListParams) (res WatchCoreV1NamespacedLimitRangeListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedLimitRangeList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedLimitRangeList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedLimitRangeList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -44824,21 +45771,24 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimParams) (res WatchCoreV1NamespacedPersistentVolumeClaimRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaim"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaim")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -45059,21 +46009,24 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
 func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Context, params WatchCoreV1NamespacedPersistentVolumeClaimListParams) (res WatchCoreV1NamespacedPersistentVolumeClaimListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaimList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedPersistentVolumeClaimList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -45280,21 +46233,24 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV1NamespacedPodParams) (res WatchCoreV1NamespacedPodRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedPod"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPod",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedPod")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -45515,21 +46471,24 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 // GET /api/v1/watch/namespaces/{namespace}/pods
 func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchCoreV1NamespacedPodListParams) (res WatchCoreV1NamespacedPodListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedPodList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPodList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedPodList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -45736,21 +46695,24 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params WatchCoreV1NamespacedPodTemplateParams) (res WatchCoreV1NamespacedPodTemplateRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedPodTemplate"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPodTemplate",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedPodTemplate")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -45971,21 +46933,24 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
 func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, params WatchCoreV1NamespacedPodTemplateListParams) (res WatchCoreV1NamespacedPodTemplateListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedPodTemplateList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedPodTemplateList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedPodTemplateList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -46192,21 +47157,24 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerParams) (res WatchCoreV1NamespacedReplicationControllerRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedReplicationController"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedReplicationController",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedReplicationController")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -46427,21 +47395,24 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
 func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Context, params WatchCoreV1NamespacedReplicationControllerListParams) (res WatchCoreV1NamespacedReplicationControllerListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedReplicationControllerList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedReplicationControllerList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedReplicationControllerList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -46648,21 +47619,24 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaParams) (res WatchCoreV1NamespacedResourceQuotaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedResourceQuota"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedResourceQuota",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedResourceQuota")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -46883,21 +47857,24 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas
 func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, params WatchCoreV1NamespacedResourceQuotaListParams) (res WatchCoreV1NamespacedResourceQuotaListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedResourceQuotaList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedResourceQuotaList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedResourceQuotaList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -47104,21 +48081,24 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 // GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCoreV1NamespacedSecretParams) (res WatchCoreV1NamespacedSecretRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedSecret"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedSecret",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedSecret")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -47339,21 +48319,24 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 // GET /api/v1/watch/namespaces/{namespace}/secrets
 func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params WatchCoreV1NamespacedSecretListParams) (res WatchCoreV1NamespacedSecretListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedSecretList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedSecretList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedSecretList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -47560,21 +48543,24 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 // GET /api/v1/watch/namespaces/{namespace}/services/{name}
 func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchCoreV1NamespacedServiceParams) (res WatchCoreV1NamespacedServiceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedService"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedService",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedService")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -47795,21 +48781,24 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params WatchCoreV1NamespacedServiceAccountParams) (res WatchCoreV1NamespacedServiceAccountRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedServiceAccount"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedServiceAccount",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedServiceAccount")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -48030,21 +49019,24 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
 func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, params WatchCoreV1NamespacedServiceAccountListParams) (res WatchCoreV1NamespacedServiceAccountListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedServiceAccountList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedServiceAccountList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedServiceAccountList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -48251,21 +49243,24 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 // GET /api/v1/watch/namespaces/{namespace}/services
 func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params WatchCoreV1NamespacedServiceListParams) (res WatchCoreV1NamespacedServiceListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NamespacedServiceList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NamespacedServiceList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NamespacedServiceList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces/"
 	{
@@ -48472,21 +49467,24 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 // GET /api/v1/watch/nodes/{name}
 func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodeParams) (res WatchCoreV1NodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1Node"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1Node",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1Node")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/nodes/"
 	{
@@ -48692,21 +49690,24 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 // GET /api/v1/watch/nodes
 func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1NodeListParams) (res WatchCoreV1NodeListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1NodeList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1NodeList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1NodeList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/nodes"
 
@@ -48898,21 +49899,24 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 // GET /api/v1/watch/persistentvolumes/{name}
 func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCoreV1PersistentVolumeParams) (res WatchCoreV1PersistentVolumeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1PersistentVolume"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PersistentVolume",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1PersistentVolume")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumes/"
 	{
@@ -49118,21 +50122,24 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 // GET /api/v1/watch/persistentvolumeclaims
 func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx context.Context, params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) (res WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1PersistentVolumeClaimListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1PersistentVolumeClaimListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumeclaims"
 
@@ -49324,21 +50331,24 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 // GET /api/v1/watch/persistentvolumes
 func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params WatchCoreV1PersistentVolumeListParams) (res WatchCoreV1PersistentVolumeListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1PersistentVolumeList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PersistentVolumeList",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1PersistentVolumeList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumes"
 
@@ -49530,21 +50540,24 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 // GET /api/v1/watch/pods
 func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params WatchCoreV1PodListForAllNamespacesParams) (res WatchCoreV1PodListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1PodListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PodListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1PodListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/pods"
 
@@ -49736,21 +50749,24 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 // GET /api/v1/watch/podtemplates
 func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context, params WatchCoreV1PodTemplateListForAllNamespacesParams) (res WatchCoreV1PodTemplateListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1PodTemplateListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1PodTemplateListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1PodTemplateListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/podtemplates"
 
@@ -49942,21 +50958,24 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 // GET /api/v1/watch/replicationcontrollers
 func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx context.Context, params WatchCoreV1ReplicationControllerListForAllNamespacesParams) (res WatchCoreV1ReplicationControllerListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1ReplicationControllerListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1ReplicationControllerListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/replicationcontrollers"
 
@@ -50148,21 +51167,24 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 // GET /api/v1/watch/resourcequotas
 func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Context, params WatchCoreV1ResourceQuotaListForAllNamespacesParams) (res WatchCoreV1ResourceQuotaListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1ResourceQuotaListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1ResourceQuotaListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/resourcequotas"
 
@@ -50354,21 +51376,24 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 // GET /api/v1/watch/secrets
 func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, params WatchCoreV1SecretListForAllNamespacesParams) (res WatchCoreV1SecretListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1SecretListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1SecretListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1SecretListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/secrets"
 
@@ -50560,21 +51585,24 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 // GET /api/v1/watch/serviceaccounts
 func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceAccountListForAllNamespacesParams) (res WatchCoreV1ServiceAccountListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1ServiceAccountListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1ServiceAccountListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/serviceaccounts"
 
@@ -50766,21 +51794,24 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 // GET /api/v1/watch/services
 func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, params WatchCoreV1ServiceListForAllNamespacesParams) (res WatchCoreV1ServiceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchCoreV1ServiceListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchCoreV1ServiceListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchCoreV1ServiceListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/services"
 
@@ -50972,21 +52003,24 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 // GET /apis/discovery.k8s.io/v1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchDiscoveryV1EndpointSliceListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchDiscoveryV1EndpointSliceListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
 
@@ -51178,21 +52212,24 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceParams) (res WatchDiscoveryV1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSlice"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1NamespacedEndpointSlice",
-		trace.WithAttributes(otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSlice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/watch/namespaces/"
 	{
@@ -51413,21 +52450,24 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1NamespacedEndpointSliceListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSliceList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList",
-		trace.WithAttributes(otelogen.OperationID("watchDiscoveryV1NamespacedEndpointSliceList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/watch/namespaces/"
 	{
@@ -51634,21 +52674,24 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 // GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx context.Context, params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) (res WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchDiscoveryV1beta1EndpointSliceListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
 
@@ -51840,21 +52883,24 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSlice"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice",
-		trace.WithAttributes(otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSlice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
 	{
@@ -52075,21 +53121,24 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
 func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Context, params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) (res WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSliceList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
-		trace.WithAttributes(otelogen.OperationID("watchDiscoveryV1beta1NamespacedEndpointSliceList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
 	{
@@ -52296,21 +53345,24 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 // GET /apis/events.k8s.io/v1/watch/events
 func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1EventListForAllNamespacesParams) (res WatchEventsV1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchEventsV1EventListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1EventListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchEventsV1EventListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/watch/events"
 
@@ -52502,21 +53554,24 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchEventsV1NamespacedEventParams) (res WatchEventsV1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchEventsV1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("watchEventsV1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/watch/namespaces/"
 	{
@@ -52737,21 +53792,24 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params WatchEventsV1NamespacedEventListParams) (res WatchEventsV1NamespacedEventListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchEventsV1NamespacedEventList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1NamespacedEventList",
-		trace.WithAttributes(otelogen.OperationID("watchEventsV1NamespacedEventList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/watch/namespaces/"
 	{
@@ -52958,21 +54016,24 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 // GET /apis/events.k8s.io/v1beta1/watch/events
 func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context, params WatchEventsV1beta1EventListForAllNamespacesParams) (res WatchEventsV1beta1EventListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchEventsV1beta1EventListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1beta1EventListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchEventsV1beta1EventListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/events"
 
@@ -53164,21 +54225,24 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params WatchEventsV1beta1NamespacedEventParams) (res WatchEventsV1beta1NamespacedEventRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchEventsV1beta1NamespacedEvent"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1beta1NamespacedEvent",
-		trace.WithAttributes(otelogen.OperationID("watchEventsV1beta1NamespacedEvent")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/namespaces/"
 	{
@@ -53399,21 +54463,24 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
 func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, params WatchEventsV1beta1NamespacedEventListParams) (res WatchEventsV1beta1NamespacedEventListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchEventsV1beta1NamespacedEventList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchEventsV1beta1NamespacedEventList",
-		trace.WithAttributes(otelogen.OperationID("watchEventsV1beta1NamespacedEventList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/namespaces/"
 	{
@@ -53620,21 +54687,24 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/"
 	{
@@ -53840,21 +54910,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchemaList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta1FlowSchemaList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
 
@@ -54047,21 +55120,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/"
 	{
@@ -54267,21 +55343,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
 
@@ -54473,21 +55552,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchema"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchema")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/"
 	{
@@ -54693,21 +55775,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) (res WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchemaList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta2FlowSchemaList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
 
@@ -54900,21 +55985,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/"
 	{
@@ -55120,21 +56208,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
 func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx context.Context, params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) (res WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
-		trace.WithAttributes(otelogen.OperationID("watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
 
@@ -55326,21 +56417,24 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionParams) (res WatchInternalApiserverV1alpha1StorageVersionRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersion"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchInternalApiserverV1alpha1StorageVersion",
-		trace.WithAttributes(otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersion")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/"
 	{
@@ -55546,21 +56640,24 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
 func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Context, params WatchInternalApiserverV1alpha1StorageVersionListParams) (res WatchInternalApiserverV1alpha1StorageVersionListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersionList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchInternalApiserverV1alpha1StorageVersionList",
-		trace.WithAttributes(otelogen.OperationID("watchInternalApiserverV1alpha1StorageVersionList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
 
@@ -55752,21 +56849,24 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params WatchNetworkingV1IngressClassParams) (res WatchNetworkingV1IngressClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1IngressClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1IngressClass",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1IngressClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses/"
 	{
@@ -55972,21 +57072,24 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses
 func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params WatchNetworkingV1IngressClassListParams) (res WatchNetworkingV1IngressClassListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1IngressClassList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1IngressClassList",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1IngressClassList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
 
@@ -56178,21 +57281,24 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 // GET /apis/networking.k8s.io/v1/watch/ingresses
 func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Context, params WatchNetworkingV1IngressListForAllNamespacesParams) (res WatchNetworkingV1IngressListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1IngressListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1IngressListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1IngressListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingresses"
 
@@ -56384,21 +57490,24 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params WatchNetworkingV1NamespacedIngressParams) (res WatchNetworkingV1NamespacedIngressRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1NamespacedIngress"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedIngress",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1NamespacedIngress")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
@@ -56619,21 +57728,24 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
 func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, params WatchNetworkingV1NamespacedIngressListParams) (res WatchNetworkingV1NamespacedIngressListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1NamespacedIngressList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedIngressList",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1NamespacedIngressList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
@@ -56840,21 +57952,24 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyParams) (res WatchNetworkingV1NamespacedNetworkPolicyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedNetworkPolicy",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
@@ -57075,21 +58190,24 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
 func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Context, params WatchNetworkingV1NamespacedNetworkPolicyListParams) (res WatchNetworkingV1NamespacedNetworkPolicyListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicyList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1NamespacedNetworkPolicyList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
@@ -57296,21 +58414,24 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 // GET /apis/networking.k8s.io/v1/watch/networkpolicies
 func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.Context, params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) (res WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNetworkingV1NetworkPolicyListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchNetworkingV1NetworkPolicyListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
 
@@ -57502,21 +58623,24 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1RuntimeClassParams) (res WatchNodeV1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNodeV1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("watchNodeV1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses/"
 	{
@@ -57722,21 +58846,24 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses
 func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNodeV1RuntimeClassListParams) (res WatchNodeV1RuntimeClassListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNodeV1RuntimeClassList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1RuntimeClassList",
-		trace.WithAttributes(otelogen.OperationID("watchNodeV1RuntimeClassList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
 
@@ -57928,21 +59055,24 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params WatchNodeV1alpha1RuntimeClassParams) (res WatchNodeV1alpha1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNodeV1alpha1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1alpha1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("watchNodeV1alpha1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/"
 	{
@@ -58148,21 +59278,24 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
 func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params WatchNodeV1alpha1RuntimeClassListParams) (res WatchNodeV1alpha1RuntimeClassListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNodeV1alpha1RuntimeClassList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1alpha1RuntimeClassList",
-		trace.WithAttributes(otelogen.OperationID("watchNodeV1alpha1RuntimeClassList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
 
@@ -58354,21 +59487,24 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchNodeV1beta1RuntimeClassParams) (res WatchNodeV1beta1RuntimeClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNodeV1beta1RuntimeClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1beta1RuntimeClass",
-		trace.WithAttributes(otelogen.OperationID("watchNodeV1beta1RuntimeClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses/"
 	{
@@ -58574,21 +59710,24 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
 func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params WatchNodeV1beta1RuntimeClassListParams) (res WatchNodeV1beta1RuntimeClassListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchNodeV1beta1RuntimeClassList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchNodeV1beta1RuntimeClassList",
-		trace.WithAttributes(otelogen.OperationID("watchNodeV1beta1RuntimeClassList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
 
@@ -58780,21 +59919,24 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudget"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudget")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/watch/namespaces/"
 	{
@@ -59015,21 +60157,24 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1NamespacedPodDisruptionBudgetListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudgetList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1NamespacedPodDisruptionBudgetList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/watch/namespaces/"
 	{
@@ -59236,21 +60381,24 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 // GET /apis/policy/v1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1PodDisruptionBudgetListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1PodDisruptionBudgetListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/watch/poddisruptionbudgets"
 
@@ -59442,21 +60590,24 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudget"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudget")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/namespaces/"
 	{
@@ -59677,21 +60828,24 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context.Context, params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) (res WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudgetList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1beta1NamespacedPodDisruptionBudgetList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/namespaces/"
 	{
@@ -59898,21 +61052,24 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 // GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx context.Context, params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) (res WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
 
@@ -60104,21 +61261,24 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyParams) (res WatchPolicyV1beta1PodSecurityPolicyRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicy"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1PodSecurityPolicy",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicy")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies/"
 	{
@@ -60324,21 +61484,24 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
 func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, params WatchPolicyV1beta1PodSecurityPolicyListParams) (res WatchPolicyV1beta1PodSecurityPolicyListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicyList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchPolicyV1beta1PodSecurityPolicyList",
-		trace.WithAttributes(otelogen.OperationID("watchPolicyV1beta1PodSecurityPolicyList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
 
@@ -60530,21 +61693,24 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleParams) (res WatchRbacAuthorizationV1ClusterRoleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1ClusterRole"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRole",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1ClusterRole")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/"
 	{
@@ -60750,21 +61916,24 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingParams) (res WatchRbacAuthorizationV1ClusterRoleBindingRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBinding"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBinding")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/"
 	{
@@ -60970,21 +62139,24 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleBindingListParams) (res WatchRbacAuthorizationV1ClusterRoleBindingListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBindingList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleBindingList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
 
@@ -61176,21 +62348,24 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, params WatchRbacAuthorizationV1ClusterRoleListParams) (res WatchRbacAuthorizationV1ClusterRoleListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1ClusterRoleList",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1ClusterRoleList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
 
@@ -61382,21 +62557,24 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleParams) (res WatchRbacAuthorizationV1NamespacedRoleRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRole"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRole",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1NamespacedRole")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
@@ -61617,21 +62795,24 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBinding"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBinding")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
@@ -61852,21 +63033,24 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) (res WatchRbacAuthorizationV1NamespacedRoleBindingListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBindingList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleBindingList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
@@ -62073,21 +63257,24 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
 func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context, params WatchRbacAuthorizationV1NamespacedRoleListParams) (res WatchRbacAuthorizationV1NamespacedRoleListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1NamespacedRoleList",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1NamespacedRoleList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
@@ -62294,21 +63481,24 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1RoleBindingListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1RoleBindingListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
 
@@ -62500,21 +63690,24 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 // GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Context, params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) (res WatchRbacAuthorizationV1RoleListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchRbacAuthorizationV1RoleListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchRbacAuthorizationV1RoleListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
 
@@ -62706,21 +63899,24 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params WatchSchedulingV1PriorityClassParams) (res WatchSchedulingV1PriorityClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchSchedulingV1PriorityClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchSchedulingV1PriorityClass",
-		trace.WithAttributes(otelogen.OperationID("watchSchedulingV1PriorityClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses/"
 	{
@@ -62926,21 +64122,24 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
 func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params WatchSchedulingV1PriorityClassListParams) (res WatchSchedulingV1PriorityClassListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchSchedulingV1PriorityClassList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchSchedulingV1PriorityClassList",
-		trace.WithAttributes(otelogen.OperationID("watchSchedulingV1PriorityClassList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
 
@@ -63132,21 +64331,24 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 // GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorageV1CSIDriverParams) (res WatchStorageV1CSIDriverRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1CSIDriver"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSIDriver",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1CSIDriver")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers/"
 	{
@@ -63352,21 +64554,24 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 // GET /apis/storage.k8s.io/v1/watch/csidrivers
 func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchStorageV1CSIDriverListParams) (res WatchStorageV1CSIDriverListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1CSIDriverList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSIDriverList",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1CSIDriverList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers"
 
@@ -63558,21 +64763,24 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 // GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV1CSINodeParams) (res WatchStorageV1CSINodeRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1CSINode"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSINode",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1CSINode")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes/"
 	{
@@ -63778,21 +64986,24 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 // GET /apis/storage.k8s.io/v1/watch/csinodes
 func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStorageV1CSINodeListParams) (res WatchStorageV1CSINodeListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1CSINodeList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1CSINodeList",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1CSINodeList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes"
 
@@ -63984,21 +65195,24 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 // GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchStorageV1StorageClassParams) (res WatchStorageV1StorageClassRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1StorageClass"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1StorageClass",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1StorageClass")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses/"
 	{
@@ -64204,21 +65418,24 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 // GET /apis/storage.k8s.io/v1/watch/storageclasses
 func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params WatchStorageV1StorageClassListParams) (res WatchStorageV1StorageClassListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1StorageClassList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1StorageClassList",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1StorageClassList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses"
 
@@ -64410,21 +65627,24 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params WatchStorageV1VolumeAttachmentParams) (res WatchStorageV1VolumeAttachmentRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1VolumeAttachment"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1VolumeAttachment",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1VolumeAttachment")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments/"
 	{
@@ -64630,21 +65850,24 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
 func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params WatchStorageV1VolumeAttachmentListParams) (res WatchStorageV1VolumeAttachmentListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1VolumeAttachmentList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1VolumeAttachmentList",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1VolumeAttachmentList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
 
@@ -64836,21 +66059,24 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
 
@@ -65042,21 +66268,24 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacity"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacity")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
 	{
@@ -65277,21 +66506,24 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacityList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1alpha1NamespacedCSIStorageCapacityList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
 	{
@@ -65498,21 +66730,24 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx context.Context, params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) (res WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1beta1CSIStorageCapacityListForAllNamespaces")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
 
@@ -65704,21 +66939,24 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacity"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacity")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
 	{
@@ -65939,21 +67177,24 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context.Context, params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) (res WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, err error) {
 	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacityList"),
+	}
 	ctx, span := c.cfg.Tracer.Start(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
-		trace.WithAttributes(otelogen.OperationID("watchStorageV1beta1NamespacedCSIStorageCapacityList")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
-			c.errors.Add(ctx, 1)
+			c.errors.Add(ctx, 1, otelAttrs...)
 		} else {
 			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds())
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1)
+	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
 	{
