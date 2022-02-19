@@ -74,15 +74,21 @@ var (
 //
 // DELETE /pets/{id}
 func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("deletePet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeletePet",
-		trace.WithAttributes(otelogen.OperationID("deletePet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -91,6 +97,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -98,9 +105,12 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	if err := encodeDeletePetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

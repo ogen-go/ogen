@@ -74,15 +74,22 @@ var (
 //
 // GET /healthz
 func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("probeLiveness"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProbeLiveness",
-		trace.WithAttributes(otelogen.OperationID("probeLiveness")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.ProbeLiveness(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -95,9 +102,12 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 	if err := encodeProbeLivenessResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

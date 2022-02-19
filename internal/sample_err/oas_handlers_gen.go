@@ -74,15 +74,21 @@ var (
 //
 // POST /data
 func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("dataCreate"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataCreate",
-		trace.WithAttributes(otelogen.OperationID("dataCreate")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDataCreateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -90,6 +96,8 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.DataCreate(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -102,24 +110,34 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	if err := encodeDataCreateResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDataGetRequest handles dataGet operation.
 //
 // GET /data
 func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("dataGet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGet",
-		trace.WithAttributes(otelogen.OperationID("dataGet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.DataGet(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -132,9 +150,12 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeDataGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

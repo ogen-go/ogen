@@ -74,15 +74,21 @@ var (
 //
 // POST /test_request_Any
 func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_Any"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestAny",
-		trace.WithAttributes(otelogen.OperationID("test_request_Any")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestAnyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -91,6 +97,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -98,24 +105,33 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	if err := encodeTestRequestAnyResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestBooleanRequest handles test_request_boolean operation.
 //
 // POST /test_request_boolean
 func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBoolean",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestBooleanRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -124,6 +140,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -131,24 +148,33 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	if err := encodeTestRequestBooleanResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestBooleanArrayRequest handles test_request_boolean_array operation.
 //
 // POST /test_request_boolean_array
 func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestBooleanArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -157,6 +183,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -164,24 +191,33 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	if err := encodeTestRequestBooleanArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestBooleanArrayArrayRequest handles test_request_boolean_array_array operation.
 //
 // POST /test_request_boolean_array_array
 func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -190,6 +226,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -197,24 +234,33 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	if err := encodeTestRequestBooleanArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestBooleanNullableRequest handles test_request_boolean_nullable operation.
 //
 // POST /test_request_boolean_nullable
 func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestBooleanNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -223,6 +269,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -230,24 +277,33 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	if err := encodeTestRequestBooleanNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestBooleanNullableArrayRequest handles test_request_boolean_nullable_array operation.
 //
 // POST /test_request_boolean_nullable_array
 func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -256,6 +312,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -263,24 +320,33 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	if err := encodeTestRequestBooleanNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestBooleanNullableArrayArrayRequest handles test_request_boolean_nullable_array_array operation.
 //
 // POST /test_request_boolean_nullable_array_array
 func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_boolean_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_boolean_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -289,6 +355,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -296,24 +363,33 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	if err := encodeTestRequestBooleanNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestEmptyStructRequest handles test_request_EmptyStruct operation.
 //
 // POST /test_request_EmptyStruct
 func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_EmptyStruct"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestEmptyStruct",
-		trace.WithAttributes(otelogen.OperationID("test_request_EmptyStruct")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestEmptyStructRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -322,6 +398,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -329,24 +406,33 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	if err := encodeTestRequestEmptyStructResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestFormatTestRequest handles test_request_FormatTest operation.
 //
 // POST /test_request_FormatTest
 func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_FormatTest"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestFormatTest",
-		trace.WithAttributes(otelogen.OperationID("test_request_FormatTest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestFormatTestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -355,6 +441,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -362,24 +449,33 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	if err := encodeTestRequestFormatTestResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerRequest handles test_request_integer operation.
 //
 // POST /test_request_integer
 func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestInteger",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -388,6 +484,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -395,24 +492,33 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	if err := encodeTestRequestIntegerResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerArrayRequest handles test_request_integer_array operation.
 //
 // POST /test_request_integer_array
 func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -421,6 +527,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -428,24 +535,33 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	if err := encodeTestRequestIntegerArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerArrayArrayRequest handles test_request_integer_array_array operation.
 //
 // POST /test_request_integer_array_array
 func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -454,6 +570,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -461,24 +578,33 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	if err := encodeTestRequestIntegerArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt32Request handles test_request_integer_int32 operation.
 //
 // POST /test_request_integer_int32
 func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -487,6 +613,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -494,24 +621,33 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	if err := encodeTestRequestIntegerInt32Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt32ArrayRequest handles test_request_integer_int32_array operation.
 //
 // POST /test_request_integer_int32_array
 func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -520,6 +656,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -527,24 +664,33 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	if err := encodeTestRequestIntegerInt32ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt32ArrayArrayRequest handles test_request_integer_int32_array_array operation.
 //
 // POST /test_request_integer_int32_array_array
 func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -553,6 +699,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -560,24 +707,33 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	if err := encodeTestRequestIntegerInt32ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt32NullableRequest handles test_request_integer_int32_nullable operation.
 //
 // POST /test_request_integer_int32_nullable
 func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -586,6 +742,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -593,24 +750,33 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	if err := encodeTestRequestIntegerInt32NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt32NullableArrayRequest handles test_request_integer_int32_nullable_array operation.
 //
 // POST /test_request_integer_int32_nullable_array
 func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -619,6 +785,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -626,24 +793,33 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	if err := encodeTestRequestIntegerInt32NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt32NullableArrayArrayRequest handles test_request_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_integer_int32_nullable_array_array
 func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int32_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -652,6 +828,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -659,24 +836,33 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	if err := encodeTestRequestIntegerInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt64Request handles test_request_integer_int64 operation.
 //
 // POST /test_request_integer_int64
 func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -685,6 +871,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -692,24 +879,33 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	if err := encodeTestRequestIntegerInt64Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt64ArrayRequest handles test_request_integer_int64_array operation.
 //
 // POST /test_request_integer_int64_array
 func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -718,6 +914,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -725,24 +922,33 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	if err := encodeTestRequestIntegerInt64ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt64ArrayArrayRequest handles test_request_integer_int64_array_array operation.
 //
 // POST /test_request_integer_int64_array_array
 func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -751,6 +957,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -758,24 +965,33 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	if err := encodeTestRequestIntegerInt64ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt64NullableRequest handles test_request_integer_int64_nullable operation.
 //
 // POST /test_request_integer_int64_nullable
 func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -784,6 +1000,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -791,24 +1008,33 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	if err := encodeTestRequestIntegerInt64NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt64NullableArrayRequest handles test_request_integer_int64_nullable_array operation.
 //
 // POST /test_request_integer_int64_nullable_array
 func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -817,6 +1043,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -824,24 +1051,33 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	if err := encodeTestRequestIntegerInt64NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerInt64NullableArrayArrayRequest handles test_request_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_integer_int64_nullable_array_array
 func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_int64_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -850,6 +1086,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -857,24 +1094,33 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	if err := encodeTestRequestIntegerInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerNullableRequest handles test_request_integer_nullable operation.
 //
 // POST /test_request_integer_nullable
 func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -883,6 +1129,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -890,24 +1137,33 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	if err := encodeTestRequestIntegerNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerNullableArrayRequest handles test_request_integer_nullable_array operation.
 //
 // POST /test_request_integer_nullable_array
 func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -916,6 +1172,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -923,24 +1180,33 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	if err := encodeTestRequestIntegerNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestIntegerNullableArrayArrayRequest handles test_request_integer_nullable_array_array operation.
 //
 // POST /test_request_integer_nullable_array_array
 func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_integer_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -949,6 +1215,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -956,24 +1223,33 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	if err := encodeTestRequestIntegerNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberRequest handles test_request_number operation.
 //
 // POST /test_request_number
 func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumber",
-		trace.WithAttributes(otelogen.OperationID("test_request_number")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -982,6 +1258,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -989,24 +1266,33 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	if err := encodeTestRequestNumberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberArrayRequest handles test_request_number_array operation.
 //
 // POST /test_request_number_array
 func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1015,6 +1301,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1022,24 +1309,33 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	if err := encodeTestRequestNumberArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberArrayArrayRequest handles test_request_number_array_array operation.
 //
 // POST /test_request_number_array_array
 func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1048,6 +1344,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1055,24 +1352,33 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	if err := encodeTestRequestNumberArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberDoubleRequest handles test_request_number_double operation.
 //
 // POST /test_request_number_double
 func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDouble",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberDoubleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1081,6 +1387,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1088,24 +1395,33 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	if err := encodeTestRequestNumberDoubleResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberDoubleArrayRequest handles test_request_number_double_array operation.
 //
 // POST /test_request_number_double_array
 func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1114,6 +1430,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1121,24 +1438,33 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	if err := encodeTestRequestNumberDoubleArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberDoubleArrayArrayRequest handles test_request_number_double_array_array operation.
 //
 // POST /test_request_number_double_array_array
 func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1147,6 +1473,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1154,24 +1481,33 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	if err := encodeTestRequestNumberDoubleArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberDoubleNullableRequest handles test_request_number_double_nullable operation.
 //
 // POST /test_request_number_double_nullable
 func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1180,6 +1516,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1187,24 +1524,33 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	if err := encodeTestRequestNumberDoubleNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberDoubleNullableArrayRequest handles test_request_number_double_nullable_array operation.
 //
 // POST /test_request_number_double_nullable_array
 func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1213,6 +1559,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1220,24 +1567,33 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	if err := encodeTestRequestNumberDoubleNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberDoubleNullableArrayArrayRequest handles test_request_number_double_nullable_array_array operation.
 //
 // POST /test_request_number_double_nullable_array_array
 func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_double_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_double_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1246,6 +1602,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1253,24 +1610,33 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	if err := encodeTestRequestNumberDoubleNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberFloatRequest handles test_request_number_float operation.
 //
 // POST /test_request_number_float
 func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloat",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberFloatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1279,6 +1645,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1286,24 +1653,33 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	if err := encodeTestRequestNumberFloatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberFloatArrayRequest handles test_request_number_float_array operation.
 //
 // POST /test_request_number_float_array
 func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberFloatArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1312,6 +1688,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1319,24 +1696,33 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	if err := encodeTestRequestNumberFloatArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberFloatArrayArrayRequest handles test_request_number_float_array_array operation.
 //
 // POST /test_request_number_float_array_array
 func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1345,6 +1731,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1352,24 +1739,33 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	if err := encodeTestRequestNumberFloatArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberFloatNullableRequest handles test_request_number_float_nullable operation.
 //
 // POST /test_request_number_float_nullable
 func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberFloatNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1378,6 +1774,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1385,24 +1782,33 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	if err := encodeTestRequestNumberFloatNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberFloatNullableArrayRequest handles test_request_number_float_nullable_array operation.
 //
 // POST /test_request_number_float_nullable_array
 func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1411,6 +1817,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1418,24 +1825,33 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	if err := encodeTestRequestNumberFloatNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberFloatNullableArrayArrayRequest handles test_request_number_float_nullable_array_array operation.
 //
 // POST /test_request_number_float_nullable_array_array
 func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_float_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_float_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1444,6 +1860,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1451,24 +1868,33 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	if err := encodeTestRequestNumberFloatNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt32Request handles test_request_number_int32 operation.
 //
 // POST /test_request_number_int32
 func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1477,6 +1903,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1484,24 +1911,33 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	if err := encodeTestRequestNumberInt32Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt32ArrayRequest handles test_request_number_int32_array operation.
 //
 // POST /test_request_number_int32_array
 func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1510,6 +1946,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1517,24 +1954,33 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	if err := encodeTestRequestNumberInt32ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt32ArrayArrayRequest handles test_request_number_int32_array_array operation.
 //
 // POST /test_request_number_int32_array_array
 func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1543,6 +1989,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1550,24 +1997,33 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	if err := encodeTestRequestNumberInt32ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt32NullableRequest handles test_request_number_int32_nullable operation.
 //
 // POST /test_request_number_int32_nullable
 func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1576,6 +2032,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1583,24 +2040,33 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	if err := encodeTestRequestNumberInt32NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt32NullableArrayRequest handles test_request_number_int32_nullable_array operation.
 //
 // POST /test_request_number_int32_nullable_array
 func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1609,6 +2075,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1616,24 +2083,33 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	if err := encodeTestRequestNumberInt32NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt32NullableArrayArrayRequest handles test_request_number_int32_nullable_array_array operation.
 //
 // POST /test_request_number_int32_nullable_array_array
 func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int32_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1642,6 +2118,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1649,24 +2126,33 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	if err := encodeTestRequestNumberInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt64Request handles test_request_number_int64 operation.
 //
 // POST /test_request_number_int64
 func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1675,6 +2161,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1682,24 +2169,33 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	if err := encodeTestRequestNumberInt64Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt64ArrayRequest handles test_request_number_int64_array operation.
 //
 // POST /test_request_number_int64_array
 func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1708,6 +2204,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1715,24 +2212,33 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	if err := encodeTestRequestNumberInt64ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt64ArrayArrayRequest handles test_request_number_int64_array_array operation.
 //
 // POST /test_request_number_int64_array_array
 func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1741,6 +2247,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1748,24 +2255,33 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	if err := encodeTestRequestNumberInt64ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt64NullableRequest handles test_request_number_int64_nullable operation.
 //
 // POST /test_request_number_int64_nullable
 func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1774,6 +2290,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1781,24 +2298,33 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	if err := encodeTestRequestNumberInt64NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt64NullableArrayRequest handles test_request_number_int64_nullable_array operation.
 //
 // POST /test_request_number_int64_nullable_array
 func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1807,6 +2333,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1814,24 +2341,33 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	if err := encodeTestRequestNumberInt64NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberInt64NullableArrayArrayRequest handles test_request_number_int64_nullable_array_array operation.
 //
 // POST /test_request_number_int64_nullable_array_array
 func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_int64_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1840,6 +2376,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1847,24 +2384,33 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	if err := encodeTestRequestNumberInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberNullableRequest handles test_request_number_nullable operation.
 //
 // POST /test_request_number_nullable
 func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1873,6 +2419,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1880,24 +2427,33 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	if err := encodeTestRequestNumberNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberNullableArrayRequest handles test_request_number_nullable_array operation.
 //
 // POST /test_request_number_nullable_array
 func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1906,6 +2462,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1913,24 +2470,33 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	if err := encodeTestRequestNumberNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestNumberNullableArrayArrayRequest handles test_request_number_nullable_array_array operation.
 //
 // POST /test_request_number_nullable_array_array
 func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_number_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_number_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1939,6 +2505,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1946,24 +2513,33 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	if err := encodeTestRequestNumberNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredAnyRequest handles test_request_required_Any operation.
 //
 // POST /test_request_required_Any
 func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_Any"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredAny",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_Any")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredAnyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1972,6 +2548,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -1979,24 +2556,33 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	if err := encodeTestRequestRequiredAnyResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredBooleanRequest handles test_request_required_boolean operation.
 //
 // POST /test_request_required_boolean
 func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBoolean",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredBooleanRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2005,6 +2591,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2012,24 +2599,33 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	if err := encodeTestRequestRequiredBooleanResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredBooleanArrayRequest handles test_request_required_boolean_array operation.
 //
 // POST /test_request_required_boolean_array
 func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredBooleanArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2038,6 +2634,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2045,24 +2642,33 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	if err := encodeTestRequestRequiredBooleanArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredBooleanArrayArrayRequest handles test_request_required_boolean_array_array operation.
 //
 // POST /test_request_required_boolean_array_array
 func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2071,6 +2677,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2078,24 +2685,33 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	if err := encodeTestRequestRequiredBooleanArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredBooleanNullableRequest handles test_request_required_boolean_nullable operation.
 //
 // POST /test_request_required_boolean_nullable
 func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredBooleanNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2104,6 +2720,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2111,24 +2728,33 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	if err := encodeTestRequestRequiredBooleanNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredBooleanNullableArrayRequest handles test_request_required_boolean_nullable_array operation.
 //
 // POST /test_request_required_boolean_nullable_array
 func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2137,6 +2763,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2144,24 +2771,33 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredBooleanNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredBooleanNullableArrayArrayRequest handles test_request_required_boolean_nullable_array_array operation.
 //
 // POST /test_request_required_boolean_nullable_array_array
 func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_boolean_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_boolean_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2170,6 +2806,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2177,24 +2814,33 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	if err := encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredEmptyStructRequest handles test_request_required_EmptyStruct operation.
 //
 // POST /test_request_required_EmptyStruct
 func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_EmptyStruct"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredEmptyStruct",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_EmptyStruct")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredEmptyStructRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2203,6 +2849,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2210,24 +2857,33 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	if err := encodeTestRequestRequiredEmptyStructResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredFormatTestRequest handles test_request_required_FormatTest operation.
 //
 // POST /test_request_required_FormatTest
 func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_FormatTest"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredFormatTest",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_FormatTest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredFormatTestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2236,6 +2892,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2243,24 +2900,33 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	if err := encodeTestRequestRequiredFormatTestResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerRequest handles test_request_required_integer operation.
 //
 // POST /test_request_required_integer
 func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredInteger",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2269,6 +2935,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2276,24 +2943,33 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	if err := encodeTestRequestRequiredIntegerResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerArrayRequest handles test_request_required_integer_array operation.
 //
 // POST /test_request_required_integer_array
 func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2302,6 +2978,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2309,24 +2986,33 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	if err := encodeTestRequestRequiredIntegerArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerArrayArrayRequest handles test_request_required_integer_array_array operation.
 //
 // POST /test_request_required_integer_array_array
 func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2335,6 +3021,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2342,24 +3029,33 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	if err := encodeTestRequestRequiredIntegerArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt32Request handles test_request_required_integer_int32 operation.
 //
 // POST /test_request_required_integer_int32
 func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2368,6 +3064,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2375,24 +3072,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	if err := encodeTestRequestRequiredIntegerInt32Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt32ArrayRequest handles test_request_required_integer_int32_array operation.
 //
 // POST /test_request_required_integer_int32_array
 func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2401,6 +3107,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2408,24 +3115,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	if err := encodeTestRequestRequiredIntegerInt32ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt32ArrayArrayRequest handles test_request_required_integer_int32_array_array operation.
 //
 // POST /test_request_required_integer_int32_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2434,6 +3150,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2441,24 +3158,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	if err := encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt32NullableRequest handles test_request_required_integer_int32_nullable operation.
 //
 // POST /test_request_required_integer_int32_nullable
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2467,6 +3193,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2474,24 +3201,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	if err := encodeTestRequestRequiredIntegerInt32NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt32NullableArrayRequest handles test_request_required_integer_int32_nullable_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2500,6 +3236,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2507,24 +3244,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	if err := encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt32NullableArrayArrayRequest handles test_request_required_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int32_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2533,6 +3279,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2540,24 +3287,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	if err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt64Request handles test_request_required_integer_int64 operation.
 //
 // POST /test_request_required_integer_int64
 func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2566,6 +3322,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2573,24 +3330,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	if err := encodeTestRequestRequiredIntegerInt64Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt64ArrayRequest handles test_request_required_integer_int64_array operation.
 //
 // POST /test_request_required_integer_int64_array
 func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2599,6 +3365,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2606,24 +3373,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	if err := encodeTestRequestRequiredIntegerInt64ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt64ArrayArrayRequest handles test_request_required_integer_int64_array_array operation.
 //
 // POST /test_request_required_integer_int64_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2632,6 +3408,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2639,24 +3416,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	if err := encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt64NullableRequest handles test_request_required_integer_int64_nullable operation.
 //
 // POST /test_request_required_integer_int64_nullable
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2665,6 +3451,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2672,24 +3459,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	if err := encodeTestRequestRequiredIntegerInt64NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt64NullableArrayRequest handles test_request_required_integer_int64_nullable_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2698,6 +3494,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2705,24 +3502,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	if err := encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerInt64NullableArrayArrayRequest handles test_request_required_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_int64_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2731,6 +3537,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2738,24 +3545,33 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	if err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerNullableRequest handles test_request_required_integer_nullable operation.
 //
 // POST /test_request_required_integer_nullable
 func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2764,6 +3580,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2771,24 +3588,33 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	if err := encodeTestRequestRequiredIntegerNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerNullableArrayRequest handles test_request_required_integer_nullable_array operation.
 //
 // POST /test_request_required_integer_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2797,6 +3623,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2804,24 +3631,33 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredIntegerNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredIntegerNullableArrayArrayRequest handles test_request_required_integer_nullable_array_array operation.
 //
 // POST /test_request_required_integer_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_integer_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2830,6 +3666,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2837,24 +3674,33 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	if err := encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberRequest handles test_request_required_number operation.
 //
 // POST /test_request_required_number
 func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumber",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2863,6 +3709,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2870,24 +3717,33 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	if err := encodeTestRequestRequiredNumberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberArrayRequest handles test_request_required_number_array operation.
 //
 // POST /test_request_required_number_array
 func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2896,6 +3752,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2903,24 +3760,33 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	if err := encodeTestRequestRequiredNumberArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberArrayArrayRequest handles test_request_required_number_array_array operation.
 //
 // POST /test_request_required_number_array_array
 func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2929,6 +3795,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2936,24 +3803,33 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	if err := encodeTestRequestRequiredNumberArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberDoubleRequest handles test_request_required_number_double operation.
 //
 // POST /test_request_required_number_double
 func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDouble",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberDoubleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2962,6 +3838,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -2969,24 +3846,33 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	if err := encodeTestRequestRequiredNumberDoubleResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberDoubleArrayRequest handles test_request_required_number_double_array operation.
 //
 // POST /test_request_required_number_double_array
 func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2995,6 +3881,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3002,24 +3889,33 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	if err := encodeTestRequestRequiredNumberDoubleArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberDoubleArrayArrayRequest handles test_request_required_number_double_array_array operation.
 //
 // POST /test_request_required_number_double_array_array
 func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3028,6 +3924,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3035,24 +3932,33 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	if err := encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberDoubleNullableRequest handles test_request_required_number_double_nullable operation.
 //
 // POST /test_request_required_number_double_nullable
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3061,6 +3967,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3068,24 +3975,33 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	if err := encodeTestRequestRequiredNumberDoubleNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberDoubleNullableArrayRequest handles test_request_required_number_double_nullable_array operation.
 //
 // POST /test_request_required_number_double_nullable_array
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3094,6 +4010,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3101,24 +4018,33 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	if err := encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberDoubleNullableArrayArrayRequest handles test_request_required_number_double_nullable_array_array operation.
 //
 // POST /test_request_required_number_double_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_double_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_double_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3127,6 +4053,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3134,24 +4061,33 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	if err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberFloatRequest handles test_request_required_number_float operation.
 //
 // POST /test_request_required_number_float
 func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloat",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberFloatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3160,6 +4096,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3167,24 +4104,33 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	if err := encodeTestRequestRequiredNumberFloatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberFloatArrayRequest handles test_request_required_number_float_array operation.
 //
 // POST /test_request_required_number_float_array
 func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberFloatArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3193,6 +4139,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3200,24 +4147,33 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	if err := encodeTestRequestRequiredNumberFloatArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberFloatArrayArrayRequest handles test_request_required_number_float_array_array operation.
 //
 // POST /test_request_required_number_float_array_array
 func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3226,6 +4182,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3233,24 +4190,33 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	if err := encodeTestRequestRequiredNumberFloatArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberFloatNullableRequest handles test_request_required_number_float_nullable operation.
 //
 // POST /test_request_required_number_float_nullable
 func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberFloatNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3259,6 +4225,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3266,24 +4233,33 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	if err := encodeTestRequestRequiredNumberFloatNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberFloatNullableArrayRequest handles test_request_required_number_float_nullable_array operation.
 //
 // POST /test_request_required_number_float_nullable_array
 func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3292,6 +4268,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3299,24 +4276,33 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	if err := encodeTestRequestRequiredNumberFloatNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberFloatNullableArrayArrayRequest handles test_request_required_number_float_nullable_array_array operation.
 //
 // POST /test_request_required_number_float_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_float_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_float_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3325,6 +4311,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3332,24 +4319,33 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	if err := encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt32Request handles test_request_required_number_int32 operation.
 //
 // POST /test_request_required_number_int32
 func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3358,6 +4354,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3365,24 +4362,33 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	if err := encodeTestRequestRequiredNumberInt32Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt32ArrayRequest handles test_request_required_number_int32_array operation.
 //
 // POST /test_request_required_number_int32_array
 func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3391,6 +4397,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3398,24 +4405,33 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	if err := encodeTestRequestRequiredNumberInt32ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt32ArrayArrayRequest handles test_request_required_number_int32_array_array operation.
 //
 // POST /test_request_required_number_int32_array_array
 func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3424,6 +4440,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3431,24 +4448,33 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	if err := encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt32NullableRequest handles test_request_required_number_int32_nullable operation.
 //
 // POST /test_request_required_number_int32_nullable
 func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3457,6 +4483,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3464,24 +4491,33 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	if err := encodeTestRequestRequiredNumberInt32NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt32NullableArrayRequest handles test_request_required_number_int32_nullable_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array
 func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3490,6 +4526,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3497,24 +4534,33 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	if err := encodeTestRequestRequiredNumberInt32NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt32NullableArrayArrayRequest handles test_request_required_number_int32_nullable_array_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int32_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3523,6 +4569,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3530,24 +4577,33 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	if err := encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt64Request handles test_request_required_number_int64 operation.
 //
 // POST /test_request_required_number_int64
 func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3556,6 +4612,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3563,24 +4620,33 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	if err := encodeTestRequestRequiredNumberInt64Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt64ArrayRequest handles test_request_required_number_int64_array operation.
 //
 // POST /test_request_required_number_int64_array
 func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3589,6 +4655,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3596,24 +4663,33 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	if err := encodeTestRequestRequiredNumberInt64ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt64ArrayArrayRequest handles test_request_required_number_int64_array_array operation.
 //
 // POST /test_request_required_number_int64_array_array
 func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3622,6 +4698,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3629,24 +4706,33 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	if err := encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt64NullableRequest handles test_request_required_number_int64_nullable operation.
 //
 // POST /test_request_required_number_int64_nullable
 func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3655,6 +4741,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3662,24 +4749,33 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	if err := encodeTestRequestRequiredNumberInt64NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt64NullableArrayRequest handles test_request_required_number_int64_nullable_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array
 func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3688,6 +4784,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3695,24 +4792,33 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	if err := encodeTestRequestRequiredNumberInt64NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberInt64NullableArrayArrayRequest handles test_request_required_number_int64_nullable_array_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_int64_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3721,6 +4827,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3728,24 +4835,33 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	if err := encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberNullableRequest handles test_request_required_number_nullable operation.
 //
 // POST /test_request_required_number_nullable
 func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3754,6 +4870,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3761,24 +4878,33 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	if err := encodeTestRequestRequiredNumberNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberNullableArrayRequest handles test_request_required_number_nullable_array operation.
 //
 // POST /test_request_required_number_nullable_array
 func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3787,6 +4913,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3794,24 +4921,33 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	if err := encodeTestRequestRequiredNumberNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredNumberNullableArrayArrayRequest handles test_request_required_number_nullable_array_array operation.
 //
 // POST /test_request_required_number_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_number_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_number_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3820,6 +4956,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3827,24 +4964,33 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	if err := encodeTestRequestRequiredNumberNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringRequest handles test_request_required_string operation.
 //
 // POST /test_request_required_string
 func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredString",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3853,6 +4999,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3860,24 +5007,33 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	if err := encodeTestRequestRequiredStringResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringArrayRequest handles test_request_required_string_array operation.
 //
 // POST /test_request_required_string_array
 func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3886,6 +5042,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3893,24 +5050,33 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	if err := encodeTestRequestRequiredStringArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringArrayArrayRequest handles test_request_required_string_array_array operation.
 //
 // POST /test_request_required_string_array_array
 func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3919,6 +5085,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3926,24 +5093,33 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	if err := encodeTestRequestRequiredStringArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringBinaryRequest handles test_request_required_string_binary operation.
 //
 // POST /test_request_required_string_binary
 func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinary",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringBinaryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3952,6 +5128,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3959,24 +5136,33 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	if err := encodeTestRequestRequiredStringBinaryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringBinaryArrayRequest handles test_request_required_string_binary_array operation.
 //
 // POST /test_request_required_string_binary_array
 func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringBinaryArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3985,6 +5171,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -3992,24 +5179,33 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	if err := encodeTestRequestRequiredStringBinaryArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringBinaryArrayArrayRequest handles test_request_required_string_binary_array_array operation.
 //
 // POST /test_request_required_string_binary_array_array
 func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4018,6 +5214,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4025,24 +5222,33 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	if err := encodeTestRequestRequiredStringBinaryArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringBinaryNullableRequest handles test_request_required_string_binary_nullable operation.
 //
 // POST /test_request_required_string_binary_nullable
 func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringBinaryNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4051,6 +5257,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4058,24 +5265,33 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	if err := encodeTestRequestRequiredStringBinaryNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringBinaryNullableArrayRequest handles test_request_required_string_binary_nullable_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array
 func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4084,6 +5300,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4091,24 +5308,33 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	if err := encodeTestRequestRequiredStringBinaryNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringBinaryNullableArrayArrayRequest handles test_request_required_string_binary_nullable_array_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_binary_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_binary_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4117,6 +5343,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4124,24 +5351,33 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	if err := encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringByteRequest handles test_request_required_string_byte operation.
 //
 // POST /test_request_required_string_byte
 func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByte",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringByteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4150,6 +5386,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4157,24 +5394,33 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	if err := encodeTestRequestRequiredStringByteResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringByteArrayRequest handles test_request_required_string_byte_array operation.
 //
 // POST /test_request_required_string_byte_array
 func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringByteArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4183,6 +5429,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4190,24 +5437,33 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	if err := encodeTestRequestRequiredStringByteArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringByteArrayArrayRequest handles test_request_required_string_byte_array_array operation.
 //
 // POST /test_request_required_string_byte_array_array
 func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4216,6 +5472,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4223,24 +5480,33 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredStringByteArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringByteNullableRequest handles test_request_required_string_byte_nullable operation.
 //
 // POST /test_request_required_string_byte_nullable
 func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringByteNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4249,6 +5515,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4256,24 +5523,33 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	if err := encodeTestRequestRequiredStringByteNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringByteNullableArrayRequest handles test_request_required_string_byte_nullable_array operation.
 //
 // POST /test_request_required_string_byte_nullable_array
 func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4282,6 +5558,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4289,24 +5566,33 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	if err := encodeTestRequestRequiredStringByteNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringByteNullableArrayArrayRequest handles test_request_required_string_byte_nullable_array_array operation.
 //
 // POST /test_request_required_string_byte_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_byte_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_byte_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4315,6 +5601,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4322,24 +5609,33 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	if err := encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateRequest handles test_request_required_string_date operation.
 //
 // POST /test_request_required_string_date
 func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDate",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4348,6 +5644,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4355,24 +5652,33 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	if err := encodeTestRequestRequiredStringDateResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateArrayRequest handles test_request_required_string_date_array operation.
 //
 // POST /test_request_required_string_date_array
 func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4381,6 +5687,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4388,24 +5695,33 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	if err := encodeTestRequestRequiredStringDateArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateArrayArrayRequest handles test_request_required_string_date_array_array operation.
 //
 // POST /test_request_required_string_date_array_array
 func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4414,6 +5730,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4421,24 +5738,33 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredStringDateArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateNullableRequest handles test_request_required_string_date_nullable operation.
 //
 // POST /test_request_required_string_date_nullable
 func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4447,6 +5773,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4454,24 +5781,33 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	if err := encodeTestRequestRequiredStringDateNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateNullableArrayRequest handles test_request_required_string_date_nullable_array operation.
 //
 // POST /test_request_required_string_date_nullable_array
 func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4480,6 +5816,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4487,24 +5824,33 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	if err := encodeTestRequestRequiredStringDateNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateNullableArrayArrayRequest handles test_request_required_string_date_nullable_array_array operation.
 //
 // POST /test_request_required_string_date_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4513,6 +5859,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4520,24 +5867,33 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	if err := encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateTimeRequest handles test_request_required_string_date-time operation.
 //
 // POST /test_request_required_string_date-time
 func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4546,6 +5902,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4553,24 +5910,33 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	if err := encodeTestRequestRequiredStringDateTimeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateTimeArrayRequest handles test_request_required_string_date-time_array operation.
 //
 // POST /test_request_required_string_date-time_array
 func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4579,6 +5945,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4586,24 +5953,33 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	if err := encodeTestRequestRequiredStringDateTimeArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateTimeArrayArrayRequest handles test_request_required_string_date-time_array_array operation.
 //
 // POST /test_request_required_string_date-time_array_array
 func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4612,6 +5988,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4619,24 +5996,33 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	if err := encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateTimeNullableRequest handles test_request_required_string_date-time_nullable operation.
 //
 // POST /test_request_required_string_date-time_nullable
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4645,6 +6031,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4652,24 +6039,33 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	if err := encodeTestRequestRequiredStringDateTimeNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateTimeNullableArrayRequest handles test_request_required_string_date-time_nullable_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4678,6 +6074,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4685,24 +6082,33 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	if err := encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDateTimeNullableArrayArrayRequest handles test_request_required_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_date-time_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_date-time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4711,6 +6117,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4718,24 +6125,33 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	if err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDurationRequest handles test_request_required_string_duration operation.
 //
 // POST /test_request_required_string_duration
 func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDuration",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4744,6 +6160,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4751,24 +6168,33 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	if err := encodeTestRequestRequiredStringDurationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDurationArrayRequest handles test_request_required_string_duration_array operation.
 //
 // POST /test_request_required_string_duration_array
 func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDurationArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4777,6 +6203,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4784,24 +6211,33 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	if err := encodeTestRequestRequiredStringDurationArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDurationArrayArrayRequest handles test_request_required_string_duration_array_array operation.
 //
 // POST /test_request_required_string_duration_array_array
 func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4810,6 +6246,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4817,24 +6254,33 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	if err := encodeTestRequestRequiredStringDurationArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDurationNullableRequest handles test_request_required_string_duration_nullable operation.
 //
 // POST /test_request_required_string_duration_nullable
 func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDurationNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4843,6 +6289,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4850,24 +6297,33 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	if err := encodeTestRequestRequiredStringDurationNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDurationNullableArrayRequest handles test_request_required_string_duration_nullable_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array
 func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4876,6 +6332,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4883,24 +6340,33 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	if err := encodeTestRequestRequiredStringDurationNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringDurationNullableArrayArrayRequest handles test_request_required_string_duration_nullable_array_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_duration_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_duration_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4909,6 +6375,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4916,24 +6383,33 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	if err := encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringEmailRequest handles test_request_required_string_email operation.
 //
 // POST /test_request_required_string_email
 func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmail",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringEmailRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4942,6 +6418,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4949,24 +6426,33 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	if err := encodeTestRequestRequiredStringEmailResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringEmailArrayRequest handles test_request_required_string_email_array operation.
 //
 // POST /test_request_required_string_email_array
 func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringEmailArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -4975,6 +6461,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -4982,24 +6469,33 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	if err := encodeTestRequestRequiredStringEmailArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringEmailArrayArrayRequest handles test_request_required_string_email_array_array operation.
 //
 // POST /test_request_required_string_email_array_array
 func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5008,6 +6504,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5015,24 +6512,33 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	if err := encodeTestRequestRequiredStringEmailArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringEmailNullableRequest handles test_request_required_string_email_nullable operation.
 //
 // POST /test_request_required_string_email_nullable
 func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringEmailNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5041,6 +6547,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5048,24 +6555,33 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	if err := encodeTestRequestRequiredStringEmailNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringEmailNullableArrayRequest handles test_request_required_string_email_nullable_array operation.
 //
 // POST /test_request_required_string_email_nullable_array
 func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5074,6 +6590,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5081,24 +6598,33 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	if err := encodeTestRequestRequiredStringEmailNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringEmailNullableArrayArrayRequest handles test_request_required_string_email_nullable_array_array operation.
 //
 // POST /test_request_required_string_email_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_email_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_email_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5107,6 +6633,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5114,24 +6641,33 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	if err := encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringHostnameRequest handles test_request_required_string_hostname operation.
 //
 // POST /test_request_required_string_hostname
 func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostname",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringHostnameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5140,6 +6676,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5147,24 +6684,33 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	if err := encodeTestRequestRequiredStringHostnameResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringHostnameArrayRequest handles test_request_required_string_hostname_array operation.
 //
 // POST /test_request_required_string_hostname_array
 func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringHostnameArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5173,6 +6719,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5180,24 +6727,33 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	if err := encodeTestRequestRequiredStringHostnameArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringHostnameArrayArrayRequest handles test_request_required_string_hostname_array_array operation.
 //
 // POST /test_request_required_string_hostname_array_array
 func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5206,6 +6762,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5213,24 +6770,33 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	if err := encodeTestRequestRequiredStringHostnameArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringHostnameNullableRequest handles test_request_required_string_hostname_nullable operation.
 //
 // POST /test_request_required_string_hostname_nullable
 func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringHostnameNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5239,6 +6805,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5246,24 +6813,33 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	if err := encodeTestRequestRequiredStringHostnameNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringHostnameNullableArrayRequest handles test_request_required_string_hostname_nullable_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array
 func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5272,6 +6848,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5279,24 +6856,33 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	if err := encodeTestRequestRequiredStringHostnameNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringHostnameNullableArrayArrayRequest handles test_request_required_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_hostname_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_hostname_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5305,6 +6891,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5312,24 +6899,33 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	if err := encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIPRequest handles test_request_required_string_ip operation.
 //
 // POST /test_request_required_string_ip
 func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIP",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIPRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5338,6 +6934,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5345,24 +6942,33 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	if err := encodeTestRequestRequiredStringIPResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIPArrayRequest handles test_request_required_string_ip_array operation.
 //
 // POST /test_request_required_string_ip_array
 func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIPArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5371,6 +6977,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5378,24 +6985,33 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	if err := encodeTestRequestRequiredStringIPArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIPArrayArrayRequest handles test_request_required_string_ip_array_array operation.
 //
 // POST /test_request_required_string_ip_array_array
 func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5404,6 +7020,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5411,24 +7028,33 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	if err := encodeTestRequestRequiredStringIPArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIPNullableRequest handles test_request_required_string_ip_nullable operation.
 //
 // POST /test_request_required_string_ip_nullable
 func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIPNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5437,6 +7063,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5444,24 +7071,33 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	if err := encodeTestRequestRequiredStringIPNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIPNullableArrayRequest handles test_request_required_string_ip_nullable_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array
 func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5470,6 +7106,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5477,24 +7114,33 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	if err := encodeTestRequestRequiredStringIPNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIPNullableArrayArrayRequest handles test_request_required_string_ip_nullable_array_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ip_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ip_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5503,6 +7149,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5510,24 +7157,33 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	if err := encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv4Request handles test_request_required_string_ipv4 operation.
 //
 // POST /test_request_required_string_ipv4
 func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv4Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5536,6 +7192,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5543,24 +7200,33 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	if err := encodeTestRequestRequiredStringIpv4Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv4ArrayRequest handles test_request_required_string_ipv4_array operation.
 //
 // POST /test_request_required_string_ipv4_array
 func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5569,6 +7235,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5576,24 +7243,33 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	if err := encodeTestRequestRequiredStringIpv4ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv4ArrayArrayRequest handles test_request_required_string_ipv4_array_array operation.
 //
 // POST /test_request_required_string_ipv4_array_array
 func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5602,6 +7278,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5609,24 +7286,33 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv4NullableRequest handles test_request_required_string_ipv4_nullable operation.
 //
 // POST /test_request_required_string_ipv4_nullable
 func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv4NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5635,6 +7321,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5642,24 +7329,33 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	if err := encodeTestRequestRequiredStringIpv4NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv4NullableArrayRequest handles test_request_required_string_ipv4_nullable_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array
 func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5668,6 +7364,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5675,24 +7372,33 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	if err := encodeTestRequestRequiredStringIpv4NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv4NullableArrayArrayRequest handles test_request_required_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv4_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5701,6 +7407,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5708,24 +7415,33 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	if err := encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv6Request handles test_request_required_string_ipv6 operation.
 //
 // POST /test_request_required_string_ipv6
 func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv6Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5734,6 +7450,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5741,24 +7458,33 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	if err := encodeTestRequestRequiredStringIpv6Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv6ArrayRequest handles test_request_required_string_ipv6_array operation.
 //
 // POST /test_request_required_string_ipv6_array
 func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5767,6 +7493,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5774,24 +7501,33 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	if err := encodeTestRequestRequiredStringIpv6ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv6ArrayArrayRequest handles test_request_required_string_ipv6_array_array operation.
 //
 // POST /test_request_required_string_ipv6_array_array
 func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5800,6 +7536,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5807,24 +7544,33 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv6NullableRequest handles test_request_required_string_ipv6_nullable operation.
 //
 // POST /test_request_required_string_ipv6_nullable
 func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv6NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5833,6 +7579,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5840,24 +7587,33 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	if err := encodeTestRequestRequiredStringIpv6NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv6NullableArrayRequest handles test_request_required_string_ipv6_nullable_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array
 func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5866,6 +7622,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5873,24 +7630,33 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	if err := encodeTestRequestRequiredStringIpv6NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringIpv6NullableArrayArrayRequest handles test_request_required_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_ipv6_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5899,6 +7665,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5906,24 +7673,33 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	if err := encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringNullableRequest handles test_request_required_string_nullable operation.
 //
 // POST /test_request_required_string_nullable
 func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5932,6 +7708,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5939,24 +7716,33 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	if err := encodeTestRequestRequiredStringNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringNullableArrayRequest handles test_request_required_string_nullable_array operation.
 //
 // POST /test_request_required_string_nullable_array
 func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5965,6 +7751,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -5972,24 +7759,33 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	if err := encodeTestRequestRequiredStringNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringNullableArrayArrayRequest handles test_request_required_string_nullable_array_array operation.
 //
 // POST /test_request_required_string_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -5998,6 +7794,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6005,24 +7802,33 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	if err := encodeTestRequestRequiredStringNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringPasswordRequest handles test_request_required_string_password operation.
 //
 // POST /test_request_required_string_password
 func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPassword",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringPasswordRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6031,6 +7837,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6038,24 +7845,33 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	if err := encodeTestRequestRequiredStringPasswordResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringPasswordArrayRequest handles test_request_required_string_password_array operation.
 //
 // POST /test_request_required_string_password_array
 func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringPasswordArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6064,6 +7880,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6071,24 +7888,33 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	if err := encodeTestRequestRequiredStringPasswordArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringPasswordArrayArrayRequest handles test_request_required_string_password_array_array operation.
 //
 // POST /test_request_required_string_password_array_array
 func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6097,6 +7923,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6104,24 +7931,33 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	if err := encodeTestRequestRequiredStringPasswordArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringPasswordNullableRequest handles test_request_required_string_password_nullable operation.
 //
 // POST /test_request_required_string_password_nullable
 func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringPasswordNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6130,6 +7966,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6137,24 +7974,33 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	if err := encodeTestRequestRequiredStringPasswordNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringPasswordNullableArrayRequest handles test_request_required_string_password_nullable_array operation.
 //
 // POST /test_request_required_string_password_nullable_array
 func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6163,6 +8009,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6170,24 +8017,33 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	if err := encodeTestRequestRequiredStringPasswordNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringPasswordNullableArrayArrayRequest handles test_request_required_string_password_nullable_array_array operation.
 //
 // POST /test_request_required_string_password_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_password_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_password_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6196,6 +8052,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6203,24 +8060,33 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	if err := encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringTimeRequest handles test_request_required_string_time operation.
 //
 // POST /test_request_required_string_time
 func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6229,6 +8095,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6236,24 +8103,33 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	if err := encodeTestRequestRequiredStringTimeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringTimeArrayRequest handles test_request_required_string_time_array operation.
 //
 // POST /test_request_required_string_time_array
 func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6262,6 +8138,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6269,24 +8146,33 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	if err := encodeTestRequestRequiredStringTimeArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringTimeArrayArrayRequest handles test_request_required_string_time_array_array operation.
 //
 // POST /test_request_required_string_time_array_array
 func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6295,6 +8181,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6302,24 +8189,33 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredStringTimeArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringTimeNullableRequest handles test_request_required_string_time_nullable operation.
 //
 // POST /test_request_required_string_time_nullable
 func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6328,6 +8224,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6335,24 +8232,33 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	if err := encodeTestRequestRequiredStringTimeNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringTimeNullableArrayRequest handles test_request_required_string_time_nullable_array operation.
 //
 // POST /test_request_required_string_time_nullable_array
 func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6361,6 +8267,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6368,24 +8275,33 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	if err := encodeTestRequestRequiredStringTimeNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringTimeNullableArrayArrayRequest handles test_request_required_string_time_nullable_array_array operation.
 //
 // POST /test_request_required_string_time_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_time_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6394,6 +8310,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6401,24 +8318,33 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	if err := encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringURIRequest handles test_request_required_string_uri operation.
 //
 // POST /test_request_required_string_uri
 func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURI",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringURIRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6427,6 +8353,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6434,24 +8361,33 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	if err := encodeTestRequestRequiredStringURIResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringURIArrayRequest handles test_request_required_string_uri_array operation.
 //
 // POST /test_request_required_string_uri_array
 func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURIArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringURIArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6460,6 +8396,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6467,24 +8404,33 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	if err := encodeTestRequestRequiredStringURIArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringURIArrayArrayRequest handles test_request_required_string_uri_array_array operation.
 //
 // POST /test_request_required_string_uri_array_array
 func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURIArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6493,6 +8439,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6500,24 +8447,33 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	if err := encodeTestRequestRequiredStringURIArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringURINullableRequest handles test_request_required_string_uri_nullable operation.
 //
 // POST /test_request_required_string_uri_nullable
 func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringURINullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6526,6 +8482,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6533,24 +8490,33 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	if err := encodeTestRequestRequiredStringURINullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringURINullableArrayRequest handles test_request_required_string_uri_nullable_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array
 func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringURINullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6559,6 +8525,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6566,24 +8533,33 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	if err := encodeTestRequestRequiredStringURINullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringURINullableArrayArrayRequest handles test_request_required_string_uri_nullable_array_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uri_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uri_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6592,6 +8568,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6599,24 +8576,33 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	if err := encodeTestRequestRequiredStringURINullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringUUIDRequest handles test_request_required_string_uuid operation.
 //
 // POST /test_request_required_string_uuid
 func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUID",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringUUIDRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6625,6 +8611,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6632,24 +8619,33 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	if err := encodeTestRequestRequiredStringUUIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringUUIDArrayRequest handles test_request_required_string_uuid_array operation.
 //
 // POST /test_request_required_string_uuid_array
 func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringUUIDArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6658,6 +8654,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6665,24 +8662,33 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	if err := encodeTestRequestRequiredStringUUIDArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringUUIDArrayArrayRequest handles test_request_required_string_uuid_array_array operation.
 //
 // POST /test_request_required_string_uuid_array_array
 func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6691,6 +8697,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6698,24 +8705,33 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	if err := encodeTestRequestRequiredStringUUIDArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringUUIDNullableRequest handles test_request_required_string_uuid_nullable operation.
 //
 // POST /test_request_required_string_uuid_nullable
 func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringUUIDNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6724,6 +8740,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6731,24 +8748,33 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	if err := encodeTestRequestRequiredStringUUIDNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringUUIDNullableArrayRequest handles test_request_required_string_uuid_nullable_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array
 func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6757,6 +8783,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6764,24 +8791,33 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	if err := encodeTestRequestRequiredStringUUIDNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestRequiredStringUUIDNullableArrayArrayRequest handles test_request_required_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_uuid_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_required_string_uuid_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6790,6 +8826,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6797,24 +8834,33 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	if err := encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringRequest handles test_request_string operation.
 //
 // POST /test_request_string
 func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestString",
-		trace.WithAttributes(otelogen.OperationID("test_request_string")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6823,6 +8869,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6830,24 +8877,33 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	if err := encodeTestRequestStringResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringArrayRequest handles test_request_string_array operation.
 //
 // POST /test_request_string_array
 func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6856,6 +8912,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6863,24 +8920,33 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	if err := encodeTestRequestStringArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringArrayArrayRequest handles test_request_string_array_array operation.
 //
 // POST /test_request_string_array_array
 func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6889,6 +8955,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6896,24 +8963,33 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	if err := encodeTestRequestStringArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringBinaryRequest handles test_request_string_binary operation.
 //
 // POST /test_request_string_binary
 func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinary",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringBinaryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6922,6 +8998,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6929,24 +9006,33 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	if err := encodeTestRequestStringBinaryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringBinaryArrayRequest handles test_request_string_binary_array operation.
 //
 // POST /test_request_string_binary_array
 func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringBinaryArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6955,6 +9041,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6962,24 +9049,33 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	if err := encodeTestRequestStringBinaryArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringBinaryArrayArrayRequest handles test_request_string_binary_array_array operation.
 //
 // POST /test_request_string_binary_array_array
 func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -6988,6 +9084,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -6995,24 +9092,33 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	if err := encodeTestRequestStringBinaryArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringBinaryNullableRequest handles test_request_string_binary_nullable operation.
 //
 // POST /test_request_string_binary_nullable
 func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringBinaryNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7021,6 +9127,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7028,24 +9135,33 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	if err := encodeTestRequestStringBinaryNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringBinaryNullableArrayRequest handles test_request_string_binary_nullable_array operation.
 //
 // POST /test_request_string_binary_nullable_array
 func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7054,6 +9170,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7061,24 +9178,33 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	if err := encodeTestRequestStringBinaryNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringBinaryNullableArrayArrayRequest handles test_request_string_binary_nullable_array_array operation.
 //
 // POST /test_request_string_binary_nullable_array_array
 func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_binary_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_binary_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7087,6 +9213,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7094,24 +9221,33 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	if err := encodeTestRequestStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringByteRequest handles test_request_string_byte operation.
 //
 // POST /test_request_string_byte
 func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByte",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringByteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7120,6 +9256,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7127,24 +9264,33 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	if err := encodeTestRequestStringByteResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringByteArrayRequest handles test_request_string_byte_array operation.
 //
 // POST /test_request_string_byte_array
 func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringByteArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7153,6 +9299,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7160,24 +9307,33 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	if err := encodeTestRequestStringByteArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringByteArrayArrayRequest handles test_request_string_byte_array_array operation.
 //
 // POST /test_request_string_byte_array_array
 func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7186,6 +9342,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7193,24 +9350,33 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	if err := encodeTestRequestStringByteArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringByteNullableRequest handles test_request_string_byte_nullable operation.
 //
 // POST /test_request_string_byte_nullable
 func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringByteNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7219,6 +9385,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7226,24 +9393,33 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	if err := encodeTestRequestStringByteNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringByteNullableArrayRequest handles test_request_string_byte_nullable_array operation.
 //
 // POST /test_request_string_byte_nullable_array
 func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7252,6 +9428,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7259,24 +9436,33 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	if err := encodeTestRequestStringByteNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringByteNullableArrayArrayRequest handles test_request_string_byte_nullable_array_array operation.
 //
 // POST /test_request_string_byte_nullable_array_array
 func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_byte_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_byte_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7285,6 +9471,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7292,24 +9479,33 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	if err := encodeTestRequestStringByteNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateRequest handles test_request_string_date operation.
 //
 // POST /test_request_string_date
 func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDate",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7318,6 +9514,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7325,24 +9522,33 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	if err := encodeTestRequestStringDateResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateArrayRequest handles test_request_string_date_array operation.
 //
 // POST /test_request_string_date_array
 func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7351,6 +9557,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7358,24 +9565,33 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	if err := encodeTestRequestStringDateArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateArrayArrayRequest handles test_request_string_date_array_array operation.
 //
 // POST /test_request_string_date_array_array
 func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7384,6 +9600,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7391,24 +9608,33 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	if err := encodeTestRequestStringDateArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateNullableRequest handles test_request_string_date_nullable operation.
 //
 // POST /test_request_string_date_nullable
 func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7417,6 +9643,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7424,24 +9651,33 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	if err := encodeTestRequestStringDateNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateNullableArrayRequest handles test_request_string_date_nullable_array operation.
 //
 // POST /test_request_string_date_nullable_array
 func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7450,6 +9686,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7457,24 +9694,33 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	if err := encodeTestRequestStringDateNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateNullableArrayArrayRequest handles test_request_string_date_nullable_array_array operation.
 //
 // POST /test_request_string_date_nullable_array_array
 func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7483,6 +9729,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7490,24 +9737,33 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	if err := encodeTestRequestStringDateNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateTimeRequest handles test_request_string_date-time operation.
 //
 // POST /test_request_string_date-time
 func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7516,6 +9772,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7523,24 +9780,33 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	if err := encodeTestRequestStringDateTimeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateTimeArrayRequest handles test_request_string_date-time_array operation.
 //
 // POST /test_request_string_date-time_array
 func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7549,6 +9815,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7556,24 +9823,33 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	if err := encodeTestRequestStringDateTimeArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateTimeArrayArrayRequest handles test_request_string_date-time_array_array operation.
 //
 // POST /test_request_string_date-time_array_array
 func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7582,6 +9858,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7589,24 +9866,33 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	if err := encodeTestRequestStringDateTimeArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateTimeNullableRequest handles test_request_string_date-time_nullable operation.
 //
 // POST /test_request_string_date-time_nullable
 func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7615,6 +9901,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7622,24 +9909,33 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	if err := encodeTestRequestStringDateTimeNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateTimeNullableArrayRequest handles test_request_string_date-time_nullable_array operation.
 //
 // POST /test_request_string_date-time_nullable_array
 func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7648,6 +9944,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7655,24 +9952,33 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	if err := encodeTestRequestStringDateTimeNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDateTimeNullableArrayArrayRequest handles test_request_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_string_date-time_nullable_array_array
 func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_date-time_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_date-time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7681,6 +9987,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7688,24 +9995,33 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	if err := encodeTestRequestStringDateTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDurationRequest handles test_request_string_duration operation.
 //
 // POST /test_request_string_duration
 func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDuration",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7714,6 +10030,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7721,24 +10038,33 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	if err := encodeTestRequestStringDurationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDurationArrayRequest handles test_request_string_duration_array operation.
 //
 // POST /test_request_string_duration_array
 func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDurationArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7747,6 +10073,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7754,24 +10081,33 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	if err := encodeTestRequestStringDurationArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDurationArrayArrayRequest handles test_request_string_duration_array_array operation.
 //
 // POST /test_request_string_duration_array_array
 func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7780,6 +10116,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7787,24 +10124,33 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	if err := encodeTestRequestStringDurationArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDurationNullableRequest handles test_request_string_duration_nullable operation.
 //
 // POST /test_request_string_duration_nullable
 func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDurationNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7813,6 +10159,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7820,24 +10167,33 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	if err := encodeTestRequestStringDurationNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDurationNullableArrayRequest handles test_request_string_duration_nullable_array operation.
 //
 // POST /test_request_string_duration_nullable_array
 func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7846,6 +10202,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7853,24 +10210,33 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	if err := encodeTestRequestStringDurationNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringDurationNullableArrayArrayRequest handles test_request_string_duration_nullable_array_array operation.
 //
 // POST /test_request_string_duration_nullable_array_array
 func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_duration_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_duration_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7879,6 +10245,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7886,24 +10253,33 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	if err := encodeTestRequestStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringEmailRequest handles test_request_string_email operation.
 //
 // POST /test_request_string_email
 func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmail",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringEmailRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7912,6 +10288,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7919,24 +10296,33 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	if err := encodeTestRequestStringEmailResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringEmailArrayRequest handles test_request_string_email_array operation.
 //
 // POST /test_request_string_email_array
 func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringEmailArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7945,6 +10331,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7952,24 +10339,33 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	if err := encodeTestRequestStringEmailArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringEmailArrayArrayRequest handles test_request_string_email_array_array operation.
 //
 // POST /test_request_string_email_array_array
 func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -7978,6 +10374,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -7985,24 +10382,33 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	if err := encodeTestRequestStringEmailArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringEmailNullableRequest handles test_request_string_email_nullable operation.
 //
 // POST /test_request_string_email_nullable
 func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringEmailNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8011,6 +10417,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8018,24 +10425,33 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	if err := encodeTestRequestStringEmailNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringEmailNullableArrayRequest handles test_request_string_email_nullable_array operation.
 //
 // POST /test_request_string_email_nullable_array
 func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8044,6 +10460,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8051,24 +10468,33 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	if err := encodeTestRequestStringEmailNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringEmailNullableArrayArrayRequest handles test_request_string_email_nullable_array_array operation.
 //
 // POST /test_request_string_email_nullable_array_array
 func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_email_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_email_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8077,6 +10503,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8084,24 +10511,33 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	if err := encodeTestRequestStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringHostnameRequest handles test_request_string_hostname operation.
 //
 // POST /test_request_string_hostname
 func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostname",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringHostnameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8110,6 +10546,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8117,24 +10554,33 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	if err := encodeTestRequestStringHostnameResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringHostnameArrayRequest handles test_request_string_hostname_array operation.
 //
 // POST /test_request_string_hostname_array
 func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringHostnameArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8143,6 +10589,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8150,24 +10597,33 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	if err := encodeTestRequestStringHostnameArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringHostnameArrayArrayRequest handles test_request_string_hostname_array_array operation.
 //
 // POST /test_request_string_hostname_array_array
 func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8176,6 +10632,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8183,24 +10640,33 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	if err := encodeTestRequestStringHostnameArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringHostnameNullableRequest handles test_request_string_hostname_nullable operation.
 //
 // POST /test_request_string_hostname_nullable
 func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringHostnameNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8209,6 +10675,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8216,24 +10683,33 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	if err := encodeTestRequestStringHostnameNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringHostnameNullableArrayRequest handles test_request_string_hostname_nullable_array operation.
 //
 // POST /test_request_string_hostname_nullable_array
 func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8242,6 +10718,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8249,24 +10726,33 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	if err := encodeTestRequestStringHostnameNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringHostnameNullableArrayArrayRequest handles test_request_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_string_hostname_nullable_array_array
 func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_hostname_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_hostname_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8275,6 +10761,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8282,24 +10769,33 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	if err := encodeTestRequestStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIPRequest handles test_request_string_ip operation.
 //
 // POST /test_request_string_ip
 func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIP",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIPRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8308,6 +10804,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8315,24 +10812,33 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	if err := encodeTestRequestStringIPResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIPArrayRequest handles test_request_string_ip_array operation.
 //
 // POST /test_request_string_ip_array
 func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIPArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8341,6 +10847,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8348,24 +10855,33 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	if err := encodeTestRequestStringIPArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIPArrayArrayRequest handles test_request_string_ip_array_array operation.
 //
 // POST /test_request_string_ip_array_array
 func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8374,6 +10890,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8381,24 +10898,33 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	if err := encodeTestRequestStringIPArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIPNullableRequest handles test_request_string_ip_nullable operation.
 //
 // POST /test_request_string_ip_nullable
 func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIPNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8407,6 +10933,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8414,24 +10941,33 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	if err := encodeTestRequestStringIPNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIPNullableArrayRequest handles test_request_string_ip_nullable_array operation.
 //
 // POST /test_request_string_ip_nullable_array
 func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8440,6 +10976,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8447,24 +10984,33 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	if err := encodeTestRequestStringIPNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIPNullableArrayArrayRequest handles test_request_string_ip_nullable_array_array operation.
 //
 // POST /test_request_string_ip_nullable_array_array
 func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ip_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ip_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8473,6 +11019,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8480,24 +11027,33 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	if err := encodeTestRequestStringIPNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv4Request handles test_request_string_ipv4 operation.
 //
 // POST /test_request_string_ipv4
 func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv4Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8506,6 +11062,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8513,24 +11070,33 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	if err := encodeTestRequestStringIpv4Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv4ArrayRequest handles test_request_string_ipv4_array operation.
 //
 // POST /test_request_string_ipv4_array
 func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8539,6 +11105,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8546,24 +11113,33 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	if err := encodeTestRequestStringIpv4ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv4ArrayArrayRequest handles test_request_string_ipv4_array_array operation.
 //
 // POST /test_request_string_ipv4_array_array
 func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8572,6 +11148,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8579,24 +11156,33 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	if err := encodeTestRequestStringIpv4ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv4NullableRequest handles test_request_string_ipv4_nullable operation.
 //
 // POST /test_request_string_ipv4_nullable
 func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv4NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8605,6 +11191,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8612,24 +11199,33 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	if err := encodeTestRequestStringIpv4NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv4NullableArrayRequest handles test_request_string_ipv4_nullable_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array
 func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8638,6 +11234,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8645,24 +11242,33 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	if err := encodeTestRequestStringIpv4NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv4NullableArrayArrayRequest handles test_request_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array_array
 func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv4_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv4_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8671,6 +11277,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8678,24 +11285,33 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	if err := encodeTestRequestStringIpv4NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv6Request handles test_request_string_ipv6 operation.
 //
 // POST /test_request_string_ipv6
 func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv6Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8704,6 +11320,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8711,24 +11328,33 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	if err := encodeTestRequestStringIpv6Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv6ArrayRequest handles test_request_string_ipv6_array operation.
 //
 // POST /test_request_string_ipv6_array
 func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6Array",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8737,6 +11363,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8744,24 +11371,33 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	if err := encodeTestRequestStringIpv6ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv6ArrayArrayRequest handles test_request_string_ipv6_array_array operation.
 //
 // POST /test_request_string_ipv6_array_array
 func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8770,6 +11406,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8777,24 +11414,33 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	if err := encodeTestRequestStringIpv6ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv6NullableRequest handles test_request_string_ipv6_nullable operation.
 //
 // POST /test_request_string_ipv6_nullable
 func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv6NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8803,6 +11449,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8810,24 +11457,33 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	if err := encodeTestRequestStringIpv6NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv6NullableArrayRequest handles test_request_string_ipv6_nullable_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array
 func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8836,6 +11492,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8843,24 +11500,33 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	if err := encodeTestRequestStringIpv6NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringIpv6NullableArrayArrayRequest handles test_request_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array_array
 func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_ipv6_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_ipv6_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8869,6 +11535,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8876,24 +11543,33 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	if err := encodeTestRequestStringIpv6NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringNullableRequest handles test_request_string_nullable operation.
 //
 // POST /test_request_string_nullable
 func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8902,6 +11578,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8909,24 +11586,33 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	if err := encodeTestRequestStringNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringNullableArrayRequest handles test_request_string_nullable_array operation.
 //
 // POST /test_request_string_nullable_array
 func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8935,6 +11621,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8942,24 +11629,33 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	if err := encodeTestRequestStringNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringNullableArrayArrayRequest handles test_request_string_nullable_array_array operation.
 //
 // POST /test_request_string_nullable_array_array
 func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -8968,6 +11664,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -8975,24 +11672,33 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	if err := encodeTestRequestStringNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringPasswordRequest handles test_request_string_password operation.
 //
 // POST /test_request_string_password
 func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPassword",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringPasswordRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9001,6 +11707,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9008,24 +11715,33 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	if err := encodeTestRequestStringPasswordResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringPasswordArrayRequest handles test_request_string_password_array operation.
 //
 // POST /test_request_string_password_array
 func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringPasswordArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9034,6 +11750,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9041,24 +11758,33 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	if err := encodeTestRequestStringPasswordArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringPasswordArrayArrayRequest handles test_request_string_password_array_array operation.
 //
 // POST /test_request_string_password_array_array
 func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9067,6 +11793,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9074,24 +11801,33 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	if err := encodeTestRequestStringPasswordArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringPasswordNullableRequest handles test_request_string_password_nullable operation.
 //
 // POST /test_request_string_password_nullable
 func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringPasswordNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9100,6 +11836,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9107,24 +11844,33 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	if err := encodeTestRequestStringPasswordNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringPasswordNullableArrayRequest handles test_request_string_password_nullable_array operation.
 //
 // POST /test_request_string_password_nullable_array
 func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9133,6 +11879,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9140,24 +11887,33 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	if err := encodeTestRequestStringPasswordNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringPasswordNullableArrayArrayRequest handles test_request_string_password_nullable_array_array operation.
 //
 // POST /test_request_string_password_nullable_array_array
 func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_password_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_password_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9166,6 +11922,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9173,24 +11930,33 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	if err := encodeTestRequestStringPasswordNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringTimeRequest handles test_request_string_time operation.
 //
 // POST /test_request_string_time
 func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTime",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9199,6 +11965,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9206,24 +11973,33 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	if err := encodeTestRequestStringTimeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringTimeArrayRequest handles test_request_string_time_array operation.
 //
 // POST /test_request_string_time_array
 func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9232,6 +12008,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9239,24 +12016,33 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	if err := encodeTestRequestStringTimeArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringTimeArrayArrayRequest handles test_request_string_time_array_array operation.
 //
 // POST /test_request_string_time_array_array
 func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9265,6 +12051,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9272,24 +12059,33 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	if err := encodeTestRequestStringTimeArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringTimeNullableRequest handles test_request_string_time_nullable operation.
 //
 // POST /test_request_string_time_nullable
 func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9298,6 +12094,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9305,24 +12102,33 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	if err := encodeTestRequestStringTimeNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringTimeNullableArrayRequest handles test_request_string_time_nullable_array operation.
 //
 // POST /test_request_string_time_nullable_array
 func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9331,6 +12137,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9338,24 +12145,33 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	if err := encodeTestRequestStringTimeNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringTimeNullableArrayArrayRequest handles test_request_string_time_nullable_array_array operation.
 //
 // POST /test_request_string_time_nullable_array_array
 func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_time_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9364,6 +12180,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9371,24 +12188,33 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	if err := encodeTestRequestStringTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringURIRequest handles test_request_string_uri operation.
 //
 // POST /test_request_string_uri
 func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURI",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringURIRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9397,6 +12223,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9404,24 +12231,33 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	if err := encodeTestRequestStringURIResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringURIArrayRequest handles test_request_string_uri_array operation.
 //
 // POST /test_request_string_uri_array
 func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURIArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringURIArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9430,6 +12266,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9437,24 +12274,33 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	if err := encodeTestRequestStringURIArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringURIArrayArrayRequest handles test_request_string_uri_array_array operation.
 //
 // POST /test_request_string_uri_array_array
 func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURIArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9463,6 +12309,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9470,24 +12317,33 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	if err := encodeTestRequestStringURIArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringURINullableRequest handles test_request_string_uri_nullable operation.
 //
 // POST /test_request_string_uri_nullable
 func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURINullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringURINullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9496,6 +12352,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9503,24 +12360,33 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	if err := encodeTestRequestStringURINullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringURINullableArrayRequest handles test_request_string_uri_nullable_array operation.
 //
 // POST /test_request_string_uri_nullable_array
 func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURINullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringURINullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9529,6 +12395,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9536,24 +12403,33 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	if err := encodeTestRequestStringURINullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringURINullableArrayArrayRequest handles test_request_string_uri_nullable_array_array operation.
 //
 // POST /test_request_string_uri_nullable_array_array
 func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uri_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURINullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uri_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9562,6 +12438,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9569,24 +12446,33 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	if err := encodeTestRequestStringURINullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringUUIDRequest handles test_request_string_uuid operation.
 //
 // POST /test_request_string_uuid
 func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUID",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringUUIDRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9595,6 +12481,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9602,24 +12489,33 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	if err := encodeTestRequestStringUUIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringUUIDArrayRequest handles test_request_string_uuid_array operation.
 //
 // POST /test_request_string_uuid_array
 func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringUUIDArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9628,6 +12524,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9635,24 +12532,33 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	if err := encodeTestRequestStringUUIDArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringUUIDArrayArrayRequest handles test_request_string_uuid_array_array operation.
 //
 // POST /test_request_string_uuid_array_array
 func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9661,6 +12567,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9668,24 +12575,33 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	if err := encodeTestRequestStringUUIDArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringUUIDNullableRequest handles test_request_string_uuid_nullable operation.
 //
 // POST /test_request_string_uuid_nullable
 func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDNullable",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringUUIDNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9694,6 +12610,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9701,24 +12618,33 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	if err := encodeTestRequestStringUUIDNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringUUIDNullableArrayRequest handles test_request_string_uuid_nullable_array operation.
 //
 // POST /test_request_string_uuid_nullable_array
 func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9727,6 +12653,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9734,24 +12661,33 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	if err := encodeTestRequestStringUUIDNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestRequestStringUUIDNullableArrayArrayRequest handles test_request_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_string_uuid_nullable_array_array
 func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_uuid_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_request_string_uuid_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestRequestStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9760,6 +12696,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9767,24 +12704,33 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	if err := encodeTestRequestStringUUIDNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseAnyRequest handles test_response_Any operation.
 //
 // POST /test_response_Any
 func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_Any"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseAny",
-		trace.WithAttributes(otelogen.OperationID("test_response_Any")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseAnyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9793,6 +12739,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9800,24 +12747,33 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	if err := encodeTestResponseAnyResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseBooleanRequest handles test_response_boolean operation.
 //
 // POST /test_response_boolean
 func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBoolean",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseBooleanRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9826,6 +12782,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9833,24 +12790,33 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	if err := encodeTestResponseBooleanResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseBooleanArrayRequest handles test_response_boolean_array operation.
 //
 // POST /test_response_boolean_array
 func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseBooleanArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9859,6 +12825,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9866,24 +12833,33 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	if err := encodeTestResponseBooleanArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseBooleanArrayArrayRequest handles test_response_boolean_array_array operation.
 //
 // POST /test_response_boolean_array_array
 func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9892,6 +12868,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9899,24 +12876,33 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	if err := encodeTestResponseBooleanArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseBooleanNullableRequest handles test_response_boolean_nullable operation.
 //
 // POST /test_response_boolean_nullable
 func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseBooleanNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9925,6 +12911,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9932,24 +12919,33 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	if err := encodeTestResponseBooleanNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseBooleanNullableArrayRequest handles test_response_boolean_nullable_array operation.
 //
 // POST /test_response_boolean_nullable_array
 func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9958,6 +12954,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9965,24 +12962,33 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	if err := encodeTestResponseBooleanNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseBooleanNullableArrayArrayRequest handles test_response_boolean_nullable_array_array operation.
 //
 // POST /test_response_boolean_nullable_array_array
 func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_boolean_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_boolean_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -9991,6 +12997,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -9998,24 +13005,33 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	if err := encodeTestResponseBooleanNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseEmptyStructRequest handles test_response_EmptyStruct operation.
 //
 // POST /test_response_EmptyStruct
 func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_EmptyStruct"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseEmptyStruct",
-		trace.WithAttributes(otelogen.OperationID("test_response_EmptyStruct")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseEmptyStructRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10024,6 +13040,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10031,24 +13048,33 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	if err := encodeTestResponseEmptyStructResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseFormatTestRequest handles test_response_FormatTest operation.
 //
 // POST /test_response_FormatTest
 func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_FormatTest"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseFormatTest",
-		trace.WithAttributes(otelogen.OperationID("test_response_FormatTest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseFormatTestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10057,6 +13083,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10064,24 +13091,33 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	if err := encodeTestResponseFormatTestResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerRequest handles test_response_integer operation.
 //
 // POST /test_response_integer
 func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseInteger",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10090,6 +13126,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10097,24 +13134,33 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	if err := encodeTestResponseIntegerResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerArrayRequest handles test_response_integer_array operation.
 //
 // POST /test_response_integer_array
 func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10123,6 +13169,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10130,24 +13177,33 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	if err := encodeTestResponseIntegerArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerArrayArrayRequest handles test_response_integer_array_array operation.
 //
 // POST /test_response_integer_array_array
 func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10156,6 +13212,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10163,24 +13220,33 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	if err := encodeTestResponseIntegerArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt32Request handles test_response_integer_int32 operation.
 //
 // POST /test_response_integer_int32
 func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10189,6 +13255,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10196,24 +13263,33 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	if err := encodeTestResponseIntegerInt32Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt32ArrayRequest handles test_response_integer_int32_array operation.
 //
 // POST /test_response_integer_int32_array
 func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10222,6 +13298,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10229,24 +13306,33 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	if err := encodeTestResponseIntegerInt32ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt32ArrayArrayRequest handles test_response_integer_int32_array_array operation.
 //
 // POST /test_response_integer_int32_array_array
 func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10255,6 +13341,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10262,24 +13349,33 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	if err := encodeTestResponseIntegerInt32ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt32NullableRequest handles test_response_integer_int32_nullable operation.
 //
 // POST /test_response_integer_int32_nullable
 func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10288,6 +13384,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10295,24 +13392,33 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	if err := encodeTestResponseIntegerInt32NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt32NullableArrayRequest handles test_response_integer_int32_nullable_array operation.
 //
 // POST /test_response_integer_int32_nullable_array
 func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10321,6 +13427,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10328,24 +13435,33 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	if err := encodeTestResponseIntegerInt32NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt32NullableArrayArrayRequest handles test_response_integer_int32_nullable_array_array operation.
 //
 // POST /test_response_integer_int32_nullable_array_array
 func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int32_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10354,6 +13470,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10361,24 +13478,33 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	if err := encodeTestResponseIntegerInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt64Request handles test_response_integer_int64 operation.
 //
 // POST /test_response_integer_int64
 func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10387,6 +13513,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10394,24 +13521,33 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	if err := encodeTestResponseIntegerInt64Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt64ArrayRequest handles test_response_integer_int64_array operation.
 //
 // POST /test_response_integer_int64_array
 func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10420,6 +13556,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10427,24 +13564,33 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	if err := encodeTestResponseIntegerInt64ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt64ArrayArrayRequest handles test_response_integer_int64_array_array operation.
 //
 // POST /test_response_integer_int64_array_array
 func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10453,6 +13599,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10460,24 +13607,33 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	if err := encodeTestResponseIntegerInt64ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt64NullableRequest handles test_response_integer_int64_nullable operation.
 //
 // POST /test_response_integer_int64_nullable
 func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10486,6 +13642,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10493,24 +13650,33 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	if err := encodeTestResponseIntegerInt64NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt64NullableArrayRequest handles test_response_integer_int64_nullable_array operation.
 //
 // POST /test_response_integer_int64_nullable_array
 func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10519,6 +13685,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10526,24 +13693,33 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	if err := encodeTestResponseIntegerInt64NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerInt64NullableArrayArrayRequest handles test_response_integer_int64_nullable_array_array operation.
 //
 // POST /test_response_integer_int64_nullable_array_array
 func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_int64_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10552,6 +13728,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10559,24 +13736,33 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	if err := encodeTestResponseIntegerInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerNullableRequest handles test_response_integer_nullable operation.
 //
 // POST /test_response_integer_nullable
 func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10585,6 +13771,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10592,24 +13779,33 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	if err := encodeTestResponseIntegerNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerNullableArrayRequest handles test_response_integer_nullable_array operation.
 //
 // POST /test_response_integer_nullable_array
 func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10618,6 +13814,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10625,24 +13822,33 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	if err := encodeTestResponseIntegerNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseIntegerNullableArrayArrayRequest handles test_response_integer_nullable_array_array operation.
 //
 // POST /test_response_integer_nullable_array_array
 func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_integer_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10651,6 +13857,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10658,24 +13865,33 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	if err := encodeTestResponseIntegerNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberRequest handles test_response_number operation.
 //
 // POST /test_response_number
 func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumber",
-		trace.WithAttributes(otelogen.OperationID("test_response_number")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10684,6 +13900,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10691,24 +13908,33 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	if err := encodeTestResponseNumberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberArrayRequest handles test_response_number_array operation.
 //
 // POST /test_response_number_array
 func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10717,6 +13943,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10724,24 +13951,33 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	if err := encodeTestResponseNumberArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberArrayArrayRequest handles test_response_number_array_array operation.
 //
 // POST /test_response_number_array_array
 func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10750,6 +13986,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10757,24 +13994,33 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	if err := encodeTestResponseNumberArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberDoubleRequest handles test_response_number_double operation.
 //
 // POST /test_response_number_double
 func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDouble",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberDoubleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10783,6 +14029,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10790,24 +14037,33 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	if err := encodeTestResponseNumberDoubleResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberDoubleArrayRequest handles test_response_number_double_array operation.
 //
 // POST /test_response_number_double_array
 func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10816,6 +14072,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10823,24 +14080,33 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	if err := encodeTestResponseNumberDoubleArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberDoubleArrayArrayRequest handles test_response_number_double_array_array operation.
 //
 // POST /test_response_number_double_array_array
 func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10849,6 +14115,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10856,24 +14123,33 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	if err := encodeTestResponseNumberDoubleArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberDoubleNullableRequest handles test_response_number_double_nullable operation.
 //
 // POST /test_response_number_double_nullable
 func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10882,6 +14158,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10889,24 +14166,33 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	if err := encodeTestResponseNumberDoubleNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberDoubleNullableArrayRequest handles test_response_number_double_nullable_array operation.
 //
 // POST /test_response_number_double_nullable_array
 func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10915,6 +14201,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10922,24 +14209,33 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	if err := encodeTestResponseNumberDoubleNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberDoubleNullableArrayArrayRequest handles test_response_number_double_nullable_array_array operation.
 //
 // POST /test_response_number_double_nullable_array_array
 func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_double_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_double_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10948,6 +14244,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10955,24 +14252,33 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	if err := encodeTestResponseNumberDoubleNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberFloatRequest handles test_response_number_float operation.
 //
 // POST /test_response_number_float
 func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloat",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberFloatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -10981,6 +14287,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -10988,24 +14295,33 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	if err := encodeTestResponseNumberFloatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberFloatArrayRequest handles test_response_number_float_array operation.
 //
 // POST /test_response_number_float_array
 func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberFloatArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11014,6 +14330,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11021,24 +14338,33 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	if err := encodeTestResponseNumberFloatArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberFloatArrayArrayRequest handles test_response_number_float_array_array operation.
 //
 // POST /test_response_number_float_array_array
 func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11047,6 +14373,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11054,24 +14381,33 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	if err := encodeTestResponseNumberFloatArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberFloatNullableRequest handles test_response_number_float_nullable operation.
 //
 // POST /test_response_number_float_nullable
 func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberFloatNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11080,6 +14416,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11087,24 +14424,33 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	if err := encodeTestResponseNumberFloatNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberFloatNullableArrayRequest handles test_response_number_float_nullable_array operation.
 //
 // POST /test_response_number_float_nullable_array
 func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11113,6 +14459,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11120,24 +14467,33 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	if err := encodeTestResponseNumberFloatNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberFloatNullableArrayArrayRequest handles test_response_number_float_nullable_array_array operation.
 //
 // POST /test_response_number_float_nullable_array_array
 func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_float_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_float_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11146,6 +14502,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11153,24 +14510,33 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	if err := encodeTestResponseNumberFloatNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt32Request handles test_response_number_int32 operation.
 //
 // POST /test_response_number_int32
 func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11179,6 +14545,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11186,24 +14553,33 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	if err := encodeTestResponseNumberInt32Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt32ArrayRequest handles test_response_number_int32_array operation.
 //
 // POST /test_response_number_int32_array
 func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11212,6 +14588,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11219,24 +14596,33 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	if err := encodeTestResponseNumberInt32ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt32ArrayArrayRequest handles test_response_number_int32_array_array operation.
 //
 // POST /test_response_number_int32_array_array
 func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11245,6 +14631,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11252,24 +14639,33 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	if err := encodeTestResponseNumberInt32ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt32NullableRequest handles test_response_number_int32_nullable operation.
 //
 // POST /test_response_number_int32_nullable
 func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11278,6 +14674,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11285,24 +14682,33 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	if err := encodeTestResponseNumberInt32NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt32NullableArrayRequest handles test_response_number_int32_nullable_array operation.
 //
 // POST /test_response_number_int32_nullable_array
 func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11311,6 +14717,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11318,24 +14725,33 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	if err := encodeTestResponseNumberInt32NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt32NullableArrayArrayRequest handles test_response_number_int32_nullable_array_array operation.
 //
 // POST /test_response_number_int32_nullable_array_array
 func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int32_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int32_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11344,6 +14760,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11351,24 +14768,33 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	if err := encodeTestResponseNumberInt32NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt64Request handles test_response_number_int64 operation.
 //
 // POST /test_response_number_int64
 func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11377,6 +14803,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11384,24 +14811,33 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	if err := encodeTestResponseNumberInt64Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt64ArrayRequest handles test_response_number_int64_array operation.
 //
 // POST /test_response_number_int64_array
 func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11410,6 +14846,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11417,24 +14854,33 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	if err := encodeTestResponseNumberInt64ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt64ArrayArrayRequest handles test_response_number_int64_array_array operation.
 //
 // POST /test_response_number_int64_array_array
 func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11443,6 +14889,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11450,24 +14897,33 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	if err := encodeTestResponseNumberInt64ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt64NullableRequest handles test_response_number_int64_nullable operation.
 //
 // POST /test_response_number_int64_nullable
 func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11476,6 +14932,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11483,24 +14940,33 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	if err := encodeTestResponseNumberInt64NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt64NullableArrayRequest handles test_response_number_int64_nullable_array operation.
 //
 // POST /test_response_number_int64_nullable_array
 func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11509,6 +14975,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11516,24 +14983,33 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	if err := encodeTestResponseNumberInt64NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberInt64NullableArrayArrayRequest handles test_response_number_int64_nullable_array_array operation.
 //
 // POST /test_response_number_int64_nullable_array_array
 func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_int64_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_int64_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11542,6 +15018,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11549,24 +15026,33 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	if err := encodeTestResponseNumberInt64NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberNullableRequest handles test_response_number_nullable operation.
 //
 // POST /test_response_number_nullable
 func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11575,6 +15061,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11582,24 +15069,33 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	if err := encodeTestResponseNumberNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberNullableArrayRequest handles test_response_number_nullable_array operation.
 //
 // POST /test_response_number_nullable_array
 func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11608,6 +15104,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11615,24 +15112,33 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	if err := encodeTestResponseNumberNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseNumberNullableArrayArrayRequest handles test_response_number_nullable_array_array operation.
 //
 // POST /test_response_number_nullable_array_array
 func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_number_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_number_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11641,6 +15147,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11648,24 +15155,33 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	if err := encodeTestResponseNumberNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringRequest handles test_response_string operation.
 //
 // POST /test_response_string
 func (s *Server) handleTestResponseStringRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseString",
-		trace.WithAttributes(otelogen.OperationID("test_response_string")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11674,6 +15190,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11681,24 +15198,33 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	if err := encodeTestResponseStringResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringArrayRequest handles test_response_string_array operation.
 //
 // POST /test_response_string_array
 func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11707,6 +15233,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11714,24 +15241,33 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	if err := encodeTestResponseStringArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringArrayArrayRequest handles test_response_string_array_array operation.
 //
 // POST /test_response_string_array_array
 func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11740,6 +15276,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11747,24 +15284,33 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	if err := encodeTestResponseStringArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringBinaryRequest handles test_response_string_binary operation.
 //
 // POST /test_response_string_binary
 func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinary",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringBinaryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11773,6 +15319,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11780,24 +15327,33 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	if err := encodeTestResponseStringBinaryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringBinaryArrayRequest handles test_response_string_binary_array operation.
 //
 // POST /test_response_string_binary_array
 func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringBinaryArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11806,6 +15362,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11813,24 +15370,33 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	if err := encodeTestResponseStringBinaryArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringBinaryArrayArrayRequest handles test_response_string_binary_array_array operation.
 //
 // POST /test_response_string_binary_array_array
 func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11839,6 +15405,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11846,24 +15413,33 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	if err := encodeTestResponseStringBinaryArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringBinaryNullableRequest handles test_response_string_binary_nullable operation.
 //
 // POST /test_response_string_binary_nullable
 func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringBinaryNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11872,6 +15448,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11879,24 +15456,33 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	if err := encodeTestResponseStringBinaryNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringBinaryNullableArrayRequest handles test_response_string_binary_nullable_array operation.
 //
 // POST /test_response_string_binary_nullable_array
 func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11905,6 +15491,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11912,24 +15499,33 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	if err := encodeTestResponseStringBinaryNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringBinaryNullableArrayArrayRequest handles test_response_string_binary_nullable_array_array operation.
 //
 // POST /test_response_string_binary_nullable_array_array
 func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_binary_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_binary_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11938,6 +15534,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11945,24 +15542,33 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	if err := encodeTestResponseStringBinaryNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringByteRequest handles test_response_string_byte operation.
 //
 // POST /test_response_string_byte
 func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByte",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringByteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -11971,6 +15577,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -11978,24 +15585,33 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	if err := encodeTestResponseStringByteResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringByteArrayRequest handles test_response_string_byte_array operation.
 //
 // POST /test_response_string_byte_array
 func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringByteArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12004,6 +15620,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12011,24 +15628,33 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	if err := encodeTestResponseStringByteArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringByteArrayArrayRequest handles test_response_string_byte_array_array operation.
 //
 // POST /test_response_string_byte_array_array
 func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12037,6 +15663,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12044,24 +15671,33 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	if err := encodeTestResponseStringByteArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringByteNullableRequest handles test_response_string_byte_nullable operation.
 //
 // POST /test_response_string_byte_nullable
 func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringByteNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12070,6 +15706,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12077,24 +15714,33 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	if err := encodeTestResponseStringByteNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringByteNullableArrayRequest handles test_response_string_byte_nullable_array operation.
 //
 // POST /test_response_string_byte_nullable_array
 func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12103,6 +15749,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12110,24 +15757,33 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	if err := encodeTestResponseStringByteNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringByteNullableArrayArrayRequest handles test_response_string_byte_nullable_array_array operation.
 //
 // POST /test_response_string_byte_nullable_array_array
 func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_byte_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_byte_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12136,6 +15792,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12143,24 +15800,33 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	if err := encodeTestResponseStringByteNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateRequest handles test_response_string_date operation.
 //
 // POST /test_response_string_date
 func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDate",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12169,6 +15835,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12176,24 +15843,33 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	if err := encodeTestResponseStringDateResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateArrayRequest handles test_response_string_date_array operation.
 //
 // POST /test_response_string_date_array
 func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12202,6 +15878,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12209,24 +15886,33 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	if err := encodeTestResponseStringDateArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateArrayArrayRequest handles test_response_string_date_array_array operation.
 //
 // POST /test_response_string_date_array_array
 func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12235,6 +15921,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12242,24 +15929,33 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	if err := encodeTestResponseStringDateArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateNullableRequest handles test_response_string_date_nullable operation.
 //
 // POST /test_response_string_date_nullable
 func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12268,6 +15964,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12275,24 +15972,33 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	if err := encodeTestResponseStringDateNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateNullableArrayRequest handles test_response_string_date_nullable_array operation.
 //
 // POST /test_response_string_date_nullable_array
 func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12301,6 +16007,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12308,24 +16015,33 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	if err := encodeTestResponseStringDateNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateNullableArrayArrayRequest handles test_response_string_date_nullable_array_array operation.
 //
 // POST /test_response_string_date_nullable_array_array
 func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12334,6 +16050,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12341,24 +16058,33 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	if err := encodeTestResponseStringDateNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateTimeRequest handles test_response_string_date-time operation.
 //
 // POST /test_response_string_date-time
 func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTime",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12367,6 +16093,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12374,24 +16101,33 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	if err := encodeTestResponseStringDateTimeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateTimeArrayRequest handles test_response_string_date-time_array operation.
 //
 // POST /test_response_string_date-time_array
 func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12400,6 +16136,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12407,24 +16144,33 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	if err := encodeTestResponseStringDateTimeArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateTimeArrayArrayRequest handles test_response_string_date-time_array_array operation.
 //
 // POST /test_response_string_date-time_array_array
 func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12433,6 +16179,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12440,24 +16187,33 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	if err := encodeTestResponseStringDateTimeArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateTimeNullableRequest handles test_response_string_date-time_nullable operation.
 //
 // POST /test_response_string_date-time_nullable
 func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12466,6 +16222,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12473,24 +16230,33 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	if err := encodeTestResponseStringDateTimeNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateTimeNullableArrayRequest handles test_response_string_date-time_nullable_array operation.
 //
 // POST /test_response_string_date-time_nullable_array
 func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12499,6 +16265,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12506,24 +16273,33 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	if err := encodeTestResponseStringDateTimeNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDateTimeNullableArrayArrayRequest handles test_response_string_date-time_nullable_array_array operation.
 //
 // POST /test_response_string_date-time_nullable_array_array
 func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_date-time_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_date-time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12532,6 +16308,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12539,24 +16316,33 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	if err := encodeTestResponseStringDateTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDurationRequest handles test_response_string_duration operation.
 //
 // POST /test_response_string_duration
 func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDuration",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12565,6 +16351,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12572,24 +16359,33 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	if err := encodeTestResponseStringDurationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDurationArrayRequest handles test_response_string_duration_array operation.
 //
 // POST /test_response_string_duration_array
 func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDurationArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12598,6 +16394,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12605,24 +16402,33 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	if err := encodeTestResponseStringDurationArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDurationArrayArrayRequest handles test_response_string_duration_array_array operation.
 //
 // POST /test_response_string_duration_array_array
 func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12631,6 +16437,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12638,24 +16445,33 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	if err := encodeTestResponseStringDurationArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDurationNullableRequest handles test_response_string_duration_nullable operation.
 //
 // POST /test_response_string_duration_nullable
 func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDurationNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12664,6 +16480,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12671,24 +16488,33 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	if err := encodeTestResponseStringDurationNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDurationNullableArrayRequest handles test_response_string_duration_nullable_array operation.
 //
 // POST /test_response_string_duration_nullable_array
 func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12697,6 +16523,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12704,24 +16531,33 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	if err := encodeTestResponseStringDurationNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringDurationNullableArrayArrayRequest handles test_response_string_duration_nullable_array_array operation.
 //
 // POST /test_response_string_duration_nullable_array_array
 func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_duration_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_duration_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12730,6 +16566,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12737,24 +16574,33 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	if err := encodeTestResponseStringDurationNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringEmailRequest handles test_response_string_email operation.
 //
 // POST /test_response_string_email
 func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmail",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringEmailRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12763,6 +16609,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12770,24 +16617,33 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	if err := encodeTestResponseStringEmailResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringEmailArrayRequest handles test_response_string_email_array operation.
 //
 // POST /test_response_string_email_array
 func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringEmailArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12796,6 +16652,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12803,24 +16660,33 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	if err := encodeTestResponseStringEmailArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringEmailArrayArrayRequest handles test_response_string_email_array_array operation.
 //
 // POST /test_response_string_email_array_array
 func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12829,6 +16695,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12836,24 +16703,33 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	if err := encodeTestResponseStringEmailArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringEmailNullableRequest handles test_response_string_email_nullable operation.
 //
 // POST /test_response_string_email_nullable
 func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringEmailNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12862,6 +16738,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12869,24 +16746,33 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	if err := encodeTestResponseStringEmailNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringEmailNullableArrayRequest handles test_response_string_email_nullable_array operation.
 //
 // POST /test_response_string_email_nullable_array
 func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12895,6 +16781,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12902,24 +16789,33 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	if err := encodeTestResponseStringEmailNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringEmailNullableArrayArrayRequest handles test_response_string_email_nullable_array_array operation.
 //
 // POST /test_response_string_email_nullable_array_array
 func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_email_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_email_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12928,6 +16824,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12935,24 +16832,33 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	if err := encodeTestResponseStringEmailNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringHostnameRequest handles test_response_string_hostname operation.
 //
 // POST /test_response_string_hostname
 func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostname",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringHostnameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12961,6 +16867,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -12968,24 +16875,33 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	if err := encodeTestResponseStringHostnameResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringHostnameArrayRequest handles test_response_string_hostname_array operation.
 //
 // POST /test_response_string_hostname_array
 func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringHostnameArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -12994,6 +16910,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13001,24 +16918,33 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	if err := encodeTestResponseStringHostnameArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringHostnameArrayArrayRequest handles test_response_string_hostname_array_array operation.
 //
 // POST /test_response_string_hostname_array_array
 func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13027,6 +16953,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13034,24 +16961,33 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	if err := encodeTestResponseStringHostnameArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringHostnameNullableRequest handles test_response_string_hostname_nullable operation.
 //
 // POST /test_response_string_hostname_nullable
 func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringHostnameNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13060,6 +16996,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13067,24 +17004,33 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	if err := encodeTestResponseStringHostnameNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringHostnameNullableArrayRequest handles test_response_string_hostname_nullable_array operation.
 //
 // POST /test_response_string_hostname_nullable_array
 func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13093,6 +17039,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13100,24 +17047,33 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	if err := encodeTestResponseStringHostnameNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringHostnameNullableArrayArrayRequest handles test_response_string_hostname_nullable_array_array operation.
 //
 // POST /test_response_string_hostname_nullable_array_array
 func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_hostname_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_hostname_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13126,6 +17082,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13133,24 +17090,33 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	if err := encodeTestResponseStringHostnameNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIPRequest handles test_response_string_ip operation.
 //
 // POST /test_response_string_ip
 func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIP",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIPRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13159,6 +17125,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13166,24 +17133,33 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	if err := encodeTestResponseStringIPResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIPArrayRequest handles test_response_string_ip_array operation.
 //
 // POST /test_response_string_ip_array
 func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIPArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13192,6 +17168,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13199,24 +17176,33 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	if err := encodeTestResponseStringIPArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIPArrayArrayRequest handles test_response_string_ip_array_array operation.
 //
 // POST /test_response_string_ip_array_array
 func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13225,6 +17211,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13232,24 +17219,33 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	if err := encodeTestResponseStringIPArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIPNullableRequest handles test_response_string_ip_nullable operation.
 //
 // POST /test_response_string_ip_nullable
 func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIPNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13258,6 +17254,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13265,24 +17262,33 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	if err := encodeTestResponseStringIPNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIPNullableArrayRequest handles test_response_string_ip_nullable_array operation.
 //
 // POST /test_response_string_ip_nullable_array
 func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13291,6 +17297,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13298,24 +17305,33 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	if err := encodeTestResponseStringIPNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIPNullableArrayArrayRequest handles test_response_string_ip_nullable_array_array operation.
 //
 // POST /test_response_string_ip_nullable_array_array
 func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ip_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ip_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13324,6 +17340,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13331,24 +17348,33 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	if err := encodeTestResponseStringIPNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv4Request handles test_response_string_ipv4 operation.
 //
 // POST /test_response_string_ipv4
 func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv4Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13357,6 +17383,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13364,24 +17391,33 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	if err := encodeTestResponseStringIpv4Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv4ArrayRequest handles test_response_string_ipv4_array operation.
 //
 // POST /test_response_string_ipv4_array
 func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13390,6 +17426,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13397,24 +17434,33 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	if err := encodeTestResponseStringIpv4ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv4ArrayArrayRequest handles test_response_string_ipv4_array_array operation.
 //
 // POST /test_response_string_ipv4_array_array
 func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13423,6 +17469,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13430,24 +17477,33 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	if err := encodeTestResponseStringIpv4ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv4NullableRequest handles test_response_string_ipv4_nullable operation.
 //
 // POST /test_response_string_ipv4_nullable
 func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv4NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13456,6 +17512,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13463,24 +17520,33 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	if err := encodeTestResponseStringIpv4NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv4NullableArrayRequest handles test_response_string_ipv4_nullable_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array
 func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13489,6 +17555,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13496,24 +17563,33 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	if err := encodeTestResponseStringIpv4NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv4NullableArrayArrayRequest handles test_response_string_ipv4_nullable_array_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array_array
 func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv4_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv4_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13522,6 +17598,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13529,24 +17606,33 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	if err := encodeTestResponseStringIpv4NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv6Request handles test_response_string_ipv6 operation.
 //
 // POST /test_response_string_ipv6
 func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv6Request(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13555,6 +17641,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13562,24 +17649,33 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	if err := encodeTestResponseStringIpv6Response(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv6ArrayRequest handles test_response_string_ipv6_array operation.
 //
 // POST /test_response_string_ipv6_array
 func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6Array",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13588,6 +17684,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13595,24 +17692,33 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	if err := encodeTestResponseStringIpv6ArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv6ArrayArrayRequest handles test_response_string_ipv6_array_array operation.
 //
 // POST /test_response_string_ipv6_array_array
 func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6ArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13621,6 +17727,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13628,24 +17735,33 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	if err := encodeTestResponseStringIpv6ArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv6NullableRequest handles test_response_string_ipv6_nullable operation.
 //
 // POST /test_response_string_ipv6_nullable
 func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6Nullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv6NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13654,6 +17770,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13661,24 +17778,33 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	if err := encodeTestResponseStringIpv6NullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv6NullableArrayRequest handles test_response_string_ipv6_nullable_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array
 func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6NullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13687,6 +17813,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13694,24 +17821,33 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	if err := encodeTestResponseStringIpv6NullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringIpv6NullableArrayArrayRequest handles test_response_string_ipv6_nullable_array_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array_array
 func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_ipv6_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6NullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_ipv6_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13720,6 +17856,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13727,24 +17864,33 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	if err := encodeTestResponseStringIpv6NullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringNullableRequest handles test_response_string_nullable operation.
 //
 // POST /test_response_string_nullable
 func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13753,6 +17899,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13760,24 +17907,33 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	if err := encodeTestResponseStringNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringNullableArrayRequest handles test_response_string_nullable_array operation.
 //
 // POST /test_response_string_nullable_array
 func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13786,6 +17942,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13793,24 +17950,33 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	if err := encodeTestResponseStringNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringNullableArrayArrayRequest handles test_response_string_nullable_array_array operation.
 //
 // POST /test_response_string_nullable_array_array
 func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13819,6 +17985,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13826,24 +17993,33 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	if err := encodeTestResponseStringNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringPasswordRequest handles test_response_string_password operation.
 //
 // POST /test_response_string_password
 func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPassword",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringPasswordRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13852,6 +18028,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13859,24 +18036,33 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	if err := encodeTestResponseStringPasswordResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringPasswordArrayRequest handles test_response_string_password_array operation.
 //
 // POST /test_response_string_password_array
 func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringPasswordArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13885,6 +18071,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13892,24 +18079,33 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	if err := encodeTestResponseStringPasswordArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringPasswordArrayArrayRequest handles test_response_string_password_array_array operation.
 //
 // POST /test_response_string_password_array_array
 func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13918,6 +18114,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13925,24 +18122,33 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	if err := encodeTestResponseStringPasswordArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringPasswordNullableRequest handles test_response_string_password_nullable operation.
 //
 // POST /test_response_string_password_nullable
 func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringPasswordNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13951,6 +18157,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13958,24 +18165,33 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	if err := encodeTestResponseStringPasswordNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringPasswordNullableArrayRequest handles test_response_string_password_nullable_array operation.
 //
 // POST /test_response_string_password_nullable_array
 func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -13984,6 +18200,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -13991,24 +18208,33 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	if err := encodeTestResponseStringPasswordNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringPasswordNullableArrayArrayRequest handles test_response_string_password_nullable_array_array operation.
 //
 // POST /test_response_string_password_nullable_array_array
 func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_password_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_password_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14017,6 +18243,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14024,24 +18251,33 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	if err := encodeTestResponseStringPasswordNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringTimeRequest handles test_response_string_time operation.
 //
 // POST /test_response_string_time
 func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTime",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14050,6 +18286,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14057,24 +18294,33 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	if err := encodeTestResponseStringTimeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringTimeArrayRequest handles test_response_string_time_array operation.
 //
 // POST /test_response_string_time_array
 func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14083,6 +18329,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14090,24 +18337,33 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	if err := encodeTestResponseStringTimeArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringTimeArrayArrayRequest handles test_response_string_time_array_array operation.
 //
 // POST /test_response_string_time_array_array
 func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14116,6 +18372,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14123,24 +18380,33 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	if err := encodeTestResponseStringTimeArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringTimeNullableRequest handles test_response_string_time_nullable operation.
 //
 // POST /test_response_string_time_nullable
 func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14149,6 +18415,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14156,24 +18423,33 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	if err := encodeTestResponseStringTimeNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringTimeNullableArrayRequest handles test_response_string_time_nullable_array operation.
 //
 // POST /test_response_string_time_nullable_array
 func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14182,6 +18458,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14189,24 +18466,33 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	if err := encodeTestResponseStringTimeNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringTimeNullableArrayArrayRequest handles test_response_string_time_nullable_array_array operation.
 //
 // POST /test_response_string_time_nullable_array_array
 func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_time_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_time_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14215,6 +18501,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14222,24 +18509,33 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	if err := encodeTestResponseStringTimeNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringURIRequest handles test_response_string_uri operation.
 //
 // POST /test_response_string_uri
 func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURI",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringURIRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14248,6 +18544,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14255,24 +18552,33 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	if err := encodeTestResponseStringURIResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringURIArrayRequest handles test_response_string_uri_array operation.
 //
 // POST /test_response_string_uri_array
 func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURIArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringURIArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14281,6 +18587,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14288,24 +18595,33 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	if err := encodeTestResponseStringURIArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringURIArrayArrayRequest handles test_response_string_uri_array_array operation.
 //
 // POST /test_response_string_uri_array_array
 func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURIArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14314,6 +18630,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14321,24 +18638,33 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	if err := encodeTestResponseStringURIArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringURINullableRequest handles test_response_string_uri_nullable operation.
 //
 // POST /test_response_string_uri_nullable
 func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURINullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringURINullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14347,6 +18673,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14354,24 +18681,33 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	if err := encodeTestResponseStringURINullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringURINullableArrayRequest handles test_response_string_uri_nullable_array operation.
 //
 // POST /test_response_string_uri_nullable_array
 func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURINullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringURINullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14380,6 +18716,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14387,24 +18724,33 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	if err := encodeTestResponseStringURINullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringURINullableArrayArrayRequest handles test_response_string_uri_nullable_array_array operation.
 //
 // POST /test_response_string_uri_nullable_array_array
 func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uri_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURINullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uri_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14413,6 +18759,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14420,24 +18767,33 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	if err := encodeTestResponseStringURINullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringUUIDRequest handles test_response_string_uuid operation.
 //
 // POST /test_response_string_uuid
 func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUID",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringUUIDRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14446,6 +18802,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14453,24 +18810,33 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	if err := encodeTestResponseStringUUIDResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringUUIDArrayRequest handles test_response_string_uuid_array operation.
 //
 // POST /test_response_string_uuid_array
 func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringUUIDArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14479,6 +18845,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14486,24 +18853,33 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	if err := encodeTestResponseStringUUIDArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringUUIDArrayArrayRequest handles test_response_string_uuid_array_array operation.
 //
 // POST /test_response_string_uuid_array_array
 func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14512,6 +18888,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14519,24 +18896,33 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	if err := encodeTestResponseStringUUIDArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringUUIDNullableRequest handles test_response_string_uuid_nullable operation.
 //
 // POST /test_response_string_uuid_nullable
 func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_nullable"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDNullable",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_nullable")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringUUIDNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14545,6 +18931,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14552,24 +18939,33 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	if err := encodeTestResponseStringUUIDNullableResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringUUIDNullableArrayRequest handles test_response_string_uuid_nullable_array operation.
 //
 // POST /test_response_string_uuid_nullable_array
 func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_nullable_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDNullableArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_nullable_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14578,6 +18974,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14585,24 +18982,33 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	if err := encodeTestResponseStringUUIDNullableArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleTestResponseStringUUIDNullableArrayArrayRequest handles test_response_string_uuid_nullable_array_array operation.
 //
 // POST /test_response_string_uuid_nullable_array_array
 func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_uuid_nullable_array_array"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDNullableArrayArray",
-		trace.WithAttributes(otelogen.OperationID("test_response_string_uuid_nullable_array_array")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeTestResponseStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -14611,6 +19017,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusInternalServerError, err)
 		return
 	}
@@ -14618,9 +19025,12 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	if err := encodeTestResponseStringUUIDNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

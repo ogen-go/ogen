@@ -74,15 +74,21 @@ var (
 //
 // POST /addStickerToSet
 func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("addStickerToSet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AddStickerToSet",
-		trace.WithAttributes(otelogen.OperationID("addStickerToSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeAddStickerToSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -90,6 +96,8 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.AddStickerToSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -102,24 +110,33 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	if err := encodeAddStickerToSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleAnswerCallbackQueryRequest handles answerCallbackQuery operation.
 //
 // POST /answerCallbackQuery
 func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("answerCallbackQuery"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerCallbackQuery",
-		trace.WithAttributes(otelogen.OperationID("answerCallbackQuery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeAnswerCallbackQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -127,6 +144,8 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	response, err := s.h.AnswerCallbackQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -139,24 +158,33 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	if err := encodeAnswerCallbackQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleAnswerInlineQueryRequest handles answerInlineQuery operation.
 //
 // POST /answerInlineQuery
 func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("answerInlineQuery"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerInlineQuery",
-		trace.WithAttributes(otelogen.OperationID("answerInlineQuery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeAnswerInlineQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -164,6 +192,8 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	response, err := s.h.AnswerInlineQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -176,24 +206,33 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	if err := encodeAnswerInlineQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleAnswerPreCheckoutQueryRequest handles answerPreCheckoutQuery operation.
 //
 // POST /answerPreCheckoutQuery
 func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("answerPreCheckoutQuery"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerPreCheckoutQuery",
-		trace.WithAttributes(otelogen.OperationID("answerPreCheckoutQuery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeAnswerPreCheckoutQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -201,6 +240,8 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	response, err := s.h.AnswerPreCheckoutQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -213,24 +254,33 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	if err := encodeAnswerPreCheckoutQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleAnswerShippingQueryRequest handles answerShippingQuery operation.
 //
 // POST /answerShippingQuery
 func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("answerShippingQuery"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerShippingQuery",
-		trace.WithAttributes(otelogen.OperationID("answerShippingQuery")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeAnswerShippingQueryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -238,6 +288,8 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	response, err := s.h.AnswerShippingQuery(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -250,24 +302,33 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	if err := encodeAnswerShippingQueryResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleApproveChatJoinRequestRequest handles approveChatJoinRequest operation.
 //
 // POST /approveChatJoinRequest
 func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("approveChatJoinRequest"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ApproveChatJoinRequest",
-		trace.WithAttributes(otelogen.OperationID("approveChatJoinRequest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeApproveChatJoinRequestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -275,6 +336,8 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	response, err := s.h.ApproveChatJoinRequest(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -287,24 +350,33 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	if err := encodeApproveChatJoinRequestResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleBanChatMemberRequest handles banChatMember operation.
 //
 // POST /banChatMember
 func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("banChatMember"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "BanChatMember",
-		trace.WithAttributes(otelogen.OperationID("banChatMember")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeBanChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -312,6 +384,8 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.BanChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -324,24 +398,33 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	if err := encodeBanChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleBanChatSenderChatRequest handles banChatSenderChat operation.
 //
 // POST /banChatSenderChat
 func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("banChatSenderChat"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "BanChatSenderChat",
-		trace.WithAttributes(otelogen.OperationID("banChatSenderChat")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeBanChatSenderChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -349,6 +432,8 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	response, err := s.h.BanChatSenderChat(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -361,24 +446,34 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	if err := encodeBanChatSenderChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCloseRequest handles close operation.
 //
 // POST /close
 func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("close"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Close",
-		trace.WithAttributes(otelogen.OperationID("close")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.Close(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -391,24 +486,33 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 	if err := encodeCloseResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCopyMessageRequest handles copyMessage operation.
 //
 // POST /copyMessage
 func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("copyMessage"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CopyMessage",
-		trace.WithAttributes(otelogen.OperationID("copyMessage")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeCopyMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -416,6 +520,8 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.CopyMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -428,24 +534,33 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	if err := encodeCopyMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCreateChatInviteLinkRequest handles createChatInviteLink operation.
 //
 // POST /createChatInviteLink
 func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("createChatInviteLink"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateChatInviteLink",
-		trace.WithAttributes(otelogen.OperationID("createChatInviteLink")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeCreateChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -453,6 +568,8 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	response, err := s.h.CreateChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -465,24 +582,33 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	if err := encodeCreateChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCreateNewStickerSetRequest handles createNewStickerSet operation.
 //
 // POST /createNewStickerSet
 func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("createNewStickerSet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreateNewStickerSet",
-		trace.WithAttributes(otelogen.OperationID("createNewStickerSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeCreateNewStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -490,6 +616,8 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	response, err := s.h.CreateNewStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -502,24 +630,33 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	if err := encodeCreateNewStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeclineChatJoinRequestRequest handles declineChatJoinRequest operation.
 //
 // POST /declineChatJoinRequest
 func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("declineChatJoinRequest"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeclineChatJoinRequest",
-		trace.WithAttributes(otelogen.OperationID("declineChatJoinRequest")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDeclineChatJoinRequestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -527,6 +664,8 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	response, err := s.h.DeclineChatJoinRequest(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -539,24 +678,33 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	if err := encodeDeclineChatJoinRequestResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeleteChatPhotoRequest handles deleteChatPhoto operation.
 //
 // POST /deleteChatPhoto
 func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("deleteChatPhoto"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteChatPhoto",
-		trace.WithAttributes(otelogen.OperationID("deleteChatPhoto")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDeleteChatPhotoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -564,6 +712,8 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.DeleteChatPhoto(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -576,24 +726,33 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	if err := encodeDeleteChatPhotoResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeleteChatStickerSetRequest handles deleteChatStickerSet operation.
 //
 // POST /deleteChatStickerSet
 func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("deleteChatStickerSet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteChatStickerSet",
-		trace.WithAttributes(otelogen.OperationID("deleteChatStickerSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDeleteChatStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -601,6 +760,8 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	response, err := s.h.DeleteChatStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -613,24 +774,33 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	if err := encodeDeleteChatStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeleteMessageRequest handles deleteMessage operation.
 //
 // POST /deleteMessage
 func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("deleteMessage"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteMessage",
-		trace.WithAttributes(otelogen.OperationID("deleteMessage")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDeleteMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -638,6 +808,8 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.DeleteMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -650,24 +822,33 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	if err := encodeDeleteMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeleteMyCommandsRequest handles deleteMyCommands operation.
 //
 // POST /deleteMyCommands
 func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("deleteMyCommands"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteMyCommands",
-		trace.WithAttributes(otelogen.OperationID("deleteMyCommands")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDeleteMyCommandsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -675,6 +856,8 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.DeleteMyCommands(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -687,24 +870,33 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	if err := encodeDeleteMyCommandsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeleteStickerFromSetRequest handles deleteStickerFromSet operation.
 //
 // POST /deleteStickerFromSet
 func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("deleteStickerFromSet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteStickerFromSet",
-		trace.WithAttributes(otelogen.OperationID("deleteStickerFromSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDeleteStickerFromSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -712,6 +904,8 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	response, err := s.h.DeleteStickerFromSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -724,24 +918,33 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	if err := encodeDeleteStickerFromSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeleteWebhookRequest handles deleteWebhook operation.
 //
 // POST /deleteWebhook
 func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("deleteWebhook"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeleteWebhook",
-		trace.WithAttributes(otelogen.OperationID("deleteWebhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeDeleteWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -749,6 +952,8 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.DeleteWebhook(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -761,24 +966,33 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	if err := encodeDeleteWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleEditChatInviteLinkRequest handles editChatInviteLink operation.
 //
 // POST /editChatInviteLink
 func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("editChatInviteLink"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditChatInviteLink",
-		trace.WithAttributes(otelogen.OperationID("editChatInviteLink")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeEditChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -786,6 +1000,8 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	response, err := s.h.EditChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -798,24 +1014,33 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	if err := encodeEditChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleEditMessageCaptionRequest handles editMessageCaption operation.
 //
 // POST /editMessageCaption
 func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("editMessageCaption"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageCaption",
-		trace.WithAttributes(otelogen.OperationID("editMessageCaption")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeEditMessageCaptionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -823,6 +1048,8 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	response, err := s.h.EditMessageCaption(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -835,24 +1062,33 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	if err := encodeEditMessageCaptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleEditMessageLiveLocationRequest handles editMessageLiveLocation operation.
 //
 // POST /editMessageLiveLocation
 func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("editMessageLiveLocation"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageLiveLocation",
-		trace.WithAttributes(otelogen.OperationID("editMessageLiveLocation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeEditMessageLiveLocationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -860,6 +1096,8 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	response, err := s.h.EditMessageLiveLocation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -872,24 +1110,33 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	if err := encodeEditMessageLiveLocationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleEditMessageMediaRequest handles editMessageMedia operation.
 //
 // POST /editMessageMedia
 func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("editMessageMedia"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageMedia",
-		trace.WithAttributes(otelogen.OperationID("editMessageMedia")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeEditMessageMediaRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -897,6 +1144,8 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.EditMessageMedia(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -909,24 +1158,33 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	if err := encodeEditMessageMediaResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleEditMessageReplyMarkupRequest handles editMessageReplyMarkup operation.
 //
 // POST /editMessageReplyMarkup
 func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("editMessageReplyMarkup"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageReplyMarkup",
-		trace.WithAttributes(otelogen.OperationID("editMessageReplyMarkup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeEditMessageReplyMarkupRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -934,6 +1192,8 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	response, err := s.h.EditMessageReplyMarkup(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -946,24 +1206,33 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	if err := encodeEditMessageReplyMarkupResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleEditMessageTextRequest handles editMessageText operation.
 //
 // POST /editMessageText
 func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("editMessageText"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "EditMessageText",
-		trace.WithAttributes(otelogen.OperationID("editMessageText")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeEditMessageTextRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -971,6 +1240,8 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.EditMessageText(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -983,24 +1254,33 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	if err := encodeEditMessageTextResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleExportChatInviteLinkRequest handles exportChatInviteLink operation.
 //
 // POST /exportChatInviteLink
 func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("exportChatInviteLink"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ExportChatInviteLink",
-		trace.WithAttributes(otelogen.OperationID("exportChatInviteLink")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeExportChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1008,6 +1288,8 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	response, err := s.h.ExportChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1020,24 +1302,33 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	if err := encodeExportChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleForwardMessageRequest handles forwardMessage operation.
 //
 // POST /forwardMessage
 func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("forwardMessage"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ForwardMessage",
-		trace.WithAttributes(otelogen.OperationID("forwardMessage")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeForwardMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1045,6 +1336,8 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.ForwardMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1057,24 +1350,33 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	if err := encodeForwardMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetChatRequest handles getChat operation.
 //
 // POST /getChat
 func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getChat"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChat",
-		trace.WithAttributes(otelogen.OperationID("getChat")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1082,6 +1384,8 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	response, err := s.h.GetChat(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1094,24 +1398,33 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeGetChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetChatAdministratorsRequest handles getChatAdministrators operation.
 //
 // POST /getChatAdministrators
 func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getChatAdministrators"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChatAdministrators",
-		trace.WithAttributes(otelogen.OperationID("getChatAdministrators")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetChatAdministratorsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1119,6 +1432,8 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	response, err := s.h.GetChatAdministrators(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1131,24 +1446,33 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	if err := encodeGetChatAdministratorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetChatMemberRequest handles getChatMember operation.
 //
 // POST /getChatMember
 func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getChatMember"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChatMember",
-		trace.WithAttributes(otelogen.OperationID("getChatMember")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1156,6 +1480,8 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.GetChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1168,24 +1494,33 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	if err := encodeGetChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetChatMemberCountRequest handles getChatMemberCount operation.
 //
 // POST /getChatMemberCount
 func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getChatMemberCount"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChatMemberCount",
-		trace.WithAttributes(otelogen.OperationID("getChatMemberCount")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetChatMemberCountRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1193,6 +1528,8 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	response, err := s.h.GetChatMemberCount(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1205,24 +1542,33 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	if err := encodeGetChatMemberCountResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetFileRequest handles getFile operation.
 //
 // POST /getFile
 func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getFile"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFile",
-		trace.WithAttributes(otelogen.OperationID("getFile")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetFileRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1230,6 +1576,8 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	response, err := s.h.GetFile(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1242,24 +1590,33 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	if err := encodeGetFileResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetGameHighScoresRequest handles getGameHighScores operation.
 //
 // POST /getGameHighScores
 func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getGameHighScores"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetGameHighScores",
-		trace.WithAttributes(otelogen.OperationID("getGameHighScores")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetGameHighScoresRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1267,6 +1624,8 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	response, err := s.h.GetGameHighScores(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1279,24 +1638,34 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	if err := encodeGetGameHighScoresResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetMeRequest handles getMe operation.
 //
 // POST /getMe
 func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getMe"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetMe",
-		trace.WithAttributes(otelogen.OperationID("getMe")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.GetMe(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1309,24 +1678,33 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 	if err := encodeGetMeResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetMyCommandsRequest handles getMyCommands operation.
 //
 // POST /getMyCommands
 func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getMyCommands"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetMyCommands",
-		trace.WithAttributes(otelogen.OperationID("getMyCommands")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetMyCommandsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1334,6 +1712,8 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.GetMyCommands(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1346,24 +1726,33 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	if err := encodeGetMyCommandsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetStickerSetRequest handles getStickerSet operation.
 //
 // POST /getStickerSet
 func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getStickerSet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStickerSet",
-		trace.WithAttributes(otelogen.OperationID("getStickerSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1371,6 +1760,8 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.GetStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1383,24 +1774,33 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	if err := encodeGetStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetUpdatesRequest handles getUpdates operation.
 //
 // POST /getUpdates
 func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getUpdates"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetUpdates",
-		trace.WithAttributes(otelogen.OperationID("getUpdates")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetUpdatesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1408,6 +1808,8 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.GetUpdates(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1420,24 +1822,33 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	if err := encodeGetUpdatesResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetUserProfilePhotosRequest handles getUserProfilePhotos operation.
 //
 // POST /getUserProfilePhotos
 func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getUserProfilePhotos"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetUserProfilePhotos",
-		trace.WithAttributes(otelogen.OperationID("getUserProfilePhotos")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeGetUserProfilePhotosRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1445,6 +1856,8 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	response, err := s.h.GetUserProfilePhotos(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1457,24 +1870,34 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	if err := encodeGetUserProfilePhotosResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleGetWebhookInfoRequest handles getWebhookInfo operation.
 //
 // POST /getWebhookInfo
 func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getWebhookInfo"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetWebhookInfo",
-		trace.WithAttributes(otelogen.OperationID("getWebhookInfo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.GetWebhookInfo(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1487,24 +1910,33 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 	if err := encodeGetWebhookInfoResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleLeaveChatRequest handles leaveChat operation.
 //
 // POST /leaveChat
 func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("leaveChat"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "LeaveChat",
-		trace.WithAttributes(otelogen.OperationID("leaveChat")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeLeaveChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1512,6 +1944,8 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.LeaveChat(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1524,24 +1958,34 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodeLeaveChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleLogOutRequest handles logOut operation.
 //
 // POST /logOut
 func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("logOut"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "LogOut",
-		trace.WithAttributes(otelogen.OperationID("logOut")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
 	response, err := s.h.LogOut(ctx)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1554,24 +1998,33 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 	if err := encodeLogOutResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePinChatMessageRequest handles pinChatMessage operation.
 //
 // POST /pinChatMessage
 func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("pinChatMessage"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PinChatMessage",
-		trace.WithAttributes(otelogen.OperationID("pinChatMessage")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePinChatMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1579,6 +2032,8 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.PinChatMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1591,24 +2046,33 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	if err := encodePinChatMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePromoteChatMemberRequest handles promoteChatMember operation.
 //
 // POST /promoteChatMember
 func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("promoteChatMember"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PromoteChatMember",
-		trace.WithAttributes(otelogen.OperationID("promoteChatMember")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodePromoteChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1616,6 +2080,8 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	response, err := s.h.PromoteChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1628,24 +2094,33 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	if err := encodePromoteChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleRestrictChatMemberRequest handles restrictChatMember operation.
 //
 // POST /restrictChatMember
 func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("restrictChatMember"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "RestrictChatMember",
-		trace.WithAttributes(otelogen.OperationID("restrictChatMember")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeRestrictChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1653,6 +2128,8 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	response, err := s.h.RestrictChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1665,24 +2142,33 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	if err := encodeRestrictChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleRevokeChatInviteLinkRequest handles revokeChatInviteLink operation.
 //
 // POST /revokeChatInviteLink
 func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("revokeChatInviteLink"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "RevokeChatInviteLink",
-		trace.WithAttributes(otelogen.OperationID("revokeChatInviteLink")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeRevokeChatInviteLinkRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1690,6 +2176,8 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	response, err := s.h.RevokeChatInviteLink(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1702,24 +2190,33 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	if err := encodeRevokeChatInviteLinkResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendAnimationRequest handles sendAnimation operation.
 //
 // POST /sendAnimation
 func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendAnimation"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendAnimation",
-		trace.WithAttributes(otelogen.OperationID("sendAnimation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendAnimationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1727,6 +2224,8 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.SendAnimation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1739,24 +2238,33 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	if err := encodeSendAnimationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendAudioRequest handles sendAudio operation.
 //
 // POST /sendAudio
 func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendAudio"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendAudio",
-		trace.WithAttributes(otelogen.OperationID("sendAudio")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendAudioRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1764,6 +2272,8 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendAudio(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1776,24 +2286,33 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodeSendAudioResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendChatActionRequest handles sendChatAction operation.
 //
 // POST /sendChatAction
 func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendChatAction"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendChatAction",
-		trace.WithAttributes(otelogen.OperationID("sendChatAction")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendChatActionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1801,6 +2320,8 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.SendChatAction(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1813,24 +2334,33 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	if err := encodeSendChatActionResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendContactRequest handles sendContact operation.
 //
 // POST /sendContact
 func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendContact"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendContact",
-		trace.WithAttributes(otelogen.OperationID("sendContact")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendContactRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1838,6 +2368,8 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendContact(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1850,24 +2382,33 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	if err := encodeSendContactResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendDiceRequest handles sendDice operation.
 //
 // POST /sendDice
 func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendDice"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendDice",
-		trace.WithAttributes(otelogen.OperationID("sendDice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendDiceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1875,6 +2416,8 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.SendDice(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1887,24 +2430,33 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	if err := encodeSendDiceResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendDocumentRequest handles sendDocument operation.
 //
 // POST /sendDocument
 func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendDocument"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendDocument",
-		trace.WithAttributes(otelogen.OperationID("sendDocument")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendDocumentRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1912,6 +2464,8 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SendDocument(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1924,24 +2478,33 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	if err := encodeSendDocumentResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendGameRequest handles sendGame operation.
 //
 // POST /sendGame
 func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendGame"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendGame",
-		trace.WithAttributes(otelogen.OperationID("sendGame")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendGameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1949,6 +2512,8 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.SendGame(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1961,24 +2526,33 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	if err := encodeSendGameResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendInvoiceRequest handles sendInvoice operation.
 //
 // POST /sendInvoice
 func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendInvoice"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendInvoice",
-		trace.WithAttributes(otelogen.OperationID("sendInvoice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendInvoiceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -1986,6 +2560,8 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendInvoice(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -1998,24 +2574,33 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	if err := encodeSendInvoiceResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendLocationRequest handles sendLocation operation.
 //
 // POST /sendLocation
 func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendLocation"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendLocation",
-		trace.WithAttributes(otelogen.OperationID("sendLocation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendLocationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2023,6 +2608,8 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SendLocation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2035,24 +2622,33 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	if err := encodeSendLocationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendMediaGroupRequest handles sendMediaGroup operation.
 //
 // POST /sendMediaGroup
 func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendMediaGroup"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendMediaGroup",
-		trace.WithAttributes(otelogen.OperationID("sendMediaGroup")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendMediaGroupRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2060,6 +2656,8 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.SendMediaGroup(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2072,24 +2670,33 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	if err := encodeSendMediaGroupResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendMessageRequest handles sendMessage operation.
 //
 // POST /sendMessage
 func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendMessage"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendMessage",
-		trace.WithAttributes(otelogen.OperationID("sendMessage")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2097,6 +2704,8 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2109,24 +2718,33 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	if err := encodeSendMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendPhotoRequest handles sendPhoto operation.
 //
 // POST /sendPhoto
 func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendPhoto"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendPhoto",
-		trace.WithAttributes(otelogen.OperationID("sendPhoto")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendPhotoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2134,6 +2752,8 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendPhoto(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2146,24 +2766,33 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodeSendPhotoResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendPollRequest handles sendPoll operation.
 //
 // POST /sendPoll
 func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendPoll"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendPoll",
-		trace.WithAttributes(otelogen.OperationID("sendPoll")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendPollRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2171,6 +2800,8 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.SendPoll(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2183,24 +2814,33 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	if err := encodeSendPollResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendStickerRequest handles sendSticker operation.
 //
 // POST /sendSticker
 func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendSticker"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendSticker",
-		trace.WithAttributes(otelogen.OperationID("sendSticker")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendStickerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2208,6 +2848,8 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendSticker(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2220,24 +2862,33 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	if err := encodeSendStickerResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendVenueRequest handles sendVenue operation.
 //
 // POST /sendVenue
 func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendVenue"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVenue",
-		trace.WithAttributes(otelogen.OperationID("sendVenue")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendVenueRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2245,6 +2896,8 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendVenue(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2257,24 +2910,33 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodeSendVenueResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendVideoRequest handles sendVideo operation.
 //
 // POST /sendVideo
 func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendVideo"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVideo",
-		trace.WithAttributes(otelogen.OperationID("sendVideo")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendVideoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2282,6 +2944,8 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendVideo(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2294,24 +2958,33 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodeSendVideoResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendVideoNoteRequest handles sendVideoNote operation.
 //
 // POST /sendVideoNote
 func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendVideoNote"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVideoNote",
-		trace.WithAttributes(otelogen.OperationID("sendVideoNote")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendVideoNoteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2319,6 +2992,8 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.SendVideoNote(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2331,24 +3006,33 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	if err := encodeSendVideoNoteResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSendVoiceRequest handles sendVoice operation.
 //
 // POST /sendVoice
 func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("sendVoice"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SendVoice",
-		trace.WithAttributes(otelogen.OperationID("sendVoice")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSendVoiceRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2356,6 +3040,8 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendVoice(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2368,24 +3054,33 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	if err := encodeSendVoiceResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetChatAdministratorCustomTitleRequest handles setChatAdministratorCustomTitle operation.
 //
 // POST /setChatAdministratorCustomTitle
 func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatAdministratorCustomTitle"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatAdministratorCustomTitle",
-		trace.WithAttributes(otelogen.OperationID("setChatAdministratorCustomTitle")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetChatAdministratorCustomTitleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2393,6 +3088,8 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	response, err := s.h.SetChatAdministratorCustomTitle(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2405,24 +3102,33 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	if err := encodeSetChatAdministratorCustomTitleResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetChatDescriptionRequest handles setChatDescription operation.
 //
 // POST /setChatDescription
 func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatDescription"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatDescription",
-		trace.WithAttributes(otelogen.OperationID("setChatDescription")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetChatDescriptionRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2430,6 +3136,8 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	response, err := s.h.SetChatDescription(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2442,24 +3150,33 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	if err := encodeSetChatDescriptionResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetChatPermissionsRequest handles setChatPermissions operation.
 //
 // POST /setChatPermissions
 func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatPermissions"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatPermissions",
-		trace.WithAttributes(otelogen.OperationID("setChatPermissions")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetChatPermissionsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2467,6 +3184,8 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	response, err := s.h.SetChatPermissions(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2479,24 +3198,33 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	if err := encodeSetChatPermissionsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetChatPhotoRequest handles setChatPhoto operation.
 //
 // POST /setChatPhoto
 func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatPhoto"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatPhoto",
-		trace.WithAttributes(otelogen.OperationID("setChatPhoto")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetChatPhotoRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2504,6 +3232,8 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SetChatPhoto(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2516,24 +3246,33 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	if err := encodeSetChatPhotoResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetChatStickerSetRequest handles setChatStickerSet operation.
 //
 // POST /setChatStickerSet
 func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatStickerSet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatStickerSet",
-		trace.WithAttributes(otelogen.OperationID("setChatStickerSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetChatStickerSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2541,6 +3280,8 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	response, err := s.h.SetChatStickerSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2553,24 +3294,33 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	if err := encodeSetChatStickerSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetChatTitleRequest handles setChatTitle operation.
 //
 // POST /setChatTitle
 func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatTitle"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatTitle",
-		trace.WithAttributes(otelogen.OperationID("setChatTitle")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetChatTitleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2578,6 +3328,8 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SetChatTitle(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2590,24 +3342,33 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	if err := encodeSetChatTitleResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetGameScoreRequest handles setGameScore operation.
 //
 // POST /setGameScore
 func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setGameScore"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetGameScore",
-		trace.WithAttributes(otelogen.OperationID("setGameScore")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetGameScoreRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2615,6 +3376,8 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SetGameScore(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2627,24 +3390,33 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	if err := encodeSetGameScoreResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetMyCommandsRequest handles setMyCommands operation.
 //
 // POST /setMyCommands
 func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setMyCommands"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetMyCommands",
-		trace.WithAttributes(otelogen.OperationID("setMyCommands")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetMyCommandsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2652,6 +3424,8 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.SetMyCommands(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2664,24 +3438,33 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	if err := encodeSetMyCommandsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetPassportDataErrorsRequest handles setPassportDataErrors operation.
 //
 // POST /setPassportDataErrors
 func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setPassportDataErrors"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetPassportDataErrors",
-		trace.WithAttributes(otelogen.OperationID("setPassportDataErrors")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetPassportDataErrorsRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2689,6 +3472,8 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	response, err := s.h.SetPassportDataErrors(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2701,24 +3486,33 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	if err := encodeSetPassportDataErrorsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetStickerPositionInSetRequest handles setStickerPositionInSet operation.
 //
 // POST /setStickerPositionInSet
 func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setStickerPositionInSet"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetStickerPositionInSet",
-		trace.WithAttributes(otelogen.OperationID("setStickerPositionInSet")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetStickerPositionInSetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2726,6 +3520,8 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	response, err := s.h.SetStickerPositionInSet(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2738,24 +3534,33 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	if err := encodeSetStickerPositionInSetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetStickerSetThumbRequest handles setStickerSetThumb operation.
 //
 // POST /setStickerSetThumb
 func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setStickerSetThumb"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetStickerSetThumb",
-		trace.WithAttributes(otelogen.OperationID("setStickerSetThumb")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetStickerSetThumbRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2763,6 +3568,8 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	response, err := s.h.SetStickerSetThumb(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2775,24 +3582,33 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	if err := encodeSetStickerSetThumbResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSetWebhookRequest handles setWebhook operation.
 //
 // POST /setWebhook
 func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setWebhook"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetWebhook",
-		trace.WithAttributes(otelogen.OperationID("setWebhook")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeSetWebhookRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2800,6 +3616,8 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.SetWebhook(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2812,24 +3630,33 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	if err := encodeSetWebhookResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleStopMessageLiveLocationRequest handles stopMessageLiveLocation operation.
 //
 // POST /stopMessageLiveLocation
 func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("stopMessageLiveLocation"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "StopMessageLiveLocation",
-		trace.WithAttributes(otelogen.OperationID("stopMessageLiveLocation")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeStopMessageLiveLocationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2837,6 +3664,8 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	response, err := s.h.StopMessageLiveLocation(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2849,24 +3678,33 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	if err := encodeStopMessageLiveLocationResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleStopPollRequest handles stopPoll operation.
 //
 // POST /stopPoll
 func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("stopPoll"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "StopPoll",
-		trace.WithAttributes(otelogen.OperationID("stopPoll")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeStopPollRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2874,6 +3712,8 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.StopPoll(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2886,24 +3726,33 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	if err := encodeStopPollResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUnbanChatMemberRequest handles unbanChatMember operation.
 //
 // POST /unbanChatMember
 func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("unbanChatMember"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnbanChatMember",
-		trace.WithAttributes(otelogen.OperationID("unbanChatMember")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeUnbanChatMemberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2911,6 +3760,8 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.UnbanChatMember(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2923,24 +3774,33 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	if err := encodeUnbanChatMemberResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUnbanChatSenderChatRequest handles unbanChatSenderChat operation.
 //
 // POST /unbanChatSenderChat
 func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("unbanChatSenderChat"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnbanChatSenderChat",
-		trace.WithAttributes(otelogen.OperationID("unbanChatSenderChat")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeUnbanChatSenderChatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2948,6 +3808,8 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	response, err := s.h.UnbanChatSenderChat(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2960,24 +3822,33 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	if err := encodeUnbanChatSenderChatResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUnpinAllChatMessagesRequest handles unpinAllChatMessages operation.
 //
 // POST /unpinAllChatMessages
 func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("unpinAllChatMessages"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnpinAllChatMessages",
-		trace.WithAttributes(otelogen.OperationID("unpinAllChatMessages")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeUnpinAllChatMessagesRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -2985,6 +3856,8 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	response, err := s.h.UnpinAllChatMessages(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -2997,24 +3870,33 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	if err := encodeUnpinAllChatMessagesResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUnpinChatMessageRequest handles unpinChatMessage operation.
 //
 // POST /unpinChatMessage
 func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("unpinChatMessage"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UnpinChatMessage",
-		trace.WithAttributes(otelogen.OperationID("unpinChatMessage")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeUnpinChatMessageRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3022,6 +3904,8 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.UnpinChatMessage(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -3034,24 +3918,33 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	if err := encodeUnpinChatMessageResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUploadStickerFileRequest handles uploadStickerFile operation.
 //
 // POST /uploadStickerFile
 func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("uploadStickerFile"),
+	}
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UploadStickerFile",
-		trace.WithAttributes(otelogen.OperationID("uploadStickerFile")),
+		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
+	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 	request, err := decodeUploadStickerFileRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		respondError(w, http.StatusBadRequest, err)
 		return
 	}
@@ -3059,6 +3952,8 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	response, err := s.h.UploadStickerFile(ctx, request)
 	if err != nil {
 		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
@@ -3071,9 +3966,12 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	if err := encodeUploadStickerFileResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
 	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {
