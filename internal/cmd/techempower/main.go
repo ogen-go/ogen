@@ -38,6 +38,9 @@ func main() {
 	flag.Parse()
 
 	traceProvider := trace.NewNoopTracerProvider()
-	s := techempower.NewServer(&server{}, techempower.WithTracerProvider(traceProvider))
+	s, err := techempower.NewServer(&server{}, techempower.WithTracerProvider(traceProvider))
+	if err != nil {
+		panic(err)
+	}
 	log.Fatal(http.ListenAndServe(arg.Addr, s))
 }

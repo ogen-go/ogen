@@ -215,7 +215,10 @@ func BenchmarkIntegration(b *testing.B) {
 		// https://github.com/TechEmpower/FrameworkBenchmarks/wiki/Project-Information-Framework-Tests-Overview#test-types
 
 		srv := techEmpowerServer{}
-		s := httptest.NewServer(techempower.NewServer(srv))
+		h, err := techempower.NewServer(srv)
+		require.NoError(b, err)
+
+		s := httptest.NewServer(h)
 		defer s.Close()
 
 		httpClient := &http.Client{
@@ -442,7 +445,8 @@ func BenchmarkJSON(b *testing.B) {
 func BenchmarkFindRoute(b *testing.B) {
 	bench := func(method, path string) func(b *testing.B) {
 		return func(b *testing.B) {
-			s := api.NewServer(&sampleAPIServer{})
+			s, err := api.NewServer(&sampleAPIServer{})
+			require.NoError(b, err)
 
 			b.ReportAllocs()
 			b.ResetTimer()

@@ -32,7 +32,10 @@ func (s sampleErrServer) NewError(ctx context.Context, err error) api.ErrorStatu
 }
 
 func TestConvenientErrors(t *testing.T) {
-	s := httptest.NewServer(api.NewServer(&sampleErrServer{}))
+	h, err := api.NewServer(&sampleErrServer{})
+	require.NoError(t, err)
+
+	s := httptest.NewServer(h)
 	defer s.Close()
 
 	client, err := api.NewClient(s.URL)
