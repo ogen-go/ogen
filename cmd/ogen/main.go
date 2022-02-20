@@ -33,17 +33,18 @@ func (t formattedSource) WriteFile(name string, content []byte) error {
 
 func main() {
 	var (
-		specPath       = flag.String("schema", "", "Path to openapi spec file")
-		targetDir      = flag.String("target", "api", "Path to target dir")
-		packageName    = flag.String("package", "api", "Target package name")
-		performFormat  = flag.Bool("format", true, "perform code formatting")
-		filterPath     = flag.String("filter-path", "", "Filter operations by path regex")
-		filterMethods  = flag.String("filter-methods", "", "Filter operations by HTTP methods (comma-separated)")
-		clean          = flag.Bool("clean", false, "Clean generated files before generation")
-		verbose        = flag.Bool("v", false, "verbose")
-		generateTests  = flag.Bool("generate-tests", false, "Generate tests based on schema examples")
-		skipTestsRegex = flag.String("skip-tests", "", "Skip tests matched by regex")
-		inferTypes     = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
+		specPath          = flag.String("schema", "", "Path to openapi spec file")
+		targetDir         = flag.String("target", "api", "Path to target dir")
+		packageName       = flag.String("package", "api", "Target package name")
+		performFormat     = flag.Bool("format", true, "perform code formatting")
+		filterPath        = flag.String("filter-path", "", "Filter operations by path regex")
+		filterMethods     = flag.String("filter-methods", "", "Filter operations by HTTP methods (comma-separated)")
+		clean             = flag.Bool("clean", false, "Clean generated files before generation")
+		verbose           = flag.Bool("v", false, "verbose")
+		generateTests     = flag.Bool("generate-tests", false, "Generate tests based on schema examples")
+		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
+		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
+		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 
 		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "", "Ignore methods having functionality which is not implemented (all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
 		debugNoerr                = flag.Bool("debug.noerr", false, "Ignore all errors")
@@ -119,9 +120,11 @@ func main() {
 		VerboseRoute:         *verbose,
 		GenerateExampleTests: *generateTests,
 		SkipTestRegex:        nil,
+		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
 		Filters:              filters,
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
+		NotImplementedHook:   nil,
 	}
 	if expr := *skipTestsRegex; expr != "" {
 		r, err := regexp.Compile(expr)
