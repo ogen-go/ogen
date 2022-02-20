@@ -57,7 +57,8 @@ func (p PrimitiveType) IsString() bool {
 }
 
 const (
-	String PrimitiveType = iota
+	None PrimitiveType = iota
+	String
 	ByteSlice
 	Int
 	Int8
