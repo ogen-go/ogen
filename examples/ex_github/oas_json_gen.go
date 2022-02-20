@@ -70560,24 +70560,21 @@ func (o *NilAutoMerge) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilAutoMerge to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v AutoMerge
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilAutoMerge", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes bool as json.
@@ -70594,26 +70591,23 @@ func (o *NilBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilBool to nil")
 	}
-	switch d.Next() {
-	case jx.Bool:
-		o.Null = false
-		v, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		o.Value = bool(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v bool
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilBool", d.Next())
 	}
+	o.Null = false
+	v, err := d.Bool()
+	if err != nil {
+		return err
+	}
+	o.Value = bool(v)
+	return nil
 }
 
 // Encode encodes CheckRunCheckSuite as json.
@@ -70630,24 +70624,21 @@ func (o *NilCheckRunCheckSuite) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilCheckRunCheckSuite to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CheckRunCheckSuite
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilCheckRunCheckSuite", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CheckRunConclusion as json.
@@ -70664,24 +70655,21 @@ func (o *NilCheckRunConclusion) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilCheckRunConclusion to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CheckRunConclusion
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilCheckRunConclusion", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CheckSuiteConclusion as json.
@@ -70698,24 +70686,21 @@ func (o *NilCheckSuiteConclusion) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilCheckSuiteConclusion to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CheckSuiteConclusion
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilCheckSuiteConclusion", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CheckSuiteStatus as json.
@@ -70732,24 +70717,21 @@ func (o *NilCheckSuiteStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilCheckSuiteStatus to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CheckSuiteStatus
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilCheckSuiteStatus", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertDismissedAt as json.
@@ -70766,24 +70748,21 @@ func (o *NilCodeScanningAlertDismissedAt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilCodeScanningAlertDismissedAt to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAlertDismissedAt
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilCodeScanningAlertDismissedAt", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertDismissedReason as json.
@@ -70800,24 +70779,21 @@ func (o *NilCodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilCodeScanningAlertDismissedReason to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAlertDismissedReason
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilCodeScanningAlertDismissedReason", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -70834,26 +70810,23 @@ func (o *NilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 	if o == nil {
 		return errors.New("invalid: unable to decode NilDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilDateTime", d.Next())
 	}
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes FileCommitContent as json.
@@ -70870,24 +70843,21 @@ func (o *NilFileCommitContent) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilFileCommitContent to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v FileCommitContent
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilFileCommitContent", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes HookDeliveryRequestHeaders as json.
@@ -70904,25 +70874,22 @@ func (o *NilHookDeliveryRequestHeaders) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilHookDeliveryRequestHeaders to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		o.Value = make(HookDeliveryRequestHeaders)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v HookDeliveryRequestHeaders
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilHookDeliveryRequestHeaders", d.Next())
 	}
+	o.Null = false
+	o.Value = make(HookDeliveryRequestHeaders)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes HookDeliveryRequestPayload as json.
@@ -70939,25 +70906,22 @@ func (o *NilHookDeliveryRequestPayload) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilHookDeliveryRequestPayload to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		o.Value = make(HookDeliveryRequestPayload)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v HookDeliveryRequestPayload
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilHookDeliveryRequestPayload", d.Next())
 	}
+	o.Null = false
+	o.Value = make(HookDeliveryRequestPayload)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes HookDeliveryResponseHeaders as json.
@@ -70974,25 +70938,22 @@ func (o *NilHookDeliveryResponseHeaders) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilHookDeliveryResponseHeaders to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		o.Value = make(HookDeliveryResponseHeaders)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v HookDeliveryResponseHeaders
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilHookDeliveryResponseHeaders", d.Next())
 	}
+	o.Null = false
+	o.Value = make(HookDeliveryResponseHeaders)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes int as json.
@@ -71009,26 +70970,23 @@ func (o *NilInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Null = false
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilInt", d.Next())
 	}
+	o.Null = false
+	v, err := d.Int()
+	if err != nil {
+		return err
+	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes NullableCodeOfConductSimple as json.
@@ -71045,24 +71003,21 @@ func (o *NilNullableCodeOfConductSimple) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableCodeOfConductSimple to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableCodeOfConductSimple
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableCodeOfConductSimple", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableCommunityHealthFile as json.
@@ -71079,24 +71034,21 @@ func (o *NilNullableCommunityHealthFile) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableCommunityHealthFile to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableCommunityHealthFile
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableCommunityHealthFile", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableGitUser as json.
@@ -71113,24 +71065,21 @@ func (o *NilNullableGitUser) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableGitUser to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableGitUser
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableGitUser", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableIntegration as json.
@@ -71147,24 +71096,21 @@ func (o *NilNullableIntegration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableIntegration to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableIntegration
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableIntegration", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableLicenseSimple as json.
@@ -71181,24 +71127,21 @@ func (o *NilNullableLicenseSimple) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableLicenseSimple to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableLicenseSimple
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableLicenseSimple", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableMilestone as json.
@@ -71215,24 +71158,21 @@ func (o *NilNullableMilestone) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableMilestone to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableMilestone
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableMilestone", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableSimpleCommit as json.
@@ -71249,24 +71189,21 @@ func (o *NilNullableSimpleCommit) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableSimpleCommit to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableSimpleCommit
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableSimpleCommit", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableSimpleCommitAuthor as json.
@@ -71283,24 +71220,21 @@ func (o *NilNullableSimpleCommitAuthor) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableSimpleCommitAuthor to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableSimpleCommitAuthor
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableSimpleCommitAuthor", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableSimpleCommitCommitter as json.
@@ -71317,24 +71251,21 @@ func (o *NilNullableSimpleCommitCommitter) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableSimpleCommitCommitter to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableSimpleCommitCommitter
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableSimpleCommitCommitter", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableSimpleUser as json.
@@ -71351,24 +71282,21 @@ func (o *NilNullableSimpleUser) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableSimpleUser to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableSimpleUser
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableSimpleUser", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableTeamSimple as json.
@@ -71385,24 +71313,21 @@ func (o *NilNullableTeamSimple) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableTeamSimple to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableTeamSimple
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableTeamSimple", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PageStatus as json.
@@ -71419,24 +71344,21 @@ func (o *NilPageStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilPageStatus to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PageStatus
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilPageStatus", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PullRequestHeadRepo as json.
@@ -71453,24 +71375,21 @@ func (o *NilPullRequestHeadRepo) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilPullRequestHeadRepo to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PullRequestHeadRepo
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilPullRequestHeadRepo", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PullRequestHeadRepoLicense as json.
@@ -71487,24 +71406,21 @@ func (o *NilPullRequestHeadRepoLicense) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilPullRequestHeadRepoLicense to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PullRequestHeadRepoLicense
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilPullRequestHeadRepoLicense", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReposCreatePagesSiteReq as json.
@@ -71521,24 +71437,21 @@ func (o *NilReposCreatePagesSiteReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilReposCreatePagesSiteReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReposCreatePagesSiteReq
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilReposCreatePagesSiteReq", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReposUpdateBranchProtectionReqRequiredPullRequestReviews as json.
@@ -71555,24 +71468,21 @@ func (o *NilReposUpdateBranchProtectionReqRequiredPullRequestReviews) Decode(d *
 	if o == nil {
 		return errors.New("invalid: unable to decode NilReposUpdateBranchProtectionReqRequiredPullRequestReviews to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReposUpdateBranchProtectionReqRequiredPullRequestReviews
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilReposUpdateBranchProtectionReqRequiredPullRequestReviews", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReposUpdateBranchProtectionReqRequiredStatusChecks as json.
@@ -71589,24 +71499,21 @@ func (o *NilReposUpdateBranchProtectionReqRequiredStatusChecks) Decode(d *jx.Dec
 	if o == nil {
 		return errors.New("invalid: unable to decode NilReposUpdateBranchProtectionReqRequiredStatusChecks to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReposUpdateBranchProtectionReqRequiredStatusChecks
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilReposUpdateBranchProtectionReqRequiredStatusChecks", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReposUpdateBranchProtectionReqRestrictions as json.
@@ -71623,24 +71530,21 @@ func (o *NilReposUpdateBranchProtectionReqRestrictions) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode NilReposUpdateBranchProtectionReqRestrictions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReposUpdateBranchProtectionReqRestrictions
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilReposUpdateBranchProtectionReqRestrictions", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes SimpleCommitAuthor as json.
@@ -71657,24 +71561,21 @@ func (o *NilSimpleCommitAuthor) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilSimpleCommitAuthor to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v SimpleCommitAuthor
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilSimpleCommitAuthor", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes SimpleCommitCommitter as json.
@@ -71691,24 +71592,21 @@ func (o *NilSimpleCommitCommitter) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilSimpleCommitCommitter to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v SimpleCommitCommitter
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilSimpleCommitCommitter", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -71725,26 +71623,23 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v string
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilString", d.Next())
 	}
+	o.Null = false
+	v, err := d.Str()
+	if err != nil {
+		return err
+	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes url.URL as json.
@@ -71761,26 +71656,23 @@ func (o *NilURI) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilURI to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := json.DecodeURI(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v url.URL
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilURI", d.Next())
 	}
+	o.Null = false
+	v, err := json.DecodeURI(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode implements json.Marshaler.
@@ -82552,16 +82444,11 @@ func (o *OptAPIOverviewSSHKeyFingerprints) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAPIOverviewSSHKeyFingerprints to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAPIOverviewSSHKeyFingerprints", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility as json.
@@ -82577,16 +82464,11 @@ func (o *OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility as json.
@@ -82602,16 +82484,11 @@ func (o *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ActivityMarkNotificationsAsReadReq as json.
@@ -82627,16 +82504,11 @@ func (o *OptActivityMarkNotificationsAsReadReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptActivityMarkNotificationsAsReadReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptActivityMarkNotificationsAsReadReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ActivityMarkRepoNotificationsAsReadReq as json.
@@ -82652,16 +82524,11 @@ func (o *OptActivityMarkRepoNotificationsAsReadReq) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptActivityMarkRepoNotificationsAsReadReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptActivityMarkRepoNotificationsAsReadReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ActivitySetRepoSubscriptionReq as json.
@@ -82677,16 +82544,11 @@ func (o *OptActivitySetRepoSubscriptionReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptActivitySetRepoSubscriptionReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptActivitySetRepoSubscriptionReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ActivitySetThreadSubscriptionReq as json.
@@ -82702,16 +82564,11 @@ func (o *OptActivitySetThreadSubscriptionReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptActivitySetThreadSubscriptionReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptActivitySetThreadSubscriptionReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes Actor as json.
@@ -82727,16 +82584,11 @@ func (o *OptActor) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptActor to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptActor", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AlertCreatedAt as json.
@@ -82752,16 +82604,11 @@ func (o *OptAlertCreatedAt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAlertCreatedAt to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAlertCreatedAt", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AlertHTMLURL as json.
@@ -82777,16 +82624,11 @@ func (o *OptAlertHTMLURL) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAlertHTMLURL to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAlertHTMLURL", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AlertNumber as json.
@@ -82802,16 +82644,11 @@ func (o *OptAlertNumber) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAlertNumber to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAlertNumber", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AlertURL as json.
@@ -82827,16 +82664,11 @@ func (o *OptAlertURL) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAlertURL to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAlertURL", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AllowedActions as json.
@@ -82852,16 +82684,11 @@ func (o *OptAllowedActions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAllowedActions to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAllowedActions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissions as json.
@@ -82877,16 +82704,11 @@ func (o *OptAppPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsActions as json.
@@ -82902,16 +82724,11 @@ func (o *OptAppPermissionsActions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsActions to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsActions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsAdministration as json.
@@ -82927,16 +82744,11 @@ func (o *OptAppPermissionsAdministration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsAdministration to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsAdministration", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsChecks as json.
@@ -82952,16 +82764,11 @@ func (o *OptAppPermissionsChecks) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsChecks to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsChecks", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsContentReferences as json.
@@ -82977,16 +82784,11 @@ func (o *OptAppPermissionsContentReferences) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsContentReferences to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsContentReferences", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsContents as json.
@@ -83002,16 +82804,11 @@ func (o *OptAppPermissionsContents) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsContents to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsContents", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsDeployments as json.
@@ -83027,16 +82824,11 @@ func (o *OptAppPermissionsDeployments) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsDeployments to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsDeployments", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsEnvironments as json.
@@ -83052,16 +82844,11 @@ func (o *OptAppPermissionsEnvironments) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsEnvironments to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsEnvironments", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsIssues as json.
@@ -83077,16 +82864,11 @@ func (o *OptAppPermissionsIssues) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsIssues to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsIssues", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsMembers as json.
@@ -83102,16 +82884,11 @@ func (o *OptAppPermissionsMembers) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsMembers to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsMembers", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsMetadata as json.
@@ -83127,16 +82904,11 @@ func (o *OptAppPermissionsMetadata) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsMetadata to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsMetadata", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationAdministration as json.
@@ -83152,16 +82924,11 @@ func (o *OptAppPermissionsOrganizationAdministration) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationAdministration to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationAdministration", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationHooks as json.
@@ -83177,16 +82944,11 @@ func (o *OptAppPermissionsOrganizationHooks) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationHooks to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationHooks", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationPackages as json.
@@ -83202,16 +82964,11 @@ func (o *OptAppPermissionsOrganizationPackages) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationPackages to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationPackages", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationPlan as json.
@@ -83227,16 +82984,11 @@ func (o *OptAppPermissionsOrganizationPlan) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationPlan to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationPlan", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationProjects as json.
@@ -83252,16 +83004,11 @@ func (o *OptAppPermissionsOrganizationProjects) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationProjects to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationProjects", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationSecrets as json.
@@ -83277,16 +83024,11 @@ func (o *OptAppPermissionsOrganizationSecrets) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationSecrets to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationSecrets", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationSelfHostedRunners as json.
@@ -83302,16 +83044,11 @@ func (o *OptAppPermissionsOrganizationSelfHostedRunners) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationSelfHostedRunners to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationSelfHostedRunners", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsOrganizationUserBlocking as json.
@@ -83327,16 +83064,11 @@ func (o *OptAppPermissionsOrganizationUserBlocking) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsOrganizationUserBlocking to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsOrganizationUserBlocking", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsPackages as json.
@@ -83352,16 +83084,11 @@ func (o *OptAppPermissionsPackages) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsPackages to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsPackages", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsPages as json.
@@ -83377,16 +83104,11 @@ func (o *OptAppPermissionsPages) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsPages to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsPages", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsPullRequests as json.
@@ -83402,16 +83124,11 @@ func (o *OptAppPermissionsPullRequests) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsPullRequests to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsPullRequests", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsRepositoryHooks as json.
@@ -83427,16 +83144,11 @@ func (o *OptAppPermissionsRepositoryHooks) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsRepositoryHooks to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsRepositoryHooks", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsRepositoryProjects as json.
@@ -83452,16 +83164,11 @@ func (o *OptAppPermissionsRepositoryProjects) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsRepositoryProjects to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsRepositoryProjects", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsSecretScanningAlerts as json.
@@ -83477,16 +83184,11 @@ func (o *OptAppPermissionsSecretScanningAlerts) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsSecretScanningAlerts to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsSecretScanningAlerts", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsSecrets as json.
@@ -83502,16 +83204,11 @@ func (o *OptAppPermissionsSecrets) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsSecrets to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsSecrets", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsSecurityEvents as json.
@@ -83527,16 +83224,11 @@ func (o *OptAppPermissionsSecurityEvents) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsSecurityEvents to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsSecurityEvents", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsSingleFile as json.
@@ -83552,16 +83244,11 @@ func (o *OptAppPermissionsSingleFile) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsSingleFile to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsSingleFile", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsStatuses as json.
@@ -83577,16 +83264,11 @@ func (o *OptAppPermissionsStatuses) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsStatuses to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsStatuses", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsTeamDiscussions as json.
@@ -83602,16 +83284,11 @@ func (o *OptAppPermissionsTeamDiscussions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsTeamDiscussions to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsTeamDiscussions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsVulnerabilityAlerts as json.
@@ -83627,16 +83304,11 @@ func (o *OptAppPermissionsVulnerabilityAlerts) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsVulnerabilityAlerts to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsVulnerabilityAlerts", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppPermissionsWorkflows as json.
@@ -83652,16 +83324,11 @@ func (o *OptAppPermissionsWorkflows) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppPermissionsWorkflows to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppPermissionsWorkflows", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppsCreateInstallationAccessTokenReq as json.
@@ -83677,16 +83344,11 @@ func (o *OptAppsCreateInstallationAccessTokenReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppsCreateInstallationAccessTokenReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppsCreateInstallationAccessTokenReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AppsUpdateWebhookConfigForAppReq as json.
@@ -83702,16 +83364,11 @@ func (o *OptAppsUpdateWebhookConfigForAppReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAppsUpdateWebhookConfigForAppReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAppsUpdateWebhookConfigForAppReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AuditLogEventActorLocation as json.
@@ -83727,16 +83384,11 @@ func (o *OptAuditLogEventActorLocation) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAuditLogEventActorLocation to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAuditLogEventActorLocation", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AuditLogEventData as json.
@@ -83752,17 +83404,12 @@ func (o *OptAuditLogEventData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAuditLogEventData to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(AuditLogEventData)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAuditLogEventData", d.Next())
+	o.Set = true
+	o.Value = make(AuditLogEventData)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AuthenticationTokenRepositorySelection as json.
@@ -83778,16 +83425,11 @@ func (o *OptAuthenticationTokenRepositorySelection) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAuthenticationTokenRepositorySelection to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAuthenticationTokenRepositorySelection", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AuthorAssociation as json.
@@ -83803,16 +83445,11 @@ func (o *OptAuthorAssociation) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAuthorAssociation to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAuthorAssociation", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes bool as json.
@@ -83828,18 +83465,13 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBool to nil")
 	}
-	switch d.Next() {
-	case jx.Bool:
-		o.Set = true
-		v, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		o.Value = bool(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBool", d.Next())
+	o.Set = true
+	v, err := d.Bool()
+	if err != nil {
+		return err
 	}
+	o.Value = bool(v)
+	return nil
 }
 
 // Encode encodes BranchProtection as json.
@@ -83855,16 +83487,11 @@ func (o *OptBranchProtection) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchProtection to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchProtection", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchProtectionAllowDeletions as json.
@@ -83880,16 +83507,11 @@ func (o *OptBranchProtectionAllowDeletions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchProtectionAllowDeletions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchProtectionAllowDeletions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchProtectionAllowForcePushes as json.
@@ -83905,16 +83527,11 @@ func (o *OptBranchProtectionAllowForcePushes) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchProtectionAllowForcePushes to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchProtectionAllowForcePushes", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchProtectionRequiredConversationResolution as json.
@@ -83930,16 +83547,11 @@ func (o *OptBranchProtectionRequiredConversationResolution) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchProtectionRequiredConversationResolution to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchProtectionRequiredConversationResolution", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchProtectionRequiredLinearHistory as json.
@@ -83955,16 +83567,11 @@ func (o *OptBranchProtectionRequiredLinearHistory) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchProtectionRequiredLinearHistory to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchProtectionRequiredLinearHistory", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchProtectionRequiredSignatures as json.
@@ -83980,16 +83587,11 @@ func (o *OptBranchProtectionRequiredSignatures) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchProtectionRequiredSignatures to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchProtectionRequiredSignatures", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchProtectionRequiredStatusChecks as json.
@@ -84005,16 +83607,11 @@ func (o *OptBranchProtectionRequiredStatusChecks) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchProtectionRequiredStatusChecks to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchProtectionRequiredStatusChecks", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchRestrictionPolicy as json.
@@ -84030,16 +83627,11 @@ func (o *OptBranchRestrictionPolicy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchRestrictionPolicy to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchRestrictionPolicy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchRestrictionPolicyAppsItemOwner as json.
@@ -84055,16 +83647,11 @@ func (o *OptBranchRestrictionPolicyAppsItemOwner) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchRestrictionPolicyAppsItemOwner to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchRestrictionPolicyAppsItemOwner", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes BranchRestrictionPolicyAppsItemPermissions as json.
@@ -84080,16 +83667,11 @@ func (o *OptBranchRestrictionPolicyAppsItemPermissions) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBranchRestrictionPolicyAppsItemPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBranchRestrictionPolicyAppsItemPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeOfConduct as json.
@@ -84105,16 +83687,11 @@ func (o *OptCodeOfConduct) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeOfConduct to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeOfConduct", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeOfConductSimple as json.
@@ -84130,16 +83707,11 @@ func (o *OptCodeOfConductSimple) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeOfConductSimple to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeOfConductSimple", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertEnvironment as json.
@@ -84155,16 +83727,11 @@ func (o *OptCodeScanningAlertEnvironment) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAlertEnvironment to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAlertEnvironment", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertInstanceMessage as json.
@@ -84180,16 +83747,11 @@ func (o *OptCodeScanningAlertInstanceMessage) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAlertInstanceMessage to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAlertInstanceMessage", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertLocation as json.
@@ -84205,16 +83767,11 @@ func (o *OptCodeScanningAlertLocation) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAlertLocation to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAlertLocation", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertState as json.
@@ -84230,16 +83787,11 @@ func (o *OptCodeScanningAlertState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAlertState to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAlertState", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAnalysisAnalysisKey as json.
@@ -84255,16 +83807,11 @@ func (o *OptCodeScanningAnalysisAnalysisKey) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAnalysisAnalysisKey to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAnalysisAnalysisKey", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAnalysisCategory as json.
@@ -84280,16 +83827,11 @@ func (o *OptCodeScanningAnalysisCategory) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAnalysisCategory to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAnalysisCategory", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAnalysisSarifID as json.
@@ -84305,16 +83847,11 @@ func (o *OptCodeScanningAnalysisSarifID) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAnalysisSarifID to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAnalysisSarifID", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningAnalysisToolName as json.
@@ -84330,16 +83867,11 @@ func (o *OptCodeScanningAnalysisToolName) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningAnalysisToolName to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningAnalysisToolName", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningRef as json.
@@ -84355,16 +83887,11 @@ func (o *OptCodeScanningRef) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningRef to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningRef", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CodeScanningSarifsStatusProcessingStatus as json.
@@ -84380,16 +83907,11 @@ func (o *OptCodeScanningSarifsStatusProcessingStatus) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCodeScanningSarifsStatusProcessingStatus to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCodeScanningSarifsStatusProcessingStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CollaboratorPermissions as json.
@@ -84405,16 +83927,11 @@ func (o *OptCollaboratorPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCollaboratorPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCollaboratorPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes CommitStats as json.
@@ -84430,16 +83947,11 @@ func (o *OptCommitStats) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCommitStats to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCommitStats", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -84455,18 +83967,13 @@ func (o *OptDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDate to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDate", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -84482,18 +83989,13 @@ func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDateTime", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes DeploymentSimple as json.
@@ -84509,16 +84011,11 @@ func (o *OptDeploymentSimple) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDeploymentSimple to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDeploymentSimple", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility as json.
@@ -84534,16 +84031,11 @@ func (o *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 	if o == nil {
 		return errors.New("invalid: unable to decode OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue as json.
@@ -84559,16 +84051,11 @@ func (o *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemVal
 	if o == nil {
 		return errors.New("invalid: unable to decode OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq as json.
@@ -84584,16 +84071,11 @@ func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) Decode(d
 	if o == nil {
 		return errors.New("invalid: unable to decode OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility as json.
@@ -84609,16 +84091,11 @@ func (o *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
 	if o == nil {
 		return errors.New("invalid: unable to decode OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FileCommitCommitAuthor as json.
@@ -84634,16 +84111,11 @@ func (o *OptFileCommitCommitAuthor) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFileCommitCommitAuthor to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFileCommitCommitAuthor", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FileCommitCommitCommitter as json.
@@ -84659,16 +84131,11 @@ func (o *OptFileCommitCommitCommitter) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFileCommitCommitCommitter to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFileCommitCommitCommitter", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FileCommitCommitTree as json.
@@ -84684,16 +84151,11 @@ func (o *OptFileCommitCommitTree) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFileCommitCommitTree to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFileCommitCommitTree", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FileCommitCommitVerification as json.
@@ -84709,16 +84171,11 @@ func (o *OptFileCommitCommitVerification) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFileCommitCommitVerification to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFileCommitCommitVerification", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FileCommitContentLinks as json.
@@ -84734,16 +84191,11 @@ func (o *OptFileCommitContentLinks) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFileCommitContentLinks to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFileCommitContentLinks", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes float64 as json.
@@ -84759,18 +84211,13 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFloat64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Float64()
-		if err != nil {
-			return err
-		}
-		o.Value = float64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFloat64", d.Next())
+	o.Set = true
+	v, err := d.Float64()
+	if err != nil {
+		return err
 	}
+	o.Value = float64(v)
+	return nil
 }
 
 // Encode encodes ForbiddenGistBlock as json.
@@ -84786,16 +84233,11 @@ func (o *OptForbiddenGistBlock) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptForbiddenGistBlock to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptForbiddenGistBlock", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FullRepositoryPermissions as json.
@@ -84811,16 +84253,11 @@ func (o *OptFullRepositoryPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFullRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFullRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FullRepositorySecurityAndAnalysisAdvancedSecurity as json.
@@ -84836,16 +84273,11 @@ func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurity) Decode(d *jx.Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFullRepositorySecurityAndAnalysisAdvancedSecurity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FullRepositorySecurityAndAnalysisAdvancedSecurityStatus as json.
@@ -84861,16 +84293,11 @@ func (o *OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FullRepositorySecurityAndAnalysisSecretScanning as json.
@@ -84886,16 +84313,11 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanning) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFullRepositorySecurityAndAnalysisSecretScanning to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanning", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes FullRepositorySecurityAndAnalysisSecretScanningStatus as json.
@@ -84911,16 +84333,11 @@ func (o *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFullRepositorySecurityAndAnalysisSecretScanningStatus to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFullRepositorySecurityAndAnalysisSecretScanningStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GistHistoryChangeStatus as json.
@@ -84936,16 +84353,11 @@ func (o *OptGistHistoryChangeStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGistHistoryChangeStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGistHistoryChangeStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GistSimpleFiles as json.
@@ -84961,17 +84373,12 @@ func (o *OptGistSimpleFiles) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGistSimpleFiles to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(GistSimpleFiles)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGistSimpleFiles", d.Next())
+	o.Set = true
+	o.Value = make(GistSimpleFiles)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GistsCreateReqPublic as json.
@@ -84987,16 +84394,11 @@ func (o *OptGistsCreateReqPublic) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGistsCreateReqPublic to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGistsCreateReqPublic", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GitCreateCommitReqAuthor as json.
@@ -85012,16 +84414,11 @@ func (o *OptGitCreateCommitReqAuthor) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGitCreateCommitReqAuthor to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGitCreateCommitReqAuthor", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GitCreateCommitReqCommitter as json.
@@ -85037,16 +84434,11 @@ func (o *OptGitCreateCommitReqCommitter) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGitCreateCommitReqCommitter to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGitCreateCommitReqCommitter", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GitCreateTagReqTagger as json.
@@ -85062,16 +84454,11 @@ func (o *OptGitCreateTagReqTagger) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGitCreateTagReqTagger to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGitCreateTagReqTagger", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GitCreateTreeReqTreeItemMode as json.
@@ -85087,16 +84474,11 @@ func (o *OptGitCreateTreeReqTreeItemMode) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGitCreateTreeReqTreeItemMode to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGitCreateTreeReqTreeItemMode", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes GitCreateTreeReqTreeItemType as json.
@@ -85112,16 +84494,11 @@ func (o *OptGitCreateTreeReqTreeItemType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptGitCreateTreeReqTreeItemType to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptGitCreateTreeReqTreeItemType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes InstallationTokenRepositorySelection as json.
@@ -85137,16 +84514,11 @@ func (o *OptInstallationTokenRepositorySelection) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInstallationTokenRepositorySelection to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInstallationTokenRepositorySelection", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes int as json.
@@ -85162,18 +84534,13 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt", d.Next())
+	o.Set = true
+	v, err := d.Int()
+	if err != nil {
+		return err
 	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes int64 as json.
@@ -85189,18 +84556,13 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int64()
-		if err != nil {
-			return err
-		}
-		o.Value = int64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt64", d.Next())
+	o.Set = true
+	v, err := d.Int64()
+	if err != nil {
+		return err
 	}
+	o.Value = int64(v)
+	return nil
 }
 
 // Encode encodes InteractionExpiry as json.
@@ -85216,16 +84578,11 @@ func (o *OptInteractionExpiry) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInteractionExpiry to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInteractionExpiry", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueComment as json.
@@ -85241,16 +84598,11 @@ func (o *OptIssueComment) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueComment to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueComment", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueEventDismissedReview as json.
@@ -85266,16 +84618,11 @@ func (o *OptIssueEventDismissedReview) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueEventDismissedReview to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueEventDismissedReview", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueEventLabel as json.
@@ -85291,16 +84638,11 @@ func (o *OptIssueEventLabel) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueEventLabel to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueEventLabel", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueEventMilestone as json.
@@ -85316,16 +84658,11 @@ func (o *OptIssueEventMilestone) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueEventMilestone to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueEventMilestone", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueEventProjectCard as json.
@@ -85341,16 +84678,11 @@ func (o *OptIssueEventProjectCard) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueEventProjectCard to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueEventProjectCard", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueEventRename as json.
@@ -85366,16 +84698,11 @@ func (o *OptIssueEventRename) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueEventRename to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueEventRename", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuePullRequest as json.
@@ -85391,16 +84718,11 @@ func (o *OptIssuePullRequest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuePullRequest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuePullRequest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueSearchResultItemPullRequest as json.
@@ -85416,16 +84738,11 @@ func (o *OptIssueSearchResultItemPullRequest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueSearchResultItemPullRequest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueSearchResultItemPullRequest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueSimple as json.
@@ -85441,16 +84758,11 @@ func (o *OptIssueSimple) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueSimple to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueSimple", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssueSimplePullRequest as json.
@@ -85466,16 +84778,11 @@ func (o *OptIssueSimplePullRequest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssueSimplePullRequest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssueSimplePullRequest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesAddAssigneesReq as json.
@@ -85491,16 +84798,11 @@ func (o *OptIssuesAddAssigneesReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesAddAssigneesReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesAddAssigneesReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesCreateMilestoneReqState as json.
@@ -85516,16 +84818,11 @@ func (o *OptIssuesCreateMilestoneReqState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesCreateMilestoneReqState to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesCreateMilestoneReqState", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesLockReqLockReason as json.
@@ -85541,16 +84838,11 @@ func (o *OptIssuesLockReqLockReason) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesLockReqLockReason to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesLockReqLockReason", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesRemoveAssigneesReq as json.
@@ -85566,16 +84858,11 @@ func (o *OptIssuesRemoveAssigneesReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesRemoveAssigneesReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesRemoveAssigneesReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesUpdateLabelReq as json.
@@ -85591,16 +84878,11 @@ func (o *OptIssuesUpdateLabelReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesUpdateLabelReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesUpdateLabelReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesUpdateMilestoneReq as json.
@@ -85616,16 +84898,11 @@ func (o *OptIssuesUpdateMilestoneReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesUpdateMilestoneReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesUpdateMilestoneReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesUpdateMilestoneReqState as json.
@@ -85641,16 +84918,11 @@ func (o *OptIssuesUpdateMilestoneReqState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesUpdateMilestoneReqState to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesUpdateMilestoneReqState", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesUpdateReq as json.
@@ -85666,16 +84938,11 @@ func (o *OptIssuesUpdateReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesUpdateReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesUpdateReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IssuesUpdateReqState as json.
@@ -85691,16 +84958,11 @@ func (o *OptIssuesUpdateReqState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIssuesUpdateReqState to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIssuesUpdateReqState", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes LinkWithType as json.
@@ -85716,16 +84978,11 @@ func (o *OptLinkWithType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptLinkWithType to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptLinkWithType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MarketplaceListingPlan as json.
@@ -85741,16 +84998,11 @@ func (o *OptMarketplaceListingPlan) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMarketplaceListingPlan to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMarketplaceListingPlan", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MergedUpstreamMergeType as json.
@@ -85766,16 +85018,11 @@ func (o *OptMergedUpstreamMergeType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMergedUpstreamMergeType to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMergedUpstreamMergeType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MigrationsMapCommitAuthorReq as json.
@@ -85791,16 +85038,11 @@ func (o *OptMigrationsMapCommitAuthorReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMigrationsMapCommitAuthorReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMigrationsMapCommitAuthorReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MigrationsStartImportReqVcs as json.
@@ -85816,16 +85058,11 @@ func (o *OptMigrationsStartImportReqVcs) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMigrationsStartImportReqVcs to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMigrationsStartImportReqVcs", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MinimalRepository as json.
@@ -85841,16 +85078,11 @@ func (o *OptMinimalRepository) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMinimalRepository to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMinimalRepository", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MinimalRepositoryPermissions as json.
@@ -85866,16 +85098,11 @@ func (o *OptMinimalRepositoryPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMinimalRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMinimalRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes bool as json.
@@ -85895,28 +85122,25 @@ func (o *OptNilBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilBool to nil")
 	}
-	switch d.Next() {
-	case jx.Bool:
-		o.Set = true
-		o.Null = false
-		v, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		o.Value = bool(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v bool
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilBool", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Bool()
+	if err != nil {
+		return err
+	}
+	o.Value = bool(v)
+	return nil
 }
 
 // Encode encodes CodeScanningAlertDismissedReason as json.
@@ -85936,26 +85160,23 @@ func (o *OptNilCodeScanningAlertDismissedReason) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilCodeScanningAlertDismissedReason to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAlertDismissedReason
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilCodeScanningAlertDismissedReason", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertRuleSecuritySeverityLevel as json.
@@ -85975,26 +85196,23 @@ func (o *OptNilCodeScanningAlertRuleSecuritySeverityLevel) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilCodeScanningAlertRuleSecuritySeverityLevel to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAlertRuleSecuritySeverityLevel
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilCodeScanningAlertRuleSecuritySeverityLevel", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertRuleSeverity as json.
@@ -86014,26 +85232,23 @@ func (o *OptNilCodeScanningAlertRuleSeverity) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilCodeScanningAlertRuleSeverity to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAlertRuleSeverity
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilCodeScanningAlertRuleSeverity", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CodeScanningAlertRuleSummarySeverity as json.
@@ -86053,26 +85268,23 @@ func (o *OptNilCodeScanningAlertRuleSummarySeverity) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilCodeScanningAlertRuleSummarySeverity to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAlertRuleSummarySeverity
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilCodeScanningAlertRuleSummarySeverity", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CodeScanningAnalysisToolGUID as json.
@@ -86092,26 +85304,23 @@ func (o *OptNilCodeScanningAnalysisToolGUID) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilCodeScanningAnalysisToolGUID to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAnalysisToolGUID
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilCodeScanningAnalysisToolGUID", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes CodeScanningAnalysisToolVersion as json.
@@ -86131,26 +85340,23 @@ func (o *OptNilCodeScanningAnalysisToolVersion) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilCodeScanningAnalysisToolVersion to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v CodeScanningAnalysisToolVersion
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilCodeScanningAnalysisToolVersion", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -86170,28 +85376,25 @@ func (o *OptNilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Ti
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilDateTime", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes FullRepositorySecurityAndAnalysis as json.
@@ -86211,26 +85414,23 @@ func (o *OptNilFullRepositorySecurityAndAnalysis) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilFullRepositorySecurityAndAnalysis to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v FullRepositorySecurityAndAnalysis
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilFullRepositorySecurityAndAnalysis", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes []GistHistory as json.
@@ -86262,34 +85462,31 @@ func (o *OptNilGistHistoryArray) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilGistHistoryArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]GistHistory, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem GistHistory
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []GistHistory
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilGistHistoryArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]GistHistory, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem GistHistory
+		if err := elem.Decode(d); err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes GistSimpleForkOf as json.
@@ -86309,26 +85506,23 @@ func (o *OptNilGistSimpleForkOf) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilGistSimpleForkOf to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v GistSimpleForkOf
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilGistSimpleForkOf", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes []GistSimpleForksItem as json.
@@ -86360,34 +85554,31 @@ func (o *OptNilGistSimpleForksItemArray) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilGistSimpleForksItemArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]GistSimpleForksItem, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem GistSimpleForksItem
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []GistSimpleForksItem
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilGistSimpleForksItemArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]GistSimpleForksItem, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem GistSimpleForksItem
+		if err := elem.Decode(d); err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes int as json.
@@ -86407,28 +85598,25 @@ func (o *OptNilInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		o.Null = false
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilInt", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Int()
+	if err != nil {
+		return err
+	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes IssuesCreateReqMilestone as json.
@@ -86448,26 +85636,23 @@ func (o *OptNilIssuesCreateReqMilestone) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIssuesCreateReqMilestone to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v IssuesCreateReqMilestone
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilIssuesCreateReqMilestone", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes IssuesLockReq as json.
@@ -86487,26 +85672,23 @@ func (o *OptNilIssuesLockReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIssuesLockReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v IssuesLockReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilIssuesLockReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes IssuesUpdateReqMilestone as json.
@@ -86526,26 +85708,23 @@ func (o *OptNilIssuesUpdateReqMilestone) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIssuesUpdateReqMilestone to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v IssuesUpdateReqMilestone
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilIssuesUpdateReqMilestone", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes IssuesUpdateReqTitle as json.
@@ -86565,26 +85744,23 @@ func (o *OptNilIssuesUpdateReqTitle) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIssuesUpdateReqTitle to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v IssuesUpdateReqTitle
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilIssuesUpdateReqTitle", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes MarketplacePurchaseMarketplacePendingChange as json.
@@ -86604,26 +85780,23 @@ func (o *OptNilMarketplacePurchaseMarketplacePendingChange) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilMarketplacePurchaseMarketplacePendingChange to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v MarketplacePurchaseMarketplacePendingChange
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilMarketplacePurchaseMarketplacePendingChange", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes MigrationsUpdateImportReq as json.
@@ -86643,26 +85816,23 @@ func (o *OptNilMigrationsUpdateImportReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilMigrationsUpdateImportReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v MigrationsUpdateImportReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilMigrationsUpdateImportReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes MinimalRepositoryLicense as json.
@@ -86682,26 +85852,23 @@ func (o *OptNilMinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilMinimalRepositoryLicense to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v MinimalRepositoryLicense
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilMinimalRepositoryLicense", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableIntegration as json.
@@ -86721,26 +85888,23 @@ func (o *OptNilNullableIntegration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableIntegration to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableIntegration
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableIntegration", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableMinimalRepository as json.
@@ -86760,26 +85924,23 @@ func (o *OptNilNullableMinimalRepository) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableMinimalRepository to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableMinimalRepository
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableMinimalRepository", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableMinimalRepositoryLicense as json.
@@ -86799,26 +85960,23 @@ func (o *OptNilNullableMinimalRepositoryLicense) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableMinimalRepositoryLicense to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableMinimalRepositoryLicense
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableMinimalRepositoryLicense", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableRepository as json.
@@ -86838,26 +85996,23 @@ func (o *OptNilNullableRepository) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableRepository to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableRepository
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableRepository", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableRepositoryTemplateRepository as json.
@@ -86877,26 +86032,23 @@ func (o *OptNilNullableRepositoryTemplateRepository) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableRepositoryTemplateRepository to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableRepositoryTemplateRepository
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableRepositoryTemplateRepository", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableScopedInstallation as json.
@@ -86916,26 +86068,23 @@ func (o *OptNilNullableScopedInstallation) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableScopedInstallation to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableScopedInstallation
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableScopedInstallation", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableSimpleUser as json.
@@ -86955,26 +86104,23 @@ func (o *OptNilNullableSimpleUser) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableSimpleUser to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableSimpleUser
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableSimpleUser", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableTeamSimple as json.
@@ -86994,26 +86140,23 @@ func (o *OptNilNullableTeamSimple) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilNullableTeamSimple to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableTeamSimple
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilNullableTeamSimple", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PageProtectedDomainState as json.
@@ -87033,26 +86176,23 @@ func (o *OptNilPageProtectedDomainState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilPageProtectedDomainState to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PageProtectedDomainState
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilPageProtectedDomainState", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PagesHealthCheckAltDomain as json.
@@ -87072,26 +86212,23 @@ func (o *OptNilPagesHealthCheckAltDomain) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilPagesHealthCheckAltDomain to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PagesHealthCheckAltDomain
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilPagesHealthCheckAltDomain", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ProjectsAddCollaboratorReq as json.
@@ -87111,26 +86248,23 @@ func (o *OptNilProjectsAddCollaboratorReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilProjectsAddCollaboratorReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ProjectsAddCollaboratorReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilProjectsAddCollaboratorReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PullRequestReviewCommentStartSide as json.
@@ -87150,26 +86284,23 @@ func (o *OptNilPullRequestReviewCommentStartSide) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilPullRequestReviewCommentStartSide to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PullRequestReviewCommentStartSide
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilPullRequestReviewCommentStartSide", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PullsMergeReq as json.
@@ -87189,26 +86320,23 @@ func (o *OptNilPullsMergeReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilPullsMergeReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PullsMergeReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilPullsMergeReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes PullsUpdateBranchReq as json.
@@ -87228,26 +86356,23 @@ func (o *OptNilPullsUpdateBranchReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilPullsUpdateBranchReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v PullsUpdateBranchReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilPullsUpdateBranchReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReposCreateForkReq as json.
@@ -87267,26 +86392,23 @@ func (o *OptNilReposCreateForkReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilReposCreateForkReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReposCreateForkReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilReposCreateForkReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReposCreateWebhookReq as json.
@@ -87306,26 +86428,23 @@ func (o *OptNilReposCreateWebhookReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilReposCreateWebhookReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReposCreateWebhookReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilReposCreateWebhookReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReposUpdateReqSecurityAndAnalysis as json.
@@ -87345,26 +86464,23 @@ func (o *OptNilReposUpdateReqSecurityAndAnalysis) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilReposUpdateReqSecurityAndAnalysis to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReposUpdateReqSecurityAndAnalysis
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilReposUpdateReqSecurityAndAnalysis", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes RepositoryTemplateRepository as json.
@@ -87384,26 +86500,23 @@ func (o *OptNilRepositoryTemplateRepository) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilRepositoryTemplateRepository to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v RepositoryTemplateRepository
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilRepositoryTemplateRepository", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes ReviewCommentStartSide as json.
@@ -87423,26 +86536,23 @@ func (o *OptNilReviewCommentStartSide) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilReviewCommentStartSide to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v ReviewCommentStartSide
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilReviewCommentStartSide", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes SecretScanningAlertResolution as json.
@@ -87462,26 +86572,23 @@ func (o *OptNilSecretScanningAlertResolution) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilSecretScanningAlertResolution to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v SecretScanningAlertResolution
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilSecretScanningAlertResolution", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes []SimpleUser as json.
@@ -87513,34 +86620,31 @@ func (o *OptNilSimpleUserArray) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilSimpleUserArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]SimpleUser, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem SimpleUser
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []SimpleUser
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilSimpleUserArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]SimpleUser, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem SimpleUser
+		if err := elem.Decode(d); err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -87560,28 +86664,25 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v string
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilString", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Str()
+	if err != nil {
+		return err
+	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes []string as json.
@@ -87613,36 +86714,33 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilStringArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]string, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []string
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilStringArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]string, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem string
+		v, err := d.Str()
+		elem = string(v)
+		if err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes []Team as json.
@@ -87674,34 +86772,31 @@ func (o *OptNilTeamArray) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilTeamArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]Team, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem Team
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []Team
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilTeamArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]Team, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem Team
+		if err := elem.Decode(d); err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes []TeamSimple as json.
@@ -87733,34 +86828,31 @@ func (o *OptNilTeamSimpleArray) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilTeamSimpleArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]TeamSimple, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem TeamSimple
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []TeamSimple
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilTeamSimpleArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]TeamSimple, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem TeamSimple
+		if err := elem.Decode(d); err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsInOrgReq as json.
@@ -87780,26 +86872,23 @@ func (o *OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v TeamsAddOrUpdateProjectPermissionsInOrgReq
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes []TopicSearchResultItemAliasesItem as json.
@@ -87831,34 +86920,31 @@ func (o *OptNilTopicSearchResultItemAliasesItemArray) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilTopicSearchResultItemAliasesItemArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]TopicSearchResultItemAliasesItem, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem TopicSearchResultItemAliasesItem
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []TopicSearchResultItemAliasesItem
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilTopicSearchResultItemAliasesItemArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]TopicSearchResultItemAliasesItem, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem TopicSearchResultItemAliasesItem
+		if err := elem.Decode(d); err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes []TopicSearchResultItemRelatedItem as json.
@@ -87890,34 +86976,31 @@ func (o *OptNilTopicSearchResultItemRelatedItemArray) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilTopicSearchResultItemRelatedItemArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]TopicSearchResultItemRelatedItem, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem TopicSearchResultItemRelatedItem
-			if err := elem.Decode(d); err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []TopicSearchResultItemRelatedItem
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilTopicSearchResultItemRelatedItemArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]TopicSearchResultItemRelatedItem, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem TopicSearchResultItemRelatedItem
+		if err := elem.Decode(d); err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes url.URL as json.
@@ -87937,28 +87020,25 @@ func (o *OptNilURI) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilURI to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := json.DecodeURI(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v url.URL
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilURI", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeURI(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes NullableMinimalRepositoryPermissions as json.
@@ -87974,16 +87054,11 @@ func (o *OptNullableMinimalRepositoryPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNullableMinimalRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNullableMinimalRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes NullableRepositoryPermissions as json.
@@ -87999,16 +87074,11 @@ func (o *OptNullableRepositoryPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNullableRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNullableRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes NullableRepositoryTemplateRepositoryOwner as json.
@@ -88024,16 +87094,11 @@ func (o *OptNullableRepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNullableRepositoryTemplateRepositoryOwner to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNullableRepositoryTemplateRepositoryOwner", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes NullableRepositoryTemplateRepositoryPermissions as json.
@@ -88049,16 +87114,11 @@ func (o *OptNullableRepositoryTemplateRepositoryPermissions) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNullableRepositoryTemplateRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNullableRepositoryTemplateRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OAuthAuthorizationsCreateAuthorizationReq as json.
@@ -88074,16 +87134,11 @@ func (o *OptOAuthAuthorizationsCreateAuthorizationReq) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOAuthAuthorizationsCreateAuthorizationReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOAuthAuthorizationsCreateAuthorizationReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OAuthAuthorizationsUpdateAuthorizationReq as json.
@@ -88099,16 +87154,11 @@ func (o *OptOAuthAuthorizationsUpdateAuthorizationReq) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOAuthAuthorizationsUpdateAuthorizationReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOAuthAuthorizationsUpdateAuthorizationReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgMembershipPermissions as json.
@@ -88124,16 +87174,11 @@ func (o *OptOrgMembershipPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgMembershipPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgMembershipPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrganizationFullPlan as json.
@@ -88149,16 +87194,11 @@ func (o *OptOrganizationFullPlan) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrganizationFullPlan to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrganizationFullPlan", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgsCreateInvitationReq as json.
@@ -88174,16 +87214,11 @@ func (o *OptOrgsCreateInvitationReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgsCreateInvitationReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgsCreateInvitationReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgsCreateInvitationReqRole as json.
@@ -88199,16 +87234,11 @@ func (o *OptOrgsCreateInvitationReqRole) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgsCreateInvitationReqRole to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgsCreateInvitationReqRole", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgsSetMembershipForUserReq as json.
@@ -88224,16 +87254,11 @@ func (o *OptOrgsSetMembershipForUserReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgsSetMembershipForUserReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgsSetMembershipForUserReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgsSetMembershipForUserReqRole as json.
@@ -88249,16 +87274,11 @@ func (o *OptOrgsSetMembershipForUserReqRole) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgsSetMembershipForUserReqRole to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgsSetMembershipForUserReqRole", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgsUpdateWebhookConfigForOrgReq as json.
@@ -88274,16 +87294,11 @@ func (o *OptOrgsUpdateWebhookConfigForOrgReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgsUpdateWebhookConfigForOrgReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgsUpdateWebhookConfigForOrgReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgsUpdateWebhookReq as json.
@@ -88299,16 +87314,11 @@ func (o *OptOrgsUpdateWebhookReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgsUpdateWebhookReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgsUpdateWebhookReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OrgsUpdateWebhookReqConfig as json.
@@ -88324,16 +87334,11 @@ func (o *OptOrgsUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOrgsUpdateWebhookReqConfig to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOrgsUpdateWebhookReqConfig", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PackageVersionMetadata as json.
@@ -88349,16 +87354,11 @@ func (o *OptPackageVersionMetadata) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPackageVersionMetadata to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPackageVersionMetadata", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PackageVersionMetadataContainer as json.
@@ -88374,16 +87374,11 @@ func (o *OptPackageVersionMetadataContainer) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPackageVersionMetadataContainer to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPackageVersionMetadataContainer", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PackageVersionMetadataDocker as json.
@@ -88399,16 +87394,11 @@ func (o *OptPackageVersionMetadataDocker) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPackageVersionMetadataDocker to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPackageVersionMetadataDocker", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PagesHTTPSCertificate as json.
@@ -88424,16 +87414,11 @@ func (o *OptPagesHTTPSCertificate) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPagesHTTPSCertificate to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPagesHTTPSCertificate", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PagesHealthCheckDomain as json.
@@ -88449,16 +87434,11 @@ func (o *OptPagesHealthCheckDomain) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPagesHealthCheckDomain to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPagesHealthCheckDomain", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PagesSourceHash as json.
@@ -88474,16 +87454,11 @@ func (o *OptPagesSourceHash) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPagesSourceHash to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPagesSourceHash", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PrivateUserPlan as json.
@@ -88499,16 +87474,11 @@ func (o *OptPrivateUserPlan) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPrivateUserPlan to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPrivateUserPlan", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProjectOrganizationPermission as json.
@@ -88524,16 +87494,11 @@ func (o *OptProjectOrganizationPermission) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProjectOrganizationPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProjectOrganizationPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProjectsAddCollaboratorReqPermission as json.
@@ -88549,16 +87514,11 @@ func (o *OptProjectsAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProjectsAddCollaboratorReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProjectsAddCollaboratorReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProjectsUpdateCardReq as json.
@@ -88574,16 +87534,11 @@ func (o *OptProjectsUpdateCardReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProjectsUpdateCardReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProjectsUpdateCardReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProjectsUpdateReq as json.
@@ -88599,16 +87554,11 @@ func (o *OptProjectsUpdateReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProjectsUpdateReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProjectsUpdateReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProjectsUpdateReqOrganizationPermission as json.
@@ -88624,16 +87574,11 @@ func (o *OptProjectsUpdateReqOrganizationPermission) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProjectsUpdateReqOrganizationPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProjectsUpdateReqOrganizationPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchAdminEnforced as json.
@@ -88649,16 +87594,11 @@ func (o *OptProtectedBranchAdminEnforced) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchAdminEnforced to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchAdminEnforced", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchAllowDeletions as json.
@@ -88674,16 +87614,11 @@ func (o *OptProtectedBranchAllowDeletions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchAllowDeletions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchAllowDeletions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchAllowForcePushes as json.
@@ -88699,16 +87634,11 @@ func (o *OptProtectedBranchAllowForcePushes) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchAllowForcePushes to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchAllowForcePushes", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchEnforceAdmins as json.
@@ -88724,16 +87654,11 @@ func (o *OptProtectedBranchEnforceAdmins) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchEnforceAdmins to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchEnforceAdmins", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchPullRequestReview as json.
@@ -88749,16 +87674,11 @@ func (o *OptProtectedBranchPullRequestReview) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchPullRequestReview to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchPullRequestReview", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchPullRequestReviewDismissalRestrictions as json.
@@ -88774,16 +87694,11 @@ func (o *OptProtectedBranchPullRequestReviewDismissalRestrictions) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchPullRequestReviewDismissalRestrictions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchPullRequestReviewDismissalRestrictions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchRequiredConversationResolution as json.
@@ -88799,16 +87714,11 @@ func (o *OptProtectedBranchRequiredConversationResolution) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchRequiredConversationResolution to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchRequiredConversationResolution", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchRequiredLinearHistory as json.
@@ -88824,16 +87734,11 @@ func (o *OptProtectedBranchRequiredLinearHistory) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchRequiredLinearHistory to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchRequiredLinearHistory", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchRequiredPullRequestReviews as json.
@@ -88849,16 +87754,11 @@ func (o *OptProtectedBranchRequiredPullRequestReviews) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchRequiredPullRequestReviews to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchRequiredPullRequestReviews", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions as json.
@@ -88874,16 +87774,11 @@ func (o *OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ProtectedBranchRequiredSignatures as json.
@@ -88899,16 +87794,11 @@ func (o *OptProtectedBranchRequiredSignatures) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptProtectedBranchRequiredSignatures to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptProtectedBranchRequiredSignatures", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PublicUser as json.
@@ -88924,16 +87814,11 @@ func (o *OptPublicUser) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPublicUser to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPublicUser", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PublicUserPlan as json.
@@ -88949,16 +87834,11 @@ func (o *OptPublicUserPlan) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPublicUserPlan to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPublicUserPlan", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullRequestBaseRepoPermissions as json.
@@ -88974,16 +87854,11 @@ func (o *OptPullRequestBaseRepoPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullRequestBaseRepoPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullRequestBaseRepoPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullRequestHeadRepoPermissions as json.
@@ -88999,16 +87874,11 @@ func (o *OptPullRequestHeadRepoPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullRequestHeadRepoPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullRequestHeadRepoPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullRequestReviewCommentSide as json.
@@ -89024,16 +87894,11 @@ func (o *OptPullRequestReviewCommentSide) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullRequestReviewCommentSide to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullRequestReviewCommentSide", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullsCreateReviewCommentReqSide as json.
@@ -89049,16 +87914,11 @@ func (o *OptPullsCreateReviewCommentReqSide) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullsCreateReviewCommentReqSide to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullsCreateReviewCommentReqSide", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullsCreateReviewCommentReqStartSide as json.
@@ -89074,16 +87934,11 @@ func (o *OptPullsCreateReviewCommentReqStartSide) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullsCreateReviewCommentReqStartSide to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullsCreateReviewCommentReqStartSide", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullsCreateReviewReq as json.
@@ -89099,16 +87954,11 @@ func (o *OptPullsCreateReviewReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullsCreateReviewReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullsCreateReviewReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullsCreateReviewReqEvent as json.
@@ -89124,16 +87974,11 @@ func (o *OptPullsCreateReviewReqEvent) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullsCreateReviewReqEvent to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullsCreateReviewReqEvent", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullsMergeReqMergeMethod as json.
@@ -89149,16 +87994,11 @@ func (o *OptPullsMergeReqMergeMethod) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullsMergeReqMergeMethod to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullsMergeReqMergeMethod", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullsUpdateReq as json.
@@ -89174,16 +88014,11 @@ func (o *OptPullsUpdateReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullsUpdateReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullsUpdateReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PullsUpdateReqState as json.
@@ -89199,16 +88034,11 @@ func (o *OptPullsUpdateReqState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPullsUpdateReqState to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPullsUpdateReqState", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes RateLimit as json.
@@ -89224,16 +88054,11 @@ func (o *OptRateLimit) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRateLimit to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptRateLimit", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReactionRollup as json.
@@ -89249,16 +88074,11 @@ func (o *OptReactionRollup) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReactionRollup to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReactionRollup", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes RepoSearchResultItemPermissions as json.
@@ -89274,16 +88094,11 @@ func (o *OptRepoSearchResultItemPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRepoSearchResultItemPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptRepoSearchResultItemPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposAddAppAccessRestrictionsReq as json.
@@ -89299,16 +88114,11 @@ func (o *OptReposAddAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposAddAppAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposAddAppAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposAddCollaboratorReq as json.
@@ -89324,16 +88134,11 @@ func (o *OptReposAddCollaboratorReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposAddCollaboratorReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposAddCollaboratorReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposAddCollaboratorReqPermission as json.
@@ -89349,16 +88154,11 @@ func (o *OptReposAddCollaboratorReqPermission) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposAddCollaboratorReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposAddCollaboratorReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposAddStatusCheckContextsReq as json.
@@ -89374,16 +88174,11 @@ func (o *OptReposAddStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposAddStatusCheckContextsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposAddStatusCheckContextsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposAddTeamAccessRestrictionsReq as json.
@@ -89399,16 +88194,11 @@ func (o *OptReposAddTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposAddTeamAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposAddTeamAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposAddUserAccessRestrictionsReq as json.
@@ -89424,16 +88214,11 @@ func (o *OptReposAddUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposAddUserAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposAddUserAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreateDeploymentReqPayload as json.
@@ -89449,16 +88234,11 @@ func (o *OptReposCreateDeploymentReqPayload) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreateDeploymentReqPayload to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreateDeploymentReqPayload", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreateDeploymentStatusReqEnvironment as json.
@@ -89474,16 +88254,11 @@ func (o *OptReposCreateDeploymentStatusReqEnvironment) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreateDeploymentStatusReqEnvironment to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreateDeploymentStatusReqEnvironment", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreateDispatchEventReqClientPayload as json.
@@ -89499,17 +88274,12 @@ func (o *OptReposCreateDispatchEventReqClientPayload) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreateDispatchEventReqClientPayload to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(ReposCreateDispatchEventReqClientPayload)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreateDispatchEventReqClientPayload", d.Next())
+	o.Set = true
+	o.Value = make(ReposCreateDispatchEventReqClientPayload)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreateInOrgReqVisibility as json.
@@ -89525,16 +88295,11 @@ func (o *OptReposCreateInOrgReqVisibility) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreateInOrgReqVisibility to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreateInOrgReqVisibility", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreateOrUpdateFileContentsReqAuthor as json.
@@ -89550,16 +88315,11 @@ func (o *OptReposCreateOrUpdateFileContentsReqAuthor) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreateOrUpdateFileContentsReqAuthor to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreateOrUpdateFileContentsReqAuthor", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreateOrUpdateFileContentsReqCommitter as json.
@@ -89575,16 +88335,11 @@ func (o *OptReposCreateOrUpdateFileContentsReqCommitter) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreateOrUpdateFileContentsReqCommitter to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreateOrUpdateFileContentsReqCommitter", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreatePagesSiteReqSourcePath as json.
@@ -89600,16 +88355,11 @@ func (o *OptReposCreatePagesSiteReqSourcePath) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreatePagesSiteReqSourcePath to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreatePagesSiteReqSourcePath", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposCreateWebhookReqConfig as json.
@@ -89625,16 +88375,11 @@ func (o *OptReposCreateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposCreateWebhookReqConfig to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposCreateWebhookReqConfig", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposDeleteFileReqAuthor as json.
@@ -89650,16 +88395,11 @@ func (o *OptReposDeleteFileReqAuthor) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposDeleteFileReqAuthor to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposDeleteFileReqAuthor", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposDeleteFileReqCommitter as json.
@@ -89675,16 +88415,11 @@ func (o *OptReposDeleteFileReqCommitter) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposDeleteFileReqCommitter to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposDeleteFileReqCommitter", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposRemoveAppAccessRestrictionsReq as json.
@@ -89700,16 +88435,11 @@ func (o *OptReposRemoveAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposRemoveAppAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposRemoveAppAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposRemoveStatusCheckContextsReq as json.
@@ -89725,16 +88455,11 @@ func (o *OptReposRemoveStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposRemoveStatusCheckContextsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposRemoveStatusCheckContextsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposRemoveTeamAccessRestrictionsReq as json.
@@ -89750,16 +88475,11 @@ func (o *OptReposRemoveTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposRemoveTeamAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposRemoveTeamAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposRemoveUserAccessRestrictionsReq as json.
@@ -89775,16 +88495,11 @@ func (o *OptReposRemoveUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposRemoveUserAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposRemoveUserAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposRenameBranchReq as json.
@@ -89800,16 +88515,11 @@ func (o *OptReposRenameBranchReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposRenameBranchReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposRenameBranchReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposSetAppAccessRestrictionsReq as json.
@@ -89825,16 +88535,11 @@ func (o *OptReposSetAppAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposSetAppAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposSetAppAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposSetStatusCheckContextsReq as json.
@@ -89850,16 +88555,11 @@ func (o *OptReposSetStatusCheckContextsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposSetStatusCheckContextsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposSetStatusCheckContextsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposSetTeamAccessRestrictionsReq as json.
@@ -89875,16 +88575,11 @@ func (o *OptReposSetTeamAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposSetTeamAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposSetTeamAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposSetUserAccessRestrictionsReq as json.
@@ -89900,16 +88595,11 @@ func (o *OptReposSetUserAccessRestrictionsReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposSetUserAccessRestrictionsReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposSetUserAccessRestrictionsReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions as json.
@@ -89925,16 +88615,11 @@ func (o *OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRes
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateInvitationReq as json.
@@ -89950,16 +88635,11 @@ func (o *OptReposUpdateInvitationReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateInvitationReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateInvitationReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateInvitationReqPermissions as json.
@@ -89975,16 +88655,11 @@ func (o *OptReposUpdateInvitationReqPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateInvitationReqPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateInvitationReqPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdatePullRequestReviewProtectionReq as json.
@@ -90000,16 +88675,11 @@ func (o *OptReposUpdatePullRequestReviewProtectionReq) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdatePullRequestReviewProtectionReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdatePullRequestReviewProtectionReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions as json.
@@ -90025,16 +88695,11 @@ func (o *OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateReleaseAssetReq as json.
@@ -90050,16 +88715,11 @@ func (o *OptReposUpdateReleaseAssetReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateReleaseAssetReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateReleaseAssetReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateReleaseReq as json.
@@ -90075,16 +88735,11 @@ func (o *OptReposUpdateReleaseReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateReleaseReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateReleaseReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateReq as json.
@@ -90100,16 +88755,11 @@ func (o *OptReposUpdateReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateReqSecurityAndAnalysisAdvancedSecurity as json.
@@ -90125,16 +88775,11 @@ func (o *OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) Decode(d *jx.Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateReqSecurityAndAnalysisSecretScanning as json.
@@ -90150,16 +88795,11 @@ func (o *OptReposUpdateReqSecurityAndAnalysisSecretScanning) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateReqSecurityAndAnalysisSecretScanning to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateReqSecurityAndAnalysisSecretScanning", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateReqVisibility as json.
@@ -90175,16 +88815,11 @@ func (o *OptReposUpdateReqVisibility) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateReqVisibility to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateReqVisibility", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateStatusCheckProtectionReq as json.
@@ -90200,16 +88835,11 @@ func (o *OptReposUpdateStatusCheckProtectionReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateStatusCheckProtectionReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateStatusCheckProtectionReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateWebhookConfigForRepoReq as json.
@@ -90225,16 +88855,11 @@ func (o *OptReposUpdateWebhookConfigForRepoReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateWebhookConfigForRepoReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateWebhookConfigForRepoReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateWebhookReq as json.
@@ -90250,16 +88875,11 @@ func (o *OptReposUpdateWebhookReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateWebhookReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateWebhookReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReposUpdateWebhookReqConfig as json.
@@ -90275,16 +88895,11 @@ func (o *OptReposUpdateWebhookReqConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReposUpdateWebhookReqConfig to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReposUpdateWebhookReqConfig", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes Repository as json.
@@ -90300,16 +88915,11 @@ func (o *OptRepository) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRepository to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptRepository", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes RepositoryPermissions as json.
@@ -90325,16 +88935,11 @@ func (o *OptRepositoryPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes RepositoryTemplateRepositoryOwner as json.
@@ -90350,16 +88955,11 @@ func (o *OptRepositoryTemplateRepositoryOwner) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRepositoryTemplateRepositoryOwner to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptRepositoryTemplateRepositoryOwner", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes RepositoryTemplateRepositoryPermissions as json.
@@ -90375,16 +88975,11 @@ func (o *OptRepositoryTemplateRepositoryPermissions) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRepositoryTemplateRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptRepositoryTemplateRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ReviewCommentSide as json.
@@ -90400,16 +88995,11 @@ func (o *OptReviewCommentSide) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptReviewCommentSide to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptReviewCommentSide", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes RunnerLabelsItemType as json.
@@ -90425,16 +89015,11 @@ func (o *OptRunnerLabelsItemType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptRunnerLabelsItemType to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptRunnerLabelsItemType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ScimEnterpriseGroupMeta as json.
@@ -90450,16 +89035,11 @@ func (o *OptScimEnterpriseGroupMeta) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptScimEnterpriseGroupMeta to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptScimEnterpriseGroupMeta", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ScimEnterpriseUserMeta as json.
@@ -90475,16 +89055,11 @@ func (o *OptScimEnterpriseUserMeta) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptScimEnterpriseUserMeta to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptScimEnterpriseUserMeta", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ScimEnterpriseUserName as json.
@@ -90500,16 +89075,11 @@ func (o *OptScimEnterpriseUserName) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptScimEnterpriseUserName to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptScimEnterpriseUserName", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ScimGroupListEnterpriseResourcesItemMeta as json.
@@ -90525,16 +89095,11 @@ func (o *OptScimGroupListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptScimGroupListEnterpriseResourcesItemMeta to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptScimGroupListEnterpriseResourcesItemMeta", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ScimUserListEnterpriseResourcesItemMeta as json.
@@ -90550,16 +89115,11 @@ func (o *OptScimUserListEnterpriseResourcesItemMeta) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptScimUserListEnterpriseResourcesItemMeta to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptScimUserListEnterpriseResourcesItemMeta", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ScimUserListEnterpriseResourcesItemName as json.
@@ -90575,16 +89135,11 @@ func (o *OptScimUserListEnterpriseResourcesItemName) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptScimUserListEnterpriseResourcesItemName to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptScimUserListEnterpriseResourcesItemName", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes SecretScanningAlertState as json.
@@ -90600,16 +89155,11 @@ func (o *OptSecretScanningAlertState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptSecretScanningAlertState to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptSecretScanningAlertState", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes SelectedActions as json.
@@ -90625,16 +89175,11 @@ func (o *OptSelectedActions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptSelectedActions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptSelectedActions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes SelectedActionsURL as json.
@@ -90650,16 +89195,11 @@ func (o *OptSelectedActionsURL) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptSelectedActionsURL to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptSelectedActionsURL", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes SimpleUser as json.
@@ -90675,16 +89215,11 @@ func (o *OptSimpleUser) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptSimpleUser to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptSimpleUser", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes StatusCheckPolicy as json.
@@ -90700,16 +89235,11 @@ func (o *OptStatusCheckPolicy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptStatusCheckPolicy to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptStatusCheckPolicy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -90725,18 +89255,13 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
+	o.Set = true
+	v, err := d.Str()
+	if err != nil {
+		return err
 	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes Team as json.
@@ -90752,16 +89277,11 @@ func (o *OptTeam) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeam to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeam", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamFullPrivacy as json.
@@ -90777,16 +89297,11 @@ func (o *OptTeamFullPrivacy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamFullPrivacy to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamFullPrivacy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamPermissions as json.
@@ -90802,16 +89317,11 @@ func (o *OptTeamPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamRepositoryPermissions as json.
@@ -90827,16 +89337,11 @@ func (o *OptTeamRepositoryPermissions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamRepositoryPermissions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamRepositoryPermissions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserInOrgReq as json.
@@ -90852,16 +89357,11 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReq) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserInOrgReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserInOrgReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserInOrgReqRole as json.
@@ -90877,16 +89377,11 @@ func (o *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserInOrgReqRole to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserInOrgReqRole", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserLegacyReq as json.
@@ -90902,16 +89397,11 @@ func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReq) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserLegacyReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserLegacyReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateMembershipForUserLegacyReqRole as json.
@@ -90927,16 +89417,11 @@ func (o *OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateMembershipForUserLegacyReqRole to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateMembershipForUserLegacyReqRole", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsInOrgReqPermission as json.
@@ -90952,16 +89437,11 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) Decode(d *jx.D
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsLegacyReq as json.
@@ -90977,16 +89457,11 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReq) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsLegacyReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsLegacyReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateProjectPermissionsLegacyReqPermission as json.
@@ -91002,16 +89477,11 @@ func (o *OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsInOrgReq as json.
@@ -91027,16 +89497,11 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReq) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsInOrgReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsInOrgReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsInOrgReqPermission as json.
@@ -91052,16 +89517,11 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) Decode(d *jx.Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsLegacyReq as json.
@@ -91077,16 +89537,11 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReq) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsLegacyReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsLegacyReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsAddOrUpdateRepoPermissionsLegacyReqPermission as json.
@@ -91102,16 +89557,11 @@ func (o *OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) Decode(d *jx.Dec
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsCreateReqPermission as json.
@@ -91127,16 +89577,11 @@ func (o *OptTeamsCreateReqPermission) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsCreateReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsCreateReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsCreateReqPrivacy as json.
@@ -91152,16 +89597,11 @@ func (o *OptTeamsCreateReqPrivacy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsCreateReqPrivacy to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsCreateReqPrivacy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsUpdateDiscussionInOrgReq as json.
@@ -91177,16 +89617,11 @@ func (o *OptTeamsUpdateDiscussionInOrgReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsUpdateDiscussionInOrgReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsUpdateDiscussionInOrgReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsUpdateDiscussionLegacyReq as json.
@@ -91202,16 +89637,11 @@ func (o *OptTeamsUpdateDiscussionLegacyReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsUpdateDiscussionLegacyReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsUpdateDiscussionLegacyReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsUpdateInOrgReq as json.
@@ -91227,16 +89657,11 @@ func (o *OptTeamsUpdateInOrgReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsUpdateInOrgReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsUpdateInOrgReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsUpdateInOrgReqPermission as json.
@@ -91252,16 +89677,11 @@ func (o *OptTeamsUpdateInOrgReqPermission) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsUpdateInOrgReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsUpdateInOrgReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsUpdateInOrgReqPrivacy as json.
@@ -91277,16 +89697,11 @@ func (o *OptTeamsUpdateInOrgReqPrivacy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsUpdateInOrgReqPrivacy to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsUpdateInOrgReqPrivacy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsUpdateLegacyReqPermission as json.
@@ -91302,16 +89717,11 @@ func (o *OptTeamsUpdateLegacyReqPermission) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsUpdateLegacyReqPermission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsUpdateLegacyReqPermission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TeamsUpdateLegacyReqPrivacy as json.
@@ -91327,16 +89737,11 @@ func (o *OptTeamsUpdateLegacyReqPrivacy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTeamsUpdateLegacyReqPrivacy to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTeamsUpdateLegacyReqPrivacy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TopicSearchResultItemAliasesItemTopicRelation as json.
@@ -91352,16 +89757,11 @@ func (o *OptTopicSearchResultItemAliasesItemTopicRelation) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTopicSearchResultItemAliasesItemTopicRelation to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTopicSearchResultItemAliasesItemTopicRelation", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes TopicSearchResultItemRelatedItemTopicRelation as json.
@@ -91377,16 +89777,11 @@ func (o *OptTopicSearchResultItemRelatedItemTopicRelation) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTopicSearchResultItemRelatedItemTopicRelation to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTopicSearchResultItemRelatedItemTopicRelation", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes url.URL as json.
@@ -91402,18 +89797,13 @@ func (o *OptURI) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptURI to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeURI(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptURI", d.Next())
+	o.Set = true
+	v, err := json.DecodeURI(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes UsersAddEmailForAuthenticatedReq as json.
@@ -91429,16 +89819,11 @@ func (o *OptUsersAddEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptUsersAddEmailForAuthenticatedReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptUsersAddEmailForAuthenticatedReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes UsersDeleteEmailForAuthenticatedReq as json.
@@ -91454,16 +89839,11 @@ func (o *OptUsersDeleteEmailForAuthenticatedReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptUsersDeleteEmailForAuthenticatedReq to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptUsersDeleteEmailForAuthenticatedReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes UsersUpdateAuthenticatedReq as json.
@@ -91479,16 +89859,11 @@ func (o *OptUsersUpdateAuthenticatedReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptUsersUpdateAuthenticatedReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptUsersUpdateAuthenticatedReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ValidationErrorErrorsItemValue as json.
@@ -91504,16 +89879,11 @@ func (o *OptValidationErrorErrorsItemValue) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptValidationErrorErrorsItemValue to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptValidationErrorErrorsItemValue", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes Verification as json.
@@ -91529,16 +89899,11 @@ func (o *OptVerification) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptVerification to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptVerification", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes WebhookConfigContentType as json.
@@ -91554,16 +89919,11 @@ func (o *OptWebhookConfigContentType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptWebhookConfigContentType to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptWebhookConfigContentType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes WebhookConfigInsecureSsl as json.
@@ -91579,16 +89939,11 @@ func (o *OptWebhookConfigInsecureSsl) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptWebhookConfigInsecureSsl to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptWebhookConfigInsecureSsl", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes WebhookConfigSecret as json.
@@ -91604,16 +89959,11 @@ func (o *OptWebhookConfigSecret) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptWebhookConfigSecret to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptWebhookConfigSecret", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes WebhookConfigURL as json.
@@ -91629,16 +89979,11 @@ func (o *OptWebhookConfigURL) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptWebhookConfigURL to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptWebhookConfigURL", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes WorkflowRunUsageBillableMACOS as json.
@@ -91654,16 +89999,11 @@ func (o *OptWorkflowRunUsageBillableMACOS) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptWorkflowRunUsageBillableMACOS to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptWorkflowRunUsageBillableMACOS", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes WorkflowRunUsageBillableUBUNTU as json.
@@ -91679,16 +90019,11 @@ func (o *OptWorkflowRunUsageBillableUBUNTU) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptWorkflowRunUsageBillableUBUNTU to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptWorkflowRunUsageBillableUBUNTU", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes WorkflowRunUsageBillableWINDOWS as json.
@@ -91704,16 +90039,11 @@ func (o *OptWorkflowRunUsageBillableWINDOWS) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptWorkflowRunUsageBillableWINDOWS to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptWorkflowRunUsageBillableWINDOWS", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode implements json.Marshaler.

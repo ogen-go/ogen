@@ -946,18 +946,13 @@ func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDateTime", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes int as json.
@@ -973,18 +968,13 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt", d.Next())
+	o.Set = true
+	v, err := d.Int()
+	if err != nil {
+		return err
 	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode implements json.Marshaler.

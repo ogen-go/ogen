@@ -3217,16 +3217,11 @@ func (o *OptBrokerAccountType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBrokerAccountType to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBrokerAccountType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes Currency as json.
@@ -3242,16 +3237,11 @@ func (o *OptCurrency) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptCurrency to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptCurrency", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes float64 as json.
@@ -3267,18 +3257,13 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFloat64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Float64()
-		if err != nil {
-			return err
-		}
-		o.Value = float64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFloat64", d.Next())
+	o.Set = true
+	v, err := d.Float64()
+	if err != nil {
+		return err
 	}
+	o.Value = float64(v)
+	return nil
 }
 
 // Encode encodes InstrumentType as json.
@@ -3294,16 +3279,11 @@ func (o *OptInstrumentType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInstrumentType to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInstrumentType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes int32 as json.
@@ -3319,18 +3299,13 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int32()
-		if err != nil {
-			return err
-		}
-		o.Value = int32(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt32", d.Next())
+	o.Set = true
+	v, err := d.Int32()
+	if err != nil {
+		return err
 	}
+	o.Value = int32(v)
+	return nil
 }
 
 // Encode encodes MoneyAmount as json.
@@ -3346,16 +3321,11 @@ func (o *OptMoneyAmount) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMoneyAmount to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMoneyAmount", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OperationTypeWithCommission as json.
@@ -3371,16 +3341,11 @@ func (o *OptOperationTypeWithCommission) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOperationTypeWithCommission to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOperationTypeWithCommission", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes SandboxRegisterRequest as json.
@@ -3396,16 +3361,11 @@ func (o *OptSandboxRegisterRequest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptSandboxRegisterRequest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptSandboxRegisterRequest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -3421,18 +3381,13 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
+	o.Set = true
+	v, err := d.Str()
+	if err != nil {
+		return err
 	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode implements json.Marshaler.
