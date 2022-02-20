@@ -10,6 +10,11 @@ import (
 // Num represents JSON number.
 type Num jx.Num
 
+// MarshalJSON implements json.Marshaler.
+func (n Num) MarshalJSON() ([]byte, error) {
+	return json.Marshal(json.RawMessage(n))
+}
+
 // UnmarshalJSON implements json.Unmarshaler.
 func (n *Num) UnmarshalJSON(bytes []byte) error {
 	j, err := jx.DecodeBytes(bytes).Num()
