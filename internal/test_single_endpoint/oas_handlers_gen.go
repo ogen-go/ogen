@@ -95,6 +95,10 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
