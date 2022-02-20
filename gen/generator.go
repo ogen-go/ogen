@@ -13,6 +13,7 @@ import (
 	"github.com/ogen-go/ogen/internal/oas/parser"
 )
 
+// Generator is OpenAPI-to-Go generator.
 type Generator struct {
 	opt        Options
 	operations []*ir.Operation
@@ -21,16 +22,26 @@ type Generator struct {
 	router     Router
 }
 
+// Options is Generator options.
 type Options struct {
-	VerboseRoute         bool
+	// VerboseRoute whether to print routes.
+	VerboseRoute bool
+	// GenerateExampleTests whether to generate decoding tests using schema examples.
 	GenerateExampleTests bool
-	SkipTestRegex        *regexp.Regexp
-	InferSchemaType      bool
-	Filters              Filters
+	// SkipTestRegex is regex to skip generated tests.
+	SkipTestRegex *regexp.Regexp
+	// InferSchemaType enables type inference for schemas. Schema parser will try to detect schema type
+	// by its properties.
+	InferSchemaType bool
+	// Filters contains filters to skip operations.
+	Filters Filters
+	// IgnoreNotImplemented contains ErrNotImplemented messages to ignore.
 	IgnoreNotImplemented []string
+	// NotImplementedHook is hook for ErrNotImplemented errors.
 	NotImplementedHook   func(name string, err error)
 }
 
+// Filters contains filters to skip operations.
 type Filters struct {
 	PathRegex *regexp.Regexp
 	Methods   []string
@@ -53,6 +64,7 @@ func (f Filters) accept(op *oas.Operation) bool {
 	return true
 }
 
+// NewGenerator creates new Generator.
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	operations, err := parser.Parse(spec, opts.InferSchemaType)
 	if err != nil {
