@@ -162,26 +162,23 @@ func (o *NilBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilBool to nil")
 	}
-	switch d.Next() {
-	case jx.Bool:
-		o.Null = false
-		v, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		o.Value = bool(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v bool
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilBool", d.Next())
 	}
+	o.Null = false
+	v, err := d.Bool()
+	if err != nil {
+		return err
+	}
+	o.Value = bool(v)
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -198,26 +195,23 @@ func (o *NilDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	if o == nil {
 		return errors.New("invalid: unable to decode NilDate to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilDate", d.Next())
 	}
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -234,26 +228,23 @@ func (o *NilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 	if o == nil {
 		return errors.New("invalid: unable to decode NilDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilDateTime", d.Next())
 	}
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Duration as json.
@@ -270,26 +261,23 @@ func (o *NilDuration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilDuration to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := json.DecodeDuration(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Duration
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilDuration", d.Next())
 	}
+	o.Null = false
+	v, err := json.DecodeDuration(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes float32 as json.
@@ -306,26 +294,23 @@ func (o *NilFloat32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilFloat32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Null = false
-		v, err := d.Float32()
-		if err != nil {
-			return err
-		}
-		o.Value = float32(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v float32
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilFloat32", d.Next())
 	}
+	o.Null = false
+	v, err := d.Float32()
+	if err != nil {
+		return err
+	}
+	o.Value = float32(v)
+	return nil
 }
 
 // Encode encodes float64 as json.
@@ -342,26 +327,23 @@ func (o *NilFloat64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilFloat64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Null = false
-		v, err := d.Float64()
-		if err != nil {
-			return err
-		}
-		o.Value = float64(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v float64
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilFloat64", d.Next())
 	}
+	o.Null = false
+	v, err := d.Float64()
+	if err != nil {
+		return err
+	}
+	o.Value = float64(v)
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -378,26 +360,23 @@ func (o *NilIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilIP to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v net.IP
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilIP", d.Next())
 	}
+	o.Null = false
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -414,26 +393,23 @@ func (o *NilIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilIPv4 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v net.IP
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilIPv4", d.Next())
 	}
+	o.Null = false
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -450,26 +426,23 @@ func (o *NilIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilIPv6 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v net.IP
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilIPv6", d.Next())
 	}
+	o.Null = false
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes int as json.
@@ -486,26 +459,23 @@ func (o *NilInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Null = false
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilInt", d.Next())
 	}
+	o.Null = false
+	v, err := d.Int()
+	if err != nil {
+		return err
+	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes int32 as json.
@@ -522,26 +492,23 @@ func (o *NilInt32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilInt32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Null = false
-		v, err := d.Int32()
-		if err != nil {
-			return err
-		}
-		o.Value = int32(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int32
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilInt32", d.Next())
 	}
+	o.Null = false
+	v, err := d.Int32()
+	if err != nil {
+		return err
+	}
+	o.Value = int32(v)
+	return nil
 }
 
 // Encode encodes int64 as json.
@@ -558,26 +525,23 @@ func (o *NilInt64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilInt64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Null = false
-		v, err := d.Int64()
-		if err != nil {
-			return err
-		}
-		o.Value = int64(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int64
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilInt64", d.Next())
 	}
+	o.Null = false
+	v, err := d.Int64()
+	if err != nil {
+		return err
+	}
+	o.Value = int64(v)
+	return nil
 }
 
 // Encode encodes string as json.
@@ -594,26 +558,23 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v string
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilString", d.Next())
 	}
+	o.Null = false
+	v, err := d.Str()
+	if err != nil {
+		return err
+	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -630,26 +591,23 @@ func (o *NilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	if o == nil {
 		return errors.New("invalid: unable to decode NilTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilTime", d.Next())
 	}
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes url.URL as json.
@@ -666,26 +624,23 @@ func (o *NilURI) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilURI to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := json.DecodeURI(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v url.URL
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilURI", d.Next())
 	}
+	o.Null = false
+	v, err := json.DecodeURI(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes uuid.UUID as json.
@@ -702,26 +657,23 @@ func (o *NilUUID) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilUUID to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := json.DecodeUUID(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v uuid.UUID
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilUUID", d.Next())
 	}
+	o.Null = false
+	v, err := json.DecodeUUID(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes bool as json.
@@ -737,18 +689,13 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBool to nil")
 	}
-	switch d.Next() {
-	case jx.Bool:
-		o.Set = true
-		v, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		o.Value = bool(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBool", d.Next())
+	o.Set = true
+	v, err := d.Bool()
+	if err != nil {
+		return err
 	}
+	o.Value = bool(v)
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -764,18 +711,13 @@ func (o *OptDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDate to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDate", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -791,18 +733,13 @@ func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDateTime", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Duration as json.
@@ -818,18 +755,13 @@ func (o *OptDuration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDuration to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeDuration(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDuration", d.Next())
+	o.Set = true
+	v, err := json.DecodeDuration(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes float32 as json.
@@ -845,18 +777,13 @@ func (o *OptFloat32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFloat32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Float32()
-		if err != nil {
-			return err
-		}
-		o.Value = float32(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFloat32", d.Next())
+	o.Set = true
+	v, err := d.Float32()
+	if err != nil {
+		return err
 	}
+	o.Value = float32(v)
+	return nil
 }
 
 // Encode encodes float64 as json.
@@ -872,18 +799,13 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFloat64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Float64()
-		if err != nil {
-			return err
-		}
-		o.Value = float64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFloat64", d.Next())
+	o.Set = true
+	v, err := d.Float64()
+	if err != nil {
+		return err
 	}
+	o.Value = float64(v)
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -899,18 +821,13 @@ func (o *OptIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIP to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIP", d.Next())
+	o.Set = true
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -926,18 +843,13 @@ func (o *OptIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv4 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIPv4", d.Next())
+	o.Set = true
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -953,18 +865,13 @@ func (o *OptIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv6 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIPv6", d.Next())
+	o.Set = true
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes int as json.
@@ -980,18 +887,13 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt", d.Next())
+	o.Set = true
+	v, err := d.Int()
+	if err != nil {
+		return err
 	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes int32 as json.
@@ -1007,18 +909,13 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int32()
-		if err != nil {
-			return err
-		}
-		o.Value = int32(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt32", d.Next())
+	o.Set = true
+	v, err := d.Int32()
+	if err != nil {
+		return err
 	}
+	o.Value = int32(v)
+	return nil
 }
 
 // Encode encodes int64 as json.
@@ -1034,18 +931,13 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int64()
-		if err != nil {
-			return err
-		}
-		o.Value = int64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt64", d.Next())
+	o.Set = true
+	v, err := d.Int64()
+	if err != nil {
+		return err
 	}
+	o.Value = int64(v)
+	return nil
 }
 
 // Encode encodes bool as json.
@@ -1065,28 +957,25 @@ func (o *OptNilBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilBool to nil")
 	}
-	switch d.Next() {
-	case jx.Bool:
-		o.Set = true
-		o.Null = false
-		v, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		o.Value = bool(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v bool
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilBool", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Bool()
+	if err != nil {
+		return err
+	}
+	o.Value = bool(v)
+	return nil
 }
 
 // Encode encodes []byte as json.
@@ -1106,28 +995,25 @@ func (o *OptNilByte) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilByte to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := d.Base64()
-		if err != nil {
-			return err
-		}
-		o.Value = []byte(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []byte
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilByte", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Base64()
+	if err != nil {
+		return err
+	}
+	o.Value = []byte(v)
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -1147,28 +1033,25 @@ func (o *OptNilDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilDate to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilDate", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -1188,28 +1071,25 @@ func (o *OptNilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Ti
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilDateTime", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Duration as json.
@@ -1229,28 +1109,25 @@ func (o *OptNilDuration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilDuration to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := json.DecodeDuration(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Duration
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilDuration", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeDuration(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes float32 as json.
@@ -1270,28 +1147,25 @@ func (o *OptNilFloat32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilFloat32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		o.Null = false
-		v, err := d.Float32()
-		if err != nil {
-			return err
-		}
-		o.Value = float32(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v float32
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilFloat32", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Float32()
+	if err != nil {
+		return err
+	}
+	o.Value = float32(v)
+	return nil
 }
 
 // Encode encodes float64 as json.
@@ -1311,28 +1185,25 @@ func (o *OptNilFloat64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilFloat64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		o.Null = false
-		v, err := d.Float64()
-		if err != nil {
-			return err
-		}
-		o.Value = float64(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v float64
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilFloat64", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Float64()
+	if err != nil {
+		return err
+	}
+	o.Value = float64(v)
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -1352,28 +1223,25 @@ func (o *OptNilIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIP to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v net.IP
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilIP", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -1393,28 +1261,25 @@ func (o *OptNilIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIPv4 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v net.IP
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilIPv4", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -1434,28 +1299,25 @@ func (o *OptNilIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIPv6 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v net.IP
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilIPv6", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes int as json.
@@ -1475,28 +1337,25 @@ func (o *OptNilInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		o.Null = false
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilInt", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Int()
+	if err != nil {
+		return err
+	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes int32 as json.
@@ -1516,28 +1375,25 @@ func (o *OptNilInt32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilInt32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		o.Null = false
-		v, err := d.Int32()
-		if err != nil {
-			return err
-		}
-		o.Value = int32(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int32
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilInt32", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Int32()
+	if err != nil {
+		return err
+	}
+	o.Value = int32(v)
+	return nil
 }
 
 // Encode encodes int64 as json.
@@ -1557,28 +1413,25 @@ func (o *OptNilInt64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilInt64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		o.Null = false
-		v, err := d.Int64()
-		if err != nil {
-			return err
-		}
-		o.Value = int64(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int64
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilInt64", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Int64()
+	if err != nil {
+		return err
+	}
+	o.Value = int64(v)
+	return nil
 }
 
 // Encode encodes string as json.
@@ -1598,28 +1451,25 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v string
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilString", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Str()
+	if err != nil {
+		return err
+	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -1639,28 +1489,25 @@ func (o *OptNilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v time.Time
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilTime", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := format(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes url.URL as json.
@@ -1680,28 +1527,25 @@ func (o *OptNilURI) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilURI to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := json.DecodeURI(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v url.URL
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilURI", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeURI(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes uuid.UUID as json.
@@ -1721,28 +1565,25 @@ func (o *OptNilUUID) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilUUID to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := json.DecodeUUID(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v uuid.UUID
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilUUID", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := json.DecodeUUID(d)
+	if err != nil {
+		return err
+	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes string as json.
@@ -1758,18 +1599,13 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
+	o.Set = true
+	v, err := d.Str()
+	if err != nil {
+		return err
 	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes TestRequestFormatTestReq as json.
@@ -1785,16 +1621,11 @@ func (o *OptTestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTestRequestFormatTestReq to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTestRequestFormatTestReq", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -1810,18 +1641,13 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTime", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes url.URL as json.
@@ -1837,18 +1663,13 @@ func (o *OptURI) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptURI to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeURI(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptURI", d.Next())
+	o.Set = true
+	v, err := json.DecodeURI(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes uuid.UUID as json.
@@ -1864,18 +1685,13 @@ func (o *OptUUID) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptUUID to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeUUID(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptUUID", d.Next())
+	o.Set = true
+	v, err := json.DecodeUUID(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode implements json.Marshaler.

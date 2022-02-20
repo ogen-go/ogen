@@ -276,14 +276,9 @@ func (o *OptData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptData to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptData", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }

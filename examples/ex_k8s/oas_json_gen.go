@@ -81975,18 +81975,13 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptBool to nil")
 	}
-	switch d.Next() {
-	case jx.Bool:
-		o.Set = true
-		v, err := d.Bool()
-		if err != nil {
-			return err
-		}
-		o.Value = bool(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptBool", d.Next())
+	o.Set = true
+	v, err := d.Bool()
+	if err != nil {
+		return err
 	}
+	o.Value = bool(v)
+	return nil
 }
 
 // Encode encodes float64 as json.
@@ -82002,18 +81997,13 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFloat64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Float64()
-		if err != nil {
-			return err
-		}
-		o.Value = float64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFloat64", d.Next())
+	o.Set = true
+	v, err := d.Float64()
+	if err != nil {
+		return err
 	}
+	o.Value = float64(v)
+	return nil
 }
 
 // Encode encodes int32 as json.
@@ -82029,18 +82019,13 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int32()
-		if err != nil {
-			return err
-		}
-		o.Value = int32(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt32", d.Next())
+	o.Set = true
+	v, err := d.Int32()
+	if err != nil {
+		return err
 	}
+	o.Value = int32(v)
+	return nil
 }
 
 // Encode encodes int64 as json.
@@ -82056,18 +82041,13 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int64()
-		if err != nil {
-			return err
-		}
-		o.Value = int64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt64", d.Next())
+	o.Set = true
+	v, err := d.Int64()
+	if err != nil {
+		return err
 	}
+	o.Value = int64(v)
+	return nil
 }
 
 // Encode encodes IoK8sAPIAdmissionregistrationV1ServiceReference as json.
@@ -82083,16 +82063,11 @@ func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAdmissionregistrationV1ServiceReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAdmissionregistrationV1ServiceReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetSpec as json.
@@ -82108,16 +82083,11 @@ func (o *OptIoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DaemonSetSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetStatus as json.
@@ -82133,16 +82103,11 @@ func (o *OptIoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DaemonSetStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetUpdateStrategy as json.
@@ -82158,16 +82123,11 @@ func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1DaemonSetUpdateStrategy to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DaemonSetUpdateStrategy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1DeploymentSpec as json.
@@ -82183,16 +82143,11 @@ func (o *OptIoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1DeploymentSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DeploymentSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1DeploymentStatus as json.
@@ -82208,16 +82163,11 @@ func (o *OptIoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1DeploymentStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DeploymentStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1DeploymentStrategy as json.
@@ -82233,16 +82183,11 @@ func (o *OptIoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1DeploymentStrategy to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1DeploymentStrategy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1ReplicaSetSpec as json.
@@ -82258,16 +82203,11 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1ReplicaSetSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1ReplicaSetSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1ReplicaSetStatus as json.
@@ -82283,16 +82223,11 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1ReplicaSetStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1ReplicaSetStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDaemonSet as json.
@@ -82308,16 +82243,11 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateDaemonSet to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1RollingUpdateDaemonSet", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDeployment as json.
@@ -82333,16 +82263,11 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateDeployment to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1RollingUpdateDeployment", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy as json.
@@ -82358,16 +82283,11 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetSpec as json.
@@ -82383,16 +82303,11 @@ func (o *OptIoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1StatefulSetSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetStatus as json.
@@ -82408,16 +82323,11 @@ func (o *OptIoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1StatefulSetStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetUpdateStrategy as json.
@@ -82433,16 +82343,11 @@ func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAppsV1StatefulSetUpdateStrategy to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAppsV1StatefulSetUpdateStrategy", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec as json.
@@ -82458,16 +82363,11 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decod
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus as json.
@@ -82483,16 +82383,11 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Dec
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1ScaleSpec as json.
@@ -82508,16 +82403,11 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV1ScaleSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV1ScaleSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1ScaleStatus as json.
@@ -82533,16 +82423,11 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV1ScaleStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV1ScaleStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource as json.
@@ -82558,16 +82443,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus as json.
@@ -82583,16 +82463,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricSource as json.
@@ -82608,16 +82483,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricStatus as json.
@@ -82633,16 +82503,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec as json.
@@ -82658,16 +82523,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus as json.
@@ -82683,16 +82543,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricSource as json.
@@ -82708,16 +82563,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricStatus as json.
@@ -82733,16 +82583,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricSource as json.
@@ -82758,16 +82603,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1PodsMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricStatus as json.
@@ -82783,16 +82623,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricSource as json.
@@ -82808,16 +82643,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricStatus as json.
@@ -82833,16 +82663,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource as json.
@@ -82858,16 +82683,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus as json.
@@ -82883,16 +82703,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricSource as json.
@@ -82908,16 +82723,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricStatus as json.
@@ -82933,16 +82743,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HPAScalingRules as json.
@@ -82958,16 +82763,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HPAScalingRules to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HPAScalingRules", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior as json.
@@ -82983,16 +82783,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec as json.
@@ -83008,16 +82803,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus as json.
@@ -83033,16 +82823,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricSource as json.
@@ -83058,16 +82843,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricStatus as json.
@@ -83083,16 +82863,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricSource as json.
@@ -83108,16 +82883,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2PodsMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricStatus as json.
@@ -83133,16 +82903,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricSource as json.
@@ -83158,16 +82923,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricStatus as json.
@@ -83183,16 +82943,11 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIBatchV1CronJobSpec as json.
@@ -83208,16 +82963,11 @@ func (o *OptIoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIBatchV1CronJobSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1CronJobSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIBatchV1CronJobStatus as json.
@@ -83233,16 +82983,11 @@ func (o *OptIoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIBatchV1CronJobStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1CronJobStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIBatchV1JobSpec as json.
@@ -83258,16 +83003,11 @@ func (o *OptIoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIBatchV1JobSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1JobSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIBatchV1JobStatus as json.
@@ -83283,16 +83023,11 @@ func (o *OptIoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIBatchV1JobStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1JobStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIBatchV1UncountedTerminatedPods as json.
@@ -83308,16 +83043,11 @@ func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIBatchV1UncountedTerminatedPods to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1UncountedTerminatedPods", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIBatchV1beta1CronJobSpec as json.
@@ -83333,16 +83063,11 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIBatchV1beta1CronJobSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1beta1CronJobSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIBatchV1beta1CronJobStatus as json.
@@ -83358,16 +83083,11 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIBatchV1beta1CronJobStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIBatchV1beta1CronJobStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra as json.
@@ -83383,17 +83103,12 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestStatus as json.
@@ -83409,16 +83124,11 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICertificatesV1CertificateSigningRequestStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICertificatesV1CertificateSigningRequestStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoordinationV1LeaseSpec as json.
@@ -83434,16 +83144,11 @@ func (o *OptIoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoordinationV1LeaseSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoordinationV1LeaseSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource as json.
@@ -83459,16 +83164,11 @@ func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1Affinity as json.
@@ -83484,16 +83184,11 @@ func (o *OptIoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1Affinity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Affinity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1AzureDiskVolumeSource as json.
@@ -83509,16 +83204,11 @@ func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1AzureDiskVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AzureDiskVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1AzureFilePersistentVolumeSource as json.
@@ -83534,16 +83224,11 @@ func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1AzureFilePersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AzureFilePersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1AzureFileVolumeSource as json.
@@ -83559,16 +83244,11 @@ func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1AzureFileVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1AzureFileVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSource as json.
@@ -83584,16 +83264,11 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CSIPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CSIPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes as json.
@@ -83609,17 +83284,12 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *j
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CSIVolumeSource as json.
@@ -83635,16 +83305,11 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CSIVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CSIVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes as json.
@@ -83660,17 +83325,12 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1Capabilities as json.
@@ -83686,16 +83346,11 @@ func (o *OptIoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1Capabilities to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Capabilities", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CephFSPersistentVolumeSource as json.
@@ -83711,16 +83366,11 @@ func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CephFSPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CephFSPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CephFSVolumeSource as json.
@@ -83736,16 +83386,11 @@ func (o *OptIoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CephFSVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CephFSVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CinderPersistentVolumeSource as json.
@@ -83761,16 +83406,11 @@ func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CinderPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CinderPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1CinderVolumeSource as json.
@@ -83786,16 +83426,11 @@ func (o *OptIoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1CinderVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1CinderVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ClientIPConfig as json.
@@ -83811,16 +83446,11 @@ func (o *OptIoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ClientIPConfig to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ClientIPConfig", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapBinaryData as json.
@@ -83836,17 +83466,12 @@ func (o *OptIoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ConfigMapBinaryData to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ConfigMapBinaryData)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapBinaryData", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ConfigMapBinaryData)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapData as json.
@@ -83862,17 +83487,12 @@ func (o *OptIoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ConfigMapData to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ConfigMapData)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapData", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ConfigMapData)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapEnvSource as json.
@@ -83888,16 +83508,11 @@ func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ConfigMapEnvSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapEnvSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapKeySelector as json.
@@ -83913,16 +83528,11 @@ func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ConfigMapKeySelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapKeySelector", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapNodeConfigSource as json.
@@ -83938,16 +83548,11 @@ func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ConfigMapNodeConfigSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapNodeConfigSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapProjection as json.
@@ -83963,16 +83568,11 @@ func (o *OptIoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ConfigMapProjection to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapProjection", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapVolumeSource as json.
@@ -83988,16 +83588,11 @@ func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ConfigMapVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ConfigMapVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerState as json.
@@ -84013,16 +83608,11 @@ func (o *OptIoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ContainerState to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerState", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateRunning as json.
@@ -84038,16 +83628,11 @@ func (o *OptIoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ContainerStateRunning to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerStateRunning", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateTerminated as json.
@@ -84063,16 +83648,11 @@ func (o *OptIoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ContainerStateTerminated to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerStateTerminated", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateWaiting as json.
@@ -84088,16 +83668,11 @@ func (o *OptIoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ContainerStateWaiting to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ContainerStateWaiting", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1DaemonEndpoint as json.
@@ -84113,16 +83688,11 @@ func (o *OptIoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1DaemonEndpoint to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1DaemonEndpoint", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1DownwardAPIProjection as json.
@@ -84138,16 +83708,11 @@ func (o *OptIoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1DownwardAPIProjection to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1DownwardAPIProjection", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1DownwardAPIVolumeSource as json.
@@ -84163,16 +83728,11 @@ func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1DownwardAPIVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1DownwardAPIVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1EmptyDirVolumeSource as json.
@@ -84188,16 +83748,11 @@ func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1EmptyDirVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EmptyDirVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1EnvVarSource as json.
@@ -84213,16 +83768,11 @@ func (o *OptIoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1EnvVarSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EnvVarSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1EphemeralVolumeSource as json.
@@ -84238,16 +83788,11 @@ func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1EphemeralVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EphemeralVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1EventSeries as json.
@@ -84263,16 +83808,11 @@ func (o *OptIoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1EventSeries to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EventSeries", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1EventSource as json.
@@ -84288,16 +83828,11 @@ func (o *OptIoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1EventSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1EventSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ExecAction as json.
@@ -84313,16 +83848,11 @@ func (o *OptIoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ExecAction to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ExecAction", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1FCVolumeSource as json.
@@ -84338,16 +83868,11 @@ func (o *OptIoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1FCVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FCVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSource as json.
@@ -84363,16 +83888,11 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1FlexPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlexPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions as json.
@@ -84388,17 +83908,12 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1FlexPersistentVolumeSourceOptions)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1FlexPersistentVolumeSourceOptions)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1FlexVolumeSource as json.
@@ -84414,16 +83929,11 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1FlexVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlexVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1FlexVolumeSourceOptions as json.
@@ -84439,17 +83949,12 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1FlexVolumeSourceOptions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1FlexVolumeSourceOptions)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlexVolumeSourceOptions", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1FlexVolumeSourceOptions)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1FlockerVolumeSource as json.
@@ -84465,16 +83970,11 @@ func (o *OptIoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1FlockerVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1FlockerVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1GCEPersistentDiskVolumeSource as json.
@@ -84490,16 +83990,11 @@ func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1GitRepoVolumeSource as json.
@@ -84515,16 +84010,11 @@ func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1GitRepoVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GitRepoVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1GlusterfsPersistentVolumeSource as json.
@@ -84540,16 +84030,11 @@ func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1GlusterfsVolumeSource as json.
@@ -84565,16 +84050,11 @@ func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1GlusterfsVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1GlusterfsVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1HTTPGetAction as json.
@@ -84590,16 +84070,11 @@ func (o *OptIoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1HTTPGetAction to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1HTTPGetAction", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1Handler as json.
@@ -84615,16 +84090,11 @@ func (o *OptIoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1Handler to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Handler", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1HostPathVolumeSource as json.
@@ -84640,16 +84110,11 @@ func (o *OptIoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1HostPathVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1HostPathVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ISCSIPersistentVolumeSource as json.
@@ -84665,16 +84130,11 @@ func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ISCSIPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ISCSIPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ISCSIVolumeSource as json.
@@ -84690,16 +84150,11 @@ func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ISCSIVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ISCSIVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1Lifecycle as json.
@@ -84715,16 +84170,11 @@ func (o *OptIoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1Lifecycle to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Lifecycle", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemDefault as json.
@@ -84740,17 +84190,12 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemDefault to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1LimitRangeItemDefault)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemDefault", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1LimitRangeItemDefault)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemDefaultRequest as json.
@@ -84766,17 +84211,12 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemDefaultRequest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1LimitRangeItemDefaultRequest)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemDefaultRequest", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1LimitRangeItemDefaultRequest)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMax as json.
@@ -84792,17 +84232,12 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemMax to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1LimitRangeItemMax)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemMax", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1LimitRangeItemMax)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio as json.
@@ -84818,17 +84253,12 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decod
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMin as json.
@@ -84844,17 +84274,12 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LimitRangeItemMin to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1LimitRangeItemMin)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeItemMin", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1LimitRangeItemMin)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeSpec as json.
@@ -84870,16 +84295,11 @@ func (o *OptIoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LimitRangeSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LimitRangeSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LoadBalancerStatus as json.
@@ -84895,16 +84315,11 @@ func (o *OptIoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LoadBalancerStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LoadBalancerStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LocalObjectReference as json.
@@ -84920,16 +84335,11 @@ func (o *OptIoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LocalObjectReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LocalObjectReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1LocalVolumeSource as json.
@@ -84945,16 +84355,11 @@ func (o *OptIoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1LocalVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1LocalVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NFSVolumeSource as json.
@@ -84970,16 +84375,11 @@ func (o *OptIoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NFSVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NFSVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NamespaceSpec as json.
@@ -84995,16 +84395,11 @@ func (o *OptIoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NamespaceSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NamespaceSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NamespaceStatus as json.
@@ -85020,16 +84415,11 @@ func (o *OptIoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NamespaceStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NamespaceStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeAffinity as json.
@@ -85045,16 +84435,11 @@ func (o *OptIoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeAffinity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeAffinity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeConfigSource as json.
@@ -85070,16 +84455,11 @@ func (o *OptIoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeConfigSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeConfigSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeConfigStatus as json.
@@ -85095,16 +84475,11 @@ func (o *OptIoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeConfigStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeConfigStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeDaemonEndpoints as json.
@@ -85120,16 +84495,11 @@ func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeDaemonEndpoints to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeDaemonEndpoints", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSelector as json.
@@ -85145,16 +84515,11 @@ func (o *OptIoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeSelector", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSpec as json.
@@ -85170,16 +84535,11 @@ func (o *OptIoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeStatus as json.
@@ -85195,16 +84555,11 @@ func (o *OptIoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeStatusAllocatable as json.
@@ -85220,17 +84575,12 @@ func (o *OptIoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeStatusAllocatable to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1NodeStatusAllocatable)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeStatusAllocatable", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1NodeStatusAllocatable)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeStatusCapacity as json.
@@ -85246,17 +84596,12 @@ func (o *OptIoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeStatusCapacity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1NodeStatusCapacity)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeStatusCapacity", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1NodeStatusCapacity)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSystemInfo as json.
@@ -85272,16 +84617,11 @@ func (o *OptIoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1NodeSystemInfo to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1NodeSystemInfo", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ObjectFieldSelector as json.
@@ -85297,16 +84637,11 @@ func (o *OptIoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ObjectFieldSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ObjectFieldSelector", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ObjectReference as json.
@@ -85322,16 +84657,11 @@ func (o *OptIoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ObjectReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ObjectReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimSpec as json.
@@ -85347,16 +84677,11 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatus as json.
@@ -85372,16 +84697,11 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity as json.
@@ -85397,17 +84717,12 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimTemplate as json.
@@ -85423,16 +84738,11 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimTemplate to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimTemplate", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimVolumeSource as json.
@@ -85448,16 +84758,11 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeSpec as json.
@@ -85473,16 +84778,11 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeSpecCapacity as json.
@@ -85498,17 +84798,12 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeSpecCapacity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1PersistentVolumeSpecCapacity)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeSpecCapacity", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1PersistentVolumeSpecCapacity)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeStatus as json.
@@ -85524,16 +84819,11 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PersistentVolumeStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PersistentVolumeStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PhotonPersistentDiskVolumeSource as json.
@@ -85549,16 +84839,11 @@ func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodAffinity as json.
@@ -85574,16 +84859,11 @@ func (o *OptIoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodAffinity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodAffinity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodAntiAffinity as json.
@@ -85599,16 +84879,11 @@ func (o *OptIoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodAntiAffinity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodAntiAffinity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodDNSConfig as json.
@@ -85624,16 +84899,11 @@ func (o *OptIoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodDNSConfig to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodDNSConfig", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodSecurityContext as json.
@@ -85649,16 +84919,11 @@ func (o *OptIoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodSecurityContext to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodSecurityContext", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodSpec as json.
@@ -85674,16 +84939,11 @@ func (o *OptIoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodSpecNodeSelector as json.
@@ -85699,17 +84959,12 @@ func (o *OptIoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodSpecNodeSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1PodSpecNodeSelector)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodSpecNodeSelector", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1PodSpecNodeSelector)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodSpecOverhead as json.
@@ -85725,17 +84980,12 @@ func (o *OptIoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodSpecOverhead to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1PodSpecOverhead)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodSpecOverhead", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1PodSpecOverhead)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodStatus as json.
@@ -85751,16 +85001,11 @@ func (o *OptIoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PodTemplateSpec as json.
@@ -85776,16 +85021,11 @@ func (o *OptIoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PodTemplateSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PodTemplateSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1PortworxVolumeSource as json.
@@ -85801,16 +85041,11 @@ func (o *OptIoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1PortworxVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1PortworxVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1Probe as json.
@@ -85826,16 +85061,11 @@ func (o *OptIoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1Probe to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1Probe", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ProjectedVolumeSource as json.
@@ -85851,16 +85081,11 @@ func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ProjectedVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ProjectedVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1QuobyteVolumeSource as json.
@@ -85876,16 +85101,11 @@ func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1QuobyteVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1QuobyteVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1RBDPersistentVolumeSource as json.
@@ -85901,16 +85121,11 @@ func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1RBDPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1RBDPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1RBDVolumeSource as json.
@@ -85926,16 +85141,11 @@ func (o *OptIoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1RBDVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1RBDVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerSpec as json.
@@ -85951,16 +85161,11 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ReplicationControllerSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerSpecSelector as json.
@@ -85976,17 +85181,12 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerSpecSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ReplicationControllerSpecSelector)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ReplicationControllerSpecSelector", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ReplicationControllerSpecSelector)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerStatus as json.
@@ -86002,16 +85202,11 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ReplicationControllerStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ReplicationControllerStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceFieldSelector as json.
@@ -86027,16 +85222,11 @@ func (o *OptIoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceFieldSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceFieldSelector", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaSpec as json.
@@ -86052,16 +85242,11 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaSpecHard as json.
@@ -86077,17 +85262,12 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaSpecHard to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ResourceQuotaSpecHard)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaSpecHard", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ResourceQuotaSpecHard)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatus as json.
@@ -86103,16 +85283,11 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatusHard as json.
@@ -86128,17 +85303,12 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaStatusHard to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ResourceQuotaStatusHard)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaStatusHard", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ResourceQuotaStatusHard)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatusUsed as json.
@@ -86154,17 +85324,12 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceQuotaStatusUsed to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ResourceQuotaStatusUsed)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceQuotaStatusUsed", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ResourceQuotaStatusUsed)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirements as json.
@@ -86180,16 +85345,11 @@ func (o *OptIoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceRequirements to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceRequirements", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirementsLimits as json.
@@ -86205,17 +85365,12 @@ func (o *OptIoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceRequirementsLimits to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ResourceRequirementsLimits)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceRequirementsLimits", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ResourceRequirementsLimits)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirementsRequests as json.
@@ -86231,17 +85386,12 @@ func (o *OptIoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ResourceRequirementsRequests to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ResourceRequirementsRequests)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ResourceRequirementsRequests", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ResourceRequirementsRequests)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SELinuxOptions as json.
@@ -86257,16 +85407,11 @@ func (o *OptIoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SELinuxOptions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SELinuxOptions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ScaleIOPersistentVolumeSource as json.
@@ -86282,16 +85427,11 @@ func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ScaleIOVolumeSource as json.
@@ -86307,16 +85447,11 @@ func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ScaleIOVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ScaleIOVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ScopeSelector as json.
@@ -86332,16 +85467,11 @@ func (o *OptIoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ScopeSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ScopeSelector", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SeccompProfile as json.
@@ -86357,16 +85487,11 @@ func (o *OptIoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SeccompProfile to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SeccompProfile", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecretData as json.
@@ -86382,17 +85507,12 @@ func (o *OptIoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecretData to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1SecretData)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretData", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1SecretData)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecretEnvSource as json.
@@ -86408,16 +85528,11 @@ func (o *OptIoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecretEnvSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretEnvSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecretKeySelector as json.
@@ -86433,16 +85548,11 @@ func (o *OptIoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecretKeySelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretKeySelector", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecretProjection as json.
@@ -86458,16 +85568,11 @@ func (o *OptIoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecretProjection to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretProjection", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecretReference as json.
@@ -86483,16 +85588,11 @@ func (o *OptIoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecretReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecretStringData as json.
@@ -86508,17 +85608,12 @@ func (o *OptIoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecretStringData to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1SecretStringData)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretStringData", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1SecretStringData)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecretVolumeSource as json.
@@ -86534,16 +85629,11 @@ func (o *OptIoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecretVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecretVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SecurityContext as json.
@@ -86559,16 +85649,11 @@ func (o *OptIoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SecurityContext to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SecurityContext", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceAccountTokenProjection as json.
@@ -86584,16 +85669,11 @@ func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ServiceAccountTokenProjection to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ServiceAccountTokenProjection", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceSpec as json.
@@ -86609,16 +85689,11 @@ func (o *OptIoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ServiceSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ServiceSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceSpecSelector as json.
@@ -86634,17 +85709,12 @@ func (o *OptIoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ServiceSpecSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPICoreV1ServiceSpecSelector)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ServiceSpecSelector", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPICoreV1ServiceSpecSelector)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceStatus as json.
@@ -86660,16 +85730,11 @@ func (o *OptIoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1ServiceStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1ServiceStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1SessionAffinityConfig as json.
@@ -86685,16 +85750,11 @@ func (o *OptIoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1SessionAffinityConfig to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1SessionAffinityConfig", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1StorageOSPersistentVolumeSource as json.
@@ -86710,16 +85770,11 @@ func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1StorageOSPersistentVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1StorageOSPersistentVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1StorageOSVolumeSource as json.
@@ -86735,16 +85790,11 @@ func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1StorageOSVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1StorageOSVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1TCPSocketAction as json.
@@ -86760,16 +85810,11 @@ func (o *OptIoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1TCPSocketAction to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1TCPSocketAction", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1TypedLocalObjectReference as json.
@@ -86785,16 +85830,11 @@ func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1TypedLocalObjectReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1TypedLocalObjectReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1VolumeNodeAffinity as json.
@@ -86810,16 +85850,11 @@ func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1VolumeNodeAffinity to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1VolumeNodeAffinity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1VsphereVirtualDiskVolumeSource as json.
@@ -86835,16 +85870,11 @@ func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPICoreV1WindowsSecurityContextOptions as json.
@@ -86860,16 +85890,11 @@ func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPICoreV1WindowsSecurityContextOptions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPICoreV1WindowsSecurityContextOptions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointConditions as json.
@@ -86885,16 +85910,11 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointConditions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1EndpointConditions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology as json.
@@ -86910,17 +85930,12 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder)
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPIDiscoveryV1EndpointDeprecatedTopology)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPIDiscoveryV1EndpointDeprecatedTopology)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointHints as json.
@@ -86936,16 +85951,11 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIDiscoveryV1EndpointHints to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1EndpointHints", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointConditions as json.
@@ -86961,16 +85971,11 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointConditions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1beta1EndpointConditions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointHints as json.
@@ -86986,16 +85991,11 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointHints to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1beta1EndpointHints", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointTopology as json.
@@ -87011,17 +86011,12 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIDiscoveryV1beta1EndpointTopology to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPIDiscoveryV1beta1EndpointTopology)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIDiscoveryV1beta1EndpointTopology", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPIDiscoveryV1beta1EndpointTopology)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIEventsV1EventSeries as json.
@@ -87037,16 +86032,11 @@ func (o *OptIoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIEventsV1EventSeries to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIEventsV1EventSeries", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIEventsV1beta1EventSeries as json.
@@ -87062,16 +86052,11 @@ func (o *OptIoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIEventsV1beta1EventSeries to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIEventsV1beta1EventSeries", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod as json.
@@ -87087,16 +86072,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec as json.
@@ -87112,16 +86092,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus as json.
@@ -87137,16 +86112,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1GroupSubject as json.
@@ -87162,16 +86132,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1GroupSubject to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1GroupSubject", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitResponse as json.
@@ -87187,16 +86152,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1LimitResponse to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1LimitResponse", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration as json.
@@ -87212,16 +86172,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec as json.
@@ -87237,16 +86192,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus as json.
@@ -87262,16 +86212,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1QueuingConfiguration as json.
@@ -87287,16 +86232,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject as json.
@@ -87312,16 +86252,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1UserSubject as json.
@@ -87337,16 +86272,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta1UserSubject to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta1UserSubject", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod as json.
@@ -87362,16 +86292,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Deco
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec as json.
@@ -87387,16 +86312,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus as json.
@@ -87412,16 +86332,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2GroupSubject as json.
@@ -87437,16 +86352,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2GroupSubject to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2GroupSubject", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitResponse as json.
@@ -87462,16 +86372,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2LimitResponse to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2LimitResponse", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration as json.
@@ -87487,16 +86392,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec as json.
@@ -87512,16 +86412,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus as json.
@@ -87537,16 +86432,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2QueuingConfiguration as json.
@@ -87562,16 +86452,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject as json.
@@ -87587,16 +86472,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decode
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2UserSubject as json.
@@ -87612,16 +86492,11 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIFlowcontrolV1beta2UserSubject to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIFlowcontrolV1beta2UserSubject", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1HTTPIngressRuleValue as json.
@@ -87637,16 +86512,11 @@ func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1HTTPIngressRuleValue to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1HTTPIngressRuleValue", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1IPBlock as json.
@@ -87662,16 +86532,11 @@ func (o *OptIoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1IPBlock to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IPBlock", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressBackend as json.
@@ -87687,16 +86552,11 @@ func (o *OptIoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1IngressBackend to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressBackend", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressClassParametersReference as json.
@@ -87712,16 +86572,11 @@ func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.De
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1IngressClassParametersReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressClassParametersReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressClassSpec as json.
@@ -87737,16 +86592,11 @@ func (o *OptIoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1IngressClassSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressClassSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressServiceBackend as json.
@@ -87762,16 +86612,11 @@ func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1IngressServiceBackend to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressServiceBackend", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressSpec as json.
@@ -87787,16 +86632,11 @@ func (o *OptIoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1IngressSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressStatus as json.
@@ -87812,16 +86652,11 @@ func (o *OptIoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1IngressStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1IngressStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1NetworkPolicySpec as json.
@@ -87837,16 +86672,11 @@ func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1NetworkPolicySpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1NetworkPolicySpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINetworkingV1ServiceBackendPort as json.
@@ -87862,16 +86692,11 @@ func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINetworkingV1ServiceBackendPort to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINetworkingV1ServiceBackendPort", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1Overhead as json.
@@ -87887,16 +86712,11 @@ func (o *OptIoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1Overhead to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1Overhead", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1OverheadPodFixed as json.
@@ -87912,17 +86732,12 @@ func (o *OptIoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1OverheadPodFixed to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPINodeV1OverheadPodFixed)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1OverheadPodFixed", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPINodeV1OverheadPodFixed)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1Scheduling as json.
@@ -87938,16 +86753,11 @@ func (o *OptIoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1Scheduling to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1Scheduling", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1SchedulingNodeSelector as json.
@@ -87963,17 +86773,12 @@ func (o *OptIoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1SchedulingNodeSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPINodeV1SchedulingNodeSelector)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1SchedulingNodeSelector", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPINodeV1SchedulingNodeSelector)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1Overhead as json.
@@ -87989,16 +86794,11 @@ func (o *OptIoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1alpha1Overhead to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1alpha1Overhead", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1OverheadPodFixed as json.
@@ -88014,17 +86814,12 @@ func (o *OptIoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1alpha1OverheadPodFixed to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPINodeV1alpha1OverheadPodFixed)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1alpha1OverheadPodFixed", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPINodeV1alpha1OverheadPodFixed)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1Scheduling as json.
@@ -88040,16 +86835,11 @@ func (o *OptIoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1alpha1Scheduling to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1alpha1Scheduling", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1SchedulingNodeSelector as json.
@@ -88065,17 +86855,12 @@ func (o *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1alpha1SchedulingNodeSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPINodeV1alpha1SchedulingNodeSelector)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1alpha1SchedulingNodeSelector", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPINodeV1alpha1SchedulingNodeSelector)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1beta1Overhead as json.
@@ -88091,16 +86876,11 @@ func (o *OptIoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1beta1Overhead to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1beta1Overhead", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1beta1OverheadPodFixed as json.
@@ -88116,17 +86896,12 @@ func (o *OptIoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1beta1OverheadPodFixed to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPINodeV1beta1OverheadPodFixed)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1beta1OverheadPodFixed", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPINodeV1beta1OverheadPodFixed)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1beta1Scheduling as json.
@@ -88142,16 +86917,11 @@ func (o *OptIoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1beta1Scheduling to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1beta1Scheduling", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPINodeV1beta1SchedulingNodeSelector as json.
@@ -88167,17 +86937,12 @@ func (o *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPINodeV1beta1SchedulingNodeSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPINodeV1beta1SchedulingNodeSelector)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPINodeV1beta1SchedulingNodeSelector", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPINodeV1beta1SchedulingNodeSelector)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetSpec as json.
@@ -88193,16 +86958,11 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatus as json.
@@ -88218,16 +86978,11 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods as json.
@@ -88243,17 +86998,12 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec as json.
@@ -88269,16 +87019,11 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus as json.
@@ -88294,16 +87039,11 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods as json.
@@ -88319,17 +87059,12 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodSecurityPolicySpec as json.
@@ -88345,16 +87080,11 @@ func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) er
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions as json.
@@ -88370,16 +87100,11 @@ func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions as json.
@@ -88395,16 +87120,11 @@ func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decod
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIRbacV1AggregationRule as json.
@@ -88420,16 +87140,11 @@ func (o *OptIoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIRbacV1AggregationRule to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIRbacV1AggregationRule", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIStorageV1StorageClassParameters as json.
@@ -88445,17 +87160,12 @@ func (o *OptIoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIStorageV1StorageClassParameters to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPIStorageV1StorageClassParameters)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1StorageClassParameters", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPIStorageV1StorageClassParameters)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatus as json.
@@ -88471,16 +87181,11 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIStorageV1VolumeAttachmentStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1VolumeAttachmentStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata as json.
@@ -88496,17 +87201,12 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeError as json.
@@ -88522,16 +87222,11 @@ func (o *OptIoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIStorageV1VolumeError to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1VolumeError", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeNodeResources as json.
@@ -88547,16 +87242,11 @@ func (o *OptIoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sAPIStorageV1VolumeNodeResources to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sAPIStorageV1VolumeNodeResources", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion as json.
@@ -88572,16 +87262,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConve
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames as json.
@@ -88597,16 +87282,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus as json.
@@ -88622,16 +87302,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale as json.
@@ -88647,16 +87322,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources as json.
@@ -88672,16 +87342,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation as json.
@@ -88697,16 +87362,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValid
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation as json.
@@ -88722,16 +87382,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentati
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps as json.
@@ -88747,16 +87402,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) De
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions as json.
@@ -88772,17 +87422,12 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefi
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies as json.
@@ -88798,17 +87443,12 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepe
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties as json.
@@ -88824,17 +87464,12 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatt
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties as json.
@@ -88850,17 +87485,12 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProp
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference as json.
@@ -88876,16 +87506,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) D
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig as json.
@@ -88901,16 +87526,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion as json.
@@ -88926,16 +87546,11 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
@@ -88951,16 +87566,11 @@ func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgAPIResourceQuantity to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgAPIResourceQuantity", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery as json.
@@ -88976,16 +87586,11 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelector as json.
@@ -89001,16 +87606,11 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) e
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1LabelSelector to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1LabelSelector", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels as json.
@@ -89026,17 +87626,12 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ListMeta as json.
@@ -89052,16 +87647,11 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ListMeta to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ListMeta", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
@@ -89077,16 +87667,11 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1MicroTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1MicroTime", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMeta as json.
@@ -89102,16 +87687,11 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) erro
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ObjectMeta to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMeta", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations as json.
@@ -89127,17 +87707,12 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.De
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels as json.
@@ -89153,17 +87728,12 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels", d.Next())
+	o.Set = true
+	o.Value = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
@@ -89179,16 +87749,11 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgApisMetaV1Time to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgApisMetaV1Time", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
@@ -89204,16 +87769,11 @@ func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sApimachineryPkgUtilIntstrIntOrString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sApimachineryPkgUtilIntstrIntOrString", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec as json.
@@ -89229,16 +87789,11 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d 
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus as json.
@@ -89254,16 +87809,11 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference as json.
@@ -89279,16 +87829,11 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -89304,18 +87849,13 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
+	o.Set = true
+	v, err := d.Str()
+	if err != nil {
+		return err
 	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes ReadCoreV1NamespacedPodLogOKApplicationJSON as json.

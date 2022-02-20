@@ -2739,26 +2739,23 @@ func (o *NilInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Null = false
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v int
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilInt", d.Next())
 	}
+	o.Null = false
+	v, err := d.Int()
+	if err != nil {
+		return err
+	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes NullableEnumsBoth as json.
@@ -2775,24 +2772,21 @@ func (o *NilNullableEnumsBoth) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableEnumsBoth to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableEnumsBoth
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableEnumsBoth", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableEnumsOnlyNullValue as json.
@@ -2809,24 +2803,21 @@ func (o *NilNullableEnumsOnlyNullValue) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableEnumsOnlyNullValue to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableEnumsOnlyNullValue
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableEnumsOnlyNullValue", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableEnumsOnlyNullable as json.
@@ -2843,24 +2834,21 @@ func (o *NilNullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilNullableEnumsOnlyNullable to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v NullableEnumsOnlyNullable
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilNullableEnumsOnlyNullable", d.Next())
 	}
+	o.Null = false
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -2877,26 +2865,23 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Null = false
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v string
 		o.Value = v
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading NilString", d.Next())
 	}
+	o.Null = false
+	v, err := d.Str()
+	if err != nil {
+		return err
+	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode implements json.Marshaler.
@@ -4184,16 +4169,11 @@ func (o *OptAnyOfTest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAnyOfTest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAnyOfTest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AnyTest as json.
@@ -4209,16 +4189,11 @@ func (o *OptAnyTest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAnyTest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAnyTest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes AnyTestAnyMap as json.
@@ -4234,17 +4209,12 @@ func (o *OptAnyTestAnyMap) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptAnyTestAnyMap to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(AnyTestAnyMap)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptAnyTestAnyMap", d.Next())
+	o.Set = true
+	o.Value = make(AnyTestAnyMap)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes ArrayTest as json.
@@ -4260,16 +4230,11 @@ func (o *OptArrayTest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptArrayTest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptArrayTest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes Data as json.
@@ -4285,16 +4250,11 @@ func (o *OptData) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptData to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptData", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -4310,18 +4270,13 @@ func (o *OptDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDate to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDate", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -4337,18 +4292,13 @@ func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDateTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDateTime", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes DefaultTestEnum as json.
@@ -4364,16 +4314,11 @@ func (o *OptDefaultTestEnum) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDefaultTestEnum to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDefaultTestEnum", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes time.Duration as json.
@@ -4389,18 +4334,13 @@ func (o *OptDuration) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptDuration to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeDuration(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptDuration", d.Next())
+	o.Set = true
+	v, err := json.DecodeDuration(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes float64 as json.
@@ -4416,18 +4356,13 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptFloat64 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Float64()
-		if err != nil {
-			return err
-		}
-		o.Value = float64(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptFloat64", d.Next())
+	o.Set = true
+	v, err := d.Float64()
+	if err != nil {
+		return err
 	}
+	o.Value = float64(v)
+	return nil
 }
 
 // Encode encodes ID as json.
@@ -4443,16 +4378,11 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptID to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptID", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -4468,18 +4398,13 @@ func (o *OptIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIP to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIP", d.Next())
+	o.Set = true
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -4495,18 +4420,13 @@ func (o *OptIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv4 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIPv4", d.Next())
+	o.Set = true
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes net.IP as json.
@@ -4522,18 +4442,13 @@ func (o *OptIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv6 to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeIP(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptIPv6", d.Next())
+	o.Set = true
+	v, err := json.DecodeIP(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes int as json.
@@ -4549,18 +4464,13 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int()
-		if err != nil {
-			return err
-		}
-		o.Value = int(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt", d.Next())
+	o.Set = true
+	v, err := d.Int()
+	if err != nil {
+		return err
 	}
+	o.Value = int(v)
+	return nil
 }
 
 // Encode encodes int32 as json.
@@ -4576,18 +4486,13 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptInt32 to nil")
 	}
-	switch d.Next() {
-	case jx.Number:
-		o.Set = true
-		v, err := d.Int32()
-		if err != nil {
-			return err
-		}
-		o.Value = int32(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptInt32", d.Next())
+	o.Set = true
+	v, err := d.Int32()
+	if err != nil {
+		return err
 	}
+	o.Value = int32(v)
+	return nil
 }
 
 // Encode encodes MapWithProperties as json.
@@ -4603,16 +4508,11 @@ func (o *OptMapWithProperties) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMapWithProperties to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMapWithProperties", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MapWithPropertiesInlinedSubMap as json.
@@ -4628,17 +4528,12 @@ func (o *OptMapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMapWithPropertiesInlinedSubMap to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(MapWithPropertiesInlinedSubMap)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMapWithPropertiesInlinedSubMap", d.Next())
+	o.Set = true
+	o.Value = make(MapWithPropertiesInlinedSubMap)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes MaxPropertiesTest as json.
@@ -4654,16 +4549,11 @@ func (o *OptMaxPropertiesTest) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptMaxPropertiesTest to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptMaxPropertiesTest", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -4683,28 +4573,25 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		o.Null = false
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v string
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilString", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	v, err := d.Str()
+	if err != nil {
+		return err
+	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes []string as json.
@@ -4736,36 +4623,33 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilStringArray to nil")
 	}
-	switch d.Next() {
-	case jx.Array:
-		o.Set = true
-		o.Null = false
-		o.Value = make([]string, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			o.Value = append(o.Value, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	case jx.Null:
+	if d.Next() == jx.Null {
 		if err := d.Null(); err != nil {
 			return err
 		}
+
 		var v []string
 		o.Value = v
 		o.Set = true
 		o.Null = true
 		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNilStringArray", d.Next())
 	}
+	o.Set = true
+	o.Null = false
+	o.Value = make([]string, 0)
+	if err := d.Arr(func(d *jx.Decoder) error {
+		var elem string
+		v, err := d.Str()
+		elem = string(v)
+		if err != nil {
+			return err
+		}
+		o.Value = append(o.Value, elem)
+		return nil
+	}); err != nil {
+		return err
+	}
+	return nil
 }
 
 // Encode encodes NullableEnums as json.
@@ -4781,16 +4665,11 @@ func (o *OptNullableEnums) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNullableEnums to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptNullableEnums", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OneOfMappingAny as json.
@@ -4806,16 +4685,11 @@ func (o *OptOneOfMappingAny) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOneOfMappingAny to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOneOfMappingAny", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OneOfMappingReference as json.
@@ -4831,16 +4705,11 @@ func (o *OptOneOfMappingReference) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOneOfMappingReference to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOneOfMappingReference", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes OneOfUUIDAndIntEnum as json.
@@ -4856,16 +4725,11 @@ func (o *OptOneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptOneOfUUIDAndIntEnum to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptOneOfUUIDAndIntEnum", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes Pet as json.
@@ -4881,16 +4745,11 @@ func (o *OptPet) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPet to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPet", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PetName as json.
@@ -4906,16 +4765,11 @@ func (o *OptPetName) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPetName to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPetName", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes PetType as json.
@@ -4931,16 +4785,11 @@ func (o *OptPetType) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptPetType to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptPetType", d.Next())
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes string as json.
@@ -4956,18 +4805,13 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptString to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := d.Str()
-		if err != nil {
-			return err
-		}
-		o.Value = string(v)
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptString", d.Next())
+	o.Set = true
+	v, err := d.Str()
+	if err != nil {
+		return err
 	}
+	o.Value = string(v)
+	return nil
 }
 
 // Encode encodes StringMap as json.
@@ -4983,17 +4827,12 @@ func (o *OptStringMap) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptStringMap to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(StringMap)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptStringMap", d.Next())
+	o.Set = true
+	o.Value = make(StringMap)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes StringStringMap as json.
@@ -5009,17 +4848,12 @@ func (o *OptStringStringMap) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptStringStringMap to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(StringStringMap)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptStringStringMap", d.Next())
+	o.Set = true
+	o.Value = make(StringStringMap)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode encodes time.Time as json.
@@ -5035,18 +4869,13 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 	if o == nil {
 		return errors.New("invalid: unable to decode OptTime to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := format(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptTime", d.Next())
+	o.Set = true
+	v, err := format(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes url.URL as json.
@@ -5062,18 +4891,13 @@ func (o *OptURI) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptURI to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeURI(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptURI", d.Next())
+	o.Set = true
+	v, err := json.DecodeURI(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes uuid.UUID as json.
@@ -5089,18 +4913,13 @@ func (o *OptUUID) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptUUID to nil")
 	}
-	switch d.Next() {
-	case jx.String:
-		o.Set = true
-		v, err := json.DecodeUUID(d)
-		if err != nil {
-			return err
-		}
-		o.Value = v
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptUUID", d.Next())
+	o.Set = true
+	v, err := json.DecodeUUID(d)
+	if err != nil {
+		return err
 	}
+	o.Value = v
+	return nil
 }
 
 // Encode encodes ValidationStringMap as json.
@@ -5116,17 +4935,12 @@ func (o *OptValidationStringMap) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptValidationStringMap to nil")
 	}
-	switch d.Next() {
-	case jx.Object:
-		o.Set = true
-		o.Value = make(ValidationStringMap)
-		if err := o.Value.Decode(d); err != nil {
-			return err
-		}
-		return nil
-	default:
-		return errors.Errorf("unexpected type %q while reading OptValidationStringMap", d.Next())
+	o.Set = true
+	o.Value = make(ValidationStringMap)
+	if err := o.Value.Decode(d); err != nil {
+		return err
 	}
+	return nil
 }
 
 // Encode implements json.Marshaler.
