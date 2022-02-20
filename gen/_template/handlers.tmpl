@@ -56,6 +56,10 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		{{- else }}
 		respondError(w, http.StatusInternalServerError, err)

@@ -7,18 +7,22 @@ import (
 	"github.com/go-faster/errors"
 )
 
+// ErrNotImplemented reports that feature is not implemented.
 type ErrNotImplemented struct {
 	Name string
 }
 
+// Error implements error.
 func (e *ErrNotImplemented) Error() string {
 	return e.Name + " not implemented"
 }
 
+// ErrUnsupportedContentTypes reports that ogen does not support such content-type(s).
 type ErrUnsupportedContentTypes struct {
 	ContentTypes []string
 }
 
+// Error implements error.
 func (e *ErrUnsupportedContentTypes) Error() string {
 	return fmt.Sprintf("unsupported content types: [%s]", strings.Join(e.ContentTypes, ", "))
 }
@@ -56,26 +60,32 @@ func (g *Generator) fail(err error) error {
 	return err
 }
 
+// ErrParseSpec reports that specification parsing failed.
 type ErrParseSpec struct {
 	err error
 }
 
+// Unwrap implements errors.Wrapper.
 func (e *ErrParseSpec) Unwrap() error {
 	return e.err
 }
 
+// Error implements error.
 func (e *ErrParseSpec) Error() string {
 	return fmt.Sprintf("parse spec: %s", e.err)
 }
 
+// ErrBuildRouter reports that route tree building failed.
 type ErrBuildRouter struct {
 	err error
 }
 
+// Unwrap implements errors.Wrapper.
 func (e *ErrBuildRouter) Unwrap() error {
 	return e.err
 }
 
+// Error implements error.
 func (e *ErrBuildRouter) Error() string {
 	return fmt.Sprintf("build router: %s", e.err)
 }

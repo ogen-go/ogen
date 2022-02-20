@@ -103,6 +103,10 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -141,6 +145,10 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)

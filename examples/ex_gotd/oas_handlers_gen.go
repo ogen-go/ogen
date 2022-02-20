@@ -103,6 +103,10 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -149,6 +153,10 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -199,6 +207,10 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -245,6 +257,10 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -295,6 +311,10 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -341,6 +361,10 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -391,6 +415,10 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -439,6 +467,10 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -477,6 +509,10 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -527,6 +563,10 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -573,6 +613,10 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -623,6 +667,10 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -669,6 +717,10 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -719,6 +771,10 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -765,6 +821,10 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -815,6 +875,10 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -861,6 +925,10 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -911,6 +979,10 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -957,6 +1029,10 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1007,6 +1083,10 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1053,6 +1133,10 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1103,6 +1187,10 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1149,6 +1237,10 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1199,6 +1291,10 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1245,6 +1341,10 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1295,6 +1395,10 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1341,6 +1445,10 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1391,6 +1499,10 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1437,6 +1549,10 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1487,6 +1603,10 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1533,6 +1653,10 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1583,6 +1707,10 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1631,6 +1759,10 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1669,6 +1801,10 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1719,6 +1855,10 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1765,6 +1905,10 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1815,6 +1959,10 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1863,6 +2011,10 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1901,6 +2053,10 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -1951,6 +2107,10 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -1989,6 +2149,10 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2039,6 +2203,10 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2085,6 +2253,10 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2135,6 +2307,10 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2181,6 +2357,10 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2231,6 +2411,10 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2277,6 +2461,10 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2327,6 +2515,10 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2373,6 +2565,10 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2423,6 +2619,10 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2469,6 +2669,10 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2519,6 +2723,10 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2565,6 +2773,10 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2615,6 +2827,10 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2661,6 +2877,10 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2711,6 +2931,10 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2757,6 +2981,10 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2807,6 +3035,10 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2853,6 +3085,10 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2903,6 +3139,10 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -2949,6 +3189,10 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -2999,6 +3243,10 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3045,6 +3293,10 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3095,6 +3347,10 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3141,6 +3397,10 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3191,6 +3451,10 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3237,6 +3501,10 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3287,6 +3555,10 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3333,6 +3605,10 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3383,6 +3659,10 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3429,6 +3709,10 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3479,6 +3763,10 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3525,6 +3813,10 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3575,6 +3867,10 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3621,6 +3917,10 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3671,6 +3971,10 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3717,6 +4021,10 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3767,6 +4075,10 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3813,6 +4125,10 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -3863,6 +4179,10 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3911,6 +4231,10 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
+			return
+		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		return
 	}
@@ -3957,6 +4281,10 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 		var errRes *ErrorStatusCode
 		if errors.As(err, &errRes) {
 			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			respondError(w, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)

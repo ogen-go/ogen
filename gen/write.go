@@ -192,14 +192,22 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		}
 	}
 
-	if g.opt.GenerateExampleTests {
-		name := "test_examples"
-		fileName := fmt.Sprintf("oas_%s_gen_test.go", name)
-		if err := w.Generate(name, fileName, cfg); err != nil {
-			return errors.Wrapf(err, "%s", name)
+	for _, optional := range []struct {
+		name    string
+		enabled bool
+	}{
+		{"test_examples", g.opt.GenerateExampleTests},
+		{"unimplemented", !g.opt.SkipUnimplemented},
+	} {
+		if optional.enabled {
+			name := optional.name
+			fileName := fmt.Sprintf("oas_%s_gen.go", name)
+			if err := w.Generate(name, fileName, cfg); err != nil {
+				return errors.Wrapf(err, "%s", name)
+			}
 		}
-	}
 
+	}
 	return nil
 }
 
