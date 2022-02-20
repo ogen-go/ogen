@@ -672,6 +672,37 @@ func TestJSONSum(t *testing.T) {
 			})
 		}
 	})
+	t.Run("OptionalSum", func(t *testing.T) {
+		variant := func(t api.OneOfUUIDAndIntEnumType) api.OptOneOfUUIDAndIntEnum {
+			return api.NewOptOneOfUUIDAndIntEnum(api.OneOfUUIDAndIntEnum{
+				Type: t,
+			})
+		}
+		empty := api.OptOneOfUUIDAndIntEnum{}
+		for i, tc := range []struct {
+			Input    string
+			Expected api.OptOneOfUUIDAndIntEnum
+			Error    bool
+		}{
+			{`10`, variant(api.OneOfUUIDAndIntEnum1OneOfUUIDAndIntEnum), false},
+			{`"fc9d49c6-1f3d-4ecb-92c7-be6d5049b3c8"`, variant(api.UUIDOneOfUUIDAndIntEnum), false},
+			{`true`, empty, true},
+			{`null`, empty, true},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				checker := require.NoError
+				if tc.Error {
+					checker = require.Error
+				}
+				r := api.OptOneOfUUIDAndIntEnum{}
+				checker(t, r.Decode(jx.DecodeStr(tc.Input)))
+				expected, val := tc.Expected.Value, r.Value
+				require.Equal(t, expected.Type, val.Type)
+			})
+		}
+	})
 }
 
 func TestJSONAny(t *testing.T) {
