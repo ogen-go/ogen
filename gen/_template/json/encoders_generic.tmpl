@@ -38,8 +38,22 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 	if o == nil {
 		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
-	switch d.Next() {
-	case jx.{{ $g.JSON.Type }}:
+	{{- if $v.Nullable }}
+	if d.Next() == jx.Null {
+		if err := d.Null(); err != nil {
+			return err
+		}
+
+		var v {{ $g.Go }}
+		o.Value = v
+		{{- if $v.Optional }}
+			o.Set = true
+		{{- end }}
+		o.Null = true
+		return nil
+	}
+	{{- end }}
+
 	{{- if $v.Optional }}
 		o.Set = true
 	{{- end }}
@@ -80,23 +94,7 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 	{{- else }}
 		{{ errorf "unexpected kind %s" $g.Kind }}
 	{{- end }}
-		return nil
-	{{- if $v.Nullable }}
-	case jx.Null:
-		if err := d.Null(); err != nil {
-			return err
-		}
-		var v {{ $g.Go }}
-		o.Value = v
-		{{- if $v.Optional }}
-		o.Set = true
-		{{- end }}
-		o.Null = true
-		return nil
-	{{- end }}
-	default:
-		return errors.Errorf({{ printf "unexpected type %%q while reading %s" $.Name | quote }}, d.Next())
-	}
+	return nil
 }
 
 {{ end }}
