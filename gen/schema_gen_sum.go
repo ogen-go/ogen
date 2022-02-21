@@ -14,21 +14,20 @@ import (
 
 func canUseTypeDiscriminator(sum []*ir.Type) bool {
 	// Collect map of variant kinds.
-	typeMap := map[ir.TypeDiscriminator]struct{}{}
+	typeMap := map[string]struct{}{}
 
 	for _, s := range sum {
-		if s.IsAny() {
-			// Cannot make typed sum with Any.
+		typ := s.JSON().Type()
+		if typ == "" {
+			// Cannot make typed sum with Any or sub sum.
 			return false
 		}
 
-		var kind ir.TypeDiscriminator
-		kind.Set(s)
-		if _, ok := typeMap[kind]; ok {
+		if _, ok := typeMap[typ]; ok {
 			// Type kind is not unique, so we can distinguish variants by type.
 			return false
 		}
-		typeMap[kind] = struct{}{}
+		typeMap[typ] = struct{}{}
 	}
 	return true
 }
