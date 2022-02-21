@@ -29,37 +29,6 @@ type SumSpecMap struct {
 	Type string
 }
 
-type TypeDiscriminator struct {
-	Kind      Kind
-	Primitive string
-}
-
-func (t TypeDiscriminator) Less(other TypeDiscriminator) bool {
-	return t.Kind < other.Kind && t.Primitive < other.Primitive
-}
-
-func (t *TypeDiscriminator) Set(s *Type) {
-	switch s.Kind {
-	case KindPrimitive, KindEnum:
-		// Treat enum as primitive.
-		t.Kind = KindPrimitive
-		t.Primitive = s.JSON().Type()
-	case KindArray:
-		t.Kind = KindArray
-	case KindAlias:
-		t.Set(s.AliasTo)
-	case KindPointer:
-		t.Set(s.PointerTo)
-	case KindGeneric:
-		t.Set(s.GenericOf)
-	case KindAny:
-		t.Kind = KindAny
-	default:
-		// Treat all other types as struct.
-		t.Kind = KindStruct
-	}
-}
-
 // SumSpec for KindSum.
 type SumSpec struct {
 	Unique []*Field
