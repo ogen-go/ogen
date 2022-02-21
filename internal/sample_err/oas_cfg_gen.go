@@ -94,6 +94,7 @@ type config struct {
 	MeterProvider  metric.MeterProvider
 	Meter          metric.Meter
 	Client         ht.Client
+	NotFound       http.HandlerFunc
 }
 
 func newConfig(opts ...Option) config {
@@ -101,6 +102,7 @@ func newConfig(opts ...Option) config {
 		TracerProvider: otel.GetTracerProvider(),
 		MeterProvider:  metric.NewNoopMeterProvider(),
 		Client:         http.DefaultClient,
+		NotFound:       http.NotFound,
 	}
 	for _, opt := range opts {
 		opt.apply(&cfg)
@@ -149,6 +151,15 @@ func WithClient(client ht.Client) Option {
 	return optionFunc(func(cfg *config) {
 		if client != nil {
 			cfg.Client = client
+		}
+	})
+}
+
+// WithNotFound specifies http handler to use.
+func WithNotFound(notFound http.HandlerFunc) Option {
+	return optionFunc(func(cfg *config) {
+		if notFound != nil {
+			cfg.NotFound = notFound
 		}
 	})
 }
