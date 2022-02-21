@@ -201,7 +201,12 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	} {
 		if optional.enabled {
 			name := optional.name
-			fileName := fmt.Sprintf("oas_%s_gen.go", name)
+			var fileName string
+			if name == "test_examples" {
+				fileName = fmt.Sprintf("oas_%s_gen_test.go", name)
+			} else {
+				fileName = fmt.Sprintf("oas_%s_gen.go", name)
+			}
 			if err := w.Generate(name, fileName, cfg); err != nil {
 				return errors.Wrapf(err, "%s", name)
 			}
