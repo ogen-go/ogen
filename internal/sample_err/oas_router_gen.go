@@ -71,7 +71,7 @@ var (
 )
 
 func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
-	http.NotFound(w, r)
+	s.cfg.NotFound(w, r)
 }
 
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
