@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/octetStreamBinaryStringSchema": {
+      "get": {
+        "operationId": "octetStreamBinaryStringSchema",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/octetStreamEmptySchema": {
+      "get": {
+        "operationId": "octetStreamEmptySchema",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/octet-stream": {}
+            }
+          }
+        }
+      }
+    },
+    "/multipleGenericResponses": {
+      "get": {
+        "operationId": "multipleGenericResponses",
+        "responses": {
+          "200": {
+            "description": "int",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "resp2",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/anyContentTypeBinaryStringSchema": {
+      "get": {
+        "operationId": "anyContentTypeBinaryStringSchema",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/anyContentTypeBinaryStringSchemaDefault": {
+      "get": {
+        "operationId": "anyContentTypeBinaryStringSchemaDefault",
+        "responses": {
+          "default": {
+            "description": "default response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+    }
+  }
+}
