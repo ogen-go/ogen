@@ -721,66 +721,6 @@
           }
         }
       }
-    },
-    "/octetStreamBinaryStringSchema": {
-      "get": {
-        "operationId": "octetStreamBinaryStringSchema",
-        "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "application/octet-stream": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/octetStreamEmptySchema": {
-      "get": {
-        "operationId": "octetStreamEmptySchema",
-        "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "application/octet-stream": {}
-            }
-          }
-        }
-      }
-    },
-    "/multipleGenericResponses": {
-      "get": {
-        "operationId": "multipleGenericResponses",
-        "responses": {
-          "200": {
-            "description": "int",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "nullable": true
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "resp2",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "nullable": true
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {

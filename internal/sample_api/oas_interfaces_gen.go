@@ -9,10 +9,6 @@ type FoobarPostRes interface {
 	foobarPostRes()
 }
 
-type MultipleGenericResponsesRes interface {
-	multipleGenericResponsesRes()
-}
-
 type PetGetAvatarByIDRes interface {
 	petGetAvatarByIDRes()
 }

@@ -80,7 +80,18 @@ if _, err := io.Copy(w, response); err != nil {
 }
 
 return nil
+{{- else if $.Wrapped }}
+	{{- $subTyp := ($.Type.MustField "Response").Type }}
+	{{- if $subTyp.IsStream }}
+	if _, err := io.Copy(w, response.Response); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+    {{- else }}
+        {{- errorf "%q: %s encoder not implemented" $.ContentType $.Type  }}
+    {{- end }}
 {{- else }}
-return errors.New(`{{ $.ContentType }} encoder not implemented`)
+    {{- errorf "%q: %s encoder not implemented" $.ContentType $.Type }}
 {{- end }}{{- /* Encode content */ -}}
 {{ end }}

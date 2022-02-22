@@ -242,18 +242,6 @@ func (s sampleAPIServer) NullableDefaultResponse(ctx context.Context) (api.NilIn
 	}, nil
 }
 
-func (s sampleAPIServer) OctetStreamBinaryStringSchema(ctx context.Context) (api.OctetStreamBinaryStringSchemaOK, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) OctetStreamEmptySchema(ctx context.Context) (api.OctetStreamEmptySchemaOK, error) {
-	panic("implement me")
-}
-
-func (s sampleAPIServer) MultipleGenericResponses(ctx context.Context) (api.MultipleGenericResponsesRes, error) {
-	return &api.NilString{Value: "ooaoaoaoao"}, nil
-}
-
 var _ api.Handler = (*sampleAPIServer)(nil)
 
 //go:embed _testdata/payloads/pet.json

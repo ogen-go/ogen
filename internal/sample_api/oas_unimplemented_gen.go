@@ -134,31 +134,10 @@ func (UnimplementedHandler) GetHeader(ctx context.Context, params GetHeaderParam
 	return r, ht.ErrNotImplemented
 }
 
-// MultipleGenericResponses implements multipleGenericResponses operation.
-//
-// GET /multipleGenericResponses
-func (UnimplementedHandler) MultipleGenericResponses(ctx context.Context) (r MultipleGenericResponsesRes, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
 // NullableDefaultResponse implements nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
 func (UnimplementedHandler) NullableDefaultResponse(ctx context.Context) (r NilIntStatusCode, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// OctetStreamBinaryStringSchema implements octetStreamBinaryStringSchema operation.
-//
-// GET /octetStreamBinaryStringSchema
-func (UnimplementedHandler) OctetStreamBinaryStringSchema(ctx context.Context) (r OctetStreamBinaryStringSchemaOK, _ error) {
-	return r, ht.ErrNotImplemented
-}
-
-// OctetStreamEmptySchema implements octetStreamEmptySchema operation.
-//
-// GET /octetStreamEmptySchema
-func (UnimplementedHandler) OctetStreamEmptySchema(ctx context.Context) (r OctetStreamEmptySchemaOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

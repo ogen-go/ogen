@@ -571,8 +571,6 @@ func (o NilInt) Or(d int) int {
 	return d
 }
 
-func (*NilInt) multipleGenericResponsesRes() {}
-
 // NilIntStatusCode wraps NilInt with StatusCode.
 type NilIntStatusCode struct {
 	StatusCode int
@@ -731,8 +729,6 @@ func (o NilString) Or(d string) string {
 	return d
 }
 
-func (*NilString) multipleGenericResponsesRes() {}
-
 // Ref: #/components/responses/NotFound
 type NotFound struct{}
 
@@ -775,22 +771,6 @@ const (
 	NullableEnumsOnlyNullableAsc  NullableEnumsOnlyNullable = "asc"
 	NullableEnumsOnlyNullableDesc NullableEnumsOnlyNullable = "desc"
 )
-
-type OctetStreamBinaryStringSchemaOK struct {
-	Data io.Reader
-}
-
-func (s OctetStreamBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
-	return s.Data.Read(p)
-}
-
-type OctetStreamEmptySchemaOK struct {
-	Data io.Reader
-}
-
-func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
-	return s.Data.Read(p)
-}
 
 // Ref: #/components/schemas/OneOfBugs
 type OneOfBugs struct {
