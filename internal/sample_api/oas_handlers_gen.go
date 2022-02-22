@@ -361,41 +361,6 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleMultipleGenericResponsesRequest handles multipleGenericResponses operation.
-//
-// GET /multipleGenericResponses
-func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("multipleGenericResponses"),
-	}
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "MultipleGenericResponses",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
-	)
-	s.requests.Add(ctx, 1, otelAttrs...)
-	defer span.End()
-
-	response, err := s.h.MultipleGenericResponses(ctx)
-	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
-		return
-	}
-
-	if err := encodeMultipleGenericResponsesResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		return
-	}
-	span.SetStatus(codes.Ok, "Ok")
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-}
-
 // HandleNullableDefaultResponseRequest handles nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
@@ -421,76 +386,6 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	}
 
 	if err := encodeNullableDefaultResponseResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		return
-	}
-	span.SetStatus(codes.Ok, "Ok")
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-}
-
-// HandleOctetStreamBinaryStringSchemaRequest handles octetStreamBinaryStringSchema operation.
-//
-// GET /octetStreamBinaryStringSchema
-func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("octetStreamBinaryStringSchema"),
-	}
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OctetStreamBinaryStringSchema",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
-	)
-	s.requests.Add(ctx, 1, otelAttrs...)
-	defer span.End()
-
-	response, err := s.h.OctetStreamBinaryStringSchema(ctx)
-	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
-		return
-	}
-
-	if err := encodeOctetStreamBinaryStringSchemaResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		return
-	}
-	span.SetStatus(codes.Ok, "Ok")
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-}
-
-// HandleOctetStreamEmptySchemaRequest handles octetStreamEmptySchema operation.
-//
-// GET /octetStreamEmptySchema
-func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("octetStreamEmptySchema"),
-	}
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "OctetStreamEmptySchema",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
-	)
-	s.requests.Add(ctx, 1, otelAttrs...)
-	defer span.End()
-
-	response, err := s.h.OctetStreamEmptySchema(ctx)
-	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
-		return
-	}
-
-	if err := encodeOctetStreamEmptySchemaResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

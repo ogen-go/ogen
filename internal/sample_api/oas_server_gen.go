@@ -110,22 +110,10 @@ type Handler interface {
 	//
 	// GET /test/header
 	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
-	// MultipleGenericResponses implements multipleGenericResponses operation.
-	//
-	// GET /multipleGenericResponses
-	MultipleGenericResponses(ctx context.Context) (MultipleGenericResponsesRes, error)
 	// NullableDefaultResponse implements nullableDefaultResponse operation.
 	//
 	// GET /nullableDefaultResponse
 	NullableDefaultResponse(ctx context.Context) (NilIntStatusCode, error)
-	// OctetStreamBinaryStringSchema implements octetStreamBinaryStringSchema operation.
-	//
-	// GET /octetStreamBinaryStringSchema
-	OctetStreamBinaryStringSchema(ctx context.Context) (OctetStreamBinaryStringSchemaOK, error)
-	// OctetStreamEmptySchema implements octetStreamEmptySchema operation.
-	//
-	// GET /octetStreamEmptySchema
-	OctetStreamEmptySchema(ctx context.Context) (OctetStreamEmptySchemaOK, error)
 	// OneofBug implements oneofBug operation.
 	//
 	// POST /oneofBug

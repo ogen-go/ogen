@@ -187,37 +187,6 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	return nil
 }
 
-func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes, w http.ResponseWriter, span trace.Span) error {
-	switch response := response.(type) {
-	case *NilInt:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(200)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	case *NilString:
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(204)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
-
-		response.Encode(e)
-		if _, err := e.WriteTo(w); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	default:
-		return errors.Errorf("/multipleGenericResponses"+`: unexpected response type: %T`, response)
-	}
-}
-
 func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)
@@ -226,26 +195,6 @@ func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.Res
 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
-		return errors.Wrap(err, "write")
-	}
-
-	return nil
-}
-
-func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octet-stream")
-	w.WriteHeader(200)
-	if _, err := io.Copy(w, response); err != nil {
-		return errors.Wrap(err, "write")
-	}
-
-	return nil
-}
-
-func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w http.ResponseWriter, span trace.Span) error {
-	w.Header().Set("Content-Type", "application/octet-stream")
-	w.WriteHeader(200)
-	if _, err := io.Copy(w, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
 
