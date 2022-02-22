@@ -11,16 +11,18 @@ type ResponseInfo struct {
 	Default     bool
 	ContentType ContentType
 	NoContent   bool
+	Wrapped     bool
 }
 
 func (op *Operation) ListResponseTypes() []ResponseInfo {
 	var result []ResponseInfo
 	for statusCode, resp := range op.Response.StatusCode {
-		if resp.NoContent != nil {
+		if noc := resp.NoContent; noc != nil {
 			result = append(result, ResponseInfo{
-				Type:       resp.NoContent,
+				Type:       noc,
 				StatusCode: statusCode,
 				NoContent:  true,
+				Wrapped:    resp.Wrapped,
 			})
 			continue
 		}
@@ -29,6 +31,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				Type:        typ,
 				StatusCode:  statusCode,
 				ContentType: contentType,
+				Wrapped:     resp.Wrapped,
 			})
 		}
 	}
@@ -39,6 +42,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				Type:      noc,
 				Default:   true,
 				NoContent: true,
+				Wrapped:   def.Wrapped,
 			})
 		}
 		for contentType, typ := range def.Contents {
@@ -46,6 +50,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				Type:        typ,
 				Default:     true,
 				ContentType: contentType,
+				Wrapped:     def.Wrapped,
 			})
 		}
 	}

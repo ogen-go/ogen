@@ -89,6 +89,11 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 				Data: bytes.NewReader(b),
 			}, nil
 		{{- else if $response.Wrapped }}
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
 			{{- $subTyp := ($type.MustField "Response").Type }}
 			{{- if $subTyp.IsStream }}
 			return {{ if $ptr }}&{{ end }}{{ $type.Name }}{
@@ -96,7 +101,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 				Response:   {{ $subTyp.Name }}{
 					Data: bytes.NewReader(b),
 				},
-			}
+			}, nil
             {{- else }}
                 {{- errorf "%q: %s decoder not implemented" $contentType $type }}
             {{- end }}
