@@ -1,8 +1,6 @@
 package gen
 
 import (
-	"net/http"
-
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
@@ -25,14 +23,14 @@ func walkResponseTypes(r *ir.Response, walkFn func(name string, t *ir.Type) (*ir
 
 	for code, r := range r.StatusCode {
 		for contentType, t := range r.Contents {
-			typ, err := do(http.StatusText(code), t, contentType)
+			typ, err := do(statusText(code), t, contentType)
 			if err != nil {
 				return errors.Wrapf(err, "%d: %q", code, contentType)
 			}
 			r.Contents[contentType] = typ
 		}
 		if r.NoContent != nil {
-			typ, err := do(http.StatusText(code), r.NoContent, "")
+			typ, err := do(statusText(code), r.NoContent, "")
 			if err != nil {
 				return errors.Wrapf(err, "%d: no content", code)
 			}

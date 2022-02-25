@@ -1,6 +1,11 @@
 package gen
 
-import "github.com/ogen-go/ogen/jsonschema"
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/ogen-go/ogen/jsonschema"
+)
 
 func isBinary(s *jsonschema.Schema) bool {
 	if s == nil {
@@ -13,4 +18,12 @@ func isBinary(s *jsonschema.Schema) bool {
 	default:
 		return false
 	}
+}
+
+func statusText(code int) string {
+	r := http.StatusText(code)
+	if r != "" {
+		return r
+	}
+	return fmt.Sprintf("Code%d", code)
 }

@@ -2,7 +2,6 @@ package gen
 
 import (
 	"fmt"
-	"net/http"
 	"sort"
 	"strconv"
 	"strings"
@@ -40,7 +39,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	sort.Ints(statusCodes)
 
 	for _, code := range statusCodes {
-		respName, err := pascal(opName, http.StatusText(code))
+		respName, err := pascal(opName, statusText(code))
 		if err != nil {
 			return nil, errors.Wrapf(err, "%s: %d: response name", opName, code)
 		}

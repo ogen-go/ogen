@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"net/http"
 	"reflect"
 	"sort"
 
@@ -76,11 +75,11 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 			lresp, rresp := op.Response.StatusCode[lcode], op.Response.StatusCode[rcode]
 			if (lresp.NoContent != nil && rresp.NoContent != nil) && lcode != rcode {
 				if reflect.DeepEqual(lresp.NoContent, rresp.NoContent) {
-					lname, err := pascal(op.Name, http.StatusText(lcode))
+					lname, err := pascal(op.Name, statusText(lcode))
 					if err != nil {
 						return errors.Wrap(err, "lname")
 					}
-					rname, err := pascal(op.Name, http.StatusText(rcode))
+					rname, err := pascal(op.Name, statusText(rcode))
 					if err != nil {
 						return errors.Wrap(err, "rname")
 					}
@@ -120,11 +119,11 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 					}
 					lschema, rschema := lresp.Contents[ir.ContentType(lct)], rresp.Contents[ir.ContentType(rct)]
 					if reflect.DeepEqual(lschema, rschema) {
-						lname, err := pascal(op.Name, lct, http.StatusText(lcode))
+						lname, err := pascal(op.Name, lct, statusText(lcode))
 						if err != nil {
 							return errors.Wrap(err, "lname")
 						}
-						rname, err := pascal(op.Name, rct, http.StatusText(rcode))
+						rname, err := pascal(op.Name, rct, statusText(rcode))
 						if err != nil {
 							return errors.Wrap(err, "rname")
 						}
