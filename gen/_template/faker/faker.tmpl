@@ -10,10 +10,8 @@
 	{{- end }}
     {{ $.Var }}.SetFake()
 {{- else if $t.IsPointer -}}
+    // Keep pointer nil to prevent infinite recursion.
     {{ $.Var }} = nil
-	var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
-    {{ template "faker/faker" pointer_elem $ }}
-    {{ $.Var }} = &{{ $.NextVar }}
 {{- else if $t.IsArray -}}
 	var {{ $.NextVar }} {{ $.Type.Item.Go }}
     {{ template "faker/faker" sub_array_elem $ $t.Item }}
