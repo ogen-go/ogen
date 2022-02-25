@@ -1,0 +1,20 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "faker/faker_map" }}
+// SetFake set fake values.
+func (s {{ if $.Fields }}*{{ end }}{{ $.Name }}) SetFake() {
+	{{- range $f := $.Fields }}
+	{
+    {{ template "faker/faker" field_elem $f }}
+	}
+	{{- end }}
+	var elem {{ $.Item.Go }}
+    {{- if not $.Fields }}
+        {{ template "faker/faker" map_elem $.Item }}
+		s["fake"] = elem
+    {{- else }}
+        s.{{ $.AdditionalPropsField }} = map[string]{{ $.Item.Go }}{}
+        {{ template "faker/faker" map_elem $.Item }}
+		s.{{ $.AdditionalPropsField }}["fake"] = elem
+    {{- end }}
+}
+{{- end }}

@@ -1,0 +1,29 @@
+{{- define "faker/faker" -}}{{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
+{{- $t := $.Type }}
+{{- $j := $t.JSON }}
+{
+{{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) ($t.IsGeneric) ($t.IsAlias) -}}
+    {{ $.Var }}.SetFake()
+{{- else if $t.IsMap -}}
+	{{- if not $t.Fields }}
+	{{ $.Var }} = make({{ $t.Go }})
+	{{- end }}
+    {{ $.Var }}.SetFake()
+{{- else if $t.IsPointer -}}
+    {{ $.Var }} = nil
+	var {{ $.NextVar }} {{ $.Type.PointerTo.Go }}
+    {{ template "faker/faker" pointer_elem $ }}
+    {{ $.Var }} = &{{ $.NextVar }}
+{{- else if $t.IsArray -}}
+	var {{ $.NextVar }} {{ $.Type.Item.Go }}
+    {{ template "faker/faker" sub_array_elem $ $t.Item }}
+    {{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
+{{- else if $t.IsAny }}
+    {{ $.Var }} = []byte("null")
+{{- else if $t.IsPrimitive -}}
+    {{ $.Var }} = {{ $t.Primitive.FakeValue }}
+{{- else -}}
+    {{ errorf "unsupported: %s" $t }}
+{{- end }}
+}
+{{- end -}}

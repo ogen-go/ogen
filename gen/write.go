@@ -197,6 +197,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		enabled bool
 	}{
 		{"test_examples", g.opt.GenerateExampleTests},
+		{"faker", g.opt.GenerateExampleTests},
 		{"unimplemented", !g.opt.SkipUnimplemented},
 	} {
 		if optional.enabled {

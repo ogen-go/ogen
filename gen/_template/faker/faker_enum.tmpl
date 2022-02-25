@@ -1,0 +1,8 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "faker/faker_enum" }}
+// SetFake set fake values.
+func (s *{{ $.Name }}) SetFake() {
+    {{- $variant := index $.EnumVariants 0 }}
+   	*s = {{ $variant.Name }}
+}
+{{- end }}
