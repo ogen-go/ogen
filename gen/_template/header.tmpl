@@ -25,6 +25,7 @@ import (
 
 {{ template "usage_assert" $ }}
 var (
+	_ = std.Marshal
 	_ = testing.TB(nil)
 	_ = require.NoError
 )
