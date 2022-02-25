@@ -4,9 +4,35 @@
 {{ template "header_test" $ }}
 
 {{- range $typ := $.Types }}{{- if $typ.HasFeature "json" }}
+
+{{- if not $typ.IsGeneric }}
+func Test{{ $typ.Go }}_EncodeDecode(t *testing.T) {
+	{{- if $.SkipTest $typ }}
+	t.Skip("Skipped by regex")
+	{{- end }}
+	t.Parallel()
+
+	var typ {{ $typ.Go }}
+	{{- if $typ.IsMap }}{{- if not $typ.Fields }}
+	typ = make({{ $typ.Go }})
+	{{- end }}{{- end }}
+	typ.SetFake()
+
+	e := jx.Writer{}
+	typ.Encode(&e)
+	require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+
+	var typ2 {{ $typ.Go }}
+	{{- if $typ.IsMap }}{{- if not $typ.Fields }}
+	typ2 = make({{ $typ.Go }})
+	{{- end }}{{- end }}
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+}
+{{- end }}
+
 {{- with $examples := $typ.Examples }}
 
-func Test{{ $typ.Go }}_JSON(t *testing.T) {
+func Test{{ $typ.Go }}_Examples(t *testing.T) {
 	{{- if $.SkipTest $typ }}
 	t.Skip("Skipped by regex")
 	{{- end }}
