@@ -26,7 +26,7 @@ const (
 
 type SumSpecMap struct {
 	Key  string
-	Type string
+	Type *Type
 }
 
 // SumSpec for KindSum.
