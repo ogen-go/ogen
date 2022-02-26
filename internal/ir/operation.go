@@ -96,7 +96,7 @@ func (t ContentType) OctetStream() bool { return t == ContentTypeOctetStream }
 func (t ContentType) EncodedDataTypeGo() string {
 	switch t {
 	case ContentTypeJSON:
-		return "*jx.Writer"
+		return "*jx.Encoder"
 	case ContentTypeOctetStream:
 		return "io.Reader"
 	default:

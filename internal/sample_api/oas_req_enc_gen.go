@@ -70,16 +70,16 @@ var (
 	_ = codes.Unset
 )
 
-func encodeDefaultTestRequestJSON(req DefaultTest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDefaultTestRequestJSON(req DefaultTest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -87,16 +87,16 @@ func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, 
 	return e, nil
 }
 
-func encodeOneofBugRequestJSON(req OneOfBugs, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOneofBugRequestJSON(req OneOfBugs, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -104,8 +104,8 @@ func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *jx.Writer, e
 	return e, nil
 }
 
-func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -113,8 +113,8 @@ func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (d
 	return e, nil
 }
 
-func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -126,8 +126,8 @@ func encodePetUploadAvatarByIDRequestOctetStream(req PetUploadAvatarByIDReq, spa
 	return req, nil
 }
 
-func encodeTestFloatValidationRequestJSON(req TestFloatValidation, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTestFloatValidationRequestJSON(req TestFloatValidation, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 

@@ -70,48 +70,48 @@ var (
 	_ = codes.Unset
 )
 
-func encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(req ActionsCreateOrUpdateEnvironmentSecretReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsCreateOrUpdateEnvironmentSecretRequestJSON(req ActionsCreateOrUpdateEnvironmentSecretReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsCreateOrUpdateOrgSecretRequestJSON(req ActionsCreateOrUpdateOrgSecretReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsCreateOrUpdateOrgSecretRequestJSON(req ActionsCreateOrUpdateOrgSecretReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsCreateOrUpdateRepoSecretRequestJSON(req ActionsCreateOrUpdateRepoSecretReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsCreateOrUpdateRepoSecretRequestJSON(req ActionsCreateOrUpdateRepoSecretReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(req ActionsCreateSelfHostedRunnerGroupForOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsCreateSelfHostedRunnerGroupForOrgRequestJSON(req ActionsCreateSelfHostedRunnerGroupForOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsReviewPendingDeploymentsForRunRequestJSON(req ActionsReviewPendingDeploymentsForRunReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsReviewPendingDeploymentsForRunRequestJSON(req ActionsReviewPendingDeploymentsForRunReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsSetAllowedActionsOrganizationRequestJSON(req OptSelectedActions, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetAllowedActionsOrganizationRequestJSON(req OptSelectedActions, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -119,8 +119,8 @@ func encodeActionsSetAllowedActionsOrganizationRequestJSON(req OptSelectedAction
 	return e, nil
 }
 
-func encodeActionsSetAllowedActionsRepositoryRequestJSON(req OptSelectedActions, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetAllowedActionsRepositoryRequestJSON(req OptSelectedActions, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -128,64 +128,64 @@ func encodeActionsSetAllowedActionsRepositoryRequestJSON(req OptSelectedActions,
 	return e, nil
 }
 
-func encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(req ActionsSetGithubActionsPermissionsOrganizationReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetGithubActionsPermissionsOrganizationRequestJSON(req ActionsSetGithubActionsPermissionsOrganizationReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(req ActionsSetGithubActionsPermissionsRepositoryReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetGithubActionsPermissionsRepositoryRequestJSON(req ActionsSetGithubActionsPermissionsRepositoryReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequestJSON(req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsSetSelectedReposForOrgSecretRequestJSON(req ActionsSetSelectedReposForOrgSecretReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetSelectedReposForOrgSecretRequestJSON(req ActionsSetSelectedReposForOrgSecretReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequestJSON(req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(req ActionsSetSelfHostedRunnersInGroupForOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsSetSelfHostedRunnersInGroupForOrgRequestJSON(req ActionsSetSelfHostedRunnersInGroupForOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(req ActionsUpdateSelfHostedRunnerGroupForOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequestJSON(req ActionsUpdateSelfHostedRunnerGroupForOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeActivityMarkNotificationsAsReadRequestJSON(req OptActivityMarkNotificationsAsReadReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActivityMarkNotificationsAsReadRequestJSON(req OptActivityMarkNotificationsAsReadReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -193,8 +193,8 @@ func encodeActivityMarkNotificationsAsReadRequestJSON(req OptActivityMarkNotific
 	return e, nil
 }
 
-func encodeActivityMarkRepoNotificationsAsReadRequestJSON(req OptActivityMarkRepoNotificationsAsReadReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActivityMarkRepoNotificationsAsReadRequestJSON(req OptActivityMarkRepoNotificationsAsReadReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -202,8 +202,8 @@ func encodeActivityMarkRepoNotificationsAsReadRequestJSON(req OptActivityMarkRep
 	return e, nil
 }
 
-func encodeActivitySetRepoSubscriptionRequestJSON(req OptActivitySetRepoSubscriptionReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActivitySetRepoSubscriptionRequestJSON(req OptActivitySetRepoSubscriptionReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -211,8 +211,8 @@ func encodeActivitySetRepoSubscriptionRequestJSON(req OptActivitySetRepoSubscrip
 	return e, nil
 }
 
-func encodeActivitySetThreadSubscriptionRequestJSON(req OptActivitySetThreadSubscriptionReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeActivitySetThreadSubscriptionRequestJSON(req OptActivitySetThreadSubscriptionReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -220,24 +220,24 @@ func encodeActivitySetThreadSubscriptionRequestJSON(req OptActivitySetThreadSubs
 	return e, nil
 }
 
-func encodeAppsCheckTokenRequestJSON(req AppsCheckTokenReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsCheckTokenRequestJSON(req AppsCheckTokenReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAppsCreateContentAttachmentRequestJSON(req AppsCreateContentAttachmentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsCreateContentAttachmentRequestJSON(req AppsCreateContentAttachmentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAppsCreateInstallationAccessTokenRequestJSON(req OptAppsCreateInstallationAccessTokenReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsCreateInstallationAccessTokenRequestJSON(req OptAppsCreateInstallationAccessTokenReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -245,40 +245,40 @@ func encodeAppsCreateInstallationAccessTokenRequestJSON(req OptAppsCreateInstall
 	return e, nil
 }
 
-func encodeAppsDeleteAuthorizationRequestJSON(req AppsDeleteAuthorizationReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsDeleteAuthorizationRequestJSON(req AppsDeleteAuthorizationReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAppsDeleteTokenRequestJSON(req AppsDeleteTokenReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsDeleteTokenRequestJSON(req AppsDeleteTokenReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAppsResetTokenRequestJSON(req AppsResetTokenReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsResetTokenRequestJSON(req AppsResetTokenReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAppsScopeTokenRequestJSON(req AppsScopeTokenReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsScopeTokenRequestJSON(req AppsScopeTokenReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAppsUpdateWebhookConfigForAppRequestJSON(req OptAppsUpdateWebhookConfigForAppReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAppsUpdateWebhookConfigForAppRequestJSON(req OptAppsUpdateWebhookConfigForAppReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -286,136 +286,136 @@ func encodeAppsUpdateWebhookConfigForAppRequestJSON(req OptAppsUpdateWebhookConf
 	return e, nil
 }
 
-func encodeChecksCreateSuiteRequestJSON(req ChecksCreateSuiteReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeChecksCreateSuiteRequestJSON(req ChecksCreateSuiteReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeChecksSetSuitesPreferencesRequestJSON(req ChecksSetSuitesPreferencesReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeChecksSetSuitesPreferencesRequestJSON(req ChecksSetSuitesPreferencesReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCodeScanningUpdateAlertRequestJSON(req CodeScanningUpdateAlertReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCodeScanningUpdateAlertRequestJSON(req CodeScanningUpdateAlertReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCodeScanningUploadSarifRequestJSON(req CodeScanningUploadSarifReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCodeScanningUploadSarifRequestJSON(req CodeScanningUploadSarifReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequestJSON(req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequestJSON(req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(req EnterpriseAdminProvisionAndInviteEnterpriseUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequestJSON(req EnterpriseAdminProvisionAndInviteEnterpriseUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(req SelectedActions, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequestJSON(req SelectedActions, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequestJSON(req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequestJSON(req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequestJSON(req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequestJSON(req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequestJSON(req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequestJSON(req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequestJSON(req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequestJSON(req EnterpriseAdminUpdateAttributeForEnterpriseUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -423,104 +423,104 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequestJSON(re
 	return e, nil
 }
 
-func encodeGistsCreateRequestJSON(req GistsCreateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGistsCreateRequestJSON(req GistsCreateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGistsCreateCommentRequestJSON(req GistsCreateCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGistsCreateCommentRequestJSON(req GistsCreateCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGistsUpdateCommentRequestJSON(req GistsUpdateCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGistsUpdateCommentRequestJSON(req GistsUpdateCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGitCreateBlobRequestJSON(req GitCreateBlobReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGitCreateBlobRequestJSON(req GitCreateBlobReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGitCreateCommitRequestJSON(req GitCreateCommitReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGitCreateCommitRequestJSON(req GitCreateCommitReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGitCreateRefRequestJSON(req GitCreateRefReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGitCreateRefRequestJSON(req GitCreateRefReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGitCreateTagRequestJSON(req GitCreateTagReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGitCreateTagRequestJSON(req GitCreateTagReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGitCreateTreeRequestJSON(req GitCreateTreeReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGitCreateTreeRequestJSON(req GitCreateTreeReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGitUpdateRefRequestJSON(req GitUpdateRefReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGitUpdateRefRequestJSON(req GitUpdateRefReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(req InteractionLimit, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeInteractionsSetRestrictionsForAuthenticatedUserRequestJSON(req InteractionLimit, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeInteractionsSetRestrictionsForOrgRequestJSON(req InteractionLimit, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeInteractionsSetRestrictionsForOrgRequestJSON(req InteractionLimit, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeInteractionsSetRestrictionsForRepoRequestJSON(req InteractionLimit, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeInteractionsSetRestrictionsForRepoRequestJSON(req InteractionLimit, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeIssuesAddAssigneesRequestJSON(req OptIssuesAddAssigneesReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesAddAssigneesRequestJSON(req OptIssuesAddAssigneesReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -528,40 +528,40 @@ func encodeIssuesAddAssigneesRequestJSON(req OptIssuesAddAssigneesReq, span trac
 	return e, nil
 }
 
-func encodeIssuesCreateRequestJSON(req IssuesCreateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesCreateRequestJSON(req IssuesCreateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeIssuesCreateCommentRequestJSON(req IssuesCreateCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesCreateCommentRequestJSON(req IssuesCreateCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeIssuesCreateLabelRequestJSON(req IssuesCreateLabelReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesCreateLabelRequestJSON(req IssuesCreateLabelReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeIssuesCreateMilestoneRequestJSON(req IssuesCreateMilestoneReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesCreateMilestoneRequestJSON(req IssuesCreateMilestoneReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeIssuesLockRequestJSON(req OptNilIssuesLockReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesLockRequestJSON(req OptNilIssuesLockReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -569,8 +569,8 @@ func encodeIssuesLockRequestJSON(req OptNilIssuesLockReq, span trace.Span) (data
 	return e, nil
 }
 
-func encodeIssuesRemoveAssigneesRequestJSON(req OptIssuesRemoveAssigneesReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesRemoveAssigneesRequestJSON(req OptIssuesRemoveAssigneesReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -578,8 +578,8 @@ func encodeIssuesRemoveAssigneesRequestJSON(req OptIssuesRemoveAssigneesReq, spa
 	return e, nil
 }
 
-func encodeIssuesUpdateRequestJSON(req OptIssuesUpdateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesUpdateRequestJSON(req OptIssuesUpdateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -587,16 +587,16 @@ func encodeIssuesUpdateRequestJSON(req OptIssuesUpdateReq, span trace.Span) (dat
 	return e, nil
 }
 
-func encodeIssuesUpdateCommentRequestJSON(req IssuesUpdateCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesUpdateCommentRequestJSON(req IssuesUpdateCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeIssuesUpdateLabelRequestJSON(req OptIssuesUpdateLabelReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesUpdateLabelRequestJSON(req OptIssuesUpdateLabelReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -604,8 +604,8 @@ func encodeIssuesUpdateLabelRequestJSON(req OptIssuesUpdateLabelReq, span trace.
 	return e, nil
 }
 
-func encodeIssuesUpdateMilestoneRequestJSON(req OptIssuesUpdateMilestoneReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeIssuesUpdateMilestoneRequestJSON(req OptIssuesUpdateMilestoneReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -613,8 +613,8 @@ func encodeIssuesUpdateMilestoneRequestJSON(req OptIssuesUpdateMilestoneReq, spa
 	return e, nil
 }
 
-func encodeMigrationsMapCommitAuthorRequestJSON(req OptMigrationsMapCommitAuthorReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMigrationsMapCommitAuthorRequestJSON(req OptMigrationsMapCommitAuthorReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -622,40 +622,40 @@ func encodeMigrationsMapCommitAuthorRequestJSON(req OptMigrationsMapCommitAuthor
 	return e, nil
 }
 
-func encodeMigrationsSetLfsPreferenceRequestJSON(req MigrationsSetLfsPreferenceReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMigrationsSetLfsPreferenceRequestJSON(req MigrationsSetLfsPreferenceReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeMigrationsStartForAuthenticatedUserRequestJSON(req MigrationsStartForAuthenticatedUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMigrationsStartForAuthenticatedUserRequestJSON(req MigrationsStartForAuthenticatedUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeMigrationsStartForOrgRequestJSON(req MigrationsStartForOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMigrationsStartForOrgRequestJSON(req MigrationsStartForOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeMigrationsStartImportRequestJSON(req MigrationsStartImportReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMigrationsStartImportRequestJSON(req MigrationsStartImportReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeMigrationsUpdateImportRequestJSON(req OptNilMigrationsUpdateImportReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMigrationsUpdateImportRequestJSON(req OptNilMigrationsUpdateImportReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -663,8 +663,8 @@ func encodeMigrationsUpdateImportRequestJSON(req OptNilMigrationsUpdateImportReq
 	return e, nil
 }
 
-func encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(req OptOAuthAuthorizationsCreateAuthorizationReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(req OptOAuthAuthorizationsCreateAuthorizationReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -672,24 +672,24 @@ func encodeOAuthAuthorizationsCreateAuthorizationRequestJSON(req OptOAuthAuthori
 	return e, nil
 }
 
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequestJSON(req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequestJSON(req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(req OptOAuthAuthorizationsUpdateAuthorizationReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(req OptOAuthAuthorizationsUpdateAuthorizationReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -697,8 +697,8 @@ func encodeOAuthAuthorizationsUpdateAuthorizationRequestJSON(req OptOAuthAuthori
 	return e, nil
 }
 
-func encodeOrgsCreateInvitationRequestJSON(req OptOrgsCreateInvitationReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrgsCreateInvitationRequestJSON(req OptOrgsCreateInvitationReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -706,16 +706,16 @@ func encodeOrgsCreateInvitationRequestJSON(req OptOrgsCreateInvitationReq, span 
 	return e, nil
 }
 
-func encodeOrgsCreateWebhookRequestJSON(req OrgsCreateWebhookReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrgsCreateWebhookRequestJSON(req OrgsCreateWebhookReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeOrgsSetMembershipForUserRequestJSON(req OptOrgsSetMembershipForUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrgsSetMembershipForUserRequestJSON(req OptOrgsSetMembershipForUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -723,16 +723,16 @@ func encodeOrgsSetMembershipForUserRequestJSON(req OptOrgsSetMembershipForUserRe
 	return e, nil
 }
 
-func encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(req OrgsUpdateMembershipForAuthenticatedUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrgsUpdateMembershipForAuthenticatedUserRequestJSON(req OrgsUpdateMembershipForAuthenticatedUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeOrgsUpdateWebhookRequestJSON(req OptOrgsUpdateWebhookReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrgsUpdateWebhookRequestJSON(req OptOrgsUpdateWebhookReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -740,8 +740,8 @@ func encodeOrgsUpdateWebhookRequestJSON(req OptOrgsUpdateWebhookReq, span trace.
 	return e, nil
 }
 
-func encodeOrgsUpdateWebhookConfigForOrgRequestJSON(req OptOrgsUpdateWebhookConfigForOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrgsUpdateWebhookConfigForOrgRequestJSON(req OptOrgsUpdateWebhookConfigForOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -749,8 +749,8 @@ func encodeOrgsUpdateWebhookConfigForOrgRequestJSON(req OptOrgsUpdateWebhookConf
 	return e, nil
 }
 
-func encodeProjectsAddCollaboratorRequestJSON(req OptNilProjectsAddCollaboratorReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsAddCollaboratorRequestJSON(req OptNilProjectsAddCollaboratorReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -758,56 +758,56 @@ func encodeProjectsAddCollaboratorRequestJSON(req OptNilProjectsAddCollaboratorR
 	return e, nil
 }
 
-func encodeProjectsCreateColumnRequestJSON(req ProjectsCreateColumnReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsCreateColumnRequestJSON(req ProjectsCreateColumnReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeProjectsCreateForAuthenticatedUserRequestJSON(req ProjectsCreateForAuthenticatedUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsCreateForAuthenticatedUserRequestJSON(req ProjectsCreateForAuthenticatedUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeProjectsCreateForOrgRequestJSON(req ProjectsCreateForOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsCreateForOrgRequestJSON(req ProjectsCreateForOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeProjectsCreateForRepoRequestJSON(req ProjectsCreateForRepoReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsCreateForRepoRequestJSON(req ProjectsCreateForRepoReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeProjectsMoveCardRequestJSON(req ProjectsMoveCardReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsMoveCardRequestJSON(req ProjectsMoveCardReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeProjectsMoveColumnRequestJSON(req ProjectsMoveColumnReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsMoveColumnRequestJSON(req ProjectsMoveColumnReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeProjectsUpdateRequestJSON(req OptProjectsUpdateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsUpdateRequestJSON(req OptProjectsUpdateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -815,8 +815,8 @@ func encodeProjectsUpdateRequestJSON(req OptProjectsUpdateReq, span trace.Span) 
 	return e, nil
 }
 
-func encodeProjectsUpdateCardRequestJSON(req OptProjectsUpdateCardReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsUpdateCardRequestJSON(req OptProjectsUpdateCardReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -824,32 +824,32 @@ func encodeProjectsUpdateCardRequestJSON(req OptProjectsUpdateCardReq, span trac
 	return e, nil
 }
 
-func encodeProjectsUpdateColumnRequestJSON(req ProjectsUpdateColumnReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeProjectsUpdateColumnRequestJSON(req ProjectsUpdateColumnReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsCreateRequestJSON(req PullsCreateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsCreateRequestJSON(req PullsCreateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsCreateReplyForReviewCommentRequestJSON(req PullsCreateReplyForReviewCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsCreateReplyForReviewCommentRequestJSON(req PullsCreateReplyForReviewCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsCreateReviewRequestJSON(req OptPullsCreateReviewReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsCreateReviewRequestJSON(req OptPullsCreateReviewReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -857,24 +857,24 @@ func encodePullsCreateReviewRequestJSON(req OptPullsCreateReviewReq, span trace.
 	return e, nil
 }
 
-func encodePullsCreateReviewCommentRequestJSON(req PullsCreateReviewCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsCreateReviewCommentRequestJSON(req PullsCreateReviewCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsDismissReviewRequestJSON(req PullsDismissReviewReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsDismissReviewRequestJSON(req PullsDismissReviewReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsMergeRequestJSON(req OptNilPullsMergeReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsMergeRequestJSON(req OptNilPullsMergeReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -882,24 +882,24 @@ func encodePullsMergeRequestJSON(req OptNilPullsMergeReq, span trace.Span) (data
 	return e, nil
 }
 
-func encodePullsRemoveRequestedReviewersRequestJSON(req PullsRemoveRequestedReviewersReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsRemoveRequestedReviewersRequestJSON(req PullsRemoveRequestedReviewersReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsSubmitReviewRequestJSON(req PullsSubmitReviewReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsSubmitReviewRequestJSON(req PullsSubmitReviewReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsUpdateRequestJSON(req OptPullsUpdateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsUpdateRequestJSON(req OptPullsUpdateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -907,8 +907,8 @@ func encodePullsUpdateRequestJSON(req OptPullsUpdateReq, span trace.Span) (data 
 	return e, nil
 }
 
-func encodePullsUpdateBranchRequestJSON(req OptNilPullsUpdateBranchReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsUpdateBranchRequestJSON(req OptNilPullsUpdateBranchReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -916,96 +916,96 @@ func encodePullsUpdateBranchRequestJSON(req OptNilPullsUpdateBranchReq, span tra
 	return e, nil
 }
 
-func encodePullsUpdateReviewRequestJSON(req PullsUpdateReviewReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsUpdateReviewRequestJSON(req PullsUpdateReviewReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePullsUpdateReviewCommentRequestJSON(req PullsUpdateReviewCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePullsUpdateReviewCommentRequestJSON(req PullsUpdateReviewCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForCommitCommentRequestJSON(req ReactionsCreateForCommitCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForCommitCommentRequestJSON(req ReactionsCreateForCommitCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForIssueRequestJSON(req ReactionsCreateForIssueReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForIssueRequestJSON(req ReactionsCreateForIssueReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForIssueCommentRequestJSON(req ReactionsCreateForIssueCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForIssueCommentRequestJSON(req ReactionsCreateForIssueCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForPullRequestReviewCommentRequestJSON(req ReactionsCreateForPullRequestReviewCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForPullRequestReviewCommentRequestJSON(req ReactionsCreateForPullRequestReviewCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForReleaseRequestJSON(req ReactionsCreateForReleaseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForReleaseRequestJSON(req ReactionsCreateForReleaseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(req ReactionsCreateForTeamDiscussionCommentInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForTeamDiscussionCommentInOrgRequestJSON(req ReactionsCreateForTeamDiscussionCommentInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(req ReactionsCreateForTeamDiscussionCommentLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForTeamDiscussionCommentLegacyRequestJSON(req ReactionsCreateForTeamDiscussionCommentLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(req ReactionsCreateForTeamDiscussionInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForTeamDiscussionInOrgRequestJSON(req ReactionsCreateForTeamDiscussionInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(req ReactionsCreateForTeamDiscussionLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReactionsCreateForTeamDiscussionLegacyRequestJSON(req ReactionsCreateForTeamDiscussionLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposAddAppAccessRestrictionsRequestJSON(req OptReposAddAppAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposAddAppAccessRestrictionsRequestJSON(req OptReposAddAppAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1013,8 +1013,8 @@ func encodeReposAddAppAccessRestrictionsRequestJSON(req OptReposAddAppAccessRest
 	return e, nil
 }
 
-func encodeReposAddCollaboratorRequestJSON(req OptReposAddCollaboratorReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposAddCollaboratorRequestJSON(req OptReposAddCollaboratorReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1022,8 +1022,8 @@ func encodeReposAddCollaboratorRequestJSON(req OptReposAddCollaboratorReq, span 
 	return e, nil
 }
 
-func encodeReposAddStatusCheckContextsRequestJSON(req OptReposAddStatusCheckContextsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposAddStatusCheckContextsRequestJSON(req OptReposAddStatusCheckContextsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1031,8 +1031,8 @@ func encodeReposAddStatusCheckContextsRequestJSON(req OptReposAddStatusCheckCont
 	return e, nil
 }
 
-func encodeReposAddTeamAccessRestrictionsRequestJSON(req OptReposAddTeamAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposAddTeamAccessRestrictionsRequestJSON(req OptReposAddTeamAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1040,8 +1040,8 @@ func encodeReposAddTeamAccessRestrictionsRequestJSON(req OptReposAddTeamAccessRe
 	return e, nil
 }
 
-func encodeReposAddUserAccessRestrictionsRequestJSON(req OptReposAddUserAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposAddUserAccessRestrictionsRequestJSON(req OptReposAddUserAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1049,72 +1049,72 @@ func encodeReposAddUserAccessRestrictionsRequestJSON(req OptReposAddUserAccessRe
 	return e, nil
 }
 
-func encodeReposCreateAutolinkRequestJSON(req ReposCreateAutolinkReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateAutolinkRequestJSON(req ReposCreateAutolinkReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateCommitCommentRequestJSON(req ReposCreateCommitCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateCommitCommentRequestJSON(req ReposCreateCommitCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateCommitStatusRequestJSON(req ReposCreateCommitStatusReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateCommitStatusRequestJSON(req ReposCreateCommitStatusReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateDeployKeyRequestJSON(req ReposCreateDeployKeyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateDeployKeyRequestJSON(req ReposCreateDeployKeyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateDeploymentRequestJSON(req ReposCreateDeploymentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateDeploymentRequestJSON(req ReposCreateDeploymentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateDeploymentStatusRequestJSON(req ReposCreateDeploymentStatusReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateDeploymentStatusRequestJSON(req ReposCreateDeploymentStatusReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateDispatchEventRequestJSON(req ReposCreateDispatchEventReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateDispatchEventRequestJSON(req ReposCreateDispatchEventReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateForAuthenticatedUserRequestJSON(req ReposCreateForAuthenticatedUserReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateForAuthenticatedUserRequestJSON(req ReposCreateForAuthenticatedUserReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateForkRequestJSON(req OptNilReposCreateForkReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateForkRequestJSON(req OptNilReposCreateForkReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1122,48 +1122,48 @@ func encodeReposCreateForkRequestJSON(req OptNilReposCreateForkReq, span trace.S
 	return e, nil
 }
 
-func encodeReposCreateInOrgRequestJSON(req ReposCreateInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateInOrgRequestJSON(req ReposCreateInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateOrUpdateFileContentsRequestJSON(req ReposCreateOrUpdateFileContentsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateOrUpdateFileContentsRequestJSON(req ReposCreateOrUpdateFileContentsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreatePagesSiteRequestJSON(req NilReposCreatePagesSiteReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreatePagesSiteRequestJSON(req NilReposCreatePagesSiteReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateReleaseRequestJSON(req ReposCreateReleaseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateReleaseRequestJSON(req ReposCreateReleaseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateUsingTemplateRequestJSON(req ReposCreateUsingTemplateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateUsingTemplateRequestJSON(req ReposCreateUsingTemplateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposCreateWebhookRequestJSON(req OptNilReposCreateWebhookReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposCreateWebhookRequestJSON(req OptNilReposCreateWebhookReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1171,32 +1171,32 @@ func encodeReposCreateWebhookRequestJSON(req OptNilReposCreateWebhookReq, span t
 	return e, nil
 }
 
-func encodeReposDeleteFileRequestJSON(req ReposDeleteFileReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposDeleteFileRequestJSON(req ReposDeleteFileReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposMergeRequestJSON(req ReposMergeReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposMergeRequestJSON(req ReposMergeReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposMergeUpstreamRequestJSON(req ReposMergeUpstreamReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposMergeUpstreamRequestJSON(req ReposMergeUpstreamReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposRemoveAppAccessRestrictionsRequestJSON(req OptReposRemoveAppAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposRemoveAppAccessRestrictionsRequestJSON(req OptReposRemoveAppAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1204,8 +1204,8 @@ func encodeReposRemoveAppAccessRestrictionsRequestJSON(req OptReposRemoveAppAcce
 	return e, nil
 }
 
-func encodeReposRemoveStatusCheckContextsRequestJSON(req OptReposRemoveStatusCheckContextsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposRemoveStatusCheckContextsRequestJSON(req OptReposRemoveStatusCheckContextsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1213,8 +1213,8 @@ func encodeReposRemoveStatusCheckContextsRequestJSON(req OptReposRemoveStatusChe
 	return e, nil
 }
 
-func encodeReposRemoveTeamAccessRestrictionsRequestJSON(req OptReposRemoveTeamAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposRemoveTeamAccessRestrictionsRequestJSON(req OptReposRemoveTeamAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1222,8 +1222,8 @@ func encodeReposRemoveTeamAccessRestrictionsRequestJSON(req OptReposRemoveTeamAc
 	return e, nil
 }
 
-func encodeReposRemoveUserAccessRestrictionsRequestJSON(req OptReposRemoveUserAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposRemoveUserAccessRestrictionsRequestJSON(req OptReposRemoveUserAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1231,8 +1231,8 @@ func encodeReposRemoveUserAccessRestrictionsRequestJSON(req OptReposRemoveUserAc
 	return e, nil
 }
 
-func encodeReposRenameBranchRequestJSON(req OptReposRenameBranchReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposRenameBranchRequestJSON(req OptReposRenameBranchReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1240,16 +1240,16 @@ func encodeReposRenameBranchRequestJSON(req OptReposRenameBranchReq, span trace.
 	return e, nil
 }
 
-func encodeReposReplaceAllTopicsRequestJSON(req ReposReplaceAllTopicsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposReplaceAllTopicsRequestJSON(req ReposReplaceAllTopicsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposSetAppAccessRestrictionsRequestJSON(req OptReposSetAppAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposSetAppAccessRestrictionsRequestJSON(req OptReposSetAppAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1257,8 +1257,8 @@ func encodeReposSetAppAccessRestrictionsRequestJSON(req OptReposSetAppAccessRest
 	return e, nil
 }
 
-func encodeReposSetStatusCheckContextsRequestJSON(req OptReposSetStatusCheckContextsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposSetStatusCheckContextsRequestJSON(req OptReposSetStatusCheckContextsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1266,8 +1266,8 @@ func encodeReposSetStatusCheckContextsRequestJSON(req OptReposSetStatusCheckCont
 	return e, nil
 }
 
-func encodeReposSetTeamAccessRestrictionsRequestJSON(req OptReposSetTeamAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposSetTeamAccessRestrictionsRequestJSON(req OptReposSetTeamAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1275,8 +1275,8 @@ func encodeReposSetTeamAccessRestrictionsRequestJSON(req OptReposSetTeamAccessRe
 	return e, nil
 }
 
-func encodeReposSetUserAccessRestrictionsRequestJSON(req OptReposSetUserAccessRestrictionsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposSetUserAccessRestrictionsRequestJSON(req OptReposSetUserAccessRestrictionsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1284,16 +1284,16 @@ func encodeReposSetUserAccessRestrictionsRequestJSON(req OptReposSetUserAccessRe
 	return e, nil
 }
 
-func encodeReposTransferRequestJSON(req ReposTransferReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposTransferRequestJSON(req ReposTransferReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposUpdateRequestJSON(req OptReposUpdateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateRequestJSON(req OptReposUpdateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1301,24 +1301,24 @@ func encodeReposUpdateRequestJSON(req OptReposUpdateReq, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeReposUpdateBranchProtectionRequestJSON(req ReposUpdateBranchProtectionReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateBranchProtectionRequestJSON(req ReposUpdateBranchProtectionReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposUpdateCommitCommentRequestJSON(req ReposUpdateCommitCommentReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateCommitCommentRequestJSON(req ReposUpdateCommitCommentReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeReposUpdateInvitationRequestJSON(req OptReposUpdateInvitationReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateInvitationRequestJSON(req OptReposUpdateInvitationReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1326,8 +1326,8 @@ func encodeReposUpdateInvitationRequestJSON(req OptReposUpdateInvitationReq, spa
 	return e, nil
 }
 
-func encodeReposUpdatePullRequestReviewProtectionRequestJSON(req OptReposUpdatePullRequestReviewProtectionReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdatePullRequestReviewProtectionRequestJSON(req OptReposUpdatePullRequestReviewProtectionReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1335,8 +1335,8 @@ func encodeReposUpdatePullRequestReviewProtectionRequestJSON(req OptReposUpdateP
 	return e, nil
 }
 
-func encodeReposUpdateReleaseRequestJSON(req OptReposUpdateReleaseReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateReleaseRequestJSON(req OptReposUpdateReleaseReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1344,8 +1344,8 @@ func encodeReposUpdateReleaseRequestJSON(req OptReposUpdateReleaseReq, span trac
 	return e, nil
 }
 
-func encodeReposUpdateReleaseAssetRequestJSON(req OptReposUpdateReleaseAssetReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateReleaseAssetRequestJSON(req OptReposUpdateReleaseAssetReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1353,8 +1353,8 @@ func encodeReposUpdateReleaseAssetRequestJSON(req OptReposUpdateReleaseAssetReq,
 	return e, nil
 }
 
-func encodeReposUpdateStatusCheckProtectionRequestJSON(req OptReposUpdateStatusCheckProtectionReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateStatusCheckProtectionRequestJSON(req OptReposUpdateStatusCheckProtectionReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1362,8 +1362,8 @@ func encodeReposUpdateStatusCheckProtectionRequestJSON(req OptReposUpdateStatusC
 	return e, nil
 }
 
-func encodeReposUpdateWebhookRequestJSON(req OptReposUpdateWebhookReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateWebhookRequestJSON(req OptReposUpdateWebhookReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1371,8 +1371,8 @@ func encodeReposUpdateWebhookRequestJSON(req OptReposUpdateWebhookReq, span trac
 	return e, nil
 }
 
-func encodeReposUpdateWebhookConfigForRepoRequestJSON(req OptReposUpdateWebhookConfigForRepoReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeReposUpdateWebhookConfigForRepoRequestJSON(req OptReposUpdateWebhookConfigForRepoReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1380,16 +1380,16 @@ func encodeReposUpdateWebhookConfigForRepoRequestJSON(req OptReposUpdateWebhookC
 	return e, nil
 }
 
-func encodeSecretScanningUpdateAlertRequestJSON(req SecretScanningUpdateAlertReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSecretScanningUpdateAlertRequestJSON(req SecretScanningUpdateAlertReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(req OptTeamsAddOrUpdateMembershipForUserInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(req OptTeamsAddOrUpdateMembershipForUserInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1397,8 +1397,8 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgRequestJSON(req OptTeamsAddOrUp
 	return e, nil
 }
 
-func encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(req OptTeamsAddOrUpdateMembershipForUserLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(req OptTeamsAddOrUpdateMembershipForUserLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1406,8 +1406,8 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyRequestJSON(req OptTeamsAddOrU
 	return e, nil
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1415,8 +1415,8 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequestJSON(req OptNilTeamsAdd
 	return e, nil
 }
 
-func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(req OptTeamsAddOrUpdateProjectPermissionsLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(req OptTeamsAddOrUpdateProjectPermissionsLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1424,8 +1424,8 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequestJSON(req OptTeamsAddOr
 	return e, nil
 }
 
-func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(req OptTeamsAddOrUpdateRepoPermissionsInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1433,8 +1433,8 @@ func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequestJSON(req OptTeamsAddOrUpda
 	return e, nil
 }
 
-func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(req OptTeamsAddOrUpdateRepoPermissionsLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(req OptTeamsAddOrUpdateRepoPermissionsLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1442,80 +1442,80 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequestJSON(req OptTeamsAddOrUpd
 	return e, nil
 }
 
-func encodeTeamsCreateRequestJSON(req TeamsCreateReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsCreateRequestJSON(req TeamsCreateReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsCreateDiscussionCommentInOrgRequestJSON(req TeamsCreateDiscussionCommentInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsCreateDiscussionCommentInOrgRequestJSON(req TeamsCreateDiscussionCommentInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsCreateDiscussionCommentLegacyRequestJSON(req TeamsCreateDiscussionCommentLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsCreateDiscussionCommentLegacyRequestJSON(req TeamsCreateDiscussionCommentLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsCreateDiscussionInOrgRequestJSON(req TeamsCreateDiscussionInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsCreateDiscussionInOrgRequestJSON(req TeamsCreateDiscussionInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsCreateDiscussionLegacyRequestJSON(req TeamsCreateDiscussionLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsCreateDiscussionLegacyRequestJSON(req TeamsCreateDiscussionLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequestJSON(req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequestJSON(req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(req TeamsUpdateDiscussionCommentInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsUpdateDiscussionCommentInOrgRequestJSON(req TeamsUpdateDiscussionCommentInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(req TeamsUpdateDiscussionCommentLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsUpdateDiscussionCommentLegacyRequestJSON(req TeamsUpdateDiscussionCommentLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeTeamsUpdateDiscussionInOrgRequestJSON(req OptTeamsUpdateDiscussionInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsUpdateDiscussionInOrgRequestJSON(req OptTeamsUpdateDiscussionInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1523,8 +1523,8 @@ func encodeTeamsUpdateDiscussionInOrgRequestJSON(req OptTeamsUpdateDiscussionInO
 	return e, nil
 }
 
-func encodeTeamsUpdateDiscussionLegacyRequestJSON(req OptTeamsUpdateDiscussionLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsUpdateDiscussionLegacyRequestJSON(req OptTeamsUpdateDiscussionLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1532,8 +1532,8 @@ func encodeTeamsUpdateDiscussionLegacyRequestJSON(req OptTeamsUpdateDiscussionLe
 	return e, nil
 }
 
-func encodeTeamsUpdateInOrgRequestJSON(req OptTeamsUpdateInOrgReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsUpdateInOrgRequestJSON(req OptTeamsUpdateInOrgReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1541,16 +1541,16 @@ func encodeTeamsUpdateInOrgRequestJSON(req OptTeamsUpdateInOrgReq, span trace.Sp
 	return e, nil
 }
 
-func encodeTeamsUpdateLegacyRequestJSON(req TeamsUpdateLegacyReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeTeamsUpdateLegacyRequestJSON(req TeamsUpdateLegacyReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUsersAddEmailForAuthenticatedRequestJSON(req OptUsersAddEmailForAuthenticatedReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUsersAddEmailForAuthenticatedRequestJSON(req OptUsersAddEmailForAuthenticatedReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1558,24 +1558,24 @@ func encodeUsersAddEmailForAuthenticatedRequestJSON(req OptUsersAddEmailForAuthe
 	return e, nil
 }
 
-func encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(req UsersCreateGpgKeyForAuthenticatedReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUsersCreateGpgKeyForAuthenticatedRequestJSON(req UsersCreateGpgKeyForAuthenticatedReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(req UsersCreatePublicSSHKeyForAuthenticatedReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUsersCreatePublicSSHKeyForAuthenticatedRequestJSON(req UsersCreatePublicSSHKeyForAuthenticatedReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUsersDeleteEmailForAuthenticatedRequestJSON(req OptUsersDeleteEmailForAuthenticatedReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUsersDeleteEmailForAuthenticatedRequestJSON(req OptUsersDeleteEmailForAuthenticatedReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -1583,16 +1583,16 @@ func encodeUsersDeleteEmailForAuthenticatedRequestJSON(req OptUsersDeleteEmailFo
 	return e, nil
 }
 
-func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(req UsersSetPrimaryEmailVisibilityForAuthenticatedReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequestJSON(req UsersSetPrimaryEmailVisibilityForAuthenticatedReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUsersUpdateAuthenticatedRequestJSON(req OptUsersUpdateAuthenticatedReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUsersUpdateAuthenticatedRequestJSON(req OptUsersUpdateAuthenticatedReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}

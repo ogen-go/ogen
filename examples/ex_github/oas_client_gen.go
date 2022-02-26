@@ -666,8 +666,8 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories/"
@@ -830,8 +830,8 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -979,8 +979,8 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -1396,8 +1396,8 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6555,8 +6555,8 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -6669,8 +6669,8 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6752,8 +6752,8 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -6854,8 +6854,8 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -6942,8 +6942,8 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -7044,8 +7044,8 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7145,8 +7145,8 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7247,8 +7247,8 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7333,8 +7333,8 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -7434,8 +7434,8 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -9588,8 +9588,8 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications"
@@ -9653,8 +9653,8 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -9802,8 +9802,8 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -9898,8 +9898,8 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications/threads/"
@@ -10204,8 +10204,8 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -10295,8 +10295,8 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -10424,8 +10424,8 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/installations/"
@@ -10507,8 +10507,8 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -10648,8 +10648,8 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -12101,8 +12101,8 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -12242,8 +12242,8 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/"
@@ -12464,8 +12464,8 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/config"
@@ -13116,8 +13116,8 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -14156,8 +14156,8 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -15257,8 +15257,8 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -15397,8 +15397,8 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -15960,8 +15960,8 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -17962,8 +17962,8 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18050,8 +18050,8 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18312,8 +18312,8 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18395,8 +18395,8 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18483,8 +18483,8 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18588,8 +18588,8 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -18686,8 +18686,8 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18787,8 +18787,8 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18870,8 +18870,8 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -18972,8 +18972,8 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -19088,8 +19088,8 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/scim/v2/enterprises/"
@@ -19193,8 +19193,8 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/enterprises/"
@@ -19349,8 +19349,8 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists"
@@ -19414,8 +19414,8 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
@@ -20686,8 +20686,8 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/"
@@ -20772,8 +20772,8 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -20894,8 +20894,8 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -20985,8 +20985,8 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -21118,8 +21118,8 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -21221,8 +21221,8 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -22072,8 +22072,8 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -22476,8 +22476,8 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/interaction-limits"
@@ -22546,8 +22546,8 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -22631,8 +22631,8 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -22720,8 +22720,8 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -22925,8 +22925,8 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -23020,8 +23020,8 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -23122,8 +23122,8 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -23217,8 +23217,8 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -25966,8 +25966,8 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26158,8 +26158,8 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26473,8 +26473,8 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26574,8 +26574,8 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26675,8 +26675,8 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -26792,8 +26792,8 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28490,8 +28490,8 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28604,8 +28604,8 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -28701,8 +28701,8 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations"
@@ -28768,8 +28768,8 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -28850,8 +28850,8 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -29112,8 +29112,8 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -29244,8 +29244,8 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations"
@@ -29604,8 +29604,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/clients/"
@@ -29706,8 +29706,8 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/clients/"
@@ -30036,8 +30036,8 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations/"
@@ -30578,8 +30578,8 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -30660,8 +30660,8 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -33335,8 +33335,8 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -33579,8 +33579,8 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/memberships/orgs/"
@@ -33672,8 +33672,8 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -33764,8 +33764,8 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -36323,8 +36323,8 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -36409,8 +36409,8 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -36481,8 +36481,8 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/projects"
@@ -36542,8 +36542,8 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -36618,8 +36618,8 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -37805,8 +37805,8 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
@@ -37885,8 +37885,8 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
@@ -38052,8 +38052,8 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/"
@@ -38123,8 +38123,8 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/cards/"
@@ -38194,8 +38194,8 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/projects/columns/"
@@ -38370,8 +38370,8 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -38468,8 +38468,8 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -38621,8 +38621,8 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -38752,8 +38752,8 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -39049,8 +39049,8 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40670,8 +40670,8 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40780,8 +40780,8 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -40890,8 +40890,8 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41032,8 +41032,8 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41136,8 +41136,8 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41240,8 +41240,8 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41358,8 +41358,8 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41519,8 +41519,8 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41632,8 +41632,8 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41746,8 +41746,8 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41860,8 +41860,8 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -41973,8 +41973,8 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -42091,8 +42091,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -42226,8 +42226,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -42343,8 +42343,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -42462,8 +42462,8 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -44509,8 +44509,8 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -44648,8 +44648,8 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -44771,8 +44771,8 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -44903,8 +44903,8 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45034,8 +45034,8 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45485,8 +45485,8 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45581,8 +45581,8 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45791,8 +45791,8 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -45894,8 +45894,8 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46036,8 +46036,8 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46135,8 +46135,8 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46262,8 +46262,8 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46357,8 +46357,8 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repos"
@@ -46419,8 +46419,8 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46523,8 +46523,8 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -46597,8 +46597,8 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46710,8 +46710,8 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46806,8 +46806,8 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46906,8 +46906,8 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -46997,8 +46997,8 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -48062,8 +48062,8 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -56808,8 +56808,8 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -56898,8 +56898,8 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57211,8 +57211,8 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57422,8 +57422,8 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57648,8 +57648,8 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57779,8 +57779,8 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -57895,8 +57895,8 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58005,8 +58005,8 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58300,8 +58300,8 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58424,8 +58424,8 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58557,8 +58557,8 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58689,8 +58689,8 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58890,8 +58890,8 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -58996,8 +58996,8 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59099,8 +59099,8 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59201,8 +59201,8 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59318,8 +59318,8 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59428,8 +59428,8 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59532,8 +59532,8 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59635,8 +59635,8 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59744,8 +59744,8 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59867,8 +59867,8 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -59974,8 +59974,8 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -61485,8 +61485,8 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repos/"
@@ -61721,8 +61721,8 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -61864,8 +61864,8 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -61972,8 +61972,8 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -62097,8 +62097,8 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -62212,8 +62212,8 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -62357,8 +62357,8 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -62854,8 +62854,8 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -62938,8 +62938,8 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -63053,8 +63053,8 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -63152,8 +63152,8 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -63252,8 +63252,8 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -63333,8 +63333,8 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -63439,8 +63439,8 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -67495,8 +67495,8 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -67617,8 +67617,8 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -67724,8 +67724,8 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -67832,8 +67832,8 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -67938,8 +67938,8 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orgs/"
@@ -68038,8 +68038,8 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/teams/"
@@ -68127,8 +68127,8 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
@@ -68431,8 +68431,8 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys"
@@ -68500,8 +68500,8 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys"
@@ -68575,8 +68575,8 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
@@ -70171,8 +70171,8 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/email/visibility"
@@ -70349,8 +70349,8 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user"

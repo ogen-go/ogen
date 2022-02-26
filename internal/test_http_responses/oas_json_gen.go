@@ -71,7 +71,7 @@ var (
 )
 
 // Encode encodes int as json.
-func (o NilInt) Encode(e *jx.Writer) {
+func (o NilInt) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -104,7 +104,7 @@ func (o *NilInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o NilString) Encode(e *jx.Writer) {
+func (o NilString) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return

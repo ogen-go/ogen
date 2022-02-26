@@ -479,48 +479,33 @@ func NewBotCommandScopeChatMemberBotCommandScope(v BotCommandScopeChatMember) Bo
 
 // Represents the scope of bot commands, covering all group and supergroup chat administrators.
 // Ref: #/components/schemas/BotCommandScopeAllChatAdministrators
-type BotCommandScopeAllChatAdministrators struct {
-	// Scope type, must be all_chat_administrators.
-	Type string "json:\"type\""
-}
+type BotCommandScopeAllChatAdministrators struct{}
 
 // Represents the scope of bot commands, covering all group and supergroup chats.
 // Ref: #/components/schemas/BotCommandScopeAllGroupChats
-type BotCommandScopeAllGroupChats struct {
-	// Scope type, must be all_group_chats.
-	Type string "json:\"type\""
-}
+type BotCommandScopeAllGroupChats struct{}
 
 // Represents the scope of bot commands, covering all private chats.
 // Ref: #/components/schemas/BotCommandScopeAllPrivateChats
-type BotCommandScopeAllPrivateChats struct {
-	// Scope type, must be all_private_chats.
-	Type string "json:\"type\""
-}
+type BotCommandScopeAllPrivateChats struct{}
 
 // Represents the scope of bot commands, covering a specific chat.
 // Ref: #/components/schemas/BotCommandScopeChat
 type BotCommandScopeChat struct {
-	// Scope type, must be chat.
-	Type   string "json:\"type\""
-	ChatID ID     "json:\"chat_id\""
+	ChatID ID "json:\"chat_id\""
 }
 
 // Represents the scope of bot commands, covering all administrators of a specific group or
 // supergroup chat.
 // Ref: #/components/schemas/BotCommandScopeChatAdministrators
 type BotCommandScopeChatAdministrators struct {
-	// Scope type, must be chat_administrators.
-	Type   string "json:\"type\""
-	ChatID ID     "json:\"chat_id\""
+	ChatID ID "json:\"chat_id\""
 }
 
 // Represents the scope of bot commands, covering a specific member of a group or supergroup chat.
 // Ref: #/components/schemas/BotCommandScopeChatMember
 type BotCommandScopeChatMember struct {
-	// Scope type, must be chat_member.
-	Type   string "json:\"type\""
-	ChatID ID     "json:\"chat_id\""
+	ChatID ID "json:\"chat_id\""
 	// Unique identifier of the target user.
 	UserID int64 "json:\"user_id\""
 }
@@ -528,10 +513,7 @@ type BotCommandScopeChatMember struct {
 // Represents the default scope of bot commands. Default commands are used if no commands with a
 // narrower scope are specified for the user.
 // Ref: #/components/schemas/BotCommandScopeDefault
-type BotCommandScopeDefault struct {
-	// Scope type, must be default.
-	Type string "json:\"type\""
-}
+type BotCommandScopeDefault struct{}
 
 // A placeholder, currently holds no information. Use BotFather to set up your game.
 // Ref: #/components/schemas/CallbackGame
@@ -2253,8 +2235,6 @@ func NewInlineQueryResultVoiceInlineQueryResult(v InlineQueryResultVoice) Inline
 // Represents a link to an article or web page.
 // Ref: #/components/schemas/InlineQueryResultArticle
 type InlineQueryResultArticle struct {
-	// Type of the result, must be article.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string "json:\"id\""
 	// Title of the result.
@@ -2280,8 +2260,6 @@ type InlineQueryResultArticle struct {
 // instead of the audio.
 // Ref: #/components/schemas/InlineQueryResultAudio
 type InlineQueryResultAudio struct {
-	// Type of the result, must be audio.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// A valid URL for the audio file.
@@ -2425,8 +2403,6 @@ type InlineQueryResultCachedPhoto struct {
 // specified content instead of the sticker.
 // Ref: #/components/schemas/InlineQueryResultCachedSticker
 type InlineQueryResultCachedSticker struct {
-	// Type of the result, must be sticker.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// A valid file identifier of the sticker.
@@ -2488,8 +2464,6 @@ type InlineQueryResultCachedVoice struct {
 // instead of the contact.
 // Ref: #/components/schemas/InlineQueryResultContact
 type InlineQueryResultContact struct {
-	// Type of the result, must be contact.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string "json:\"id\""
 	// Contact's phone number.
@@ -2515,8 +2489,6 @@ type InlineQueryResultContact struct {
 // content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
 // Ref: #/components/schemas/InlineQueryResultDocument
 type InlineQueryResultDocument struct {
-	// Type of the result, must be document.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// Title for the result.
@@ -2546,8 +2518,6 @@ type InlineQueryResultDocument struct {
 // Represents a Game.
 // Ref: #/components/schemas/InlineQueryResultGame
 type InlineQueryResultGame struct {
-	// Type of the result, must be game.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// Short name of the game.
@@ -2560,8 +2530,6 @@ type InlineQueryResultGame struct {
 // with the specified content instead of the animation.
 // Ref: #/components/schemas/InlineQueryResultGif
 type InlineQueryResultGif struct {
-	// Type of the result, must be gif.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// A valid URL for the GIF file. File size must not exceed 1MB.
@@ -2594,8 +2562,6 @@ type InlineQueryResultGif struct {
 // location.
 // Ref: #/components/schemas/InlineQueryResultLocation
 type InlineQueryResultLocation struct {
-	// Type of the result, must be location.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string "json:\"id\""
 	// Location latitude in degrees.
@@ -2629,8 +2595,6 @@ type InlineQueryResultLocation struct {
 // input_message_content to send a message with the specified content instead of the animation.
 // Ref: #/components/schemas/InlineQueryResultMpeg4Gif
 type InlineQueryResultMpeg4Gif struct {
-	// Type of the result, must be mpeg4_gif.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// A valid URL for the MP4 file. File size must not exceed 1MB.
@@ -2663,8 +2627,6 @@ type InlineQueryResultMpeg4Gif struct {
 // content instead of the photo.
 // Ref: #/components/schemas/InlineQueryResultPhoto
 type InlineQueryResultPhoto struct {
-	// Type of the result, must be photo.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// A valid URL of the photo. Photo must be in JPEG format. Photo size must not exceed 5MB.
@@ -2693,8 +2655,6 @@ type InlineQueryResultPhoto struct {
 // input_message_content to send a message with the specified content instead of the venue.
 // Ref: #/components/schemas/InlineQueryResultVenue
 type InlineQueryResultVenue struct {
-	// Type of the result, must be venue.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 Bytes.
 	ID string "json:\"id\""
 	// Latitude of the venue location in degrees.
@@ -2729,8 +2689,6 @@ type InlineQueryResultVenue struct {
 // input_message_content to send a message with the specified content instead of the video.
 // Ref: #/components/schemas/InlineQueryResultVideo
 type InlineQueryResultVideo struct {
-	// Type of the result, must be video.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// A valid URL for the embedded video player or video file.
@@ -2764,8 +2722,6 @@ type InlineQueryResultVideo struct {
 // a message with the specified content instead of the the voice message.
 // Ref: #/components/schemas/InlineQueryResultVoice
 type InlineQueryResultVoice struct {
-	// Type of the result, must be voice.
-	Type string "json:\"type\""
 	// Unique identifier for this result, 1-64 bytes.
 	ID string "json:\"id\""
 	// A valid URL for the voice recording.
@@ -3017,8 +2973,6 @@ func NewInputMediaVideoInputMedia(v InputMediaVideo) InputMedia {
 // Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
 // Ref: #/components/schemas/InputMediaAnimation
 type InputMediaAnimation struct {
-	// Type of the result, must be animation.
-	Type string "json:\"type\""
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
@@ -3048,8 +3002,6 @@ type InputMediaAnimation struct {
 // Represents an audio file to be treated as music to be sent.
 // Ref: #/components/schemas/InputMediaAudio
 type InputMediaAudio struct {
-	// Type of the result, must be audio.
-	Type string "json:\"type\""
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
@@ -3079,8 +3031,6 @@ type InputMediaAudio struct {
 // Represents a general file to be sent.
 // Ref: #/components/schemas/InputMediaDocument
 type InputMediaDocument struct {
-	// Type of the result, must be document.
-	Type string "json:\"type\""
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
@@ -3107,8 +3057,6 @@ type InputMediaDocument struct {
 // Represents a photo to be sent.
 // Ref: #/components/schemas/InputMediaPhoto
 type InputMediaPhoto struct {
-	// Type of the result, must be photo.
-	Type string "json:\"type\""
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
@@ -3125,8 +3073,6 @@ type InputMediaPhoto struct {
 // Represents a video to be sent.
 // Ref: #/components/schemas/InputMediaVideo
 type InputMediaVideo struct {
-	// Type of the result, must be video.
-	Type string "json:\"type\""
 	// File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
 	// pass an HTTP URL for Telegram to get a file from the Internet, or pass
 	// "attach://<file_attach_name>" to upload a new one using multipart/form-data under
@@ -7034,9 +6980,6 @@ func NewPassportElementErrorUnspecifiedPassportElementError(v PassportElementErr
 type PassportElementErrorDataField struct {
 	// Error source, must be data.
 	Source string "json:\"source\""
-	// The section of the user's Telegram Passport which has the error, one of "personal_details",
-	// "passport", "driver_license", "identity_card", "internal_passport", "address".
-	Type PassportElementErrorDataFieldType "json:\"type\""
 	// Name of the data field which has the error.
 	FieldName string "json:\"field_name\""
 	// Base64-encoded data hash.
@@ -7064,9 +7007,6 @@ const (
 type PassportElementErrorFile struct {
 	// Error source, must be file.
 	Source string "json:\"source\""
-	// The section of the user's Telegram Passport which has the issue, one of "utility_bill",
-	// "bank_statement", "rental_agreement", "passport_registration", "temporary_registration".
-	Type PassportElementErrorFileType "json:\"type\""
 	// Base64-encoded file hash.
 	FileHash string "json:\"file_hash\""
 	// Error message.
@@ -7091,9 +7031,6 @@ const (
 type PassportElementErrorFiles struct {
 	// Error source, must be files.
 	Source string "json:\"source\""
-	// The section of the user's Telegram Passport which has the issue, one of "utility_bill",
-	// "bank_statement", "rental_agreement", "passport_registration", "temporary_registration".
-	Type PassportElementErrorFilesType "json:\"type\""
 	// List of base64-encoded file hashes.
 	FileHashes []string "json:\"file_hashes\""
 	// Error message.
@@ -7118,9 +7055,6 @@ const (
 type PassportElementErrorFrontSide struct {
 	// Error source, must be front_side.
 	Source string "json:\"source\""
-	// The section of the user's Telegram Passport which has the issue, one of "passport",
-	// "driver_license", "identity_card", "internal_passport".
-	Type PassportElementErrorFrontSideType "json:\"type\""
 	// Base64-encoded hash of the file with the front side of the document.
 	FileHash string "json:\"file_hash\""
 	// Error message.
@@ -7144,9 +7078,6 @@ const (
 type PassportElementErrorReverseSide struct {
 	// Error source, must be reverse_side.
 	Source string "json:\"source\""
-	// The section of the user's Telegram Passport which has the issue, one of "driver_license",
-	// "identity_card".
-	Type PassportElementErrorReverseSideType "json:\"type\""
 	// Base64-encoded hash of the file with the reverse side of the document.
 	FileHash string "json:\"file_hash\""
 	// Error message.
@@ -7168,9 +7099,6 @@ const (
 type PassportElementErrorSelfie struct {
 	// Error source, must be selfie.
 	Source string "json:\"source\""
-	// The section of the user's Telegram Passport which has the issue, one of "passport",
-	// "driver_license", "identity_card", "internal_passport".
-	Type PassportElementErrorSelfieType "json:\"type\""
 	// Base64-encoded hash of the file with the selfie.
 	FileHash string "json:\"file_hash\""
 	// Error message.
@@ -7194,10 +7122,6 @@ const (
 type PassportElementErrorTranslationFile struct {
 	// Error source, must be translation_file.
 	Source string "json:\"source\""
-	// Type of element of the user's Telegram Passport which has the issue, one of "passport",
-	// "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement",
-	// "rental_agreement", "passport_registration", "temporary_registration".
-	Type PassportElementErrorTranslationFileType "json:\"type\""
 	// Base64-encoded file hash.
 	FileHash string "json:\"file_hash\""
 	// Error message.
@@ -7227,10 +7151,6 @@ const (
 type PassportElementErrorTranslationFiles struct {
 	// Error source, must be translation_files.
 	Source string "json:\"source\""
-	// Type of element of the user's Telegram Passport which has the issue, one of "passport",
-	// "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement",
-	// "rental_agreement", "passport_registration", "temporary_registration".
-	Type PassportElementErrorTranslationFilesType "json:\"type\""
 	// List of base64-encoded file hashes.
 	FileHashes []string "json:\"file_hashes\""
 	// Error message.
@@ -7260,8 +7180,6 @@ const (
 type PassportElementErrorUnspecified struct {
 	// Error source, must be unspecified.
 	Source string "json:\"source\""
-	// Type of element of the user's Telegram Passport which has the issue.
-	Type string "json:\"type\""
 	// Base64-encoded element hash.
 	ElementHash string "json:\"element_hash\""
 	// Error message.

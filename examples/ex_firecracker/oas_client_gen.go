@@ -143,8 +143,8 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/snapshot/create"
@@ -208,8 +208,8 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/actions"
@@ -489,8 +489,8 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/snapshot/load"
@@ -546,8 +546,8 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds/config"
@@ -642,8 +642,8 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
@@ -697,8 +697,8 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
@@ -757,8 +757,8 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
@@ -817,8 +817,8 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
@@ -885,8 +885,8 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
@@ -966,8 +966,8 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
@@ -1056,8 +1056,8 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
@@ -1123,8 +1123,8 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm"
@@ -1183,8 +1183,8 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
@@ -1243,8 +1243,8 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/boot-source"
@@ -1311,8 +1311,8 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
@@ -1392,8 +1392,8 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
@@ -1474,8 +1474,8 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vsock"
@@ -1539,8 +1539,8 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logger"
@@ -1617,8 +1617,8 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
@@ -1674,8 +1674,8 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/metrics"

@@ -120,7 +120,8 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 
 	// 1st case: explicit discriminator.
 	if d := schema.Discriminator; d != nil {
-		sum.SumSpec.Discriminator = schema.Discriminator.PropertyName
+		propName := schema.Discriminator.PropertyName
+		sum.SumSpec.Discriminator = propName
 		for k, v := range schema.Discriminator.Mapping {
 			// Explicit mapping.
 			var found bool
@@ -136,8 +137,18 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 					found = true
 					sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 						Key:  k,
-						Type: s.Name,
+						Type: s,
 					})
+
+					// Filter discriminator field in-place.
+					n := 0
+					for _, f := range s.Fields {
+						if f.Tag.JSON != propName {
+							s.Fields[n] = f
+							n++
+						}
+					}
+					s.Fields = s.Fields[:n]
 				}
 			}
 			if !found {
@@ -156,7 +167,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 
 				sum.SumSpec.Mapping = append(sum.SumSpec.Mapping, ir.SumSpecMap{
 					Key:  path.Base(ref),
-					Type: s.Name,
+					Type: s,
 				})
 			}
 		}

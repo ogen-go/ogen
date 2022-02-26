@@ -15,7 +15,7 @@ func DecodeUUID(i *jx.Decoder) (v uuid.UUID, err error) {
 }
 
 // EncodeUUID encodes UUID to json.
-func EncodeUUID(s *jx.Writer, v uuid.UUID) {
+func EncodeUUID(s *jx.Encoder, v uuid.UUID) {
 	const (
 		// Hexed length (16 * 2) + 4 hyphens
 		length       = len(v)*2 + 4

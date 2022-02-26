@@ -26,29 +26,29 @@ func decodeObject(t testing.TB, data []byte, v json.Unmarshaler) {
 }
 
 func encodeObject(v json.Marshaler) []byte {
-	e := &jx.Writer{}
+	e := &jx.Encoder{}
 	e.ObjStart()
 	if settable, ok := v.(json.Settable); ok && !settable.IsSet() {
 		e.ObjEnd()
-		return e.Buf
+		return e.Bytes()
 	}
 	e.FieldStart("key")
 	v.Encode(e)
 	e.ObjEnd()
-	return e.Buf
+	return e.Bytes()
 }
 
 func testEncode(t *testing.T, encoder json.Marshaler, expected string) {
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	encoder.Encode(e)
 	if expected == "" {
-		require.Empty(t, e.Buf)
+		require.Empty(t, e.Bytes())
 		return
 	}
-	require.True(t, std.Valid(e.Buf), string(e.Buf))
-	require.JSONEq(t, expected, string(e.Buf), "encoding result mismatch")
+	require.True(t, std.Valid(e.Bytes()), string(e.Bytes()))
+	require.JSONEq(t, expected, string(e.Bytes()), "encoding result mismatch")
 }
 
 func TestJSONGenerics(t *testing.T) {

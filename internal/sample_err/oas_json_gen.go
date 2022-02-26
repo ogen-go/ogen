@@ -71,19 +71,11 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Data) Encode(e *jx.Writer) {
+func (s Data) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -158,25 +150,16 @@ func (s *Data) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Writer) {
+func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"code\"" + ":")
+		e.FieldStart("code")
 		e.Int64(s.Code)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"message\"" + ":")
+		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	e.ObjEnd()
@@ -264,7 +247,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Data as json.
-func (o OptData) Encode(e *jx.Writer) {
+func (o OptData) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}

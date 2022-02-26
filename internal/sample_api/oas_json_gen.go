@@ -71,25 +71,16 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s AnyOfTest) Encode(e *jx.Writer) {
+func (s AnyOfTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"medium\"" + ":")
+		e.FieldStart("medium")
 		e.Str(s.Medium)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"sizeLimit\"" + ":")
+		e.FieldStart("sizeLimit")
 		s.SizeLimit.Encode(e)
 	}
 	e.ObjEnd()
@@ -175,7 +166,7 @@ func (s *AnyOfTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes AnyOfTestSizeLimit as json.
-func (s AnyOfTestSizeLimit) Encode(e *jx.Writer) {
+func (s AnyOfTestSizeLimit) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case IntAnyOfTestSizeLimit:
 		e.Int(s.Int)
@@ -212,60 +203,28 @@ func (s *AnyOfTestSizeLimit) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnyTest) Encode(e *jx.Writer) {
+func (s AnyTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if len(s.Empty) != 0 {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
 
 		if len(s.Empty) != 0 {
-			e.RawStr("\"empty\"" + ":")
+			e.FieldStart("empty")
 			e.Raw(s.Empty)
 		}
 	}
 	{
 		if s.AnyMap.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AnyMap.Set {
-			e.RawStr("\"any_map\"" + ":")
+			e.FieldStart("any_map")
 			s.AnyMap.Encode(e)
 		}
 	}
 	{
 		if s.AnyArray != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AnyArray != nil {
-			e.RawStr("\"any_array\"" + ":")
+			e.FieldStart("any_array")
 			e.ArrStart()
-			if len(s.AnyArray) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AnyArray[0]
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
-				}
-				for _, elem := range s.AnyArray[1:] {
-					e.Comma()
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
+			for _, elem := range s.AnyArray {
+				if len(elem) != 0 {
+					e.Raw(elem)
 				}
 			}
 			e.ArrEnd()
@@ -340,19 +299,10 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s AnyTestAnyMap) Encode(e *jx.Writer) {
+func (s AnyTestAnyMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		if len(elem) != 0 {
 			e.Raw(elem)
@@ -395,82 +345,43 @@ func (s AnyTestAnyMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ArrayTest) Encode(e *jx.Writer) {
+func (s ArrayTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"required\"" + ":")
+		e.FieldStart("required")
 		e.ArrStart()
-		if len(s.Required) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Required[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Required[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Required {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Optional != nil {
-			e.Comma()
-		}
-		if s.Optional != nil {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			e.ArrStart()
-			if len(s.Optional) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Optional[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Optional[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Optional {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"nullable_required\"" + ":")
+		e.FieldStart("nullable_required")
 		if s.NullableRequired == nil {
 			e.Null()
 		} else {
 			e.ArrStart()
-			if len(s.NullableRequired) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.NullableRequired[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.NullableRequired[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.NullableRequired {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.NullableOptional.Set {
-			e.Comma()
-		}
-		if s.NullableOptional.Set {
-			e.RawStr("\"nullable_optional\"" + ":")
+			e.FieldStart("nullable_optional")
 			s.NullableOptional.Encode(e)
 		}
 	}
@@ -613,57 +524,41 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Data) Encode(e *jx.Writer) {
+func (s Data) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"id\"" + ":")
+		e.FieldStart("id")
 		s.ID.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"description\"" + ":")
+		e.FieldStart("description")
 		s.Description.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"email\"" + ":")
+		e.FieldStart("email")
 		e.Str(s.Email)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"hostname\"" + ":")
+		e.FieldStart("hostname")
 		e.Str(s.Hostname)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"format\"" + ":")
+		e.FieldStart("format")
 		e.Str(s.Format)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"base64\"" + ":")
+		e.FieldStart("base64")
 		e.Base64(s.Base64)
 	}
 	{
 		if s.NullableEnum.Set {
-			e.Comma()
-		}
-		if s.NullableEnum.Set {
-			e.RawStr("\"nullable_enum\"" + ":")
+			e.FieldStart("nullable_enum")
 			s.NullableEnum.Encode(e)
 		}
 	}
@@ -810,7 +705,7 @@ func (s *Data) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes DataDescription as json.
-func (s DataDescription) Encode(e *jx.Writer) {
+func (s DataDescription) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case DescriptionDetailedDataDescription:
 		s.DescriptionDetailed.Encode(e)
@@ -873,142 +768,94 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DefaultTest) Encode(e *jx.Writer) {
+func (s DefaultTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"required\"" + ":")
+		e.FieldStart("required")
 		e.Str(s.Required)
 	}
 	{
 		if s.Str.Set {
-			e.Comma()
-		}
-		if s.Str.Set {
-			e.RawStr("\"str\"" + ":")
+			e.FieldStart("str")
 			s.Str.Encode(e)
 		}
 	}
 	{
 		if s.NullStr.Set {
-			e.Comma()
-		}
-		if s.NullStr.Set {
-			e.RawStr("\"nullStr\"" + ":")
+			e.FieldStart("nullStr")
 			s.NullStr.Encode(e)
 		}
 	}
 	{
 		if s.Enum.Set {
-			e.Comma()
-		}
-		if s.Enum.Set {
-			e.RawStr("\"enum\"" + ":")
+			e.FieldStart("enum")
 			s.Enum.Encode(e)
 		}
 	}
 	{
 		if s.UUID.Set {
-			e.Comma()
-		}
-		if s.UUID.Set {
-			e.RawStr("\"uuid\"" + ":")
+			e.FieldStart("uuid")
 			s.UUID.Encode(e)
 		}
 	}
 	{
 		if s.IP.Set {
-			e.Comma()
-		}
-		if s.IP.Set {
-			e.RawStr("\"ip\"" + ":")
+			e.FieldStart("ip")
 			s.IP.Encode(e)
 		}
 	}
 	{
 		if s.IPV4.Set {
-			e.Comma()
-		}
-		if s.IPV4.Set {
-			e.RawStr("\"ip_v4\"" + ":")
+			e.FieldStart("ip_v4")
 			s.IPV4.Encode(e)
 		}
 	}
 	{
 		if s.IPV6.Set {
-			e.Comma()
-		}
-		if s.IPV6.Set {
-			e.RawStr("\"ip_v6\"" + ":")
+			e.FieldStart("ip_v6")
 			s.IPV6.Encode(e)
 		}
 	}
 	{
 		if s.URI.Set {
-			e.Comma()
-		}
-		if s.URI.Set {
-			e.RawStr("\"uri\"" + ":")
+			e.FieldStart("uri")
 			s.URI.Encode(e)
 		}
 	}
 	{
 		if s.Birthday.Set {
-			e.Comma()
-		}
-		if s.Birthday.Set {
-			e.RawStr("\"birthday\"" + ":")
+			e.FieldStart("birthday")
 			s.Birthday.Encode(e, json.EncodeDate)
 		}
 	}
 	{
 		if s.Rate.Set {
-			e.Comma()
-		}
-		if s.Rate.Set {
-			e.RawStr("\"rate\"" + ":")
+			e.FieldStart("rate")
 			s.Rate.Encode(e)
 		}
 	}
 	{
 		if s.Email.Set {
-			e.Comma()
-		}
-		if s.Email.Set {
-			e.RawStr("\"email\"" + ":")
+			e.FieldStart("email")
 			s.Email.Encode(e)
 		}
 	}
 	{
 		if s.Hostname.Set {
-			e.Comma()
-		}
-		if s.Hostname.Set {
-			e.RawStr("\"hostname\"" + ":")
+			e.FieldStart("hostname")
 			s.Hostname.Encode(e)
 		}
 	}
 	{
 		if s.Format.Set {
-			e.Comma()
-		}
-		if s.Format.Set {
-			e.RawStr("\"format\"" + ":")
+			e.FieldStart("format")
 			s.Format.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"base64\"" + ":")
+		e.FieldStart("base64")
 		e.Base64(s.Base64)
 	}
 	e.ObjEnd()
@@ -1240,7 +1087,7 @@ func (s *DefaultTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes DefaultTestEnum as json.
-func (s DefaultTestEnum) Encode(e *jx.Writer) {
+func (s DefaultTestEnum) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
@@ -1267,33 +1114,21 @@ func (s *DefaultTestEnum) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DescriptionDetailed) Encode(e *jx.Writer) {
+func (s DescriptionDetailed) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"count\"" + ":")
+		e.FieldStart("count")
 		e.Int(s.Count)
 	}
 	{
 		if s.ID.Set {
-			e.Comma()
-		}
-		if s.ID.Set {
-			e.RawStr("\"id\"" + ":")
+			e.FieldStart("id")
 			s.ID.Encode(e)
 		}
 	}
@@ -1393,19 +1228,11 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DescriptionSimple) Encode(e *jx.Writer) {
+func (s DescriptionSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"description\"" + ":")
+		e.FieldStart("description")
 		e.Str(s.Description)
 	}
 	e.ObjEnd()
@@ -1480,25 +1307,16 @@ func (s *DescriptionSimple) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Writer) {
+func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"code\"" + ":")
+		e.FieldStart("code")
 		e.Int64(s.Code)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"message\"" + ":")
+		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	e.ObjEnd()
@@ -1586,25 +1404,16 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Hash) Encode(e *jx.Writer) {
+func (s Hash) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"raw\"" + ":")
+		e.FieldStart("raw")
 		e.Base64(s.Raw)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"hex\"" + ":")
+		e.FieldStart("hex")
 		e.Str(s.Hex)
 	}
 	e.ObjEnd()
@@ -1692,7 +1501,7 @@ func (s *Hash) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ID as json.
-func (s ID) Encode(e *jx.Writer) {
+func (s ID) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case StringID:
 		e.Str(s.String)
@@ -1729,7 +1538,7 @@ func (s *ID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Issue143 as json.
-func (s Issue143) Encode(e *jx.Writer) {
+func (s Issue143) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case Issue1430Issue143:
 		s.Issue1430.Encode(e)
@@ -1804,31 +1613,21 @@ func (s *Issue143) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Issue1430) Encode(e *jx.Writer) {
+func (s Issue1430) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"common-1\"" + ":")
+		e.FieldStart("common-1")
 		e.Str(s.CommonMinus1)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"common-2\"" + ":")
+		e.FieldStart("common-2")
 		e.Int(s.CommonMinus2)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"unique-1\"" + ":")
+		e.FieldStart("unique-1")
 		e.Str(s.UniqueMinus1)
 	}
 	e.ObjEnd()
@@ -1929,31 +1728,21 @@ func (s *Issue1430) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Issue1431) Encode(e *jx.Writer) {
+func (s Issue1431) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"common-1\"" + ":")
+		e.FieldStart("common-1")
 		e.Str(s.CommonMinus1)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"common-2\"" + ":")
+		e.FieldStart("common-2")
 		e.Int(s.CommonMinus2)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"unique-2\"" + ":")
+		e.FieldStart("unique-2")
 		e.Str(s.UniqueMinus2)
 	}
 	e.ObjEnd()
@@ -2054,40 +1843,27 @@ func (s *Issue1431) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Issue1432) Encode(e *jx.Writer) {
+func (s Issue1432) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"common-1\"" + ":")
+		e.FieldStart("common-1")
 		e.Str(s.CommonMinus1)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"common-2\"" + ":")
+		e.FieldStart("common-2")
 		e.Int(s.CommonMinus2)
 	}
 	{
 		if s.CommonMinus3.Set {
-			e.Comma()
-		}
-		if s.CommonMinus3.Set {
-			e.RawStr("\"common-3\"" + ":")
+			e.FieldStart("common-3")
 			s.CommonMinus3.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"unique-3\"" + ":")
+		e.FieldStart("unique-3")
 		e.Str(s.UniqueMinus3)
 	}
 	e.ObjEnd()
@@ -2199,31 +1975,17 @@ func (s *Issue1432) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Issue1433) Encode(e *jx.Writer) {
+func (s Issue1433) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.CommonMinus3.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CommonMinus3.Set {
-			e.RawStr("\"common-3\"" + ":")
+			e.FieldStart("common-3")
 			s.CommonMinus3.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"unique-4\"" + ":")
+		e.FieldStart("unique-4")
 		e.Str(s.UniqueMinus4)
 	}
 	e.ObjEnd()
@@ -2309,66 +2071,41 @@ func (s *Issue1433) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MapWithProperties) Encode(e *jx.Writer) {
+func (s MapWithProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		{
-			if !first {
-				e.Comma()
-			}
-			first = false
 
-			e.RawStr("\"required\"" + ":")
+			e.FieldStart("required")
 			e.Int(s.Required)
 		}
 		{
 			if s.Optional.Set {
-				e.Comma()
-			}
-			if s.Optional.Set {
-				e.RawStr("\"optional\"" + ":")
+				e.FieldStart("optional")
 				s.Optional.Encode(e)
 			}
 		}
 		{
 			if s.SubMap.Set {
-				e.Comma()
-			}
-			if s.SubMap.Set {
-				e.RawStr("\"sub_map\"" + ":")
+				e.FieldStart("sub_map")
 				s.SubMap.Encode(e)
 			}
 		}
 		{
 			if s.InlinedSubMap.Set {
-				e.Comma()
-			}
-			if s.InlinedSubMap.Set {
-				e.RawStr("\"inlined_sub_map\"" + ":")
+				e.FieldStart("inlined_sub_map")
 				s.InlinedSubMap.Encode(e)
 			}
 		}
 		{
 			if s.MapValidation.Set {
-				e.Comma()
-			}
-			if s.MapValidation.Set {
-				e.RawStr("\"map_validation\"" + ":")
+				e.FieldStart("map_validation")
 				s.MapValidation.Encode(e)
 			}
 		}
 	}
 	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -2515,19 +2252,10 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MapWithPropertiesInlinedSubMap) Encode(e *jx.Writer) {
+func (s MapWithPropertiesInlinedSubMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -2568,45 +2296,28 @@ func (s MapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s MaxPropertiesTest) Encode(e *jx.Writer) {
+func (s MaxPropertiesTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"required\"" + ":")
+		e.FieldStart("required")
 		e.Int(s.Required)
 	}
 	{
 		if s.OptionalA.Set {
-			e.Comma()
-		}
-		if s.OptionalA.Set {
-			e.RawStr("\"optional_a\"" + ":")
+			e.FieldStart("optional_a")
 			s.OptionalA.Encode(e)
 		}
 	}
 	{
 		if s.OptionalB.Set {
-			e.Comma()
-		}
-		if s.OptionalB.Set {
-			e.RawStr("\"optional_b\"" + ":")
+			e.FieldStart("optional_b")
 			s.OptionalB.Encode(e)
 		}
 	}
 	{
 		if s.OptionalC.Set {
-			e.Comma()
-		}
-		if s.OptionalC.Set {
-			e.RawStr("\"optional_c\"" + ":")
+			e.FieldStart("optional_c")
 			s.OptionalC.Encode(e)
 		}
 	}
@@ -2726,7 +2437,7 @@ func (s *MaxPropertiesTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o NilInt) Encode(e *jx.Writer) {
+func (o NilInt) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -2759,7 +2470,7 @@ func (o *NilInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes NullableEnumsBoth as json.
-func (o NilNullableEnumsBoth) Encode(e *jx.Writer) {
+func (o NilNullableEnumsBoth) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -2790,7 +2501,7 @@ func (o *NilNullableEnumsBoth) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes NullableEnumsOnlyNullValue as json.
-func (o NilNullableEnumsOnlyNullValue) Encode(e *jx.Writer) {
+func (o NilNullableEnumsOnlyNullValue) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -2821,7 +2532,7 @@ func (o *NilNullableEnumsOnlyNullValue) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes NullableEnumsOnlyNullable as json.
-func (o NilNullableEnumsOnlyNullable) Encode(e *jx.Writer) {
+func (o NilNullableEnumsOnlyNullable) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -2852,7 +2563,7 @@ func (o *NilNullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o NilString) Encode(e *jx.Writer) {
+func (o NilString) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -2885,31 +2596,21 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NullableEnums) Encode(e *jx.Writer) {
+func (s NullableEnums) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"only_nullable\"" + ":")
+		e.FieldStart("only_nullable")
 		s.OnlyNullable.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"only_null_value\"" + ":")
+		e.FieldStart("only_null_value")
 		s.OnlyNullValue.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"both\"" + ":")
+		e.FieldStart("both")
 		s.Both.Encode(e)
 	}
 	e.ObjEnd()
@@ -3004,7 +2705,7 @@ func (s *NullableEnums) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes NullableEnumsBoth as json.
-func (s NullableEnumsBoth) Encode(e *jx.Writer) {
+func (s NullableEnumsBoth) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
@@ -3031,7 +2732,7 @@ func (s *NullableEnumsBoth) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes NullableEnumsOnlyNullValue as json.
-func (s NullableEnumsOnlyNullValue) Encode(e *jx.Writer) {
+func (s NullableEnumsOnlyNullValue) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
@@ -3058,7 +2759,7 @@ func (s *NullableEnumsOnlyNullValue) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes NullableEnumsOnlyNullable as json.
-func (s NullableEnumsOnlyNullable) Encode(e *jx.Writer) {
+func (s NullableEnumsOnlyNullable) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
@@ -3085,51 +2786,33 @@ func (s *NullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneOfBugs) Encode(e *jx.Writer) {
+func (s OneOfBugs) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"issue143\"" + ":")
+		e.FieldStart("issue143")
 		s.Issue143.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"additional-fields\"" + ":")
+		e.FieldStart("additional-fields")
 		s.AdditionalMinusFields.Encode(e)
 	}
 	{
 		if s.OneOfMinusUUIDMinusIntMinusEnum.Set {
-			e.Comma()
-		}
-		if s.OneOfMinusUUIDMinusIntMinusEnum.Set {
-			e.RawStr("\"oneOf-uuid-int-enum\"" + ":")
+			e.FieldStart("oneOf-uuid-int-enum")
 			s.OneOfMinusUUIDMinusIntMinusEnum.Encode(e)
 		}
 	}
 	{
 		if s.OneOfMinusMappingMinusReference.Set {
-			e.Comma()
-		}
-		if s.OneOfMinusMappingMinusReference.Set {
-			e.RawStr("\"oneOf-mapping-reference\"" + ":")
+			e.FieldStart("oneOf-mapping-reference")
 			s.OneOfMinusMappingMinusReference.Encode(e)
 		}
 	}
 	{
 		if s.OneOfMinusMappingMinusAny.Set {
-			e.Comma()
-		}
-		if s.OneOfMinusMappingMinusAny.Set {
-			e.RawStr("\"oneOf-mapping-any\"" + ":")
+			e.FieldStart("oneOf-mapping-any")
 			s.OneOfMinusMappingMinusAny.Encode(e)
 		}
 	}
@@ -3247,14 +2930,18 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneOfMappingAny as json.
-func (s OneOfMappingAny) Encode(e *jx.Writer) {
+func (s OneOfMappingAny) Encode(e *jx.Encoder) {
 	switch s.Type {
+	case OneOfMappingAnyBOneOfMappingAny:
+		e.FieldStart("infoType")
+		e.Str("extended")
+		s.OneOfMappingAnyB.Encode(e)
 	case AnyOneOfMappingAny:
+		e.FieldStart("infoType")
+		e.Str("simple")
 		if len(s.Any) != 0 {
 			e.Raw(s.Any)
 		}
-	case OneOfMappingAnyBOneOfMappingAny:
-		s.OneOfMappingAnyB.Encode(e)
 	}
 }
 
@@ -3318,68 +3005,33 @@ func (s *OneOfMappingAny) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneOfMappingAnyB) Encode(e *jx.Writer) {
+func (s OneOfMappingAnyB) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.InfoType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InfoType.Set {
-			e.RawStr("\"infoType\"" + ":")
-			s.InfoType.Encode(e)
-		}
-	}
 	{
 		if s.Code.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Code.Set {
-			e.RawStr("\"code\"" + ":")
+			e.FieldStart("code")
 			s.Code.Encode(e)
 		}
 	}
 	{
 		if s.Data != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Data != nil {
-			e.RawStr("\"data\"" + ":")
+			e.FieldStart("data")
 			s.Data.Encode(e)
 		}
 	}
 	{
 		if s.Info.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Info.Set {
-			e.RawStr("\"info\"" + ":")
+			e.FieldStart("info")
 			s.Info.Encode(e)
 		}
 	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneOfMappingAnyB = [4]string{
-	0: "infoType",
-	1: "code",
-	2: "data",
-	3: "info",
+var jsonFieldsNameOfOneOfMappingAnyB = [3]string{
+	0: "code",
+	1: "data",
+	2: "info",
 }
 
 // Decode decodes OneOfMappingAnyB from json.
@@ -3390,16 +3042,6 @@ func (s *OneOfMappingAnyB) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "infoType":
-			if err := func() error {
-				s.InfoType.Reset()
-				if err := s.InfoType.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"infoType\"")
-			}
 		case "code":
 			if err := func() error {
 				s.Code.Reset()
@@ -3444,12 +3086,8 @@ func (s *OneOfMappingAnyB) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneOfMappingAnyBData) Encode(e *jx.Writer) {
+func (s OneOfMappingAnyBData) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -3475,12 +3113,16 @@ func (s *OneOfMappingAnyBData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneOfMappingReference as json.
-func (s OneOfMappingReference) Encode(e *jx.Writer) {
+func (s OneOfMappingReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case OneOfMappingReferenceAOneOfMappingReference:
-		s.OneOfMappingReferenceA.Encode(e)
 	case OneOfMappingReferenceBOneOfMappingReference:
+		e.FieldStart("infoType")
+		e.Str("extended")
 		s.OneOfMappingReferenceB.Encode(e)
+	case OneOfMappingReferenceAOneOfMappingReference:
+		e.FieldStart("infoType")
+		e.Str("simple")
+		s.OneOfMappingReferenceA.Encode(e)
 	}
 }
 
@@ -3542,42 +3184,19 @@ func (s *OneOfMappingReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneOfMappingReferenceA) Encode(e *jx.Writer) {
+func (s OneOfMappingReferenceA) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.InfoType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InfoType.Set {
-			e.RawStr("\"infoType\"" + ":")
-			s.InfoType.Encode(e)
-		}
-	}
 	{
 		if s.Description.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
+			e.FieldStart("description")
 			s.Description.Encode(e)
 		}
 	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneOfMappingReferenceA = [2]string{
-	0: "infoType",
-	1: "description",
+var jsonFieldsNameOfOneOfMappingReferenceA = [1]string{
+	0: "description",
 }
 
 // Decode decodes OneOfMappingReferenceA from json.
@@ -3588,16 +3207,6 @@ func (s *OneOfMappingReferenceA) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "infoType":
-			if err := func() error {
-				s.InfoType.Reset()
-				if err := s.InfoType.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"infoType\"")
-			}
 		case "description":
 			if err := func() error {
 				s.Description.Reset()
@@ -3620,68 +3229,33 @@ func (s *OneOfMappingReferenceA) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneOfMappingReferenceB) Encode(e *jx.Writer) {
+func (s OneOfMappingReferenceB) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
-	{
-		if s.InfoType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InfoType.Set {
-			e.RawStr("\"infoType\"" + ":")
-			s.InfoType.Encode(e)
-		}
-	}
 	{
 		if s.Code.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Code.Set {
-			e.RawStr("\"code\"" + ":")
+			e.FieldStart("code")
 			s.Code.Encode(e)
 		}
 	}
 	{
 		if s.Data != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Data != nil {
-			e.RawStr("\"data\"" + ":")
+			e.FieldStart("data")
 			s.Data.Encode(e)
 		}
 	}
 	{
 		if s.Info.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Info.Set {
-			e.RawStr("\"info\"" + ":")
+			e.FieldStart("info")
 			s.Info.Encode(e)
 		}
 	}
 	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneOfMappingReferenceB = [4]string{
-	0: "infoType",
-	1: "code",
-	2: "data",
-	3: "info",
+var jsonFieldsNameOfOneOfMappingReferenceB = [3]string{
+	0: "code",
+	1: "data",
+	2: "info",
 }
 
 // Decode decodes OneOfMappingReferenceB from json.
@@ -3692,16 +3266,6 @@ func (s *OneOfMappingReferenceB) Decode(d *jx.Decoder) error {
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
-		case "infoType":
-			if err := func() error {
-				s.InfoType.Reset()
-				if err := s.InfoType.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"infoType\"")
-			}
 		case "code":
 			if err := func() error {
 				s.Code.Reset()
@@ -3746,12 +3310,8 @@ func (s *OneOfMappingReferenceB) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneOfMappingReferenceBData) Encode(e *jx.Writer) {
+func (s OneOfMappingReferenceBData) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -3777,7 +3337,7 @@ func (s *OneOfMappingReferenceBData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneOfUUIDAndIntEnum as json.
-func (s OneOfUUIDAndIntEnum) Encode(e *jx.Writer) {
+func (s OneOfUUIDAndIntEnum) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case UUIDOneOfUUIDAndIntEnum:
 		json.EncodeUUID(e, s.UUID)
@@ -3812,7 +3372,7 @@ func (s *OneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneOfUUIDAndIntEnum1 as json.
-func (s OneOfUUIDAndIntEnum1) Encode(e *jx.Writer) {
+func (s OneOfUUIDAndIntEnum1) Encode(e *jx.Encoder) {
 	e.Int(int(s))
 }
 
@@ -3831,7 +3391,7 @@ func (s *OneOfUUIDAndIntEnum1) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneVariantHasNoUniqueFields as json.
-func (s OneVariantHasNoUniqueFields) Encode(e *jx.Writer) {
+func (s OneVariantHasNoUniqueFields) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case OneVariantHasNoUniqueFields0OneVariantHasNoUniqueFields:
 		s.OneVariantHasNoUniqueFields0.Encode(e)
@@ -3885,34 +3445,22 @@ func (s *OneVariantHasNoUniqueFields) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneVariantHasNoUniqueFields0) Encode(e *jx.Writer) {
+func (s OneVariantHasNoUniqueFields0) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"a\"" + ":")
+		e.FieldStart("a")
 		e.Str(s.A)
 	}
 	{
 		if s.B.Set {
-			e.Comma()
-		}
-		if s.B.Set {
-			e.RawStr("\"b\"" + ":")
+			e.FieldStart("b")
 			s.B.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"c\"" + ":")
+		e.FieldStart("c")
 		e.Str(s.C)
 	}
 	e.ObjEnd()
@@ -4011,42 +3559,27 @@ func (s *OneVariantHasNoUniqueFields0) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s OneVariantHasNoUniqueFields1) Encode(e *jx.Writer) {
+func (s OneVariantHasNoUniqueFields1) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"a\"" + ":")
+		e.FieldStart("a")
 		e.Str(s.A)
 	}
 	{
 		if s.B.Set {
-			e.Comma()
-		}
-		if s.B.Set {
-			e.RawStr("\"b\"" + ":")
+			e.FieldStart("b")
 			s.B.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"c\"" + ":")
+		e.FieldStart("c")
 		e.Str(s.C)
 	}
 	{
 		if s.D.Set {
-			e.Comma()
-		}
-		if s.D.Set {
-			e.RawStr("\"d\"" + ":")
+			e.FieldStart("d")
 			s.D.Encode(e)
 		}
 	}
@@ -4157,7 +3690,7 @@ func (s *OneVariantHasNoUniqueFields1) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes AnyOfTest as json.
-func (o OptAnyOfTest) Encode(e *jx.Writer) {
+func (o OptAnyOfTest) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4177,7 +3710,7 @@ func (o *OptAnyOfTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes AnyTest as json.
-func (o OptAnyTest) Encode(e *jx.Writer) {
+func (o OptAnyTest) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4197,7 +3730,7 @@ func (o *OptAnyTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes AnyTestAnyMap as json.
-func (o OptAnyTestAnyMap) Encode(e *jx.Writer) {
+func (o OptAnyTestAnyMap) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4218,7 +3751,7 @@ func (o *OptAnyTestAnyMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ArrayTest as json.
-func (o OptArrayTest) Encode(e *jx.Writer) {
+func (o OptArrayTest) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4238,7 +3771,7 @@ func (o *OptArrayTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Data as json.
-func (o OptData) Encode(e *jx.Writer) {
+func (o OptData) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4258,7 +3791,7 @@ func (o *OptData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptDate) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptDate) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -4280,7 +3813,7 @@ func (o *OptDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes time.Time as json.
-func (o OptDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptDateTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -4302,7 +3835,7 @@ func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 }
 
 // Encode encodes DefaultTestEnum as json.
-func (o OptDefaultTestEnum) Encode(e *jx.Writer) {
+func (o OptDefaultTestEnum) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4322,7 +3855,7 @@ func (o *OptDefaultTestEnum) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Duration as json.
-func (o OptDuration) Encode(e *jx.Writer) {
+func (o OptDuration) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4344,7 +3877,7 @@ func (o *OptDuration) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptFloat64) Encode(e *jx.Writer) {
+func (o OptFloat64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4366,7 +3899,7 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ID as json.
-func (o OptID) Encode(e *jx.Writer) {
+func (o OptID) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4386,7 +3919,7 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptIP) Encode(e *jx.Writer) {
+func (o OptIP) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4408,7 +3941,7 @@ func (o *OptIP) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptIPv4) Encode(e *jx.Writer) {
+func (o OptIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4430,7 +3963,7 @@ func (o *OptIPv4) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptIPv6) Encode(e *jx.Writer) {
+func (o OptIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4452,7 +3985,7 @@ func (o *OptIPv6) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Writer) {
+func (o OptInt) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4474,7 +4007,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o OptInt32) Encode(e *jx.Writer) {
+func (o OptInt32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4496,7 +4029,7 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MapWithProperties as json.
-func (o OptMapWithProperties) Encode(e *jx.Writer) {
+func (o OptMapWithProperties) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4516,7 +4049,7 @@ func (o *OptMapWithProperties) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MapWithPropertiesInlinedSubMap as json.
-func (o OptMapWithPropertiesInlinedSubMap) Encode(e *jx.Writer) {
+func (o OptMapWithPropertiesInlinedSubMap) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4537,7 +4070,7 @@ func (o *OptMapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes MaxPropertiesTest as json.
-func (o OptMaxPropertiesTest) Encode(e *jx.Writer) {
+func (o OptMaxPropertiesTest) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4557,7 +4090,7 @@ func (o *OptMaxPropertiesTest) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptNilString) Encode(e *jx.Writer) {
+func (o OptNilString) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4595,7 +4128,7 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes []string as json.
-func (o OptNilStringArray) Encode(e *jx.Writer) {
+func (o OptNilStringArray) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4604,16 +4137,8 @@ func (o OptNilStringArray) Encode(e *jx.Writer) {
 		return
 	}
 	e.ArrStart()
-	if len(o.Value) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := o.Value[0]
-			e.Str(elem)
-		}
-		for _, elem := range o.Value[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range o.Value {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 }
@@ -4653,7 +4178,7 @@ func (o *OptNilStringArray) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes NullableEnums as json.
-func (o OptNullableEnums) Encode(e *jx.Writer) {
+func (o OptNullableEnums) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4673,7 +4198,7 @@ func (o *OptNullableEnums) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneOfMappingAny as json.
-func (o OptOneOfMappingAny) Encode(e *jx.Writer) {
+func (o OptOneOfMappingAny) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4693,7 +4218,7 @@ func (o *OptOneOfMappingAny) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneOfMappingReference as json.
-func (o OptOneOfMappingReference) Encode(e *jx.Writer) {
+func (o OptOneOfMappingReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4713,7 +4238,7 @@ func (o *OptOneOfMappingReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes OneOfUUIDAndIntEnum as json.
-func (o OptOneOfUUIDAndIntEnum) Encode(e *jx.Writer) {
+func (o OptOneOfUUIDAndIntEnum) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4733,7 +4258,7 @@ func (o *OptOneOfUUIDAndIntEnum) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Pet as json.
-func (o OptPet) Encode(e *jx.Writer) {
+func (o OptPet) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4753,7 +4278,7 @@ func (o *OptPet) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetName as json.
-func (o OptPetName) Encode(e *jx.Writer) {
+func (o OptPetName) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4773,7 +4298,7 @@ func (o *OptPetName) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetType as json.
-func (o OptPetType) Encode(e *jx.Writer) {
+func (o OptPetType) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4793,7 +4318,7 @@ func (o *OptPetType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Writer) {
+func (o OptString) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4815,7 +4340,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes StringMap as json.
-func (o OptStringMap) Encode(e *jx.Writer) {
+func (o OptStringMap) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4836,7 +4361,7 @@ func (o *OptStringMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes StringStringMap as json.
-func (o OptStringStringMap) Encode(e *jx.Writer) {
+func (o OptStringStringMap) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4857,7 +4382,7 @@ func (o *OptStringStringMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -4879,7 +4404,7 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes url.URL as json.
-func (o OptURI) Encode(e *jx.Writer) {
+func (o OptURI) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4901,7 +4426,7 @@ func (o *OptURI) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes uuid.UUID as json.
-func (o OptUUID) Encode(e *jx.Writer) {
+func (o OptUUID) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4923,7 +4448,7 @@ func (o *OptUUID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ValidationStringMap as json.
-func (o OptValidationStringMap) Encode(e *jx.Writer) {
+func (o OptValidationStringMap) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -4944,300 +4469,186 @@ func (o *OptValidationStringMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Pet) Encode(e *jx.Writer) {
+func (s Pet) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Primary != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Primary != nil {
-			e.RawStr("\"primary\"" + ":")
+			e.FieldStart("primary")
 			s.Primary.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"id\"" + ":")
+		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"unique_id\"" + ":")
+		e.FieldStart("unique_id")
 		json.EncodeUUID(e, s.UniqueID)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Type.Set {
-			e.Comma()
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		s.Kind.Encode(e)
 	}
 	{
 		if s.Tag.Set {
-			e.Comma()
-		}
-		if s.Tag.Set {
-			e.RawStr("\"tag\"" + ":")
+			e.FieldStart("tag")
 			s.Tag.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"ip\"" + ":")
+		e.FieldStart("ip")
 		json.EncodeIP(e, s.IP)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"ip_v4\"" + ":")
+		e.FieldStart("ip_v4")
 		json.EncodeIP(e, s.IPV4)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"ip_v6\"" + ":")
+		e.FieldStart("ip_v6")
 		json.EncodeIP(e, s.IPV6)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"uri\"" + ":")
+		e.FieldStart("uri")
 		json.EncodeURI(e, s.URI)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"birthday\"" + ":")
+		e.FieldStart("birthday")
 		json.EncodeDate(e, s.Birthday)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"rate\"" + ":")
+		e.FieldStart("rate")
 		json.EncodeDuration(e, s.Rate)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"nickname\"" + ":")
+		e.FieldStart("nickname")
 		s.Nickname.Encode(e)
 	}
 	{
 		if s.NullStr.Set {
-			e.Comma()
-		}
-		if s.NullStr.Set {
-			e.RawStr("\"nullStr\"" + ":")
+			e.FieldStart("nullStr")
 			s.NullStr.Encode(e)
 		}
 	}
 	{
 		if s.Friends != nil {
-			e.Comma()
-		}
-		if s.Friends != nil {
-			e.RawStr("\"friends\"" + ":")
+			e.FieldStart("friends")
 			e.ArrStart()
-			if len(s.Friends) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Friends[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Friends[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Friends {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Next.Set {
-			e.Comma()
-		}
-		if s.Next.Set {
-			e.RawStr("\"next\"" + ":")
+			e.FieldStart("next")
 			s.Next.Encode(e)
 		}
 	}
 	{
 		if s.TestInteger1.Set {
-			e.Comma()
-		}
-		if s.TestInteger1.Set {
-			e.RawStr("\"testInteger1\"" + ":")
+			e.FieldStart("testInteger1")
 			s.TestInteger1.Encode(e)
 		}
 	}
 	{
 		if s.TestFloat1.Set {
-			e.Comma()
-		}
-		if s.TestFloat1.Set {
-			e.RawStr("\"testFloat1\"" + ":")
+			e.FieldStart("testFloat1")
 			s.TestFloat1.Encode(e)
 		}
 	}
 	{
 		if s.TestArray1 != nil {
-			e.Comma()
-		}
-		if s.TestArray1 != nil {
-			e.RawStr("\"testArray1\"" + ":")
+			e.FieldStart("testArray1")
 			e.ArrStart()
-			if len(s.TestArray1) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.TestArray1[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.TestArray1 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.TestArray1[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.TestArray2.Set {
-			e.Comma()
-		}
-		if s.TestArray2.Set {
-			e.RawStr("\"testArray2\"" + ":")
+			e.FieldStart("testArray2")
 			s.TestArray2.Encode(e)
 		}
 	}
 	{
 		if s.TestMap.Set {
-			e.Comma()
-		}
-		if s.TestMap.Set {
-			e.RawStr("\"testMap\"" + ":")
+			e.FieldStart("testMap")
 			s.TestMap.Encode(e)
 		}
 	}
 	{
 		if s.TestMapWithProps.Set {
-			e.Comma()
-		}
-		if s.TestMapWithProps.Set {
-			e.RawStr("\"testMapWithProps\"" + ":")
+			e.FieldStart("testMapWithProps")
 			s.TestMapWithProps.Encode(e)
 		}
 	}
 	{
 		if s.TestAny.Set {
-			e.Comma()
-		}
-		if s.TestAny.Set {
-			e.RawStr("\"testAny\"" + ":")
+			e.FieldStart("testAny")
 			s.TestAny.Encode(e)
 		}
 	}
 	{
 		if s.TestAnyOf.Set {
-			e.Comma()
-		}
-		if s.TestAnyOf.Set {
-			e.RawStr("\"testAnyOf\"" + ":")
+			e.FieldStart("testAnyOf")
 			s.TestAnyOf.Encode(e)
 		}
 	}
 	{
 		if s.TestMaxProperties.Set {
-			e.Comma()
-		}
-		if s.TestMaxProperties.Set {
-			e.RawStr("\"testMaxProperties\"" + ":")
+			e.FieldStart("testMaxProperties")
 			s.TestMaxProperties.Encode(e)
 		}
 	}
 	{
 		if s.TestDate.Set {
-			e.Comma()
-		}
-		if s.TestDate.Set {
-			e.RawStr("\"testDate\"" + ":")
+			e.FieldStart("testDate")
 			s.TestDate.Encode(e, json.EncodeDate)
 		}
 	}
 	{
 		if s.TestDuration.Set {
-			e.Comma()
-		}
-		if s.TestDuration.Set {
-			e.RawStr("\"testDuration\"" + ":")
+			e.FieldStart("testDuration")
 			s.TestDuration.Encode(e)
 		}
 	}
 	{
 		if s.TestTime.Set {
-			e.Comma()
-		}
-		if s.TestTime.Set {
-			e.RawStr("\"testTime\"" + ":")
+			e.FieldStart("testTime")
 			s.TestTime.Encode(e, json.EncodeTime)
 		}
 	}
 	{
 		if s.TestDateTime.Set {
-			e.Comma()
-		}
-		if s.TestDateTime.Set {
-			e.RawStr("\"testDateTime\"" + ":")
+			e.FieldStart("testDateTime")
 			s.TestDateTime.Encode(e, json.EncodeDateTime)
 		}
 	}
@@ -5677,19 +5088,11 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s PetGetDef) Encode(e *jx.Writer) {
+func (s PetGetDef) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"message\"" + ":")
+		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	e.ObjEnd()
@@ -5764,7 +5167,7 @@ func (s *PetGetDef) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetKind as json.
-func (s PetKind) Encode(e *jx.Writer) {
+func (s PetKind) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
@@ -5791,7 +5194,7 @@ func (s *PetKind) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetName as json.
-func (s PetName) Encode(e *jx.Writer) {
+func (s PetName) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
@@ -5817,7 +5220,7 @@ func (s *PetName) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes PetType as json.
-func (s PetType) Encode(e *jx.Writer) {
+func (s PetType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
@@ -5844,19 +5247,11 @@ func (s *PetType) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes RecursiveArray as json.
-func (s RecursiveArray) Encode(e *jx.Writer) {
+func (s RecursiveArray) Encode(e *jx.Encoder) {
 	unwrapped := []RecursiveArray(s)
 	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
+	for _, elem := range unwrapped {
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 }
@@ -5888,33 +5283,18 @@ func (s *RecursiveArray) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s RecursiveMap) Encode(e *jx.Writer) {
+func (s RecursiveMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		{
 			if s.OptionalRecursiveField != nil {
-				if !first {
-					e.Comma()
-				}
-				first = false
-			}
-			if s.OptionalRecursiveField != nil {
-				e.RawStr("\"optional_recursive_field\"" + ":")
+				e.FieldStart("optional_recursive_field")
 				s.OptionalRecursiveField.Encode(e)
 			}
 		}
 	}
 	for k, elem := range s.AdditionalProps {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -5971,19 +5351,10 @@ func (s *RecursiveMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StringMap) Encode(e *jx.Writer) {
+func (s StringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -6024,19 +5395,10 @@ func (s StringMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s StringStringMap) Encode(e *jx.Writer) {
+func (s StringStringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -6076,25 +5438,16 @@ func (s StringStringMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestFloatValidation) Encode(e *jx.Writer) {
+func (s TestFloatValidation) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"minmax\"" + ":")
+		e.FieldStart("minmax")
 		e.Float64(s.Minmax)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"multipleOf\"" + ":")
+		e.FieldStart("multipleOf")
 		e.Float64(s.MultipleOf)
 	}
 	e.ObjEnd()
@@ -6182,37 +5535,26 @@ func (s *TestFloatValidation) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestObjectQueryParameterOK) Encode(e *jx.Writer) {
+func (s TestObjectQueryParameterOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"style\"" + ":")
+		e.FieldStart("style")
 		e.Str(s.Style)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"min\"" + ":")
+		e.FieldStart("min")
 		e.Int(s.Min)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"max\"" + ":")
+		e.FieldStart("max")
 		e.Int(s.Max)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"filter\"" + ":")
+		e.FieldStart("filter")
 		e.Str(s.Filter)
 	}
 	e.ObjEnd()
@@ -6326,19 +5668,10 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s ValidationStringMap) Encode(e *jx.Writer) {
+func (s ValidationStringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}

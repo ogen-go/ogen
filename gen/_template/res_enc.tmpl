@@ -66,8 +66,8 @@ w.WriteHeader({{ $.StatusCode }})
 {{- if $.NoContent }}{{- /* Encode content */}}
 return nil
 {{- else if $.ContentType.JSON }}
-e := jx.GetWriter()
-defer jx.PutWriter(e)
+e := jx.GetEncoder()
+defer jx.PutEncoder(e)
 {{ template "json/enc" res_elem $ }}
 if _, err := e.WriteTo(w); err != nil {
 	return errors.Wrap(err, "write")

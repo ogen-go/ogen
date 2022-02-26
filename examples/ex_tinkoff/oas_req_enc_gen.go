@@ -70,40 +70,40 @@ var (
 	_ = codes.Unset
 )
 
-func encodeOrdersLimitOrderPostRequestJSON(req LimitOrderRequest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrdersLimitOrderPostRequestJSON(req LimitOrderRequest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeOrdersMarketOrderPostRequestJSON(req MarketOrderRequest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeOrdersMarketOrderPostRequestJSON(req MarketOrderRequest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSandboxCurrenciesBalancePostRequestJSON(req SandboxSetCurrencyBalanceRequest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSandboxCurrenciesBalancePostRequestJSON(req SandboxSetCurrencyBalanceRequest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSandboxPositionsBalancePostRequestJSON(req SandboxSetPositionBalanceRequest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSandboxPositionsBalancePostRequestJSON(req SandboxSetPositionBalanceRequest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSandboxRegisterPostRequestJSON(req OptSandboxRegisterRequest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSandboxRegisterPostRequestJSON(req OptSandboxRegisterRequest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}

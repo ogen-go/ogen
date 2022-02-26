@@ -1,16 +1,26 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-{{- define "json/encoders_sum" }}
+{{- define "json/encoders_sum" }}{{ $d := $.JSON.Sum -}}
 // Encode encodes {{ $.Name }} as json.
-func (s {{ $.Name }}) Encode(e *jx.Writer) {
+func (s {{ $.Name }}) Encode(e *jx.Encoder) {
+	{{- if $d.Discriminator -}}
+	switch s.Type {
+	{{- range $m := $.SumSpec.Mapping }}
+	case {{ $m.Type.Name }}{{ $.Name }}:
+		e.FieldStart({{ quote $.SumSpec.Discriminator }})
+		e.Str({{ quote $m.Key }})
+		{{- template "json/enc" elem $m.Type (printf "s.%s" $m.Type.Name) -}}
+	{{- end }}
+	}
+	{{- else }}
 	switch s.Type {
 	{{- range $s := $.SumOf }}
 	case {{ $s.Name }}{{ $.Name }}:
 		{{- template "json/enc" elem $s (printf "s.%s" $s.Name) -}}
 	{{- end }}
 	}
+    {{- end }}
 }
 
-{{ $d := $.JSON.Sum -}}
 // Decode decodes {{ $.Name }} from json.
 func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
@@ -48,7 +58,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 				switch typ {
 				{{- range $m:= $.SumSpec.Mapping }}
 				case {{ quote $m.Key }}:
-					s.Type = {{ $m.Type }}{{ $.Name }}
+					s.Type = {{ $m.Type.Name }}{{ $.Name }}
 					found = true
 				{{- end }}
 				default:

@@ -71,25 +71,16 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Writer) {
+func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"code\"" + ":")
+		e.FieldStart("code")
 		e.Int32(s.Code)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"message\"" + ":")
+		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	e.ObjEnd()
@@ -177,7 +168,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Writer) {
+func (o OptString) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -199,33 +190,21 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s Pet) Encode(e *jx.Writer) {
+func (s Pet) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"id\"" + ":")
+		e.FieldStart("id")
 		e.Int64(s.ID)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Tag.Set {
-			e.Comma()
-		}
-		if s.Tag.Set {
-			e.RawStr("\"tag\"" + ":")
+			e.FieldStart("tag")
 			s.Tag.Encode(e)
 		}
 	}
@@ -325,19 +304,11 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes Pets as json.
-func (s Pets) Encode(e *jx.Writer) {
+func (s Pets) Encode(e *jx.Encoder) {
 	unwrapped := []Pet(s)
 	e.ArrStart()
-	if len(unwrapped) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := unwrapped[0]
-			elem.Encode(e)
-		}
-		for _, elem := range unwrapped[1:] {
-			e.Comma()
-			elem.Encode(e)
-		}
+	for _, elem := range unwrapped {
+		elem.Encode(e)
 	}
 	e.ArrEnd()
 }

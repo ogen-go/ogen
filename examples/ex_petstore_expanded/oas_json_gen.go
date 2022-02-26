@@ -71,25 +71,16 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Writer) {
+func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"code\"" + ":")
+		e.FieldStart("code")
 		e.Int32(s.Code)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"message\"" + ":")
+		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	e.ObjEnd()

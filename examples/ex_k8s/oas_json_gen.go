@@ -71,7 +71,7 @@ var (
 )
 
 // Encode encodes GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON as json.
-func (s GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Encode(e *jx.Writer) {
+func (s GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
@@ -97,123 +97,75 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Decode(d *
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"admissionReviewVersions\"" + ":")
+		e.FieldStart("admissionReviewVersions")
 		e.ArrStart()
-		if len(s.AdmissionReviewVersions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.AdmissionReviewVersions[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.AdmissionReviewVersions[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.AdmissionReviewVersions {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"clientConfig\"" + ":")
+		e.FieldStart("clientConfig")
 		s.ClientConfig.Encode(e)
 	}
 	{
 		if s.FailurePolicy.Set {
-			e.Comma()
-		}
-		if s.FailurePolicy.Set {
-			e.RawStr("\"failurePolicy\"" + ":")
+			e.FieldStart("failurePolicy")
 			s.FailurePolicy.Encode(e)
 		}
 	}
 	{
 		if s.MatchPolicy.Set {
-			e.Comma()
-		}
-		if s.MatchPolicy.Set {
-			e.RawStr("\"matchPolicy\"" + ":")
+			e.FieldStart("matchPolicy")
 			s.MatchPolicy.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.NamespaceSelector.Set {
-			e.Comma()
-		}
-		if s.NamespaceSelector.Set {
-			e.RawStr("\"namespaceSelector\"" + ":")
+			e.FieldStart("namespaceSelector")
 			s.NamespaceSelector.Encode(e)
 		}
 	}
 	{
 		if s.ObjectSelector.Set {
-			e.Comma()
-		}
-		if s.ObjectSelector.Set {
-			e.RawStr("\"objectSelector\"" + ":")
+			e.FieldStart("objectSelector")
 			s.ObjectSelector.Encode(e)
 		}
 	}
 	{
 		if s.ReinvocationPolicy.Set {
-			e.Comma()
-		}
-		if s.ReinvocationPolicy.Set {
-			e.RawStr("\"reinvocationPolicy\"" + ":")
+			e.FieldStart("reinvocationPolicy")
 			s.ReinvocationPolicy.Encode(e)
 		}
 	}
 	{
 		if s.Rules != nil {
-			e.Comma()
-		}
-		if s.Rules != nil {
-			e.RawStr("\"rules\"" + ":")
+			e.FieldStart("rules")
 			e.ArrStart()
-			if len(s.Rules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Rules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Rules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Rules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"sideEffects\"" + ":")
+		e.FieldStart("sideEffects")
 		e.Str(s.SideEffects)
 	}
 	{
 		if s.TimeoutSeconds.Set {
-			e.Comma()
-		}
-		if s.TimeoutSeconds.Set {
-			e.RawStr("\"timeoutSeconds\"" + ":")
+			e.FieldStart("timeoutSeconds")
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
@@ -419,68 +371,32 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Webhooks != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Webhooks != nil {
-			e.RawStr("\"webhooks\"" + ":")
+			e.FieldStart("webhooks")
 			e.ArrStart()
-			if len(s.Webhooks) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Webhooks[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Webhooks[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Webhooks {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -562,60 +478,32 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -730,117 +618,51 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiGroups != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiGroups != nil {
-			e.RawStr("\"apiGroups\"" + ":")
+			e.FieldStart("apiGroups")
 			e.ArrStart()
-			if len(s.ApiGroups) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ApiGroups[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ApiGroups[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ApiGroups {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ApiVersions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersions != nil {
-			e.RawStr("\"apiVersions\"" + ":")
+			e.FieldStart("apiVersions")
 			e.ArrStart()
-			if len(s.ApiVersions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ApiVersions[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ApiVersions[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ApiVersions {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Operations != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Operations != nil {
-			e.RawStr("\"operations\"" + ":")
+			e.FieldStart("operations")
 			e.ArrStart()
-			if len(s.Operations) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Operations[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Operations[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Operations {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Resources != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resources != nil {
-			e.RawStr("\"resources\"" + ":")
+			e.FieldStart("resources")
 			e.ArrStart()
-			if len(s.Resources) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Resources[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Resources[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Resources {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Scope.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Scope.Set {
-			e.RawStr("\"scope\"" + ":")
+			e.FieldStart("scope")
 			s.Scope.Encode(e)
 		}
 	}
@@ -961,42 +783,27 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"namespace\"" + ":")
+		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
 	{
 		if s.Path.Set {
-			e.Comma()
-		}
-		if s.Path.Set {
-			e.RawStr("\"path\"" + ":")
+			e.FieldStart("path")
 			s.Path.Encode(e)
 		}
 	}
 	{
 		if s.Port.Set {
-			e.Comma()
-		}
-		if s.Port.Set {
-			e.RawStr("\"port\"" + ":")
+			e.FieldStart("port")
 			s.Port.Encode(e)
 		}
 	}
@@ -1107,114 +914,69 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"admissionReviewVersions\"" + ":")
+		e.FieldStart("admissionReviewVersions")
 		e.ArrStart()
-		if len(s.AdmissionReviewVersions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.AdmissionReviewVersions[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.AdmissionReviewVersions[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.AdmissionReviewVersions {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"clientConfig\"" + ":")
+		e.FieldStart("clientConfig")
 		s.ClientConfig.Encode(e)
 	}
 	{
 		if s.FailurePolicy.Set {
-			e.Comma()
-		}
-		if s.FailurePolicy.Set {
-			e.RawStr("\"failurePolicy\"" + ":")
+			e.FieldStart("failurePolicy")
 			s.FailurePolicy.Encode(e)
 		}
 	}
 	{
 		if s.MatchPolicy.Set {
-			e.Comma()
-		}
-		if s.MatchPolicy.Set {
-			e.RawStr("\"matchPolicy\"" + ":")
+			e.FieldStart("matchPolicy")
 			s.MatchPolicy.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.NamespaceSelector.Set {
-			e.Comma()
-		}
-		if s.NamespaceSelector.Set {
-			e.RawStr("\"namespaceSelector\"" + ":")
+			e.FieldStart("namespaceSelector")
 			s.NamespaceSelector.Encode(e)
 		}
 	}
 	{
 		if s.ObjectSelector.Set {
-			e.Comma()
-		}
-		if s.ObjectSelector.Set {
-			e.RawStr("\"objectSelector\"" + ":")
+			e.FieldStart("objectSelector")
 			s.ObjectSelector.Encode(e)
 		}
 	}
 	{
 		if s.Rules != nil {
-			e.Comma()
-		}
-		if s.Rules != nil {
-			e.RawStr("\"rules\"" + ":")
+			e.FieldStart("rules")
 			e.ArrStart()
-			if len(s.Rules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Rules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Rules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Rules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"sideEffects\"" + ":")
+		e.FieldStart("sideEffects")
 		e.Str(s.SideEffects)
 	}
 	{
 		if s.TimeoutSeconds.Set {
-			e.Comma()
-		}
-		if s.TimeoutSeconds.Set {
-			e.RawStr("\"timeoutSeconds\"" + ":")
+			e.FieldStart("timeoutSeconds")
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
@@ -1409,68 +1171,32 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Webhooks != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Webhooks != nil {
-			e.RawStr("\"webhooks\"" + ":")
+			e.FieldStart("webhooks")
 			e.ArrStart()
-			if len(s.Webhooks) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Webhooks[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Webhooks[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Webhooks {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -1552,60 +1278,32 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -1720,36 +1418,22 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Writer) {
+func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"caBundle\"" + ":")
+		e.FieldStart("caBundle")
 		e.Base64(s.CaBundle)
 	}
 	{
 		if s.Service.Set {
-			e.Comma()
-		}
-		if s.Service.Set {
-			e.RawStr("\"service\"" + ":")
+			e.FieldStart("service")
 			s.Service.Encode(e)
 		}
 	}
 	{
 		if s.URL.Set {
-			e.Comma()
-		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
+			e.FieldStart("url")
 			s.URL.Encode(e)
 		}
 	}
@@ -1813,57 +1497,27 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Writer) {
+func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiServerID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiServerID.Set {
-			e.RawStr("\"apiServerID\"" + ":")
+			e.FieldStart("apiServerID")
 			s.ApiServerID.Encode(e)
 		}
 	}
 	{
 		if s.DecodableVersions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DecodableVersions != nil {
-			e.RawStr("\"decodableVersions\"" + ":")
+			e.FieldStart("decodableVersions")
 			e.ArrStart()
-			if len(s.DecodableVersions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.DecodableVersions[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.DecodableVersions[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.DecodableVersions {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.EncodingVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EncodingVersion.Set {
-			e.RawStr("\"encodingVersion\"" + ":")
+			e.FieldStart("encodingVersion")
 			s.EncodingVersion.Encode(e)
 		}
 	}
@@ -1935,61 +1589,34 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Writer) {
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
 	e.ObjEnd()
@@ -2106,67 +1733,39 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"reason\"" + ":")
+		e.FieldStart("reason")
 		e.Str(s.Reason)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -2300,60 +1899,32 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Writer) {
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -2468,12 +2039,8 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -2499,68 +2066,30 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Decode(d *jx.Decod
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.CommonEncodingVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CommonEncodingVersion.Set {
-			e.RawStr("\"commonEncodingVersion\"" + ":")
+			e.FieldStart("commonEncodingVersion")
 			s.CommonEncodingVersion.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.StorageVersions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StorageVersions != nil {
-			e.RawStr("\"storageVersions\"" + ":")
+			e.FieldStart("storageVersions")
 			e.ArrStart()
-			if len(s.StorageVersions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.StorageVersions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.StorageVersions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.StorageVersions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -2638,67 +2167,35 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1ControllerRevision) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1ControllerRevision) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Data != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Data != nil {
-			e.RawStr("\"data\"" + ":")
+			e.FieldStart("data")
 			s.Data.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"revision\"" + ":")
+		e.FieldStart("revision")
 		e.Int64(s.Revision)
 	}
 	e.ObjEnd()
@@ -2819,60 +2316,32 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -2987,69 +2456,35 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DaemonSet) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DaemonSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -3134,61 +2569,34 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DaemonSetCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DaemonSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -3309,60 +2717,32 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -3477,57 +2857,33 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MinReadySeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinReadySeconds.Set {
-			e.RawStr("\"minReadySeconds\"" + ":")
+			e.FieldStart("minReadySeconds")
 			s.MinReadySeconds.Encode(e)
 		}
 	}
 	{
 		if s.RevisionHistoryLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RevisionHistoryLimit.Set {
-			e.RawStr("\"revisionHistoryLimit\"" + ":")
+			e.FieldStart("revisionHistoryLimit")
 			s.RevisionHistoryLimit.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"selector\"" + ":")
+		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"template\"" + ":")
+		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
 	{
 		if s.UpdateStrategy.Set {
-			e.Comma()
-		}
-		if s.UpdateStrategy.Set {
-			e.RawStr("\"updateStrategy\"" + ":")
+			e.FieldStart("updateStrategy")
 			s.UpdateStrategy.Encode(e)
 		}
 	}
@@ -3645,108 +3001,65 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.CollisionCount.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CollisionCount.Set {
-			e.RawStr("\"collisionCount\"" + ":")
+			e.FieldStart("collisionCount")
 			s.CollisionCount.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentNumberScheduled\"" + ":")
+		e.FieldStart("currentNumberScheduled")
 		e.Int32(s.CurrentNumberScheduled)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"desiredNumberScheduled\"" + ":")
+		e.FieldStart("desiredNumberScheduled")
 		e.Int32(s.DesiredNumberScheduled)
 	}
 	{
 		if s.NumberAvailable.Set {
-			e.Comma()
-		}
-		if s.NumberAvailable.Set {
-			e.RawStr("\"numberAvailable\"" + ":")
+			e.FieldStart("numberAvailable")
 			s.NumberAvailable.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"numberMisscheduled\"" + ":")
+		e.FieldStart("numberMisscheduled")
 		e.Int32(s.NumberMisscheduled)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"numberReady\"" + ":")
+		e.FieldStart("numberReady")
 		e.Int32(s.NumberReady)
 	}
 	{
 		if s.NumberUnavailable.Set {
-			e.Comma()
-		}
-		if s.NumberUnavailable.Set {
-			e.RawStr("\"numberUnavailable\"" + ":")
+			e.FieldStart("numberUnavailable")
 			s.NumberUnavailable.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
 	{
 		if s.UpdatedNumberScheduled.Set {
-			e.Comma()
-		}
-		if s.UpdatedNumberScheduled.Set {
-			e.RawStr("\"updatedNumberScheduled\"" + ":")
+			e.FieldStart("updatedNumberScheduled")
 			s.UpdatedNumberScheduled.Encode(e)
 		}
 	}
@@ -3935,33 +3248,17 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.RollingUpdate.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RollingUpdate.Set {
-			e.RawStr("\"rollingUpdate\"" + ":")
+			e.FieldStart("rollingUpdate")
 			s.RollingUpdate.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -4013,69 +3310,35 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1Deployment) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1Deployment) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -4160,73 +3423,40 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DeploymentCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DeploymentCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.LastUpdateTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastUpdateTime.Set {
-			e.RawStr("\"lastUpdateTime\"" + ":")
+			e.FieldStart("lastUpdateTime")
 			s.LastUpdateTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -4358,60 +3588,32 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -4526,94 +3728,52 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MinReadySeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinReadySeconds.Set {
-			e.RawStr("\"minReadySeconds\"" + ":")
+			e.FieldStart("minReadySeconds")
 			s.MinReadySeconds.Encode(e)
 		}
 	}
 	{
 		if s.Paused.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Paused.Set {
-			e.RawStr("\"paused\"" + ":")
+			e.FieldStart("paused")
 			s.Paused.Encode(e)
 		}
 	}
 	{
 		if s.ProgressDeadlineSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ProgressDeadlineSeconds.Set {
-			e.RawStr("\"progressDeadlineSeconds\"" + ":")
+			e.FieldStart("progressDeadlineSeconds")
 			s.ProgressDeadlineSeconds.Encode(e)
 		}
 	}
 	{
 		if s.Replicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Replicas.Set {
-			e.RawStr("\"replicas\"" + ":")
+			e.FieldStart("replicas")
 			s.Replicas.Encode(e)
 		}
 	}
 	{
 		if s.RevisionHistoryLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RevisionHistoryLimit.Set {
-			e.RawStr("\"revisionHistoryLimit\"" + ":")
+			e.FieldStart("revisionHistoryLimit")
 			s.RevisionHistoryLimit.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"selector\"" + ":")
+		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
 	{
 		if s.Strategy.Set {
-			e.Comma()
-		}
-		if s.Strategy.Set {
-			e.RawStr("\"strategy\"" + ":")
+			e.FieldStart("strategy")
 			s.Strategy.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"template\"" + ":")
+		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
 	e.ObjEnd()
@@ -4763,117 +3923,57 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AvailableReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AvailableReplicas.Set {
-			e.RawStr("\"availableReplicas\"" + ":")
+			e.FieldStart("availableReplicas")
 			s.AvailableReplicas.Encode(e)
 		}
 	}
 	{
 		if s.CollisionCount.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CollisionCount.Set {
-			e.RawStr("\"collisionCount\"" + ":")
+			e.FieldStart("collisionCount")
 			s.CollisionCount.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
 	{
 		if s.ReadyReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadyReplicas.Set {
-			e.RawStr("\"readyReplicas\"" + ":")
+			e.FieldStart("readyReplicas")
 			s.ReadyReplicas.Encode(e)
 		}
 	}
 	{
 		if s.Replicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Replicas.Set {
-			e.RawStr("\"replicas\"" + ":")
+			e.FieldStart("replicas")
 			s.Replicas.Encode(e)
 		}
 	}
 	{
 		if s.UnavailableReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UnavailableReplicas.Set {
-			e.RawStr("\"unavailableReplicas\"" + ":")
+			e.FieldStart("unavailableReplicas")
 			s.UnavailableReplicas.Encode(e)
 		}
 	}
 	{
 		if s.UpdatedReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UpdatedReplicas.Set {
-			e.RawStr("\"updatedReplicas\"" + ":")
+			e.FieldStart("updatedReplicas")
 			s.UpdatedReplicas.Encode(e)
 		}
 	}
@@ -4998,33 +4098,17 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.RollingUpdate.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RollingUpdate.Set {
-			e.RawStr("\"rollingUpdate\"" + ":")
+			e.FieldStart("rollingUpdate")
 			s.RollingUpdate.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -5076,69 +4160,35 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1ReplicaSet) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1ReplicaSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -5223,61 +4273,34 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1ReplicaSetCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1ReplicaSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -5398,60 +4421,32 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -5566,51 +4561,28 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MinReadySeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinReadySeconds.Set {
-			e.RawStr("\"minReadySeconds\"" + ":")
+			e.FieldStart("minReadySeconds")
 			s.MinReadySeconds.Encode(e)
 		}
 	}
 	{
 		if s.Replicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Replicas.Set {
-			e.RawStr("\"replicas\"" + ":")
+			e.FieldStart("replicas")
 			s.Replicas.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"selector\"" + ":")
+		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
 	{
 		if s.Template.Set {
-			e.Comma()
-		}
-		if s.Template.Set {
-			e.RawStr("\"template\"" + ":")
+			e.FieldStart("template")
 			s.Template.Encode(e)
 		}
 	}
@@ -5717,91 +4689,45 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AvailableReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AvailableReplicas.Set {
-			e.RawStr("\"availableReplicas\"" + ":")
+			e.FieldStart("availableReplicas")
 			s.AvailableReplicas.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.FullyLabeledReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FullyLabeledReplicas.Set {
-			e.RawStr("\"fullyLabeledReplicas\"" + ":")
+			e.FieldStart("fullyLabeledReplicas")
 			s.FullyLabeledReplicas.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
 	{
 		if s.ReadyReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadyReplicas.Set {
-			e.RawStr("\"readyReplicas\"" + ":")
+			e.FieldStart("readyReplicas")
 			s.ReadyReplicas.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"replicas\"" + ":")
+		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
 	e.ObjEnd()
@@ -5938,33 +4864,17 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MaxSurge.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxSurge.Set {
-			e.RawStr("\"maxSurge\"" + ":")
+			e.FieldStart("maxSurge")
 			s.MaxSurge.Encode(e)
 		}
 	}
 	{
 		if s.MaxUnavailable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxUnavailable.Set {
-			e.RawStr("\"maxUnavailable\"" + ":")
+			e.FieldStart("maxUnavailable")
 			s.MaxUnavailable.Encode(e)
 		}
 	}
@@ -6016,33 +4926,17 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MaxSurge.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxSurge.Set {
-			e.RawStr("\"maxSurge\"" + ":")
+			e.FieldStart("maxSurge")
 			s.MaxSurge.Encode(e)
 		}
 	}
 	{
 		if s.MaxUnavailable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxUnavailable.Set {
-			e.RawStr("\"maxUnavailable\"" + ":")
+			e.FieldStart("maxUnavailable")
 			s.MaxUnavailable.Encode(e)
 		}
 	}
@@ -6094,21 +4988,11 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Partition.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Partition.Set {
-			e.RawStr("\"partition\"" + ":")
+			e.FieldStart("partition")
 			s.Partition.Encode(e)
 		}
 	}
@@ -6149,69 +5033,35 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1StatefulSet) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1StatefulSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -6296,61 +5146,34 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1StatefulSetCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1StatefulSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -6471,60 +5294,32 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -6639,107 +5434,59 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MinReadySeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinReadySeconds.Set {
-			e.RawStr("\"minReadySeconds\"" + ":")
+			e.FieldStart("minReadySeconds")
 			s.MinReadySeconds.Encode(e)
 		}
 	}
 	{
 		if s.PodManagementPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodManagementPolicy.Set {
-			e.RawStr("\"podManagementPolicy\"" + ":")
+			e.FieldStart("podManagementPolicy")
 			s.PodManagementPolicy.Encode(e)
 		}
 	}
 	{
 		if s.Replicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Replicas.Set {
-			e.RawStr("\"replicas\"" + ":")
+			e.FieldStart("replicas")
 			s.Replicas.Encode(e)
 		}
 	}
 	{
 		if s.RevisionHistoryLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RevisionHistoryLimit.Set {
-			e.RawStr("\"revisionHistoryLimit\"" + ":")
+			e.FieldStart("revisionHistoryLimit")
 			s.RevisionHistoryLimit.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"selector\"" + ":")
+		e.FieldStart("selector")
 		s.Selector.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"serviceName\"" + ":")
+		e.FieldStart("serviceName")
 		e.Str(s.ServiceName)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"template\"" + ":")
+		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
 	{
 		if s.UpdateStrategy.Set {
-			e.Comma()
-		}
-		if s.UpdateStrategy.Set {
-			e.RawStr("\"updateStrategy\"" + ":")
+			e.FieldStart("updateStrategy")
 			s.UpdateStrategy.Encode(e)
 		}
 	}
 	{
 		if s.VolumeClaimTemplates != nil {
-			e.Comma()
-		}
-		if s.VolumeClaimTemplates != nil {
-			e.RawStr("\"volumeClaimTemplates\"" + ":")
+			e.FieldStart("volumeClaimTemplates")
 			e.ArrStart()
-			if len(s.VolumeClaimTemplates) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumeClaimTemplates[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.VolumeClaimTemplates[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.VolumeClaimTemplates {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -6912,108 +5659,67 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"availableReplicas\"" + ":")
+		e.FieldStart("availableReplicas")
 		e.Int32(s.AvailableReplicas)
 	}
 	{
 		if s.CollisionCount.Set {
-			e.Comma()
-		}
-		if s.CollisionCount.Set {
-			e.RawStr("\"collisionCount\"" + ":")
+			e.FieldStart("collisionCount")
 			s.CollisionCount.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			e.Comma()
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.CurrentReplicas.Set {
-			e.Comma()
-		}
-		if s.CurrentReplicas.Set {
-			e.RawStr("\"currentReplicas\"" + ":")
+			e.FieldStart("currentReplicas")
 			s.CurrentReplicas.Encode(e)
 		}
 	}
 	{
 		if s.CurrentRevision.Set {
-			e.Comma()
-		}
-		if s.CurrentRevision.Set {
-			e.RawStr("\"currentRevision\"" + ":")
+			e.FieldStart("currentRevision")
 			s.CurrentRevision.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
 	{
 		if s.ReadyReplicas.Set {
-			e.Comma()
-		}
-		if s.ReadyReplicas.Set {
-			e.RawStr("\"readyReplicas\"" + ":")
+			e.FieldStart("readyReplicas")
 			s.ReadyReplicas.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"replicas\"" + ":")
+		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
 	{
 		if s.UpdateRevision.Set {
-			e.Comma()
-		}
-		if s.UpdateRevision.Set {
-			e.RawStr("\"updateRevision\"" + ":")
+			e.FieldStart("updateRevision")
 			s.UpdateRevision.Encode(e)
 		}
 	}
 	{
 		if s.UpdatedReplicas.Set {
-			e.Comma()
-		}
-		if s.UpdatedReplicas.Set {
-			e.RawStr("\"updatedReplicas\"" + ":")
+			e.FieldStart("updatedReplicas")
 			s.UpdatedReplicas.Encode(e)
 		}
 	}
@@ -7198,33 +5904,17 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Writer) {
+func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.RollingUpdate.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RollingUpdate.Set {
-			e.RawStr("\"rollingUpdate\"" + ":")
+			e.FieldStart("rollingUpdate")
 			s.RollingUpdate.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -7276,37 +5966,22 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -7405,69 +6080,35 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -7552,60 +6193,32 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -7720,42 +6333,27 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"maxReplicas\"" + ":")
+		e.FieldStart("maxReplicas")
 		e.Int32(s.MaxReplicas)
 	}
 	{
 		if s.MinReplicas.Set {
-			e.Comma()
-		}
-		if s.MinReplicas.Set {
-			e.RawStr("\"minReplicas\"" + ":")
+			e.FieldStart("minReplicas")
 			s.MinReplicas.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"scaleTargetRef\"" + ":")
+		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
 	{
 		if s.TargetCPUUtilizationPercentage.Set {
-			e.Comma()
-		}
-		if s.TargetCPUUtilizationPercentage.Set {
-			e.RawStr("\"targetCPUUtilizationPercentage\"" + ":")
+			e.FieldStart("targetCPUUtilizationPercentage")
 			s.TargetCPUUtilizationPercentage.Encode(e)
 		}
 	}
@@ -7864,54 +6462,33 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.CurrentCPUUtilizationPercentage.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CurrentCPUUtilizationPercentage.Set {
-			e.RawStr("\"currentCPUUtilizationPercentage\"" + ":")
+			e.FieldStart("currentCPUUtilizationPercentage")
 			s.CurrentCPUUtilizationPercentage.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentReplicas\"" + ":")
+		e.FieldStart("currentReplicas")
 		e.Int32(s.CurrentReplicas)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"desiredReplicas\"" + ":")
+		e.FieldStart("desiredReplicas")
 		e.Int32(s.DesiredReplicas)
 	}
 	{
 		if s.LastScaleTime.Set {
-			e.Comma()
-		}
-		if s.LastScaleTime.Set {
-			e.RawStr("\"lastScaleTime\"" + ":")
+			e.FieldStart("lastScaleTime")
 			s.LastScaleTime.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
@@ -8033,69 +6610,35 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1Scale) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1Scale) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -8180,21 +6723,11 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Replicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Replicas.Set {
-			e.RawStr("\"replicas\"" + ":")
+			e.FieldStart("replicas")
 			s.Replicas.Encode(e)
 		}
 	}
@@ -8235,27 +6768,16 @@ func (s *IoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"replicas\"" + ":")
+		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
 	{
 		if s.Selector.Set {
-			e.Comma()
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
@@ -8342,42 +6864,27 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"container\"" + ":")
+		e.FieldStart("container")
 		e.Str(s.Container)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.TargetAverageUtilization.Set {
-			e.Comma()
-		}
-		if s.TargetAverageUtilization.Set {
-			e.RawStr("\"targetAverageUtilization\"" + ":")
+			e.FieldStart("targetAverageUtilization")
 			s.TargetAverageUtilization.Encode(e)
 		}
 	}
 	{
 		if s.TargetAverageValue.Set {
-			e.Comma()
-		}
-		if s.TargetAverageValue.Set {
-			e.RawStr("\"targetAverageValue\"" + ":")
+			e.FieldStart("targetAverageValue")
 			s.TargetAverageValue.Encode(e)
 		}
 	}
@@ -8488,40 +6995,27 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"container\"" + ":")
+		e.FieldStart("container")
 		e.Str(s.Container)
 	}
 	{
 		if s.CurrentAverageUtilization.Set {
-			e.Comma()
-		}
-		if s.CurrentAverageUtilization.Set {
-			e.RawStr("\"currentAverageUtilization\"" + ":")
+			e.FieldStart("currentAverageUtilization")
 			s.CurrentAverageUtilization.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"currentAverageValue\"" + ":")
+		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -8631,37 +7125,22 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -8760,45 +7239,28 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"metricName\"" + ":")
+		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
 	{
 		if s.MetricSelector.Set {
-			e.Comma()
-		}
-		if s.MetricSelector.Set {
-			e.RawStr("\"metricSelector\"" + ":")
+			e.FieldStart("metricSelector")
 			s.MetricSelector.Encode(e)
 		}
 	}
 	{
 		if s.TargetAverageValue.Set {
-			e.Comma()
-		}
-		if s.TargetAverageValue.Set {
-			e.RawStr("\"targetAverageValue\"" + ":")
+			e.FieldStart("targetAverageValue")
 			s.TargetAverageValue.Encode(e)
 		}
 	}
 	{
 		if s.TargetValue.Set {
-			e.Comma()
-		}
-		if s.TargetValue.Set {
-			e.RawStr("\"targetValue\"" + ":")
+			e.FieldStart("targetValue")
 			s.TargetValue.Encode(e)
 		}
 	}
@@ -8907,45 +7369,27 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.CurrentAverageValue.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CurrentAverageValue.Set {
-			e.RawStr("\"currentAverageValue\"" + ":")
+			e.FieldStart("currentAverageValue")
 			s.CurrentAverageValue.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentValue\"" + ":")
+		e.FieldStart("currentValue")
 		s.CurrentValue.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metricName\"" + ":")
+		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
 	{
 		if s.MetricSelector.Set {
-			e.Comma()
-		}
-		if s.MetricSelector.Set {
-			e.RawStr("\"metricSelector\"" + ":")
+			e.FieldStart("metricSelector")
 			s.MetricSelector.Encode(e)
 		}
 	}
@@ -9054,69 +7498,35 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -9201,61 +7611,34 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -9376,60 +7759,32 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -9544,55 +7899,32 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"maxReplicas\"" + ":")
+		e.FieldStart("maxReplicas")
 		e.Int32(s.MaxReplicas)
 	}
 	{
 		if s.Metrics != nil {
-			e.Comma()
-		}
-		if s.Metrics != nil {
-			e.RawStr("\"metrics\"" + ":")
+			e.FieldStart("metrics")
 			e.ArrStart()
-			if len(s.Metrics) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Metrics[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Metrics[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Metrics {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.MinReplicas.Set {
-			e.Comma()
-		}
-		if s.MinReplicas.Set {
-			e.RawStr("\"minReplicas\"" + ":")
+			e.FieldStart("minReplicas")
 			s.MinReplicas.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"scaleTargetRef\"" + ":")
+		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
 	e.ObjEnd()
@@ -9707,81 +8039,46 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"conditions\"" + ":")
+		e.FieldStart("conditions")
 		e.ArrStart()
-		if len(s.Conditions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Conditions[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Conditions[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Conditions {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.CurrentMetrics != nil {
-			e.Comma()
-		}
-		if s.CurrentMetrics != nil {
-			e.RawStr("\"currentMetrics\"" + ":")
+			e.FieldStart("currentMetrics")
 			e.ArrStart()
-			if len(s.CurrentMetrics) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.CurrentMetrics[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.CurrentMetrics[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.CurrentMetrics {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"currentReplicas\"" + ":")
+		e.FieldStart("currentReplicas")
 		e.Int32(s.CurrentReplicas)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"desiredReplicas\"" + ":")
+		e.FieldStart("desiredReplicas")
 		e.Int32(s.DesiredReplicas)
 	}
 	{
 		if s.LastScaleTime.Set {
-			e.Comma()
-		}
-		if s.LastScaleTime.Set {
-			e.RawStr("\"lastScaleTime\"" + ":")
+			e.FieldStart("lastScaleTime")
 			s.LastScaleTime.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
@@ -9929,79 +8226,41 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1MetricSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ContainerResource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerResource.Set {
-			e.RawStr("\"containerResource\"" + ":")
+			e.FieldStart("containerResource")
 			s.ContainerResource.Encode(e)
 		}
 	}
 	{
 		if s.External.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.External.Set {
-			e.RawStr("\"external\"" + ":")
+			e.FieldStart("external")
 			s.External.Encode(e)
 		}
 	}
 	{
 		if s.Object.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Object.Set {
-			e.RawStr("\"object\"" + ":")
+			e.FieldStart("object")
 			s.Object.Encode(e)
 		}
 	}
 	{
 		if s.Pods.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Pods.Set {
-			e.RawStr("\"pods\"" + ":")
+			e.FieldStart("pods")
 			s.Pods.Encode(e)
 		}
 	}
 	{
 		if s.Resource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resource.Set {
-			e.RawStr("\"resource\"" + ":")
+			e.FieldStart("resource")
 			s.Resource.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -10131,79 +8390,41 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1MetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ContainerResource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerResource.Set {
-			e.RawStr("\"containerResource\"" + ":")
+			e.FieldStart("containerResource")
 			s.ContainerResource.Encode(e)
 		}
 	}
 	{
 		if s.External.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.External.Set {
-			e.RawStr("\"external\"" + ":")
+			e.FieldStart("external")
 			s.External.Encode(e)
 		}
 	}
 	{
 		if s.Object.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Object.Set {
-			e.RawStr("\"object\"" + ":")
+			e.FieldStart("object")
 			s.Object.Encode(e)
 		}
 	}
 	{
 		if s.Pods.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Pods.Set {
-			e.RawStr("\"pods\"" + ":")
+			e.FieldStart("pods")
 			s.Pods.Encode(e)
 		}
 	}
 	{
 		if s.Resource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resource.Set {
-			e.RawStr("\"resource\"" + ":")
+			e.FieldStart("resource")
 			s.Resource.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -10333,52 +8554,33 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AverageValue.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AverageValue.Set {
-			e.RawStr("\"averageValue\"" + ":")
+			e.FieldStart("averageValue")
 			s.AverageValue.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"metricName\"" + ":")
+		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
 	{
 		if s.Selector.Set {
-			e.Comma()
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"target\"" + ":")
+		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"targetValue\"" + ":")
+		e.FieldStart("targetValue")
 		s.TargetValue.Encode(e)
 	}
 	e.ObjEnd()
@@ -10497,52 +8699,33 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AverageValue.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AverageValue.Set {
-			e.RawStr("\"averageValue\"" + ":")
+			e.FieldStart("averageValue")
 			s.AverageValue.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentValue\"" + ":")
+		e.FieldStart("currentValue")
 		s.CurrentValue.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metricName\"" + ":")
+		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
 	{
 		if s.Selector.Set {
-			e.Comma()
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"target\"" + ":")
+		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	e.ObjEnd()
@@ -10661,34 +8844,22 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"metricName\"" + ":")
+		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
 	{
 		if s.Selector.Set {
-			e.Comma()
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"targetAverageValue\"" + ":")
+		e.FieldStart("targetAverageValue")
 		s.TargetAverageValue.Encode(e)
 	}
 	e.ObjEnd()
@@ -10785,33 +8956,21 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentAverageValue\"" + ":")
+		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metricName\"" + ":")
+		e.FieldStart("metricName")
 		e.Str(s.MetricName)
 	}
 	{
 		if s.Selector.Set {
-			e.Comma()
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
@@ -10909,36 +9068,22 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.TargetAverageUtilization.Set {
-			e.Comma()
-		}
-		if s.TargetAverageUtilization.Set {
-			e.RawStr("\"targetAverageUtilization\"" + ":")
+			e.FieldStart("targetAverageUtilization")
 			s.TargetAverageUtilization.Encode(e)
 		}
 	}
 	{
 		if s.TargetAverageValue.Set {
-			e.Comma()
-		}
-		if s.TargetAverageValue.Set {
-			e.RawStr("\"targetAverageValue\"" + ":")
+			e.FieldStart("targetAverageValue")
 			s.TargetAverageValue.Encode(e)
 		}
 	}
@@ -11036,37 +9181,22 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.CurrentAverageUtilization.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CurrentAverageUtilization.Set {
-			e.RawStr("\"currentAverageUtilization\"" + ":")
+			e.FieldStart("currentAverageUtilization")
 			s.CurrentAverageUtilization.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentAverageValue\"" + ":")
+		e.FieldStart("currentAverageValue")
 		s.CurrentAverageValue.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -11163,31 +9293,21 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"container\"" + ":")
+		e.FieldStart("container")
 		e.Str(s.Container)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"target\"" + ":")
+		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	e.ObjEnd()
@@ -11286,31 +9406,21 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"container\"" + ":")
+		e.FieldStart("container")
 		e.Str(s.Container)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"current\"" + ":")
+		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -11409,37 +9519,22 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -11538,25 +9633,16 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"metric\"" + ":")
+		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"target\"" + ":")
+		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	e.ObjEnd()
@@ -11640,25 +9726,16 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"current\"" + ":")
+		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metric\"" + ":")
+		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	e.ObjEnd()
@@ -11742,31 +9819,21 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"periodSeconds\"" + ":")
+		e.FieldStart("periodSeconds")
 		e.Int32(s.PeriodSeconds)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"value\"" + ":")
+		e.FieldStart("value")
 		e.Int32(s.Value)
 	}
 	e.ObjEnd()
@@ -11867,57 +9934,27 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Policies != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Policies != nil {
-			e.RawStr("\"policies\"" + ":")
+			e.FieldStart("policies")
 			e.ArrStart()
-			if len(s.Policies) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Policies[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Policies[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Policies {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.SelectPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SelectPolicy.Set {
-			e.RawStr("\"selectPolicy\"" + ":")
+			e.FieldStart("selectPolicy")
 			s.SelectPolicy.Encode(e)
 		}
 	}
 	{
 		if s.StabilizationWindowSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StabilizationWindowSeconds.Set {
-			e.RawStr("\"stabilizationWindowSeconds\"" + ":")
+			e.FieldStart("stabilizationWindowSeconds")
 			s.StabilizationWindowSeconds.Encode(e)
 		}
 	}
@@ -11987,69 +10024,35 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -12134,33 +10137,17 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ScaleDown.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ScaleDown.Set {
-			e.RawStr("\"scaleDown\"" + ":")
+			e.FieldStart("scaleDown")
 			s.ScaleDown.Encode(e)
 		}
 	}
 	{
 		if s.ScaleUp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ScaleUp.Set {
-			e.RawStr("\"scaleUp\"" + ":")
+			e.FieldStart("scaleUp")
 			s.ScaleUp.Encode(e)
 		}
 	}
@@ -12212,61 +10199,34 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d *jx
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -12387,60 +10347,32 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -12555,67 +10487,38 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Behavior.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Behavior.Set {
-			e.RawStr("\"behavior\"" + ":")
+			e.FieldStart("behavior")
 			s.Behavior.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"maxReplicas\"" + ":")
+		e.FieldStart("maxReplicas")
 		e.Int32(s.MaxReplicas)
 	}
 	{
 		if s.Metrics != nil {
-			e.Comma()
-		}
-		if s.Metrics != nil {
-			e.RawStr("\"metrics\"" + ":")
+			e.FieldStart("metrics")
 			e.ArrStart()
-			if len(s.Metrics) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Metrics[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Metrics[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Metrics {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.MinReplicas.Set {
-			e.Comma()
-		}
-		if s.MinReplicas.Set {
-			e.RawStr("\"minReplicas\"" + ":")
+			e.FieldStart("minReplicas")
 			s.MinReplicas.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"scaleTargetRef\"" + ":")
+		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
 	e.ObjEnd()
@@ -12741,81 +10644,46 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"conditions\"" + ":")
+		e.FieldStart("conditions")
 		e.ArrStart()
-		if len(s.Conditions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Conditions[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Conditions[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Conditions {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.CurrentMetrics != nil {
-			e.Comma()
-		}
-		if s.CurrentMetrics != nil {
-			e.RawStr("\"currentMetrics\"" + ":")
+			e.FieldStart("currentMetrics")
 			e.ArrStart()
-			if len(s.CurrentMetrics) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.CurrentMetrics[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.CurrentMetrics[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.CurrentMetrics {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"currentReplicas\"" + ":")
+		e.FieldStart("currentReplicas")
 		e.Int32(s.CurrentReplicas)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"desiredReplicas\"" + ":")
+		e.FieldStart("desiredReplicas")
 		e.Int32(s.DesiredReplicas)
 	}
 	{
 		if s.LastScaleTime.Set {
-			e.Comma()
-		}
-		if s.LastScaleTime.Set {
-			e.RawStr("\"lastScaleTime\"" + ":")
+			e.FieldStart("lastScaleTime")
 			s.LastScaleTime.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
@@ -12963,27 +10831,16 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Selector.Set {
-			e.Comma()
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
@@ -13070,79 +10927,41 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2MetricSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ContainerResource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerResource.Set {
-			e.RawStr("\"containerResource\"" + ":")
+			e.FieldStart("containerResource")
 			s.ContainerResource.Encode(e)
 		}
 	}
 	{
 		if s.External.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.External.Set {
-			e.RawStr("\"external\"" + ":")
+			e.FieldStart("external")
 			s.External.Encode(e)
 		}
 	}
 	{
 		if s.Object.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Object.Set {
-			e.RawStr("\"object\"" + ":")
+			e.FieldStart("object")
 			s.Object.Encode(e)
 		}
 	}
 	{
 		if s.Pods.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Pods.Set {
-			e.RawStr("\"pods\"" + ":")
+			e.FieldStart("pods")
 			s.Pods.Encode(e)
 		}
 	}
 	{
 		if s.Resource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resource.Set {
-			e.RawStr("\"resource\"" + ":")
+			e.FieldStart("resource")
 			s.Resource.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -13272,79 +11091,41 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2MetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ContainerResource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerResource.Set {
-			e.RawStr("\"containerResource\"" + ":")
+			e.FieldStart("containerResource")
 			s.ContainerResource.Encode(e)
 		}
 	}
 	{
 		if s.External.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.External.Set {
-			e.RawStr("\"external\"" + ":")
+			e.FieldStart("external")
 			s.External.Encode(e)
 		}
 	}
 	{
 		if s.Object.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Object.Set {
-			e.RawStr("\"object\"" + ":")
+			e.FieldStart("object")
 			s.Object.Encode(e)
 		}
 	}
 	{
 		if s.Pods.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Pods.Set {
-			e.RawStr("\"pods\"" + ":")
+			e.FieldStart("pods")
 			s.Pods.Encode(e)
 		}
 	}
 	{
 		if s.Resource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resource.Set {
-			e.RawStr("\"resource\"" + ":")
+			e.FieldStart("resource")
 			s.Resource.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -13474,51 +11255,28 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2MetricTarget) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2MetricTarget) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AverageUtilization.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AverageUtilization.Set {
-			e.RawStr("\"averageUtilization\"" + ":")
+			e.FieldStart("averageUtilization")
 			s.AverageUtilization.Encode(e)
 		}
 	}
 	{
 		if s.AverageValue.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AverageValue.Set {
-			e.RawStr("\"averageValue\"" + ":")
+			e.FieldStart("averageValue")
 			s.AverageValue.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	{
 		if s.Value.Set {
-			e.Comma()
-		}
-		if s.Value.Set {
-			e.RawStr("\"value\"" + ":")
+			e.FieldStart("value")
 			s.Value.Encode(e)
 		}
 	}
@@ -13627,45 +11385,23 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AverageUtilization.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AverageUtilization.Set {
-			e.RawStr("\"averageUtilization\"" + ":")
+			e.FieldStart("averageUtilization")
 			s.AverageUtilization.Encode(e)
 		}
 	}
 	{
 		if s.AverageValue.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AverageValue.Set {
-			e.RawStr("\"averageValue\"" + ":")
+			e.FieldStart("averageValue")
 			s.AverageValue.Encode(e)
 		}
 	}
 	{
 		if s.Value.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Value.Set {
-			e.RawStr("\"value\"" + ":")
+			e.FieldStart("value")
 			s.Value.Encode(e)
 		}
 	}
@@ -13728,31 +11464,21 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"describedObject\"" + ":")
+		e.FieldStart("describedObject")
 		s.DescribedObject.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metric\"" + ":")
+		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"target\"" + ":")
+		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	e.ObjEnd()
@@ -13847,31 +11573,21 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"current\"" + ":")
+		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"describedObject\"" + ":")
+		e.FieldStart("describedObject")
 		s.DescribedObject.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metric\"" + ":")
+		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	e.ObjEnd()
@@ -13966,25 +11682,16 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"metric\"" + ":")
+		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"target\"" + ":")
+		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	e.ObjEnd()
@@ -14068,25 +11775,16 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"current\"" + ":")
+		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metric\"" + ":")
+		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
 	e.ObjEnd()
@@ -14170,25 +11868,16 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"target\"" + ":")
+		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
 	e.ObjEnd()
@@ -14274,25 +11963,16 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"current\"" + ":")
+		e.FieldStart("current")
 		s.Current.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -14378,69 +12058,35 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1CronJob) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1CronJob) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -14525,60 +12171,32 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -14693,75 +12311,45 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ConcurrencyPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConcurrencyPolicy.Set {
-			e.RawStr("\"concurrencyPolicy\"" + ":")
+			e.FieldStart("concurrencyPolicy")
 			s.ConcurrencyPolicy.Encode(e)
 		}
 	}
 	{
 		if s.FailedJobsHistoryLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FailedJobsHistoryLimit.Set {
-			e.RawStr("\"failedJobsHistoryLimit\"" + ":")
+			e.FieldStart("failedJobsHistoryLimit")
 			s.FailedJobsHistoryLimit.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"jobTemplate\"" + ":")
+		e.FieldStart("jobTemplate")
 		s.JobTemplate.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"schedule\"" + ":")
+		e.FieldStart("schedule")
 		e.Str(s.Schedule)
 	}
 	{
 		if s.StartingDeadlineSeconds.Set {
-			e.Comma()
-		}
-		if s.StartingDeadlineSeconds.Set {
-			e.RawStr("\"startingDeadlineSeconds\"" + ":")
+			e.FieldStart("startingDeadlineSeconds")
 			s.StartingDeadlineSeconds.Encode(e)
 		}
 	}
 	{
 		if s.SuccessfulJobsHistoryLimit.Set {
-			e.Comma()
-		}
-		if s.SuccessfulJobsHistoryLimit.Set {
-			e.RawStr("\"successfulJobsHistoryLimit\"" + ":")
+			e.FieldStart("successfulJobsHistoryLimit")
 			s.SuccessfulJobsHistoryLimit.Encode(e)
 		}
 	}
 	{
 		if s.Suspend.Set {
-			e.Comma()
-		}
-		if s.Suspend.Set {
-			e.RawStr("\"suspend\"" + ":")
+			e.FieldStart("suspend")
 			s.Suspend.Encode(e)
 		}
 	}
@@ -14903,57 +12491,27 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Active != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Active != nil {
-			e.RawStr("\"active\"" + ":")
+			e.FieldStart("active")
 			e.ArrStart()
-			if len(s.Active) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Active[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Active[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Active {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.LastScheduleTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastScheduleTime.Set {
-			e.RawStr("\"lastScheduleTime\"" + ":")
+			e.FieldStart("lastScheduleTime")
 			s.LastScheduleTime.Encode(e)
 		}
 	}
 	{
 		if s.LastSuccessfulTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastSuccessfulTime.Set {
-			e.RawStr("\"lastSuccessfulTime\"" + ":")
+			e.FieldStart("lastSuccessfulTime")
 			s.LastSuccessfulTime.Encode(e)
 		}
 	}
@@ -15023,69 +12581,35 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1Job) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1Job) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -15170,73 +12694,40 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1JobCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1JobCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastProbeTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastProbeTime.Set {
-			e.RawStr("\"lastProbeTime\"" + ":")
+			e.FieldStart("lastProbeTime")
 			s.LastProbeTime.Encode(e)
 		}
 	}
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -15368,60 +12859,32 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -15536,123 +12999,64 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1JobSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1JobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ActiveDeadlineSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ActiveDeadlineSeconds.Set {
-			e.RawStr("\"activeDeadlineSeconds\"" + ":")
+			e.FieldStart("activeDeadlineSeconds")
 			s.ActiveDeadlineSeconds.Encode(e)
 		}
 	}
 	{
 		if s.BackoffLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.BackoffLimit.Set {
-			e.RawStr("\"backoffLimit\"" + ":")
+			e.FieldStart("backoffLimit")
 			s.BackoffLimit.Encode(e)
 		}
 	}
 	{
 		if s.CompletionMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CompletionMode.Set {
-			e.RawStr("\"completionMode\"" + ":")
+			e.FieldStart("completionMode")
 			s.CompletionMode.Encode(e)
 		}
 	}
 	{
 		if s.Completions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Completions.Set {
-			e.RawStr("\"completions\"" + ":")
+			e.FieldStart("completions")
 			s.Completions.Encode(e)
 		}
 	}
 	{
 		if s.ManualSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ManualSelector.Set {
-			e.RawStr("\"manualSelector\"" + ":")
+			e.FieldStart("manualSelector")
 			s.ManualSelector.Encode(e)
 		}
 	}
 	{
 		if s.Parallelism.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Parallelism.Set {
-			e.RawStr("\"parallelism\"" + ":")
+			e.FieldStart("parallelism")
 			s.Parallelism.Encode(e)
 		}
 	}
 	{
 		if s.Selector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
 	{
 		if s.Suspend.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Suspend.Set {
-			e.RawStr("\"suspend\"" + ":")
+			e.FieldStart("suspend")
 			s.Suspend.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"template\"" + ":")
+		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
 	{
 		if s.TtlSecondsAfterFinished.Set {
-			e.Comma()
-		}
-		if s.TtlSecondsAfterFinished.Set {
-			e.RawStr("\"ttlSecondsAfterFinished\"" + ":")
+			e.FieldStart("ttlSecondsAfterFinished")
 			s.TtlSecondsAfterFinished.Encode(e)
 		}
 	}
@@ -15826,117 +13230,57 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Active.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Active.Set {
-			e.RawStr("\"active\"" + ":")
+			e.FieldStart("active")
 			s.Active.Encode(e)
 		}
 	}
 	{
 		if s.CompletedIndexes.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CompletedIndexes.Set {
-			e.RawStr("\"completedIndexes\"" + ":")
+			e.FieldStart("completedIndexes")
 			s.CompletedIndexes.Encode(e)
 		}
 	}
 	{
 		if s.CompletionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CompletionTime.Set {
-			e.RawStr("\"completionTime\"" + ":")
+			e.FieldStart("completionTime")
 			s.CompletionTime.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Failed.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Failed.Set {
-			e.RawStr("\"failed\"" + ":")
+			e.FieldStart("failed")
 			s.Failed.Encode(e)
 		}
 	}
 	{
 		if s.StartTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StartTime.Set {
-			e.RawStr("\"startTime\"" + ":")
+			e.FieldStart("startTime")
 			s.StartTime.Encode(e)
 		}
 	}
 	{
 		if s.Succeeded.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Succeeded.Set {
-			e.RawStr("\"succeeded\"" + ":")
+			e.FieldStart("succeeded")
 			s.Succeeded.Encode(e)
 		}
 	}
 	{
 		if s.UncountedTerminatedPods.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UncountedTerminatedPods.Set {
-			e.RawStr("\"uncountedTerminatedPods\"" + ":")
+			e.FieldStart("uncountedTerminatedPods")
 			s.UncountedTerminatedPods.Encode(e)
 		}
 	}
@@ -16061,33 +13405,17 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1JobTemplateSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -16139,56 +13467,24 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Failed != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Failed != nil {
-			e.RawStr("\"failed\"" + ":")
+			e.FieldStart("failed")
 			e.ArrStart()
-			if len(s.Failed) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Failed[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Failed[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Failed {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Succeeded != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Succeeded != nil {
-			e.RawStr("\"succeeded\"" + ":")
+			e.FieldStart("succeeded")
 			e.ArrStart()
-			if len(s.Succeeded) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Succeeded[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Succeeded[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Succeeded {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -16259,69 +13555,35 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1beta1CronJob) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1beta1CronJob) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -16406,60 +13668,32 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -16574,75 +13808,45 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ConcurrencyPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConcurrencyPolicy.Set {
-			e.RawStr("\"concurrencyPolicy\"" + ":")
+			e.FieldStart("concurrencyPolicy")
 			s.ConcurrencyPolicy.Encode(e)
 		}
 	}
 	{
 		if s.FailedJobsHistoryLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FailedJobsHistoryLimit.Set {
-			e.RawStr("\"failedJobsHistoryLimit\"" + ":")
+			e.FieldStart("failedJobsHistoryLimit")
 			s.FailedJobsHistoryLimit.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"jobTemplate\"" + ":")
+		e.FieldStart("jobTemplate")
 		s.JobTemplate.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"schedule\"" + ":")
+		e.FieldStart("schedule")
 		e.Str(s.Schedule)
 	}
 	{
 		if s.StartingDeadlineSeconds.Set {
-			e.Comma()
-		}
-		if s.StartingDeadlineSeconds.Set {
-			e.RawStr("\"startingDeadlineSeconds\"" + ":")
+			e.FieldStart("startingDeadlineSeconds")
 			s.StartingDeadlineSeconds.Encode(e)
 		}
 	}
 	{
 		if s.SuccessfulJobsHistoryLimit.Set {
-			e.Comma()
-		}
-		if s.SuccessfulJobsHistoryLimit.Set {
-			e.RawStr("\"successfulJobsHistoryLimit\"" + ":")
+			e.FieldStart("successfulJobsHistoryLimit")
 			s.SuccessfulJobsHistoryLimit.Encode(e)
 		}
 	}
 	{
 		if s.Suspend.Set {
-			e.Comma()
-		}
-		if s.Suspend.Set {
-			e.RawStr("\"suspend\"" + ":")
+			e.FieldStart("suspend")
 			s.Suspend.Encode(e)
 		}
 	}
@@ -16784,57 +13988,27 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Active != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Active != nil {
-			e.RawStr("\"active\"" + ":")
+			e.FieldStart("active")
 			e.ArrStart()
-			if len(s.Active) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Active[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Active[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Active {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.LastScheduleTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastScheduleTime.Set {
-			e.RawStr("\"lastScheduleTime\"" + ":")
+			e.FieldStart("lastScheduleTime")
 			s.LastScheduleTime.Encode(e)
 		}
 	}
 	{
 		if s.LastSuccessfulTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastSuccessfulTime.Set {
-			e.RawStr("\"lastSuccessfulTime\"" + ":")
+			e.FieldStart("lastSuccessfulTime")
 			s.LastSuccessfulTime.Encode(e)
 		}
 	}
@@ -16904,33 +14078,17 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -16982,63 +14140,34 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICertificatesV1CertificateSigningRequest) Encode(e *jx.Writer) {
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	{
 		if s.Status.Set {
-			e.Comma()
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -17156,73 +14285,40 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.LastUpdateTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastUpdateTime.Set {
-			e.RawStr("\"lastUpdateTime\"" + ":")
+			e.FieldStart("lastUpdateTime")
 			s.LastUpdateTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -17354,60 +14450,32 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Writer) {
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -17522,111 +14590,59 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ExpirationSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExpirationSeconds.Set {
-			e.RawStr("\"expirationSeconds\"" + ":")
+			e.FieldStart("expirationSeconds")
 			s.ExpirationSeconds.Encode(e)
 		}
 	}
 	{
 		if s.Extra.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Extra.Set {
-			e.RawStr("\"extra\"" + ":")
+			e.FieldStart("extra")
 			s.Extra.Encode(e)
 		}
 	}
 	{
 		if s.Groups != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Groups != nil {
-			e.RawStr("\"groups\"" + ":")
+			e.FieldStart("groups")
 			e.ArrStart()
-			if len(s.Groups) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Groups[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Groups[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Groups {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"request\"" + ":")
+		e.FieldStart("request")
 		e.Base64(s.Request)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"signerName\"" + ":")
+		e.FieldStart("signerName")
 		e.Str(s.SignerName)
 	}
 	{
 		if s.UID.Set {
-			e.Comma()
-		}
-		if s.UID.Set {
-			e.RawStr("\"uid\"" + ":")
+			e.FieldStart("uid")
 			s.UID.Encode(e)
 		}
 	}
 	{
 		if s.Usages != nil {
-			e.Comma()
-		}
-		if s.Usages != nil {
-			e.RawStr("\"usages\"" + ":")
+			e.FieldStart("usages")
 			e.ArrStart()
-			if len(s.Usages) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Usages[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Usages[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Usages {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Username.Set {
-			e.Comma()
-		}
-		if s.Username.Set {
-			e.RawStr("\"username\"" + ":")
+			e.FieldStart("username")
 			s.Username.Encode(e)
 		}
 	}
@@ -17799,31 +14815,14 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Writer) {
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.ArrStart()
-		if len(elem) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := elem[0]
-				e.Str(elem)
-			}
-			for _, elem := range elem[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range elem {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -17872,38 +14871,19 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"certificate\"" + ":")
+		e.FieldStart("certificate")
 		e.Base64(s.Certificate)
 	}
 	{
 		if s.Conditions != nil {
-			e.Comma()
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -17964,57 +14944,29 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoordinationV1Lease) Encode(e *jx.Writer) {
+func (s IoK8sAPICoordinationV1Lease) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -18088,60 +15040,32 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -18256,69 +15180,35 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AcquireTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AcquireTime.Set {
-			e.RawStr("\"acquireTime\"" + ":")
+			e.FieldStart("acquireTime")
 			s.AcquireTime.Encode(e)
 		}
 	}
 	{
 		if s.HolderIdentity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HolderIdentity.Set {
-			e.RawStr("\"holderIdentity\"" + ":")
+			e.FieldStart("holderIdentity")
 			s.HolderIdentity.Encode(e)
 		}
 	}
 	{
 		if s.LeaseDurationSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LeaseDurationSeconds.Set {
-			e.RawStr("\"leaseDurationSeconds\"" + ":")
+			e.FieldStart("leaseDurationSeconds")
 			s.LeaseDurationSeconds.Encode(e)
 		}
 	}
 	{
 		if s.LeaseTransitions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LeaseTransitions.Set {
-			e.RawStr("\"leaseTransitions\"" + ":")
+			e.FieldStart("leaseTransitions")
 			s.LeaseTransitions.Encode(e)
 		}
 	}
 	{
 		if s.RenewTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RenewTime.Set {
-			e.RawStr("\"renewTime\"" + ":")
+			e.FieldStart("renewTime")
 			s.RenewTime.Encode(e)
 		}
 	}
@@ -18403,55 +15293,29 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.Partition.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Partition.Set {
-			e.RawStr("\"partition\"" + ":")
+			e.FieldStart("partition")
 			s.Partition.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"volumeID\"" + ":")
+		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
 	e.ObjEnd()
@@ -18559,45 +15423,23 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Affinity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Affinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.NodeAffinity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeAffinity.Set {
-			e.RawStr("\"nodeAffinity\"" + ":")
+			e.FieldStart("nodeAffinity")
 			s.NodeAffinity.Encode(e)
 		}
 	}
 	{
 		if s.PodAffinity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodAffinity.Set {
-			e.RawStr("\"podAffinity\"" + ":")
+			e.FieldStart("podAffinity")
 			s.PodAffinity.Encode(e)
 		}
 	}
 	{
 		if s.PodAntiAffinity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodAntiAffinity.Set {
-			e.RawStr("\"podAntiAffinity\"" + ":")
+			e.FieldStart("podAntiAffinity")
 			s.PodAntiAffinity.Encode(e)
 		}
 	}
@@ -18660,25 +15502,16 @@ func (s *IoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"devicePath\"" + ":")
+		e.FieldStart("devicePath")
 		e.Str(s.DevicePath)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -18766,63 +15599,39 @@ func (s *IoK8sAPICoreV1AttachedVolume) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.CachingMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CachingMode.Set {
-			e.RawStr("\"cachingMode\"" + ":")
+			e.FieldStart("cachingMode")
 			s.CachingMode.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"diskName\"" + ":")
+		e.FieldStart("diskName")
 		e.Str(s.DiskName)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"diskURI\"" + ":")
+		e.FieldStart("diskURI")
 		e.Str(s.DiskURI)
 	}
 	{
 		if s.FsType.Set {
-			e.Comma()
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
@@ -18955,46 +15764,28 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"secretName\"" + ":")
+		e.FieldStart("secretName")
 		e.Str(s.SecretName)
 	}
 	{
 		if s.SecretNamespace.Set {
-			e.Comma()
-		}
-		if s.SecretNamespace.Set {
-			e.RawStr("\"secretNamespace\"" + ":")
+			e.FieldStart("secretNamespace")
 			s.SecretNamespace.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"shareName\"" + ":")
+		e.FieldStart("shareName")
 		e.Str(s.ShareName)
 	}
 	e.ObjEnd()
@@ -19104,37 +15895,22 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"secretName\"" + ":")
+		e.FieldStart("secretName")
 		e.Str(s.SecretName)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"shareName\"" + ":")
+		e.FieldStart("shareName")
 		e.Str(s.ShareName)
 	}
 	e.ObjEnd()
@@ -19233,94 +16009,58 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ControllerExpandSecretRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ControllerExpandSecretRef.Set {
-			e.RawStr("\"controllerExpandSecretRef\"" + ":")
+			e.FieldStart("controllerExpandSecretRef")
 			s.ControllerExpandSecretRef.Encode(e)
 		}
 	}
 	{
 		if s.ControllerPublishSecretRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ControllerPublishSecretRef.Set {
-			e.RawStr("\"controllerPublishSecretRef\"" + ":")
+			e.FieldStart("controllerPublishSecretRef")
 			s.ControllerPublishSecretRef.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"driver\"" + ":")
+		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
 	{
 		if s.FsType.Set {
-			e.Comma()
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.NodePublishSecretRef.Set {
-			e.Comma()
-		}
-		if s.NodePublishSecretRef.Set {
-			e.RawStr("\"nodePublishSecretRef\"" + ":")
+			e.FieldStart("nodePublishSecretRef")
 			s.NodePublishSecretRef.Encode(e)
 		}
 	}
 	{
 		if s.NodeStageSecretRef.Set {
-			e.Comma()
-		}
-		if s.NodeStageSecretRef.Set {
-			e.RawStr("\"nodeStageSecretRef\"" + ":")
+			e.FieldStart("nodeStageSecretRef")
 			s.NodeStageSecretRef.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.VolumeAttributes.Set {
-			e.Comma()
-		}
-		if s.VolumeAttributes.Set {
-			e.RawStr("\"volumeAttributes\"" + ":")
+			e.FieldStart("volumeAttributes")
 			s.VolumeAttributes.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"volumeHandle\"" + ":")
+		e.FieldStart("volumeHandle")
 		e.Str(s.VolumeHandle)
 	}
 	e.ObjEnd()
@@ -19486,19 +16226,10 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -19539,54 +16270,34 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.De
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"driver\"" + ":")
+		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
 	{
 		if s.FsType.Set {
-			e.Comma()
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.NodePublishSecretRef.Set {
-			e.Comma()
-		}
-		if s.NodePublishSecretRef.Set {
-			e.RawStr("\"nodePublishSecretRef\"" + ":")
+			e.FieldStart("nodePublishSecretRef")
 			s.NodePublishSecretRef.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.VolumeAttributes.Set {
-			e.Comma()
-		}
-		if s.VolumeAttributes.Set {
-			e.RawStr("\"volumeAttributes\"" + ":")
+			e.FieldStart("volumeAttributes")
 			s.VolumeAttributes.Encode(e)
 		}
 	}
@@ -19706,19 +16417,10 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -19759,56 +16461,24 @@ func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Add != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Add != nil {
-			e.RawStr("\"add\"" + ":")
+			e.FieldStart("add")
 			e.ArrStart()
-			if len(s.Add) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Add[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Add[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Add {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Drop != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Drop != nil {
-			e.RawStr("\"drop\"" + ":")
+			e.FieldStart("drop")
 			e.ArrStart()
-			if len(s.Drop) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Drop[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Drop[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Drop {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -19879,75 +16549,44 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"monitors\"" + ":")
+		e.FieldStart("monitors")
 		e.ArrStart()
-		if len(s.Monitors) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Monitors[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Monitors[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Monitors {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Path.Set {
-			e.Comma()
-		}
-		if s.Path.Set {
-			e.RawStr("\"path\"" + ":")
+			e.FieldStart("path")
 			s.Path.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretFile.Set {
-			e.Comma()
-		}
-		if s.SecretFile.Set {
-			e.RawStr("\"secretFile\"" + ":")
+			e.FieldStart("secretFile")
 			s.SecretFile.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			e.Comma()
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
@@ -20086,75 +16725,44 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"monitors\"" + ":")
+		e.FieldStart("monitors")
 		e.ArrStart()
-		if len(s.Monitors) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Monitors[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Monitors[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Monitors {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Path.Set {
-			e.Comma()
-		}
-		if s.Path.Set {
-			e.RawStr("\"path\"" + ":")
+			e.FieldStart("path")
 			s.Path.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretFile.Set {
-			e.Comma()
-		}
-		if s.SecretFile.Set {
-			e.RawStr("\"secretFile\"" + ":")
+			e.FieldStart("secretFile")
 			s.SecretFile.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			e.Comma()
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
@@ -20293,55 +16901,29 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"volumeID\"" + ":")
+		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
 	e.ObjEnd()
@@ -20449,55 +17031,29 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"volumeID\"" + ":")
+		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
 	e.ObjEnd()
@@ -20605,21 +17161,11 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.TimeoutSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TimeoutSeconds.Set {
-			e.RawStr("\"timeoutSeconds\"" + ":")
+			e.FieldStart("timeoutSeconds")
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
@@ -20660,49 +17206,28 @@ func (s *IoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ComponentCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ComponentCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Error.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Error.Set {
-			e.RawStr("\"error\"" + ":")
+			e.FieldStart("error")
 			s.Error.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -20812,69 +17337,33 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -20955,60 +17444,32 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -21123,81 +17584,41 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.BinaryData.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.BinaryData.Set {
-			e.RawStr("\"binaryData\"" + ":")
+			e.FieldStart("binaryData")
 			s.BinaryData.Encode(e)
 		}
 	}
 	{
 		if s.Data.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Data.Set {
-			e.RawStr("\"data\"" + ":")
+			e.FieldStart("data")
 			s.Data.Encode(e)
 		}
 	}
 	{
 		if s.Immutable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Immutable.Set {
-			e.RawStr("\"immutable\"" + ":")
+			e.FieldStart("immutable")
 			s.Immutable.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -21293,19 +17714,10 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Base64(elem)
 	}
@@ -21346,19 +17758,10 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapData) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapData) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -21399,33 +17802,17 @@ func (s IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Optional.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
@@ -21477,36 +17864,22 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"key\"" + ":")
+		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
 		if s.Name.Set {
-			e.Comma()
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Optional.Set {
-			e.Comma()
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
@@ -21604,60 +17977,32 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -21772,48 +18117,32 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kubeletConfigKey\"" + ":")
+		e.FieldStart("kubeletConfigKey")
 		e.Str(s.KubeletConfigKey)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"namespace\"" + ":")
+		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
 	{
 		if s.ResourceVersion.Set {
-			e.Comma()
-		}
-		if s.ResourceVersion.Set {
-			e.RawStr("\"resourceVersion\"" + ":")
+			e.FieldStart("resourceVersion")
 			s.ResourceVersion.Encode(e)
 		}
 	}
 	{
 		if s.UID.Set {
-			e.Comma()
-		}
-		if s.UID.Set {
-			e.RawStr("\"uid\"" + ":")
+			e.FieldStart("uid")
 			s.UID.Encode(e)
 		}
 	}
@@ -21937,57 +18266,27 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Items != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Items != nil {
-			e.RawStr("\"items\"" + ":")
+			e.FieldStart("items")
 			e.ArrStart()
-			if len(s.Items) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Items[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Items[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Items {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Optional.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
@@ -22057,69 +18356,33 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DefaultMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultMode.Set {
-			e.RawStr("\"defaultMode\"" + ":")
+			e.FieldStart("defaultMode")
 			s.DefaultMode.Encode(e)
 		}
 	}
 	{
 		if s.Items != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Items != nil {
-			e.RawStr("\"items\"" + ":")
+			e.FieldStart("items")
 			e.ArrStart()
-			if len(s.Items) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Items[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Items[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Items {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Optional.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
@@ -22200,315 +18463,164 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Container) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Container) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Args != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Args != nil {
-			e.RawStr("\"args\"" + ":")
+			e.FieldStart("args")
 			e.ArrStart()
-			if len(s.Args) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Args[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Args[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Args {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Command != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Command != nil {
-			e.RawStr("\"command\"" + ":")
+			e.FieldStart("command")
 			e.ArrStart()
-			if len(s.Command) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Command[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Command[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Command {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Env != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Env != nil {
-			e.RawStr("\"env\"" + ":")
+			e.FieldStart("env")
 			e.ArrStart()
-			if len(s.Env) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Env[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Env[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Env {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.EnvFrom != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EnvFrom != nil {
-			e.RawStr("\"envFrom\"" + ":")
+			e.FieldStart("envFrom")
 			e.ArrStart()
-			if len(s.EnvFrom) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.EnvFrom[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.EnvFrom[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.EnvFrom {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Image.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Image.Set {
-			e.RawStr("\"image\"" + ":")
+			e.FieldStart("image")
 			s.Image.Encode(e)
 		}
 	}
 	{
 		if s.ImagePullPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ImagePullPolicy.Set {
-			e.RawStr("\"imagePullPolicy\"" + ":")
+			e.FieldStart("imagePullPolicy")
 			s.ImagePullPolicy.Encode(e)
 		}
 	}
 	{
 		if s.Lifecycle.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Lifecycle.Set {
-			e.RawStr("\"lifecycle\"" + ":")
+			e.FieldStart("lifecycle")
 			s.Lifecycle.Encode(e)
 		}
 	}
 	{
 		if s.LivenessProbe.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LivenessProbe.Set {
-			e.RawStr("\"livenessProbe\"" + ":")
+			e.FieldStart("livenessProbe")
 			s.LivenessProbe.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Ports != nil {
-			e.Comma()
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ReadinessProbe.Set {
-			e.Comma()
-		}
-		if s.ReadinessProbe.Set {
-			e.RawStr("\"readinessProbe\"" + ":")
+			e.FieldStart("readinessProbe")
 			s.ReadinessProbe.Encode(e)
 		}
 	}
 	{
 		if s.Resources.Set {
-			e.Comma()
-		}
-		if s.Resources.Set {
-			e.RawStr("\"resources\"" + ":")
+			e.FieldStart("resources")
 			s.Resources.Encode(e)
 		}
 	}
 	{
 		if s.SecurityContext.Set {
-			e.Comma()
-		}
-		if s.SecurityContext.Set {
-			e.RawStr("\"securityContext\"" + ":")
+			e.FieldStart("securityContext")
 			s.SecurityContext.Encode(e)
 		}
 	}
 	{
 		if s.StartupProbe.Set {
-			e.Comma()
-		}
-		if s.StartupProbe.Set {
-			e.RawStr("\"startupProbe\"" + ":")
+			e.FieldStart("startupProbe")
 			s.StartupProbe.Encode(e)
 		}
 	}
 	{
 		if s.Stdin.Set {
-			e.Comma()
-		}
-		if s.Stdin.Set {
-			e.RawStr("\"stdin\"" + ":")
+			e.FieldStart("stdin")
 			s.Stdin.Encode(e)
 		}
 	}
 	{
 		if s.StdinOnce.Set {
-			e.Comma()
-		}
-		if s.StdinOnce.Set {
-			e.RawStr("\"stdinOnce\"" + ":")
+			e.FieldStart("stdinOnce")
 			s.StdinOnce.Encode(e)
 		}
 	}
 	{
 		if s.TerminationMessagePath.Set {
-			e.Comma()
-		}
-		if s.TerminationMessagePath.Set {
-			e.RawStr("\"terminationMessagePath\"" + ":")
+			e.FieldStart("terminationMessagePath")
 			s.TerminationMessagePath.Encode(e)
 		}
 	}
 	{
 		if s.TerminationMessagePolicy.Set {
-			e.Comma()
-		}
-		if s.TerminationMessagePolicy.Set {
-			e.RawStr("\"terminationMessagePolicy\"" + ":")
+			e.FieldStart("terminationMessagePolicy")
 			s.TerminationMessagePolicy.Encode(e)
 		}
 	}
 	{
 		if s.Tty.Set {
-			e.Comma()
-		}
-		if s.Tty.Set {
-			e.RawStr("\"tty\"" + ":")
+			e.FieldStart("tty")
 			s.Tty.Encode(e)
 		}
 	}
 	{
 		if s.VolumeDevices != nil {
-			e.Comma()
-		}
-		if s.VolumeDevices != nil {
-			e.RawStr("\"volumeDevices\"" + ":")
+			e.FieldStart("volumeDevices")
 			e.ArrStart()
-			if len(s.VolumeDevices) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumeDevices[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.VolumeDevices[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.VolumeDevices {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.VolumeMounts != nil {
-			e.Comma()
-		}
-		if s.VolumeMounts != nil {
-			e.RawStr("\"volumeMounts\"" + ":")
+			e.FieldStart("volumeMounts")
 			e.ArrStart()
-			if len(s.VolumeMounts) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumeMounts[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.VolumeMounts[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.VolumeMounts {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.WorkingDir.Set {
-			e.Comma()
-		}
-		if s.WorkingDir.Set {
-			e.RawStr("\"workingDir\"" + ":")
+			e.FieldStart("workingDir")
 			s.WorkingDir.Encode(e)
 		}
 	}
@@ -22870,45 +18982,21 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Names != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Names != nil {
-			e.RawStr("\"names\"" + ":")
+			e.FieldStart("names")
 			e.ArrStart()
-			if len(s.Names) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Names[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Names[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Names {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.SizeBytes.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SizeBytes.Set {
-			e.RawStr("\"sizeBytes\"" + ":")
+			e.FieldStart("sizeBytes")
 			s.SizeBytes.Encode(e)
 		}
 	}
@@ -22969,54 +19057,34 @@ func (s *IoK8sAPICoreV1ContainerImage) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ContainerPort) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ContainerPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"containerPort\"" + ":")
+		e.FieldStart("containerPort")
 		e.Int32(s.ContainerPort)
 	}
 	{
 		if s.HostIP.Set {
-			e.Comma()
-		}
-		if s.HostIP.Set {
-			e.RawStr("\"hostIP\"" + ":")
+			e.FieldStart("hostIP")
 			s.HostIP.Encode(e)
 		}
 	}
 	{
 		if s.HostPort.Set {
-			e.Comma()
-		}
-		if s.HostPort.Set {
-			e.RawStr("\"hostPort\"" + ":")
+			e.FieldStart("hostPort")
 			s.HostPort.Encode(e)
 		}
 	}
 	{
 		if s.Name.Set {
-			e.Comma()
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Protocol.Set {
-			e.Comma()
-		}
-		if s.Protocol.Set {
-			e.RawStr("\"protocol\"" + ":")
+			e.FieldStart("protocol")
 			s.Protocol.Encode(e)
 		}
 	}
@@ -23136,45 +19204,23 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ContainerState) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ContainerState) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Running.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Running.Set {
-			e.RawStr("\"running\"" + ":")
+			e.FieldStart("running")
 			s.Running.Encode(e)
 		}
 	}
 	{
 		if s.Terminated.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Terminated.Set {
-			e.RawStr("\"terminated\"" + ":")
+			e.FieldStart("terminated")
 			s.Terminated.Encode(e)
 		}
 	}
 	{
 		if s.Waiting.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Waiting.Set {
-			e.RawStr("\"waiting\"" + ":")
+			e.FieldStart("waiting")
 			s.Waiting.Encode(e)
 		}
 	}
@@ -23237,21 +19283,11 @@ func (s *IoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.StartedAt.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StartedAt.Set {
-			e.RawStr("\"startedAt\"" + ":")
+			e.FieldStart("startedAt")
 			s.StartedAt.Encode(e)
 		}
 	}
@@ -23292,75 +19328,46 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ContainerID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerID.Set {
-			e.RawStr("\"containerID\"" + ":")
+			e.FieldStart("containerID")
 			s.ContainerID.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"exitCode\"" + ":")
+		e.FieldStart("exitCode")
 		e.Int32(s.ExitCode)
 	}
 	{
 		if s.FinishedAt.Set {
-			e.Comma()
-		}
-		if s.FinishedAt.Set {
-			e.RawStr("\"finishedAt\"" + ":")
+			e.FieldStart("finishedAt")
 			s.FinishedAt.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			e.Comma()
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			e.Comma()
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Signal.Set {
-			e.Comma()
-		}
-		if s.Signal.Set {
-			e.RawStr("\"signal\"" + ":")
+			e.FieldStart("signal")
 			s.Signal.Encode(e)
 		}
 	}
 	{
 		if s.StartedAt.Set {
-			e.Comma()
-		}
-		if s.StartedAt.Set {
-			e.RawStr("\"startedAt\"" + ":")
+			e.FieldStart("startedAt")
 			s.StartedAt.Encode(e)
 		}
 	}
@@ -23502,33 +19509,17 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
@@ -23580,81 +19571,54 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ContainerStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ContainerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ContainerID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerID.Set {
-			e.RawStr("\"containerID\"" + ":")
+			e.FieldStart("containerID")
 			s.ContainerID.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"image\"" + ":")
+		e.FieldStart("image")
 		e.Str(s.Image)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"imageID\"" + ":")
+		e.FieldStart("imageID")
 		e.Str(s.ImageID)
 	}
 	{
 		if s.LastState.Set {
-			e.Comma()
-		}
-		if s.LastState.Set {
-			e.RawStr("\"lastState\"" + ":")
+			e.FieldStart("lastState")
 			s.LastState.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"ready\"" + ":")
+		e.FieldStart("ready")
 		e.Bool(s.Ready)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"restartCount\"" + ":")
+		e.FieldStart("restartCount")
 		e.Int32(s.RestartCount)
 	}
 	{
 		if s.Started.Set {
-			e.Comma()
-		}
-		if s.Started.Set {
-			e.RawStr("\"started\"" + ":")
+			e.FieldStart("started")
 			s.Started.Encode(e)
 		}
 	}
 	{
 		if s.State.Set {
-			e.Comma()
-		}
-		if s.State.Set {
-			e.RawStr("\"state\"" + ":")
+			e.FieldStart("state")
 			s.State.Encode(e)
 		}
 	}
@@ -23827,19 +19791,11 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"Port\"" + ":")
+		e.FieldStart("Port")
 		e.Int32(s.Port)
 	}
 	e.ObjEnd()
@@ -23914,32 +19870,14 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Items != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Items != nil {
-			e.RawStr("\"items\"" + ":")
+			e.FieldStart("items")
 			e.ArrStart()
-			if len(s.Items) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Items[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Items[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Items {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -23988,51 +19926,28 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1DownwardAPIVolumeFile) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1DownwardAPIVolumeFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FieldRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FieldRef.Set {
-			e.RawStr("\"fieldRef\"" + ":")
+			e.FieldStart("fieldRef")
 			s.FieldRef.Encode(e)
 		}
 	}
 	{
 		if s.Mode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Mode.Set {
-			e.RawStr("\"mode\"" + ":")
+			e.FieldStart("mode")
 			s.Mode.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
 		if s.ResourceFieldRef.Set {
-			e.Comma()
-		}
-		if s.ResourceFieldRef.Set {
-			e.RawStr("\"resourceFieldRef\"" + ":")
+			e.FieldStart("resourceFieldRef")
 			s.ResourceFieldRef.Encode(e)
 		}
 	}
@@ -24141,44 +20056,20 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DefaultMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultMode.Set {
-			e.RawStr("\"defaultMode\"" + ":")
+			e.FieldStart("defaultMode")
 			s.DefaultMode.Encode(e)
 		}
 	}
 	{
 		if s.Items != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Items != nil {
-			e.RawStr("\"items\"" + ":")
+			e.FieldStart("items")
 			e.ArrStart()
-			if len(s.Items) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Items[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Items[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Items {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -24238,33 +20129,17 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Medium.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Medium.Set {
-			e.RawStr("\"medium\"" + ":")
+			e.FieldStart("medium")
 			s.Medium.Encode(e)
 		}
 	}
 	{
 		if s.SizeLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SizeLimit.Set {
-			e.RawStr("\"sizeLimit\"" + ":")
+			e.FieldStart("sizeLimit")
 			s.SizeLimit.Encode(e)
 		}
 	}
@@ -24316,48 +20191,28 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EndpointAddress) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EndpointAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Hostname.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Hostname.Set {
-			e.RawStr("\"hostname\"" + ":")
+			e.FieldStart("hostname")
 			s.Hostname.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"ip\"" + ":")
+		e.FieldStart("ip")
 		e.Str(s.IP)
 	}
 	{
 		if s.NodeName.Set {
-			e.Comma()
-		}
-		if s.NodeName.Set {
-			e.RawStr("\"nodeName\"" + ":")
+			e.FieldStart("nodeName")
 			s.NodeName.Encode(e)
 		}
 	}
 	{
 		if s.TargetRef.Set {
-			e.Comma()
-		}
-		if s.TargetRef.Set {
-			e.RawStr("\"targetRef\"" + ":")
+			e.FieldStart("targetRef")
 			s.TargetRef.Encode(e)
 		}
 	}
@@ -24466,51 +20321,28 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EndpointPort) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AppProtocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AppProtocol.Set {
-			e.RawStr("\"appProtocol\"" + ":")
+			e.FieldStart("appProtocol")
 			s.AppProtocol.Encode(e)
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"port\"" + ":")
+		e.FieldStart("port")
 		e.Int32(s.Port)
 	}
 	{
 		if s.Protocol.Set {
-			e.Comma()
-		}
-		if s.Protocol.Set {
-			e.RawStr("\"protocol\"" + ":")
+			e.FieldStart("protocol")
 			s.Protocol.Encode(e)
 		}
 	}
@@ -24619,80 +20451,34 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Addresses != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Addresses != nil {
-			e.RawStr("\"addresses\"" + ":")
+			e.FieldStart("addresses")
 			e.ArrStart()
-			if len(s.Addresses) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Addresses[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Addresses[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Addresses {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.NotReadyAddresses != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NotReadyAddresses != nil {
-			e.RawStr("\"notReadyAddresses\"" + ":")
+			e.FieldStart("notReadyAddresses")
 			e.ArrStart()
-			if len(s.NotReadyAddresses) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.NotReadyAddresses[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.NotReadyAddresses[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.NotReadyAddresses {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Ports != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -24777,68 +20563,32 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Subsets != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Subsets != nil {
-			e.RawStr("\"subsets\"" + ":")
+			e.FieldStart("subsets")
 			e.ArrStart()
-			if len(s.Subsets) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Subsets[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Subsets[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Subsets {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -24920,60 +20670,32 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -25088,45 +20810,23 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EnvFromSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EnvFromSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ConfigMapRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConfigMapRef.Set {
-			e.RawStr("\"configMapRef\"" + ":")
+			e.FieldStart("configMapRef")
 			s.ConfigMapRef.Encode(e)
 		}
 	}
 	{
 		if s.Prefix.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Prefix.Set {
-			e.RawStr("\"prefix\"" + ":")
+			e.FieldStart("prefix")
 			s.Prefix.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
@@ -25189,36 +20889,22 @@ func (s *IoK8sAPICoreV1EnvFromSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EnvVar) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EnvVar) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Value.Set {
-			e.Comma()
-		}
-		if s.Value.Set {
-			e.RawStr("\"value\"" + ":")
+			e.FieldStart("value")
 			s.Value.Encode(e)
 		}
 	}
 	{
 		if s.ValueFrom.Set {
-			e.Comma()
-		}
-		if s.ValueFrom.Set {
-			e.RawStr("\"valueFrom\"" + ":")
+			e.FieldStart("valueFrom")
 			s.ValueFrom.Encode(e)
 		}
 	}
@@ -25316,57 +21002,29 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EnvVarSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EnvVarSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ConfigMapKeyRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConfigMapKeyRef.Set {
-			e.RawStr("\"configMapKeyRef\"" + ":")
+			e.FieldStart("configMapKeyRef")
 			s.ConfigMapKeyRef.Encode(e)
 		}
 	}
 	{
 		if s.FieldRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FieldRef.Set {
-			e.RawStr("\"fieldRef\"" + ":")
+			e.FieldStart("fieldRef")
 			s.FieldRef.Encode(e)
 		}
 	}
 	{
 		if s.ResourceFieldRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ResourceFieldRef.Set {
-			e.RawStr("\"resourceFieldRef\"" + ":")
+			e.FieldStart("resourceFieldRef")
 			s.ResourceFieldRef.Encode(e)
 		}
 	}
 	{
 		if s.SecretKeyRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretKeyRef.Set {
-			e.RawStr("\"secretKeyRef\"" + ":")
+			e.FieldStart("secretKeyRef")
 			s.SecretKeyRef.Encode(e)
 		}
 	}
@@ -25440,324 +21098,170 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Args != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Args != nil {
-			e.RawStr("\"args\"" + ":")
+			e.FieldStart("args")
 			e.ArrStart()
-			if len(s.Args) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Args[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Args[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Args {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Command != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Command != nil {
-			e.RawStr("\"command\"" + ":")
+			e.FieldStart("command")
 			e.ArrStart()
-			if len(s.Command) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Command[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Command[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Command {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Env != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Env != nil {
-			e.RawStr("\"env\"" + ":")
+			e.FieldStart("env")
 			e.ArrStart()
-			if len(s.Env) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Env[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Env[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Env {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.EnvFrom != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EnvFrom != nil {
-			e.RawStr("\"envFrom\"" + ":")
+			e.FieldStart("envFrom")
 			e.ArrStart()
-			if len(s.EnvFrom) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.EnvFrom[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.EnvFrom[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.EnvFrom {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Image.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Image.Set {
-			e.RawStr("\"image\"" + ":")
+			e.FieldStart("image")
 			s.Image.Encode(e)
 		}
 	}
 	{
 		if s.ImagePullPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ImagePullPolicy.Set {
-			e.RawStr("\"imagePullPolicy\"" + ":")
+			e.FieldStart("imagePullPolicy")
 			s.ImagePullPolicy.Encode(e)
 		}
 	}
 	{
 		if s.Lifecycle.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Lifecycle.Set {
-			e.RawStr("\"lifecycle\"" + ":")
+			e.FieldStart("lifecycle")
 			s.Lifecycle.Encode(e)
 		}
 	}
 	{
 		if s.LivenessProbe.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LivenessProbe.Set {
-			e.RawStr("\"livenessProbe\"" + ":")
+			e.FieldStart("livenessProbe")
 			s.LivenessProbe.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Ports != nil {
-			e.Comma()
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ReadinessProbe.Set {
-			e.Comma()
-		}
-		if s.ReadinessProbe.Set {
-			e.RawStr("\"readinessProbe\"" + ":")
+			e.FieldStart("readinessProbe")
 			s.ReadinessProbe.Encode(e)
 		}
 	}
 	{
 		if s.Resources.Set {
-			e.Comma()
-		}
-		if s.Resources.Set {
-			e.RawStr("\"resources\"" + ":")
+			e.FieldStart("resources")
 			s.Resources.Encode(e)
 		}
 	}
 	{
 		if s.SecurityContext.Set {
-			e.Comma()
-		}
-		if s.SecurityContext.Set {
-			e.RawStr("\"securityContext\"" + ":")
+			e.FieldStart("securityContext")
 			s.SecurityContext.Encode(e)
 		}
 	}
 	{
 		if s.StartupProbe.Set {
-			e.Comma()
-		}
-		if s.StartupProbe.Set {
-			e.RawStr("\"startupProbe\"" + ":")
+			e.FieldStart("startupProbe")
 			s.StartupProbe.Encode(e)
 		}
 	}
 	{
 		if s.Stdin.Set {
-			e.Comma()
-		}
-		if s.Stdin.Set {
-			e.RawStr("\"stdin\"" + ":")
+			e.FieldStart("stdin")
 			s.Stdin.Encode(e)
 		}
 	}
 	{
 		if s.StdinOnce.Set {
-			e.Comma()
-		}
-		if s.StdinOnce.Set {
-			e.RawStr("\"stdinOnce\"" + ":")
+			e.FieldStart("stdinOnce")
 			s.StdinOnce.Encode(e)
 		}
 	}
 	{
 		if s.TargetContainerName.Set {
-			e.Comma()
-		}
-		if s.TargetContainerName.Set {
-			e.RawStr("\"targetContainerName\"" + ":")
+			e.FieldStart("targetContainerName")
 			s.TargetContainerName.Encode(e)
 		}
 	}
 	{
 		if s.TerminationMessagePath.Set {
-			e.Comma()
-		}
-		if s.TerminationMessagePath.Set {
-			e.RawStr("\"terminationMessagePath\"" + ":")
+			e.FieldStart("terminationMessagePath")
 			s.TerminationMessagePath.Encode(e)
 		}
 	}
 	{
 		if s.TerminationMessagePolicy.Set {
-			e.Comma()
-		}
-		if s.TerminationMessagePolicy.Set {
-			e.RawStr("\"terminationMessagePolicy\"" + ":")
+			e.FieldStart("terminationMessagePolicy")
 			s.TerminationMessagePolicy.Encode(e)
 		}
 	}
 	{
 		if s.Tty.Set {
-			e.Comma()
-		}
-		if s.Tty.Set {
-			e.RawStr("\"tty\"" + ":")
+			e.FieldStart("tty")
 			s.Tty.Encode(e)
 		}
 	}
 	{
 		if s.VolumeDevices != nil {
-			e.Comma()
-		}
-		if s.VolumeDevices != nil {
-			e.RawStr("\"volumeDevices\"" + ":")
+			e.FieldStart("volumeDevices")
 			e.ArrStart()
-			if len(s.VolumeDevices) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumeDevices[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.VolumeDevices[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.VolumeDevices {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.VolumeMounts != nil {
-			e.Comma()
-		}
-		if s.VolumeMounts != nil {
-			e.RawStr("\"volumeMounts\"" + ":")
+			e.FieldStart("volumeMounts")
 			e.ArrStart()
-			if len(s.VolumeMounts) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumeMounts[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.VolumeMounts[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.VolumeMounts {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.WorkingDir.Set {
-			e.Comma()
-		}
-		if s.WorkingDir.Set {
-			e.RawStr("\"workingDir\"" + ":")
+			e.FieldStart("workingDir")
 			s.WorkingDir.Encode(e)
 		}
 	}
@@ -26130,21 +21634,11 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.VolumeClaimTemplate.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeClaimTemplate.Set {
-			e.RawStr("\"volumeClaimTemplate\"" + ":")
+			e.FieldStart("volumeClaimTemplate")
 			s.VolumeClaimTemplate.Encode(e)
 		}
 	}
@@ -26185,174 +21679,105 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Event) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Action.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Action.Set {
-			e.RawStr("\"action\"" + ":")
+			e.FieldStart("action")
 			s.Action.Encode(e)
 		}
 	}
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Count.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Count.Set {
-			e.RawStr("\"count\"" + ":")
+			e.FieldStart("count")
 			s.Count.Encode(e)
 		}
 	}
 	{
 		if s.EventTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EventTime.Set {
-			e.RawStr("\"eventTime\"" + ":")
+			e.FieldStart("eventTime")
 			s.EventTime.Encode(e)
 		}
 	}
 	{
 		if s.FirstTimestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FirstTimestamp.Set {
-			e.RawStr("\"firstTimestamp\"" + ":")
+			e.FieldStart("firstTimestamp")
 			s.FirstTimestamp.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"involvedObject\"" + ":")
+		e.FieldStart("involvedObject")
 		s.InvolvedObject.Encode(e)
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.LastTimestamp.Set {
-			e.Comma()
-		}
-		if s.LastTimestamp.Set {
-			e.RawStr("\"lastTimestamp\"" + ":")
+			e.FieldStart("lastTimestamp")
 			s.LastTimestamp.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			e.Comma()
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"metadata\"" + ":")
+		e.FieldStart("metadata")
 		s.Metadata.Encode(e)
 	}
 	{
 		if s.Reason.Set {
-			e.Comma()
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Related.Set {
-			e.Comma()
-		}
-		if s.Related.Set {
-			e.RawStr("\"related\"" + ":")
+			e.FieldStart("related")
 			s.Related.Encode(e)
 		}
 	}
 	{
 		if s.ReportingComponent.Set {
-			e.Comma()
-		}
-		if s.ReportingComponent.Set {
-			e.RawStr("\"reportingComponent\"" + ":")
+			e.FieldStart("reportingComponent")
 			s.ReportingComponent.Encode(e)
 		}
 	}
 	{
 		if s.ReportingInstance.Set {
-			e.Comma()
-		}
-		if s.ReportingInstance.Set {
-			e.RawStr("\"reportingInstance\"" + ":")
+			e.FieldStart("reportingInstance")
 			s.ReportingInstance.Encode(e)
 		}
 	}
 	{
 		if s.Series.Set {
-			e.Comma()
-		}
-		if s.Series.Set {
-			e.RawStr("\"series\"" + ":")
+			e.FieldStart("series")
 			s.Series.Encode(e)
 		}
 	}
 	{
 		if s.Source.Set {
-			e.Comma()
-		}
-		if s.Source.Set {
-			e.RawStr("\"source\"" + ":")
+			e.FieldStart("source")
 			s.Source.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			e.Comma()
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -26604,60 +22029,32 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EventList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -26772,33 +22169,17 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EventSeries) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Count.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Count.Set {
-			e.RawStr("\"count\"" + ":")
+			e.FieldStart("count")
 			s.Count.Encode(e)
 		}
 	}
 	{
 		if s.LastObservedTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastObservedTime.Set {
-			e.RawStr("\"lastObservedTime\"" + ":")
+			e.FieldStart("lastObservedTime")
 			s.LastObservedTime.Encode(e)
 		}
 	}
@@ -26850,33 +22231,17 @@ func (s *IoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1EventSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1EventSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Component.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Component.Set {
-			e.RawStr("\"component\"" + ":")
+			e.FieldStart("component")
 			s.Component.Encode(e)
 		}
 	}
 	{
 		if s.Host.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Host.Set {
-			e.RawStr("\"host\"" + ":")
+			e.FieldStart("host")
 			s.Host.Encode(e)
 		}
 	}
@@ -26928,32 +22293,14 @@ func (s *IoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Command != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Command != nil {
-			e.RawStr("\"command\"" + ":")
+			e.FieldStart("command")
 			e.ArrStart()
-			if len(s.Command) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Command[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Command[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Command {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -27004,92 +22351,42 @@ func (s *IoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.Lun.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Lun.Set {
-			e.RawStr("\"lun\"" + ":")
+			e.FieldStart("lun")
 			s.Lun.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.TargetWWNs != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TargetWWNs != nil {
-			e.RawStr("\"targetWWNs\"" + ":")
+			e.FieldStart("targetWWNs")
 			e.ArrStart()
-			if len(s.TargetWWNs) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.TargetWWNs[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.TargetWWNs[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.TargetWWNs {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Wwids != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Wwids != nil {
-			e.RawStr("\"wwids\"" + ":")
+			e.FieldStart("wwids")
 			e.ArrStart()
-			if len(s.Wwids) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Wwids[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Wwids[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Wwids {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -27193,54 +22490,34 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"driver\"" + ":")
+		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
 	{
 		if s.FsType.Set {
-			e.Comma()
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.Options.Set {
-			e.Comma()
-		}
-		if s.Options.Set {
-			e.RawStr("\"options\"" + ":")
+			e.FieldStart("options")
 			s.Options.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
@@ -27360,19 +22637,10 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -27413,54 +22681,34 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"driver\"" + ":")
+		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
 	{
 		if s.FsType.Set {
-			e.Comma()
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.Options.Set {
-			e.Comma()
-		}
-		if s.Options.Set {
-			e.RawStr("\"options\"" + ":")
+			e.FieldStart("options")
 			s.Options.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
@@ -27580,19 +22828,10 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -27633,33 +22872,17 @@ func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DatasetName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DatasetName.Set {
-			e.RawStr("\"datasetName\"" + ":")
+			e.FieldStart("datasetName")
 			s.DatasetName.Encode(e)
 		}
 	}
 	{
 		if s.DatasetUUID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DatasetUUID.Set {
-			e.RawStr("\"datasetUUID\"" + ":")
+			e.FieldStart("datasetUUID")
 			s.DatasetUUID.Encode(e)
 		}
 	}
@@ -27711,51 +22934,28 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.Partition.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Partition.Set {
-			e.RawStr("\"partition\"" + ":")
+			e.FieldStart("partition")
 			s.Partition.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"pdName\"" + ":")
+		e.FieldStart("pdName")
 		e.Str(s.PdName)
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
@@ -27864,39 +23064,22 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Directory.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Directory.Set {
-			e.RawStr("\"directory\"" + ":")
+			e.FieldStart("directory")
 			s.Directory.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"repository\"" + ":")
+		e.FieldStart("repository")
 		e.Str(s.Repository)
 	}
 	{
 		if s.Revision.Set {
-			e.Comma()
-		}
-		if s.Revision.Set {
-			e.RawStr("\"revision\"" + ":")
+			e.FieldStart("revision")
 			s.Revision.Encode(e)
 		}
 	}
@@ -27994,42 +23177,27 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"endpoints\"" + ":")
+		e.FieldStart("endpoints")
 		e.Str(s.Endpoints)
 	}
 	{
 		if s.EndpointsNamespace.Set {
-			e.Comma()
-		}
-		if s.EndpointsNamespace.Set {
-			e.RawStr("\"endpointsNamespace\"" + ":")
+			e.FieldStart("endpointsNamespace")
 			s.EndpointsNamespace.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
@@ -28140,33 +23308,21 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"endpoints\"" + ":")
+		e.FieldStart("endpoints")
 		e.Str(s.Endpoints)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
@@ -28266,75 +23422,38 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Host.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Host.Set {
-			e.RawStr("\"host\"" + ":")
+			e.FieldStart("host")
 			s.Host.Encode(e)
 		}
 	}
 	{
 		if s.HttpHeaders != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HttpHeaders != nil {
-			e.RawStr("\"httpHeaders\"" + ":")
+			e.FieldStart("httpHeaders")
 			e.ArrStart()
-			if len(s.HttpHeaders) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.HttpHeaders[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.HttpHeaders[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.HttpHeaders {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Path.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Path.Set {
-			e.RawStr("\"path\"" + ":")
+			e.FieldStart("path")
 			s.Path.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"port\"" + ":")
+		e.FieldStart("port")
 		s.Port.Encode(e)
 	}
 	{
 		if s.Scheme.Set {
-			e.Comma()
-		}
-		if s.Scheme.Set {
-			e.RawStr("\"scheme\"" + ":")
+			e.FieldStart("scheme")
 			s.Scheme.Encode(e)
 		}
 	}
@@ -28459,25 +23578,16 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"value\"" + ":")
+		e.FieldStart("value")
 		e.Str(s.Value)
 	}
 	e.ObjEnd()
@@ -28565,45 +23675,23 @@ func (s *IoK8sAPICoreV1HTTPHeader) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Handler) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Handler) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Exec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Exec.Set {
-			e.RawStr("\"exec\"" + ":")
+			e.FieldStart("exec")
 			s.Exec.Encode(e)
 		}
 	}
 	{
 		if s.HttpGet.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HttpGet.Set {
-			e.RawStr("\"httpGet\"" + ":")
+			e.FieldStart("httpGet")
 			s.HttpGet.Encode(e)
 		}
 	}
 	{
 		if s.TcpSocket.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TcpSocket.Set {
-			e.RawStr("\"tcpSocket\"" + ":")
+			e.FieldStart("tcpSocket")
 			s.TcpSocket.Encode(e)
 		}
 	}
@@ -28666,45 +23754,21 @@ func (s *IoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Hostnames != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Hostnames != nil {
-			e.RawStr("\"hostnames\"" + ":")
+			e.FieldStart("hostnames")
 			e.ArrStart()
-			if len(s.Hostnames) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Hostnames[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Hostnames[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Hostnames {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.IP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.IP.Set {
-			e.RawStr("\"ip\"" + ":")
+			e.FieldStart("ip")
 			s.IP.Encode(e)
 		}
 	}
@@ -28765,27 +23829,16 @@ func (s *IoK8sAPICoreV1HostAlias) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
 		if s.Type.Set {
-			e.Comma()
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -28872,127 +23925,73 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ChapAuthDiscovery.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ChapAuthDiscovery.Set {
-			e.RawStr("\"chapAuthDiscovery\"" + ":")
+			e.FieldStart("chapAuthDiscovery")
 			s.ChapAuthDiscovery.Encode(e)
 		}
 	}
 	{
 		if s.ChapAuthSession.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ChapAuthSession.Set {
-			e.RawStr("\"chapAuthSession\"" + ":")
+			e.FieldStart("chapAuthSession")
 			s.ChapAuthSession.Encode(e)
 		}
 	}
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.InitiatorName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InitiatorName.Set {
-			e.RawStr("\"initiatorName\"" + ":")
+			e.FieldStart("initiatorName")
 			s.InitiatorName.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"iqn\"" + ":")
+		e.FieldStart("iqn")
 		e.Str(s.Iqn)
 	}
 	{
 		if s.IscsiInterface.Set {
-			e.Comma()
-		}
-		if s.IscsiInterface.Set {
-			e.RawStr("\"iscsiInterface\"" + ":")
+			e.FieldStart("iscsiInterface")
 			s.IscsiInterface.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"lun\"" + ":")
+		e.FieldStart("lun")
 		e.Int32(s.Lun)
 	}
 	{
 		if s.Portals != nil {
-			e.Comma()
-		}
-		if s.Portals != nil {
-			e.RawStr("\"portals\"" + ":")
+			e.FieldStart("portals")
 			e.ArrStart()
-			if len(s.Portals) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Portals[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Portals[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Portals {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"targetPortal\"" + ":")
+		e.FieldStart("targetPortal")
 		e.Str(s.TargetPortal)
 	}
 	e.ObjEnd()
@@ -29191,127 +24190,73 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ChapAuthDiscovery.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ChapAuthDiscovery.Set {
-			e.RawStr("\"chapAuthDiscovery\"" + ":")
+			e.FieldStart("chapAuthDiscovery")
 			s.ChapAuthDiscovery.Encode(e)
 		}
 	}
 	{
 		if s.ChapAuthSession.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ChapAuthSession.Set {
-			e.RawStr("\"chapAuthSession\"" + ":")
+			e.FieldStart("chapAuthSession")
 			s.ChapAuthSession.Encode(e)
 		}
 	}
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.InitiatorName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InitiatorName.Set {
-			e.RawStr("\"initiatorName\"" + ":")
+			e.FieldStart("initiatorName")
 			s.InitiatorName.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"iqn\"" + ":")
+		e.FieldStart("iqn")
 		e.Str(s.Iqn)
 	}
 	{
 		if s.IscsiInterface.Set {
-			e.Comma()
-		}
-		if s.IscsiInterface.Set {
-			e.RawStr("\"iscsiInterface\"" + ":")
+			e.FieldStart("iscsiInterface")
 			s.IscsiInterface.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"lun\"" + ":")
+		e.FieldStart("lun")
 		e.Int32(s.Lun)
 	}
 	{
 		if s.Portals != nil {
-			e.Comma()
-		}
-		if s.Portals != nil {
-			e.RawStr("\"portals\"" + ":")
+			e.FieldStart("portals")
 			e.ArrStart()
-			if len(s.Portals) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Portals[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Portals[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Portals {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"targetPortal\"" + ":")
+		e.FieldStart("targetPortal")
 		e.Str(s.TargetPortal)
 	}
 	e.ObjEnd()
@@ -29510,34 +24455,22 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1KeyToPath) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1KeyToPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"key\"" + ":")
+		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
 		if s.Mode.Set {
-			e.Comma()
-		}
-		if s.Mode.Set {
-			e.RawStr("\"mode\"" + ":")
+			e.FieldStart("mode")
 			s.Mode.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	e.ObjEnd()
@@ -29636,33 +24569,17 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Lifecycle) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Lifecycle) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PostStart.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PostStart.Set {
-			e.RawStr("\"postStart\"" + ":")
+			e.FieldStart("postStart")
 			s.PostStart.Encode(e)
 		}
 	}
 	{
 		if s.PreStop.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PreStop.Set {
-			e.RawStr("\"preStop\"" + ":")
+			e.FieldStart("preStop")
 			s.PreStop.Encode(e)
 		}
 	}
@@ -29714,57 +24631,29 @@ func (s *IoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRange) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -29838,79 +24727,41 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Default.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Default.Set {
-			e.RawStr("\"default\"" + ":")
+			e.FieldStart("default")
 			s.Default.Encode(e)
 		}
 	}
 	{
 		if s.DefaultRequest.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultRequest.Set {
-			e.RawStr("\"defaultRequest\"" + ":")
+			e.FieldStart("defaultRequest")
 			s.DefaultRequest.Encode(e)
 		}
 	}
 	{
 		if s.Max.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Max.Set {
-			e.RawStr("\"max\"" + ":")
+			e.FieldStart("max")
 			s.Max.Encode(e)
 		}
 	}
 	{
 		if s.MaxLimitRequestRatio.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxLimitRequestRatio.Set {
-			e.RawStr("\"maxLimitRequestRatio\"" + ":")
+			e.FieldStart("maxLimitRequestRatio")
 			s.MaxLimitRequestRatio.Encode(e)
 		}
 	}
 	{
 		if s.Min.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Min.Set {
-			e.RawStr("\"min\"" + ":")
+			e.FieldStart("min")
 			s.Min.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -30040,19 +24891,10 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -30091,19 +24933,10 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -30142,19 +24975,10 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -30193,19 +25017,10 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -30244,19 +25059,10 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -30295,60 +25101,32 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -30463,30 +25241,14 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"limits\"" + ":")
+		e.FieldStart("limits")
 		e.ArrStart()
-		if len(s.Limits) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Limits[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Limits[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Limits {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -30568,56 +25330,26 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Hostname.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Hostname.Set {
-			e.RawStr("\"hostname\"" + ":")
+			e.FieldStart("hostname")
 			s.Hostname.Encode(e)
 		}
 	}
 	{
 		if s.IP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.IP.Set {
-			e.RawStr("\"ip\"" + ":")
+			e.FieldStart("ip")
 			s.IP.Encode(e)
 		}
 	}
 	{
 		if s.Ports != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -30688,32 +25420,14 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ingress != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ingress != nil {
-			e.RawStr("\"ingress\"" + ":")
+			e.FieldStart("ingress")
 			e.ArrStart()
-			if len(s.Ingress) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ingress[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ingress[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ingress {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -30762,21 +25476,11 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
@@ -30817,31 +25521,17 @@ func (s *IoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	e.ObjEnd()
@@ -30927,34 +25617,22 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"server\"" + ":")
+		e.FieldStart("server")
 		e.Str(s.Server)
 	}
 	e.ObjEnd()
@@ -31053,69 +25731,35 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Namespace) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Namespace) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -31200,61 +25844,34 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NamespaceCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NamespaceCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -31375,60 +25992,32 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -31543,32 +26132,14 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Finalizers != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Finalizers != nil {
-			e.RawStr("\"finalizers\"" + ":")
+			e.FieldStart("finalizers")
 			e.ArrStart()
-			if len(s.Finalizers) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Finalizers[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Finalizers[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Finalizers {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -31619,45 +26190,21 @@ func (s *IoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Phase.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Phase.Set {
-			e.RawStr("\"phase\"" + ":")
+			e.FieldStart("phase")
 			s.Phase.Encode(e)
 		}
 	}
@@ -31716,69 +26263,35 @@ func (s *IoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Node) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Node) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -31863,25 +26376,16 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeAddress) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"address\"" + ":")
+		e.FieldStart("address")
 		e.Str(s.Address)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -31969,45 +26473,21 @@ func (s *IoK8sAPICoreV1NodeAddress) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-			e.RawStr("\"preferredDuringSchedulingIgnoredDuringExecution\"" + ":")
+			e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
 			e.ArrStart()
-			if len(s.PreferredDuringSchedulingIgnoredDuringExecution) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.PreferredDuringSchedulingIgnoredDuringExecution[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RequiredDuringSchedulingIgnoredDuringExecution.Set {
-			e.RawStr("\"requiredDuringSchedulingIgnoredDuringExecution\"" + ":")
+			e.FieldStart("requiredDuringSchedulingIgnoredDuringExecution")
 			s.RequiredDuringSchedulingIgnoredDuringExecution.Encode(e)
 		}
 	}
@@ -32066,73 +26546,40 @@ func (s *IoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastHeartbeatTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastHeartbeatTime.Set {
-			e.RawStr("\"lastHeartbeatTime\"" + ":")
+			e.FieldStart("lastHeartbeatTime")
 			s.LastHeartbeatTime.Encode(e)
 		}
 	}
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -32264,21 +26711,11 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ConfigMap.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConfigMap.Set {
-			e.RawStr("\"configMap\"" + ":")
+			e.FieldStart("configMap")
 			s.ConfigMap.Encode(e)
 		}
 	}
@@ -32319,57 +26756,29 @@ func (s *IoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Active.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Active.Set {
-			e.RawStr("\"active\"" + ":")
+			e.FieldStart("active")
 			s.Active.Encode(e)
 		}
 	}
 	{
 		if s.Assigned.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Assigned.Set {
-			e.RawStr("\"assigned\"" + ":")
+			e.FieldStart("assigned")
 			s.Assigned.Encode(e)
 		}
 	}
 	{
 		if s.Error.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Error.Set {
-			e.RawStr("\"error\"" + ":")
+			e.FieldStart("error")
 			s.Error.Encode(e)
 		}
 	}
 	{
 		if s.LastKnownGood.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastKnownGood.Set {
-			e.RawStr("\"lastKnownGood\"" + ":")
+			e.FieldStart("lastKnownGood")
 			s.LastKnownGood.Encode(e)
 		}
 	}
@@ -32443,21 +26852,11 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.KubeletEndpoint.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.KubeletEndpoint.Set {
-			e.RawStr("\"kubeletEndpoint\"" + ":")
+			e.FieldStart("kubeletEndpoint")
 			s.KubeletEndpoint.Encode(e)
 		}
 	}
@@ -32498,60 +26897,32 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -32666,30 +27037,14 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"nodeSelectorTerms\"" + ":")
+		e.FieldStart("nodeSelectorTerms")
 		e.ArrStart()
-		if len(s.NodeSelectorTerms) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.NodeSelectorTerms[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.NodeSelectorTerms[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.NodeSelectorTerms {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -32771,44 +27126,24 @@ func (s *IoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"key\"" + ":")
+		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"operator\"" + ":")
+		e.FieldStart("operator")
 		e.Str(s.Operator)
 	}
 	{
 		if s.Values != nil {
-			e.Comma()
-		}
-		if s.Values != nil {
-			e.RawStr("\"values\"" + ":")
+			e.FieldStart("values")
 			e.ArrStart()
-			if len(s.Values) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Values[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Values[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Values {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -32918,56 +27253,24 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MatchExpressions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchExpressions != nil {
-			e.RawStr("\"matchExpressions\"" + ":")
+			e.FieldStart("matchExpressions")
 			e.ArrStart()
-			if len(s.MatchExpressions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.MatchExpressions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.MatchExpressions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.MatchExpressions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.MatchFields != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchFields != nil {
-			e.RawStr("\"matchFields\"" + ":")
+			e.FieldStart("matchFields")
 			e.ArrStart()
-			if len(s.MatchFields) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.MatchFields[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.MatchFields[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.MatchFields {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -33034,117 +27337,55 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ConfigSource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConfigSource.Set {
-			e.RawStr("\"configSource\"" + ":")
+			e.FieldStart("configSource")
 			s.ConfigSource.Encode(e)
 		}
 	}
 	{
 		if s.ExternalID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExternalID.Set {
-			e.RawStr("\"externalID\"" + ":")
+			e.FieldStart("externalID")
 			s.ExternalID.Encode(e)
 		}
 	}
 	{
 		if s.PodCIDR.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodCIDR.Set {
-			e.RawStr("\"podCIDR\"" + ":")
+			e.FieldStart("podCIDR")
 			s.PodCIDR.Encode(e)
 		}
 	}
 	{
 		if s.PodCIDRs != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodCIDRs != nil {
-			e.RawStr("\"podCIDRs\"" + ":")
+			e.FieldStart("podCIDRs")
 			e.ArrStart()
-			if len(s.PodCIDRs) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.PodCIDRs[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.PodCIDRs[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.PodCIDRs {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ProviderID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ProviderID.Set {
-			e.RawStr("\"providerID\"" + ":")
+			e.FieldStart("providerID")
 			s.ProviderID.Encode(e)
 		}
 	}
 	{
 		if s.Taints != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Taints != nil {
-			e.RawStr("\"taints\"" + ":")
+			e.FieldStart("taints")
 			e.ArrStart()
-			if len(s.Taints) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Taints[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Taints[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Taints {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Unschedulable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Unschedulable.Set {
-			e.RawStr("\"unschedulable\"" + ":")
+			e.FieldStart("unschedulable")
 			s.Unschedulable.Encode(e)
 		}
 	}
@@ -33267,200 +27508,90 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Addresses != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Addresses != nil {
-			e.RawStr("\"addresses\"" + ":")
+			e.FieldStart("addresses")
 			e.ArrStart()
-			if len(s.Addresses) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Addresses[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Addresses[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Addresses {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Allocatable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Allocatable.Set {
-			e.RawStr("\"allocatable\"" + ":")
+			e.FieldStart("allocatable")
 			s.Allocatable.Encode(e)
 		}
 	}
 	{
 		if s.Capacity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Capacity.Set {
-			e.RawStr("\"capacity\"" + ":")
+			e.FieldStart("capacity")
 			s.Capacity.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Config.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Config.Set {
-			e.RawStr("\"config\"" + ":")
+			e.FieldStart("config")
 			s.Config.Encode(e)
 		}
 	}
 	{
 		if s.DaemonEndpoints.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DaemonEndpoints.Set {
-			e.RawStr("\"daemonEndpoints\"" + ":")
+			e.FieldStart("daemonEndpoints")
 			s.DaemonEndpoints.Encode(e)
 		}
 	}
 	{
 		if s.Images != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Images != nil {
-			e.RawStr("\"images\"" + ":")
+			e.FieldStart("images")
 			e.ArrStart()
-			if len(s.Images) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Images[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Images[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Images {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.NodeInfo.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeInfo.Set {
-			e.RawStr("\"nodeInfo\"" + ":")
+			e.FieldStart("nodeInfo")
 			s.NodeInfo.Encode(e)
 		}
 	}
 	{
 		if s.Phase.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Phase.Set {
-			e.RawStr("\"phase\"" + ":")
+			e.FieldStart("phase")
 			s.Phase.Encode(e)
 		}
 	}
 	{
 		if s.VolumesAttached != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumesAttached != nil {
-			e.RawStr("\"volumesAttached\"" + ":")
+			e.FieldStart("volumesAttached")
 			e.ArrStart()
-			if len(s.VolumesAttached) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumesAttached[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.VolumesAttached[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.VolumesAttached {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.VolumesInUse != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumesInUse != nil {
-			e.RawStr("\"volumesInUse\"" + ":")
+			e.FieldStart("volumesInUse")
 			e.ArrStart()
-			if len(s.VolumesInUse) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumesInUse[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.VolumesInUse[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.VolumesInUse {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -33649,19 +27780,10 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -33700,19 +27822,10 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -33751,73 +27864,56 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"architecture\"" + ":")
+		e.FieldStart("architecture")
 		e.Str(s.Architecture)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"bootID\"" + ":")
+		e.FieldStart("bootID")
 		e.Str(s.BootID)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"containerRuntimeVersion\"" + ":")
+		e.FieldStart("containerRuntimeVersion")
 		e.Str(s.ContainerRuntimeVersion)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"kernelVersion\"" + ":")
+		e.FieldStart("kernelVersion")
 		e.Str(s.KernelVersion)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"kubeProxyVersion\"" + ":")
+		e.FieldStart("kubeProxyVersion")
 		e.Str(s.KubeProxyVersion)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"kubeletVersion\"" + ":")
+		e.FieldStart("kubeletVersion")
 		e.Str(s.KubeletVersion)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"machineID\"" + ":")
+		e.FieldStart("machineID")
 		e.Str(s.MachineID)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"operatingSystem\"" + ":")
+		e.FieldStart("operatingSystem")
 		e.Str(s.OperatingSystem)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"osImage\"" + ":")
+		e.FieldStart("osImage")
 		e.Str(s.OsImage)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"systemUUID\"" + ":")
+		e.FieldStart("systemUUID")
 		e.Str(s.SystemUUID)
 	}
 	e.ObjEnd()
@@ -34010,31 +28106,17 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"fieldPath\"" + ":")
+		e.FieldStart("fieldPath")
 		e.Str(s.FieldPath)
 	}
 	e.ObjEnd()
@@ -34120,93 +28202,47 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ObjectReference) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.FieldPath.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FieldPath.Set {
-			e.RawStr("\"fieldPath\"" + ":")
+			e.FieldStart("fieldPath")
 			s.FieldPath.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Namespace.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Namespace.Set {
-			e.RawStr("\"namespace\"" + ":")
+			e.FieldStart("namespace")
 			s.Namespace.Encode(e)
 		}
 	}
 	{
 		if s.ResourceVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ResourceVersion.Set {
-			e.RawStr("\"resourceVersion\"" + ":")
+			e.FieldStart("resourceVersion")
 			s.ResourceVersion.Encode(e)
 		}
 	}
 	{
 		if s.UID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UID.Set {
-			e.RawStr("\"uid\"" + ":")
+			e.FieldStart("uid")
 			s.UID.Encode(e)
 		}
 	}
@@ -34313,69 +28349,35 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolume) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -34460,69 +28462,35 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaim) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaim) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -34607,73 +28575,40 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastProbeTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastProbeTime.Set {
-			e.RawStr("\"lastProbeTime\"" + ":")
+			e.FieldStart("lastProbeTime")
 			s.LastProbeTime.Encode(e)
 		}
 	}
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -34805,60 +28740,32 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -34973,117 +28880,57 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AccessModes != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AccessModes != nil {
-			e.RawStr("\"accessModes\"" + ":")
+			e.FieldStart("accessModes")
 			e.ArrStart()
-			if len(s.AccessModes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AccessModes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.AccessModes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.AccessModes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.DataSource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DataSource.Set {
-			e.RawStr("\"dataSource\"" + ":")
+			e.FieldStart("dataSource")
 			s.DataSource.Encode(e)
 		}
 	}
 	{
 		if s.DataSourceRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DataSourceRef.Set {
-			e.RawStr("\"dataSourceRef\"" + ":")
+			e.FieldStart("dataSourceRef")
 			s.DataSourceRef.Encode(e)
 		}
 	}
 	{
 		if s.Resources.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resources.Set {
-			e.RawStr("\"resources\"" + ":")
+			e.FieldStart("resources")
 			s.Resources.Encode(e)
 		}
 	}
 	{
 		if s.Selector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
 	{
 		if s.StorageClassName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StorageClassName.Set {
-			e.RawStr("\"storageClassName\"" + ":")
+			e.FieldStart("storageClassName")
 			s.StorageClassName.Encode(e)
 		}
 	}
 	{
 		if s.VolumeMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeMode.Set {
-			e.RawStr("\"volumeMode\"" + ":")
+			e.FieldStart("volumeMode")
 			s.VolumeMode.Encode(e)
 		}
 	}
 	{
 		if s.VolumeName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeName.Set {
-			e.RawStr("\"volumeName\"" + ":")
+			e.FieldStart("volumeName")
 			s.VolumeName.Encode(e)
 		}
 	}
@@ -35210,81 +29057,37 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AccessModes != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AccessModes != nil {
-			e.RawStr("\"accessModes\"" + ":")
+			e.FieldStart("accessModes")
 			e.ArrStart()
-			if len(s.AccessModes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AccessModes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.AccessModes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.AccessModes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Capacity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Capacity.Set {
-			e.RawStr("\"capacity\"" + ":")
+			e.FieldStart("capacity")
 			s.Capacity.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Phase.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Phase.Set {
-			e.RawStr("\"phase\"" + ":")
+			e.FieldStart("phase")
 			s.Phase.Encode(e)
 		}
 	}
@@ -35374,19 +29177,10 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -35425,31 +29219,17 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	e.ObjEnd()
@@ -35533,27 +29313,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"claimName\"" + ":")
+		e.FieldStart("claimName")
 		e.Str(s.ClaimName)
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
@@ -35640,60 +29409,32 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -35808,393 +29549,193 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AccessModes != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AccessModes != nil {
-			e.RawStr("\"accessModes\"" + ":")
+			e.FieldStart("accessModes")
 			e.ArrStart()
-			if len(s.AccessModes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AccessModes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.AccessModes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.AccessModes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.AwsElasticBlockStore.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AwsElasticBlockStore.Set {
-			e.RawStr("\"awsElasticBlockStore\"" + ":")
+			e.FieldStart("awsElasticBlockStore")
 			s.AwsElasticBlockStore.Encode(e)
 		}
 	}
 	{
 		if s.AzureDisk.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AzureDisk.Set {
-			e.RawStr("\"azureDisk\"" + ":")
+			e.FieldStart("azureDisk")
 			s.AzureDisk.Encode(e)
 		}
 	}
 	{
 		if s.AzureFile.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AzureFile.Set {
-			e.RawStr("\"azureFile\"" + ":")
+			e.FieldStart("azureFile")
 			s.AzureFile.Encode(e)
 		}
 	}
 	{
 		if s.Capacity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Capacity.Set {
-			e.RawStr("\"capacity\"" + ":")
+			e.FieldStart("capacity")
 			s.Capacity.Encode(e)
 		}
 	}
 	{
 		if s.Cephfs.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Cephfs.Set {
-			e.RawStr("\"cephfs\"" + ":")
+			e.FieldStart("cephfs")
 			s.Cephfs.Encode(e)
 		}
 	}
 	{
 		if s.Cinder.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Cinder.Set {
-			e.RawStr("\"cinder\"" + ":")
+			e.FieldStart("cinder")
 			s.Cinder.Encode(e)
 		}
 	}
 	{
 		if s.ClaimRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ClaimRef.Set {
-			e.RawStr("\"claimRef\"" + ":")
+			e.FieldStart("claimRef")
 			s.ClaimRef.Encode(e)
 		}
 	}
 	{
 		if s.Csi.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Csi.Set {
-			e.RawStr("\"csi\"" + ":")
+			e.FieldStart("csi")
 			s.Csi.Encode(e)
 		}
 	}
 	{
 		if s.Fc.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Fc.Set {
-			e.RawStr("\"fc\"" + ":")
+			e.FieldStart("fc")
 			s.Fc.Encode(e)
 		}
 	}
 	{
 		if s.FlexVolume.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FlexVolume.Set {
-			e.RawStr("\"flexVolume\"" + ":")
+			e.FieldStart("flexVolume")
 			s.FlexVolume.Encode(e)
 		}
 	}
 	{
 		if s.Flocker.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Flocker.Set {
-			e.RawStr("\"flocker\"" + ":")
+			e.FieldStart("flocker")
 			s.Flocker.Encode(e)
 		}
 	}
 	{
 		if s.GcePersistentDisk.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GcePersistentDisk.Set {
-			e.RawStr("\"gcePersistentDisk\"" + ":")
+			e.FieldStart("gcePersistentDisk")
 			s.GcePersistentDisk.Encode(e)
 		}
 	}
 	{
 		if s.Glusterfs.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Glusterfs.Set {
-			e.RawStr("\"glusterfs\"" + ":")
+			e.FieldStart("glusterfs")
 			s.Glusterfs.Encode(e)
 		}
 	}
 	{
 		if s.HostPath.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HostPath.Set {
-			e.RawStr("\"hostPath\"" + ":")
+			e.FieldStart("hostPath")
 			s.HostPath.Encode(e)
 		}
 	}
 	{
 		if s.Iscsi.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Iscsi.Set {
-			e.RawStr("\"iscsi\"" + ":")
+			e.FieldStart("iscsi")
 			s.Iscsi.Encode(e)
 		}
 	}
 	{
 		if s.Local.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Local.Set {
-			e.RawStr("\"local\"" + ":")
+			e.FieldStart("local")
 			s.Local.Encode(e)
 		}
 	}
 	{
 		if s.MountOptions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MountOptions != nil {
-			e.RawStr("\"mountOptions\"" + ":")
+			e.FieldStart("mountOptions")
 			e.ArrStart()
-			if len(s.MountOptions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.MountOptions[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.MountOptions[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.MountOptions {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Nfs.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Nfs.Set {
-			e.RawStr("\"nfs\"" + ":")
+			e.FieldStart("nfs")
 			s.Nfs.Encode(e)
 		}
 	}
 	{
 		if s.NodeAffinity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeAffinity.Set {
-			e.RawStr("\"nodeAffinity\"" + ":")
+			e.FieldStart("nodeAffinity")
 			s.NodeAffinity.Encode(e)
 		}
 	}
 	{
 		if s.PersistentVolumeReclaimPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PersistentVolumeReclaimPolicy.Set {
-			e.RawStr("\"persistentVolumeReclaimPolicy\"" + ":")
+			e.FieldStart("persistentVolumeReclaimPolicy")
 			s.PersistentVolumeReclaimPolicy.Encode(e)
 		}
 	}
 	{
 		if s.PhotonPersistentDisk.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PhotonPersistentDisk.Set {
-			e.RawStr("\"photonPersistentDisk\"" + ":")
+			e.FieldStart("photonPersistentDisk")
 			s.PhotonPersistentDisk.Encode(e)
 		}
 	}
 	{
 		if s.PortworxVolume.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PortworxVolume.Set {
-			e.RawStr("\"portworxVolume\"" + ":")
+			e.FieldStart("portworxVolume")
 			s.PortworxVolume.Encode(e)
 		}
 	}
 	{
 		if s.Quobyte.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Quobyte.Set {
-			e.RawStr("\"quobyte\"" + ":")
+			e.FieldStart("quobyte")
 			s.Quobyte.Encode(e)
 		}
 	}
 	{
 		if s.Rbd.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Rbd.Set {
-			e.RawStr("\"rbd\"" + ":")
+			e.FieldStart("rbd")
 			s.Rbd.Encode(e)
 		}
 	}
 	{
 		if s.ScaleIO.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ScaleIO.Set {
-			e.RawStr("\"scaleIO\"" + ":")
+			e.FieldStart("scaleIO")
 			s.ScaleIO.Encode(e)
 		}
 	}
 	{
 		if s.StorageClassName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StorageClassName.Set {
-			e.RawStr("\"storageClassName\"" + ":")
+			e.FieldStart("storageClassName")
 			s.StorageClassName.Encode(e)
 		}
 	}
 	{
 		if s.Storageos.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Storageos.Set {
-			e.RawStr("\"storageos\"" + ":")
+			e.FieldStart("storageos")
 			s.Storageos.Encode(e)
 		}
 	}
 	{
 		if s.VolumeMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeMode.Set {
-			e.RawStr("\"volumeMode\"" + ":")
+			e.FieldStart("volumeMode")
 			s.VolumeMode.Encode(e)
 		}
 	}
 	{
 		if s.VsphereVolume.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VsphereVolume.Set {
-			e.RawStr("\"vsphereVolume\"" + ":")
+			e.FieldStart("vsphereVolume")
 			s.VsphereVolume.Encode(e)
 		}
 	}
@@ -36572,19 +30113,10 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -36623,45 +30155,23 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Phase.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Phase.Set {
-			e.RawStr("\"phase\"" + ":")
+			e.FieldStart("phase")
 			s.Phase.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
@@ -36724,31 +30234,17 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"pdID\"" + ":")
+		e.FieldStart("pdID")
 		e.Str(s.PdID)
 	}
 	e.ObjEnd()
@@ -36834,69 +30330,35 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Pod) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Pod) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -36981,56 +30443,24 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-			e.RawStr("\"preferredDuringSchedulingIgnoredDuringExecution\"" + ":")
+			e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
 			e.ArrStart()
-			if len(s.PreferredDuringSchedulingIgnoredDuringExecution) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.PreferredDuringSchedulingIgnoredDuringExecution[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
-			e.RawStr("\"requiredDuringSchedulingIgnoredDuringExecution\"" + ":")
+			e.FieldStart("requiredDuringSchedulingIgnoredDuringExecution")
 			e.ArrStart()
-			if len(s.RequiredDuringSchedulingIgnoredDuringExecution) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.RequiredDuringSchedulingIgnoredDuringExecution[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -37097,67 +30527,33 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LabelSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LabelSelector.Set {
-			e.RawStr("\"labelSelector\"" + ":")
+			e.FieldStart("labelSelector")
 			s.LabelSelector.Encode(e)
 		}
 	}
 	{
 		if s.NamespaceSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NamespaceSelector.Set {
-			e.RawStr("\"namespaceSelector\"" + ":")
+			e.FieldStart("namespaceSelector")
 			s.NamespaceSelector.Encode(e)
 		}
 	}
 	{
 		if s.Namespaces != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Namespaces != nil {
-			e.RawStr("\"namespaces\"" + ":")
+			e.FieldStart("namespaces")
 			e.ArrStart()
-			if len(s.Namespaces) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Namespaces[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Namespaces[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Namespaces {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"topologyKey\"" + ":")
+		e.FieldStart("topologyKey")
 		e.Str(s.TopologyKey)
 	}
 	e.ObjEnd()
@@ -37274,56 +30670,24 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
-			e.RawStr("\"preferredDuringSchedulingIgnoredDuringExecution\"" + ":")
+			e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
 			e.ArrStart()
-			if len(s.PreferredDuringSchedulingIgnoredDuringExecution) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.PreferredDuringSchedulingIgnoredDuringExecution[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.PreferredDuringSchedulingIgnoredDuringExecution {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RequiredDuringSchedulingIgnoredDuringExecution != nil {
-			e.RawStr("\"requiredDuringSchedulingIgnoredDuringExecution\"" + ":")
+			e.FieldStart("requiredDuringSchedulingIgnoredDuringExecution")
 			e.ArrStart()
-			if len(s.RequiredDuringSchedulingIgnoredDuringExecution) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.RequiredDuringSchedulingIgnoredDuringExecution[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.RequiredDuringSchedulingIgnoredDuringExecution {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -37390,73 +30754,40 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastProbeTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastProbeTime.Set {
-			e.RawStr("\"lastProbeTime\"" + ":")
+			e.FieldStart("lastProbeTime")
 			s.LastProbeTime.Encode(e)
 		}
 	}
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -37588,80 +30919,34 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Nameservers != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Nameservers != nil {
-			e.RawStr("\"nameservers\"" + ":")
+			e.FieldStart("nameservers")
 			e.ArrStart()
-			if len(s.Nameservers) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Nameservers[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Nameservers[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Nameservers {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Options != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Options != nil {
-			e.RawStr("\"options\"" + ":")
+			e.FieldStart("options")
 			e.ArrStart()
-			if len(s.Options) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Options[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Options[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Options {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Searches != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Searches != nil {
-			e.RawStr("\"searches\"" + ":")
+			e.FieldStart("searches")
 			e.ArrStart()
-			if len(s.Searches) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Searches[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Searches[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Searches {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -37750,33 +31035,17 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodDNSConfigOption) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodDNSConfigOption) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Value.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Value.Set {
-			e.RawStr("\"value\"" + ":")
+			e.FieldStart("value")
 			s.Value.Encode(e)
 		}
 	}
@@ -37828,21 +31097,11 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodIP) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodIP) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.IP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.IP.Set {
-			e.RawStr("\"ip\"" + ":")
+			e.FieldStart("ip")
 			s.IP.Encode(e)
 		}
 	}
@@ -37883,60 +31142,32 @@ func (s *IoK8sAPICoreV1PodIP) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -38051,19 +31282,11 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodReadinessGate) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodReadinessGate) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"conditionType\"" + ":")
+		e.FieldStart("conditionType")
 		e.Str(s.ConditionType)
 	}
 	e.ObjEnd()
@@ -38138,153 +31361,73 @@ func (s *IoK8sAPICoreV1PodReadinessGate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsGroup.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsGroup.Set {
-			e.RawStr("\"fsGroup\"" + ":")
+			e.FieldStart("fsGroup")
 			s.FsGroup.Encode(e)
 		}
 	}
 	{
 		if s.FsGroupChangePolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsGroupChangePolicy.Set {
-			e.RawStr("\"fsGroupChangePolicy\"" + ":")
+			e.FieldStart("fsGroupChangePolicy")
 			s.FsGroupChangePolicy.Encode(e)
 		}
 	}
 	{
 		if s.RunAsGroup.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RunAsGroup.Set {
-			e.RawStr("\"runAsGroup\"" + ":")
+			e.FieldStart("runAsGroup")
 			s.RunAsGroup.Encode(e)
 		}
 	}
 	{
 		if s.RunAsNonRoot.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RunAsNonRoot.Set {
-			e.RawStr("\"runAsNonRoot\"" + ":")
+			e.FieldStart("runAsNonRoot")
 			s.RunAsNonRoot.Encode(e)
 		}
 	}
 	{
 		if s.RunAsUser.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RunAsUser.Set {
-			e.RawStr("\"runAsUser\"" + ":")
+			e.FieldStart("runAsUser")
 			s.RunAsUser.Encode(e)
 		}
 	}
 	{
 		if s.SeLinuxOptions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SeLinuxOptions.Set {
-			e.RawStr("\"seLinuxOptions\"" + ":")
+			e.FieldStart("seLinuxOptions")
 			s.SeLinuxOptions.Encode(e)
 		}
 	}
 	{
 		if s.SeccompProfile.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SeccompProfile.Set {
-			e.RawStr("\"seccompProfile\"" + ":")
+			e.FieldStart("seccompProfile")
 			s.SeccompProfile.Encode(e)
 		}
 	}
 	{
 		if s.SupplementalGroups != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SupplementalGroups != nil {
-			e.RawStr("\"supplementalGroups\"" + ":")
+			e.FieldStart("supplementalGroups")
 			e.ArrStart()
-			if len(s.SupplementalGroups) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.SupplementalGroups[0]
-					e.Int64(elem)
-				}
-				for _, elem := range s.SupplementalGroups[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
+			for _, elem := range s.SupplementalGroups {
+				e.Int64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Sysctls != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Sysctls != nil {
-			e.RawStr("\"sysctls\"" + ":")
+			e.FieldStart("sysctls")
 			e.ArrStart()
-			if len(s.Sysctls) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Sysctls[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Sysctls[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Sysctls {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.WindowsOptions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.WindowsOptions.Set {
-			e.RawStr("\"windowsOptions\"" + ":")
+			e.FieldStart("windowsOptions")
 			s.WindowsOptions.Encode(e)
 		}
 	}
@@ -38440,440 +31583,249 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ActiveDeadlineSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ActiveDeadlineSeconds.Set {
-			e.RawStr("\"activeDeadlineSeconds\"" + ":")
+			e.FieldStart("activeDeadlineSeconds")
 			s.ActiveDeadlineSeconds.Encode(e)
 		}
 	}
 	{
 		if s.Affinity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Affinity.Set {
-			e.RawStr("\"affinity\"" + ":")
+			e.FieldStart("affinity")
 			s.Affinity.Encode(e)
 		}
 	}
 	{
 		if s.AutomountServiceAccountToken.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AutomountServiceAccountToken.Set {
-			e.RawStr("\"automountServiceAccountToken\"" + ":")
+			e.FieldStart("automountServiceAccountToken")
 			s.AutomountServiceAccountToken.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"containers\"" + ":")
+		e.FieldStart("containers")
 		e.ArrStart()
-		if len(s.Containers) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Containers[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Containers[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Containers {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.DnsConfig.Set {
-			e.Comma()
-		}
-		if s.DnsConfig.Set {
-			e.RawStr("\"dnsConfig\"" + ":")
+			e.FieldStart("dnsConfig")
 			s.DnsConfig.Encode(e)
 		}
 	}
 	{
 		if s.DnsPolicy.Set {
-			e.Comma()
-		}
-		if s.DnsPolicy.Set {
-			e.RawStr("\"dnsPolicy\"" + ":")
+			e.FieldStart("dnsPolicy")
 			s.DnsPolicy.Encode(e)
 		}
 	}
 	{
 		if s.EnableServiceLinks.Set {
-			e.Comma()
-		}
-		if s.EnableServiceLinks.Set {
-			e.RawStr("\"enableServiceLinks\"" + ":")
+			e.FieldStart("enableServiceLinks")
 			s.EnableServiceLinks.Encode(e)
 		}
 	}
 	{
 		if s.EphemeralContainers != nil {
-			e.Comma()
-		}
-		if s.EphemeralContainers != nil {
-			e.RawStr("\"ephemeralContainers\"" + ":")
+			e.FieldStart("ephemeralContainers")
 			e.ArrStart()
-			if len(s.EphemeralContainers) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.EphemeralContainers[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.EphemeralContainers[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.EphemeralContainers {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.HostAliases != nil {
-			e.Comma()
-		}
-		if s.HostAliases != nil {
-			e.RawStr("\"hostAliases\"" + ":")
+			e.FieldStart("hostAliases")
 			e.ArrStart()
-			if len(s.HostAliases) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.HostAliases[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.HostAliases[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.HostAliases {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.HostIPC.Set {
-			e.Comma()
-		}
-		if s.HostIPC.Set {
-			e.RawStr("\"hostIPC\"" + ":")
+			e.FieldStart("hostIPC")
 			s.HostIPC.Encode(e)
 		}
 	}
 	{
 		if s.HostNetwork.Set {
-			e.Comma()
-		}
-		if s.HostNetwork.Set {
-			e.RawStr("\"hostNetwork\"" + ":")
+			e.FieldStart("hostNetwork")
 			s.HostNetwork.Encode(e)
 		}
 	}
 	{
 		if s.HostPID.Set {
-			e.Comma()
-		}
-		if s.HostPID.Set {
-			e.RawStr("\"hostPID\"" + ":")
+			e.FieldStart("hostPID")
 			s.HostPID.Encode(e)
 		}
 	}
 	{
 		if s.Hostname.Set {
-			e.Comma()
-		}
-		if s.Hostname.Set {
-			e.RawStr("\"hostname\"" + ":")
+			e.FieldStart("hostname")
 			s.Hostname.Encode(e)
 		}
 	}
 	{
 		if s.ImagePullSecrets != nil {
-			e.Comma()
-		}
-		if s.ImagePullSecrets != nil {
-			e.RawStr("\"imagePullSecrets\"" + ":")
+			e.FieldStart("imagePullSecrets")
 			e.ArrStart()
-			if len(s.ImagePullSecrets) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ImagePullSecrets[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ImagePullSecrets[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ImagePullSecrets {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.InitContainers != nil {
-			e.Comma()
-		}
-		if s.InitContainers != nil {
-			e.RawStr("\"initContainers\"" + ":")
+			e.FieldStart("initContainers")
 			e.ArrStart()
-			if len(s.InitContainers) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.InitContainers[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.InitContainers[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.InitContainers {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.NodeName.Set {
-			e.Comma()
-		}
-		if s.NodeName.Set {
-			e.RawStr("\"nodeName\"" + ":")
+			e.FieldStart("nodeName")
 			s.NodeName.Encode(e)
 		}
 	}
 	{
 		if s.NodeSelector.Set {
-			e.Comma()
-		}
-		if s.NodeSelector.Set {
-			e.RawStr("\"nodeSelector\"" + ":")
+			e.FieldStart("nodeSelector")
 			s.NodeSelector.Encode(e)
 		}
 	}
 	{
 		if s.Overhead.Set {
-			e.Comma()
-		}
-		if s.Overhead.Set {
-			e.RawStr("\"overhead\"" + ":")
+			e.FieldStart("overhead")
 			s.Overhead.Encode(e)
 		}
 	}
 	{
 		if s.PreemptionPolicy.Set {
-			e.Comma()
-		}
-		if s.PreemptionPolicy.Set {
-			e.RawStr("\"preemptionPolicy\"" + ":")
+			e.FieldStart("preemptionPolicy")
 			s.PreemptionPolicy.Encode(e)
 		}
 	}
 	{
 		if s.Priority.Set {
-			e.Comma()
-		}
-		if s.Priority.Set {
-			e.RawStr("\"priority\"" + ":")
+			e.FieldStart("priority")
 			s.Priority.Encode(e)
 		}
 	}
 	{
 		if s.PriorityClassName.Set {
-			e.Comma()
-		}
-		if s.PriorityClassName.Set {
-			e.RawStr("\"priorityClassName\"" + ":")
+			e.FieldStart("priorityClassName")
 			s.PriorityClassName.Encode(e)
 		}
 	}
 	{
 		if s.ReadinessGates != nil {
-			e.Comma()
-		}
-		if s.ReadinessGates != nil {
-			e.RawStr("\"readinessGates\"" + ":")
+			e.FieldStart("readinessGates")
 			e.ArrStart()
-			if len(s.ReadinessGates) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ReadinessGates[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ReadinessGates[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ReadinessGates {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.RestartPolicy.Set {
-			e.Comma()
-		}
-		if s.RestartPolicy.Set {
-			e.RawStr("\"restartPolicy\"" + ":")
+			e.FieldStart("restartPolicy")
 			s.RestartPolicy.Encode(e)
 		}
 	}
 	{
 		if s.RuntimeClassName.Set {
-			e.Comma()
-		}
-		if s.RuntimeClassName.Set {
-			e.RawStr("\"runtimeClassName\"" + ":")
+			e.FieldStart("runtimeClassName")
 			s.RuntimeClassName.Encode(e)
 		}
 	}
 	{
 		if s.SchedulerName.Set {
-			e.Comma()
-		}
-		if s.SchedulerName.Set {
-			e.RawStr("\"schedulerName\"" + ":")
+			e.FieldStart("schedulerName")
 			s.SchedulerName.Encode(e)
 		}
 	}
 	{
 		if s.SecurityContext.Set {
-			e.Comma()
-		}
-		if s.SecurityContext.Set {
-			e.RawStr("\"securityContext\"" + ":")
+			e.FieldStart("securityContext")
 			s.SecurityContext.Encode(e)
 		}
 	}
 	{
 		if s.ServiceAccount.Set {
-			e.Comma()
-		}
-		if s.ServiceAccount.Set {
-			e.RawStr("\"serviceAccount\"" + ":")
+			e.FieldStart("serviceAccount")
 			s.ServiceAccount.Encode(e)
 		}
 	}
 	{
 		if s.ServiceAccountName.Set {
-			e.Comma()
-		}
-		if s.ServiceAccountName.Set {
-			e.RawStr("\"serviceAccountName\"" + ":")
+			e.FieldStart("serviceAccountName")
 			s.ServiceAccountName.Encode(e)
 		}
 	}
 	{
 		if s.SetHostnameAsFQDN.Set {
-			e.Comma()
-		}
-		if s.SetHostnameAsFQDN.Set {
-			e.RawStr("\"setHostnameAsFQDN\"" + ":")
+			e.FieldStart("setHostnameAsFQDN")
 			s.SetHostnameAsFQDN.Encode(e)
 		}
 	}
 	{
 		if s.ShareProcessNamespace.Set {
-			e.Comma()
-		}
-		if s.ShareProcessNamespace.Set {
-			e.RawStr("\"shareProcessNamespace\"" + ":")
+			e.FieldStart("shareProcessNamespace")
 			s.ShareProcessNamespace.Encode(e)
 		}
 	}
 	{
 		if s.Subdomain.Set {
-			e.Comma()
-		}
-		if s.Subdomain.Set {
-			e.RawStr("\"subdomain\"" + ":")
+			e.FieldStart("subdomain")
 			s.Subdomain.Encode(e)
 		}
 	}
 	{
 		if s.TerminationGracePeriodSeconds.Set {
-			e.Comma()
-		}
-		if s.TerminationGracePeriodSeconds.Set {
-			e.RawStr("\"terminationGracePeriodSeconds\"" + ":")
+			e.FieldStart("terminationGracePeriodSeconds")
 			s.TerminationGracePeriodSeconds.Encode(e)
 		}
 	}
 	{
 		if s.Tolerations != nil {
-			e.Comma()
-		}
-		if s.Tolerations != nil {
-			e.RawStr("\"tolerations\"" + ":")
+			e.FieldStart("tolerations")
 			e.ArrStart()
-			if len(s.Tolerations) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Tolerations[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Tolerations[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Tolerations {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.TopologySpreadConstraints != nil {
-			e.Comma()
-		}
-		if s.TopologySpreadConstraints != nil {
-			e.RawStr("\"topologySpreadConstraints\"" + ":")
+			e.FieldStart("topologySpreadConstraints")
 			e.ArrStart()
-			if len(s.TopologySpreadConstraints) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.TopologySpreadConstraints[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.TopologySpreadConstraints[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.TopologySpreadConstraints {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Volumes != nil {
-			e.Comma()
-		}
-		if s.Volumes != nil {
-			e.RawStr("\"volumes\"" + ":")
+			e.FieldStart("volumes")
 			e.ArrStart()
-			if len(s.Volumes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Volumes[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Volumes[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Volumes {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -39390,19 +32342,10 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -39443,19 +32386,10 @@ func (s IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -39494,225 +32428,103 @@ func (s IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ContainerStatuses != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerStatuses != nil {
-			e.RawStr("\"containerStatuses\"" + ":")
+			e.FieldStart("containerStatuses")
 			e.ArrStart()
-			if len(s.ContainerStatuses) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ContainerStatuses[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ContainerStatuses[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ContainerStatuses {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.EphemeralContainerStatuses != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EphemeralContainerStatuses != nil {
-			e.RawStr("\"ephemeralContainerStatuses\"" + ":")
+			e.FieldStart("ephemeralContainerStatuses")
 			e.ArrStart()
-			if len(s.EphemeralContainerStatuses) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.EphemeralContainerStatuses[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.EphemeralContainerStatuses[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.EphemeralContainerStatuses {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.HostIP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HostIP.Set {
-			e.RawStr("\"hostIP\"" + ":")
+			e.FieldStart("hostIP")
 			s.HostIP.Encode(e)
 		}
 	}
 	{
 		if s.InitContainerStatuses != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InitContainerStatuses != nil {
-			e.RawStr("\"initContainerStatuses\"" + ":")
+			e.FieldStart("initContainerStatuses")
 			e.ArrStart()
-			if len(s.InitContainerStatuses) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.InitContainerStatuses[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.InitContainerStatuses[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.InitContainerStatuses {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.NominatedNodeName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NominatedNodeName.Set {
-			e.RawStr("\"nominatedNodeName\"" + ":")
+			e.FieldStart("nominatedNodeName")
 			s.NominatedNodeName.Encode(e)
 		}
 	}
 	{
 		if s.Phase.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Phase.Set {
-			e.RawStr("\"phase\"" + ":")
+			e.FieldStart("phase")
 			s.Phase.Encode(e)
 		}
 	}
 	{
 		if s.PodIP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodIP.Set {
-			e.RawStr("\"podIP\"" + ":")
+			e.FieldStart("podIP")
 			s.PodIP.Encode(e)
 		}
 	}
 	{
 		if s.PodIPs != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodIPs != nil {
-			e.RawStr("\"podIPs\"" + ":")
+			e.FieldStart("podIPs")
 			e.ArrStart()
-			if len(s.PodIPs) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.PodIPs[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.PodIPs[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.PodIPs {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.QosClass.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.QosClass.Set {
-			e.RawStr("\"qosClass\"" + ":")
+			e.FieldStart("qosClass")
 			s.QosClass.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.StartTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StartTime.Set {
-			e.RawStr("\"startTime\"" + ":")
+			e.FieldStart("startTime")
 			s.StartTime.Encode(e)
 		}
 	}
@@ -39920,57 +32732,29 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodTemplate) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodTemplate) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Template.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Template.Set {
-			e.RawStr("\"template\"" + ":")
+			e.FieldStart("template")
 			s.Template.Encode(e)
 		}
 	}
@@ -40044,60 +32828,32 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -40212,33 +32968,17 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -40290,37 +33030,22 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PortStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PortStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Error.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Error.Set {
-			e.RawStr("\"error\"" + ":")
+			e.FieldStart("error")
 			s.Error.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"port\"" + ":")
+		e.FieldStart("port")
 		e.Int32(s.Port)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"protocol\"" + ":")
+		e.FieldStart("protocol")
 		e.Str(s.Protocol)
 	}
 	e.ObjEnd()
@@ -40419,43 +33144,23 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"volumeID\"" + ":")
+		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
 	e.ObjEnd()
@@ -40552,25 +33257,16 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"preference\"" + ":")
+		e.FieldStart("preference")
 		s.Preference.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"weight\"" + ":")
+		e.FieldStart("weight")
 		e.Int32(s.Weight)
 	}
 	e.ObjEnd()
@@ -40656,117 +33352,59 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Probe) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Probe) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Exec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Exec.Set {
-			e.RawStr("\"exec\"" + ":")
+			e.FieldStart("exec")
 			s.Exec.Encode(e)
 		}
 	}
 	{
 		if s.FailureThreshold.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FailureThreshold.Set {
-			e.RawStr("\"failureThreshold\"" + ":")
+			e.FieldStart("failureThreshold")
 			s.FailureThreshold.Encode(e)
 		}
 	}
 	{
 		if s.HttpGet.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HttpGet.Set {
-			e.RawStr("\"httpGet\"" + ":")
+			e.FieldStart("httpGet")
 			s.HttpGet.Encode(e)
 		}
 	}
 	{
 		if s.InitialDelaySeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InitialDelaySeconds.Set {
-			e.RawStr("\"initialDelaySeconds\"" + ":")
+			e.FieldStart("initialDelaySeconds")
 			s.InitialDelaySeconds.Encode(e)
 		}
 	}
 	{
 		if s.PeriodSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PeriodSeconds.Set {
-			e.RawStr("\"periodSeconds\"" + ":")
+			e.FieldStart("periodSeconds")
 			s.PeriodSeconds.Encode(e)
 		}
 	}
 	{
 		if s.SuccessThreshold.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SuccessThreshold.Set {
-			e.RawStr("\"successThreshold\"" + ":")
+			e.FieldStart("successThreshold")
 			s.SuccessThreshold.Encode(e)
 		}
 	}
 	{
 		if s.TcpSocket.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TcpSocket.Set {
-			e.RawStr("\"tcpSocket\"" + ":")
+			e.FieldStart("tcpSocket")
 			s.TcpSocket.Encode(e)
 		}
 	}
 	{
 		if s.TerminationGracePeriodSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TerminationGracePeriodSeconds.Set {
-			e.RawStr("\"terminationGracePeriodSeconds\"" + ":")
+			e.FieldStart("terminationGracePeriodSeconds")
 			s.TerminationGracePeriodSeconds.Encode(e)
 		}
 	}
 	{
 		if s.TimeoutSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TimeoutSeconds.Set {
-			e.RawStr("\"timeoutSeconds\"" + ":")
+			e.FieldStart("timeoutSeconds")
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
@@ -40895,44 +33533,20 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DefaultMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultMode.Set {
-			e.RawStr("\"defaultMode\"" + ":")
+			e.FieldStart("defaultMode")
 			s.DefaultMode.Encode(e)
 		}
 	}
 	{
 		if s.Sources != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Sources != nil {
-			e.RawStr("\"sources\"" + ":")
+			e.FieldStart("sources")
 			e.ArrStart()
-			if len(s.Sources) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Sources[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Sources[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Sources {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -40992,67 +33606,40 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Group.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Group.Set {
-			e.RawStr("\"group\"" + ":")
+			e.FieldStart("group")
 			s.Group.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"registry\"" + ":")
+		e.FieldStart("registry")
 		e.Str(s.Registry)
 	}
 	{
 		if s.Tenant.Set {
-			e.Comma()
-		}
-		if s.Tenant.Set {
-			e.RawStr("\"tenant\"" + ":")
+			e.FieldStart("tenant")
 			s.Tenant.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			e.Comma()
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"volume\"" + ":")
+		e.FieldStart("volume")
 		e.Str(s.Volume)
 	}
 	e.ObjEnd()
@@ -41184,93 +33771,55 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"image\"" + ":")
+		e.FieldStart("image")
 		e.Str(s.Image)
 	}
 	{
 		if s.Keyring.Set {
-			e.Comma()
-		}
-		if s.Keyring.Set {
-			e.RawStr("\"keyring\"" + ":")
+			e.FieldStart("keyring")
 			s.Keyring.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"monitors\"" + ":")
+		e.FieldStart("monitors")
 		e.ArrStart()
-		if len(s.Monitors) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Monitors[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Monitors[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Monitors {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Pool.Set {
-			e.Comma()
-		}
-		if s.Pool.Set {
-			e.RawStr("\"pool\"" + ":")
+			e.FieldStart("pool")
 			s.Pool.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			e.Comma()
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
@@ -41433,93 +33982,55 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"image\"" + ":")
+		e.FieldStart("image")
 		e.Str(s.Image)
 	}
 	{
 		if s.Keyring.Set {
-			e.Comma()
-		}
-		if s.Keyring.Set {
-			e.RawStr("\"keyring\"" + ":")
+			e.FieldStart("keyring")
 			s.Keyring.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"monitors\"" + ":")
+		e.FieldStart("monitors")
 		e.ArrStart()
-		if len(s.Monitors) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Monitors[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Monitors[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Monitors {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Pool.Set {
-			e.Comma()
-		}
-		if s.Pool.Set {
-			e.RawStr("\"pool\"" + ":")
+			e.FieldStart("pool")
 			s.Pool.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			e.Comma()
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			e.Comma()
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
@@ -41682,69 +34193,35 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ReplicationController) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ReplicationController) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -41829,61 +34306,34 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ReplicationControllerCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ReplicationControllerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -42004,60 +34454,32 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -42172,57 +34594,29 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MinReadySeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinReadySeconds.Set {
-			e.RawStr("\"minReadySeconds\"" + ":")
+			e.FieldStart("minReadySeconds")
 			s.MinReadySeconds.Encode(e)
 		}
 	}
 	{
 		if s.Replicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Replicas.Set {
-			e.RawStr("\"replicas\"" + ":")
+			e.FieldStart("replicas")
 			s.Replicas.Encode(e)
 		}
 	}
 	{
 		if s.Selector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
 	{
 		if s.Template.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Template.Set {
-			e.RawStr("\"template\"" + ":")
+			e.FieldStart("template")
 			s.Template.Encode(e)
 		}
 	}
@@ -42296,19 +34690,10 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -42349,91 +34734,45 @@ func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AvailableReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AvailableReplicas.Set {
-			e.RawStr("\"availableReplicas\"" + ":")
+			e.FieldStart("availableReplicas")
 			s.AvailableReplicas.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.FullyLabeledReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FullyLabeledReplicas.Set {
-			e.RawStr("\"fullyLabeledReplicas\"" + ":")
+			e.FieldStart("fullyLabeledReplicas")
 			s.FullyLabeledReplicas.Encode(e)
 		}
 	}
 	{
 		if s.ObservedGeneration.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
 	{
 		if s.ReadyReplicas.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadyReplicas.Set {
-			e.RawStr("\"readyReplicas\"" + ":")
+			e.FieldStart("readyReplicas")
 			s.ReadyReplicas.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"replicas\"" + ":")
+		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
 	e.ObjEnd()
@@ -42570,43 +34909,23 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ContainerName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ContainerName.Set {
-			e.RawStr("\"containerName\"" + ":")
+			e.FieldStart("containerName")
 			s.ContainerName.Encode(e)
 		}
 	}
 	{
 		if s.Divisor.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Divisor.Set {
-			e.RawStr("\"divisor\"" + ":")
+			e.FieldStart("divisor")
 			s.Divisor.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"resource\"" + ":")
+		e.FieldStart("resource")
 		e.Str(s.Resource)
 	}
 	e.ObjEnd()
@@ -42703,69 +35022,35 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuota) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceQuota) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -42850,60 +35135,32 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -43018,56 +35275,26 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Hard.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Hard.Set {
-			e.RawStr("\"hard\"" + ":")
+			e.FieldStart("hard")
 			s.Hard.Encode(e)
 		}
 	}
 	{
 		if s.ScopeSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ScopeSelector.Set {
-			e.RawStr("\"scopeSelector\"" + ":")
+			e.FieldStart("scopeSelector")
 			s.ScopeSelector.Encode(e)
 		}
 	}
 	{
 		if s.Scopes != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Scopes != nil {
-			e.RawStr("\"scopes\"" + ":")
+			e.FieldStart("scopes")
 			e.ArrStart()
-			if len(s.Scopes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Scopes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Scopes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Scopes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -43140,19 +35367,10 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -43191,33 +35409,17 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Hard.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Hard.Set {
-			e.RawStr("\"hard\"" + ":")
+			e.FieldStart("hard")
 			s.Hard.Encode(e)
 		}
 	}
 	{
 		if s.Used.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Used.Set {
-			e.RawStr("\"used\"" + ":")
+			e.FieldStart("used")
 			s.Used.Encode(e)
 		}
 	}
@@ -43269,19 +35471,10 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -43320,19 +35513,10 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -43371,33 +35555,17 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Limits.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Limits.Set {
-			e.RawStr("\"limits\"" + ":")
+			e.FieldStart("limits")
 			s.Limits.Encode(e)
 		}
 	}
 	{
 		if s.Requests.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Requests.Set {
-			e.RawStr("\"requests\"" + ":")
+			e.FieldStart("requests")
 			s.Requests.Encode(e)
 		}
 	}
@@ -43449,19 +35617,10 @@ func (s *IoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -43500,19 +35659,10 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -43551,57 +35701,29 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Level.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Level.Set {
-			e.RawStr("\"level\"" + ":")
+			e.FieldStart("level")
 			s.Level.Encode(e)
 		}
 	}
 	{
 		if s.Role.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Role.Set {
-			e.RawStr("\"role\"" + ":")
+			e.FieldStart("role")
 			s.Role.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
@@ -43675,96 +35797,62 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"gateway\"" + ":")
+		e.FieldStart("gateway")
 		e.Str(s.Gateway)
 	}
 	{
 		if s.ProtectionDomain.Set {
-			e.Comma()
-		}
-		if s.ProtectionDomain.Set {
-			e.RawStr("\"protectionDomain\"" + ":")
+			e.FieldStart("protectionDomain")
 			s.ProtectionDomain.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"secretRef\"" + ":")
+		e.FieldStart("secretRef")
 		s.SecretRef.Encode(e)
 	}
 	{
 		if s.SslEnabled.Set {
-			e.Comma()
-		}
-		if s.SslEnabled.Set {
-			e.RawStr("\"sslEnabled\"" + ":")
+			e.FieldStart("sslEnabled")
 			s.SslEnabled.Encode(e)
 		}
 	}
 	{
 		if s.StorageMode.Set {
-			e.Comma()
-		}
-		if s.StorageMode.Set {
-			e.RawStr("\"storageMode\"" + ":")
+			e.FieldStart("storageMode")
 			s.StorageMode.Encode(e)
 		}
 	}
 	{
 		if s.StoragePool.Set {
-			e.Comma()
-		}
-		if s.StoragePool.Set {
-			e.RawStr("\"storagePool\"" + ":")
+			e.FieldStart("storagePool")
 			s.StoragePool.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"system\"" + ":")
+		e.FieldStart("system")
 		e.Str(s.System)
 	}
 	{
 		if s.VolumeName.Set {
-			e.Comma()
-		}
-		if s.VolumeName.Set {
-			e.RawStr("\"volumeName\"" + ":")
+			e.FieldStart("volumeName")
 			s.VolumeName.Encode(e)
 		}
 	}
@@ -43942,96 +36030,62 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"gateway\"" + ":")
+		e.FieldStart("gateway")
 		e.Str(s.Gateway)
 	}
 	{
 		if s.ProtectionDomain.Set {
-			e.Comma()
-		}
-		if s.ProtectionDomain.Set {
-			e.RawStr("\"protectionDomain\"" + ":")
+			e.FieldStart("protectionDomain")
 			s.ProtectionDomain.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"secretRef\"" + ":")
+		e.FieldStart("secretRef")
 		s.SecretRef.Encode(e)
 	}
 	{
 		if s.SslEnabled.Set {
-			e.Comma()
-		}
-		if s.SslEnabled.Set {
-			e.RawStr("\"sslEnabled\"" + ":")
+			e.FieldStart("sslEnabled")
 			s.SslEnabled.Encode(e)
 		}
 	}
 	{
 		if s.StorageMode.Set {
-			e.Comma()
-		}
-		if s.StorageMode.Set {
-			e.RawStr("\"storageMode\"" + ":")
+			e.FieldStart("storageMode")
 			s.StorageMode.Encode(e)
 		}
 	}
 	{
 		if s.StoragePool.Set {
-			e.Comma()
-		}
-		if s.StoragePool.Set {
-			e.RawStr("\"storagePool\"" + ":")
+			e.FieldStart("storagePool")
 			s.StoragePool.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"system\"" + ":")
+		e.FieldStart("system")
 		e.Str(s.System)
 	}
 	{
 		if s.VolumeName.Set {
-			e.Comma()
-		}
-		if s.VolumeName.Set {
-			e.RawStr("\"volumeName\"" + ":")
+			e.FieldStart("volumeName")
 			s.VolumeName.Encode(e)
 		}
 	}
@@ -44209,32 +36263,14 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MatchExpressions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchExpressions != nil {
-			e.RawStr("\"matchExpressions\"" + ":")
+			e.FieldStart("matchExpressions")
 			e.ArrStart()
-			if len(s.MatchExpressions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.MatchExpressions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.MatchExpressions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.MatchExpressions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -44283,44 +36319,24 @@ func (s *IoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"operator\"" + ":")
+		e.FieldStart("operator")
 		e.Str(s.Operator)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"scopeName\"" + ":")
+		e.FieldStart("scopeName")
 		e.Str(s.ScopeName)
 	}
 	{
 		if s.Values != nil {
-			e.Comma()
-		}
-		if s.Values != nil {
-			e.RawStr("\"values\"" + ":")
+			e.FieldStart("values")
 			e.ArrStart()
-			if len(s.Values) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Values[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Values[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Values {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -44430,31 +36446,17 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SeccompProfile) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SeccompProfile) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LocalhostProfile.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LocalhostProfile.Set {
-			e.RawStr("\"localhostProfile\"" + ":")
+			e.FieldStart("localhostProfile")
 			s.LocalhostProfile.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -44540,93 +36542,47 @@ func (s *IoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Secret) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Secret) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Data.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Data.Set {
-			e.RawStr("\"data\"" + ":")
+			e.FieldStart("data")
 			s.Data.Encode(e)
 		}
 	}
 	{
 		if s.Immutable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Immutable.Set {
-			e.RawStr("\"immutable\"" + ":")
+			e.FieldStart("immutable")
 			s.Immutable.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.StringData.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StringData.Set {
-			e.RawStr("\"stringData\"" + ":")
+			e.FieldStart("stringData")
 			s.StringData.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -44733,19 +36689,10 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretData) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretData) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Base64(elem)
 	}
@@ -44786,33 +36733,17 @@ func (s IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Optional.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
@@ -44864,36 +36795,22 @@ func (s *IoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"key\"" + ":")
+		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
 		if s.Name.Set {
-			e.Comma()
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Optional.Set {
-			e.Comma()
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
@@ -44991,60 +36908,32 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -45159,57 +37048,27 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Items != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Items != nil {
-			e.RawStr("\"items\"" + ":")
+			e.FieldStart("items")
 			e.ArrStart()
-			if len(s.Items) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Items[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Items[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Items {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Optional.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
@@ -45279,33 +37138,17 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretReference) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Namespace.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Namespace.Set {
-			e.RawStr("\"namespace\"" + ":")
+			e.FieldStart("namespace")
 			s.Namespace.Encode(e)
 		}
 	}
@@ -45357,19 +37200,10 @@ func (s *IoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretStringData) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretStringData) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -45410,69 +37244,33 @@ func (s IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DefaultMode.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultMode.Set {
-			e.RawStr("\"defaultMode\"" + ":")
+			e.FieldStart("defaultMode")
 			s.DefaultMode.Encode(e)
 		}
 	}
 	{
 		if s.Items != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Items != nil {
-			e.RawStr("\"items\"" + ":")
+			e.FieldStart("items")
 			e.ArrStart()
-			if len(s.Items) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Items[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Items[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Items {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Optional.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Optional.Set {
-			e.RawStr("\"optional\"" + ":")
+			e.FieldStart("optional")
 			s.Optional.Encode(e)
 		}
 	}
 	{
 		if s.SecretName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretName.Set {
-			e.RawStr("\"secretName\"" + ":")
+			e.FieldStart("secretName")
 			s.SecretName.Encode(e)
 		}
 	}
@@ -45553,141 +37351,71 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SecurityContext) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SecurityContext) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AllowPrivilegeEscalation.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowPrivilegeEscalation.Set {
-			e.RawStr("\"allowPrivilegeEscalation\"" + ":")
+			e.FieldStart("allowPrivilegeEscalation")
 			s.AllowPrivilegeEscalation.Encode(e)
 		}
 	}
 	{
 		if s.Capabilities.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Capabilities.Set {
-			e.RawStr("\"capabilities\"" + ":")
+			e.FieldStart("capabilities")
 			s.Capabilities.Encode(e)
 		}
 	}
 	{
 		if s.Privileged.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Privileged.Set {
-			e.RawStr("\"privileged\"" + ":")
+			e.FieldStart("privileged")
 			s.Privileged.Encode(e)
 		}
 	}
 	{
 		if s.ProcMount.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ProcMount.Set {
-			e.RawStr("\"procMount\"" + ":")
+			e.FieldStart("procMount")
 			s.ProcMount.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnlyRootFilesystem.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnlyRootFilesystem.Set {
-			e.RawStr("\"readOnlyRootFilesystem\"" + ":")
+			e.FieldStart("readOnlyRootFilesystem")
 			s.ReadOnlyRootFilesystem.Encode(e)
 		}
 	}
 	{
 		if s.RunAsGroup.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RunAsGroup.Set {
-			e.RawStr("\"runAsGroup\"" + ":")
+			e.FieldStart("runAsGroup")
 			s.RunAsGroup.Encode(e)
 		}
 	}
 	{
 		if s.RunAsNonRoot.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RunAsNonRoot.Set {
-			e.RawStr("\"runAsNonRoot\"" + ":")
+			e.FieldStart("runAsNonRoot")
 			s.RunAsNonRoot.Encode(e)
 		}
 	}
 	{
 		if s.RunAsUser.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RunAsUser.Set {
-			e.RawStr("\"runAsUser\"" + ":")
+			e.FieldStart("runAsUser")
 			s.RunAsUser.Encode(e)
 		}
 	}
 	{
 		if s.SeLinuxOptions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SeLinuxOptions.Set {
-			e.RawStr("\"seLinuxOptions\"" + ":")
+			e.FieldStart("seLinuxOptions")
 			s.SeLinuxOptions.Encode(e)
 		}
 	}
 	{
 		if s.SeccompProfile.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SeccompProfile.Set {
-			e.RawStr("\"seccompProfile\"" + ":")
+			e.FieldStart("seccompProfile")
 			s.SeccompProfile.Encode(e)
 		}
 	}
 	{
 		if s.WindowsOptions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.WindowsOptions.Set {
-			e.RawStr("\"windowsOptions\"" + ":")
+			e.FieldStart("windowsOptions")
 			s.WindowsOptions.Encode(e)
 		}
 	}
@@ -45838,69 +37566,35 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Service) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Service) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -45985,104 +37679,48 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.AutomountServiceAccountToken.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AutomountServiceAccountToken.Set {
-			e.RawStr("\"automountServiceAccountToken\"" + ":")
+			e.FieldStart("automountServiceAccountToken")
 			s.AutomountServiceAccountToken.Encode(e)
 		}
 	}
 	{
 		if s.ImagePullSecrets != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ImagePullSecrets != nil {
-			e.RawStr("\"imagePullSecrets\"" + ":")
+			e.FieldStart("imagePullSecrets")
 			e.ArrStart()
-			if len(s.ImagePullSecrets) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ImagePullSecrets[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ImagePullSecrets[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ImagePullSecrets {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Secrets != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Secrets != nil {
-			e.RawStr("\"secrets\"" + ":")
+			e.FieldStart("secrets")
 			e.ArrStart()
-			if len(s.Secrets) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Secrets[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Secrets[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Secrets {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -46193,60 +37831,32 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -46361,43 +37971,23 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Audience.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Audience.Set {
-			e.RawStr("\"audience\"" + ":")
+			e.FieldStart("audience")
 			s.Audience.Encode(e)
 		}
 	}
 	{
 		if s.ExpirationSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExpirationSeconds.Set {
-			e.RawStr("\"expirationSeconds\"" + ":")
+			e.FieldStart("expirationSeconds")
 			s.ExpirationSeconds.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"path\"" + ":")
+		e.FieldStart("path")
 		e.Str(s.Path)
 	}
 	e.ObjEnd()
@@ -46494,60 +38084,32 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -46662,72 +38224,40 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServicePort) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServicePort) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AppProtocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AppProtocol.Set {
-			e.RawStr("\"appProtocol\"" + ":")
+			e.FieldStart("appProtocol")
 			s.AppProtocol.Encode(e)
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.NodePort.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodePort.Set {
-			e.RawStr("\"nodePort\"" + ":")
+			e.FieldStart("nodePort")
 			s.NodePort.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"port\"" + ":")
+		e.FieldStart("port")
 		e.Int32(s.Port)
 	}
 	{
 		if s.Protocol.Set {
-			e.Comma()
-		}
-		if s.Protocol.Set {
-			e.RawStr("\"protocol\"" + ":")
+			e.FieldStart("protocol")
 			s.Protocol.Encode(e)
 		}
 	}
 	{
 		if s.TargetPort.Set {
-			e.Comma()
-		}
-		if s.TargetPort.Set {
-			e.RawStr("\"targetPort\"" + ":")
+			e.FieldStart("targetPort")
 			s.TargetPort.Encode(e)
 		}
 	}
@@ -46858,297 +38388,139 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AllocateLoadBalancerNodePorts.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllocateLoadBalancerNodePorts.Set {
-			e.RawStr("\"allocateLoadBalancerNodePorts\"" + ":")
+			e.FieldStart("allocateLoadBalancerNodePorts")
 			s.AllocateLoadBalancerNodePorts.Encode(e)
 		}
 	}
 	{
 		if s.ClusterIP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ClusterIP.Set {
-			e.RawStr("\"clusterIP\"" + ":")
+			e.FieldStart("clusterIP")
 			s.ClusterIP.Encode(e)
 		}
 	}
 	{
 		if s.ClusterIPs != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ClusterIPs != nil {
-			e.RawStr("\"clusterIPs\"" + ":")
+			e.FieldStart("clusterIPs")
 			e.ArrStart()
-			if len(s.ClusterIPs) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ClusterIPs[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ClusterIPs[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ClusterIPs {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ExternalIPs != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExternalIPs != nil {
-			e.RawStr("\"externalIPs\"" + ":")
+			e.FieldStart("externalIPs")
 			e.ArrStart()
-			if len(s.ExternalIPs) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ExternalIPs[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ExternalIPs[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ExternalIPs {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ExternalName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExternalName.Set {
-			e.RawStr("\"externalName\"" + ":")
+			e.FieldStart("externalName")
 			s.ExternalName.Encode(e)
 		}
 	}
 	{
 		if s.ExternalTrafficPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExternalTrafficPolicy.Set {
-			e.RawStr("\"externalTrafficPolicy\"" + ":")
+			e.FieldStart("externalTrafficPolicy")
 			s.ExternalTrafficPolicy.Encode(e)
 		}
 	}
 	{
 		if s.HealthCheckNodePort.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HealthCheckNodePort.Set {
-			e.RawStr("\"healthCheckNodePort\"" + ":")
+			e.FieldStart("healthCheckNodePort")
 			s.HealthCheckNodePort.Encode(e)
 		}
 	}
 	{
 		if s.InternalTrafficPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InternalTrafficPolicy.Set {
-			e.RawStr("\"internalTrafficPolicy\"" + ":")
+			e.FieldStart("internalTrafficPolicy")
 			s.InternalTrafficPolicy.Encode(e)
 		}
 	}
 	{
 		if s.IpFamilies != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.IpFamilies != nil {
-			e.RawStr("\"ipFamilies\"" + ":")
+			e.FieldStart("ipFamilies")
 			e.ArrStart()
-			if len(s.IpFamilies) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.IpFamilies[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.IpFamilies[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.IpFamilies {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.IpFamilyPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.IpFamilyPolicy.Set {
-			e.RawStr("\"ipFamilyPolicy\"" + ":")
+			e.FieldStart("ipFamilyPolicy")
 			s.IpFamilyPolicy.Encode(e)
 		}
 	}
 	{
 		if s.LoadBalancerClass.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LoadBalancerClass.Set {
-			e.RawStr("\"loadBalancerClass\"" + ":")
+			e.FieldStart("loadBalancerClass")
 			s.LoadBalancerClass.Encode(e)
 		}
 	}
 	{
 		if s.LoadBalancerIP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LoadBalancerIP.Set {
-			e.RawStr("\"loadBalancerIP\"" + ":")
+			e.FieldStart("loadBalancerIP")
 			s.LoadBalancerIP.Encode(e)
 		}
 	}
 	{
 		if s.LoadBalancerSourceRanges != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LoadBalancerSourceRanges != nil {
-			e.RawStr("\"loadBalancerSourceRanges\"" + ":")
+			e.FieldStart("loadBalancerSourceRanges")
 			e.ArrStart()
-			if len(s.LoadBalancerSourceRanges) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.LoadBalancerSourceRanges[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.LoadBalancerSourceRanges[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.LoadBalancerSourceRanges {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Ports != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.PublishNotReadyAddresses.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PublishNotReadyAddresses.Set {
-			e.RawStr("\"publishNotReadyAddresses\"" + ":")
+			e.FieldStart("publishNotReadyAddresses")
 			s.PublishNotReadyAddresses.Encode(e)
 		}
 	}
 	{
 		if s.Selector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
 	{
 		if s.SessionAffinity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SessionAffinity.Set {
-			e.RawStr("\"sessionAffinity\"" + ":")
+			e.FieldStart("sessionAffinity")
 			s.SessionAffinity.Encode(e)
 		}
 	}
 	{
 		if s.SessionAffinityConfig.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SessionAffinityConfig.Set {
-			e.RawStr("\"sessionAffinityConfig\"" + ":")
+			e.FieldStart("sessionAffinityConfig")
 			s.SessionAffinityConfig.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -47430,19 +38802,10 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -47483,45 +38846,21 @@ func (s IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.LoadBalancer.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LoadBalancer.Set {
-			e.RawStr("\"loadBalancer\"" + ":")
+			e.FieldStart("loadBalancer")
 			s.LoadBalancer.Encode(e)
 		}
 	}
@@ -47580,21 +38919,11 @@ func (s *IoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ClientIP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ClientIP.Set {
-			e.RawStr("\"clientIP\"" + ":")
+			e.FieldStart("clientIP")
 			s.ClientIP.Encode(e)
 		}
 	}
@@ -47635,69 +38964,35 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
 		if s.VolumeName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeName.Set {
-			e.RawStr("\"volumeName\"" + ":")
+			e.FieldStart("volumeName")
 			s.VolumeName.Encode(e)
 		}
 	}
 	{
 		if s.VolumeNamespace.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeNamespace.Set {
-			e.RawStr("\"volumeNamespace\"" + ":")
+			e.FieldStart("volumeNamespace")
 			s.VolumeNamespace.Encode(e)
 		}
 	}
@@ -47782,69 +39077,35 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SecretRef.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretRef.Set {
-			e.RawStr("\"secretRef\"" + ":")
+			e.FieldStart("secretRef")
 			s.SecretRef.Encode(e)
 		}
 	}
 	{
 		if s.VolumeName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeName.Set {
-			e.RawStr("\"volumeName\"" + ":")
+			e.FieldStart("volumeName")
 			s.VolumeName.Encode(e)
 		}
 	}
 	{
 		if s.VolumeNamespace.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeNamespace.Set {
-			e.RawStr("\"volumeNamespace\"" + ":")
+			e.FieldStart("volumeNamespace")
 			s.VolumeNamespace.Encode(e)
 		}
 	}
@@ -47929,25 +39190,16 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Sysctl) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Sysctl) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"value\"" + ":")
+		e.FieldStart("value")
 		e.Str(s.Value)
 	}
 	e.ObjEnd()
@@ -48035,31 +39287,17 @@ func (s *IoK8sAPICoreV1Sysctl) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Host.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Host.Set {
-			e.RawStr("\"host\"" + ":")
+			e.FieldStart("host")
 			s.Host.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"port\"" + ":")
+		e.FieldStart("port")
 		s.Port.Encode(e)
 	}
 	e.ObjEnd()
@@ -48143,42 +39381,27 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Taint) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Taint) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"effect\"" + ":")
+		e.FieldStart("effect")
 		e.Str(s.Effect)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"key\"" + ":")
+		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
 		if s.TimeAdded.Set {
-			e.Comma()
-		}
-		if s.TimeAdded.Set {
-			e.RawStr("\"timeAdded\"" + ":")
+			e.FieldStart("timeAdded")
 			s.TimeAdded.Encode(e)
 		}
 	}
 	{
 		if s.Value.Set {
-			e.Comma()
-		}
-		if s.Value.Set {
-			e.RawStr("\"value\"" + ":")
+			e.FieldStart("value")
 			s.Value.Encode(e)
 		}
 	}
@@ -48289,69 +39512,35 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Toleration) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Toleration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Effect.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Effect.Set {
-			e.RawStr("\"effect\"" + ":")
+			e.FieldStart("effect")
 			s.Effect.Encode(e)
 		}
 	}
 	{
 		if s.Key.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Key.Set {
-			e.RawStr("\"key\"" + ":")
+			e.FieldStart("key")
 			s.Key.Encode(e)
 		}
 	}
 	{
 		if s.Operator.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Operator.Set {
-			e.RawStr("\"operator\"" + ":")
+			e.FieldStart("operator")
 			s.Operator.Encode(e)
 		}
 	}
 	{
 		if s.TolerationSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TolerationSeconds.Set {
-			e.RawStr("\"tolerationSeconds\"" + ":")
+			e.FieldStart("tolerationSeconds")
 			s.TolerationSeconds.Encode(e)
 		}
 	}
 	{
 		if s.Value.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Value.Set {
-			e.RawStr("\"value\"" + ":")
+			e.FieldStart("value")
 			s.Value.Encode(e)
 		}
 	}
@@ -48436,36 +39625,19 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"key\"" + ":")
+		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"values\"" + ":")
+		e.FieldStart("values")
 		e.ArrStart()
-		if len(s.Values) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Values[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Values[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Values {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -48562,32 +39734,14 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MatchLabelExpressions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchLabelExpressions != nil {
-			e.RawStr("\"matchLabelExpressions\"" + ":")
+			e.FieldStart("matchLabelExpressions")
 			e.ArrStart()
-			if len(s.MatchLabelExpressions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.MatchLabelExpressions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.MatchLabelExpressions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.MatchLabelExpressions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -48636,43 +39790,27 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1TopologySpreadConstraint) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1TopologySpreadConstraint) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LabelSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LabelSelector.Set {
-			e.RawStr("\"labelSelector\"" + ":")
+			e.FieldStart("labelSelector")
 			s.LabelSelector.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"maxSkew\"" + ":")
+		e.FieldStart("maxSkew")
 		e.Int32(s.MaxSkew)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"topologyKey\"" + ":")
+		e.FieldStart("topologyKey")
 		e.Str(s.TopologyKey)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"whenUnsatisfiable\"" + ":")
+		e.FieldStart("whenUnsatisfiable")
 		e.Str(s.WhenUnsatisfiable)
 	}
 	e.ObjEnd()
@@ -48784,37 +39922,22 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiGroup.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiGroup.Set {
-			e.RawStr("\"apiGroup\"" + ":")
+			e.FieldStart("apiGroup")
 			s.ApiGroup.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -48913,333 +40036,184 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1Volume) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1Volume) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AwsElasticBlockStore.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AwsElasticBlockStore.Set {
-			e.RawStr("\"awsElasticBlockStore\"" + ":")
+			e.FieldStart("awsElasticBlockStore")
 			s.AwsElasticBlockStore.Encode(e)
 		}
 	}
 	{
 		if s.AzureDisk.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AzureDisk.Set {
-			e.RawStr("\"azureDisk\"" + ":")
+			e.FieldStart("azureDisk")
 			s.AzureDisk.Encode(e)
 		}
 	}
 	{
 		if s.AzureFile.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AzureFile.Set {
-			e.RawStr("\"azureFile\"" + ":")
+			e.FieldStart("azureFile")
 			s.AzureFile.Encode(e)
 		}
 	}
 	{
 		if s.Cephfs.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Cephfs.Set {
-			e.RawStr("\"cephfs\"" + ":")
+			e.FieldStart("cephfs")
 			s.Cephfs.Encode(e)
 		}
 	}
 	{
 		if s.Cinder.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Cinder.Set {
-			e.RawStr("\"cinder\"" + ":")
+			e.FieldStart("cinder")
 			s.Cinder.Encode(e)
 		}
 	}
 	{
 		if s.ConfigMap.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConfigMap.Set {
-			e.RawStr("\"configMap\"" + ":")
+			e.FieldStart("configMap")
 			s.ConfigMap.Encode(e)
 		}
 	}
 	{
 		if s.Csi.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Csi.Set {
-			e.RawStr("\"csi\"" + ":")
+			e.FieldStart("csi")
 			s.Csi.Encode(e)
 		}
 	}
 	{
 		if s.DownwardAPI.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DownwardAPI.Set {
-			e.RawStr("\"downwardAPI\"" + ":")
+			e.FieldStart("downwardAPI")
 			s.DownwardAPI.Encode(e)
 		}
 	}
 	{
 		if s.EmptyDir.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EmptyDir.Set {
-			e.RawStr("\"emptyDir\"" + ":")
+			e.FieldStart("emptyDir")
 			s.EmptyDir.Encode(e)
 		}
 	}
 	{
 		if s.Ephemeral.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ephemeral.Set {
-			e.RawStr("\"ephemeral\"" + ":")
+			e.FieldStart("ephemeral")
 			s.Ephemeral.Encode(e)
 		}
 	}
 	{
 		if s.Fc.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Fc.Set {
-			e.RawStr("\"fc\"" + ":")
+			e.FieldStart("fc")
 			s.Fc.Encode(e)
 		}
 	}
 	{
 		if s.FlexVolume.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FlexVolume.Set {
-			e.RawStr("\"flexVolume\"" + ":")
+			e.FieldStart("flexVolume")
 			s.FlexVolume.Encode(e)
 		}
 	}
 	{
 		if s.Flocker.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Flocker.Set {
-			e.RawStr("\"flocker\"" + ":")
+			e.FieldStart("flocker")
 			s.Flocker.Encode(e)
 		}
 	}
 	{
 		if s.GcePersistentDisk.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GcePersistentDisk.Set {
-			e.RawStr("\"gcePersistentDisk\"" + ":")
+			e.FieldStart("gcePersistentDisk")
 			s.GcePersistentDisk.Encode(e)
 		}
 	}
 	{
 		if s.GitRepo.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GitRepo.Set {
-			e.RawStr("\"gitRepo\"" + ":")
+			e.FieldStart("gitRepo")
 			s.GitRepo.Encode(e)
 		}
 	}
 	{
 		if s.Glusterfs.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Glusterfs.Set {
-			e.RawStr("\"glusterfs\"" + ":")
+			e.FieldStart("glusterfs")
 			s.Glusterfs.Encode(e)
 		}
 	}
 	{
 		if s.HostPath.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HostPath.Set {
-			e.RawStr("\"hostPath\"" + ":")
+			e.FieldStart("hostPath")
 			s.HostPath.Encode(e)
 		}
 	}
 	{
 		if s.Iscsi.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Iscsi.Set {
-			e.RawStr("\"iscsi\"" + ":")
+			e.FieldStart("iscsi")
 			s.Iscsi.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Nfs.Set {
-			e.Comma()
-		}
-		if s.Nfs.Set {
-			e.RawStr("\"nfs\"" + ":")
+			e.FieldStart("nfs")
 			s.Nfs.Encode(e)
 		}
 	}
 	{
 		if s.PersistentVolumeClaim.Set {
-			e.Comma()
-		}
-		if s.PersistentVolumeClaim.Set {
-			e.RawStr("\"persistentVolumeClaim\"" + ":")
+			e.FieldStart("persistentVolumeClaim")
 			s.PersistentVolumeClaim.Encode(e)
 		}
 	}
 	{
 		if s.PhotonPersistentDisk.Set {
-			e.Comma()
-		}
-		if s.PhotonPersistentDisk.Set {
-			e.RawStr("\"photonPersistentDisk\"" + ":")
+			e.FieldStart("photonPersistentDisk")
 			s.PhotonPersistentDisk.Encode(e)
 		}
 	}
 	{
 		if s.PortworxVolume.Set {
-			e.Comma()
-		}
-		if s.PortworxVolume.Set {
-			e.RawStr("\"portworxVolume\"" + ":")
+			e.FieldStart("portworxVolume")
 			s.PortworxVolume.Encode(e)
 		}
 	}
 	{
 		if s.Projected.Set {
-			e.Comma()
-		}
-		if s.Projected.Set {
-			e.RawStr("\"projected\"" + ":")
+			e.FieldStart("projected")
 			s.Projected.Encode(e)
 		}
 	}
 	{
 		if s.Quobyte.Set {
-			e.Comma()
-		}
-		if s.Quobyte.Set {
-			e.RawStr("\"quobyte\"" + ":")
+			e.FieldStart("quobyte")
 			s.Quobyte.Encode(e)
 		}
 	}
 	{
 		if s.Rbd.Set {
-			e.Comma()
-		}
-		if s.Rbd.Set {
-			e.RawStr("\"rbd\"" + ":")
+			e.FieldStart("rbd")
 			s.Rbd.Encode(e)
 		}
 	}
 	{
 		if s.ScaleIO.Set {
-			e.Comma()
-		}
-		if s.ScaleIO.Set {
-			e.RawStr("\"scaleIO\"" + ":")
+			e.FieldStart("scaleIO")
 			s.ScaleIO.Encode(e)
 		}
 	}
 	{
 		if s.Secret.Set {
-			e.Comma()
-		}
-		if s.Secret.Set {
-			e.RawStr("\"secret\"" + ":")
+			e.FieldStart("secret")
 			s.Secret.Encode(e)
 		}
 	}
 	{
 		if s.Storageos.Set {
-			e.Comma()
-		}
-		if s.Storageos.Set {
-			e.RawStr("\"storageos\"" + ":")
+			e.FieldStart("storageos")
 			s.Storageos.Encode(e)
 		}
 	}
 	{
 		if s.VsphereVolume.Set {
-			e.Comma()
-		}
-		if s.VsphereVolume.Set {
-			e.RawStr("\"vsphereVolume\"" + ":")
+			e.FieldStart("vsphereVolume")
 			s.VsphereVolume.Encode(e)
 		}
 	}
@@ -49637,25 +40611,16 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"devicePath\"" + ":")
+		e.FieldStart("devicePath")
 		e.Str(s.DevicePath)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -49743,60 +40708,39 @@ func (s *IoK8sAPICoreV1VolumeDevice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1VolumeMount) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1VolumeMount) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"mountPath\"" + ":")
+		e.FieldStart("mountPath")
 		e.Str(s.MountPath)
 	}
 	{
 		if s.MountPropagation.Set {
-			e.Comma()
-		}
-		if s.MountPropagation.Set {
-			e.RawStr("\"mountPropagation\"" + ":")
+			e.FieldStart("mountPropagation")
 			s.MountPropagation.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.ReadOnly.Set {
-			e.Comma()
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
 	{
 		if s.SubPath.Set {
-			e.Comma()
-		}
-		if s.SubPath.Set {
-			e.RawStr("\"subPath\"" + ":")
+			e.FieldStart("subPath")
 			s.SubPath.Encode(e)
 		}
 	}
 	{
 		if s.SubPathExpr.Set {
-			e.Comma()
-		}
-		if s.SubPathExpr.Set {
-			e.RawStr("\"subPathExpr\"" + ":")
+			e.FieldStart("subPathExpr")
 			s.SubPathExpr.Encode(e)
 		}
 	}
@@ -49929,21 +40873,11 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Required.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Required.Set {
-			e.RawStr("\"required\"" + ":")
+			e.FieldStart("required")
 			s.Required.Encode(e)
 		}
 	}
@@ -49984,57 +40918,29 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1VolumeProjection) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1VolumeProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ConfigMap.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ConfigMap.Set {
-			e.RawStr("\"configMap\"" + ":")
+			e.FieldStart("configMap")
 			s.ConfigMap.Encode(e)
 		}
 	}
 	{
 		if s.DownwardAPI.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DownwardAPI.Set {
-			e.RawStr("\"downwardAPI\"" + ":")
+			e.FieldStart("downwardAPI")
 			s.DownwardAPI.Encode(e)
 		}
 	}
 	{
 		if s.Secret.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Secret.Set {
-			e.RawStr("\"secret\"" + ":")
+			e.FieldStart("secret")
 			s.Secret.Encode(e)
 		}
 	}
 	{
 		if s.ServiceAccountToken.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ServiceAccountToken.Set {
-			e.RawStr("\"serviceAccountToken\"" + ":")
+			e.FieldStart("serviceAccountToken")
 			s.ServiceAccountToken.Encode(e)
 		}
 	}
@@ -50108,55 +41014,29 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.FsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsType.Set {
-			e.RawStr("\"fsType\"" + ":")
+			e.FieldStart("fsType")
 			s.FsType.Encode(e)
 		}
 	}
 	{
 		if s.StoragePolicyID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StoragePolicyID.Set {
-			e.RawStr("\"storagePolicyID\"" + ":")
+			e.FieldStart("storagePolicyID")
 			s.StoragePolicyID.Encode(e)
 		}
 	}
 	{
 		if s.StoragePolicyName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StoragePolicyName.Set {
-			e.RawStr("\"storagePolicyName\"" + ":")
+			e.FieldStart("storagePolicyName")
 			s.StoragePolicyName.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"volumePath\"" + ":")
+		e.FieldStart("volumePath")
 		e.Str(s.VolumePath)
 	}
 	e.ObjEnd()
@@ -50264,25 +41144,16 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"podAffinityTerm\"" + ":")
+		e.FieldStart("podAffinityTerm")
 		s.PodAffinityTerm.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"weight\"" + ":")
+		e.FieldStart("weight")
 		e.Int32(s.Weight)
 	}
 	e.ObjEnd()
@@ -50368,57 +41239,29 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.GmsaCredentialSpec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GmsaCredentialSpec.Set {
-			e.RawStr("\"gmsaCredentialSpec\"" + ":")
+			e.FieldStart("gmsaCredentialSpec")
 			s.GmsaCredentialSpec.Encode(e)
 		}
 	}
 	{
 		if s.GmsaCredentialSpecName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GmsaCredentialSpecName.Set {
-			e.RawStr("\"gmsaCredentialSpecName\"" + ":")
+			e.FieldStart("gmsaCredentialSpecName")
 			s.GmsaCredentialSpecName.Encode(e)
 		}
 	}
 	{
 		if s.HostProcess.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HostProcess.Set {
-			e.RawStr("\"hostProcess\"" + ":")
+			e.FieldStart("hostProcess")
 			s.HostProcess.Encode(e)
 		}
 	}
 	{
 		if s.RunAsUserName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RunAsUserName.Set {
-			e.RawStr("\"runAsUserName\"" + ":")
+			e.FieldStart("runAsUserName")
 			s.RunAsUserName.Encode(e)
 		}
 	}
@@ -50492,93 +41335,56 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"addresses\"" + ":")
+		e.FieldStart("addresses")
 		e.ArrStart()
-		if len(s.Addresses) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Addresses[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Addresses[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Addresses {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Conditions.Set {
-			e.Comma()
-		}
-		if s.Conditions.Set {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			s.Conditions.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedTopology.Set {
-			e.Comma()
-		}
-		if s.DeprecatedTopology.Set {
-			e.RawStr("\"deprecatedTopology\"" + ":")
+			e.FieldStart("deprecatedTopology")
 			s.DeprecatedTopology.Encode(e)
 		}
 	}
 	{
 		if s.Hints.Set {
-			e.Comma()
-		}
-		if s.Hints.Set {
-			e.RawStr("\"hints\"" + ":")
+			e.FieldStart("hints")
 			s.Hints.Encode(e)
 		}
 	}
 	{
 		if s.Hostname.Set {
-			e.Comma()
-		}
-		if s.Hostname.Set {
-			e.RawStr("\"hostname\"" + ":")
+			e.FieldStart("hostname")
 			s.Hostname.Encode(e)
 		}
 	}
 	{
 		if s.NodeName.Set {
-			e.Comma()
-		}
-		if s.NodeName.Set {
-			e.RawStr("\"nodeName\"" + ":")
+			e.FieldStart("nodeName")
 			s.NodeName.Encode(e)
 		}
 	}
 	{
 		if s.TargetRef.Set {
-			e.Comma()
-		}
-		if s.TargetRef.Set {
-			e.RawStr("\"targetRef\"" + ":")
+			e.FieldStart("targetRef")
 			s.TargetRef.Encode(e)
 		}
 	}
 	{
 		if s.Zone.Set {
-			e.Comma()
-		}
-		if s.Zone.Set {
-			e.RawStr("\"zone\"" + ":")
+			e.FieldStart("zone")
 			s.Zone.Encode(e)
 		}
 	}
@@ -50739,45 +41545,23 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ready.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ready.Set {
-			e.RawStr("\"ready\"" + ":")
+			e.FieldStart("ready")
 			s.Ready.Encode(e)
 		}
 	}
 	{
 		if s.Serving.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Serving.Set {
-			e.RawStr("\"serving\"" + ":")
+			e.FieldStart("serving")
 			s.Serving.Encode(e)
 		}
 	}
 	{
 		if s.Terminating.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Terminating.Set {
-			e.RawStr("\"terminating\"" + ":")
+			e.FieldStart("terminating")
 			s.Terminating.Encode(e)
 		}
 	}
@@ -50840,19 +41624,10 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -50893,32 +41668,14 @@ func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ForZones != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ForZones != nil {
-			e.RawStr("\"forZones\"" + ":")
+			e.FieldStart("forZones")
 			e.ArrStart()
-			if len(s.ForZones) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ForZones[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ForZones[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ForZones {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -50967,57 +41724,29 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1EndpointPort) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AppProtocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AppProtocol.Set {
-			e.RawStr("\"appProtocol\"" + ":")
+			e.FieldStart("appProtocol")
 			s.AppProtocol.Encode(e)
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Port.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Port.Set {
-			e.RawStr("\"port\"" + ":")
+			e.FieldStart("port")
 			s.Port.Encode(e)
 		}
 	}
 	{
 		if s.Protocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Protocol.Set {
-			e.RawStr("\"protocol\"" + ":")
+			e.FieldStart("protocol")
 			s.Protocol.Encode(e)
 		}
 	}
@@ -51091,83 +41820,46 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"addressType\"" + ":")
+		e.FieldStart("addressType")
 		e.Str(s.AddressType)
 	}
 	{
 		if s.ApiVersion.Set {
-			e.Comma()
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"endpoints\"" + ":")
+		e.FieldStart("endpoints")
 		e.ArrStart()
-		if len(s.Endpoints) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Endpoints[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Endpoints[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Endpoints {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Ports != nil {
-			e.Comma()
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -51314,60 +42006,32 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -51482,19 +42146,11 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1ForZone) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1ForZone) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -51569,84 +42225,50 @@ func (s *IoK8sAPIDiscoveryV1ForZone) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"addresses\"" + ":")
+		e.FieldStart("addresses")
 		e.ArrStart()
-		if len(s.Addresses) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Addresses[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Addresses[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Addresses {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Conditions.Set {
-			e.Comma()
-		}
-		if s.Conditions.Set {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			s.Conditions.Encode(e)
 		}
 	}
 	{
 		if s.Hints.Set {
-			e.Comma()
-		}
-		if s.Hints.Set {
-			e.RawStr("\"hints\"" + ":")
+			e.FieldStart("hints")
 			s.Hints.Encode(e)
 		}
 	}
 	{
 		if s.Hostname.Set {
-			e.Comma()
-		}
-		if s.Hostname.Set {
-			e.RawStr("\"hostname\"" + ":")
+			e.FieldStart("hostname")
 			s.Hostname.Encode(e)
 		}
 	}
 	{
 		if s.NodeName.Set {
-			e.Comma()
-		}
-		if s.NodeName.Set {
-			e.RawStr("\"nodeName\"" + ":")
+			e.FieldStart("nodeName")
 			s.NodeName.Encode(e)
 		}
 	}
 	{
 		if s.TargetRef.Set {
-			e.Comma()
-		}
-		if s.TargetRef.Set {
-			e.RawStr("\"targetRef\"" + ":")
+			e.FieldStart("targetRef")
 			s.TargetRef.Encode(e)
 		}
 	}
 	{
 		if s.Topology.Set {
-			e.Comma()
-		}
-		if s.Topology.Set {
-			e.RawStr("\"topology\"" + ":")
+			e.FieldStart("topology")
 			s.Topology.Encode(e)
 		}
 	}
@@ -51796,45 +42418,23 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ready.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ready.Set {
-			e.RawStr("\"ready\"" + ":")
+			e.FieldStart("ready")
 			s.Ready.Encode(e)
 		}
 	}
 	{
 		if s.Serving.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Serving.Set {
-			e.RawStr("\"serving\"" + ":")
+			e.FieldStart("serving")
 			s.Serving.Encode(e)
 		}
 	}
 	{
 		if s.Terminating.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Terminating.Set {
-			e.RawStr("\"terminating\"" + ":")
+			e.FieldStart("terminating")
 			s.Terminating.Encode(e)
 		}
 	}
@@ -51897,32 +42497,14 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ForZones != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ForZones != nil {
-			e.RawStr("\"forZones\"" + ":")
+			e.FieldStart("forZones")
 			e.ArrStart()
-			if len(s.ForZones) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ForZones[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ForZones[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ForZones {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -51971,57 +42553,29 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1EndpointPort) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AppProtocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AppProtocol.Set {
-			e.RawStr("\"appProtocol\"" + ":")
+			e.FieldStart("appProtocol")
 			s.AppProtocol.Encode(e)
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Port.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Port.Set {
-			e.RawStr("\"port\"" + ":")
+			e.FieldStart("port")
 			s.Port.Encode(e)
 		}
 	}
 	{
 		if s.Protocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Protocol.Set {
-			e.RawStr("\"protocol\"" + ":")
+			e.FieldStart("protocol")
 			s.Protocol.Encode(e)
 		}
 	}
@@ -52095,83 +42649,46 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"addressType\"" + ":")
+		e.FieldStart("addressType")
 		e.Str(s.AddressType)
 	}
 	{
 		if s.ApiVersion.Set {
-			e.Comma()
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"endpoints\"" + ":")
+		e.FieldStart("endpoints")
 		e.ArrStart()
-		if len(s.Endpoints) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Endpoints[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Endpoints[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Endpoints {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Ports != nil {
-			e.Comma()
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -52318,60 +42835,32 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -52486,19 +42975,10 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -52539,19 +43019,11 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIDiscoveryV1beta1ForZone) Encode(e *jx.Writer) {
+func (s IoK8sAPIDiscoveryV1beta1ForZone) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -52626,180 +43098,106 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIEventsV1Event) Encode(e *jx.Writer) {
+func (s IoK8sAPIEventsV1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Action.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Action.Set {
-			e.RawStr("\"action\"" + ":")
+			e.FieldStart("action")
 			s.Action.Encode(e)
 		}
 	}
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedCount.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedCount.Set {
-			e.RawStr("\"deprecatedCount\"" + ":")
+			e.FieldStart("deprecatedCount")
 			s.DeprecatedCount.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedFirstTimestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedFirstTimestamp.Set {
-			e.RawStr("\"deprecatedFirstTimestamp\"" + ":")
+			e.FieldStart("deprecatedFirstTimestamp")
 			s.DeprecatedFirstTimestamp.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedLastTimestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedLastTimestamp.Set {
-			e.RawStr("\"deprecatedLastTimestamp\"" + ":")
+			e.FieldStart("deprecatedLastTimestamp")
 			s.DeprecatedLastTimestamp.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedSource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedSource.Set {
-			e.RawStr("\"deprecatedSource\"" + ":")
+			e.FieldStart("deprecatedSource")
 			s.DeprecatedSource.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"eventTime\"" + ":")
+		e.FieldStart("eventTime")
 		s.EventTime.Encode(e)
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Note.Set {
-			e.Comma()
-		}
-		if s.Note.Set {
-			e.RawStr("\"note\"" + ":")
+			e.FieldStart("note")
 			s.Note.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			e.Comma()
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Regarding.Set {
-			e.Comma()
-		}
-		if s.Regarding.Set {
-			e.RawStr("\"regarding\"" + ":")
+			e.FieldStart("regarding")
 			s.Regarding.Encode(e)
 		}
 	}
 	{
 		if s.Related.Set {
-			e.Comma()
-		}
-		if s.Related.Set {
-			e.RawStr("\"related\"" + ":")
+			e.FieldStart("related")
 			s.Related.Encode(e)
 		}
 	}
 	{
 		if s.ReportingController.Set {
-			e.Comma()
-		}
-		if s.ReportingController.Set {
-			e.RawStr("\"reportingController\"" + ":")
+			e.FieldStart("reportingController")
 			s.ReportingController.Encode(e)
 		}
 	}
 	{
 		if s.ReportingInstance.Set {
-			e.Comma()
-		}
-		if s.ReportingInstance.Set {
-			e.RawStr("\"reportingInstance\"" + ":")
+			e.FieldStart("reportingInstance")
 			s.ReportingInstance.Encode(e)
 		}
 	}
 	{
 		if s.Series.Set {
-			e.Comma()
-		}
-		if s.Series.Set {
-			e.RawStr("\"series\"" + ":")
+			e.FieldStart("series")
 			s.Series.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			e.Comma()
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -53051,60 +43449,32 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Writer) {
+func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -53219,25 +43589,16 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Writer) {
+func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"count\"" + ":")
+		e.FieldStart("count")
 		e.Int32(s.Count)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"lastObservedTime\"" + ":")
+		e.FieldStart("lastObservedTime")
 		s.LastObservedTime.Encode(e)
 	}
 	e.ObjEnd()
@@ -53323,180 +43684,106 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Writer) {
+func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Action.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Action.Set {
-			e.RawStr("\"action\"" + ":")
+			e.FieldStart("action")
 			s.Action.Encode(e)
 		}
 	}
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedCount.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedCount.Set {
-			e.RawStr("\"deprecatedCount\"" + ":")
+			e.FieldStart("deprecatedCount")
 			s.DeprecatedCount.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedFirstTimestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedFirstTimestamp.Set {
-			e.RawStr("\"deprecatedFirstTimestamp\"" + ":")
+			e.FieldStart("deprecatedFirstTimestamp")
 			s.DeprecatedFirstTimestamp.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedLastTimestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedLastTimestamp.Set {
-			e.RawStr("\"deprecatedLastTimestamp\"" + ":")
+			e.FieldStart("deprecatedLastTimestamp")
 			s.DeprecatedLastTimestamp.Encode(e)
 		}
 	}
 	{
 		if s.DeprecatedSource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecatedSource.Set {
-			e.RawStr("\"deprecatedSource\"" + ":")
+			e.FieldStart("deprecatedSource")
 			s.DeprecatedSource.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"eventTime\"" + ":")
+		e.FieldStart("eventTime")
 		s.EventTime.Encode(e)
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Note.Set {
-			e.Comma()
-		}
-		if s.Note.Set {
-			e.RawStr("\"note\"" + ":")
+			e.FieldStart("note")
 			s.Note.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			e.Comma()
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Regarding.Set {
-			e.Comma()
-		}
-		if s.Regarding.Set {
-			e.RawStr("\"regarding\"" + ":")
+			e.FieldStart("regarding")
 			s.Regarding.Encode(e)
 		}
 	}
 	{
 		if s.Related.Set {
-			e.Comma()
-		}
-		if s.Related.Set {
-			e.RawStr("\"related\"" + ":")
+			e.FieldStart("related")
 			s.Related.Encode(e)
 		}
 	}
 	{
 		if s.ReportingController.Set {
-			e.Comma()
-		}
-		if s.ReportingController.Set {
-			e.RawStr("\"reportingController\"" + ":")
+			e.FieldStart("reportingController")
 			s.ReportingController.Encode(e)
 		}
 	}
 	{
 		if s.ReportingInstance.Set {
-			e.Comma()
-		}
-		if s.ReportingInstance.Set {
-			e.RawStr("\"reportingInstance\"" + ":")
+			e.FieldStart("reportingInstance")
 			s.ReportingInstance.Encode(e)
 		}
 	}
 	{
 		if s.Series.Set {
-			e.Comma()
-		}
-		if s.Series.Set {
-			e.RawStr("\"series\"" + ":")
+			e.FieldStart("series")
 			s.Series.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			e.Comma()
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -53748,60 +44035,32 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Writer) {
+func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -53916,25 +44175,16 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Writer) {
+func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"count\"" + ":")
+		e.FieldStart("count")
 		e.Int32(s.Count)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"lastObservedTime\"" + ":")
+		e.FieldStart("lastObservedTime")
 		s.LastObservedTime.Encode(e)
 	}
 	e.ObjEnd()
@@ -54020,19 +44270,11 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -54107,69 +44349,35 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Decoder
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -54254,69 +44462,35 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -54401,60 +44575,32 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -54569,62 +44715,31 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DistinguisherMethod.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DistinguisherMethod.Set {
-			e.RawStr("\"distinguisherMethod\"" + ":")
+			e.FieldStart("distinguisherMethod")
 			s.DistinguisherMethod.Encode(e)
 		}
 	}
 	{
 		if s.MatchingPrecedence.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchingPrecedence.Set {
-			e.RawStr("\"matchingPrecedence\"" + ":")
+			e.FieldStart("matchingPrecedence")
 			s.MatchingPrecedence.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"priorityLevelConfiguration\"" + ":")
+		e.FieldStart("priorityLevelConfiguration")
 		s.PriorityLevelConfiguration.Encode(e)
 	}
 	{
 		if s.Rules != nil {
-			e.Comma()
-		}
-		if s.Rules != nil {
-			e.RawStr("\"rules\"" + ":")
+			e.FieldStart("rules")
 			e.ArrStart()
-			if len(s.Rules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Rules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Rules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Rules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -54739,32 +44854,14 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -54813,19 +44910,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -54900,31 +44989,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Queuing.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Queuing.Set {
-			e.RawStr("\"queuing\"" + ":")
+			e.FieldStart("queuing")
 			s.Queuing.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -55010,33 +45085,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AssuredConcurrencyShares.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AssuredConcurrencyShares.Set {
-			e.RawStr("\"assuredConcurrencyShares\"" + ":")
+			e.FieldStart("assuredConcurrencyShares")
 			s.AssuredConcurrencyShares.Encode(e)
 		}
 	}
 	{
 		if s.LimitResponse.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LimitResponse.Set {
-			e.RawStr("\"limitResponse\"" + ":")
+			e.FieldStart("limitResponse")
 			s.LimitResponse.Encode(e)
 		}
 	}
@@ -55088,48 +45147,23 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(d *
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"nonResourceURLs\"" + ":")
+		e.FieldStart("nonResourceURLs")
 		e.ArrStart()
-		if len(s.NonResourceURLs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.NonResourceURLs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.NonResourceURLs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.NonResourceURLs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"verbs\"" + ":")
+		e.FieldStart("verbs")
 		e.ArrStart()
-		if len(s.Verbs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Verbs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Verbs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Verbs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -55234,78 +45268,34 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.NonResourceRules != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NonResourceRules != nil {
-			e.RawStr("\"nonResourceRules\"" + ":")
+			e.FieldStart("nonResourceRules")
 			e.ArrStart()
-			if len(s.NonResourceRules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.NonResourceRules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.NonResourceRules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.NonResourceRules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ResourceRules != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ResourceRules != nil {
-			e.RawStr("\"resourceRules\"" + ":")
+			e.FieldStart("resourceRules")
 			e.ArrStart()
-			if len(s.ResourceRules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ResourceRules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ResourceRules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ResourceRules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"subjects\"" + ":")
+		e.FieldStart("subjects")
 		e.ArrStart()
-		if len(s.Subjects) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Subjects[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Subjects[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Subjects {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -55423,69 +45413,35 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -55570,69 +45526,35 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -55717,60 +45639,32 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -55885,19 +45779,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -55972,31 +45858,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Decode(d
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Limited.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Limited.Set {
-			e.RawStr("\"limited\"" + ":")
+			e.FieldStart("limited")
 			s.Limited.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -56082,32 +45954,14 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *jx.
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -56156,45 +46010,23 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d *j
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.HandSize.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HandSize.Set {
-			e.RawStr("\"handSize\"" + ":")
+			e.FieldStart("handSize")
 			s.HandSize.Encode(e)
 		}
 	}
 	{
 		if s.QueueLengthLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.QueueLengthLimit.Set {
-			e.RawStr("\"queueLengthLimit\"" + ":")
+			e.FieldStart("queueLengthLimit")
 			s.QueueLengthLimit.Encode(e)
 		}
 	}
 	{
 		if s.Queues.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Queues.Set {
-			e.RawStr("\"queues\"" + ":")
+			e.FieldStart("queues")
 			s.Queues.Encode(e)
 		}
 	}
@@ -56257,96 +46089,48 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"apiGroups\"" + ":")
+		e.FieldStart("apiGroups")
 		e.ArrStart()
-		if len(s.ApiGroups) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.ApiGroups[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.ApiGroups[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.ApiGroups {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.ClusterScope.Set {
-			e.Comma()
-		}
-		if s.ClusterScope.Set {
-			e.RawStr("\"clusterScope\"" + ":")
+			e.FieldStart("clusterScope")
 			s.ClusterScope.Encode(e)
 		}
 	}
 	{
 		if s.Namespaces != nil {
-			e.Comma()
-		}
-		if s.Namespaces != nil {
-			e.RawStr("\"namespaces\"" + ":")
+			e.FieldStart("namespaces")
 			e.ArrStart()
-			if len(s.Namespaces) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Namespaces[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Namespaces[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Namespaces {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"resources\"" + ":")
+		e.FieldStart("resources")
 		e.ArrStart()
-		if len(s.Resources) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Resources[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Resources[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Resources {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"verbs\"" + ":")
+		e.FieldStart("verbs")
 		e.ArrStart()
-		if len(s.Verbs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Verbs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Verbs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Verbs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -56503,25 +46287,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"namespace\"" + ":")
+		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
 	e.ObjEnd()
@@ -56609,48 +46384,28 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1Subject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Group.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Group.Set {
-			e.RawStr("\"group\"" + ":")
+			e.FieldStart("group")
 			s.Group.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
 		if s.ServiceAccount.Set {
-			e.Comma()
-		}
-		if s.ServiceAccount.Set {
-			e.RawStr("\"serviceAccount\"" + ":")
+			e.FieldStart("serviceAccount")
 			s.ServiceAccount.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			e.Comma()
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
@@ -56759,19 +46514,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -56846,19 +46593,11 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -56933,69 +46672,35 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Decoder
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -57080,69 +46785,35 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -57227,60 +46898,32 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -57395,62 +47038,31 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DistinguisherMethod.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DistinguisherMethod.Set {
-			e.RawStr("\"distinguisherMethod\"" + ":")
+			e.FieldStart("distinguisherMethod")
 			s.DistinguisherMethod.Encode(e)
 		}
 	}
 	{
 		if s.MatchingPrecedence.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchingPrecedence.Set {
-			e.RawStr("\"matchingPrecedence\"" + ":")
+			e.FieldStart("matchingPrecedence")
 			s.MatchingPrecedence.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"priorityLevelConfiguration\"" + ":")
+		e.FieldStart("priorityLevelConfiguration")
 		s.PriorityLevelConfiguration.Encode(e)
 	}
 	{
 		if s.Rules != nil {
-			e.Comma()
-		}
-		if s.Rules != nil {
-			e.RawStr("\"rules\"" + ":")
+			e.FieldStart("rules")
 			e.ArrStart()
-			if len(s.Rules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Rules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Rules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Rules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -57565,32 +47177,14 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -57639,19 +47233,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -57726,31 +47312,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Queuing.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Queuing.Set {
-			e.RawStr("\"queuing\"" + ":")
+			e.FieldStart("queuing")
 			s.Queuing.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -57836,33 +47408,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AssuredConcurrencyShares.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AssuredConcurrencyShares.Set {
-			e.RawStr("\"assuredConcurrencyShares\"" + ":")
+			e.FieldStart("assuredConcurrencyShares")
 			s.AssuredConcurrencyShares.Encode(e)
 		}
 	}
 	{
 		if s.LimitResponse.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LimitResponse.Set {
-			e.RawStr("\"limitResponse\"" + ":")
+			e.FieldStart("limitResponse")
 			s.LimitResponse.Encode(e)
 		}
 	}
@@ -57914,48 +47470,23 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(d *
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"nonResourceURLs\"" + ":")
+		e.FieldStart("nonResourceURLs")
 		e.ArrStart()
-		if len(s.NonResourceURLs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.NonResourceURLs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.NonResourceURLs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.NonResourceURLs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"verbs\"" + ":")
+		e.FieldStart("verbs")
 		e.ArrStart()
-		if len(s.Verbs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Verbs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Verbs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Verbs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -58060,78 +47591,34 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.NonResourceRules != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NonResourceRules != nil {
-			e.RawStr("\"nonResourceRules\"" + ":")
+			e.FieldStart("nonResourceRules")
 			e.ArrStart()
-			if len(s.NonResourceRules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.NonResourceRules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.NonResourceRules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.NonResourceRules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ResourceRules != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ResourceRules != nil {
-			e.RawStr("\"resourceRules\"" + ":")
+			e.FieldStart("resourceRules")
 			e.ArrStart()
-			if len(s.ResourceRules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ResourceRules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ResourceRules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ResourceRules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"subjects\"" + ":")
+		e.FieldStart("subjects")
 		e.ArrStart()
-		if len(s.Subjects) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Subjects[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Subjects[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Subjects {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -58249,69 +47736,35 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -58396,69 +47849,35 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
@@ -58543,60 +47962,32 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -58711,19 +48102,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -58798,31 +48181,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Decode(d
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Limited.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Limited.Set {
-			e.RawStr("\"limited\"" + ":")
+			e.FieldStart("limited")
 			s.Limited.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -58908,32 +48277,14 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *jx.
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -58982,45 +48333,23 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d *j
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.HandSize.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HandSize.Set {
-			e.RawStr("\"handSize\"" + ":")
+			e.FieldStart("handSize")
 			s.HandSize.Encode(e)
 		}
 	}
 	{
 		if s.QueueLengthLimit.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.QueueLengthLimit.Set {
-			e.RawStr("\"queueLengthLimit\"" + ":")
+			e.FieldStart("queueLengthLimit")
 			s.QueueLengthLimit.Encode(e)
 		}
 	}
 	{
 		if s.Queues.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Queues.Set {
-			e.RawStr("\"queues\"" + ":")
+			e.FieldStart("queues")
 			s.Queues.Encode(e)
 		}
 	}
@@ -59083,96 +48412,48 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"apiGroups\"" + ":")
+		e.FieldStart("apiGroups")
 		e.ArrStart()
-		if len(s.ApiGroups) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.ApiGroups[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.ApiGroups[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.ApiGroups {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.ClusterScope.Set {
-			e.Comma()
-		}
-		if s.ClusterScope.Set {
-			e.RawStr("\"clusterScope\"" + ":")
+			e.FieldStart("clusterScope")
 			s.ClusterScope.Encode(e)
 		}
 	}
 	{
 		if s.Namespaces != nil {
-			e.Comma()
-		}
-		if s.Namespaces != nil {
-			e.RawStr("\"namespaces\"" + ":")
+			e.FieldStart("namespaces")
 			e.ArrStart()
-			if len(s.Namespaces) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Namespaces[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Namespaces[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Namespaces {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"resources\"" + ":")
+		e.FieldStart("resources")
 		e.ArrStart()
-		if len(s.Resources) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Resources[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Resources[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Resources {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"verbs\"" + ":")
+		e.FieldStart("verbs")
 		e.ArrStart()
-		if len(s.Verbs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Verbs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Verbs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Verbs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -59329,25 +48610,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"namespace\"" + ":")
+		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
 	e.ObjEnd()
@@ -59435,48 +48707,28 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decoder) 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2Subject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Group.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Group.Set {
-			e.RawStr("\"group\"" + ":")
+			e.FieldStart("group")
 			s.Group.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
 		if s.ServiceAccount.Set {
-			e.Comma()
-		}
-		if s.ServiceAccount.Set {
-			e.RawStr("\"serviceAccount\"" + ":")
+			e.FieldStart("serviceAccount")
 			s.ServiceAccount.Encode(e)
 		}
 	}
 	{
 		if s.User.Set {
-			e.Comma()
-		}
-		if s.User.Set {
-			e.RawStr("\"user\"" + ":")
+			e.FieldStart("user")
 			s.User.Encode(e)
 		}
 	}
@@ -59585,19 +48837,11 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Writer) {
+func (s IoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -59672,34 +48916,22 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"backend\"" + ":")
+		e.FieldStart("backend")
 		s.Backend.Encode(e)
 	}
 	{
 		if s.Path.Set {
-			e.Comma()
-		}
-		if s.Path.Set {
-			e.RawStr("\"path\"" + ":")
+			e.FieldStart("path")
 			s.Path.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"pathType\"" + ":")
+		e.FieldStart("pathType")
 		e.Str(s.PathType)
 	}
 	e.ObjEnd()
@@ -59796,30 +49028,14 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"paths\"" + ":")
+		e.FieldStart("paths")
 		e.ArrStart()
-		if len(s.Paths) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Paths[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Paths[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Paths {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -59901,38 +49117,19 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"cidr\"" + ":")
+		e.FieldStart("cidr")
 		e.Str(s.Cidr)
 	}
 	{
 		if s.Except != nil {
-			e.Comma()
-		}
-		if s.Except != nil {
-			e.RawStr("\"except\"" + ":")
+			e.FieldStart("except")
 			e.ArrStart()
-			if len(s.Except) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Except[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Except[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Except {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -60029,69 +49226,35 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1Ingress) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1Ingress) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -60176,33 +49339,17 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Resource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resource.Set {
-			e.RawStr("\"resource\"" + ":")
+			e.FieldStart("resource")
 			s.Resource.Encode(e)
 		}
 	}
 	{
 		if s.Service.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Service.Set {
-			e.RawStr("\"service\"" + ":")
+			e.FieldStart("service")
 			s.Service.Encode(e)
 		}
 	}
@@ -60254,57 +49401,29 @@ func (s *IoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressClass) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -60378,60 +49497,32 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -60546,54 +49637,33 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiGroup.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiGroup.Set {
-			e.RawStr("\"apiGroup\"" + ":")
+			e.FieldStart("apiGroup")
 			s.ApiGroup.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Namespace.Set {
-			e.Comma()
-		}
-		if s.Namespace.Set {
-			e.RawStr("\"namespace\"" + ":")
+			e.FieldStart("namespace")
 			s.Namespace.Encode(e)
 		}
 	}
 	{
 		if s.Scope.Set {
-			e.Comma()
-		}
-		if s.Scope.Set {
-			e.RawStr("\"scope\"" + ":")
+			e.FieldStart("scope")
 			s.Scope.Encode(e)
 		}
 	}
@@ -60715,33 +49785,17 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Controller.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Controller.Set {
-			e.RawStr("\"controller\"" + ":")
+			e.FieldStart("controller")
 			s.Controller.Encode(e)
 		}
 	}
 	{
 		if s.Parameters.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Parameters.Set {
-			e.RawStr("\"parameters\"" + ":")
+			e.FieldStart("parameters")
 			s.Parameters.Encode(e)
 		}
 	}
@@ -60793,60 +49847,32 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -60961,33 +49987,17 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressRule) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Host.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Host.Set {
-			e.RawStr("\"host\"" + ":")
+			e.FieldStart("host")
 			s.Host.Encode(e)
 		}
 	}
 	{
 		if s.HTTP.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.HTTP.Set {
-			e.RawStr("\"http\"" + ":")
+			e.FieldStart("http")
 			s.HTTP.Encode(e)
 		}
 	}
@@ -61039,27 +50049,16 @@ func (s *IoK8sAPINetworkingV1IngressRule) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Port.Set {
-			e.Comma()
-		}
-		if s.Port.Set {
-			e.RawStr("\"port\"" + ":")
+			e.FieldStart("port")
 			s.Port.Encode(e)
 		}
 	}
@@ -61146,80 +50145,36 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.DefaultBackend.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultBackend.Set {
-			e.RawStr("\"defaultBackend\"" + ":")
+			e.FieldStart("defaultBackend")
 			s.DefaultBackend.Encode(e)
 		}
 	}
 	{
 		if s.IngressClassName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.IngressClassName.Set {
-			e.RawStr("\"ingressClassName\"" + ":")
+			e.FieldStart("ingressClassName")
 			s.IngressClassName.Encode(e)
 		}
 	}
 	{
 		if s.Rules != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Rules != nil {
-			e.RawStr("\"rules\"" + ":")
+			e.FieldStart("rules")
 			e.ArrStart()
-			if len(s.Rules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Rules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Rules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Rules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.TLS != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TLS != nil {
-			e.RawStr("\"tls\"" + ":")
+			e.FieldStart("tls")
 			e.ArrStart()
-			if len(s.TLS) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.TLS[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.TLS[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.TLS {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -61308,21 +50263,11 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LoadBalancer.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LoadBalancer.Set {
-			e.RawStr("\"loadBalancer\"" + ":")
+			e.FieldStart("loadBalancer")
 			s.LoadBalancer.Encode(e)
 		}
 	}
@@ -61363,45 +50308,21 @@ func (s *IoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Hosts != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Hosts != nil {
-			e.RawStr("\"hosts\"" + ":")
+			e.FieldStart("hosts")
 			e.ArrStart()
-			if len(s.Hosts) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Hosts[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Hosts[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Hosts {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.SecretName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SecretName.Set {
-			e.RawStr("\"secretName\"" + ":")
+			e.FieldStart("secretName")
 			s.SecretName.Encode(e)
 		}
 	}
@@ -61462,57 +50383,29 @@ func (s *IoK8sAPINetworkingV1IngressTLS) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1NetworkPolicy) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1NetworkPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -61586,56 +50479,24 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ports != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.To != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.To != nil {
-			e.RawStr("\"to\"" + ":")
+			e.FieldStart("to")
 			e.ArrStart()
-			if len(s.To) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.To[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.To[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.To {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -61702,56 +50563,24 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.From != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.From != nil {
-			e.RawStr("\"from\"" + ":")
+			e.FieldStart("from")
 			e.ArrStart()
-			if len(s.From) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.From[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.From[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.From {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Ports != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ports != nil {
-			e.RawStr("\"ports\"" + ":")
+			e.FieldStart("ports")
 			e.ArrStart()
-			if len(s.Ports) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ports[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ports[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ports {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -61818,60 +50647,32 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -61986,45 +50787,23 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1NetworkPolicyPeer) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1NetworkPolicyPeer) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.IpBlock.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.IpBlock.Set {
-			e.RawStr("\"ipBlock\"" + ":")
+			e.FieldStart("ipBlock")
 			s.IpBlock.Encode(e)
 		}
 	}
 	{
 		if s.NamespaceSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NamespaceSelector.Set {
-			e.RawStr("\"namespaceSelector\"" + ":")
+			e.FieldStart("namespaceSelector")
 			s.NamespaceSelector.Encode(e)
 		}
 	}
 	{
 		if s.PodSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodSelector.Set {
-			e.RawStr("\"podSelector\"" + ":")
+			e.FieldStart("podSelector")
 			s.PodSelector.Encode(e)
 		}
 	}
@@ -62087,45 +50866,23 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1NetworkPolicyPort) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1NetworkPolicyPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.EndPort.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.EndPort.Set {
-			e.RawStr("\"endPort\"" + ":")
+			e.FieldStart("endPort")
 			s.EndPort.Encode(e)
 		}
 	}
 	{
 		if s.Port.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Port.Set {
-			e.RawStr("\"port\"" + ":")
+			e.FieldStart("port")
 			s.Port.Encode(e)
 		}
 	}
 	{
 		if s.Protocol.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Protocol.Set {
-			e.RawStr("\"protocol\"" + ":")
+			e.FieldStart("protocol")
 			s.Protocol.Encode(e)
 		}
 	}
@@ -62188,86 +50945,39 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Egress != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Egress != nil {
-			e.RawStr("\"egress\"" + ":")
+			e.FieldStart("egress")
 			e.ArrStart()
-			if len(s.Egress) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Egress[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Egress[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Egress {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Ingress != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ingress != nil {
-			e.RawStr("\"ingress\"" + ":")
+			e.FieldStart("ingress")
 			e.ArrStart()
-			if len(s.Ingress) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ingress[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ingress[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ingress {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"podSelector\"" + ":")
+		e.FieldStart("podSelector")
 		s.PodSelector.Encode(e)
 	}
 	{
 		if s.PolicyTypes != nil {
-			e.Comma()
-		}
-		if s.PolicyTypes != nil {
-			e.RawStr("\"policyTypes\"" + ":")
+			e.FieldStart("policyTypes")
 			e.ArrStart()
-			if len(s.PolicyTypes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.PolicyTypes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.PolicyTypes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.PolicyTypes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -62398,33 +51108,17 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Writer) {
+func (s IoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Number.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Number.Set {
-			e.RawStr("\"number\"" + ":")
+			e.FieldStart("number")
 			s.Number.Encode(e)
 		}
 	}
@@ -62476,21 +51170,11 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1Overhead) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PodFixed.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodFixed.Set {
-			e.RawStr("\"podFixed\"" + ":")
+			e.FieldStart("podFixed")
 			s.PodFixed.Encode(e)
 		}
 	}
@@ -62531,19 +51215,10 @@ func (s *IoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -62582,66 +51257,40 @@ func (s IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1RuntimeClass) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"handler\"" + ":")
+		e.FieldStart("handler")
 		e.Str(s.Handler)
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Overhead.Set {
-			e.Comma()
-		}
-		if s.Overhead.Set {
-			e.RawStr("\"overhead\"" + ":")
+			e.FieldStart("overhead")
 			s.Overhead.Encode(e)
 		}
 	}
 	{
 		if s.Scheduling.Set {
-			e.Comma()
-		}
-		if s.Scheduling.Set {
-			e.RawStr("\"scheduling\"" + ":")
+			e.FieldStart("scheduling")
 			s.Scheduling.Encode(e)
 		}
 	}
@@ -62772,60 +51421,32 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -62940,44 +51561,20 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.NodeSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeSelector.Set {
-			e.RawStr("\"nodeSelector\"" + ":")
+			e.FieldStart("nodeSelector")
 			s.NodeSelector.Encode(e)
 		}
 	}
 	{
 		if s.Tolerations != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Tolerations != nil {
-			e.RawStr("\"tolerations\"" + ":")
+			e.FieldStart("tolerations")
 			e.ArrStart()
-			if len(s.Tolerations) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Tolerations[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Tolerations[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Tolerations {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -63037,19 +51634,10 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -63090,21 +51678,11 @@ func (s IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PodFixed.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodFixed.Set {
-			e.RawStr("\"podFixed\"" + ":")
+			e.FieldStart("podFixed")
 			s.PodFixed.Encode(e)
 		}
 	}
@@ -63145,19 +51723,10 @@ func (s *IoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -63196,55 +51765,29 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1RuntimeClass) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1alpha1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	e.ObjEnd()
@@ -63350,60 +51893,32 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -63518,39 +52033,22 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Overhead.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Overhead.Set {
-			e.RawStr("\"overhead\"" + ":")
+			e.FieldStart("overhead")
 			s.Overhead.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"runtimeHandler\"" + ":")
+		e.FieldStart("runtimeHandler")
 		e.Str(s.RuntimeHandler)
 	}
 	{
 		if s.Scheduling.Set {
-			e.Comma()
-		}
-		if s.Scheduling.Set {
-			e.RawStr("\"scheduling\"" + ":")
+			e.FieldStart("scheduling")
 			s.Scheduling.Encode(e)
 		}
 	}
@@ -63648,44 +52146,20 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.NodeSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeSelector.Set {
-			e.RawStr("\"nodeSelector\"" + ":")
+			e.FieldStart("nodeSelector")
 			s.NodeSelector.Encode(e)
 		}
 	}
 	{
 		if s.Tolerations != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Tolerations != nil {
-			e.RawStr("\"tolerations\"" + ":")
+			e.FieldStart("tolerations")
 			e.ArrStart()
-			if len(s.Tolerations) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Tolerations[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Tolerations[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Tolerations {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -63745,19 +52219,10 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -63798,21 +52263,11 @@ func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PodFixed.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodFixed.Set {
-			e.RawStr("\"podFixed\"" + ":")
+			e.FieldStart("podFixed")
 			s.PodFixed.Encode(e)
 		}
 	}
@@ -63853,19 +52308,10 @@ func (s *IoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -63904,66 +52350,40 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1RuntimeClass) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1beta1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"handler\"" + ":")
+		e.FieldStart("handler")
 		e.Str(s.Handler)
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Overhead.Set {
-			e.Comma()
-		}
-		if s.Overhead.Set {
-			e.RawStr("\"overhead\"" + ":")
+			e.FieldStart("overhead")
 			s.Overhead.Encode(e)
 		}
 	}
 	{
 		if s.Scheduling.Set {
-			e.Comma()
-		}
-		if s.Scheduling.Set {
-			e.RawStr("\"scheduling\"" + ":")
+			e.FieldStart("scheduling")
 			s.Scheduling.Encode(e)
 		}
 	}
@@ -64094,60 +52514,32 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -64262,44 +52654,20 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.NodeSelector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeSelector.Set {
-			e.RawStr("\"nodeSelector\"" + ":")
+			e.FieldStart("nodeSelector")
 			s.NodeSelector.Encode(e)
 		}
 	}
 	{
 		if s.Tolerations != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Tolerations != nil {
-			e.RawStr("\"tolerations\"" + ":")
+			e.FieldStart("tolerations")
 			e.ArrStart()
-			if len(s.Tolerations) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Tolerations[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Tolerations[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Tolerations {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -64359,19 +52727,10 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Writer) {
+func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -64412,69 +52771,35 @@ func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1PodDisruptionBudget) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -64559,60 +52884,32 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -64727,45 +53024,23 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MaxUnavailable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxUnavailable.Set {
-			e.RawStr("\"maxUnavailable\"" + ":")
+			e.FieldStart("maxUnavailable")
 			s.MaxUnavailable.Encode(e)
 		}
 	}
 	{
 		if s.MinAvailable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinAvailable.Set {
-			e.RawStr("\"minAvailable\"" + ":")
+			e.FieldStart("minAvailable")
 			s.MinAvailable.Encode(e)
 		}
 	}
 	{
 		if s.Selector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
@@ -64828,78 +53103,47 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentHealthy\"" + ":")
+		e.FieldStart("currentHealthy")
 		e.Int32(s.CurrentHealthy)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"desiredHealthy\"" + ":")
+		e.FieldStart("desiredHealthy")
 		e.Int32(s.DesiredHealthy)
 	}
 	{
 		if s.DisruptedPods.Set {
-			e.Comma()
-		}
-		if s.DisruptedPods.Set {
-			e.RawStr("\"disruptedPods\"" + ":")
+			e.FieldStart("disruptedPods")
 			s.DisruptedPods.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"disruptionsAllowed\"" + ":")
+		e.FieldStart("disruptionsAllowed")
 		e.Int32(s.DisruptionsAllowed)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"expectedPods\"" + ":")
+		e.FieldStart("expectedPods")
 		e.Int32(s.ExpectedPods)
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
@@ -65054,19 +53298,10 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -65105,19 +53340,11 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -65192,19 +53419,11 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"driver\"" + ":")
+		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
 	e.ObjEnd()
@@ -65279,33 +53498,17 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1AllowedHostPath) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1AllowedHostPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.PathPrefix.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PathPrefix.Set {
-			e.RawStr("\"pathPrefix\"" + ":")
+			e.FieldStart("pathPrefix")
 			s.PathPrefix.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnly.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ReadOnly.Set {
-			e.RawStr("\"readOnly\"" + ":")
+			e.FieldStart("readOnly")
 			s.ReadOnly.Encode(e)
 		}
 	}
@@ -65357,45 +53560,21 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ranges != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ranges != nil {
-			e.RawStr("\"ranges\"" + ":")
+			e.FieldStart("ranges")
 			e.ArrStart()
-			if len(s.Ranges) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ranges[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ranges[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ranges {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Rule.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Rule.Set {
-			e.RawStr("\"rule\"" + ":")
+			e.FieldStart("rule")
 			s.Rule.Encode(e)
 		}
 	}
@@ -65454,25 +53633,16 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"max\"" + ":")
+		e.FieldStart("max")
 		e.Int32(s.Max)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"min\"" + ":")
+		e.FieldStart("min")
 		e.Int32(s.Min)
 	}
 	e.ObjEnd()
@@ -65560,25 +53730,16 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"max\"" + ":")
+		e.FieldStart("max")
 		e.Int64(s.Max)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"min\"" + ":")
+		e.FieldStart("min")
 		e.Int64(s.Min)
 	}
 	e.ObjEnd()
@@ -65666,69 +53827,35 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -65813,60 +53940,32 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -65981,45 +54080,23 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MaxUnavailable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxUnavailable.Set {
-			e.RawStr("\"maxUnavailable\"" + ":")
+			e.FieldStart("maxUnavailable")
 			s.MaxUnavailable.Encode(e)
 		}
 	}
 	{
 		if s.MinAvailable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinAvailable.Set {
-			e.RawStr("\"minAvailable\"" + ":")
+			e.FieldStart("minAvailable")
 			s.MinAvailable.Encode(e)
 		}
 	}
 	{
 		if s.Selector.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Selector.Set {
-			e.RawStr("\"selector\"" + ":")
+			e.FieldStart("selector")
 			s.Selector.Encode(e)
 		}
 	}
@@ -66082,78 +54159,47 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"currentHealthy\"" + ":")
+		e.FieldStart("currentHealthy")
 		e.Int32(s.CurrentHealthy)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"desiredHealthy\"" + ":")
+		e.FieldStart("desiredHealthy")
 		e.Int32(s.DesiredHealthy)
 	}
 	{
 		if s.DisruptedPods.Set {
-			e.Comma()
-		}
-		if s.DisruptedPods.Set {
-			e.RawStr("\"disruptedPods\"" + ":")
+			e.FieldStart("disruptedPods")
 			s.DisruptedPods.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"disruptionsAllowed\"" + ":")
+		e.FieldStart("disruptionsAllowed")
 		e.Int32(s.DisruptionsAllowed)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"expectedPods\"" + ":")
+		e.FieldStart("expectedPods")
 		e.Int32(s.ExpectedPods)
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
@@ -66308,19 +54354,10 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -66359,57 +54396,29 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *j
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
@@ -66483,60 +54492,32 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -66651,377 +54632,188 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AllowPrivilegeEscalation.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowPrivilegeEscalation.Set {
-			e.RawStr("\"allowPrivilegeEscalation\"" + ":")
+			e.FieldStart("allowPrivilegeEscalation")
 			s.AllowPrivilegeEscalation.Encode(e)
 		}
 	}
 	{
 		if s.AllowedCSIDrivers != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowedCSIDrivers != nil {
-			e.RawStr("\"allowedCSIDrivers\"" + ":")
+			e.FieldStart("allowedCSIDrivers")
 			e.ArrStart()
-			if len(s.AllowedCSIDrivers) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllowedCSIDrivers[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.AllowedCSIDrivers[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.AllowedCSIDrivers {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.AllowedCapabilities != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowedCapabilities != nil {
-			e.RawStr("\"allowedCapabilities\"" + ":")
+			e.FieldStart("allowedCapabilities")
 			e.ArrStart()
-			if len(s.AllowedCapabilities) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllowedCapabilities[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.AllowedCapabilities[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.AllowedCapabilities {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.AllowedFlexVolumes != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowedFlexVolumes != nil {
-			e.RawStr("\"allowedFlexVolumes\"" + ":")
+			e.FieldStart("allowedFlexVolumes")
 			e.ArrStart()
-			if len(s.AllowedFlexVolumes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllowedFlexVolumes[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.AllowedFlexVolumes[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.AllowedFlexVolumes {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.AllowedHostPaths != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowedHostPaths != nil {
-			e.RawStr("\"allowedHostPaths\"" + ":")
+			e.FieldStart("allowedHostPaths")
 			e.ArrStart()
-			if len(s.AllowedHostPaths) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllowedHostPaths[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.AllowedHostPaths[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.AllowedHostPaths {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.AllowedProcMountTypes != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowedProcMountTypes != nil {
-			e.RawStr("\"allowedProcMountTypes\"" + ":")
+			e.FieldStart("allowedProcMountTypes")
 			e.ArrStart()
-			if len(s.AllowedProcMountTypes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllowedProcMountTypes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.AllowedProcMountTypes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.AllowedProcMountTypes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.AllowedUnsafeSysctls != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowedUnsafeSysctls != nil {
-			e.RawStr("\"allowedUnsafeSysctls\"" + ":")
+			e.FieldStart("allowedUnsafeSysctls")
 			e.ArrStart()
-			if len(s.AllowedUnsafeSysctls) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllowedUnsafeSysctls[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.AllowedUnsafeSysctls[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.AllowedUnsafeSysctls {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.DefaultAddCapabilities != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultAddCapabilities != nil {
-			e.RawStr("\"defaultAddCapabilities\"" + ":")
+			e.FieldStart("defaultAddCapabilities")
 			e.ArrStart()
-			if len(s.DefaultAddCapabilities) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.DefaultAddCapabilities[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.DefaultAddCapabilities[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.DefaultAddCapabilities {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.DefaultAllowPrivilegeEscalation.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DefaultAllowPrivilegeEscalation.Set {
-			e.RawStr("\"defaultAllowPrivilegeEscalation\"" + ":")
+			e.FieldStart("defaultAllowPrivilegeEscalation")
 			s.DefaultAllowPrivilegeEscalation.Encode(e)
 		}
 	}
 	{
 		if s.ForbiddenSysctls != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ForbiddenSysctls != nil {
-			e.RawStr("\"forbiddenSysctls\"" + ":")
+			e.FieldStart("forbiddenSysctls")
 			e.ArrStart()
-			if len(s.ForbiddenSysctls) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ForbiddenSysctls[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ForbiddenSysctls[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ForbiddenSysctls {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"fsGroup\"" + ":")
+		e.FieldStart("fsGroup")
 		s.FsGroup.Encode(e)
 	}
 	{
 		if s.HostIPC.Set {
-			e.Comma()
-		}
-		if s.HostIPC.Set {
-			e.RawStr("\"hostIPC\"" + ":")
+			e.FieldStart("hostIPC")
 			s.HostIPC.Encode(e)
 		}
 	}
 	{
 		if s.HostNetwork.Set {
-			e.Comma()
-		}
-		if s.HostNetwork.Set {
-			e.RawStr("\"hostNetwork\"" + ":")
+			e.FieldStart("hostNetwork")
 			s.HostNetwork.Encode(e)
 		}
 	}
 	{
 		if s.HostPID.Set {
-			e.Comma()
-		}
-		if s.HostPID.Set {
-			e.RawStr("\"hostPID\"" + ":")
+			e.FieldStart("hostPID")
 			s.HostPID.Encode(e)
 		}
 	}
 	{
 		if s.HostPorts != nil {
-			e.Comma()
-		}
-		if s.HostPorts != nil {
-			e.RawStr("\"hostPorts\"" + ":")
+			e.FieldStart("hostPorts")
 			e.ArrStart()
-			if len(s.HostPorts) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.HostPorts[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.HostPorts[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.HostPorts {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Privileged.Set {
-			e.Comma()
-		}
-		if s.Privileged.Set {
-			e.RawStr("\"privileged\"" + ":")
+			e.FieldStart("privileged")
 			s.Privileged.Encode(e)
 		}
 	}
 	{
 		if s.ReadOnlyRootFilesystem.Set {
-			e.Comma()
-		}
-		if s.ReadOnlyRootFilesystem.Set {
-			e.RawStr("\"readOnlyRootFilesystem\"" + ":")
+			e.FieldStart("readOnlyRootFilesystem")
 			s.ReadOnlyRootFilesystem.Encode(e)
 		}
 	}
 	{
 		if s.RequiredDropCapabilities != nil {
-			e.Comma()
-		}
-		if s.RequiredDropCapabilities != nil {
-			e.RawStr("\"requiredDropCapabilities\"" + ":")
+			e.FieldStart("requiredDropCapabilities")
 			e.ArrStart()
-			if len(s.RequiredDropCapabilities) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.RequiredDropCapabilities[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.RequiredDropCapabilities[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.RequiredDropCapabilities {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.RunAsGroup.Set {
-			e.Comma()
-		}
-		if s.RunAsGroup.Set {
-			e.RawStr("\"runAsGroup\"" + ":")
+			e.FieldStart("runAsGroup")
 			s.RunAsGroup.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"runAsUser\"" + ":")
+		e.FieldStart("runAsUser")
 		s.RunAsUser.Encode(e)
 	}
 	{
 		if s.RuntimeClass.Set {
-			e.Comma()
-		}
-		if s.RuntimeClass.Set {
-			e.RawStr("\"runtimeClass\"" + ":")
+			e.FieldStart("runtimeClass")
 			s.RuntimeClass.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"seLinux\"" + ":")
+		e.FieldStart("seLinux")
 		s.SeLinux.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"supplementalGroups\"" + ":")
+		e.FieldStart("supplementalGroups")
 		s.SupplementalGroups.Encode(e)
 	}
 	{
 		if s.Volumes != nil {
-			e.Comma()
-		}
-		if s.Volumes != nil {
-			e.RawStr("\"volumes\"" + ":")
+			e.FieldStart("volumes")
 			e.ArrStart()
-			if len(s.Volumes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Volumes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Volumes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Volumes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -67442,43 +55234,21 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ranges != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ranges != nil {
-			e.RawStr("\"ranges\"" + ":")
+			e.FieldStart("ranges")
 			e.ArrStart()
-			if len(s.Ranges) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ranges[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ranges[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ranges {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"rule\"" + ":")
+		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
 	e.ObjEnd()
@@ -67571,43 +55341,21 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ranges != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ranges != nil {
-			e.RawStr("\"ranges\"" + ":")
+			e.FieldStart("ranges")
 			e.ArrStart()
-			if len(s.Ranges) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ranges[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ranges[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ranges {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"rule\"" + ":")
+		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
 	e.ObjEnd()
@@ -67700,39 +55448,20 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"allowedRuntimeClassNames\"" + ":")
+		e.FieldStart("allowedRuntimeClassNames")
 		e.ArrStart()
-		if len(s.AllowedRuntimeClassNames) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.AllowedRuntimeClassNames[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.AllowedRuntimeClassNames[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.AllowedRuntimeClassNames {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.DefaultRuntimeClassName.Set {
-			e.Comma()
-		}
-		if s.DefaultRuntimeClassName.Set {
-			e.RawStr("\"defaultRuntimeClassName\"" + ":")
+			e.FieldStart("defaultRuntimeClassName")
 			s.DefaultRuntimeClassName.Encode(e)
 		}
 	}
@@ -67827,27 +55556,16 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"rule\"" + ":")
+		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
 	{
 		if s.SeLinuxOptions.Set {
-			e.Comma()
-		}
-		if s.SeLinuxOptions.Set {
-			e.RawStr("\"seLinuxOptions\"" + ":")
+			e.FieldStart("seLinuxOptions")
 			s.SeLinuxOptions.Encode(e)
 		}
 	}
@@ -67934,45 +55652,21 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Writer) {
+func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ranges != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ranges != nil {
-			e.RawStr("\"ranges\"" + ":")
+			e.FieldStart("ranges")
 			e.ArrStart()
-			if len(s.Ranges) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Ranges[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Ranges[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Ranges {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Rule.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Rule.Set {
-			e.RawStr("\"rule\"" + ":")
+			e.FieldStart("rule")
 			s.Rule.Encode(e)
 		}
 	}
@@ -68031,32 +55725,14 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Decode(d *jx.De
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ClusterRoleSelectors != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ClusterRoleSelectors != nil {
-			e.RawStr("\"clusterRoleSelectors\"" + ":")
+			e.FieldStart("clusterRoleSelectors")
 			e.ArrStart()
-			if len(s.ClusterRoleSelectors) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ClusterRoleSelectors[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ClusterRoleSelectors[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ClusterRoleSelectors {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -68105,80 +55781,38 @@ func (s *IoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AggregationRule.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AggregationRule.Set {
-			e.RawStr("\"aggregationRule\"" + ":")
+			e.FieldStart("aggregationRule")
 			s.AggregationRule.Encode(e)
 		}
 	}
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Rules != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Rules != nil {
-			e.RawStr("\"rules\"" + ":")
+			e.FieldStart("rules")
 			e.ArrStart()
-			if len(s.Rules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Rules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Rules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Rules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -68271,74 +55905,37 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"roleRef\"" + ":")
+		e.FieldStart("roleRef")
 		s.RoleRef.Encode(e)
 	}
 	{
 		if s.Subjects != nil {
-			e.Comma()
-		}
-		if s.Subjects != nil {
-			e.RawStr("\"subjects\"" + ":")
+			e.FieldStart("subjects")
 			e.ArrStart()
-			if len(s.Subjects) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Subjects[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Subjects[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Subjects {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -68464,60 +56061,32 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -68632,60 +56201,32 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -68800,126 +56341,54 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiGroups != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiGroups != nil {
-			e.RawStr("\"apiGroups\"" + ":")
+			e.FieldStart("apiGroups")
 			e.ArrStart()
-			if len(s.ApiGroups) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ApiGroups[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ApiGroups[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ApiGroups {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.NonResourceURLs != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NonResourceURLs != nil {
-			e.RawStr("\"nonResourceURLs\"" + ":")
+			e.FieldStart("nonResourceURLs")
 			e.ArrStart()
-			if len(s.NonResourceURLs) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.NonResourceURLs[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.NonResourceURLs[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.NonResourceURLs {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ResourceNames != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ResourceNames != nil {
-			e.RawStr("\"resourceNames\"" + ":")
+			e.FieldStart("resourceNames")
 			e.ArrStart()
-			if len(s.ResourceNames) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ResourceNames[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ResourceNames[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ResourceNames {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Resources != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Resources != nil {
-			e.RawStr("\"resources\"" + ":")
+			e.FieldStart("resources")
 			e.ArrStart()
-			if len(s.Resources) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Resources[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Resources[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Resources {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"verbs\"" + ":")
+		e.FieldStart("verbs")
 		e.ArrStart()
-		if len(s.Verbs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Verbs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Verbs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Verbs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -69083,68 +56552,32 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1Role) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1Role) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Rules != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Rules != nil {
-			e.RawStr("\"rules\"" + ":")
+			e.FieldStart("rules")
 			e.ArrStart()
-			if len(s.Rules) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Rules[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Rules[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Rules {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -69226,74 +56659,37 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"roleRef\"" + ":")
+		e.FieldStart("roleRef")
 		s.RoleRef.Encode(e)
 	}
 	{
 		if s.Subjects != nil {
-			e.Comma()
-		}
-		if s.Subjects != nil {
-			e.RawStr("\"subjects\"" + ":")
+			e.FieldStart("subjects")
 			e.ArrStart()
-			if len(s.Subjects) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Subjects[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Subjects[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Subjects {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -69419,60 +56815,32 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -69587,60 +56955,32 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -69755,31 +57095,21 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1RoleRef) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1RoleRef) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"apiGroup\"" + ":")
+		e.FieldStart("apiGroup")
 		e.Str(s.ApiGroup)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	e.ObjEnd()
@@ -69880,45 +57210,27 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIRbacV1Subject) Encode(e *jx.Writer) {
+func (s IoK8sAPIRbacV1Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiGroup.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiGroup.Set {
-			e.RawStr("\"apiGroup\"" + ":")
+			e.FieldStart("apiGroup")
 			s.ApiGroup.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Namespace.Set {
-			e.Comma()
-		}
-		if s.Namespace.Set {
-			e.RawStr("\"namespace\"" + ":")
+			e.FieldStart("namespace")
 			s.Namespace.Encode(e)
 		}
 	}
@@ -70029,91 +57341,47 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPISchedulingV1PriorityClass) Encode(e *jx.Writer) {
+func (s IoK8sAPISchedulingV1PriorityClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Description.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
+			e.FieldStart("description")
 			s.Description.Encode(e)
 		}
 	}
 	{
 		if s.GlobalDefault.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GlobalDefault.Set {
-			e.RawStr("\"globalDefault\"" + ":")
+			e.FieldStart("globalDefault")
 			s.GlobalDefault.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.PreemptionPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PreemptionPolicy.Set {
-			e.RawStr("\"preemptionPolicy\"" + ":")
+			e.FieldStart("preemptionPolicy")
 			s.PreemptionPolicy.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"value\"" + ":")
+		e.FieldStart("value")
 		e.Int32(s.Value)
 	}
 	e.ObjEnd()
@@ -70254,60 +57522,32 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Writer) {
+func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -70422,55 +57662,29 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1CSIDriver) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1CSIDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	e.ObjEnd()
@@ -70576,60 +57790,32 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -70744,116 +57930,54 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AttachRequired.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AttachRequired.Set {
-			e.RawStr("\"attachRequired\"" + ":")
+			e.FieldStart("attachRequired")
 			s.AttachRequired.Encode(e)
 		}
 	}
 	{
 		if s.FsGroupPolicy.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FsGroupPolicy.Set {
-			e.RawStr("\"fsGroupPolicy\"" + ":")
+			e.FieldStart("fsGroupPolicy")
 			s.FsGroupPolicy.Encode(e)
 		}
 	}
 	{
 		if s.PodInfoOnMount.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PodInfoOnMount.Set {
-			e.RawStr("\"podInfoOnMount\"" + ":")
+			e.FieldStart("podInfoOnMount")
 			s.PodInfoOnMount.Encode(e)
 		}
 	}
 	{
 		if s.RequiresRepublish.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RequiresRepublish.Set {
-			e.RawStr("\"requiresRepublish\"" + ":")
+			e.FieldStart("requiresRepublish")
 			s.RequiresRepublish.Encode(e)
 		}
 	}
 	{
 		if s.StorageCapacity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StorageCapacity.Set {
-			e.RawStr("\"storageCapacity\"" + ":")
+			e.FieldStart("storageCapacity")
 			s.StorageCapacity.Encode(e)
 		}
 	}
 	{
 		if s.TokenRequests != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.TokenRequests != nil {
-			e.RawStr("\"tokenRequests\"" + ":")
+			e.FieldStart("tokenRequests")
 			e.ArrStart()
-			if len(s.TokenRequests) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.TokenRequests[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.TokenRequests[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.TokenRequests {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.VolumeLifecycleModes != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.VolumeLifecycleModes != nil {
-			e.RawStr("\"volumeLifecycleModes\"" + ":")
+			e.FieldStart("volumeLifecycleModes")
 			e.ArrStart()
-			if len(s.VolumeLifecycleModes) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.VolumeLifecycleModes[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.VolumeLifecycleModes[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.VolumeLifecycleModes {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -70977,55 +58101,29 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1CSINode) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1CSINode) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	e.ObjEnd()
@@ -71131,56 +58229,30 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Allocatable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Allocatable.Set {
-			e.RawStr("\"allocatable\"" + ":")
+			e.FieldStart("allocatable")
 			s.Allocatable.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"nodeID\"" + ":")
+		e.FieldStart("nodeID")
 		e.Str(s.NodeID)
 	}
 	{
 		if s.TopologyKeys != nil {
-			e.Comma()
-		}
-		if s.TopologyKeys != nil {
-			e.RawStr("\"topologyKeys\"" + ":")
+			e.FieldStart("topologyKeys")
 			e.ArrStart()
-			if len(s.TopologyKeys) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.TopologyKeys[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.TopologyKeys[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.TopologyKeys {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -71301,60 +58373,32 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -71469,30 +58513,14 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"drivers\"" + ":")
+		e.FieldStart("drivers")
 		e.ArrStart()
-		if len(s.Drivers) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Drivers[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Drivers[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Drivers {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -71574,144 +58602,72 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AllowVolumeExpansion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowVolumeExpansion.Set {
-			e.RawStr("\"allowVolumeExpansion\"" + ":")
+			e.FieldStart("allowVolumeExpansion")
 			s.AllowVolumeExpansion.Encode(e)
 		}
 	}
 	{
 		if s.AllowedTopologies != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllowedTopologies != nil {
-			e.RawStr("\"allowedTopologies\"" + ":")
+			e.FieldStart("allowedTopologies")
 			e.ArrStart()
-			if len(s.AllowedTopologies) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllowedTopologies[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.AllowedTopologies[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.AllowedTopologies {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.MountOptions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MountOptions != nil {
-			e.RawStr("\"mountOptions\"" + ":")
+			e.FieldStart("mountOptions")
 			e.ArrStart()
-			if len(s.MountOptions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.MountOptions[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.MountOptions[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.MountOptions {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Parameters.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Parameters.Set {
-			e.RawStr("\"parameters\"" + ":")
+			e.FieldStart("parameters")
 			s.Parameters.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"provisioner\"" + ":")
+		e.FieldStart("provisioner")
 		e.Str(s.Provisioner)
 	}
 	{
 		if s.ReclaimPolicy.Set {
-			e.Comma()
-		}
-		if s.ReclaimPolicy.Set {
-			e.RawStr("\"reclaimPolicy\"" + ":")
+			e.FieldStart("reclaimPolicy")
 			s.ReclaimPolicy.Encode(e)
 		}
 	}
 	{
 		if s.VolumeBindingMode.Set {
-			e.Comma()
-		}
-		if s.VolumeBindingMode.Set {
-			e.RawStr("\"volumeBindingMode\"" + ":")
+			e.FieldStart("volumeBindingMode")
 			s.VolumeBindingMode.Encode(e)
 		}
 	}
@@ -71903,60 +58859,32 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -72071,19 +58999,10 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -72124,27 +59043,16 @@ func (s IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"audience\"" + ":")
+		e.FieldStart("audience")
 		e.Str(s.Audience)
 	}
 	{
 		if s.ExpirationSeconds.Set {
-			e.Comma()
-		}
-		if s.ExpirationSeconds.Set {
-			e.RawStr("\"expirationSeconds\"" + ":")
+			e.FieldStart("expirationSeconds")
 			s.ExpirationSeconds.Encode(e)
 		}
 	}
@@ -72231,63 +59139,34 @@ func (s *IoK8sAPIStorageV1TokenRequest) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeAttachment) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeAttachment) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	{
 		if s.Status.Set {
-			e.Comma()
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -72405,60 +59284,32 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -72573,33 +59424,17 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeAttachmentSource) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeAttachmentSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.InlineVolumeSpec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.InlineVolumeSpec.Set {
-			e.RawStr("\"inlineVolumeSpec\"" + ":")
+			e.FieldStart("inlineVolumeSpec")
 			s.InlineVolumeSpec.Encode(e)
 		}
 	}
 	{
 		if s.PersistentVolumeName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PersistentVolumeName.Set {
-			e.RawStr("\"persistentVolumeName\"" + ":")
+			e.FieldStart("persistentVolumeName")
 			s.PersistentVolumeName.Encode(e)
 		}
 	}
@@ -72651,31 +59486,21 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"attacher\"" + ":")
+		e.FieldStart("attacher")
 		e.Str(s.Attacher)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"nodeName\"" + ":")
+		e.FieldStart("nodeName")
 		e.Str(s.NodeName)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"source\"" + ":")
+		e.FieldStart("source")
 		s.Source.Encode(e)
 	}
 	e.ObjEnd()
@@ -72774,48 +59599,28 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AttachError.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AttachError.Set {
-			e.RawStr("\"attachError\"" + ":")
+			e.FieldStart("attachError")
 			s.AttachError.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"attached\"" + ":")
+		e.FieldStart("attached")
 		e.Bool(s.Attached)
 	}
 	{
 		if s.AttachmentMetadata.Set {
-			e.Comma()
-		}
-		if s.AttachmentMetadata.Set {
-			e.RawStr("\"attachmentMetadata\"" + ":")
+			e.FieldStart("attachmentMetadata")
 			s.AttachmentMetadata.Encode(e)
 		}
 	}
 	{
 		if s.DetachError.Set {
-			e.Comma()
-		}
-		if s.DetachError.Set {
-			e.RawStr("\"detachError\"" + ":")
+			e.FieldStart("detachError")
 			s.DetachError.Encode(e)
 		}
 	}
@@ -72924,19 +59729,10 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -72977,33 +59773,17 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeError) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeError) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Time.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Time.Set {
-			e.RawStr("\"time\"" + ":")
+			e.FieldStart("time")
 			s.Time.Encode(e)
 		}
 	}
@@ -73055,21 +59835,11 @@ func (s *IoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Count.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Count.Set {
-			e.RawStr("\"count\"" + ":")
+			e.FieldStart("count")
 			s.Count.Encode(e)
 		}
 	}
@@ -73110,91 +59880,47 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Capacity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Capacity.Set {
-			e.RawStr("\"capacity\"" + ":")
+			e.FieldStart("capacity")
 			s.Capacity.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.MaximumVolumeSize.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaximumVolumeSize.Set {
-			e.RawStr("\"maximumVolumeSize\"" + ":")
+			e.FieldStart("maximumVolumeSize")
 			s.MaximumVolumeSize.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.NodeTopology.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeTopology.Set {
-			e.RawStr("\"nodeTopology\"" + ":")
+			e.FieldStart("nodeTopology")
 			s.NodeTopology.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"storageClassName\"" + ":")
+		e.FieldStart("storageClassName")
 		e.Str(s.StorageClassName)
 	}
 	e.ObjEnd()
@@ -73335,60 +60061,32 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -73503,91 +60201,47 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Capacity.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Capacity.Set {
-			e.RawStr("\"capacity\"" + ":")
+			e.FieldStart("capacity")
 			s.Capacity.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.MaximumVolumeSize.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaximumVolumeSize.Set {
-			e.RawStr("\"maximumVolumeSize\"" + ":")
+			e.FieldStart("maximumVolumeSize")
 			s.MaximumVolumeSize.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.NodeTopology.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.NodeTopology.Set {
-			e.RawStr("\"nodeTopology\"" + ":")
+			e.FieldStart("nodeTopology")
 			s.NodeTopology.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"storageClassName\"" + ":")
+		e.FieldStart("storageClassName")
 		e.Str(s.StorageClassName)
 	}
 	e.ObjEnd()
@@ -73728,60 +60382,32 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Writer) {
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -73896,64 +60522,39 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Description.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
+			e.FieldStart("description")
 			s.Description.Encode(e)
 		}
 	}
 	{
 		if s.Format.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Format.Set {
-			e.RawStr("\"format\"" + ":")
+			e.FieldStart("format")
 			s.Format.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"jsonPath\"" + ":")
+		e.FieldStart("jsonPath")
 		e.Str(s.JsonPath)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Priority.Set {
-			e.Comma()
-		}
-		if s.Priority.Set {
-			e.RawStr("\"priority\"" + ":")
+			e.FieldStart("priority")
 			s.Priority.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -74087,27 +60688,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"strategy\"" + ":")
+		e.FieldStart("strategy")
 		e.Str(s.Strategy)
 	}
 	{
 		if s.Webhook.Set {
-			e.Comma()
-		}
-		if s.Webhook.Set {
-			e.RawStr("\"webhook\"" + ":")
+			e.FieldStart("webhook")
 			s.Webhook.Encode(e)
 		}
 	}
@@ -74194,63 +60784,34 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"spec\"" + ":")
+		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
 	{
 		if s.Status.Set {
-			e.Comma()
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -74368,61 +60929,34 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -74543,60 +61077,32 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -74711,87 +61217,47 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Categories != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Categories != nil {
-			e.RawStr("\"categories\"" + ":")
+			e.FieldStart("categories")
 			e.ArrStart()
-			if len(s.Categories) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Categories[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Categories[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Categories {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
 		if s.ListKind.Set {
-			e.Comma()
-		}
-		if s.ListKind.Set {
-			e.RawStr("\"listKind\"" + ":")
+			e.FieldStart("listKind")
 			s.ListKind.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"plural\"" + ":")
+		e.FieldStart("plural")
 		e.Str(s.Plural)
 	}
 	{
 		if s.ShortNames != nil {
-			e.Comma()
-		}
-		if s.ShortNames != nil {
-			e.RawStr("\"shortNames\"" + ":")
+			e.FieldStart("shortNames")
 			e.ArrStart()
-			if len(s.ShortNames) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ShortNames[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ShortNames[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ShortNames {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Singular.Set {
-			e.Comma()
-		}
-		if s.Singular.Set {
-			e.RawStr("\"singular\"" + ":")
+			e.FieldStart("singular")
 			s.Singular.Encode(e)
 		}
 	}
@@ -74942,69 +61408,41 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conversion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conversion.Set {
-			e.RawStr("\"conversion\"" + ":")
+			e.FieldStart("conversion")
 			s.Conversion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"group\"" + ":")
+		e.FieldStart("group")
 		e.Str(s.Group)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"names\"" + ":")
+		e.FieldStart("names")
 		s.Names.Encode(e)
 	}
 	{
 		if s.PreserveUnknownFields.Set {
-			e.Comma()
-		}
-		if s.PreserveUnknownFields.Set {
-			e.RawStr("\"preserveUnknownFields\"" + ":")
+			e.FieldStart("preserveUnknownFields")
 			s.PreserveUnknownFields.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"scope\"" + ":")
+		e.FieldStart("scope")
 		e.Str(s.Scope)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"versions\"" + ":")
+		e.FieldStart("versions")
 		e.ArrStart()
-		if len(s.Versions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Versions[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Versions[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Versions {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -75145,68 +61583,30 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AcceptedNames.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AcceptedNames.Set {
-			e.RawStr("\"acceptedNames\"" + ":")
+			e.FieldStart("acceptedNames")
 			s.AcceptedNames.Encode(e)
 		}
 	}
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.StoredVersions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.StoredVersions != nil {
-			e.RawStr("\"storedVersions\"" + ":")
+			e.FieldStart("storedVersions")
 			e.ArrStart()
-			if len(s.StoredVersions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.StoredVersions[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.StoredVersions[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.StoredVersions {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -75286,96 +61686,54 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.AdditionalPrinterColumns != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AdditionalPrinterColumns != nil {
-			e.RawStr("\"additionalPrinterColumns\"" + ":")
+			e.FieldStart("additionalPrinterColumns")
 			e.ArrStart()
-			if len(s.AdditionalPrinterColumns) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AdditionalPrinterColumns[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.AdditionalPrinterColumns[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.AdditionalPrinterColumns {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Deprecated.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Deprecated.Set {
-			e.RawStr("\"deprecated\"" + ":")
+			e.FieldStart("deprecated")
 			s.Deprecated.Encode(e)
 		}
 	}
 	{
 		if s.DeprecationWarning.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeprecationWarning.Set {
-			e.RawStr("\"deprecationWarning\"" + ":")
+			e.FieldStart("deprecationWarning")
 			s.DeprecationWarning.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.Schema.Set {
-			e.Comma()
-		}
-		if s.Schema.Set {
-			e.RawStr("\"schema\"" + ":")
+			e.FieldStart("schema")
 			s.Schema.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"served\"" + ":")
+		e.FieldStart("served")
 		e.Bool(s.Served)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"storage\"" + ":")
+		e.FieldStart("storage")
 		e.Bool(s.Storage)
 	}
 	{
 		if s.Subresources.Set {
-			e.Comma()
-		}
-		if s.Subresources.Set {
-			e.RawStr("\"subresources\"" + ":")
+			e.FieldStart("subresources")
 			s.Subresources.Encode(e)
 		}
 	}
@@ -75539,37 +61897,22 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LabelSelectorPath.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LabelSelectorPath.Set {
-			e.RawStr("\"labelSelectorPath\"" + ":")
+			e.FieldStart("labelSelectorPath")
 			s.LabelSelectorPath.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"specReplicasPath\"" + ":")
+		e.FieldStart("specReplicasPath")
 		e.Str(s.SpecReplicasPath)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"statusReplicasPath\"" + ":")
+		e.FieldStart("statusReplicasPath")
 		e.Str(s.StatusReplicasPath)
 	}
 	e.ObjEnd()
@@ -75668,12 +62011,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -75699,33 +62038,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Scale.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Scale.Set {
-			e.RawStr("\"scale\"" + ":")
+			e.FieldStart("scale")
 			s.Scale.Encode(e)
 		}
 	}
 	{
 		if s.Status != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status != nil {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -75779,21 +62102,11 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.OpenAPIV3Schema.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.OpenAPIV3Schema.Set {
-			e.RawStr("\"openAPIV3Schema\"" + ":")
+			e.FieldStart("openAPIV3Schema")
 			s.OpenAPIV3Schema.Encode(e)
 		}
 	}
@@ -75834,33 +62147,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Description.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
+			e.FieldStart("description")
 			s.Description.Encode(e)
 		}
 	}
 	{
 		if s.URL.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
+			e.FieldStart("url")
 			s.URL.Encode(e)
 		}
 	}
@@ -75912,12 +62209,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -75943,597 +62236,287 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Ref.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Ref.Set {
-			e.RawStr("\"$ref\"" + ":")
+			e.FieldStart("$ref")
 			s.Ref.Encode(e)
 		}
 	}
 	{
 		if s.Schema.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Schema.Set {
-			e.RawStr("\"$schema\"" + ":")
+			e.FieldStart("$schema")
 			s.Schema.Encode(e)
 		}
 	}
 	{
 		if s.AdditionalItems != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AdditionalItems != nil {
-			e.RawStr("\"additionalItems\"" + ":")
+			e.FieldStart("additionalItems")
 			s.AdditionalItems.Encode(e)
 		}
 	}
 	{
 		if s.AdditionalProperties != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AdditionalProperties != nil {
-			e.RawStr("\"additionalProperties\"" + ":")
+			e.FieldStart("additionalProperties")
 			s.AdditionalProperties.Encode(e)
 		}
 	}
 	{
 		if s.AllOf != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AllOf != nil {
-			e.RawStr("\"allOf\"" + ":")
+			e.FieldStart("allOf")
 			e.ArrStart()
-			if len(s.AllOf) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AllOf[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.AllOf[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.AllOf {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.AnyOf != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.AnyOf != nil {
-			e.RawStr("\"anyOf\"" + ":")
+			e.FieldStart("anyOf")
 			e.ArrStart()
-			if len(s.AnyOf) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.AnyOf[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.AnyOf[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.AnyOf {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Default != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Default != nil {
-			e.RawStr("\"default\"" + ":")
+			e.FieldStart("default")
 			s.Default.Encode(e)
 		}
 	}
 	{
 		if s.Definitions.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Definitions.Set {
-			e.RawStr("\"definitions\"" + ":")
+			e.FieldStart("definitions")
 			s.Definitions.Encode(e)
 		}
 	}
 	{
 		if s.Dependencies.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Dependencies.Set {
-			e.RawStr("\"dependencies\"" + ":")
+			e.FieldStart("dependencies")
 			s.Dependencies.Encode(e)
 		}
 	}
 	{
 		if s.Description.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Description.Set {
-			e.RawStr("\"description\"" + ":")
+			e.FieldStart("description")
 			s.Description.Encode(e)
 		}
 	}
 	{
 		if s.Enum != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Enum != nil {
-			e.RawStr("\"enum\"" + ":")
+			e.FieldStart("enum")
 			e.ArrStart()
-			if len(s.Enum) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Enum[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Enum[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Enum {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Example != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Example != nil {
-			e.RawStr("\"example\"" + ":")
+			e.FieldStart("example")
 			s.Example.Encode(e)
 		}
 	}
 	{
 		if s.ExclusiveMaximum.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExclusiveMaximum.Set {
-			e.RawStr("\"exclusiveMaximum\"" + ":")
+			e.FieldStart("exclusiveMaximum")
 			s.ExclusiveMaximum.Encode(e)
 		}
 	}
 	{
 		if s.ExclusiveMinimum.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExclusiveMinimum.Set {
-			e.RawStr("\"exclusiveMinimum\"" + ":")
+			e.FieldStart("exclusiveMinimum")
 			s.ExclusiveMinimum.Encode(e)
 		}
 	}
 	{
 		if s.ExternalDocs.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ExternalDocs.Set {
-			e.RawStr("\"externalDocs\"" + ":")
+			e.FieldStart("externalDocs")
 			s.ExternalDocs.Encode(e)
 		}
 	}
 	{
 		if s.Format.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Format.Set {
-			e.RawStr("\"format\"" + ":")
+			e.FieldStart("format")
 			s.Format.Encode(e)
 		}
 	}
 	{
 		if s.ID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ID.Set {
-			e.RawStr("\"id\"" + ":")
+			e.FieldStart("id")
 			s.ID.Encode(e)
 		}
 	}
 	{
 		if s.Items != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Items != nil {
-			e.RawStr("\"items\"" + ":")
+			e.FieldStart("items")
 			s.Items.Encode(e)
 		}
 	}
 	{
 		if s.MaxItems.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxItems.Set {
-			e.RawStr("\"maxItems\"" + ":")
+			e.FieldStart("maxItems")
 			s.MaxItems.Encode(e)
 		}
 	}
 	{
 		if s.MaxLength.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxLength.Set {
-			e.RawStr("\"maxLength\"" + ":")
+			e.FieldStart("maxLength")
 			s.MaxLength.Encode(e)
 		}
 	}
 	{
 		if s.MaxProperties.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MaxProperties.Set {
-			e.RawStr("\"maxProperties\"" + ":")
+			e.FieldStart("maxProperties")
 			s.MaxProperties.Encode(e)
 		}
 	}
 	{
 		if s.Maximum.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Maximum.Set {
-			e.RawStr("\"maximum\"" + ":")
+			e.FieldStart("maximum")
 			s.Maximum.Encode(e)
 		}
 	}
 	{
 		if s.MinItems.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinItems.Set {
-			e.RawStr("\"minItems\"" + ":")
+			e.FieldStart("minItems")
 			s.MinItems.Encode(e)
 		}
 	}
 	{
 		if s.MinLength.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinLength.Set {
-			e.RawStr("\"minLength\"" + ":")
+			e.FieldStart("minLength")
 			s.MinLength.Encode(e)
 		}
 	}
 	{
 		if s.MinProperties.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MinProperties.Set {
-			e.RawStr("\"minProperties\"" + ":")
+			e.FieldStart("minProperties")
 			s.MinProperties.Encode(e)
 		}
 	}
 	{
 		if s.Minimum.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Minimum.Set {
-			e.RawStr("\"minimum\"" + ":")
+			e.FieldStart("minimum")
 			s.Minimum.Encode(e)
 		}
 	}
 	{
 		if s.MultipleOf.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MultipleOf.Set {
-			e.RawStr("\"multipleOf\"" + ":")
+			e.FieldStart("multipleOf")
 			s.MultipleOf.Encode(e)
 		}
 	}
 	{
 		if s.Not != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Not != nil {
-			e.RawStr("\"not\"" + ":")
+			e.FieldStart("not")
 			s.Not.Encode(e)
 		}
 	}
 	{
 		if s.Nullable.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Nullable.Set {
-			e.RawStr("\"nullable\"" + ":")
+			e.FieldStart("nullable")
 			s.Nullable.Encode(e)
 		}
 	}
 	{
 		if s.OneOf != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.OneOf != nil {
-			e.RawStr("\"oneOf\"" + ":")
+			e.FieldStart("oneOf")
 			e.ArrStart()
-			if len(s.OneOf) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OneOf[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.OneOf[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.OneOf {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Pattern.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Pattern.Set {
-			e.RawStr("\"pattern\"" + ":")
+			e.FieldStart("pattern")
 			s.Pattern.Encode(e)
 		}
 	}
 	{
 		if s.PatternProperties.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.PatternProperties.Set {
-			e.RawStr("\"patternProperties\"" + ":")
+			e.FieldStart("patternProperties")
 			s.PatternProperties.Encode(e)
 		}
 	}
 	{
 		if s.Properties.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Properties.Set {
-			e.RawStr("\"properties\"" + ":")
+			e.FieldStart("properties")
 			s.Properties.Encode(e)
 		}
 	}
 	{
 		if s.Required != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Required != nil {
-			e.RawStr("\"required\"" + ":")
+			e.FieldStart("required")
 			e.ArrStart()
-			if len(s.Required) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Required[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Required[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Required {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Title.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Title.Set {
-			e.RawStr("\"title\"" + ":")
+			e.FieldStart("title")
 			s.Title.Encode(e)
 		}
 	}
 	{
 		if s.Type.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Type.Set {
-			e.RawStr("\"type\"" + ":")
+			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
 	{
 		if s.UniqueItems.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UniqueItems.Set {
-			e.RawStr("\"uniqueItems\"" + ":")
+			e.FieldStart("uniqueItems")
 			s.UniqueItems.Encode(e)
 		}
 	}
 	{
 		if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.XMinusKubernetesMinusEmbeddedMinusResource.Set {
-			e.RawStr("\"x-kubernetes-embedded-resource\"" + ":")
+			e.FieldStart("x-kubernetes-embedded-resource")
 			s.XMinusKubernetesMinusEmbeddedMinusResource.Encode(e)
 		}
 	}
 	{
 		if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.XMinusKubernetesMinusIntMinusOrMinusString.Set {
-			e.RawStr("\"x-kubernetes-int-or-string\"" + ":")
+			e.FieldStart("x-kubernetes-int-or-string")
 			s.XMinusKubernetesMinusIntMinusOrMinusString.Encode(e)
 		}
 	}
 	{
 		if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.XMinusKubernetesMinusListMinusMapMinusKeys != nil {
-			e.RawStr("\"x-kubernetes-list-map-keys\"" + ":")
+			e.FieldStart("x-kubernetes-list-map-keys")
 			e.ArrStart()
-			if len(s.XMinusKubernetesMinusListMinusMapMinusKeys) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.XMinusKubernetesMinusListMinusMapMinusKeys[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.XMinusKubernetesMinusListMinusMapMinusKeys[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.XMinusKubernetesMinusListMinusMapMinusKeys {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.XMinusKubernetesMinusListMinusType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.XMinusKubernetesMinusListMinusType.Set {
-			e.RawStr("\"x-kubernetes-list-type\"" + ":")
+			e.FieldStart("x-kubernetes-list-type")
 			s.XMinusKubernetesMinusListMinusType.Encode(e)
 		}
 	}
 	{
 		if s.XMinusKubernetesMinusMapMinusType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.XMinusKubernetesMinusMapMinusType.Set {
-			e.RawStr("\"x-kubernetes-map-type\"" + ":")
+			e.FieldStart("x-kubernetes-map-type")
 			s.XMinusKubernetesMinusMapMinusType.Encode(e)
 		}
 	}
 	{
 		if s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Set {
-			e.RawStr("\"x-kubernetes-preserve-unknown-fields\"" + ":")
+			e.FieldStart("x-kubernetes-preserve-unknown-fields")
 			s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Encode(e)
 		}
 	}
@@ -77094,19 +63077,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -77145,19 +63119,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -77196,12 +63161,8 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependen
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -77227,12 +63188,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -77258,12 +63215,8 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -77289,19 +63242,10 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -77340,19 +63284,10 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
@@ -77391,42 +63326,27 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"namespace\"" + ":")
+		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
 	{
 		if s.Path.Set {
-			e.Comma()
-		}
-		if s.Path.Set {
-			e.RawStr("\"path\"" + ":")
+			e.FieldStart("path")
 			s.Path.Encode(e)
 		}
 	}
 	{
 		if s.Port.Set {
-			e.Comma()
-		}
-		if s.Port.Set {
-			e.RawStr("\"port\"" + ":")
+			e.FieldStart("port")
 			s.Port.Encode(e)
 		}
 	}
@@ -77537,36 +63457,22 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"caBundle\"" + ":")
+		e.FieldStart("caBundle")
 		e.Base64(s.CaBundle)
 	}
 	{
 		if s.Service.Set {
-			e.Comma()
-		}
-		if s.Service.Set {
-			e.RawStr("\"service\"" + ":")
+			e.FieldStart("service")
 			s.Service.Encode(e)
 		}
 	}
 	{
 		if s.URL.Set {
-			e.Comma()
-		}
-		if s.URL.Set {
-			e.RawStr("\"url\"" + ":")
+			e.FieldStart("url")
 			s.URL.Encode(e)
 		}
 	}
@@ -77630,42 +63536,20 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Writer) {
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ClientConfig.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ClientConfig.Set {
-			e.RawStr("\"clientConfig\"" + ":")
+			e.FieldStart("clientConfig")
 			s.ClientConfig.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"conversionReviewVersions\"" + ":")
+		e.FieldStart("conversionReviewVersions")
 		e.ArrStart()
-		if len(s.ConversionReviewVersions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.ConversionReviewVersions[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.ConversionReviewVersions[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.ConversionReviewVersions {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -77760,7 +63644,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Dec
 }
 
 // Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
-func (s IoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
@@ -77786,90 +63670,47 @@ func (s *IoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
 		if s.PreferredVersion.Set {
-			e.Comma()
-		}
-		if s.PreferredVersion.Set {
-			e.RawStr("\"preferredVersion\"" + ":")
+			e.FieldStart("preferredVersion")
 			s.PreferredVersion.Encode(e)
 		}
 	}
 	{
 		if s.ServerAddressByClientCIDRs != nil {
-			e.Comma()
-		}
-		if s.ServerAddressByClientCIDRs != nil {
-			e.RawStr("\"serverAddressByClientCIDRs\"" + ":")
+			e.FieldStart("serverAddressByClientCIDRs")
 			e.ArrStart()
-			if len(s.ServerAddressByClientCIDRs) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ServerAddressByClientCIDRs[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ServerAddressByClientCIDRs[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ServerAddressByClientCIDRs {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"versions\"" + ":")
+		e.FieldStart("versions")
 		e.ArrStart()
-		if len(s.Versions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Versions[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Versions[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Versions {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -78015,51 +63856,26 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"groups\"" + ":")
+		e.FieldStart("groups")
 		e.ArrStart()
-		if len(s.Groups) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Groups[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Groups[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Groups {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
@@ -78163,129 +63979,72 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Categories != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Categories != nil {
-			e.RawStr("\"categories\"" + ":")
+			e.FieldStart("categories")
 			e.ArrStart()
-			if len(s.Categories) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Categories[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Categories[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Categories {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Group.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Group.Set {
-			e.RawStr("\"group\"" + ":")
+			e.FieldStart("group")
 			s.Group.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"namespaced\"" + ":")
+		e.FieldStart("namespaced")
 		e.Bool(s.Namespaced)
 	}
 	{
 		if s.ShortNames != nil {
-			e.Comma()
-		}
-		if s.ShortNames != nil {
-			e.RawStr("\"shortNames\"" + ":")
+			e.FieldStart("shortNames")
 			e.ArrStart()
-			if len(s.ShortNames) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ShortNames[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.ShortNames[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.ShortNames {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"singularName\"" + ":")
+		e.FieldStart("singularName")
 		e.Str(s.SingularName)
 	}
 	{
 		if s.StorageVersionHash.Set {
-			e.Comma()
-		}
-		if s.StorageVersionHash.Set {
-			e.RawStr("\"storageVersionHash\"" + ":")
+			e.FieldStart("storageVersionHash")
 			s.StorageVersionHash.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"verbs\"" + ":")
+		e.FieldStart("verbs")
 		e.ArrStart()
-		if len(s.Verbs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Verbs[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Verbs[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Verbs {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Version.Set {
-			e.Comma()
-		}
-		if s.Version.Set {
-			e.RawStr("\"version\"" + ":")
+			e.FieldStart("version")
 			s.Version.Encode(e)
 		}
 	}
@@ -78495,57 +64254,31 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"groupVersion\"" + ":")
+		e.FieldStart("groupVersion")
 		e.Str(s.GroupVersion)
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"resources\"" + ":")
+		e.FieldStart("resources")
 		e.ArrStart()
-		if len(s.Resources) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Resources[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Resources[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Resources {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
@@ -78662,72 +64395,35 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"serverAddressByClientCIDRs\"" + ":")
+		e.FieldStart("serverAddressByClientCIDRs")
 		e.ArrStart()
-		if len(s.ServerAddressByClientCIDRs) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.ServerAddressByClientCIDRs[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.ServerAddressByClientCIDRs[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.ServerAddressByClientCIDRs {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"versions\"" + ":")
+		e.FieldStart("versions")
 		e.ArrStart()
-		if len(s.Versions) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Versions[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.Versions[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.Versions {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
@@ -78852,52 +64548,37 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"lastTransitionTime\"" + ":")
+		e.FieldStart("lastTransitionTime")
 		s.LastTransitionTime.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"message\"" + ":")
+		e.FieldStart("message")
 		e.Str(s.Message)
 	}
 	{
 		if s.ObservedGeneration.Set {
-			e.Comma()
-		}
-		if s.ObservedGeneration.Set {
-			e.RawStr("\"observedGeneration\"" + ":")
+			e.FieldStart("observedGeneration")
 			s.ObservedGeneration.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"reason\"" + ":")
+		e.FieldStart("reason")
 		e.Str(s.Reason)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -79033,12 +64714,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -79064,25 +64741,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"groupVersion\"" + ":")
+		e.FieldStart("groupVersion")
 		e.Str(s.GroupVersion)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"version\"" + ":")
+		e.FieldStart("version")
 		e.Str(s.Version)
 	}
 	e.ObjEnd()
@@ -79170,45 +64838,21 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx.De
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.MatchExpressions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchExpressions != nil {
-			e.RawStr("\"matchExpressions\"" + ":")
+			e.FieldStart("matchExpressions")
 			e.ArrStart()
-			if len(s.MatchExpressions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.MatchExpressions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.MatchExpressions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.MatchExpressions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.MatchLabels.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.MatchLabels.Set {
-			e.RawStr("\"matchLabels\"" + ":")
+			e.FieldStart("matchLabels")
 			s.MatchLabels.Encode(e)
 		}
 	}
@@ -79267,19 +64911,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -79320,44 +64955,24 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"key\"" + ":")
+		e.FieldStart("key")
 		e.Str(s.Key)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"operator\"" + ":")
+		e.FieldStart("operator")
 		e.Str(s.Operator)
 	}
 	{
 		if s.Values != nil {
-			e.Comma()
-		}
-		if s.Values != nil {
-			e.RawStr("\"values\"" + ":")
+			e.FieldStart("values")
 			e.ArrStart()
-			if len(s.Values) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Values[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Values[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Values {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
@@ -79467,57 +65082,29 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Continue.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Continue.Set {
-			e.RawStr("\"continue\"" + ":")
+			e.FieldStart("continue")
 			s.Continue.Encode(e)
 		}
 	}
 	{
 		if s.RemainingItemCount.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.RemainingItemCount.Set {
-			e.RawStr("\"remainingItemCount\"" + ":")
+			e.FieldStart("remainingItemCount")
 			s.RemainingItemCount.Encode(e)
 		}
 	}
 	{
 		if s.ResourceVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ResourceVersion.Set {
-			e.RawStr("\"resourceVersion\"" + ":")
+			e.FieldStart("resourceVersion")
 			s.ResourceVersion.Encode(e)
 		}
 	}
 	{
 		if s.SelfLink.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SelfLink.Set {
-			e.RawStr("\"selfLink\"" + ":")
+			e.FieldStart("selfLink")
 			s.SelfLink.Encode(e)
 		}
 	}
@@ -79591,93 +65178,47 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.FieldsType.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FieldsType.Set {
-			e.RawStr("\"fieldsType\"" + ":")
+			e.FieldStart("fieldsType")
 			s.FieldsType.Encode(e)
 		}
 	}
 	{
 		if s.FieldsV1 != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.FieldsV1 != nil {
-			e.RawStr("\"fieldsV1\"" + ":")
+			e.FieldStart("fieldsV1")
 			s.FieldsV1.Encode(e)
 		}
 	}
 	{
 		if s.Manager.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Manager.Set {
-			e.RawStr("\"manager\"" + ":")
+			e.FieldStart("manager")
 			s.Manager.Encode(e)
 		}
 	}
 	{
 		if s.Operation.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Operation.Set {
-			e.RawStr("\"operation\"" + ":")
+			e.FieldStart("operation")
 			s.Operation.Encode(e)
 		}
 	}
 	{
 		if s.Subresource.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Subresource.Set {
-			e.RawStr("\"subresource\"" + ":")
+			e.FieldStart("subresource")
 			s.Subresource.Encode(e)
 		}
 	}
 	{
 		if s.Time.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Time.Set {
-			e.RawStr("\"time\"" + ":")
+			e.FieldStart("time")
 			s.Time.Encode(e)
 		}
 	}
@@ -79786,7 +65327,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
-func (s IoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Encoder) {
 	unwrapped := time.Time(s)
 	json.EncodeDateTime(e, unwrapped)
 }
@@ -79812,237 +65353,113 @@ func (s *IoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Annotations.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Annotations.Set {
-			e.RawStr("\"annotations\"" + ":")
+			e.FieldStart("annotations")
 			s.Annotations.Encode(e)
 		}
 	}
 	{
 		if s.ClusterName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ClusterName.Set {
-			e.RawStr("\"clusterName\"" + ":")
+			e.FieldStart("clusterName")
 			s.ClusterName.Encode(e)
 		}
 	}
 	{
 		if s.CreationTimestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.CreationTimestamp.Set {
-			e.RawStr("\"creationTimestamp\"" + ":")
+			e.FieldStart("creationTimestamp")
 			s.CreationTimestamp.Encode(e)
 		}
 	}
 	{
 		if s.DeletionGracePeriodSeconds.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeletionGracePeriodSeconds.Set {
-			e.RawStr("\"deletionGracePeriodSeconds\"" + ":")
+			e.FieldStart("deletionGracePeriodSeconds")
 			s.DeletionGracePeriodSeconds.Encode(e)
 		}
 	}
 	{
 		if s.DeletionTimestamp.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.DeletionTimestamp.Set {
-			e.RawStr("\"deletionTimestamp\"" + ":")
+			e.FieldStart("deletionTimestamp")
 			s.DeletionTimestamp.Encode(e)
 		}
 	}
 	{
 		if s.Finalizers != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Finalizers != nil {
-			e.RawStr("\"finalizers\"" + ":")
+			e.FieldStart("finalizers")
 			e.ArrStart()
-			if len(s.Finalizers) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Finalizers[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.Finalizers[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.Finalizers {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.GenerateName.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.GenerateName.Set {
-			e.RawStr("\"generateName\"" + ":")
+			e.FieldStart("generateName")
 			s.GenerateName.Encode(e)
 		}
 	}
 	{
 		if s.Generation.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Generation.Set {
-			e.RawStr("\"generation\"" + ":")
+			e.FieldStart("generation")
 			s.Generation.Encode(e)
 		}
 	}
 	{
 		if s.Labels.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Labels.Set {
-			e.RawStr("\"labels\"" + ":")
+			e.FieldStart("labels")
 			s.Labels.Encode(e)
 		}
 	}
 	{
 		if s.ManagedFields != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ManagedFields != nil {
-			e.RawStr("\"managedFields\"" + ":")
+			e.FieldStart("managedFields")
 			e.ArrStart()
-			if len(s.ManagedFields) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.ManagedFields[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.ManagedFields[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.ManagedFields {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Namespace.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Namespace.Set {
-			e.RawStr("\"namespace\"" + ":")
+			e.FieldStart("namespace")
 			s.Namespace.Encode(e)
 		}
 	}
 	{
 		if s.OwnerReferences != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.OwnerReferences != nil {
-			e.RawStr("\"ownerReferences\"" + ":")
+			e.FieldStart("ownerReferences")
 			e.ArrStart()
-			if len(s.OwnerReferences) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OwnerReferences[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.OwnerReferences[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.OwnerReferences {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.ResourceVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ResourceVersion.Set {
-			e.RawStr("\"resourceVersion\"" + ":")
+			e.FieldStart("resourceVersion")
 			s.ResourceVersion.Encode(e)
 		}
 	}
 	{
 		if s.SelfLink.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.SelfLink.Set {
-			e.RawStr("\"selfLink\"" + ":")
+			e.FieldStart("selfLink")
 			s.SelfLink.Encode(e)
 		}
 	}
 	{
 		if s.UID.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.UID.Set {
-			e.RawStr("\"uid\"" + ":")
+			e.FieldStart("uid")
 			s.UID.Encode(e)
 		}
 	}
@@ -80271,19 +65688,10 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -80324,19 +65732,10 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decode
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	for k, elem := range s {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 
 		e.Str(elem)
 	}
@@ -80377,55 +65776,38 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) er
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"apiVersion\"" + ":")
+		e.FieldStart("apiVersion")
 		e.Str(s.ApiVersion)
 	}
 	{
 		if s.BlockOwnerDeletion.Set {
-			e.Comma()
-		}
-		if s.BlockOwnerDeletion.Set {
-			e.RawStr("\"blockOwnerDeletion\"" + ":")
+			e.FieldStart("blockOwnerDeletion")
 			s.BlockOwnerDeletion.Encode(e)
 		}
 	}
 	{
 		if s.Controller.Set {
-			e.Comma()
-		}
-		if s.Controller.Set {
-			e.RawStr("\"controller\"" + ":")
+			e.FieldStart("controller")
 			s.Controller.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"kind\"" + ":")
+		e.FieldStart("kind")
 		e.Str(s.Kind)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"name\"" + ":")
+		e.FieldStart("name")
 		e.Str(s.Name)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"uid\"" + ":")
+		e.FieldStart("uid")
 		e.Str(s.UID)
 	}
 	e.ObjEnd()
@@ -80561,25 +65943,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"clientCIDR\"" + ":")
+		e.FieldStart("clientCIDR")
 		e.Str(s.ClientCIDR)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"serverAddress\"" + ":")
+		e.FieldStart("serverAddress")
 		e.Str(s.ServerAddress)
 	}
 	e.ObjEnd()
@@ -80667,7 +66040,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Decode(d *jx.D
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
-func (s IoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Encoder) {
 	unwrapped := time.Time(s)
 	json.EncodeDateTime(e, unwrapped)
 }
@@ -80693,25 +66066,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"object\"" + ":")
+		e.FieldStart("object")
 		s.Object.Encode(e)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -80797,12 +66161,8 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -80828,7 +66188,7 @@ func (s *IoK8sApimachineryPkgRuntimeRawExtension) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
-func (s IoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
@@ -80854,67 +66214,51 @@ func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) error 
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Writer) {
+func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"buildDate\"" + ":")
+		e.FieldStart("buildDate")
 		e.Str(s.BuildDate)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"compiler\"" + ":")
+		e.FieldStart("compiler")
 		e.Str(s.Compiler)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"gitCommit\"" + ":")
+		e.FieldStart("gitCommit")
 		e.Str(s.GitCommit)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"gitTreeState\"" + ":")
+		e.FieldStart("gitTreeState")
 		e.Str(s.GitTreeState)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"gitVersion\"" + ":")
+		e.FieldStart("gitVersion")
 		e.Str(s.GitVersion)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"goVersion\"" + ":")
+		e.FieldStart("goVersion")
 		e.Str(s.GoVersion)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"major\"" + ":")
+		e.FieldStart("major")
 		e.Str(s.Major)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"minor\"" + ":")
+		e.FieldStart("minor")
 		e.Str(s.Minor)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"platform\"" + ":")
+		e.FieldStart("platform")
 		e.Str(s.Platform)
 	}
 	e.ObjEnd()
@@ -81094,69 +66438,35 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Encode(e *jx.Writer) {
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
 		if s.Kind.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
 	{
 		if s.Spec.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Spec.Set {
-			e.RawStr("\"spec\"" + ":")
+			e.FieldStart("spec")
 			s.Spec.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -81241,61 +66551,34 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Encode(e *jx.Writer) {
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.LastTransitionTime.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.LastTransitionTime.Set {
-			e.RawStr("\"lastTransitionTime\"" + ":")
+			e.FieldStart("lastTransitionTime")
 			s.LastTransitionTime.Encode(e)
 		}
 	}
 	{
 		if s.Message.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Message.Set {
-			e.RawStr("\"message\"" + ":")
+			e.FieldStart("message")
 			s.Message.Encode(e)
 		}
 	}
 	{
 		if s.Reason.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Reason.Set {
-			e.RawStr("\"reason\"" + ":")
+			e.FieldStart("reason")
 			s.Reason.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"status\"" + ":")
+		e.FieldStart("status")
 		e.Str(s.Status)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"type\"" + ":")
+		e.FieldStart("type")
 		e.Str(s.Type)
 	}
 	e.ObjEnd()
@@ -81416,60 +66699,32 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.Writer) {
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.ApiVersion.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.ApiVersion.Set {
-			e.RawStr("\"apiVersion\"" + ":")
+			e.FieldStart("apiVersion")
 			s.ApiVersion.Encode(e)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"items\"" + ":")
+		e.FieldStart("items")
 		e.ArrStart()
-		if len(s.Items) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.Items[0]
-				elem.Encode(e)
-			}
-			for _, elem := range s.Items[1:] {
-				e.Comma()
-				elem.Encode(e)
-			}
+		for _, elem := range s.Items {
+			elem.Encode(e)
 		}
 		e.ArrEnd()
 	}
 	{
 		if s.Kind.Set {
-			e.Comma()
-		}
-		if s.Kind.Set {
-			e.RawStr("\"kind\"" + ":")
+			e.FieldStart("kind")
 			s.Kind.Encode(e)
 		}
 	}
 	{
 		if s.Metadata.Set {
-			e.Comma()
-		}
-		if s.Metadata.Set {
-			e.RawStr("\"metadata\"" + ":")
+			e.FieldStart("metadata")
 			s.Metadata.Encode(e)
 		}
 	}
@@ -81584,67 +66839,45 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Writer) {
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"caBundle\"" + ":")
+		e.FieldStart("caBundle")
 		e.Base64(s.CaBundle)
 	}
 	{
 		if s.Group.Set {
-			e.Comma()
-		}
-		if s.Group.Set {
-			e.RawStr("\"group\"" + ":")
+			e.FieldStart("group")
 			s.Group.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"groupPriorityMinimum\"" + ":")
+		e.FieldStart("groupPriorityMinimum")
 		e.Int32(s.GroupPriorityMinimum)
 	}
 	{
 		if s.InsecureSkipTLSVerify.Set {
-			e.Comma()
-		}
-		if s.InsecureSkipTLSVerify.Set {
-			e.RawStr("\"insecureSkipTLSVerify\"" + ":")
+			e.FieldStart("insecureSkipTLSVerify")
 			s.InsecureSkipTLSVerify.Encode(e)
 		}
 	}
 	{
 		if s.Service.Set {
-			e.Comma()
-		}
-		if s.Service.Set {
-			e.RawStr("\"service\"" + ":")
+			e.FieldStart("service")
 			s.Service.Encode(e)
 		}
 	}
 	{
 		if s.Version.Set {
-			e.Comma()
-		}
-		if s.Version.Set {
-			e.RawStr("\"version\"" + ":")
+			e.FieldStart("version")
 			s.Version.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"versionPriority\"" + ":")
+		e.FieldStart("versionPriority")
 		e.Int32(s.VersionPriority)
 	}
 	e.ObjEnd()
@@ -81788,32 +67021,14 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Writer) {
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Conditions != nil {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Conditions != nil {
-			e.RawStr("\"conditions\"" + ":")
+			e.FieldStart("conditions")
 			e.ArrStart()
-			if len(s.Conditions) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.Conditions[0]
-					elem.Encode(e)
-				}
-				for _, elem := range s.Conditions[1:] {
-					e.Comma()
-					elem.Encode(e)
-				}
+			for _, elem := range s.Conditions {
+				elem.Encode(e)
 			}
 			e.ArrEnd()
 		}
@@ -81862,45 +67077,23 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(d *
 }
 
 // Encode implements json.Marshaler.
-func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Writer) {
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Name.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Name.Set {
-			e.RawStr("\"name\"" + ":")
+			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
 	{
 		if s.Namespace.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Namespace.Set {
-			e.RawStr("\"namespace\"" + ":")
+			e.FieldStart("namespace")
 			s.Namespace.Encode(e)
 		}
 	}
 	{
 		if s.Port.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Port.Set {
-			e.RawStr("\"port\"" + ":")
+			e.FieldStart("port")
 			s.Port.Encode(e)
 		}
 	}
@@ -81963,7 +67156,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(d *
 }
 
 // Encode encodes bool as json.
-func (o OptBool) Encode(e *jx.Writer) {
+func (o OptBool) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -81985,7 +67178,7 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptFloat64) Encode(e *jx.Writer) {
+func (o OptFloat64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82007,7 +67200,7 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o OptInt32) Encode(e *jx.Writer) {
+func (o OptInt32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82029,7 +67222,7 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int64 as json.
-func (o OptInt64) Encode(e *jx.Writer) {
+func (o OptInt64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82051,7 +67244,7 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAdmissionregistrationV1ServiceReference as json.
-func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82071,7 +67264,7 @@ func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decode
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetSpec as json.
-func (o OptIoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82091,7 +67284,7 @@ func (o *OptIoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetStatus as json.
-func (o OptIoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82111,7 +67304,7 @@ func (o *OptIoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetUpdateStrategy as json.
-func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82131,7 +67324,7 @@ func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1DeploymentSpec as json.
-func (o OptIoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82151,7 +67344,7 @@ func (o *OptIoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1DeploymentStatus as json.
-func (o OptIoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82171,7 +67364,7 @@ func (o *OptIoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1DeploymentStrategy as json.
-func (o OptIoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82191,7 +67384,7 @@ func (o *OptIoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1ReplicaSetSpec as json.
-func (o OptIoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82211,7 +67404,7 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1ReplicaSetStatus as json.
-func (o OptIoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82231,7 +67424,7 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDaemonSet as json.
-func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82251,7 +67444,7 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDeployment as json.
-func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82271,7 +67464,7 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy as json.
-func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82291,7 +67484,7 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetSpec as json.
-func (o OptIoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82311,7 +67504,7 @@ func (o *OptIoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetStatus as json.
-func (o OptIoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82331,7 +67524,7 @@ func (o *OptIoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetUpdateStrategy as json.
-func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82351,7 +67544,7 @@ func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec as json.
-func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82371,7 +67564,7 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decod
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus as json.
-func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82391,7 +67584,7 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Dec
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1ScaleSpec as json.
-func (o OptIoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82411,7 +67604,7 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1ScaleStatus as json.
-func (o OptIoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82431,7 +67624,7 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82451,7 +67644,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *j
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82471,7 +67664,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *j
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82491,7 +67684,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82511,7 +67704,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec as json.
-func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82531,7 +67724,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82551,7 +67744,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *j
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82571,7 +67764,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) 
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82591,7 +67784,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) 
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82611,7 +67804,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82631,7 +67824,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82651,7 +67844,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82671,7 +67864,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82691,7 +67884,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *j
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82711,7 +67904,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *j
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82731,7 +67924,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82751,7 +67944,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HPAScalingRules as json.
-func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82771,7 +67964,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior as json.
-func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82791,7 +67984,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d 
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec as json.
-func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82811,7 +68004,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82831,7 +68024,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *j
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82851,7 +68044,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) 
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82871,7 +68064,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) 
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82891,7 +68084,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82911,7 +68104,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricSource as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82931,7 +68124,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricStatus as json.
-func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82951,7 +68144,7 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIBatchV1CronJobSpec as json.
-func (o OptIoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82971,7 +68164,7 @@ func (o *OptIoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIBatchV1CronJobStatus as json.
-func (o OptIoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -82991,7 +68184,7 @@ func (o *OptIoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIBatchV1JobSpec as json.
-func (o OptIoK8sAPIBatchV1JobSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIBatchV1JobSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83011,7 +68204,7 @@ func (o *OptIoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIBatchV1JobStatus as json.
-func (o OptIoK8sAPIBatchV1JobStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIBatchV1JobStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83031,7 +68224,7 @@ func (o *OptIoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIBatchV1UncountedTerminatedPods as json.
-func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83051,7 +68244,7 @@ func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error 
 }
 
 // Encode encodes IoK8sAPIBatchV1beta1CronJobSpec as json.
-func (o OptIoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83071,7 +68264,7 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIBatchV1beta1CronJobStatus as json.
-func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83091,7 +68284,7 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra as json.
-func (o OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83112,7 +68305,7 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *
 }
 
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestStatus as json.
-func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83132,7 +68325,7 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.
 }
 
 // Encode encodes IoK8sAPICoordinationV1LeaseSpec as json.
-func (o OptIoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83152,7 +68345,7 @@ func (o *OptIoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource as json.
-func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83172,7 +68365,7 @@ func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPICoreV1Affinity as json.
-func (o OptIoK8sAPICoreV1Affinity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1Affinity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83192,7 +68385,7 @@ func (o *OptIoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1AzureDiskVolumeSource as json.
-func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83212,7 +68405,7 @@ func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1AzureFilePersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83232,7 +68425,7 @@ func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder)
 }
 
 // Encode encodes IoK8sAPICoreV1AzureFileVolumeSource as json.
-func (o OptIoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83252,7 +68445,7 @@ func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83272,7 +68465,7 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes as json.
-func (o OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83293,7 +68486,7 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *j
 }
 
 // Encode encodes IoK8sAPICoreV1CSIVolumeSource as json.
-func (o OptIoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83313,7 +68506,7 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes as json.
-func (o OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83334,7 +68527,7 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder)
 }
 
 // Encode encodes IoK8sAPICoreV1Capabilities as json.
-func (o OptIoK8sAPICoreV1Capabilities) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1Capabilities) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83354,7 +68547,7 @@ func (o *OptIoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1CephFSPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83374,7 +68567,7 @@ func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPICoreV1CephFSVolumeSource as json.
-func (o OptIoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83394,7 +68587,7 @@ func (o *OptIoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1CinderPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83414,7 +68607,7 @@ func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPICoreV1CinderVolumeSource as json.
-func (o OptIoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83434,7 +68627,7 @@ func (o *OptIoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ClientIPConfig as json.
-func (o OptIoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83454,7 +68647,7 @@ func (o *OptIoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapBinaryData as json.
-func (o OptIoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83475,7 +68668,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapData as json.
-func (o OptIoK8sAPICoreV1ConfigMapData) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ConfigMapData) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83496,7 +68689,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapEnvSource as json.
-func (o OptIoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83516,7 +68709,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapKeySelector as json.
-func (o OptIoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83536,7 +68729,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapNodeConfigSource as json.
-func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83556,7 +68749,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapProjection as json.
-func (o OptIoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83576,7 +68769,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapVolumeSource as json.
-func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83596,7 +68789,7 @@ func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerState as json.
-func (o OptIoK8sAPICoreV1ContainerState) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ContainerState) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83616,7 +68809,7 @@ func (o *OptIoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateRunning as json.
-func (o OptIoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83636,7 +68829,7 @@ func (o *OptIoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateTerminated as json.
-func (o OptIoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83656,7 +68849,7 @@ func (o *OptIoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error 
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateWaiting as json.
-func (o OptIoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83676,7 +68869,7 @@ func (o *OptIoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1DaemonEndpoint as json.
-func (o OptIoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83696,7 +68889,7 @@ func (o *OptIoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1DownwardAPIProjection as json.
-func (o OptIoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83716,7 +68909,7 @@ func (o *OptIoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1DownwardAPIVolumeSource as json.
-func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83736,7 +68929,7 @@ func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1EmptyDirVolumeSource as json.
-func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83756,7 +68949,7 @@ func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1EnvVarSource as json.
-func (o OptIoK8sAPICoreV1EnvVarSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1EnvVarSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83776,7 +68969,7 @@ func (o *OptIoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1EphemeralVolumeSource as json.
-func (o OptIoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83796,7 +68989,7 @@ func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1EventSeries as json.
-func (o OptIoK8sAPICoreV1EventSeries) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1EventSeries) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83816,7 +69009,7 @@ func (o *OptIoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1EventSource as json.
-func (o OptIoK8sAPICoreV1EventSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1EventSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83836,7 +69029,7 @@ func (o *OptIoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ExecAction as json.
-func (o OptIoK8sAPICoreV1ExecAction) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ExecAction) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83856,7 +69049,7 @@ func (o *OptIoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1FCVolumeSource as json.
-func (o OptIoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83876,7 +69069,7 @@ func (o *OptIoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83896,7 +69089,7 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions as json.
-func (o OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83917,7 +69110,7 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decode
 }
 
 // Encode encodes IoK8sAPICoreV1FlexVolumeSource as json.
-func (o OptIoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83937,7 +69130,7 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1FlexVolumeSourceOptions as json.
-func (o OptIoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83958,7 +69151,7 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1FlockerVolumeSource as json.
-func (o OptIoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83978,7 +69171,7 @@ func (o *OptIoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1GCEPersistentDiskVolumeSource as json.
-func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -83998,7 +69191,7 @@ func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 }
 
 // Encode encodes IoK8sAPICoreV1GitRepoVolumeSource as json.
-func (o OptIoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84018,7 +69211,7 @@ func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1GlusterfsPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84038,7 +69231,7 @@ func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder)
 }
 
 // Encode encodes IoK8sAPICoreV1GlusterfsVolumeSource as json.
-func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84058,7 +69251,7 @@ func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1HTTPGetAction as json.
-func (o OptIoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84078,7 +69271,7 @@ func (o *OptIoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1Handler as json.
-func (o OptIoK8sAPICoreV1Handler) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1Handler) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84098,7 +69291,7 @@ func (o *OptIoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1HostPathVolumeSource as json.
-func (o OptIoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84118,7 +69311,7 @@ func (o *OptIoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ISCSIPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84138,7 +69331,7 @@ func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sAPICoreV1ISCSIVolumeSource as json.
-func (o OptIoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84158,7 +69351,7 @@ func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1Lifecycle as json.
-func (o OptIoK8sAPICoreV1Lifecycle) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1Lifecycle) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84178,7 +69371,7 @@ func (o *OptIoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemDefault as json.
-func (o OptIoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84199,7 +69392,7 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemDefaultRequest as json.
-func (o OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84220,7 +69413,7 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMax as json.
-func (o OptIoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84241,7 +69434,7 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio as json.
-func (o OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84262,7 +69455,7 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decod
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMin as json.
-func (o OptIoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84283,7 +69476,7 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeSpec as json.
-func (o OptIoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84303,7 +69496,7 @@ func (o *OptIoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1LoadBalancerStatus as json.
-func (o OptIoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84323,7 +69516,7 @@ func (o *OptIoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1LocalObjectReference as json.
-func (o OptIoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84343,7 +69536,7 @@ func (o *OptIoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1LocalVolumeSource as json.
-func (o OptIoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84363,7 +69556,7 @@ func (o *OptIoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NFSVolumeSource as json.
-func (o OptIoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84383,7 +69576,7 @@ func (o *OptIoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NamespaceSpec as json.
-func (o OptIoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84403,7 +69596,7 @@ func (o *OptIoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NamespaceStatus as json.
-func (o OptIoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84423,7 +69616,7 @@ func (o *OptIoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeAffinity as json.
-func (o OptIoK8sAPICoreV1NodeAffinity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeAffinity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84443,7 +69636,7 @@ func (o *OptIoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeConfigSource as json.
-func (o OptIoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84463,7 +69656,7 @@ func (o *OptIoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeConfigStatus as json.
-func (o OptIoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84483,7 +69676,7 @@ func (o *OptIoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeDaemonEndpoints as json.
-func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84503,7 +69696,7 @@ func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSelector as json.
-func (o OptIoK8sAPICoreV1NodeSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84523,7 +69716,7 @@ func (o *OptIoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSpec as json.
-func (o OptIoK8sAPICoreV1NodeSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84543,7 +69736,7 @@ func (o *OptIoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeStatus as json.
-func (o OptIoK8sAPICoreV1NodeStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84563,7 +69756,7 @@ func (o *OptIoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeStatusAllocatable as json.
-func (o OptIoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84584,7 +69777,7 @@ func (o *OptIoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeStatusCapacity as json.
-func (o OptIoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84605,7 +69798,7 @@ func (o *OptIoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSystemInfo as json.
-func (o OptIoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84625,7 +69818,7 @@ func (o *OptIoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ObjectFieldSelector as json.
-func (o OptIoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84645,7 +69838,7 @@ func (o *OptIoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ObjectReference as json.
-func (o OptIoK8sAPICoreV1ObjectReference) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ObjectReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84665,7 +69858,7 @@ func (o *OptIoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimSpec as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84685,7 +69878,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatus as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84705,7 +69898,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84726,7 +69919,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Deco
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimTemplate as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84746,7 +69939,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) e
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimVolumeSource as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84766,7 +69959,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decode
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeSpec as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84786,7 +69979,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeSpecCapacity as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84807,7 +70000,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeStatus as json.
-func (o OptIoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84827,7 +70020,7 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PhotonPersistentDiskVolumeSource as json.
-func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84847,7 +70040,7 @@ func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPICoreV1PodAffinity as json.
-func (o OptIoK8sAPICoreV1PodAffinity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodAffinity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84867,7 +70060,7 @@ func (o *OptIoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodAntiAffinity as json.
-func (o OptIoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84887,7 +70080,7 @@ func (o *OptIoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodDNSConfig as json.
-func (o OptIoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84907,7 +70100,7 @@ func (o *OptIoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodSecurityContext as json.
-func (o OptIoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84927,7 +70120,7 @@ func (o *OptIoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodSpec as json.
-func (o OptIoK8sAPICoreV1PodSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84947,7 +70140,7 @@ func (o *OptIoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodSpecNodeSelector as json.
-func (o OptIoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84968,7 +70161,7 @@ func (o *OptIoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodSpecOverhead as json.
-func (o OptIoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -84989,7 +70182,7 @@ func (o *OptIoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodStatus as json.
-func (o OptIoK8sAPICoreV1PodStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85009,7 +70202,7 @@ func (o *OptIoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PodTemplateSpec as json.
-func (o OptIoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85029,7 +70222,7 @@ func (o *OptIoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1PortworxVolumeSource as json.
-func (o OptIoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85049,7 +70242,7 @@ func (o *OptIoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1Probe as json.
-func (o OptIoK8sAPICoreV1Probe) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1Probe) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85069,7 +70262,7 @@ func (o *OptIoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ProjectedVolumeSource as json.
-func (o OptIoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85089,7 +70282,7 @@ func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1QuobyteVolumeSource as json.
-func (o OptIoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85109,7 +70302,7 @@ func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1RBDPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85129,7 +70322,7 @@ func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPICoreV1RBDVolumeSource as json.
-func (o OptIoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85149,7 +70342,7 @@ func (o *OptIoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerSpec as json.
-func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85169,7 +70362,7 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerSpecSelector as json.
-func (o OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85190,7 +70383,7 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decode
 }
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerStatus as json.
-func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85210,7 +70403,7 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceFieldSelector as json.
-func (o OptIoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85230,7 +70423,7 @@ func (o *OptIoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaSpec as json.
-func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85250,7 +70443,7 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaSpecHard as json.
-func (o OptIoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85271,7 +70464,7 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatus as json.
-func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85291,7 +70484,7 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatusHard as json.
-func (o OptIoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85312,7 +70505,7 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatusUsed as json.
-func (o OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85333,7 +70526,7 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirements as json.
-func (o OptIoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85353,7 +70546,7 @@ func (o *OptIoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirementsLimits as json.
-func (o OptIoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85374,7 +70567,7 @@ func (o *OptIoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirementsRequests as json.
-func (o OptIoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85395,7 +70588,7 @@ func (o *OptIoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPICoreV1SELinuxOptions as json.
-func (o OptIoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85415,7 +70608,7 @@ func (o *OptIoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ScaleIOPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85435,7 +70628,7 @@ func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) e
 }
 
 // Encode encodes IoK8sAPICoreV1ScaleIOVolumeSource as json.
-func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85455,7 +70648,7 @@ func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ScopeSelector as json.
-func (o OptIoK8sAPICoreV1ScopeSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ScopeSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85475,7 +70668,7 @@ func (o *OptIoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SeccompProfile as json.
-func (o OptIoK8sAPICoreV1SeccompProfile) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SeccompProfile) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85495,7 +70688,7 @@ func (o *OptIoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecretData as json.
-func (o OptIoK8sAPICoreV1SecretData) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecretData) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85516,7 +70709,7 @@ func (o *OptIoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecretEnvSource as json.
-func (o OptIoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85536,7 +70729,7 @@ func (o *OptIoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecretKeySelector as json.
-func (o OptIoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85556,7 +70749,7 @@ func (o *OptIoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecretProjection as json.
-func (o OptIoK8sAPICoreV1SecretProjection) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecretProjection) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85576,7 +70769,7 @@ func (o *OptIoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecretReference as json.
-func (o OptIoK8sAPICoreV1SecretReference) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecretReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85596,7 +70789,7 @@ func (o *OptIoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecretStringData as json.
-func (o OptIoK8sAPICoreV1SecretStringData) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecretStringData) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85617,7 +70810,7 @@ func (o *OptIoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecretVolumeSource as json.
-func (o OptIoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85637,7 +70830,7 @@ func (o *OptIoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SecurityContext as json.
-func (o OptIoK8sAPICoreV1SecurityContext) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SecurityContext) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85657,7 +70850,7 @@ func (o *OptIoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceAccountTokenProjection as json.
-func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85677,7 +70870,7 @@ func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) e
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceSpec as json.
-func (o OptIoK8sAPICoreV1ServiceSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ServiceSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85697,7 +70890,7 @@ func (o *OptIoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceSpecSelector as json.
-func (o OptIoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85718,7 +70911,7 @@ func (o *OptIoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceStatus as json.
-func (o OptIoK8sAPICoreV1ServiceStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1ServiceStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85738,7 +70931,7 @@ func (o *OptIoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1SessionAffinityConfig as json.
-func (o OptIoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85758,7 +70951,7 @@ func (o *OptIoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1StorageOSPersistentVolumeSource as json.
-func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85778,7 +70971,7 @@ func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder)
 }
 
 // Encode encodes IoK8sAPICoreV1StorageOSVolumeSource as json.
-func (o OptIoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85798,7 +70991,7 @@ func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1TCPSocketAction as json.
-func (o OptIoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85818,7 +71011,7 @@ func (o *OptIoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1TypedLocalObjectReference as json.
-func (o OptIoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85838,7 +71031,7 @@ func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPICoreV1VolumeNodeAffinity as json.
-func (o OptIoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85858,7 +71051,7 @@ func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPICoreV1VsphereVirtualDiskVolumeSource as json.
-func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85878,7 +71071,7 @@ func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) 
 }
 
 // Encode encodes IoK8sAPICoreV1WindowsSecurityContextOptions as json.
-func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85898,7 +71091,7 @@ func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) e
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointConditions as json.
-func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85918,7 +71111,7 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology as json.
-func (o OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85939,7 +71132,7 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder)
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointHints as json.
-func (o OptIoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85959,7 +71152,7 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointConditions as json.
-func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85979,7 +71172,7 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointHints as json.
-func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -85999,7 +71192,7 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointTopology as json.
-func (o OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86020,7 +71213,7 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes IoK8sAPIEventsV1EventSeries as json.
-func (o OptIoK8sAPIEventsV1EventSeries) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86040,7 +71233,7 @@ func (o *OptIoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIEventsV1beta1EventSeries as json.
-func (o OptIoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86060,7 +71253,7 @@ func (o *OptIoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86080,7 +71273,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Deco
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86100,7 +71293,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86120,7 +71313,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1GroupSubject as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86140,7 +71333,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error 
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitResponse as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86160,7 +71353,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86180,7 +71373,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86200,7 +71393,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86220,7 +71413,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1QueuingConfiguration as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86240,7 +71433,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86260,7 +71453,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decode
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1UserSubject as json.
-func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86280,7 +71473,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86300,7 +71493,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Deco
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86320,7 +71513,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86340,7 +71533,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2GroupSubject as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86360,7 +71553,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error 
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitResponse as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86380,7 +71573,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86400,7 +71593,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86420,7 +71613,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86440,7 +71633,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2QueuingConfiguration as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86460,7 +71653,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86480,7 +71673,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decode
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2UserSubject as json.
-func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86500,7 +71693,7 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINetworkingV1HTTPIngressRuleValue as json.
-func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86520,7 +71713,7 @@ func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes IoK8sAPINetworkingV1IPBlock as json.
-func (o OptIoK8sAPINetworkingV1IPBlock) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1IPBlock) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86540,7 +71733,7 @@ func (o *OptIoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressBackend as json.
-func (o OptIoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86560,7 +71753,7 @@ func (o *OptIoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressClassParametersReference as json.
-func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86580,7 +71773,7 @@ func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.De
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressClassSpec as json.
-func (o OptIoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86600,7 +71793,7 @@ func (o *OptIoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressServiceBackend as json.
-func (o OptIoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86620,7 +71813,7 @@ func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressSpec as json.
-func (o OptIoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86640,7 +71833,7 @@ func (o *OptIoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressStatus as json.
-func (o OptIoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86660,7 +71853,7 @@ func (o *OptIoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINetworkingV1NetworkPolicySpec as json.
-func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86680,7 +71873,7 @@ func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINetworkingV1ServiceBackendPort as json.
-func (o OptIoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86700,7 +71893,7 @@ func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error 
 }
 
 // Encode encodes IoK8sAPINodeV1Overhead as json.
-func (o OptIoK8sAPINodeV1Overhead) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1Overhead) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86720,7 +71913,7 @@ func (o *OptIoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1OverheadPodFixed as json.
-func (o OptIoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86741,7 +71934,7 @@ func (o *OptIoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1Scheduling as json.
-func (o OptIoK8sAPINodeV1Scheduling) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1Scheduling) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86761,7 +71954,7 @@ func (o *OptIoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1SchedulingNodeSelector as json.
-func (o OptIoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86782,7 +71975,7 @@ func (o *OptIoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1Overhead as json.
-func (o OptIoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86802,7 +71995,7 @@ func (o *OptIoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1OverheadPodFixed as json.
-func (o OptIoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86823,7 +72016,7 @@ func (o *OptIoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1Scheduling as json.
-func (o OptIoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86843,7 +72036,7 @@ func (o *OptIoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1SchedulingNodeSelector as json.
-func (o OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86864,7 +72057,7 @@ func (o *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPINodeV1beta1Overhead as json.
-func (o OptIoK8sAPINodeV1beta1Overhead) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1beta1Overhead) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86884,7 +72077,7 @@ func (o *OptIoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1beta1OverheadPodFixed as json.
-func (o OptIoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86905,7 +72098,7 @@ func (o *OptIoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1beta1Scheduling as json.
-func (o OptIoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86925,7 +72118,7 @@ func (o *OptIoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPINodeV1beta1SchedulingNodeSelector as json.
-func (o OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86946,7 +72139,7 @@ func (o *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetSpec as json.
-func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86966,7 +72159,7 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatus as json.
-func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -86986,7 +72179,7 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods as json.
-func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87007,7 +72200,7 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec as json.
-func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87027,7 +72220,7 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) 
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus as json.
-func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87047,7 +72240,7 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods as json.
-func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87068,7 +72261,7 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodSecurityPolicySpec as json.
-func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87088,7 +72281,7 @@ func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) er
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions as json.
-func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87108,7 +72301,7 @@ func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions as json.
-func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87128,7 +72321,7 @@ func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decod
 }
 
 // Encode encodes IoK8sAPIRbacV1AggregationRule as json.
-func (o OptIoK8sAPIRbacV1AggregationRule) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIRbacV1AggregationRule) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87148,7 +72341,7 @@ func (o *OptIoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIStorageV1StorageClassParameters as json.
-func (o OptIoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87169,7 +72362,7 @@ func (o *OptIoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatus as json.
-func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87189,7 +72382,7 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata as json.
-func (o OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87210,7 +72403,7 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d 
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeError as json.
-func (o OptIoK8sAPIStorageV1VolumeError) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIStorageV1VolumeError) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87230,7 +72423,7 @@ func (o *OptIoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeNodeResources as json.
-func (o OptIoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Writer) {
+func (o OptIoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87250,7 +72443,7 @@ func (o *OptIoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87270,7 +72463,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConve
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87290,7 +72483,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87310,7 +72503,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87330,7 +72523,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87350,7 +72543,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87370,7 +72563,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValid
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87390,7 +72583,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentati
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87410,7 +72603,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) De
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87431,7 +72624,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefi
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87452,7 +72645,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepe
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87473,7 +72666,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatt
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87494,7 +72687,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProp
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87514,7 +72707,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) D
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87534,7 +72727,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion as json.
-func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Writer) {
+func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87554,7 +72747,7 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) 
 }
 
 // Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
-func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87574,7 +72767,7 @@ func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87594,7 +72787,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelector as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87614,7 +72807,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) e
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87635,7 +72828,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ListMeta as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87655,7 +72848,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error 
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87675,7 +72868,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMeta as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87695,7 +72888,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) erro
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87716,7 +72909,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.De
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87737,7 +72930,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
-func (o OptIoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87757,7 +72950,7 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
-func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Writer) {
+func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87777,7 +72970,7 @@ func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) err
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec as json.
-func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Writer) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87797,7 +72990,7 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d 
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus as json.
-func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Writer) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87817,7 +73010,7 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference as json.
-func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Writer) {
+func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87837,7 +73030,7 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Writer) {
+func (o OptString) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -87859,7 +73052,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes ReadCoreV1NamespacedPodLogOKApplicationJSON as json.
-func (s ReadCoreV1NamespacedPodLogOKApplicationJSON) Encode(e *jx.Writer) {
+func (s ReadCoreV1NamespacedPodLogOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
