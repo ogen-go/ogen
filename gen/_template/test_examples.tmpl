@@ -10,22 +10,22 @@ func Test{{ $typ.Go }}_EncodeDecode(t *testing.T) {
 	{{- if $.SkipTest $typ }}
 	t.Skip("Skipped by regex")
 	{{- end }}
-
 	var typ {{ $typ.Go }}
 	{{- if $typ.IsMap }}{{- if not $typ.Fields }}
 	typ = make({{ $typ.Go }})
 	{{- end }}{{- end }}
 	typ.SetFake()
 
-	e := jx.Writer{}
+	e := jx.Encoder{}
 	typ.Encode(&e)
-	require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 {{ $typ.Go }}
 	{{- if $typ.IsMap }}{{- if not $typ.Fields }}
 	typ2 = make({{ $typ.Go }})
 	{{- end }}{{- end }}
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 {{- end }}
 
