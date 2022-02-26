@@ -35,15 +35,15 @@ func Test{{ $typ.Go }}_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 {{ $typ.Go }}
 			{{- if $typ.IsMap }}{{- if not $typ.Fields }}
 			typ2 = make({{ $typ.Go }})
 			{{- end }}{{- end }}
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }

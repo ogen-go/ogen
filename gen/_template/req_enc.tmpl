@@ -1,5 +1,5 @@
 {{ define "req_json/enc"}}
-e := jx.GetWriter()
+e := jx.GetEncoder()
 {{ template "json/enc" req_enc_elem $ }}
 {{ end }}
 

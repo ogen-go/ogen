@@ -106,8 +106,8 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 			return res, err
 		}
 		{{- if $contentType.JSON }}
-		defer jx.PutWriter(buf)
-		reqBody = bytes.NewReader(buf.Buf)
+		defer jx.PutEncoder(buf)
+		reqBody = bytes.NewReader(buf.Bytes())
 		{{- else }}
 		reqBody = buf
 		{{- end }}
@@ -123,8 +123,8 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 			return res, err
 		}
 		{{- if $contentType.JSON }}
-		defer jx.PutWriter(buf)
-		reqBody = bytes.NewReader(buf.Buf)
+		defer jx.PutEncoder(buf)
+		reqBody = bytes.NewReader(buf.Bytes())
 		{{- else }}
 		reqBody = buf
 		{{- end }}

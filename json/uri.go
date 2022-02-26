@@ -20,6 +20,6 @@ func DecodeURI(i *jx.Decoder) (v url.URL, err error) {
 }
 
 // EncodeURI encodes url.URL to json.
-func EncodeURI(s *jx.Writer, v url.URL) {
+func EncodeURI(s *jx.Encoder, v url.URL) {
 	s.Str(v.String())
 }

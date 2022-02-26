@@ -141,11 +141,11 @@ func TestTechEmpowerJSON(t *testing.T) {
 		ID:           10,
 		RandomNumber: 2134,
 	}
-	e := &jx.Writer{}
+	e := &jx.Encoder{}
 	hw.Encode(e)
 	var parsed techempower.WorldObject
 	d := jx.GetDecoder()
-	d.ResetBytes(e.Buf)
+	d.ResetBytes(e.Bytes())
 	t.Log(e)
 	require.NoError(t, parsed.Decode(d))
 	require.Equal(t, hw, parsed)

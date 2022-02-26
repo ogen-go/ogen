@@ -23,7 +23,7 @@ type Unmarshaler interface {
 
 // Marshaler implements json writing.
 type Marshaler interface {
-	Encode(e *jx.Writer)
+	Encode(e *jx.Encoder)
 }
 
 // Value represents a json value.
@@ -50,7 +50,7 @@ type Nullable interface {
 
 // Encode Marshaler to byte slice.
 func Encode(m Marshaler) []byte {
-	e := &jx.Writer{}
+	e := &jx.Encoder{}
 	m.Encode(e)
-	return e.Buf
+	return e.Bytes()
 }

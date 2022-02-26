@@ -9,14 +9,14 @@ import (
 )
 
 func BenchmarkDecodeUUID(b *testing.B) {
-	e := &jx.Writer{}
+	e := &jx.Encoder{}
 
 	u, err := uuid.NewUUID()
 	if err != nil {
 		b.Fatal(err)
 	}
 	EncodeUUID(e, u)
-	data := e.Buf
+	data := e.Bytes()
 
 	d := jx.GetDecoder()
 	defer jx.PutDecoder(d)
@@ -34,7 +34,7 @@ func BenchmarkDecodeUUID(b *testing.B) {
 }
 
 func BenchmarkEncodeUUID(b *testing.B) {
-	e := &jx.Writer{}
+	e := &jx.Encoder{}
 
 	u, err := uuid.NewUUID()
 	if err != nil {
@@ -42,7 +42,7 @@ func BenchmarkEncodeUUID(b *testing.B) {
 	}
 
 	EncodeUUID(e, u)
-	data := e.Buf
+	data := e.Bytes()
 
 	b.ReportAllocs()
 	b.SetBytes(int64(len(data)))

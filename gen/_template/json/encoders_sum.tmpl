@@ -1,7 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-{{- define "json/encoders_sum" }}
+{{- define "json/encoders_sum" }}{{ $d := $.JSON.Sum -}}
 // Encode encodes {{ $.Name }} as json.
-func (s {{ $.Name }}) Encode(e *jx.Writer) {
+func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	switch s.Type {
 	{{- range $s := $.SumOf }}
 	case {{ $s.Name }}{{ $.Name }}:
@@ -10,7 +10,6 @@ func (s {{ $.Name }}) Encode(e *jx.Writer) {
 	}
 }
 
-{{ $d := $.JSON.Sum -}}
 // Decode decodes {{ $.Name }} from json.
 func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {

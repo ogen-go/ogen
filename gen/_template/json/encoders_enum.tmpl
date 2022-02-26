@@ -1,7 +1,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 {{- define "json/encoders_enum" }}
 // Encode encodes {{ $.Name }} as json.
-func (s {{ $.Name }}) Encode(e *jx.Writer) {
+func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	e.{{ $.JSON.Fn }}({{ $.Primitive }}(s))
 }
 

@@ -3,7 +3,7 @@
 {{ $g := $.GenericOf }}
 {{ $v := $.GenericVariant }}
 // Encode encodes {{ $g.Go }} as json.
-func (o {{ $.Name }}) Encode(e *jx.Writer{{ if $g.Format }}, format func(*jx.Writer, {{ $g.Go }}){{ end }}) {
+func (o {{ $.Name }}) Encode(e *jx.Encoder{{ if $g.Format }}, format func(*jx.Encoder, {{ $g.Go }}){{ end }}) {
 {{- if $v.Optional }}
 	if !o.Set {
 		return

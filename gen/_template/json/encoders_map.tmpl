@@ -3,24 +3,15 @@
 {{- $fields := $.JSON.Fields }}
 {{- $va := $.Validators }}
 // Encode implements json.Marshaler.
-func (s {{ $.Name }}) Encode(e *jx.Writer) {
+func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_ = first
-	)
 	{{- if $fields.NotEmpty }}
 	{
 		{{- template "json/encode_struct_fields" $fields }}
 	}
 	{{- end }}
 	for k, elem := range s{{- if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}{{- end }} {
-		if !first {
-			e.Comma()
-		}
-		first = false
-		e.Str(k)
-		e.RawStr(`:`)
+		e.FieldStart(k)
 		{{ template "json/enc" map_elem $.Item }}
 	}
 	e.ObjEnd()
