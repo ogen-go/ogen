@@ -71,33 +71,17 @@ var (
 )
 
 // Encode implements json.Marshaler.
-func (s Error) Encode(e *jx.Writer) {
+func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
 		if s.Code.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Code.Set {
-			e.RawStr("\"code\"" + ":")
+			e.FieldStart("code")
 			s.Code.Encode(e)
 		}
 	}
 	{
 		if s.Status.Set {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
-		if s.Status.Set {
-			e.RawStr("\"status\"" + ":")
+			e.FieldStart("status")
 			s.Status.Encode(e)
 		}
 	}
@@ -149,7 +133,7 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes bool as json.
-func (o NilBool) Encode(e *jx.Writer) {
+func (o NilBool) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -182,7 +166,7 @@ func (o *NilBool) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o NilDate) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o NilDate) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if o.Null {
 		e.Null()
 		return
@@ -215,7 +199,7 @@ func (o *NilDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes time.Time as json.
-func (o NilDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o NilDateTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if o.Null {
 		e.Null()
 		return
@@ -248,7 +232,7 @@ func (o *NilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 }
 
 // Encode encodes time.Duration as json.
-func (o NilDuration) Encode(e *jx.Writer) {
+func (o NilDuration) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -281,7 +265,7 @@ func (o *NilDuration) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float32 as json.
-func (o NilFloat32) Encode(e *jx.Writer) {
+func (o NilFloat32) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -314,7 +298,7 @@ func (o *NilFloat32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o NilFloat64) Encode(e *jx.Writer) {
+func (o NilFloat64) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -347,7 +331,7 @@ func (o *NilFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o NilIP) Encode(e *jx.Writer) {
+func (o NilIP) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -380,7 +364,7 @@ func (o *NilIP) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o NilIPv4) Encode(e *jx.Writer) {
+func (o NilIPv4) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -413,7 +397,7 @@ func (o *NilIPv4) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o NilIPv6) Encode(e *jx.Writer) {
+func (o NilIPv6) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -446,7 +430,7 @@ func (o *NilIPv6) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o NilInt) Encode(e *jx.Writer) {
+func (o NilInt) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -479,7 +463,7 @@ func (o *NilInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o NilInt32) Encode(e *jx.Writer) {
+func (o NilInt32) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -512,7 +496,7 @@ func (o *NilInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int64 as json.
-func (o NilInt64) Encode(e *jx.Writer) {
+func (o NilInt64) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -545,7 +529,7 @@ func (o *NilInt64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o NilString) Encode(e *jx.Writer) {
+func (o NilString) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -578,7 +562,7 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o NilTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o NilTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if o.Null {
 		e.Null()
 		return
@@ -611,7 +595,7 @@ func (o *NilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes url.URL as json.
-func (o NilURI) Encode(e *jx.Writer) {
+func (o NilURI) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -644,7 +628,7 @@ func (o *NilURI) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes uuid.UUID as json.
-func (o NilUUID) Encode(e *jx.Writer) {
+func (o NilUUID) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
 		return
@@ -677,7 +661,7 @@ func (o *NilUUID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes bool as json.
-func (o OptBool) Encode(e *jx.Writer) {
+func (o OptBool) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -699,7 +683,7 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptDate) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptDate) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -721,7 +705,7 @@ func (o *OptDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes time.Time as json.
-func (o OptDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptDateTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -743,7 +727,7 @@ func (o *OptDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time,
 }
 
 // Encode encodes time.Duration as json.
-func (o OptDuration) Encode(e *jx.Writer) {
+func (o OptDuration) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -765,7 +749,7 @@ func (o *OptDuration) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float32 as json.
-func (o OptFloat32) Encode(e *jx.Writer) {
+func (o OptFloat32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -787,7 +771,7 @@ func (o *OptFloat32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptFloat64) Encode(e *jx.Writer) {
+func (o OptFloat64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -809,7 +793,7 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptIP) Encode(e *jx.Writer) {
+func (o OptIP) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -831,7 +815,7 @@ func (o *OptIP) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptIPv4) Encode(e *jx.Writer) {
+func (o OptIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -853,7 +837,7 @@ func (o *OptIPv4) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptIPv6) Encode(e *jx.Writer) {
+func (o OptIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -875,7 +859,7 @@ func (o *OptIPv6) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptInt) Encode(e *jx.Writer) {
+func (o OptInt) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -897,7 +881,7 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o OptInt32) Encode(e *jx.Writer) {
+func (o OptInt32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -919,7 +903,7 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int64 as json.
-func (o OptInt64) Encode(e *jx.Writer) {
+func (o OptInt64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -941,7 +925,7 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes bool as json.
-func (o OptNilBool) Encode(e *jx.Writer) {
+func (o OptNilBool) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -979,7 +963,7 @@ func (o *OptNilBool) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes []byte as json.
-func (o OptNilByte) Encode(e *jx.Writer) {
+func (o OptNilByte) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1017,7 +1001,7 @@ func (o *OptNilByte) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptNilDate) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptNilDate) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -1055,7 +1039,7 @@ func (o *OptNilDate) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, 
 }
 
 // Encode encodes time.Time as json.
-func (o OptNilDateTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptNilDateTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -1093,7 +1077,7 @@ func (o *OptNilDateTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Ti
 }
 
 // Encode encodes time.Duration as json.
-func (o OptNilDuration) Encode(e *jx.Writer) {
+func (o OptNilDuration) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1131,7 +1115,7 @@ func (o *OptNilDuration) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float32 as json.
-func (o OptNilFloat32) Encode(e *jx.Writer) {
+func (o OptNilFloat32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1169,7 +1153,7 @@ func (o *OptNilFloat32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes float64 as json.
-func (o OptNilFloat64) Encode(e *jx.Writer) {
+func (o OptNilFloat64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1207,7 +1191,7 @@ func (o *OptNilFloat64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptNilIP) Encode(e *jx.Writer) {
+func (o OptNilIP) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1245,7 +1229,7 @@ func (o *OptNilIP) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptNilIPv4) Encode(e *jx.Writer) {
+func (o OptNilIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1283,7 +1267,7 @@ func (o *OptNilIPv4) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes net.IP as json.
-func (o OptNilIPv6) Encode(e *jx.Writer) {
+func (o OptNilIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1321,7 +1305,7 @@ func (o *OptNilIPv6) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int as json.
-func (o OptNilInt) Encode(e *jx.Writer) {
+func (o OptNilInt) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1359,7 +1343,7 @@ func (o *OptNilInt) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int32 as json.
-func (o OptNilInt32) Encode(e *jx.Writer) {
+func (o OptNilInt32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1397,7 +1381,7 @@ func (o *OptNilInt32) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes int64 as json.
-func (o OptNilInt64) Encode(e *jx.Writer) {
+func (o OptNilInt64) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1435,7 +1419,7 @@ func (o *OptNilInt64) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptNilString) Encode(e *jx.Writer) {
+func (o OptNilString) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1473,7 +1457,7 @@ func (o *OptNilString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptNilTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptNilTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -1511,7 +1495,7 @@ func (o *OptNilTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, 
 }
 
 // Encode encodes url.URL as json.
-func (o OptNilURI) Encode(e *jx.Writer) {
+func (o OptNilURI) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1549,7 +1533,7 @@ func (o *OptNilURI) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes uuid.UUID as json.
-func (o OptNilUUID) Encode(e *jx.Writer) {
+func (o OptNilUUID) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1587,7 +1571,7 @@ func (o *OptNilUUID) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes string as json.
-func (o OptString) Encode(e *jx.Writer) {
+func (o OptString) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1609,7 +1593,7 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes TestRequestFormatTestReq as json.
-func (o OptTestRequestFormatTestReq) Encode(e *jx.Writer) {
+func (o OptTestRequestFormatTestReq) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1629,7 +1613,7 @@ func (o *OptTestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes time.Time as json.
-func (o OptTime) Encode(e *jx.Writer, format func(*jx.Writer, time.Time)) {
+func (o OptTime) Encode(e *jx.Encoder, format func(*jx.Encoder, time.Time)) {
 	if !o.Set {
 		return
 	}
@@ -1651,7 +1635,7 @@ func (o *OptTime) Decode(d *jx.Decoder, format func(*jx.Decoder) (time.Time, err
 }
 
 // Encode encodes url.URL as json.
-func (o OptURI) Encode(e *jx.Writer) {
+func (o OptURI) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1673,7 +1657,7 @@ func (o *OptURI) Decode(d *jx.Decoder) error {
 }
 
 // Encode encodes uuid.UUID as json.
-func (o OptUUID) Encode(e *jx.Writer) {
+func (o OptUUID) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
@@ -1695,12 +1679,8 @@ func (o *OptUUID) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestRequestEmptyStructReq) Encode(e *jx.Writer) {
+func (s TestRequestEmptyStructReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -1726,1714 +1706,703 @@ func (s *TestRequestEmptyStructReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestRequestFormatTestReq) Encode(e *jx.Writer) {
+func (s TestRequestFormatTestReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if len(s.RequiredAny) != 0 {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
 
 		if len(s.RequiredAny) != 0 {
-			e.RawStr("\"required_any\"" + ":")
+			e.FieldStart("required_any")
 			e.Raw(s.RequiredAny)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"required_array_any\"" + ":")
+		e.FieldStart("required_array_any")
 		e.ArrStart()
-		if len(s.RequiredArrayAny) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayAny[0]
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
-			}
-			for _, elem := range s.RequiredArrayAny[1:] {
-				e.Comma()
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
+		for _, elem := range s.RequiredArrayAny {
+			if len(elem) != 0 {
+				e.Raw(elem)
 			}
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_boolean\"" + ":")
+		e.FieldStart("required_array_boolean")
 		e.ArrStart()
-		if len(s.RequiredArrayBoolean) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayBoolean[0]
-				e.Bool(elem)
-			}
-			for _, elem := range s.RequiredArrayBoolean[1:] {
-				e.Comma()
-				e.Bool(elem)
-			}
+		for _, elem := range s.RequiredArrayBoolean {
+			e.Bool(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer\"" + ":")
+		e.FieldStart("required_array_integer")
 		e.ArrStart()
-		if len(s.RequiredArrayInteger) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayInteger[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.RequiredArrayInteger[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+		for _, elem := range s.RequiredArrayInteger {
+			e.Int(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer_int32\"" + ":")
+		e.FieldStart("required_array_integer_int32")
 		e.ArrStart()
-		if len(s.RequiredArrayIntegerInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayIntegerInt32[0]
-				e.Int32(elem)
-			}
-			for _, elem := range s.RequiredArrayIntegerInt32[1:] {
-				e.Comma()
-				e.Int32(elem)
-			}
+		for _, elem := range s.RequiredArrayIntegerInt32 {
+			e.Int32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer_int64\"" + ":")
+		e.FieldStart("required_array_integer_int64")
 		e.ArrStart()
-		if len(s.RequiredArrayIntegerInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayIntegerInt64[0]
-				e.Int64(elem)
-			}
-			for _, elem := range s.RequiredArrayIntegerInt64[1:] {
-				e.Comma()
-				e.Int64(elem)
-			}
+		for _, elem := range s.RequiredArrayIntegerInt64 {
+			e.Int64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number\"" + ":")
+		e.FieldStart("required_array_number")
 		e.ArrStart()
-		if len(s.RequiredArrayNumber) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumber[0]
-				e.Float64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumber[1:] {
-				e.Comma()
-				e.Float64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumber {
+			e.Float64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_double\"" + ":")
+		e.FieldStart("required_array_number_double")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberDouble) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberDouble[0]
-				e.Float64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberDouble[1:] {
-				e.Comma()
-				e.Float64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberDouble {
+			e.Float64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_float\"" + ":")
+		e.FieldStart("required_array_number_float")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberFloat) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberFloat[0]
-				e.Float32(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberFloat[1:] {
-				e.Comma()
-				e.Float32(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberFloat {
+			e.Float32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_int32\"" + ":")
+		e.FieldStart("required_array_number_int32")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberInt32[0]
-				e.Int32(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberInt32[1:] {
-				e.Comma()
-				e.Int32(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberInt32 {
+			e.Int32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_int64\"" + ":")
+		e.FieldStart("required_array_number_int64")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberInt64[0]
-				e.Int64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberInt64[1:] {
-				e.Comma()
-				e.Int64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberInt64 {
+			e.Int64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string\"" + ":")
+		e.FieldStart("required_array_string")
 		e.ArrStart()
-		if len(s.RequiredArrayString) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayString[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayString[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayString {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_binary\"" + ":")
+		e.FieldStart("required_array_string_binary")
 		e.ArrStart()
-		if len(s.RequiredArrayStringBinary) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringBinary[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringBinary[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringBinary {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_byte\"" + ":")
+		e.FieldStart("required_array_string_byte")
 		e.ArrStart()
-		if len(s.RequiredArrayStringByte) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringByte[0]
-				e.Base64(elem)
-			}
-			for _, elem := range s.RequiredArrayStringByte[1:] {
-				e.Comma()
-				e.Base64(elem)
-			}
+		for _, elem := range s.RequiredArrayStringByte {
+			e.Base64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_date\"" + ":")
+		e.FieldStart("required_array_string_date")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDate) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDate[0]
-				json.EncodeDate(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDate[1:] {
-				e.Comma()
-				json.EncodeDate(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDate {
+			json.EncodeDate(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_date-time\"" + ":")
+		e.FieldStart("required_array_string_date-time")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDateMinusTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDateMinusTime[0]
-				json.EncodeDateTime(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDateMinusTime[1:] {
-				e.Comma()
-				json.EncodeDateTime(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDateMinusTime {
+			json.EncodeDateTime(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_duration\"" + ":")
+		e.FieldStart("required_array_string_duration")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDuration) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDuration[0]
-				json.EncodeDuration(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDuration[1:] {
-				e.Comma()
-				json.EncodeDuration(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDuration {
+			json.EncodeDuration(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_email\"" + ":")
+		e.FieldStart("required_array_string_email")
 		e.ArrStart()
-		if len(s.RequiredArrayStringEmail) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringEmail[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringEmail[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringEmail {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_hostname\"" + ":")
+		e.FieldStart("required_array_string_hostname")
 		e.ArrStart()
-		if len(s.RequiredArrayStringHostname) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringHostname[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringHostname[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringHostname {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ip\"" + ":")
+		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIP) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIP[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIP[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIP {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ipv4\"" + ":")
+		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIpv4) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIpv4[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIpv4[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIpv4 {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ipv6\"" + ":")
+		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIpv6) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIpv6[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIpv6[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIpv6 {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_password\"" + ":")
+		e.FieldStart("required_array_string_password")
 		e.ArrStart()
-		if len(s.RequiredArrayStringPassword) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringPassword[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringPassword[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringPassword {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_time\"" + ":")
+		e.FieldStart("required_array_string_time")
 		e.ArrStart()
-		if len(s.RequiredArrayStringTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringTime[0]
-				json.EncodeTime(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringTime[1:] {
-				e.Comma()
-				json.EncodeTime(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringTime {
+			json.EncodeTime(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_uri\"" + ":")
+		e.FieldStart("required_array_string_uri")
 		e.ArrStart()
-		if len(s.RequiredArrayStringURI) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringURI[0]
-				json.EncodeURI(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringURI[1:] {
-				e.Comma()
-				json.EncodeURI(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringURI {
+			json.EncodeURI(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_uuid\"" + ":")
+		e.FieldStart("required_array_string_uuid")
 		e.ArrStart()
-		if len(s.RequiredArrayStringUUID) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringUUID[0]
-				json.EncodeUUID(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringUUID[1:] {
-				e.Comma()
-				json.EncodeUUID(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringUUID {
+			json.EncodeUUID(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_boolean\"" + ":")
+		e.FieldStart("required_boolean")
 		e.Bool(s.RequiredBoolean)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_any\"" + ":")
+		e.FieldStart("required_double_array_any")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayAny) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayAny[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
+		for _, elem := range s.RequiredDoubleArrayAny {
+			e.ArrStart()
+			for _, elem := range elem {
+				if len(elem) != 0 {
+					e.Raw(elem)
 				}
-				e.ArrEnd()
 			}
-			for _, elem := range s.RequiredDoubleArrayAny[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_boolean\"" + ":")
+		e.FieldStart("required_double_array_boolean")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayBoolean) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayBoolean[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Bool(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Bool(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayBoolean {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Bool(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayBoolean[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Bool(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Bool(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer\"" + ":")
+		e.FieldStart("required_double_array_integer")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayInteger) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayInteger[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayInteger {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayInteger[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer_int32\"" + ":")
+		e.FieldStart("required_double_array_integer_int32")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayIntegerInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayIntegerInt32[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayIntegerInt32[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer_int64\"" + ":")
+		e.FieldStart("required_double_array_integer_int64")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayIntegerInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayIntegerInt64[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayIntegerInt64[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number\"" + ":")
+		e.FieldStart("required_double_array_number")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumber) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumber[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumber {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumber[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_double\"" + ":")
+		e.FieldStart("required_double_array_number_double")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberDouble) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberDouble[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberDouble {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberDouble[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_float\"" + ":")
+		e.FieldStart("required_double_array_number_float")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberFloat) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberFloat[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberFloat {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberFloat[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_int32\"" + ":")
+		e.FieldStart("required_double_array_number_int32")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberInt32[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberInt32[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_int64\"" + ":")
+		e.FieldStart("required_double_array_number_int64")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberInt64[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberInt64[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string\"" + ":")
+		e.FieldStart("required_double_array_string")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayString) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayString[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayString {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayString[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_binary\"" + ":")
+		e.FieldStart("required_double_array_string_binary")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringBinary) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringBinary[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringBinary {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringBinary[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_byte\"" + ":")
+		e.FieldStart("required_double_array_string_byte")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringByte) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringByte[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Base64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Base64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringByte {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringByte[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Base64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Base64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_date\"" + ":")
+		e.FieldStart("required_double_array_string_date")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDate) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDate[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDate(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDate(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDate {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDate[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDate(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDate(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_date-time\"" + ":")
+		e.FieldStart("required_double_array_string_date-time")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDateMinusTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDateMinusTime[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDateTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDateTime(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDateMinusTime[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDateTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDateTime(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_duration\"" + ":")
+		e.FieldStart("required_double_array_string_duration")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDuration) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDuration[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDuration(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDuration(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDuration {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDuration[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDuration(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDuration(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_email\"" + ":")
+		e.FieldStart("required_double_array_string_email")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringEmail) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringEmail[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringEmail {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringEmail[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_hostname\"" + ":")
+		e.FieldStart("required_double_array_string_hostname")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringHostname) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringHostname[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringHostname {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringHostname[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ip\"" + ":")
+		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIP) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIP[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIP {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIP[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ipv4\"" + ":")
+		e.FieldStart("required_double_array_string_ipv4")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIpv4) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIpv4[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIpv4[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ipv6\"" + ":")
+		e.FieldStart("required_double_array_string_ipv6")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIpv6) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIpv6[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIpv6[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_password\"" + ":")
+		e.FieldStart("required_double_array_string_password")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringPassword) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringPassword[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringPassword {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringPassword[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_time\"" + ":")
+		e.FieldStart("required_double_array_string_time")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringTime[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeTime(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringTime[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeTime(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_uri\"" + ":")
+		e.FieldStart("required_double_array_string_uri")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringURI) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringURI[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeURI(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeURI(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringURI {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringURI[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeURI(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeURI(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_uuid\"" + ":")
+		e.FieldStart("required_double_array_string_uuid")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringUUID) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringUUID[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeUUID(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeUUID(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringUUID {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringUUID[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeUUID(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeUUID(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer\"" + ":")
+		e.FieldStart("required_integer")
 		e.Int(s.RequiredInteger)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer_int32\"" + ":")
+		e.FieldStart("required_integer_int32")
 		e.Int32(s.RequiredIntegerInt32)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer_int64\"" + ":")
+		e.FieldStart("required_integer_int64")
 		e.Int64(s.RequiredIntegerInt64)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number\"" + ":")
+		e.FieldStart("required_number")
 		e.Float64(s.RequiredNumber)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_double\"" + ":")
+		e.FieldStart("required_number_double")
 		e.Float64(s.RequiredNumberDouble)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_float\"" + ":")
+		e.FieldStart("required_number_float")
 		e.Float32(s.RequiredNumberFloat)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_int32\"" + ":")
+		e.FieldStart("required_number_int32")
 		e.Int32(s.RequiredNumberInt32)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_int64\"" + ":")
+		e.FieldStart("required_number_int64")
 		e.Int64(s.RequiredNumberInt64)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string\"" + ":")
+		e.FieldStart("required_string")
 		e.Str(s.RequiredString)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_binary\"" + ":")
+		e.FieldStart("required_string_binary")
 		e.Str(s.RequiredStringBinary)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_byte\"" + ":")
+		e.FieldStart("required_string_byte")
 		e.Base64(s.RequiredStringByte)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_date\"" + ":")
+		e.FieldStart("required_string_date")
 		json.EncodeDate(e, s.RequiredStringDate)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_date-time\"" + ":")
+		e.FieldStart("required_string_date-time")
 		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_duration\"" + ":")
+		e.FieldStart("required_string_duration")
 		json.EncodeDuration(e, s.RequiredStringDuration)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_email\"" + ":")
+		e.FieldStart("required_string_email")
 		e.Str(s.RequiredStringEmail)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_hostname\"" + ":")
+		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ip\"" + ":")
+		e.FieldStart("required_string_ip")
 		json.EncodeIP(e, s.RequiredStringIP)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ipv4\"" + ":")
+		e.FieldStart("required_string_ipv4")
 		json.EncodeIP(e, s.RequiredStringIpv4)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ipv6\"" + ":")
+		e.FieldStart("required_string_ipv6")
 		json.EncodeIP(e, s.RequiredStringIpv6)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_password\"" + ":")
+		e.FieldStart("required_string_password")
 		e.Str(s.RequiredStringPassword)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_time\"" + ":")
+		e.FieldStart("required_string_time")
 		json.EncodeTime(e, s.RequiredStringTime)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_uri\"" + ":")
+		e.FieldStart("required_string_uri")
 		json.EncodeURI(e, s.RequiredStringURI)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_uuid\"" + ":")
+		e.FieldStart("required_string_uuid")
 		json.EncodeUUID(e, s.RequiredStringUUID)
 	}
 	{
-		if len(s.OptionalAny) != 0 {
-			e.Comma()
-		}
 
 		if len(s.OptionalAny) != 0 {
-			e.RawStr("\"optional_any\"" + ":")
+			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
 		}
 	}
 	{
 		if s.OptionalArrayAny != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayAny != nil {
-			e.RawStr("\"optional_array_any\"" + ":")
+			e.FieldStart("optional_array_any")
 			e.ArrStart()
-			if len(s.OptionalArrayAny) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayAny[0]
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
-				}
-				for _, elem := range s.OptionalArrayAny[1:] {
-					e.Comma()
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
+			for _, elem := range s.OptionalArrayAny {
+				if len(elem) != 0 {
+					e.Raw(elem)
 				}
 			}
 			e.ArrEnd()
@@ -3441,1851 +2410,736 @@ func (s TestRequestFormatTestReq) Encode(e *jx.Writer) {
 	}
 	{
 		if s.OptionalArrayBoolean != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayBoolean != nil {
-			e.RawStr("\"optional_array_boolean\"" + ":")
+			e.FieldStart("optional_array_boolean")
 			e.ArrStart()
-			if len(s.OptionalArrayBoolean) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayBoolean[0]
-					e.Bool(elem)
-				}
-				for _, elem := range s.OptionalArrayBoolean[1:] {
-					e.Comma()
-					e.Bool(elem)
-				}
+			for _, elem := range s.OptionalArrayBoolean {
+				e.Bool(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayInteger != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayInteger != nil {
-			e.RawStr("\"optional_array_integer\"" + ":")
+			e.FieldStart("optional_array_integer")
 			e.ArrStart()
-			if len(s.OptionalArrayInteger) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayInteger[0]
-					e.Int(elem)
-				}
-				for _, elem := range s.OptionalArrayInteger[1:] {
-					e.Comma()
-					e.Int(elem)
-				}
+			for _, elem := range s.OptionalArrayInteger {
+				e.Int(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayIntegerInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayIntegerInt32 != nil {
-			e.RawStr("\"optional_array_integer_int32\"" + ":")
+			e.FieldStart("optional_array_integer_int32")
 			e.ArrStart()
-			if len(s.OptionalArrayIntegerInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayIntegerInt32[0]
-					e.Int32(elem)
-				}
-				for _, elem := range s.OptionalArrayIntegerInt32[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
+			for _, elem := range s.OptionalArrayIntegerInt32 {
+				e.Int32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayIntegerInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayIntegerInt64 != nil {
-			e.RawStr("\"optional_array_integer_int64\"" + ":")
+			e.FieldStart("optional_array_integer_int64")
 			e.ArrStart()
-			if len(s.OptionalArrayIntegerInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayIntegerInt64[0]
-					e.Int64(elem)
-				}
-				for _, elem := range s.OptionalArrayIntegerInt64[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
+			for _, elem := range s.OptionalArrayIntegerInt64 {
+				e.Int64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumber != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumber != nil {
-			e.RawStr("\"optional_array_number\"" + ":")
+			e.FieldStart("optional_array_number")
 			e.ArrStart()
-			if len(s.OptionalArrayNumber) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumber[0]
-					e.Float64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumber[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumber {
+				e.Float64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberDouble != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberDouble != nil {
-			e.RawStr("\"optional_array_number_double\"" + ":")
+			e.FieldStart("optional_array_number_double")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberDouble) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberDouble[0]
-					e.Float64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberDouble[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberDouble {
+				e.Float64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberFloat != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberFloat != nil {
-			e.RawStr("\"optional_array_number_float\"" + ":")
+			e.FieldStart("optional_array_number_float")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberFloat) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberFloat[0]
-					e.Float32(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberFloat[1:] {
-					e.Comma()
-					e.Float32(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberFloat {
+				e.Float32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberInt32 != nil {
-			e.RawStr("\"optional_array_number_int32\"" + ":")
+			e.FieldStart("optional_array_number_int32")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberInt32[0]
-					e.Int32(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberInt32[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberInt32 {
+				e.Int32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberInt64 != nil {
-			e.RawStr("\"optional_array_number_int64\"" + ":")
+			e.FieldStart("optional_array_number_int64")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberInt64[0]
-					e.Int64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberInt64[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberInt64 {
+				e.Int64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayString != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayString != nil {
-			e.RawStr("\"optional_array_string\"" + ":")
+			e.FieldStart("optional_array_string")
 			e.ArrStart()
-			if len(s.OptionalArrayString) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayString[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayString[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayString {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringBinary != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringBinary != nil {
-			e.RawStr("\"optional_array_string_binary\"" + ":")
+			e.FieldStart("optional_array_string_binary")
 			e.ArrStart()
-			if len(s.OptionalArrayStringBinary) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringBinary[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringBinary[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringBinary {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringByte != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringByte != nil {
-			e.RawStr("\"optional_array_string_byte\"" + ":")
+			e.FieldStart("optional_array_string_byte")
 			e.ArrStart()
-			if len(s.OptionalArrayStringByte) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringByte[0]
-					e.Base64(elem)
-				}
-				for _, elem := range s.OptionalArrayStringByte[1:] {
-					e.Comma()
-					e.Base64(elem)
-				}
+			for _, elem := range s.OptionalArrayStringByte {
+				e.Base64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDate != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDate != nil {
-			e.RawStr("\"optional_array_string_date\"" + ":")
+			e.FieldStart("optional_array_string_date")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDate) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDate[0]
-					json.EncodeDate(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDate[1:] {
-					e.Comma()
-					json.EncodeDate(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDate {
+				json.EncodeDate(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDateMinusTime != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDateMinusTime != nil {
-			e.RawStr("\"optional_array_string_date-time\"" + ":")
+			e.FieldStart("optional_array_string_date-time")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDateMinusTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDateMinusTime[0]
-					json.EncodeDateTime(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDateMinusTime[1:] {
-					e.Comma()
-					json.EncodeDateTime(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDateMinusTime {
+				json.EncodeDateTime(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDuration != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDuration != nil {
-			e.RawStr("\"optional_array_string_duration\"" + ":")
+			e.FieldStart("optional_array_string_duration")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDuration) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDuration[0]
-					json.EncodeDuration(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDuration[1:] {
-					e.Comma()
-					json.EncodeDuration(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDuration {
+				json.EncodeDuration(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringEmail != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringEmail != nil {
-			e.RawStr("\"optional_array_string_email\"" + ":")
+			e.FieldStart("optional_array_string_email")
 			e.ArrStart()
-			if len(s.OptionalArrayStringEmail) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringEmail[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringEmail[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringEmail {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringHostname != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringHostname != nil {
-			e.RawStr("\"optional_array_string_hostname\"" + ":")
+			e.FieldStart("optional_array_string_hostname")
 			e.ArrStart()
-			if len(s.OptionalArrayStringHostname) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringHostname[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringHostname[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringHostname {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIP != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIP != nil {
-			e.RawStr("\"optional_array_string_ip\"" + ":")
+			e.FieldStart("optional_array_string_ip")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIP) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIP[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIP[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIP {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIpv4 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIpv4 != nil {
-			e.RawStr("\"optional_array_string_ipv4\"" + ":")
+			e.FieldStart("optional_array_string_ipv4")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIpv4) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIpv4[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIpv4[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIpv4 {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIpv6 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIpv6 != nil {
-			e.RawStr("\"optional_array_string_ipv6\"" + ":")
+			e.FieldStart("optional_array_string_ipv6")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIpv6) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIpv6[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIpv6[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIpv6 {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringPassword != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringPassword != nil {
-			e.RawStr("\"optional_array_string_password\"" + ":")
+			e.FieldStart("optional_array_string_password")
 			e.ArrStart()
-			if len(s.OptionalArrayStringPassword) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringPassword[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringPassword[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringPassword {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringTime != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringTime != nil {
-			e.RawStr("\"optional_array_string_time\"" + ":")
+			e.FieldStart("optional_array_string_time")
 			e.ArrStart()
-			if len(s.OptionalArrayStringTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringTime[0]
-					json.EncodeTime(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringTime[1:] {
-					e.Comma()
-					json.EncodeTime(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringTime {
+				json.EncodeTime(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringURI != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringURI != nil {
-			e.RawStr("\"optional_array_string_uri\"" + ":")
+			e.FieldStart("optional_array_string_uri")
 			e.ArrStart()
-			if len(s.OptionalArrayStringURI) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringURI[0]
-					json.EncodeURI(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringURI[1:] {
-					e.Comma()
-					json.EncodeURI(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringURI {
+				json.EncodeURI(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringUUID != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringUUID != nil {
-			e.RawStr("\"optional_array_string_uuid\"" + ":")
+			e.FieldStart("optional_array_string_uuid")
 			e.ArrStart()
-			if len(s.OptionalArrayStringUUID) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringUUID[0]
-					json.EncodeUUID(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringUUID[1:] {
-					e.Comma()
-					json.EncodeUUID(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringUUID {
+				json.EncodeUUID(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalBoolean.Set {
-			e.Comma()
-		}
-		if s.OptionalBoolean.Set {
-			e.RawStr("\"optional_boolean\"" + ":")
+			e.FieldStart("optional_boolean")
 			s.OptionalBoolean.Encode(e)
 		}
 	}
 	{
 		if s.OptionalDoubleArrayAny != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayAny != nil {
-			e.RawStr("\"optional_double_array_any\"" + ":")
+			e.FieldStart("optional_double_array_any")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayAny) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayAny[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
+			for _, elem := range s.OptionalDoubleArrayAny {
+				e.ArrStart()
+				for _, elem := range elem {
+					if len(elem) != 0 {
+						e.Raw(elem)
 					}
-					e.ArrEnd()
 				}
-				for _, elem := range s.OptionalDoubleArrayAny[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayBoolean != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayBoolean != nil {
-			e.RawStr("\"optional_double_array_boolean\"" + ":")
+			e.FieldStart("optional_double_array_boolean")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayBoolean) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayBoolean[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Bool(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Bool(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayBoolean {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Bool(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayBoolean[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Bool(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Bool(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayInteger != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayInteger != nil {
-			e.RawStr("\"optional_double_array_integer\"" + ":")
+			e.FieldStart("optional_double_array_integer")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayInteger) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayInteger[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayInteger {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayInteger[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayIntegerInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayIntegerInt32 != nil {
-			e.RawStr("\"optional_double_array_integer_int32\"" + ":")
+			e.FieldStart("optional_double_array_integer_int32")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayIntegerInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayIntegerInt32[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayIntegerInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayIntegerInt32[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayIntegerInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayIntegerInt64 != nil {
-			e.RawStr("\"optional_double_array_integer_int64\"" + ":")
+			e.FieldStart("optional_double_array_integer_int64")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayIntegerInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayIntegerInt64[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayIntegerInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayIntegerInt64[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumber != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumber != nil {
-			e.RawStr("\"optional_double_array_number\"" + ":")
+			e.FieldStart("optional_double_array_number")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumber) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumber[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumber {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumber[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberDouble != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberDouble != nil {
-			e.RawStr("\"optional_double_array_number_double\"" + ":")
+			e.FieldStart("optional_double_array_number_double")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberDouble) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberDouble[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberDouble {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberDouble[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberFloat != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberFloat != nil {
-			e.RawStr("\"optional_double_array_number_float\"" + ":")
+			e.FieldStart("optional_double_array_number_float")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberFloat) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberFloat[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberFloat {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberFloat[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberInt32 != nil {
-			e.RawStr("\"optional_double_array_number_int32\"" + ":")
+			e.FieldStart("optional_double_array_number_int32")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberInt32[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberInt32[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberInt64 != nil {
-			e.RawStr("\"optional_double_array_number_int64\"" + ":")
+			e.FieldStart("optional_double_array_number_int64")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberInt64[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberInt64[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayString != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayString != nil {
-			e.RawStr("\"optional_double_array_string\"" + ":")
+			e.FieldStart("optional_double_array_string")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayString) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayString[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayString {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayString[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringBinary != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringBinary != nil {
-			e.RawStr("\"optional_double_array_string_binary\"" + ":")
+			e.FieldStart("optional_double_array_string_binary")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringBinary) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringBinary[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringBinary {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringBinary[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringByte != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringByte != nil {
-			e.RawStr("\"optional_double_array_string_byte\"" + ":")
+			e.FieldStart("optional_double_array_string_byte")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringByte) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringByte[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Base64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Base64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringByte {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Base64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringByte[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Base64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Base64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDate != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDate != nil {
-			e.RawStr("\"optional_double_array_string_date\"" + ":")
+			e.FieldStart("optional_double_array_string_date")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDate) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDate[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDate(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDate(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDate {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDate(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDate[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDate(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDate(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDateMinusTime != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDateMinusTime != nil {
-			e.RawStr("\"optional_double_array_string_date-time\"" + ":")
+			e.FieldStart("optional_double_array_string_date-time")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDateMinusTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDateMinusTime[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDateTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDateTime(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDateMinusTime {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDateTime(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDateMinusTime[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDateTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDateTime(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDuration != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDuration != nil {
-			e.RawStr("\"optional_double_array_string_duration\"" + ":")
+			e.FieldStart("optional_double_array_string_duration")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDuration) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDuration[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDuration(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDuration(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDuration {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDuration(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDuration[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDuration(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDuration(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringEmail != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringEmail != nil {
-			e.RawStr("\"optional_double_array_string_email\"" + ":")
+			e.FieldStart("optional_double_array_string_email")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringEmail) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringEmail[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringEmail {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringEmail[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringHostname != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringHostname != nil {
-			e.RawStr("\"optional_double_array_string_hostname\"" + ":")
+			e.FieldStart("optional_double_array_string_hostname")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringHostname) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringHostname[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringHostname {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringHostname[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIP != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIP != nil {
-			e.RawStr("\"optional_double_array_string_ip\"" + ":")
+			e.FieldStart("optional_double_array_string_ip")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIP) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIP[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIP {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIP[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIpv4 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIpv4 != nil {
-			e.RawStr("\"optional_double_array_string_ipv4\"" + ":")
+			e.FieldStart("optional_double_array_string_ipv4")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIpv4) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIpv4[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIpv4 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIpv4[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIpv6 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIpv6 != nil {
-			e.RawStr("\"optional_double_array_string_ipv6\"" + ":")
+			e.FieldStart("optional_double_array_string_ipv6")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIpv6) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIpv6[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIpv6 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIpv6[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringPassword != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringPassword != nil {
-			e.RawStr("\"optional_double_array_string_password\"" + ":")
+			e.FieldStart("optional_double_array_string_password")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringPassword) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringPassword[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringPassword {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringPassword[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringTime != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringTime != nil {
-			e.RawStr("\"optional_double_array_string_time\"" + ":")
+			e.FieldStart("optional_double_array_string_time")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringTime[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeTime(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringTime {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeTime(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringTime[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeTime(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringURI != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringURI != nil {
-			e.RawStr("\"optional_double_array_string_uri\"" + ":")
+			e.FieldStart("optional_double_array_string_uri")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringURI) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringURI[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeURI(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeURI(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringURI {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeURI(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringURI[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeURI(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeURI(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringUUID != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringUUID != nil {
-			e.RawStr("\"optional_double_array_string_uuid\"" + ":")
+			e.FieldStart("optional_double_array_string_uuid")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringUUID) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringUUID[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeUUID(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeUUID(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringUUID {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUUID(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringUUID[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeUUID(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeUUID(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalInteger.Set {
-			e.Comma()
-		}
-		if s.OptionalInteger.Set {
-			e.RawStr("\"optional_integer\"" + ":")
+			e.FieldStart("optional_integer")
 			s.OptionalInteger.Encode(e)
 		}
 	}
 	{
 		if s.OptionalIntegerInt32.Set {
-			e.Comma()
-		}
-		if s.OptionalIntegerInt32.Set {
-			e.RawStr("\"optional_integer_int32\"" + ":")
+			e.FieldStart("optional_integer_int32")
 			s.OptionalIntegerInt32.Encode(e)
 		}
 	}
 	{
 		if s.OptionalIntegerInt64.Set {
-			e.Comma()
-		}
-		if s.OptionalIntegerInt64.Set {
-			e.RawStr("\"optional_integer_int64\"" + ":")
+			e.FieldStart("optional_integer_int64")
 			s.OptionalIntegerInt64.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumber.Set {
-			e.Comma()
-		}
-		if s.OptionalNumber.Set {
-			e.RawStr("\"optional_number\"" + ":")
+			e.FieldStart("optional_number")
 			s.OptionalNumber.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberDouble.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberDouble.Set {
-			e.RawStr("\"optional_number_double\"" + ":")
+			e.FieldStart("optional_number_double")
 			s.OptionalNumberDouble.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberFloat.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberFloat.Set {
-			e.RawStr("\"optional_number_float\"" + ":")
+			e.FieldStart("optional_number_float")
 			s.OptionalNumberFloat.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberInt32.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberInt32.Set {
-			e.RawStr("\"optional_number_int32\"" + ":")
+			e.FieldStart("optional_number_int32")
 			s.OptionalNumberInt32.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberInt64.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberInt64.Set {
-			e.RawStr("\"optional_number_int64\"" + ":")
+			e.FieldStart("optional_number_int64")
 			s.OptionalNumberInt64.Encode(e)
 		}
 	}
 	{
 		if s.OptionalString.Set {
-			e.Comma()
-		}
-		if s.OptionalString.Set {
-			e.RawStr("\"optional_string\"" + ":")
+			e.FieldStart("optional_string")
 			s.OptionalString.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringBinary.Set {
-			e.Comma()
-		}
-		if s.OptionalStringBinary.Set {
-			e.RawStr("\"optional_string_binary\"" + ":")
+			e.FieldStart("optional_string_binary")
 			s.OptionalStringBinary.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"optional_string_byte\"" + ":")
+		e.FieldStart("optional_string_byte")
 		e.Base64(s.OptionalStringByte)
 	}
 	{
 		if s.OptionalStringDate.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDate.Set {
-			e.RawStr("\"optional_string_date\"" + ":")
+			e.FieldStart("optional_string_date")
 			s.OptionalStringDate.Encode(e, json.EncodeDate)
 		}
 	}
 	{
 		if s.OptionalStringDateMinusTime.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDateMinusTime.Set {
-			e.RawStr("\"optional_string_date-time\"" + ":")
+			e.FieldStart("optional_string_date-time")
 			s.OptionalStringDateMinusTime.Encode(e, json.EncodeDateTime)
 		}
 	}
 	{
 		if s.OptionalStringDuration.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDuration.Set {
-			e.RawStr("\"optional_string_duration\"" + ":")
+			e.FieldStart("optional_string_duration")
 			s.OptionalStringDuration.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringEmail.Set {
-			e.Comma()
-		}
-		if s.OptionalStringEmail.Set {
-			e.RawStr("\"optional_string_email\"" + ":")
+			e.FieldStart("optional_string_email")
 			s.OptionalStringEmail.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringHostname.Set {
-			e.Comma()
-		}
-		if s.OptionalStringHostname.Set {
-			e.RawStr("\"optional_string_hostname\"" + ":")
+			e.FieldStart("optional_string_hostname")
 			s.OptionalStringHostname.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIP.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIP.Set {
-			e.RawStr("\"optional_string_ip\"" + ":")
+			e.FieldStart("optional_string_ip")
 			s.OptionalStringIP.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIpv4.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIpv4.Set {
-			e.RawStr("\"optional_string_ipv4\"" + ":")
+			e.FieldStart("optional_string_ipv4")
 			s.OptionalStringIpv4.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIpv6.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIpv6.Set {
-			e.RawStr("\"optional_string_ipv6\"" + ":")
+			e.FieldStart("optional_string_ipv6")
 			s.OptionalStringIpv6.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringPassword.Set {
-			e.Comma()
-		}
-		if s.OptionalStringPassword.Set {
-			e.RawStr("\"optional_string_password\"" + ":")
+			e.FieldStart("optional_string_password")
 			s.OptionalStringPassword.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringTime.Set {
-			e.Comma()
-		}
-		if s.OptionalStringTime.Set {
-			e.RawStr("\"optional_string_time\"" + ":")
+			e.FieldStart("optional_string_time")
 			s.OptionalStringTime.Encode(e, json.EncodeTime)
 		}
 	}
 	{
 		if s.OptionalStringURI.Set {
-			e.Comma()
-		}
-		if s.OptionalStringURI.Set {
-			e.RawStr("\"optional_string_uri\"" + ":")
+			e.FieldStart("optional_string_uri")
 			s.OptionalStringURI.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringUUID.Set {
-			e.Comma()
-		}
-		if s.OptionalStringUUID.Set {
-			e.RawStr("\"optional_string_uuid\"" + ":")
+			e.FieldStart("optional_string_uuid")
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
@@ -8418,12 +6272,8 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestRequestRequiredEmptyStructReq) Encode(e *jx.Writer) {
+func (s TestRequestRequiredEmptyStructReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -8449,1714 +6299,703 @@ func (s *TestRequestRequiredEmptyStructReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestRequestRequiredFormatTestReq) Encode(e *jx.Writer) {
+func (s TestRequestRequiredFormatTestReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if len(s.RequiredAny) != 0 {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
 
 		if len(s.RequiredAny) != 0 {
-			e.RawStr("\"required_any\"" + ":")
+			e.FieldStart("required_any")
 			e.Raw(s.RequiredAny)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"required_array_any\"" + ":")
+		e.FieldStart("required_array_any")
 		e.ArrStart()
-		if len(s.RequiredArrayAny) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayAny[0]
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
-			}
-			for _, elem := range s.RequiredArrayAny[1:] {
-				e.Comma()
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
+		for _, elem := range s.RequiredArrayAny {
+			if len(elem) != 0 {
+				e.Raw(elem)
 			}
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_boolean\"" + ":")
+		e.FieldStart("required_array_boolean")
 		e.ArrStart()
-		if len(s.RequiredArrayBoolean) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayBoolean[0]
-				e.Bool(elem)
-			}
-			for _, elem := range s.RequiredArrayBoolean[1:] {
-				e.Comma()
-				e.Bool(elem)
-			}
+		for _, elem := range s.RequiredArrayBoolean {
+			e.Bool(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer\"" + ":")
+		e.FieldStart("required_array_integer")
 		e.ArrStart()
-		if len(s.RequiredArrayInteger) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayInteger[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.RequiredArrayInteger[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+		for _, elem := range s.RequiredArrayInteger {
+			e.Int(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer_int32\"" + ":")
+		e.FieldStart("required_array_integer_int32")
 		e.ArrStart()
-		if len(s.RequiredArrayIntegerInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayIntegerInt32[0]
-				e.Int32(elem)
-			}
-			for _, elem := range s.RequiredArrayIntegerInt32[1:] {
-				e.Comma()
-				e.Int32(elem)
-			}
+		for _, elem := range s.RequiredArrayIntegerInt32 {
+			e.Int32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer_int64\"" + ":")
+		e.FieldStart("required_array_integer_int64")
 		e.ArrStart()
-		if len(s.RequiredArrayIntegerInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayIntegerInt64[0]
-				e.Int64(elem)
-			}
-			for _, elem := range s.RequiredArrayIntegerInt64[1:] {
-				e.Comma()
-				e.Int64(elem)
-			}
+		for _, elem := range s.RequiredArrayIntegerInt64 {
+			e.Int64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number\"" + ":")
+		e.FieldStart("required_array_number")
 		e.ArrStart()
-		if len(s.RequiredArrayNumber) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumber[0]
-				e.Float64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumber[1:] {
-				e.Comma()
-				e.Float64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumber {
+			e.Float64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_double\"" + ":")
+		e.FieldStart("required_array_number_double")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberDouble) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberDouble[0]
-				e.Float64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberDouble[1:] {
-				e.Comma()
-				e.Float64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberDouble {
+			e.Float64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_float\"" + ":")
+		e.FieldStart("required_array_number_float")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberFloat) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberFloat[0]
-				e.Float32(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberFloat[1:] {
-				e.Comma()
-				e.Float32(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberFloat {
+			e.Float32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_int32\"" + ":")
+		e.FieldStart("required_array_number_int32")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberInt32[0]
-				e.Int32(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberInt32[1:] {
-				e.Comma()
-				e.Int32(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberInt32 {
+			e.Int32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_int64\"" + ":")
+		e.FieldStart("required_array_number_int64")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberInt64[0]
-				e.Int64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberInt64[1:] {
-				e.Comma()
-				e.Int64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberInt64 {
+			e.Int64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string\"" + ":")
+		e.FieldStart("required_array_string")
 		e.ArrStart()
-		if len(s.RequiredArrayString) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayString[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayString[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayString {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_binary\"" + ":")
+		e.FieldStart("required_array_string_binary")
 		e.ArrStart()
-		if len(s.RequiredArrayStringBinary) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringBinary[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringBinary[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringBinary {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_byte\"" + ":")
+		e.FieldStart("required_array_string_byte")
 		e.ArrStart()
-		if len(s.RequiredArrayStringByte) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringByte[0]
-				e.Base64(elem)
-			}
-			for _, elem := range s.RequiredArrayStringByte[1:] {
-				e.Comma()
-				e.Base64(elem)
-			}
+		for _, elem := range s.RequiredArrayStringByte {
+			e.Base64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_date\"" + ":")
+		e.FieldStart("required_array_string_date")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDate) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDate[0]
-				json.EncodeDate(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDate[1:] {
-				e.Comma()
-				json.EncodeDate(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDate {
+			json.EncodeDate(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_date-time\"" + ":")
+		e.FieldStart("required_array_string_date-time")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDateMinusTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDateMinusTime[0]
-				json.EncodeDateTime(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDateMinusTime[1:] {
-				e.Comma()
-				json.EncodeDateTime(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDateMinusTime {
+			json.EncodeDateTime(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_duration\"" + ":")
+		e.FieldStart("required_array_string_duration")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDuration) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDuration[0]
-				json.EncodeDuration(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDuration[1:] {
-				e.Comma()
-				json.EncodeDuration(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDuration {
+			json.EncodeDuration(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_email\"" + ":")
+		e.FieldStart("required_array_string_email")
 		e.ArrStart()
-		if len(s.RequiredArrayStringEmail) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringEmail[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringEmail[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringEmail {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_hostname\"" + ":")
+		e.FieldStart("required_array_string_hostname")
 		e.ArrStart()
-		if len(s.RequiredArrayStringHostname) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringHostname[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringHostname[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringHostname {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ip\"" + ":")
+		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIP) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIP[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIP[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIP {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ipv4\"" + ":")
+		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIpv4) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIpv4[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIpv4[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIpv4 {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ipv6\"" + ":")
+		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIpv6) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIpv6[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIpv6[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIpv6 {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_password\"" + ":")
+		e.FieldStart("required_array_string_password")
 		e.ArrStart()
-		if len(s.RequiredArrayStringPassword) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringPassword[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringPassword[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringPassword {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_time\"" + ":")
+		e.FieldStart("required_array_string_time")
 		e.ArrStart()
-		if len(s.RequiredArrayStringTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringTime[0]
-				json.EncodeTime(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringTime[1:] {
-				e.Comma()
-				json.EncodeTime(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringTime {
+			json.EncodeTime(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_uri\"" + ":")
+		e.FieldStart("required_array_string_uri")
 		e.ArrStart()
-		if len(s.RequiredArrayStringURI) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringURI[0]
-				json.EncodeURI(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringURI[1:] {
-				e.Comma()
-				json.EncodeURI(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringURI {
+			json.EncodeURI(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_uuid\"" + ":")
+		e.FieldStart("required_array_string_uuid")
 		e.ArrStart()
-		if len(s.RequiredArrayStringUUID) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringUUID[0]
-				json.EncodeUUID(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringUUID[1:] {
-				e.Comma()
-				json.EncodeUUID(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringUUID {
+			json.EncodeUUID(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_boolean\"" + ":")
+		e.FieldStart("required_boolean")
 		e.Bool(s.RequiredBoolean)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_any\"" + ":")
+		e.FieldStart("required_double_array_any")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayAny) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayAny[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
+		for _, elem := range s.RequiredDoubleArrayAny {
+			e.ArrStart()
+			for _, elem := range elem {
+				if len(elem) != 0 {
+					e.Raw(elem)
 				}
-				e.ArrEnd()
 			}
-			for _, elem := range s.RequiredDoubleArrayAny[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_boolean\"" + ":")
+		e.FieldStart("required_double_array_boolean")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayBoolean) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayBoolean[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Bool(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Bool(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayBoolean {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Bool(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayBoolean[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Bool(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Bool(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer\"" + ":")
+		e.FieldStart("required_double_array_integer")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayInteger) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayInteger[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayInteger {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayInteger[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer_int32\"" + ":")
+		e.FieldStart("required_double_array_integer_int32")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayIntegerInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayIntegerInt32[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayIntegerInt32[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer_int64\"" + ":")
+		e.FieldStart("required_double_array_integer_int64")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayIntegerInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayIntegerInt64[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayIntegerInt64[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number\"" + ":")
+		e.FieldStart("required_double_array_number")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumber) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumber[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumber {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumber[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_double\"" + ":")
+		e.FieldStart("required_double_array_number_double")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberDouble) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberDouble[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberDouble {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberDouble[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_float\"" + ":")
+		e.FieldStart("required_double_array_number_float")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberFloat) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberFloat[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberFloat {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberFloat[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_int32\"" + ":")
+		e.FieldStart("required_double_array_number_int32")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberInt32[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberInt32[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_int64\"" + ":")
+		e.FieldStart("required_double_array_number_int64")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberInt64[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberInt64[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string\"" + ":")
+		e.FieldStart("required_double_array_string")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayString) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayString[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayString {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayString[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_binary\"" + ":")
+		e.FieldStart("required_double_array_string_binary")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringBinary) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringBinary[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringBinary {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringBinary[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_byte\"" + ":")
+		e.FieldStart("required_double_array_string_byte")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringByte) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringByte[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Base64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Base64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringByte {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringByte[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Base64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Base64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_date\"" + ":")
+		e.FieldStart("required_double_array_string_date")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDate) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDate[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDate(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDate(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDate {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDate[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDate(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDate(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_date-time\"" + ":")
+		e.FieldStart("required_double_array_string_date-time")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDateMinusTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDateMinusTime[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDateTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDateTime(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDateMinusTime[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDateTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDateTime(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_duration\"" + ":")
+		e.FieldStart("required_double_array_string_duration")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDuration) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDuration[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDuration(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDuration(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDuration {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDuration[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDuration(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDuration(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_email\"" + ":")
+		e.FieldStart("required_double_array_string_email")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringEmail) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringEmail[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringEmail {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringEmail[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_hostname\"" + ":")
+		e.FieldStart("required_double_array_string_hostname")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringHostname) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringHostname[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringHostname {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringHostname[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ip\"" + ":")
+		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIP) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIP[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIP {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIP[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ipv4\"" + ":")
+		e.FieldStart("required_double_array_string_ipv4")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIpv4) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIpv4[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIpv4[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ipv6\"" + ":")
+		e.FieldStart("required_double_array_string_ipv6")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIpv6) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIpv6[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIpv6[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_password\"" + ":")
+		e.FieldStart("required_double_array_string_password")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringPassword) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringPassword[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringPassword {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringPassword[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_time\"" + ":")
+		e.FieldStart("required_double_array_string_time")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringTime[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeTime(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringTime[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeTime(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_uri\"" + ":")
+		e.FieldStart("required_double_array_string_uri")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringURI) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringURI[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeURI(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeURI(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringURI {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringURI[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeURI(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeURI(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_uuid\"" + ":")
+		e.FieldStart("required_double_array_string_uuid")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringUUID) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringUUID[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeUUID(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeUUID(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringUUID {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringUUID[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeUUID(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeUUID(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer\"" + ":")
+		e.FieldStart("required_integer")
 		e.Int(s.RequiredInteger)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer_int32\"" + ":")
+		e.FieldStart("required_integer_int32")
 		e.Int32(s.RequiredIntegerInt32)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer_int64\"" + ":")
+		e.FieldStart("required_integer_int64")
 		e.Int64(s.RequiredIntegerInt64)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number\"" + ":")
+		e.FieldStart("required_number")
 		e.Float64(s.RequiredNumber)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_double\"" + ":")
+		e.FieldStart("required_number_double")
 		e.Float64(s.RequiredNumberDouble)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_float\"" + ":")
+		e.FieldStart("required_number_float")
 		e.Float32(s.RequiredNumberFloat)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_int32\"" + ":")
+		e.FieldStart("required_number_int32")
 		e.Int32(s.RequiredNumberInt32)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_int64\"" + ":")
+		e.FieldStart("required_number_int64")
 		e.Int64(s.RequiredNumberInt64)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string\"" + ":")
+		e.FieldStart("required_string")
 		e.Str(s.RequiredString)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_binary\"" + ":")
+		e.FieldStart("required_string_binary")
 		e.Str(s.RequiredStringBinary)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_byte\"" + ":")
+		e.FieldStart("required_string_byte")
 		e.Base64(s.RequiredStringByte)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_date\"" + ":")
+		e.FieldStart("required_string_date")
 		json.EncodeDate(e, s.RequiredStringDate)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_date-time\"" + ":")
+		e.FieldStart("required_string_date-time")
 		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_duration\"" + ":")
+		e.FieldStart("required_string_duration")
 		json.EncodeDuration(e, s.RequiredStringDuration)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_email\"" + ":")
+		e.FieldStart("required_string_email")
 		e.Str(s.RequiredStringEmail)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_hostname\"" + ":")
+		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ip\"" + ":")
+		e.FieldStart("required_string_ip")
 		json.EncodeIP(e, s.RequiredStringIP)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ipv4\"" + ":")
+		e.FieldStart("required_string_ipv4")
 		json.EncodeIP(e, s.RequiredStringIpv4)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ipv6\"" + ":")
+		e.FieldStart("required_string_ipv6")
 		json.EncodeIP(e, s.RequiredStringIpv6)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_password\"" + ":")
+		e.FieldStart("required_string_password")
 		e.Str(s.RequiredStringPassword)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_time\"" + ":")
+		e.FieldStart("required_string_time")
 		json.EncodeTime(e, s.RequiredStringTime)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_uri\"" + ":")
+		e.FieldStart("required_string_uri")
 		json.EncodeURI(e, s.RequiredStringURI)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_uuid\"" + ":")
+		e.FieldStart("required_string_uuid")
 		json.EncodeUUID(e, s.RequiredStringUUID)
 	}
 	{
-		if len(s.OptionalAny) != 0 {
-			e.Comma()
-		}
 
 		if len(s.OptionalAny) != 0 {
-			e.RawStr("\"optional_any\"" + ":")
+			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
 		}
 	}
 	{
 		if s.OptionalArrayAny != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayAny != nil {
-			e.RawStr("\"optional_array_any\"" + ":")
+			e.FieldStart("optional_array_any")
 			e.ArrStart()
-			if len(s.OptionalArrayAny) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayAny[0]
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
-				}
-				for _, elem := range s.OptionalArrayAny[1:] {
-					e.Comma()
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
+			for _, elem := range s.OptionalArrayAny {
+				if len(elem) != 0 {
+					e.Raw(elem)
 				}
 			}
 			e.ArrEnd()
@@ -10164,1851 +7003,736 @@ func (s TestRequestRequiredFormatTestReq) Encode(e *jx.Writer) {
 	}
 	{
 		if s.OptionalArrayBoolean != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayBoolean != nil {
-			e.RawStr("\"optional_array_boolean\"" + ":")
+			e.FieldStart("optional_array_boolean")
 			e.ArrStart()
-			if len(s.OptionalArrayBoolean) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayBoolean[0]
-					e.Bool(elem)
-				}
-				for _, elem := range s.OptionalArrayBoolean[1:] {
-					e.Comma()
-					e.Bool(elem)
-				}
+			for _, elem := range s.OptionalArrayBoolean {
+				e.Bool(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayInteger != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayInteger != nil {
-			e.RawStr("\"optional_array_integer\"" + ":")
+			e.FieldStart("optional_array_integer")
 			e.ArrStart()
-			if len(s.OptionalArrayInteger) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayInteger[0]
-					e.Int(elem)
-				}
-				for _, elem := range s.OptionalArrayInteger[1:] {
-					e.Comma()
-					e.Int(elem)
-				}
+			for _, elem := range s.OptionalArrayInteger {
+				e.Int(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayIntegerInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayIntegerInt32 != nil {
-			e.RawStr("\"optional_array_integer_int32\"" + ":")
+			e.FieldStart("optional_array_integer_int32")
 			e.ArrStart()
-			if len(s.OptionalArrayIntegerInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayIntegerInt32[0]
-					e.Int32(elem)
-				}
-				for _, elem := range s.OptionalArrayIntegerInt32[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
+			for _, elem := range s.OptionalArrayIntegerInt32 {
+				e.Int32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayIntegerInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayIntegerInt64 != nil {
-			e.RawStr("\"optional_array_integer_int64\"" + ":")
+			e.FieldStart("optional_array_integer_int64")
 			e.ArrStart()
-			if len(s.OptionalArrayIntegerInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayIntegerInt64[0]
-					e.Int64(elem)
-				}
-				for _, elem := range s.OptionalArrayIntegerInt64[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
+			for _, elem := range s.OptionalArrayIntegerInt64 {
+				e.Int64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumber != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumber != nil {
-			e.RawStr("\"optional_array_number\"" + ":")
+			e.FieldStart("optional_array_number")
 			e.ArrStart()
-			if len(s.OptionalArrayNumber) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumber[0]
-					e.Float64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumber[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumber {
+				e.Float64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberDouble != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberDouble != nil {
-			e.RawStr("\"optional_array_number_double\"" + ":")
+			e.FieldStart("optional_array_number_double")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberDouble) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberDouble[0]
-					e.Float64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberDouble[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberDouble {
+				e.Float64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberFloat != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberFloat != nil {
-			e.RawStr("\"optional_array_number_float\"" + ":")
+			e.FieldStart("optional_array_number_float")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberFloat) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberFloat[0]
-					e.Float32(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberFloat[1:] {
-					e.Comma()
-					e.Float32(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberFloat {
+				e.Float32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberInt32 != nil {
-			e.RawStr("\"optional_array_number_int32\"" + ":")
+			e.FieldStart("optional_array_number_int32")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberInt32[0]
-					e.Int32(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberInt32[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberInt32 {
+				e.Int32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberInt64 != nil {
-			e.RawStr("\"optional_array_number_int64\"" + ":")
+			e.FieldStart("optional_array_number_int64")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberInt64[0]
-					e.Int64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberInt64[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberInt64 {
+				e.Int64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayString != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayString != nil {
-			e.RawStr("\"optional_array_string\"" + ":")
+			e.FieldStart("optional_array_string")
 			e.ArrStart()
-			if len(s.OptionalArrayString) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayString[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayString[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayString {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringBinary != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringBinary != nil {
-			e.RawStr("\"optional_array_string_binary\"" + ":")
+			e.FieldStart("optional_array_string_binary")
 			e.ArrStart()
-			if len(s.OptionalArrayStringBinary) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringBinary[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringBinary[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringBinary {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringByte != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringByte != nil {
-			e.RawStr("\"optional_array_string_byte\"" + ":")
+			e.FieldStart("optional_array_string_byte")
 			e.ArrStart()
-			if len(s.OptionalArrayStringByte) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringByte[0]
-					e.Base64(elem)
-				}
-				for _, elem := range s.OptionalArrayStringByte[1:] {
-					e.Comma()
-					e.Base64(elem)
-				}
+			for _, elem := range s.OptionalArrayStringByte {
+				e.Base64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDate != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDate != nil {
-			e.RawStr("\"optional_array_string_date\"" + ":")
+			e.FieldStart("optional_array_string_date")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDate) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDate[0]
-					json.EncodeDate(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDate[1:] {
-					e.Comma()
-					json.EncodeDate(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDate {
+				json.EncodeDate(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDateMinusTime != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDateMinusTime != nil {
-			e.RawStr("\"optional_array_string_date-time\"" + ":")
+			e.FieldStart("optional_array_string_date-time")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDateMinusTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDateMinusTime[0]
-					json.EncodeDateTime(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDateMinusTime[1:] {
-					e.Comma()
-					json.EncodeDateTime(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDateMinusTime {
+				json.EncodeDateTime(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDuration != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDuration != nil {
-			e.RawStr("\"optional_array_string_duration\"" + ":")
+			e.FieldStart("optional_array_string_duration")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDuration) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDuration[0]
-					json.EncodeDuration(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDuration[1:] {
-					e.Comma()
-					json.EncodeDuration(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDuration {
+				json.EncodeDuration(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringEmail != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringEmail != nil {
-			e.RawStr("\"optional_array_string_email\"" + ":")
+			e.FieldStart("optional_array_string_email")
 			e.ArrStart()
-			if len(s.OptionalArrayStringEmail) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringEmail[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringEmail[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringEmail {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringHostname != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringHostname != nil {
-			e.RawStr("\"optional_array_string_hostname\"" + ":")
+			e.FieldStart("optional_array_string_hostname")
 			e.ArrStart()
-			if len(s.OptionalArrayStringHostname) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringHostname[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringHostname[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringHostname {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIP != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIP != nil {
-			e.RawStr("\"optional_array_string_ip\"" + ":")
+			e.FieldStart("optional_array_string_ip")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIP) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIP[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIP[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIP {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIpv4 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIpv4 != nil {
-			e.RawStr("\"optional_array_string_ipv4\"" + ":")
+			e.FieldStart("optional_array_string_ipv4")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIpv4) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIpv4[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIpv4[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIpv4 {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIpv6 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIpv6 != nil {
-			e.RawStr("\"optional_array_string_ipv6\"" + ":")
+			e.FieldStart("optional_array_string_ipv6")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIpv6) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIpv6[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIpv6[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIpv6 {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringPassword != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringPassword != nil {
-			e.RawStr("\"optional_array_string_password\"" + ":")
+			e.FieldStart("optional_array_string_password")
 			e.ArrStart()
-			if len(s.OptionalArrayStringPassword) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringPassword[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringPassword[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringPassword {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringTime != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringTime != nil {
-			e.RawStr("\"optional_array_string_time\"" + ":")
+			e.FieldStart("optional_array_string_time")
 			e.ArrStart()
-			if len(s.OptionalArrayStringTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringTime[0]
-					json.EncodeTime(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringTime[1:] {
-					e.Comma()
-					json.EncodeTime(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringTime {
+				json.EncodeTime(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringURI != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringURI != nil {
-			e.RawStr("\"optional_array_string_uri\"" + ":")
+			e.FieldStart("optional_array_string_uri")
 			e.ArrStart()
-			if len(s.OptionalArrayStringURI) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringURI[0]
-					json.EncodeURI(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringURI[1:] {
-					e.Comma()
-					json.EncodeURI(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringURI {
+				json.EncodeURI(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringUUID != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringUUID != nil {
-			e.RawStr("\"optional_array_string_uuid\"" + ":")
+			e.FieldStart("optional_array_string_uuid")
 			e.ArrStart()
-			if len(s.OptionalArrayStringUUID) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringUUID[0]
-					json.EncodeUUID(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringUUID[1:] {
-					e.Comma()
-					json.EncodeUUID(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringUUID {
+				json.EncodeUUID(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalBoolean.Set {
-			e.Comma()
-		}
-		if s.OptionalBoolean.Set {
-			e.RawStr("\"optional_boolean\"" + ":")
+			e.FieldStart("optional_boolean")
 			s.OptionalBoolean.Encode(e)
 		}
 	}
 	{
 		if s.OptionalDoubleArrayAny != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayAny != nil {
-			e.RawStr("\"optional_double_array_any\"" + ":")
+			e.FieldStart("optional_double_array_any")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayAny) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayAny[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
+			for _, elem := range s.OptionalDoubleArrayAny {
+				e.ArrStart()
+				for _, elem := range elem {
+					if len(elem) != 0 {
+						e.Raw(elem)
 					}
-					e.ArrEnd()
 				}
-				for _, elem := range s.OptionalDoubleArrayAny[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayBoolean != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayBoolean != nil {
-			e.RawStr("\"optional_double_array_boolean\"" + ":")
+			e.FieldStart("optional_double_array_boolean")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayBoolean) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayBoolean[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Bool(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Bool(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayBoolean {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Bool(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayBoolean[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Bool(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Bool(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayInteger != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayInteger != nil {
-			e.RawStr("\"optional_double_array_integer\"" + ":")
+			e.FieldStart("optional_double_array_integer")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayInteger) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayInteger[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayInteger {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayInteger[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayIntegerInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayIntegerInt32 != nil {
-			e.RawStr("\"optional_double_array_integer_int32\"" + ":")
+			e.FieldStart("optional_double_array_integer_int32")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayIntegerInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayIntegerInt32[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayIntegerInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayIntegerInt32[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayIntegerInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayIntegerInt64 != nil {
-			e.RawStr("\"optional_double_array_integer_int64\"" + ":")
+			e.FieldStart("optional_double_array_integer_int64")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayIntegerInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayIntegerInt64[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayIntegerInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayIntegerInt64[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumber != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumber != nil {
-			e.RawStr("\"optional_double_array_number\"" + ":")
+			e.FieldStart("optional_double_array_number")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumber) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumber[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumber {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumber[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberDouble != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberDouble != nil {
-			e.RawStr("\"optional_double_array_number_double\"" + ":")
+			e.FieldStart("optional_double_array_number_double")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberDouble) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberDouble[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberDouble {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberDouble[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberFloat != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberFloat != nil {
-			e.RawStr("\"optional_double_array_number_float\"" + ":")
+			e.FieldStart("optional_double_array_number_float")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberFloat) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberFloat[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberFloat {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberFloat[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberInt32 != nil {
-			e.RawStr("\"optional_double_array_number_int32\"" + ":")
+			e.FieldStart("optional_double_array_number_int32")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberInt32[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberInt32[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberInt64 != nil {
-			e.RawStr("\"optional_double_array_number_int64\"" + ":")
+			e.FieldStart("optional_double_array_number_int64")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberInt64[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberInt64[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayString != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayString != nil {
-			e.RawStr("\"optional_double_array_string\"" + ":")
+			e.FieldStart("optional_double_array_string")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayString) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayString[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayString {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayString[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringBinary != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringBinary != nil {
-			e.RawStr("\"optional_double_array_string_binary\"" + ":")
+			e.FieldStart("optional_double_array_string_binary")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringBinary) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringBinary[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringBinary {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringBinary[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringByte != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringByte != nil {
-			e.RawStr("\"optional_double_array_string_byte\"" + ":")
+			e.FieldStart("optional_double_array_string_byte")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringByte) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringByte[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Base64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Base64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringByte {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Base64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringByte[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Base64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Base64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDate != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDate != nil {
-			e.RawStr("\"optional_double_array_string_date\"" + ":")
+			e.FieldStart("optional_double_array_string_date")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDate) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDate[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDate(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDate(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDate {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDate(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDate[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDate(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDate(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDateMinusTime != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDateMinusTime != nil {
-			e.RawStr("\"optional_double_array_string_date-time\"" + ":")
+			e.FieldStart("optional_double_array_string_date-time")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDateMinusTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDateMinusTime[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDateTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDateTime(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDateMinusTime {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDateTime(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDateMinusTime[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDateTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDateTime(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDuration != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDuration != nil {
-			e.RawStr("\"optional_double_array_string_duration\"" + ":")
+			e.FieldStart("optional_double_array_string_duration")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDuration) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDuration[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDuration(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDuration(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDuration {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDuration(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDuration[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDuration(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDuration(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringEmail != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringEmail != nil {
-			e.RawStr("\"optional_double_array_string_email\"" + ":")
+			e.FieldStart("optional_double_array_string_email")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringEmail) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringEmail[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringEmail {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringEmail[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringHostname != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringHostname != nil {
-			e.RawStr("\"optional_double_array_string_hostname\"" + ":")
+			e.FieldStart("optional_double_array_string_hostname")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringHostname) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringHostname[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringHostname {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringHostname[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIP != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIP != nil {
-			e.RawStr("\"optional_double_array_string_ip\"" + ":")
+			e.FieldStart("optional_double_array_string_ip")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIP) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIP[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIP {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIP[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIpv4 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIpv4 != nil {
-			e.RawStr("\"optional_double_array_string_ipv4\"" + ":")
+			e.FieldStart("optional_double_array_string_ipv4")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIpv4) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIpv4[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIpv4 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIpv4[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIpv6 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIpv6 != nil {
-			e.RawStr("\"optional_double_array_string_ipv6\"" + ":")
+			e.FieldStart("optional_double_array_string_ipv6")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIpv6) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIpv6[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIpv6 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIpv6[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringPassword != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringPassword != nil {
-			e.RawStr("\"optional_double_array_string_password\"" + ":")
+			e.FieldStart("optional_double_array_string_password")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringPassword) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringPassword[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringPassword {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringPassword[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringTime != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringTime != nil {
-			e.RawStr("\"optional_double_array_string_time\"" + ":")
+			e.FieldStart("optional_double_array_string_time")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringTime[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeTime(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringTime {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeTime(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringTime[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeTime(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringURI != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringURI != nil {
-			e.RawStr("\"optional_double_array_string_uri\"" + ":")
+			e.FieldStart("optional_double_array_string_uri")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringURI) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringURI[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeURI(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeURI(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringURI {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeURI(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringURI[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeURI(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeURI(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringUUID != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringUUID != nil {
-			e.RawStr("\"optional_double_array_string_uuid\"" + ":")
+			e.FieldStart("optional_double_array_string_uuid")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringUUID) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringUUID[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeUUID(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeUUID(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringUUID {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUUID(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringUUID[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeUUID(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeUUID(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalInteger.Set {
-			e.Comma()
-		}
-		if s.OptionalInteger.Set {
-			e.RawStr("\"optional_integer\"" + ":")
+			e.FieldStart("optional_integer")
 			s.OptionalInteger.Encode(e)
 		}
 	}
 	{
 		if s.OptionalIntegerInt32.Set {
-			e.Comma()
-		}
-		if s.OptionalIntegerInt32.Set {
-			e.RawStr("\"optional_integer_int32\"" + ":")
+			e.FieldStart("optional_integer_int32")
 			s.OptionalIntegerInt32.Encode(e)
 		}
 	}
 	{
 		if s.OptionalIntegerInt64.Set {
-			e.Comma()
-		}
-		if s.OptionalIntegerInt64.Set {
-			e.RawStr("\"optional_integer_int64\"" + ":")
+			e.FieldStart("optional_integer_int64")
 			s.OptionalIntegerInt64.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumber.Set {
-			e.Comma()
-		}
-		if s.OptionalNumber.Set {
-			e.RawStr("\"optional_number\"" + ":")
+			e.FieldStart("optional_number")
 			s.OptionalNumber.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberDouble.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberDouble.Set {
-			e.RawStr("\"optional_number_double\"" + ":")
+			e.FieldStart("optional_number_double")
 			s.OptionalNumberDouble.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberFloat.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberFloat.Set {
-			e.RawStr("\"optional_number_float\"" + ":")
+			e.FieldStart("optional_number_float")
 			s.OptionalNumberFloat.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberInt32.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberInt32.Set {
-			e.RawStr("\"optional_number_int32\"" + ":")
+			e.FieldStart("optional_number_int32")
 			s.OptionalNumberInt32.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberInt64.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberInt64.Set {
-			e.RawStr("\"optional_number_int64\"" + ":")
+			e.FieldStart("optional_number_int64")
 			s.OptionalNumberInt64.Encode(e)
 		}
 	}
 	{
 		if s.OptionalString.Set {
-			e.Comma()
-		}
-		if s.OptionalString.Set {
-			e.RawStr("\"optional_string\"" + ":")
+			e.FieldStart("optional_string")
 			s.OptionalString.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringBinary.Set {
-			e.Comma()
-		}
-		if s.OptionalStringBinary.Set {
-			e.RawStr("\"optional_string_binary\"" + ":")
+			e.FieldStart("optional_string_binary")
 			s.OptionalStringBinary.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"optional_string_byte\"" + ":")
+		e.FieldStart("optional_string_byte")
 		e.Base64(s.OptionalStringByte)
 	}
 	{
 		if s.OptionalStringDate.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDate.Set {
-			e.RawStr("\"optional_string_date\"" + ":")
+			e.FieldStart("optional_string_date")
 			s.OptionalStringDate.Encode(e, json.EncodeDate)
 		}
 	}
 	{
 		if s.OptionalStringDateMinusTime.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDateMinusTime.Set {
-			e.RawStr("\"optional_string_date-time\"" + ":")
+			e.FieldStart("optional_string_date-time")
 			s.OptionalStringDateMinusTime.Encode(e, json.EncodeDateTime)
 		}
 	}
 	{
 		if s.OptionalStringDuration.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDuration.Set {
-			e.RawStr("\"optional_string_duration\"" + ":")
+			e.FieldStart("optional_string_duration")
 			s.OptionalStringDuration.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringEmail.Set {
-			e.Comma()
-		}
-		if s.OptionalStringEmail.Set {
-			e.RawStr("\"optional_string_email\"" + ":")
+			e.FieldStart("optional_string_email")
 			s.OptionalStringEmail.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringHostname.Set {
-			e.Comma()
-		}
-		if s.OptionalStringHostname.Set {
-			e.RawStr("\"optional_string_hostname\"" + ":")
+			e.FieldStart("optional_string_hostname")
 			s.OptionalStringHostname.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIP.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIP.Set {
-			e.RawStr("\"optional_string_ip\"" + ":")
+			e.FieldStart("optional_string_ip")
 			s.OptionalStringIP.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIpv4.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIpv4.Set {
-			e.RawStr("\"optional_string_ipv4\"" + ":")
+			e.FieldStart("optional_string_ipv4")
 			s.OptionalStringIpv4.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIpv6.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIpv6.Set {
-			e.RawStr("\"optional_string_ipv6\"" + ":")
+			e.FieldStart("optional_string_ipv6")
 			s.OptionalStringIpv6.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringPassword.Set {
-			e.Comma()
-		}
-		if s.OptionalStringPassword.Set {
-			e.RawStr("\"optional_string_password\"" + ":")
+			e.FieldStart("optional_string_password")
 			s.OptionalStringPassword.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringTime.Set {
-			e.Comma()
-		}
-		if s.OptionalStringTime.Set {
-			e.RawStr("\"optional_string_time\"" + ":")
+			e.FieldStart("optional_string_time")
 			s.OptionalStringTime.Encode(e, json.EncodeTime)
 		}
 	}
 	{
 		if s.OptionalStringURI.Set {
-			e.Comma()
-		}
-		if s.OptionalStringURI.Set {
-			e.RawStr("\"optional_string_uri\"" + ":")
+			e.FieldStart("optional_string_uri")
 			s.OptionalStringURI.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringUUID.Set {
-			e.Comma()
-		}
-		if s.OptionalStringUUID.Set {
-			e.RawStr("\"optional_string_uuid\"" + ":")
+			e.FieldStart("optional_string_uuid")
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
@@ -15141,12 +10865,8 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestResponseEmptyStructOK) Encode(e *jx.Writer) {
+func (s TestResponseEmptyStructOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	e.ObjEnd()
 }
 
@@ -15172,1714 +10892,703 @@ func (s *TestResponseEmptyStructOK) Decode(d *jx.Decoder) error {
 }
 
 // Encode implements json.Marshaler.
-func (s TestResponseFormatTestOK) Encode(e *jx.Writer) {
+func (s TestResponseFormatTestOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	var (
-		first = true
-		_     = first
-	)
 	{
-		if len(s.RequiredAny) != 0 {
-			if !first {
-				e.Comma()
-			}
-			first = false
-		}
 
 		if len(s.RequiredAny) != 0 {
-			e.RawStr("\"required_any\"" + ":")
+			e.FieldStart("required_any")
 			e.Raw(s.RequiredAny)
 		}
 	}
 	{
-		if !first {
-			e.Comma()
-		}
-		first = false
 
-		e.RawStr("\"required_array_any\"" + ":")
+		e.FieldStart("required_array_any")
 		e.ArrStart()
-		if len(s.RequiredArrayAny) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayAny[0]
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
-			}
-			for _, elem := range s.RequiredArrayAny[1:] {
-				e.Comma()
-				if len(elem) != 0 {
-					e.Raw(elem)
-				}
+		for _, elem := range s.RequiredArrayAny {
+			if len(elem) != 0 {
+				e.Raw(elem)
 			}
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_boolean\"" + ":")
+		e.FieldStart("required_array_boolean")
 		e.ArrStart()
-		if len(s.RequiredArrayBoolean) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayBoolean[0]
-				e.Bool(elem)
-			}
-			for _, elem := range s.RequiredArrayBoolean[1:] {
-				e.Comma()
-				e.Bool(elem)
-			}
+		for _, elem := range s.RequiredArrayBoolean {
+			e.Bool(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer\"" + ":")
+		e.FieldStart("required_array_integer")
 		e.ArrStart()
-		if len(s.RequiredArrayInteger) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayInteger[0]
-				e.Int(elem)
-			}
-			for _, elem := range s.RequiredArrayInteger[1:] {
-				e.Comma()
-				e.Int(elem)
-			}
+		for _, elem := range s.RequiredArrayInteger {
+			e.Int(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer_int32\"" + ":")
+		e.FieldStart("required_array_integer_int32")
 		e.ArrStart()
-		if len(s.RequiredArrayIntegerInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayIntegerInt32[0]
-				e.Int32(elem)
-			}
-			for _, elem := range s.RequiredArrayIntegerInt32[1:] {
-				e.Comma()
-				e.Int32(elem)
-			}
+		for _, elem := range s.RequiredArrayIntegerInt32 {
+			e.Int32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_integer_int64\"" + ":")
+		e.FieldStart("required_array_integer_int64")
 		e.ArrStart()
-		if len(s.RequiredArrayIntegerInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayIntegerInt64[0]
-				e.Int64(elem)
-			}
-			for _, elem := range s.RequiredArrayIntegerInt64[1:] {
-				e.Comma()
-				e.Int64(elem)
-			}
+		for _, elem := range s.RequiredArrayIntegerInt64 {
+			e.Int64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number\"" + ":")
+		e.FieldStart("required_array_number")
 		e.ArrStart()
-		if len(s.RequiredArrayNumber) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumber[0]
-				e.Float64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumber[1:] {
-				e.Comma()
-				e.Float64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumber {
+			e.Float64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_double\"" + ":")
+		e.FieldStart("required_array_number_double")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberDouble) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberDouble[0]
-				e.Float64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberDouble[1:] {
-				e.Comma()
-				e.Float64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberDouble {
+			e.Float64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_float\"" + ":")
+		e.FieldStart("required_array_number_float")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberFloat) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberFloat[0]
-				e.Float32(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberFloat[1:] {
-				e.Comma()
-				e.Float32(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberFloat {
+			e.Float32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_int32\"" + ":")
+		e.FieldStart("required_array_number_int32")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberInt32[0]
-				e.Int32(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberInt32[1:] {
-				e.Comma()
-				e.Int32(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberInt32 {
+			e.Int32(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_number_int64\"" + ":")
+		e.FieldStart("required_array_number_int64")
 		e.ArrStart()
-		if len(s.RequiredArrayNumberInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayNumberInt64[0]
-				e.Int64(elem)
-			}
-			for _, elem := range s.RequiredArrayNumberInt64[1:] {
-				e.Comma()
-				e.Int64(elem)
-			}
+		for _, elem := range s.RequiredArrayNumberInt64 {
+			e.Int64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string\"" + ":")
+		e.FieldStart("required_array_string")
 		e.ArrStart()
-		if len(s.RequiredArrayString) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayString[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayString[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayString {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_binary\"" + ":")
+		e.FieldStart("required_array_string_binary")
 		e.ArrStart()
-		if len(s.RequiredArrayStringBinary) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringBinary[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringBinary[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringBinary {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_byte\"" + ":")
+		e.FieldStart("required_array_string_byte")
 		e.ArrStart()
-		if len(s.RequiredArrayStringByte) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringByte[0]
-				e.Base64(elem)
-			}
-			for _, elem := range s.RequiredArrayStringByte[1:] {
-				e.Comma()
-				e.Base64(elem)
-			}
+		for _, elem := range s.RequiredArrayStringByte {
+			e.Base64(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_date\"" + ":")
+		e.FieldStart("required_array_string_date")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDate) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDate[0]
-				json.EncodeDate(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDate[1:] {
-				e.Comma()
-				json.EncodeDate(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDate {
+			json.EncodeDate(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_date-time\"" + ":")
+		e.FieldStart("required_array_string_date-time")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDateMinusTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDateMinusTime[0]
-				json.EncodeDateTime(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDateMinusTime[1:] {
-				e.Comma()
-				json.EncodeDateTime(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDateMinusTime {
+			json.EncodeDateTime(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_duration\"" + ":")
+		e.FieldStart("required_array_string_duration")
 		e.ArrStart()
-		if len(s.RequiredArrayStringDuration) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringDuration[0]
-				json.EncodeDuration(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringDuration[1:] {
-				e.Comma()
-				json.EncodeDuration(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringDuration {
+			json.EncodeDuration(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_email\"" + ":")
+		e.FieldStart("required_array_string_email")
 		e.ArrStart()
-		if len(s.RequiredArrayStringEmail) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringEmail[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringEmail[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringEmail {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_hostname\"" + ":")
+		e.FieldStart("required_array_string_hostname")
 		e.ArrStart()
-		if len(s.RequiredArrayStringHostname) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringHostname[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringHostname[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringHostname {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ip\"" + ":")
+		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIP) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIP[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIP[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIP {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ipv4\"" + ":")
+		e.FieldStart("required_array_string_ipv4")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIpv4) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIpv4[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIpv4[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIpv4 {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_ipv6\"" + ":")
+		e.FieldStart("required_array_string_ipv6")
 		e.ArrStart()
-		if len(s.RequiredArrayStringIpv6) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringIpv6[0]
-				json.EncodeIP(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringIpv6[1:] {
-				e.Comma()
-				json.EncodeIP(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringIpv6 {
+			json.EncodeIP(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_password\"" + ":")
+		e.FieldStart("required_array_string_password")
 		e.ArrStart()
-		if len(s.RequiredArrayStringPassword) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringPassword[0]
-				e.Str(elem)
-			}
-			for _, elem := range s.RequiredArrayStringPassword[1:] {
-				e.Comma()
-				e.Str(elem)
-			}
+		for _, elem := range s.RequiredArrayStringPassword {
+			e.Str(elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_time\"" + ":")
+		e.FieldStart("required_array_string_time")
 		e.ArrStart()
-		if len(s.RequiredArrayStringTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringTime[0]
-				json.EncodeTime(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringTime[1:] {
-				e.Comma()
-				json.EncodeTime(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringTime {
+			json.EncodeTime(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_uri\"" + ":")
+		e.FieldStart("required_array_string_uri")
 		e.ArrStart()
-		if len(s.RequiredArrayStringURI) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringURI[0]
-				json.EncodeURI(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringURI[1:] {
-				e.Comma()
-				json.EncodeURI(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringURI {
+			json.EncodeURI(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_array_string_uuid\"" + ":")
+		e.FieldStart("required_array_string_uuid")
 		e.ArrStart()
-		if len(s.RequiredArrayStringUUID) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredArrayStringUUID[0]
-				json.EncodeUUID(e, elem)
-			}
-			for _, elem := range s.RequiredArrayStringUUID[1:] {
-				e.Comma()
-				json.EncodeUUID(e, elem)
-			}
+		for _, elem := range s.RequiredArrayStringUUID {
+			json.EncodeUUID(e, elem)
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_boolean\"" + ":")
+		e.FieldStart("required_boolean")
 		e.Bool(s.RequiredBoolean)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_any\"" + ":")
+		e.FieldStart("required_double_array_any")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayAny) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayAny[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
+		for _, elem := range s.RequiredDoubleArrayAny {
+			e.ArrStart()
+			for _, elem := range elem {
+				if len(elem) != 0 {
+					e.Raw(elem)
 				}
-				e.ArrEnd()
 			}
-			for _, elem := range s.RequiredDoubleArrayAny[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						if len(elem) != 0 {
-							e.Raw(elem)
-						}
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_boolean\"" + ":")
+		e.FieldStart("required_double_array_boolean")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayBoolean) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayBoolean[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Bool(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Bool(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayBoolean {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Bool(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayBoolean[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Bool(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Bool(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer\"" + ":")
+		e.FieldStart("required_double_array_integer")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayInteger) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayInteger[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayInteger {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayInteger[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer_int32\"" + ":")
+		e.FieldStart("required_double_array_integer_int32")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayIntegerInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayIntegerInt32[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayIntegerInt32[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_integer_int64\"" + ":")
+		e.FieldStart("required_double_array_integer_int64")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayIntegerInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayIntegerInt64[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayIntegerInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayIntegerInt64[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number\"" + ":")
+		e.FieldStart("required_double_array_number")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumber) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumber[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumber {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumber[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_double\"" + ":")
+		e.FieldStart("required_double_array_number_double")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberDouble) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberDouble[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberDouble {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberDouble[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_float\"" + ":")
+		e.FieldStart("required_double_array_number_float")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberFloat) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberFloat[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberFloat {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Float32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberFloat[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Float32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Float32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_int32\"" + ":")
+		e.FieldStart("required_double_array_number_int32")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberInt32) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberInt32[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int32(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberInt32[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int32(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int32(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_number_int64\"" + ":")
+		e.FieldStart("required_double_array_number_int64")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayNumberInt64) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayNumberInt64[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayNumberInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Int64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayNumberInt64[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Int64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Int64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string\"" + ":")
+		e.FieldStart("required_double_array_string")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayString) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayString[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayString {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayString[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_binary\"" + ":")
+		e.FieldStart("required_double_array_string_binary")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringBinary) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringBinary[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringBinary {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringBinary[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_byte\"" + ":")
+		e.FieldStart("required_double_array_string_byte")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringByte) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringByte[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Base64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Base64(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringByte {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Base64(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringByte[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Base64(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Base64(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_date\"" + ":")
+		e.FieldStart("required_double_array_string_date")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDate) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDate[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDate(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDate(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDate {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDate(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDate[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDate(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDate(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_date-time\"" + ":")
+		e.FieldStart("required_double_array_string_date-time")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDateMinusTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDateMinusTime[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDateTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDateTime(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDateMinusTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDateTime(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDateMinusTime[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDateTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDateTime(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_duration\"" + ":")
+		e.FieldStart("required_double_array_string_duration")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringDuration) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringDuration[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDuration(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDuration(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringDuration {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeDuration(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringDuration[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeDuration(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeDuration(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_email\"" + ":")
+		e.FieldStart("required_double_array_string_email")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringEmail) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringEmail[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringEmail {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringEmail[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_hostname\"" + ":")
+		e.FieldStart("required_double_array_string_hostname")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringHostname) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringHostname[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringHostname {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringHostname[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ip\"" + ":")
+		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIP) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIP[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIP {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIP[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ipv4\"" + ":")
+		e.FieldStart("required_double_array_string_ipv4")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIpv4) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIpv4[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIpv4 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIpv4[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_ipv6\"" + ":")
+		e.FieldStart("required_double_array_string_ipv6")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringIpv6) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringIpv6[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringIpv6 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeIP(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringIpv6[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeIP(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeIP(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_password\"" + ":")
+		e.FieldStart("required_double_array_string_password")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringPassword) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringPassword[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringPassword {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.Str(elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringPassword[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						e.Str(elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						e.Str(elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_time\"" + ":")
+		e.FieldStart("required_double_array_string_time")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringTime) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringTime[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeTime(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringTime {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeTime(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringTime[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeTime(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeTime(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_uri\"" + ":")
+		e.FieldStart("required_double_array_string_uri")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringURI) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringURI[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeURI(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeURI(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringURI {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeURI(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringURI[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeURI(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeURI(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_double_array_string_uuid\"" + ":")
+		e.FieldStart("required_double_array_string_uuid")
 		e.ArrStart()
-		if len(s.RequiredDoubleArrayStringUUID) >= 1 {
-			// Encode first element without comma.
-			{
-				elem := s.RequiredDoubleArrayStringUUID[0]
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeUUID(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeUUID(e, elem)
-					}
-				}
-				e.ArrEnd()
+		for _, elem := range s.RequiredDoubleArrayStringUUID {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUUID(e, elem)
 			}
-			for _, elem := range s.RequiredDoubleArrayStringUUID[1:] {
-				e.Comma()
-				e.ArrStart()
-				if len(elem) >= 1 {
-					// Encode first element without comma.
-					{
-						elem := elem[0]
-						json.EncodeUUID(e, elem)
-					}
-					for _, elem := range elem[1:] {
-						e.Comma()
-						json.EncodeUUID(e, elem)
-					}
-				}
-				e.ArrEnd()
-			}
+			e.ArrEnd()
 		}
 		e.ArrEnd()
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer\"" + ":")
+		e.FieldStart("required_integer")
 		e.Int(s.RequiredInteger)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer_int32\"" + ":")
+		e.FieldStart("required_integer_int32")
 		e.Int32(s.RequiredIntegerInt32)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_integer_int64\"" + ":")
+		e.FieldStart("required_integer_int64")
 		e.Int64(s.RequiredIntegerInt64)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number\"" + ":")
+		e.FieldStart("required_number")
 		e.Float64(s.RequiredNumber)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_double\"" + ":")
+		e.FieldStart("required_number_double")
 		e.Float64(s.RequiredNumberDouble)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_float\"" + ":")
+		e.FieldStart("required_number_float")
 		e.Float32(s.RequiredNumberFloat)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_int32\"" + ":")
+		e.FieldStart("required_number_int32")
 		e.Int32(s.RequiredNumberInt32)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_number_int64\"" + ":")
+		e.FieldStart("required_number_int64")
 		e.Int64(s.RequiredNumberInt64)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string\"" + ":")
+		e.FieldStart("required_string")
 		e.Str(s.RequiredString)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_binary\"" + ":")
+		e.FieldStart("required_string_binary")
 		e.Str(s.RequiredStringBinary)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_byte\"" + ":")
+		e.FieldStart("required_string_byte")
 		e.Base64(s.RequiredStringByte)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_date\"" + ":")
+		e.FieldStart("required_string_date")
 		json.EncodeDate(e, s.RequiredStringDate)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_date-time\"" + ":")
+		e.FieldStart("required_string_date-time")
 		json.EncodeDateTime(e, s.RequiredStringDateMinusTime)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_duration\"" + ":")
+		e.FieldStart("required_string_duration")
 		json.EncodeDuration(e, s.RequiredStringDuration)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_email\"" + ":")
+		e.FieldStart("required_string_email")
 		e.Str(s.RequiredStringEmail)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_hostname\"" + ":")
+		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ip\"" + ":")
+		e.FieldStart("required_string_ip")
 		json.EncodeIP(e, s.RequiredStringIP)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ipv4\"" + ":")
+		e.FieldStart("required_string_ipv4")
 		json.EncodeIP(e, s.RequiredStringIpv4)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_ipv6\"" + ":")
+		e.FieldStart("required_string_ipv6")
 		json.EncodeIP(e, s.RequiredStringIpv6)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_password\"" + ":")
+		e.FieldStart("required_string_password")
 		e.Str(s.RequiredStringPassword)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_time\"" + ":")
+		e.FieldStart("required_string_time")
 		json.EncodeTime(e, s.RequiredStringTime)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_uri\"" + ":")
+		e.FieldStart("required_string_uri")
 		json.EncodeURI(e, s.RequiredStringURI)
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"required_string_uuid\"" + ":")
+		e.FieldStart("required_string_uuid")
 		json.EncodeUUID(e, s.RequiredStringUUID)
 	}
 	{
-		if len(s.OptionalAny) != 0 {
-			e.Comma()
-		}
 
 		if len(s.OptionalAny) != 0 {
-			e.RawStr("\"optional_any\"" + ":")
+			e.FieldStart("optional_any")
 			e.Raw(s.OptionalAny)
 		}
 	}
 	{
 		if s.OptionalArrayAny != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayAny != nil {
-			e.RawStr("\"optional_array_any\"" + ":")
+			e.FieldStart("optional_array_any")
 			e.ArrStart()
-			if len(s.OptionalArrayAny) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayAny[0]
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
-				}
-				for _, elem := range s.OptionalArrayAny[1:] {
-					e.Comma()
-					if len(elem) != 0 {
-						e.Raw(elem)
-					}
+			for _, elem := range s.OptionalArrayAny {
+				if len(elem) != 0 {
+					e.Raw(elem)
 				}
 			}
 			e.ArrEnd()
@@ -16887,1851 +11596,736 @@ func (s TestResponseFormatTestOK) Encode(e *jx.Writer) {
 	}
 	{
 		if s.OptionalArrayBoolean != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayBoolean != nil {
-			e.RawStr("\"optional_array_boolean\"" + ":")
+			e.FieldStart("optional_array_boolean")
 			e.ArrStart()
-			if len(s.OptionalArrayBoolean) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayBoolean[0]
-					e.Bool(elem)
-				}
-				for _, elem := range s.OptionalArrayBoolean[1:] {
-					e.Comma()
-					e.Bool(elem)
-				}
+			for _, elem := range s.OptionalArrayBoolean {
+				e.Bool(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayInteger != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayInteger != nil {
-			e.RawStr("\"optional_array_integer\"" + ":")
+			e.FieldStart("optional_array_integer")
 			e.ArrStart()
-			if len(s.OptionalArrayInteger) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayInteger[0]
-					e.Int(elem)
-				}
-				for _, elem := range s.OptionalArrayInteger[1:] {
-					e.Comma()
-					e.Int(elem)
-				}
+			for _, elem := range s.OptionalArrayInteger {
+				e.Int(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayIntegerInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayIntegerInt32 != nil {
-			e.RawStr("\"optional_array_integer_int32\"" + ":")
+			e.FieldStart("optional_array_integer_int32")
 			e.ArrStart()
-			if len(s.OptionalArrayIntegerInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayIntegerInt32[0]
-					e.Int32(elem)
-				}
-				for _, elem := range s.OptionalArrayIntegerInt32[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
+			for _, elem := range s.OptionalArrayIntegerInt32 {
+				e.Int32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayIntegerInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayIntegerInt64 != nil {
-			e.RawStr("\"optional_array_integer_int64\"" + ":")
+			e.FieldStart("optional_array_integer_int64")
 			e.ArrStart()
-			if len(s.OptionalArrayIntegerInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayIntegerInt64[0]
-					e.Int64(elem)
-				}
-				for _, elem := range s.OptionalArrayIntegerInt64[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
+			for _, elem := range s.OptionalArrayIntegerInt64 {
+				e.Int64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumber != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumber != nil {
-			e.RawStr("\"optional_array_number\"" + ":")
+			e.FieldStart("optional_array_number")
 			e.ArrStart()
-			if len(s.OptionalArrayNumber) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumber[0]
-					e.Float64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumber[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumber {
+				e.Float64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberDouble != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberDouble != nil {
-			e.RawStr("\"optional_array_number_double\"" + ":")
+			e.FieldStart("optional_array_number_double")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberDouble) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberDouble[0]
-					e.Float64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberDouble[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberDouble {
+				e.Float64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberFloat != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberFloat != nil {
-			e.RawStr("\"optional_array_number_float\"" + ":")
+			e.FieldStart("optional_array_number_float")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberFloat) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberFloat[0]
-					e.Float32(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberFloat[1:] {
-					e.Comma()
-					e.Float32(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberFloat {
+				e.Float32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberInt32 != nil {
-			e.RawStr("\"optional_array_number_int32\"" + ":")
+			e.FieldStart("optional_array_number_int32")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberInt32[0]
-					e.Int32(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberInt32[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberInt32 {
+				e.Int32(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayNumberInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayNumberInt64 != nil {
-			e.RawStr("\"optional_array_number_int64\"" + ":")
+			e.FieldStart("optional_array_number_int64")
 			e.ArrStart()
-			if len(s.OptionalArrayNumberInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayNumberInt64[0]
-					e.Int64(elem)
-				}
-				for _, elem := range s.OptionalArrayNumberInt64[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
+			for _, elem := range s.OptionalArrayNumberInt64 {
+				e.Int64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayString != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayString != nil {
-			e.RawStr("\"optional_array_string\"" + ":")
+			e.FieldStart("optional_array_string")
 			e.ArrStart()
-			if len(s.OptionalArrayString) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayString[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayString[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayString {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringBinary != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringBinary != nil {
-			e.RawStr("\"optional_array_string_binary\"" + ":")
+			e.FieldStart("optional_array_string_binary")
 			e.ArrStart()
-			if len(s.OptionalArrayStringBinary) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringBinary[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringBinary[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringBinary {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringByte != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringByte != nil {
-			e.RawStr("\"optional_array_string_byte\"" + ":")
+			e.FieldStart("optional_array_string_byte")
 			e.ArrStart()
-			if len(s.OptionalArrayStringByte) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringByte[0]
-					e.Base64(elem)
-				}
-				for _, elem := range s.OptionalArrayStringByte[1:] {
-					e.Comma()
-					e.Base64(elem)
-				}
+			for _, elem := range s.OptionalArrayStringByte {
+				e.Base64(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDate != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDate != nil {
-			e.RawStr("\"optional_array_string_date\"" + ":")
+			e.FieldStart("optional_array_string_date")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDate) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDate[0]
-					json.EncodeDate(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDate[1:] {
-					e.Comma()
-					json.EncodeDate(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDate {
+				json.EncodeDate(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDateMinusTime != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDateMinusTime != nil {
-			e.RawStr("\"optional_array_string_date-time\"" + ":")
+			e.FieldStart("optional_array_string_date-time")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDateMinusTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDateMinusTime[0]
-					json.EncodeDateTime(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDateMinusTime[1:] {
-					e.Comma()
-					json.EncodeDateTime(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDateMinusTime {
+				json.EncodeDateTime(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringDuration != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringDuration != nil {
-			e.RawStr("\"optional_array_string_duration\"" + ":")
+			e.FieldStart("optional_array_string_duration")
 			e.ArrStart()
-			if len(s.OptionalArrayStringDuration) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringDuration[0]
-					json.EncodeDuration(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringDuration[1:] {
-					e.Comma()
-					json.EncodeDuration(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringDuration {
+				json.EncodeDuration(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringEmail != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringEmail != nil {
-			e.RawStr("\"optional_array_string_email\"" + ":")
+			e.FieldStart("optional_array_string_email")
 			e.ArrStart()
-			if len(s.OptionalArrayStringEmail) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringEmail[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringEmail[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringEmail {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringHostname != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringHostname != nil {
-			e.RawStr("\"optional_array_string_hostname\"" + ":")
+			e.FieldStart("optional_array_string_hostname")
 			e.ArrStart()
-			if len(s.OptionalArrayStringHostname) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringHostname[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringHostname[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringHostname {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIP != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIP != nil {
-			e.RawStr("\"optional_array_string_ip\"" + ":")
+			e.FieldStart("optional_array_string_ip")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIP) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIP[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIP[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIP {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIpv4 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIpv4 != nil {
-			e.RawStr("\"optional_array_string_ipv4\"" + ":")
+			e.FieldStart("optional_array_string_ipv4")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIpv4) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIpv4[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIpv4[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIpv4 {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringIpv6 != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringIpv6 != nil {
-			e.RawStr("\"optional_array_string_ipv6\"" + ":")
+			e.FieldStart("optional_array_string_ipv6")
 			e.ArrStart()
-			if len(s.OptionalArrayStringIpv6) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringIpv6[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringIpv6[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringIpv6 {
+				json.EncodeIP(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringPassword != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringPassword != nil {
-			e.RawStr("\"optional_array_string_password\"" + ":")
+			e.FieldStart("optional_array_string_password")
 			e.ArrStart()
-			if len(s.OptionalArrayStringPassword) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringPassword[0]
-					e.Str(elem)
-				}
-				for _, elem := range s.OptionalArrayStringPassword[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
+			for _, elem := range s.OptionalArrayStringPassword {
+				e.Str(elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringTime != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringTime != nil {
-			e.RawStr("\"optional_array_string_time\"" + ":")
+			e.FieldStart("optional_array_string_time")
 			e.ArrStart()
-			if len(s.OptionalArrayStringTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringTime[0]
-					json.EncodeTime(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringTime[1:] {
-					e.Comma()
-					json.EncodeTime(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringTime {
+				json.EncodeTime(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringURI != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringURI != nil {
-			e.RawStr("\"optional_array_string_uri\"" + ":")
+			e.FieldStart("optional_array_string_uri")
 			e.ArrStart()
-			if len(s.OptionalArrayStringURI) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringURI[0]
-					json.EncodeURI(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringURI[1:] {
-					e.Comma()
-					json.EncodeURI(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringURI {
+				json.EncodeURI(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalArrayStringUUID != nil {
-			e.Comma()
-		}
-		if s.OptionalArrayStringUUID != nil {
-			e.RawStr("\"optional_array_string_uuid\"" + ":")
+			e.FieldStart("optional_array_string_uuid")
 			e.ArrStart()
-			if len(s.OptionalArrayStringUUID) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalArrayStringUUID[0]
-					json.EncodeUUID(e, elem)
-				}
-				for _, elem := range s.OptionalArrayStringUUID[1:] {
-					e.Comma()
-					json.EncodeUUID(e, elem)
-				}
+			for _, elem := range s.OptionalArrayStringUUID {
+				json.EncodeUUID(e, elem)
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalBoolean.Set {
-			e.Comma()
-		}
-		if s.OptionalBoolean.Set {
-			e.RawStr("\"optional_boolean\"" + ":")
+			e.FieldStart("optional_boolean")
 			s.OptionalBoolean.Encode(e)
 		}
 	}
 	{
 		if s.OptionalDoubleArrayAny != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayAny != nil {
-			e.RawStr("\"optional_double_array_any\"" + ":")
+			e.FieldStart("optional_double_array_any")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayAny) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayAny[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
+			for _, elem := range s.OptionalDoubleArrayAny {
+				e.ArrStart()
+				for _, elem := range elem {
+					if len(elem) != 0 {
+						e.Raw(elem)
 					}
-					e.ArrEnd()
 				}
-				for _, elem := range s.OptionalDoubleArrayAny[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							if len(elem) != 0 {
-								e.Raw(elem)
-							}
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayBoolean != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayBoolean != nil {
-			e.RawStr("\"optional_double_array_boolean\"" + ":")
+			e.FieldStart("optional_double_array_boolean")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayBoolean) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayBoolean[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Bool(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Bool(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayBoolean {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Bool(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayBoolean[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Bool(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Bool(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayInteger != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayInteger != nil {
-			e.RawStr("\"optional_double_array_integer\"" + ":")
+			e.FieldStart("optional_double_array_integer")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayInteger) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayInteger[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayInteger {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayInteger[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayIntegerInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayIntegerInt32 != nil {
-			e.RawStr("\"optional_double_array_integer_int32\"" + ":")
+			e.FieldStart("optional_double_array_integer_int32")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayIntegerInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayIntegerInt32[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayIntegerInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayIntegerInt32[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayIntegerInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayIntegerInt64 != nil {
-			e.RawStr("\"optional_double_array_integer_int64\"" + ":")
+			e.FieldStart("optional_double_array_integer_int64")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayIntegerInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayIntegerInt64[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayIntegerInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayIntegerInt64[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumber != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumber != nil {
-			e.RawStr("\"optional_double_array_number\"" + ":")
+			e.FieldStart("optional_double_array_number")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumber) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumber[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumber {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumber[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberDouble != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberDouble != nil {
-			e.RawStr("\"optional_double_array_number_double\"" + ":")
+			e.FieldStart("optional_double_array_number_double")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberDouble) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberDouble[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberDouble {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberDouble[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberFloat != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberFloat != nil {
-			e.RawStr("\"optional_double_array_number_float\"" + ":")
+			e.FieldStart("optional_double_array_number_float")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberFloat) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberFloat[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberFloat {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Float32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberFloat[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Float32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Float32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberInt32 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberInt32 != nil {
-			e.RawStr("\"optional_double_array_number_int32\"" + ":")
+			e.FieldStart("optional_double_array_number_int32")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberInt32) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberInt32[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int32(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberInt32[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int32(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int32(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayNumberInt64 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayNumberInt64 != nil {
-			e.RawStr("\"optional_double_array_number_int64\"" + ":")
+			e.FieldStart("optional_double_array_number_int64")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayNumberInt64) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayNumberInt64[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayNumberInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Int64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayNumberInt64[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Int64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Int64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayString != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayString != nil {
-			e.RawStr("\"optional_double_array_string\"" + ":")
+			e.FieldStart("optional_double_array_string")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayString) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayString[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayString {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayString[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringBinary != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringBinary != nil {
-			e.RawStr("\"optional_double_array_string_binary\"" + ":")
+			e.FieldStart("optional_double_array_string_binary")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringBinary) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringBinary[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringBinary {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringBinary[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringByte != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringByte != nil {
-			e.RawStr("\"optional_double_array_string_byte\"" + ":")
+			e.FieldStart("optional_double_array_string_byte")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringByte) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringByte[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Base64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Base64(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringByte {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Base64(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringByte[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Base64(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Base64(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDate != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDate != nil {
-			e.RawStr("\"optional_double_array_string_date\"" + ":")
+			e.FieldStart("optional_double_array_string_date")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDate) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDate[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDate(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDate(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDate {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDate(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDate[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDate(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDate(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDateMinusTime != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDateMinusTime != nil {
-			e.RawStr("\"optional_double_array_string_date-time\"" + ":")
+			e.FieldStart("optional_double_array_string_date-time")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDateMinusTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDateMinusTime[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDateTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDateTime(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDateMinusTime {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDateTime(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDateMinusTime[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDateTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDateTime(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringDuration != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringDuration != nil {
-			e.RawStr("\"optional_double_array_string_duration\"" + ":")
+			e.FieldStart("optional_double_array_string_duration")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringDuration) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringDuration[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDuration(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDuration(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringDuration {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeDuration(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringDuration[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeDuration(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeDuration(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringEmail != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringEmail != nil {
-			e.RawStr("\"optional_double_array_string_email\"" + ":")
+			e.FieldStart("optional_double_array_string_email")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringEmail) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringEmail[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringEmail {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringEmail[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringHostname != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringHostname != nil {
-			e.RawStr("\"optional_double_array_string_hostname\"" + ":")
+			e.FieldStart("optional_double_array_string_hostname")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringHostname) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringHostname[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringHostname {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringHostname[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIP != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIP != nil {
-			e.RawStr("\"optional_double_array_string_ip\"" + ":")
+			e.FieldStart("optional_double_array_string_ip")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIP) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIP[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIP {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIP[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIpv4 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIpv4 != nil {
-			e.RawStr("\"optional_double_array_string_ipv4\"" + ":")
+			e.FieldStart("optional_double_array_string_ipv4")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIpv4) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIpv4[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIpv4 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIpv4[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringIpv6 != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringIpv6 != nil {
-			e.RawStr("\"optional_double_array_string_ipv6\"" + ":")
+			e.FieldStart("optional_double_array_string_ipv6")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringIpv6) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringIpv6[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringIpv6 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeIP(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringIpv6[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeIP(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeIP(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringPassword != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringPassword != nil {
-			e.RawStr("\"optional_double_array_string_password\"" + ":")
+			e.FieldStart("optional_double_array_string_password")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringPassword) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringPassword[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringPassword {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.Str(elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringPassword[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							e.Str(elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							e.Str(elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringTime != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringTime != nil {
-			e.RawStr("\"optional_double_array_string_time\"" + ":")
+			e.FieldStart("optional_double_array_string_time")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringTime) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringTime[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeTime(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringTime {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeTime(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringTime[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeTime(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeTime(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringURI != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringURI != nil {
-			e.RawStr("\"optional_double_array_string_uri\"" + ":")
+			e.FieldStart("optional_double_array_string_uri")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringURI) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringURI[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeURI(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeURI(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringURI {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeURI(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringURI[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeURI(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeURI(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalDoubleArrayStringUUID != nil {
-			e.Comma()
-		}
-		if s.OptionalDoubleArrayStringUUID != nil {
-			e.RawStr("\"optional_double_array_string_uuid\"" + ":")
+			e.FieldStart("optional_double_array_string_uuid")
 			e.ArrStart()
-			if len(s.OptionalDoubleArrayStringUUID) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := s.OptionalDoubleArrayStringUUID[0]
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeUUID(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeUUID(e, elem)
-						}
-					}
-					e.ArrEnd()
+			for _, elem := range s.OptionalDoubleArrayStringUUID {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeUUID(e, elem)
 				}
-				for _, elem := range s.OptionalDoubleArrayStringUUID[1:] {
-					e.Comma()
-					e.ArrStart()
-					if len(elem) >= 1 {
-						// Encode first element without comma.
-						{
-							elem := elem[0]
-							json.EncodeUUID(e, elem)
-						}
-						for _, elem := range elem[1:] {
-							e.Comma()
-							json.EncodeUUID(e, elem)
-						}
-					}
-					e.ArrEnd()
-				}
+				e.ArrEnd()
 			}
 			e.ArrEnd()
 		}
 	}
 	{
 		if s.OptionalInteger.Set {
-			e.Comma()
-		}
-		if s.OptionalInteger.Set {
-			e.RawStr("\"optional_integer\"" + ":")
+			e.FieldStart("optional_integer")
 			s.OptionalInteger.Encode(e)
 		}
 	}
 	{
 		if s.OptionalIntegerInt32.Set {
-			e.Comma()
-		}
-		if s.OptionalIntegerInt32.Set {
-			e.RawStr("\"optional_integer_int32\"" + ":")
+			e.FieldStart("optional_integer_int32")
 			s.OptionalIntegerInt32.Encode(e)
 		}
 	}
 	{
 		if s.OptionalIntegerInt64.Set {
-			e.Comma()
-		}
-		if s.OptionalIntegerInt64.Set {
-			e.RawStr("\"optional_integer_int64\"" + ":")
+			e.FieldStart("optional_integer_int64")
 			s.OptionalIntegerInt64.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumber.Set {
-			e.Comma()
-		}
-		if s.OptionalNumber.Set {
-			e.RawStr("\"optional_number\"" + ":")
+			e.FieldStart("optional_number")
 			s.OptionalNumber.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberDouble.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberDouble.Set {
-			e.RawStr("\"optional_number_double\"" + ":")
+			e.FieldStart("optional_number_double")
 			s.OptionalNumberDouble.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberFloat.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberFloat.Set {
-			e.RawStr("\"optional_number_float\"" + ":")
+			e.FieldStart("optional_number_float")
 			s.OptionalNumberFloat.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberInt32.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberInt32.Set {
-			e.RawStr("\"optional_number_int32\"" + ":")
+			e.FieldStart("optional_number_int32")
 			s.OptionalNumberInt32.Encode(e)
 		}
 	}
 	{
 		if s.OptionalNumberInt64.Set {
-			e.Comma()
-		}
-		if s.OptionalNumberInt64.Set {
-			e.RawStr("\"optional_number_int64\"" + ":")
+			e.FieldStart("optional_number_int64")
 			s.OptionalNumberInt64.Encode(e)
 		}
 	}
 	{
 		if s.OptionalString.Set {
-			e.Comma()
-		}
-		if s.OptionalString.Set {
-			e.RawStr("\"optional_string\"" + ":")
+			e.FieldStart("optional_string")
 			s.OptionalString.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringBinary.Set {
-			e.Comma()
-		}
-		if s.OptionalStringBinary.Set {
-			e.RawStr("\"optional_string_binary\"" + ":")
+			e.FieldStart("optional_string_binary")
 			s.OptionalStringBinary.Encode(e)
 		}
 	}
 	{
-		e.Comma()
 
-		e.RawStr("\"optional_string_byte\"" + ":")
+		e.FieldStart("optional_string_byte")
 		e.Base64(s.OptionalStringByte)
 	}
 	{
 		if s.OptionalStringDate.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDate.Set {
-			e.RawStr("\"optional_string_date\"" + ":")
+			e.FieldStart("optional_string_date")
 			s.OptionalStringDate.Encode(e, json.EncodeDate)
 		}
 	}
 	{
 		if s.OptionalStringDateMinusTime.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDateMinusTime.Set {
-			e.RawStr("\"optional_string_date-time\"" + ":")
+			e.FieldStart("optional_string_date-time")
 			s.OptionalStringDateMinusTime.Encode(e, json.EncodeDateTime)
 		}
 	}
 	{
 		if s.OptionalStringDuration.Set {
-			e.Comma()
-		}
-		if s.OptionalStringDuration.Set {
-			e.RawStr("\"optional_string_duration\"" + ":")
+			e.FieldStart("optional_string_duration")
 			s.OptionalStringDuration.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringEmail.Set {
-			e.Comma()
-		}
-		if s.OptionalStringEmail.Set {
-			e.RawStr("\"optional_string_email\"" + ":")
+			e.FieldStart("optional_string_email")
 			s.OptionalStringEmail.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringHostname.Set {
-			e.Comma()
-		}
-		if s.OptionalStringHostname.Set {
-			e.RawStr("\"optional_string_hostname\"" + ":")
+			e.FieldStart("optional_string_hostname")
 			s.OptionalStringHostname.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIP.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIP.Set {
-			e.RawStr("\"optional_string_ip\"" + ":")
+			e.FieldStart("optional_string_ip")
 			s.OptionalStringIP.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIpv4.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIpv4.Set {
-			e.RawStr("\"optional_string_ipv4\"" + ":")
+			e.FieldStart("optional_string_ipv4")
 			s.OptionalStringIpv4.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringIpv6.Set {
-			e.Comma()
-		}
-		if s.OptionalStringIpv6.Set {
-			e.RawStr("\"optional_string_ipv6\"" + ":")
+			e.FieldStart("optional_string_ipv6")
 			s.OptionalStringIpv6.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringPassword.Set {
-			e.Comma()
-		}
-		if s.OptionalStringPassword.Set {
-			e.RawStr("\"optional_string_password\"" + ":")
+			e.FieldStart("optional_string_password")
 			s.OptionalStringPassword.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringTime.Set {
-			e.Comma()
-		}
-		if s.OptionalStringTime.Set {
-			e.RawStr("\"optional_string_time\"" + ":")
+			e.FieldStart("optional_string_time")
 			s.OptionalStringTime.Encode(e, json.EncodeTime)
 		}
 	}
 	{
 		if s.OptionalStringURI.Set {
-			e.Comma()
-		}
-		if s.OptionalStringURI.Set {
-			e.RawStr("\"optional_string_uri\"" + ":")
+			e.FieldStart("optional_string_uri")
 			s.OptionalStringURI.Encode(e)
 		}
 	}
 	{
 		if s.OptionalStringUUID.Set {
-			e.Comma()
-		}
-		if s.OptionalStringUUID.Set {
-			e.RawStr("\"optional_string_uuid\"" + ":")
+			e.FieldStart("optional_string_uuid")
 			s.OptionalStringUUID.Encode(e)
 		}
 	}

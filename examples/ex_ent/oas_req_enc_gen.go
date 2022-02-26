@@ -70,40 +70,40 @@ var (
 	_ = codes.Unset
 )
 
-func encodeCreatePetRequestJSON(req CreatePetReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreatePetRequestJSON(req CreatePetReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCreatePetCategoriesRequestJSON(req CreatePetCategoriesReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreatePetCategoriesRequestJSON(req CreatePetCategoriesReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCreatePetFriendsRequestJSON(req CreatePetFriendsReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreatePetFriendsRequestJSON(req CreatePetFriendsReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCreatePetOwnerRequestJSON(req CreatePetOwnerReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreatePetOwnerRequestJSON(req CreatePetOwnerReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUpdatePetRequestJSON(req UpdatePetReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUpdatePetRequestJSON(req UpdatePetReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 

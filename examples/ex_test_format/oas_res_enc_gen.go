@@ -73,8 +73,8 @@ var (
 func encodeTestRequestAnyResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -87,8 +87,8 @@ func encodeTestRequestAnyResponse(response Error, w http.ResponseWriter, span tr
 func encodeTestRequestBooleanResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -101,8 +101,8 @@ func encodeTestRequestBooleanResponse(response Error, w http.ResponseWriter, spa
 func encodeTestRequestBooleanArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -115,8 +115,8 @@ func encodeTestRequestBooleanArrayResponse(response Error, w http.ResponseWriter
 func encodeTestRequestBooleanArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -129,8 +129,8 @@ func encodeTestRequestBooleanArrayArrayResponse(response Error, w http.ResponseW
 func encodeTestRequestBooleanNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -143,8 +143,8 @@ func encodeTestRequestBooleanNullableResponse(response Error, w http.ResponseWri
 func encodeTestRequestBooleanNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -157,8 +157,8 @@ func encodeTestRequestBooleanNullableArrayResponse(response Error, w http.Respon
 func encodeTestRequestBooleanNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -171,8 +171,8 @@ func encodeTestRequestBooleanNullableArrayArrayResponse(response Error, w http.R
 func encodeTestRequestEmptyStructResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -185,8 +185,8 @@ func encodeTestRequestEmptyStructResponse(response Error, w http.ResponseWriter,
 func encodeTestRequestFormatTestResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -199,8 +199,8 @@ func encodeTestRequestFormatTestResponse(response Error, w http.ResponseWriter, 
 func encodeTestRequestIntegerResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -213,8 +213,8 @@ func encodeTestRequestIntegerResponse(response Error, w http.ResponseWriter, spa
 func encodeTestRequestIntegerArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -227,8 +227,8 @@ func encodeTestRequestIntegerArrayResponse(response Error, w http.ResponseWriter
 func encodeTestRequestIntegerArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -241,8 +241,8 @@ func encodeTestRequestIntegerArrayArrayResponse(response Error, w http.ResponseW
 func encodeTestRequestIntegerInt32Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -255,8 +255,8 @@ func encodeTestRequestIntegerInt32Response(response Error, w http.ResponseWriter
 func encodeTestRequestIntegerInt32ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -269,8 +269,8 @@ func encodeTestRequestIntegerInt32ArrayResponse(response Error, w http.ResponseW
 func encodeTestRequestIntegerInt32ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -283,8 +283,8 @@ func encodeTestRequestIntegerInt32ArrayArrayResponse(response Error, w http.Resp
 func encodeTestRequestIntegerInt32NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -297,8 +297,8 @@ func encodeTestRequestIntegerInt32NullableResponse(response Error, w http.Respon
 func encodeTestRequestIntegerInt32NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -311,8 +311,8 @@ func encodeTestRequestIntegerInt32NullableArrayResponse(response Error, w http.R
 func encodeTestRequestIntegerInt32NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -325,8 +325,8 @@ func encodeTestRequestIntegerInt32NullableArrayArrayResponse(response Error, w h
 func encodeTestRequestIntegerInt64Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -339,8 +339,8 @@ func encodeTestRequestIntegerInt64Response(response Error, w http.ResponseWriter
 func encodeTestRequestIntegerInt64ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -353,8 +353,8 @@ func encodeTestRequestIntegerInt64ArrayResponse(response Error, w http.ResponseW
 func encodeTestRequestIntegerInt64ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -367,8 +367,8 @@ func encodeTestRequestIntegerInt64ArrayArrayResponse(response Error, w http.Resp
 func encodeTestRequestIntegerInt64NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -381,8 +381,8 @@ func encodeTestRequestIntegerInt64NullableResponse(response Error, w http.Respon
 func encodeTestRequestIntegerInt64NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -395,8 +395,8 @@ func encodeTestRequestIntegerInt64NullableArrayResponse(response Error, w http.R
 func encodeTestRequestIntegerInt64NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -409,8 +409,8 @@ func encodeTestRequestIntegerInt64NullableArrayArrayResponse(response Error, w h
 func encodeTestRequestIntegerNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -423,8 +423,8 @@ func encodeTestRequestIntegerNullableResponse(response Error, w http.ResponseWri
 func encodeTestRequestIntegerNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -437,8 +437,8 @@ func encodeTestRequestIntegerNullableArrayResponse(response Error, w http.Respon
 func encodeTestRequestIntegerNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -451,8 +451,8 @@ func encodeTestRequestIntegerNullableArrayArrayResponse(response Error, w http.R
 func encodeTestRequestNumberResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -465,8 +465,8 @@ func encodeTestRequestNumberResponse(response Error, w http.ResponseWriter, span
 func encodeTestRequestNumberArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -479,8 +479,8 @@ func encodeTestRequestNumberArrayResponse(response Error, w http.ResponseWriter,
 func encodeTestRequestNumberArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -493,8 +493,8 @@ func encodeTestRequestNumberArrayArrayResponse(response Error, w http.ResponseWr
 func encodeTestRequestNumberDoubleResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -507,8 +507,8 @@ func encodeTestRequestNumberDoubleResponse(response Error, w http.ResponseWriter
 func encodeTestRequestNumberDoubleArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -521,8 +521,8 @@ func encodeTestRequestNumberDoubleArrayResponse(response Error, w http.ResponseW
 func encodeTestRequestNumberDoubleArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -535,8 +535,8 @@ func encodeTestRequestNumberDoubleArrayArrayResponse(response Error, w http.Resp
 func encodeTestRequestNumberDoubleNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -549,8 +549,8 @@ func encodeTestRequestNumberDoubleNullableResponse(response Error, w http.Respon
 func encodeTestRequestNumberDoubleNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -563,8 +563,8 @@ func encodeTestRequestNumberDoubleNullableArrayResponse(response Error, w http.R
 func encodeTestRequestNumberDoubleNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -577,8 +577,8 @@ func encodeTestRequestNumberDoubleNullableArrayArrayResponse(response Error, w h
 func encodeTestRequestNumberFloatResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -591,8 +591,8 @@ func encodeTestRequestNumberFloatResponse(response Error, w http.ResponseWriter,
 func encodeTestRequestNumberFloatArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -605,8 +605,8 @@ func encodeTestRequestNumberFloatArrayResponse(response Error, w http.ResponseWr
 func encodeTestRequestNumberFloatArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -619,8 +619,8 @@ func encodeTestRequestNumberFloatArrayArrayResponse(response Error, w http.Respo
 func encodeTestRequestNumberFloatNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -633,8 +633,8 @@ func encodeTestRequestNumberFloatNullableResponse(response Error, w http.Respons
 func encodeTestRequestNumberFloatNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -647,8 +647,8 @@ func encodeTestRequestNumberFloatNullableArrayResponse(response Error, w http.Re
 func encodeTestRequestNumberFloatNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -661,8 +661,8 @@ func encodeTestRequestNumberFloatNullableArrayArrayResponse(response Error, w ht
 func encodeTestRequestNumberInt32Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -675,8 +675,8 @@ func encodeTestRequestNumberInt32Response(response Error, w http.ResponseWriter,
 func encodeTestRequestNumberInt32ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -689,8 +689,8 @@ func encodeTestRequestNumberInt32ArrayResponse(response Error, w http.ResponseWr
 func encodeTestRequestNumberInt32ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -703,8 +703,8 @@ func encodeTestRequestNumberInt32ArrayArrayResponse(response Error, w http.Respo
 func encodeTestRequestNumberInt32NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -717,8 +717,8 @@ func encodeTestRequestNumberInt32NullableResponse(response Error, w http.Respons
 func encodeTestRequestNumberInt32NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -731,8 +731,8 @@ func encodeTestRequestNumberInt32NullableArrayResponse(response Error, w http.Re
 func encodeTestRequestNumberInt32NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -745,8 +745,8 @@ func encodeTestRequestNumberInt32NullableArrayArrayResponse(response Error, w ht
 func encodeTestRequestNumberInt64Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -759,8 +759,8 @@ func encodeTestRequestNumberInt64Response(response Error, w http.ResponseWriter,
 func encodeTestRequestNumberInt64ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -773,8 +773,8 @@ func encodeTestRequestNumberInt64ArrayResponse(response Error, w http.ResponseWr
 func encodeTestRequestNumberInt64ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -787,8 +787,8 @@ func encodeTestRequestNumberInt64ArrayArrayResponse(response Error, w http.Respo
 func encodeTestRequestNumberInt64NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -801,8 +801,8 @@ func encodeTestRequestNumberInt64NullableResponse(response Error, w http.Respons
 func encodeTestRequestNumberInt64NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -815,8 +815,8 @@ func encodeTestRequestNumberInt64NullableArrayResponse(response Error, w http.Re
 func encodeTestRequestNumberInt64NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -829,8 +829,8 @@ func encodeTestRequestNumberInt64NullableArrayArrayResponse(response Error, w ht
 func encodeTestRequestNumberNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -843,8 +843,8 @@ func encodeTestRequestNumberNullableResponse(response Error, w http.ResponseWrit
 func encodeTestRequestNumberNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -857,8 +857,8 @@ func encodeTestRequestNumberNullableArrayResponse(response Error, w http.Respons
 func encodeTestRequestNumberNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -871,8 +871,8 @@ func encodeTestRequestNumberNullableArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestRequiredAnyResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -885,8 +885,8 @@ func encodeTestRequestRequiredAnyResponse(response Error, w http.ResponseWriter,
 func encodeTestRequestRequiredBooleanResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -899,8 +899,8 @@ func encodeTestRequestRequiredBooleanResponse(response Error, w http.ResponseWri
 func encodeTestRequestRequiredBooleanArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -913,8 +913,8 @@ func encodeTestRequestRequiredBooleanArrayResponse(response Error, w http.Respon
 func encodeTestRequestRequiredBooleanArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -927,8 +927,8 @@ func encodeTestRequestRequiredBooleanArrayArrayResponse(response Error, w http.R
 func encodeTestRequestRequiredBooleanNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -941,8 +941,8 @@ func encodeTestRequestRequiredBooleanNullableResponse(response Error, w http.Res
 func encodeTestRequestRequiredBooleanNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -955,8 +955,8 @@ func encodeTestRequestRequiredBooleanNullableArrayResponse(response Error, w htt
 func encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -969,8 +969,8 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayResponse(response Error, 
 func encodeTestRequestRequiredEmptyStructResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -983,8 +983,8 @@ func encodeTestRequestRequiredEmptyStructResponse(response Error, w http.Respons
 func encodeTestRequestRequiredFormatTestResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -997,8 +997,8 @@ func encodeTestRequestRequiredFormatTestResponse(response Error, w http.Response
 func encodeTestRequestRequiredIntegerResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1011,8 +1011,8 @@ func encodeTestRequestRequiredIntegerResponse(response Error, w http.ResponseWri
 func encodeTestRequestRequiredIntegerArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1025,8 +1025,8 @@ func encodeTestRequestRequiredIntegerArrayResponse(response Error, w http.Respon
 func encodeTestRequestRequiredIntegerArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1039,8 +1039,8 @@ func encodeTestRequestRequiredIntegerArrayArrayResponse(response Error, w http.R
 func encodeTestRequestRequiredIntegerInt32Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1053,8 +1053,8 @@ func encodeTestRequestRequiredIntegerInt32Response(response Error, w http.Respon
 func encodeTestRequestRequiredIntegerInt32ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1067,8 +1067,8 @@ func encodeTestRequestRequiredIntegerInt32ArrayResponse(response Error, w http.R
 func encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1081,8 +1081,8 @@ func encodeTestRequestRequiredIntegerInt32ArrayArrayResponse(response Error, w h
 func encodeTestRequestRequiredIntegerInt32NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1095,8 +1095,8 @@ func encodeTestRequestRequiredIntegerInt32NullableResponse(response Error, w htt
 func encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1109,8 +1109,8 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayResponse(response Error, 
 func encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1123,8 +1123,8 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(response Er
 func encodeTestRequestRequiredIntegerInt64Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1137,8 +1137,8 @@ func encodeTestRequestRequiredIntegerInt64Response(response Error, w http.Respon
 func encodeTestRequestRequiredIntegerInt64ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1151,8 +1151,8 @@ func encodeTestRequestRequiredIntegerInt64ArrayResponse(response Error, w http.R
 func encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1165,8 +1165,8 @@ func encodeTestRequestRequiredIntegerInt64ArrayArrayResponse(response Error, w h
 func encodeTestRequestRequiredIntegerInt64NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1179,8 +1179,8 @@ func encodeTestRequestRequiredIntegerInt64NullableResponse(response Error, w htt
 func encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1193,8 +1193,8 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayResponse(response Error, 
 func encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1207,8 +1207,8 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(response Er
 func encodeTestRequestRequiredIntegerNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1221,8 +1221,8 @@ func encodeTestRequestRequiredIntegerNullableResponse(response Error, w http.Res
 func encodeTestRequestRequiredIntegerNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1235,8 +1235,8 @@ func encodeTestRequestRequiredIntegerNullableArrayResponse(response Error, w htt
 func encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1249,8 +1249,8 @@ func encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response Error, 
 func encodeTestRequestRequiredNumberResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1263,8 +1263,8 @@ func encodeTestRequestRequiredNumberResponse(response Error, w http.ResponseWrit
 func encodeTestRequestRequiredNumberArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1277,8 +1277,8 @@ func encodeTestRequestRequiredNumberArrayResponse(response Error, w http.Respons
 func encodeTestRequestRequiredNumberArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1291,8 +1291,8 @@ func encodeTestRequestRequiredNumberArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestRequiredNumberDoubleResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1305,8 +1305,8 @@ func encodeTestRequestRequiredNumberDoubleResponse(response Error, w http.Respon
 func encodeTestRequestRequiredNumberDoubleArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1319,8 +1319,8 @@ func encodeTestRequestRequiredNumberDoubleArrayResponse(response Error, w http.R
 func encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1333,8 +1333,8 @@ func encodeTestRequestRequiredNumberDoubleArrayArrayResponse(response Error, w h
 func encodeTestRequestRequiredNumberDoubleNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1347,8 +1347,8 @@ func encodeTestRequestRequiredNumberDoubleNullableResponse(response Error, w htt
 func encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1361,8 +1361,8 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayResponse(response Error, 
 func encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1375,8 +1375,8 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(response Er
 func encodeTestRequestRequiredNumberFloatResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1389,8 +1389,8 @@ func encodeTestRequestRequiredNumberFloatResponse(response Error, w http.Respons
 func encodeTestRequestRequiredNumberFloatArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1403,8 +1403,8 @@ func encodeTestRequestRequiredNumberFloatArrayResponse(response Error, w http.Re
 func encodeTestRequestRequiredNumberFloatArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1417,8 +1417,8 @@ func encodeTestRequestRequiredNumberFloatArrayArrayResponse(response Error, w ht
 func encodeTestRequestRequiredNumberFloatNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1431,8 +1431,8 @@ func encodeTestRequestRequiredNumberFloatNullableResponse(response Error, w http
 func encodeTestRequestRequiredNumberFloatNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1445,8 +1445,8 @@ func encodeTestRequestRequiredNumberFloatNullableArrayResponse(response Error, w
 func encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1459,8 +1459,8 @@ func encodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(response Err
 func encodeTestRequestRequiredNumberInt32Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1473,8 +1473,8 @@ func encodeTestRequestRequiredNumberInt32Response(response Error, w http.Respons
 func encodeTestRequestRequiredNumberInt32ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1487,8 +1487,8 @@ func encodeTestRequestRequiredNumberInt32ArrayResponse(response Error, w http.Re
 func encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1501,8 +1501,8 @@ func encodeTestRequestRequiredNumberInt32ArrayArrayResponse(response Error, w ht
 func encodeTestRequestRequiredNumberInt32NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1515,8 +1515,8 @@ func encodeTestRequestRequiredNumberInt32NullableResponse(response Error, w http
 func encodeTestRequestRequiredNumberInt32NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1529,8 +1529,8 @@ func encodeTestRequestRequiredNumberInt32NullableArrayResponse(response Error, w
 func encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1543,8 +1543,8 @@ func encodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(response Err
 func encodeTestRequestRequiredNumberInt64Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1557,8 +1557,8 @@ func encodeTestRequestRequiredNumberInt64Response(response Error, w http.Respons
 func encodeTestRequestRequiredNumberInt64ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1571,8 +1571,8 @@ func encodeTestRequestRequiredNumberInt64ArrayResponse(response Error, w http.Re
 func encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1585,8 +1585,8 @@ func encodeTestRequestRequiredNumberInt64ArrayArrayResponse(response Error, w ht
 func encodeTestRequestRequiredNumberInt64NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1599,8 +1599,8 @@ func encodeTestRequestRequiredNumberInt64NullableResponse(response Error, w http
 func encodeTestRequestRequiredNumberInt64NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1613,8 +1613,8 @@ func encodeTestRequestRequiredNumberInt64NullableArrayResponse(response Error, w
 func encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1627,8 +1627,8 @@ func encodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(response Err
 func encodeTestRequestRequiredNumberNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1641,8 +1641,8 @@ func encodeTestRequestRequiredNumberNullableResponse(response Error, w http.Resp
 func encodeTestRequestRequiredNumberNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1655,8 +1655,8 @@ func encodeTestRequestRequiredNumberNullableArrayResponse(response Error, w http
 func encodeTestRequestRequiredNumberNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1669,8 +1669,8 @@ func encodeTestRequestRequiredNumberNullableArrayArrayResponse(response Error, w
 func encodeTestRequestRequiredStringResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1683,8 +1683,8 @@ func encodeTestRequestRequiredStringResponse(response Error, w http.ResponseWrit
 func encodeTestRequestRequiredStringArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1697,8 +1697,8 @@ func encodeTestRequestRequiredStringArrayResponse(response Error, w http.Respons
 func encodeTestRequestRequiredStringArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1711,8 +1711,8 @@ func encodeTestRequestRequiredStringArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestRequiredStringBinaryResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1725,8 +1725,8 @@ func encodeTestRequestRequiredStringBinaryResponse(response Error, w http.Respon
 func encodeTestRequestRequiredStringBinaryArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1739,8 +1739,8 @@ func encodeTestRequestRequiredStringBinaryArrayResponse(response Error, w http.R
 func encodeTestRequestRequiredStringBinaryArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1753,8 +1753,8 @@ func encodeTestRequestRequiredStringBinaryArrayArrayResponse(response Error, w h
 func encodeTestRequestRequiredStringBinaryNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1767,8 +1767,8 @@ func encodeTestRequestRequiredStringBinaryNullableResponse(response Error, w htt
 func encodeTestRequestRequiredStringBinaryNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1781,8 +1781,8 @@ func encodeTestRequestRequiredStringBinaryNullableArrayResponse(response Error, 
 func encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1795,8 +1795,8 @@ func encodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(response Er
 func encodeTestRequestRequiredStringByteResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1809,8 +1809,8 @@ func encodeTestRequestRequiredStringByteResponse(response Error, w http.Response
 func encodeTestRequestRequiredStringByteArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1823,8 +1823,8 @@ func encodeTestRequestRequiredStringByteArrayResponse(response Error, w http.Res
 func encodeTestRequestRequiredStringByteArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1837,8 +1837,8 @@ func encodeTestRequestRequiredStringByteArrayArrayResponse(response Error, w htt
 func encodeTestRequestRequiredStringByteNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1851,8 +1851,8 @@ func encodeTestRequestRequiredStringByteNullableResponse(response Error, w http.
 func encodeTestRequestRequiredStringByteNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1865,8 +1865,8 @@ func encodeTestRequestRequiredStringByteNullableArrayResponse(response Error, w 
 func encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1879,8 +1879,8 @@ func encodeTestRequestRequiredStringByteNullableArrayArrayResponse(response Erro
 func encodeTestRequestRequiredStringDateResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1893,8 +1893,8 @@ func encodeTestRequestRequiredStringDateResponse(response Error, w http.Response
 func encodeTestRequestRequiredStringDateArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1907,8 +1907,8 @@ func encodeTestRequestRequiredStringDateArrayResponse(response Error, w http.Res
 func encodeTestRequestRequiredStringDateArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1921,8 +1921,8 @@ func encodeTestRequestRequiredStringDateArrayArrayResponse(response Error, w htt
 func encodeTestRequestRequiredStringDateNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1935,8 +1935,8 @@ func encodeTestRequestRequiredStringDateNullableResponse(response Error, w http.
 func encodeTestRequestRequiredStringDateNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1949,8 +1949,8 @@ func encodeTestRequestRequiredStringDateNullableArrayResponse(response Error, w 
 func encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1963,8 +1963,8 @@ func encodeTestRequestRequiredStringDateNullableArrayArrayResponse(response Erro
 func encodeTestRequestRequiredStringDateTimeResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1977,8 +1977,8 @@ func encodeTestRequestRequiredStringDateTimeResponse(response Error, w http.Resp
 func encodeTestRequestRequiredStringDateTimeArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -1991,8 +1991,8 @@ func encodeTestRequestRequiredStringDateTimeArrayResponse(response Error, w http
 func encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2005,8 +2005,8 @@ func encodeTestRequestRequiredStringDateTimeArrayArrayResponse(response Error, w
 func encodeTestRequestRequiredStringDateTimeNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2019,8 +2019,8 @@ func encodeTestRequestRequiredStringDateTimeNullableResponse(response Error, w h
 func encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2033,8 +2033,8 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayResponse(response Error
 func encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2047,8 +2047,8 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringDurationResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2061,8 +2061,8 @@ func encodeTestRequestRequiredStringDurationResponse(response Error, w http.Resp
 func encodeTestRequestRequiredStringDurationArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2075,8 +2075,8 @@ func encodeTestRequestRequiredStringDurationArrayResponse(response Error, w http
 func encodeTestRequestRequiredStringDurationArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2089,8 +2089,8 @@ func encodeTestRequestRequiredStringDurationArrayArrayResponse(response Error, w
 func encodeTestRequestRequiredStringDurationNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2103,8 +2103,8 @@ func encodeTestRequestRequiredStringDurationNullableResponse(response Error, w h
 func encodeTestRequestRequiredStringDurationNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2117,8 +2117,8 @@ func encodeTestRequestRequiredStringDurationNullableArrayResponse(response Error
 func encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2131,8 +2131,8 @@ func encodeTestRequestRequiredStringDurationNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringEmailResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2145,8 +2145,8 @@ func encodeTestRequestRequiredStringEmailResponse(response Error, w http.Respons
 func encodeTestRequestRequiredStringEmailArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2159,8 +2159,8 @@ func encodeTestRequestRequiredStringEmailArrayResponse(response Error, w http.Re
 func encodeTestRequestRequiredStringEmailArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2173,8 +2173,8 @@ func encodeTestRequestRequiredStringEmailArrayArrayResponse(response Error, w ht
 func encodeTestRequestRequiredStringEmailNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2187,8 +2187,8 @@ func encodeTestRequestRequiredStringEmailNullableResponse(response Error, w http
 func encodeTestRequestRequiredStringEmailNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2201,8 +2201,8 @@ func encodeTestRequestRequiredStringEmailNullableArrayResponse(response Error, w
 func encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2215,8 +2215,8 @@ func encodeTestRequestRequiredStringEmailNullableArrayArrayResponse(response Err
 func encodeTestRequestRequiredStringHostnameResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2229,8 +2229,8 @@ func encodeTestRequestRequiredStringHostnameResponse(response Error, w http.Resp
 func encodeTestRequestRequiredStringHostnameArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2243,8 +2243,8 @@ func encodeTestRequestRequiredStringHostnameArrayResponse(response Error, w http
 func encodeTestRequestRequiredStringHostnameArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2257,8 +2257,8 @@ func encodeTestRequestRequiredStringHostnameArrayArrayResponse(response Error, w
 func encodeTestRequestRequiredStringHostnameNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2271,8 +2271,8 @@ func encodeTestRequestRequiredStringHostnameNullableResponse(response Error, w h
 func encodeTestRequestRequiredStringHostnameNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2285,8 +2285,8 @@ func encodeTestRequestRequiredStringHostnameNullableArrayResponse(response Error
 func encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2299,8 +2299,8 @@ func encodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringIPResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2313,8 +2313,8 @@ func encodeTestRequestRequiredStringIPResponse(response Error, w http.ResponseWr
 func encodeTestRequestRequiredStringIPArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2327,8 +2327,8 @@ func encodeTestRequestRequiredStringIPArrayResponse(response Error, w http.Respo
 func encodeTestRequestRequiredStringIPArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2341,8 +2341,8 @@ func encodeTestRequestRequiredStringIPArrayArrayResponse(response Error, w http.
 func encodeTestRequestRequiredStringIPNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2355,8 +2355,8 @@ func encodeTestRequestRequiredStringIPNullableResponse(response Error, w http.Re
 func encodeTestRequestRequiredStringIPNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2369,8 +2369,8 @@ func encodeTestRequestRequiredStringIPNullableArrayResponse(response Error, w ht
 func encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2383,8 +2383,8 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayResponse(response Error,
 func encodeTestRequestRequiredStringIpv4Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2397,8 +2397,8 @@ func encodeTestRequestRequiredStringIpv4Response(response Error, w http.Response
 func encodeTestRequestRequiredStringIpv4ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2411,8 +2411,8 @@ func encodeTestRequestRequiredStringIpv4ArrayResponse(response Error, w http.Res
 func encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2425,8 +2425,8 @@ func encodeTestRequestRequiredStringIpv4ArrayArrayResponse(response Error, w htt
 func encodeTestRequestRequiredStringIpv4NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2439,8 +2439,8 @@ func encodeTestRequestRequiredStringIpv4NullableResponse(response Error, w http.
 func encodeTestRequestRequiredStringIpv4NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2453,8 +2453,8 @@ func encodeTestRequestRequiredStringIpv4NullableArrayResponse(response Error, w 
 func encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2467,8 +2467,8 @@ func encodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(response Erro
 func encodeTestRequestRequiredStringIpv6Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2481,8 +2481,8 @@ func encodeTestRequestRequiredStringIpv6Response(response Error, w http.Response
 func encodeTestRequestRequiredStringIpv6ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2495,8 +2495,8 @@ func encodeTestRequestRequiredStringIpv6ArrayResponse(response Error, w http.Res
 func encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2509,8 +2509,8 @@ func encodeTestRequestRequiredStringIpv6ArrayArrayResponse(response Error, w htt
 func encodeTestRequestRequiredStringIpv6NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2523,8 +2523,8 @@ func encodeTestRequestRequiredStringIpv6NullableResponse(response Error, w http.
 func encodeTestRequestRequiredStringIpv6NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2537,8 +2537,8 @@ func encodeTestRequestRequiredStringIpv6NullableArrayResponse(response Error, w 
 func encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2551,8 +2551,8 @@ func encodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(response Erro
 func encodeTestRequestRequiredStringNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2565,8 +2565,8 @@ func encodeTestRequestRequiredStringNullableResponse(response Error, w http.Resp
 func encodeTestRequestRequiredStringNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2579,8 +2579,8 @@ func encodeTestRequestRequiredStringNullableArrayResponse(response Error, w http
 func encodeTestRequestRequiredStringNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2593,8 +2593,8 @@ func encodeTestRequestRequiredStringNullableArrayArrayResponse(response Error, w
 func encodeTestRequestRequiredStringPasswordResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2607,8 +2607,8 @@ func encodeTestRequestRequiredStringPasswordResponse(response Error, w http.Resp
 func encodeTestRequestRequiredStringPasswordArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2621,8 +2621,8 @@ func encodeTestRequestRequiredStringPasswordArrayResponse(response Error, w http
 func encodeTestRequestRequiredStringPasswordArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2635,8 +2635,8 @@ func encodeTestRequestRequiredStringPasswordArrayArrayResponse(response Error, w
 func encodeTestRequestRequiredStringPasswordNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2649,8 +2649,8 @@ func encodeTestRequestRequiredStringPasswordNullableResponse(response Error, w h
 func encodeTestRequestRequiredStringPasswordNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2663,8 +2663,8 @@ func encodeTestRequestRequiredStringPasswordNullableArrayResponse(response Error
 func encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2677,8 +2677,8 @@ func encodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(response 
 func encodeTestRequestRequiredStringTimeResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2691,8 +2691,8 @@ func encodeTestRequestRequiredStringTimeResponse(response Error, w http.Response
 func encodeTestRequestRequiredStringTimeArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2705,8 +2705,8 @@ func encodeTestRequestRequiredStringTimeArrayResponse(response Error, w http.Res
 func encodeTestRequestRequiredStringTimeArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2719,8 +2719,8 @@ func encodeTestRequestRequiredStringTimeArrayArrayResponse(response Error, w htt
 func encodeTestRequestRequiredStringTimeNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2733,8 +2733,8 @@ func encodeTestRequestRequiredStringTimeNullableResponse(response Error, w http.
 func encodeTestRequestRequiredStringTimeNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2747,8 +2747,8 @@ func encodeTestRequestRequiredStringTimeNullableArrayResponse(response Error, w 
 func encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2761,8 +2761,8 @@ func encodeTestRequestRequiredStringTimeNullableArrayArrayResponse(response Erro
 func encodeTestRequestRequiredStringURIResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2775,8 +2775,8 @@ func encodeTestRequestRequiredStringURIResponse(response Error, w http.ResponseW
 func encodeTestRequestRequiredStringURIArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2789,8 +2789,8 @@ func encodeTestRequestRequiredStringURIArrayResponse(response Error, w http.Resp
 func encodeTestRequestRequiredStringURIArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2803,8 +2803,8 @@ func encodeTestRequestRequiredStringURIArrayArrayResponse(response Error, w http
 func encodeTestRequestRequiredStringURINullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2817,8 +2817,8 @@ func encodeTestRequestRequiredStringURINullableResponse(response Error, w http.R
 func encodeTestRequestRequiredStringURINullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2831,8 +2831,8 @@ func encodeTestRequestRequiredStringURINullableArrayResponse(response Error, w h
 func encodeTestRequestRequiredStringURINullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2845,8 +2845,8 @@ func encodeTestRequestRequiredStringURINullableArrayArrayResponse(response Error
 func encodeTestRequestRequiredStringUUIDResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2859,8 +2859,8 @@ func encodeTestRequestRequiredStringUUIDResponse(response Error, w http.Response
 func encodeTestRequestRequiredStringUUIDArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2873,8 +2873,8 @@ func encodeTestRequestRequiredStringUUIDArrayResponse(response Error, w http.Res
 func encodeTestRequestRequiredStringUUIDArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2887,8 +2887,8 @@ func encodeTestRequestRequiredStringUUIDArrayArrayResponse(response Error, w htt
 func encodeTestRequestRequiredStringUUIDNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2901,8 +2901,8 @@ func encodeTestRequestRequiredStringUUIDNullableResponse(response Error, w http.
 func encodeTestRequestRequiredStringUUIDNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2915,8 +2915,8 @@ func encodeTestRequestRequiredStringUUIDNullableArrayResponse(response Error, w 
 func encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2929,8 +2929,8 @@ func encodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(response Erro
 func encodeTestRequestStringResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2943,8 +2943,8 @@ func encodeTestRequestStringResponse(response Error, w http.ResponseWriter, span
 func encodeTestRequestStringArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2957,8 +2957,8 @@ func encodeTestRequestStringArrayResponse(response Error, w http.ResponseWriter,
 func encodeTestRequestStringArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2971,8 +2971,8 @@ func encodeTestRequestStringArrayArrayResponse(response Error, w http.ResponseWr
 func encodeTestRequestStringBinaryResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2985,8 +2985,8 @@ func encodeTestRequestStringBinaryResponse(response Error, w http.ResponseWriter
 func encodeTestRequestStringBinaryArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -2999,8 +2999,8 @@ func encodeTestRequestStringBinaryArrayResponse(response Error, w http.ResponseW
 func encodeTestRequestStringBinaryArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3013,8 +3013,8 @@ func encodeTestRequestStringBinaryArrayArrayResponse(response Error, w http.Resp
 func encodeTestRequestStringBinaryNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3027,8 +3027,8 @@ func encodeTestRequestStringBinaryNullableResponse(response Error, w http.Respon
 func encodeTestRequestStringBinaryNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3041,8 +3041,8 @@ func encodeTestRequestStringBinaryNullableArrayResponse(response Error, w http.R
 func encodeTestRequestStringBinaryNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3055,8 +3055,8 @@ func encodeTestRequestStringBinaryNullableArrayArrayResponse(response Error, w h
 func encodeTestRequestStringByteResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3069,8 +3069,8 @@ func encodeTestRequestStringByteResponse(response Error, w http.ResponseWriter, 
 func encodeTestRequestStringByteArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3083,8 +3083,8 @@ func encodeTestRequestStringByteArrayResponse(response Error, w http.ResponseWri
 func encodeTestRequestStringByteArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3097,8 +3097,8 @@ func encodeTestRequestStringByteArrayArrayResponse(response Error, w http.Respon
 func encodeTestRequestStringByteNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3111,8 +3111,8 @@ func encodeTestRequestStringByteNullableResponse(response Error, w http.Response
 func encodeTestRequestStringByteNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3125,8 +3125,8 @@ func encodeTestRequestStringByteNullableArrayResponse(response Error, w http.Res
 func encodeTestRequestStringByteNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3139,8 +3139,8 @@ func encodeTestRequestStringByteNullableArrayArrayResponse(response Error, w htt
 func encodeTestRequestStringDateResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3153,8 +3153,8 @@ func encodeTestRequestStringDateResponse(response Error, w http.ResponseWriter, 
 func encodeTestRequestStringDateArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3167,8 +3167,8 @@ func encodeTestRequestStringDateArrayResponse(response Error, w http.ResponseWri
 func encodeTestRequestStringDateArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3181,8 +3181,8 @@ func encodeTestRequestStringDateArrayArrayResponse(response Error, w http.Respon
 func encodeTestRequestStringDateNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3195,8 +3195,8 @@ func encodeTestRequestStringDateNullableResponse(response Error, w http.Response
 func encodeTestRequestStringDateNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3209,8 +3209,8 @@ func encodeTestRequestStringDateNullableArrayResponse(response Error, w http.Res
 func encodeTestRequestStringDateNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3223,8 +3223,8 @@ func encodeTestRequestStringDateNullableArrayArrayResponse(response Error, w htt
 func encodeTestRequestStringDateTimeResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3237,8 +3237,8 @@ func encodeTestRequestStringDateTimeResponse(response Error, w http.ResponseWrit
 func encodeTestRequestStringDateTimeArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3251,8 +3251,8 @@ func encodeTestRequestStringDateTimeArrayResponse(response Error, w http.Respons
 func encodeTestRequestStringDateTimeArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3265,8 +3265,8 @@ func encodeTestRequestStringDateTimeArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestStringDateTimeNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3279,8 +3279,8 @@ func encodeTestRequestStringDateTimeNullableResponse(response Error, w http.Resp
 func encodeTestRequestStringDateTimeNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3293,8 +3293,8 @@ func encodeTestRequestStringDateTimeNullableArrayResponse(response Error, w http
 func encodeTestRequestStringDateTimeNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3307,8 +3307,8 @@ func encodeTestRequestStringDateTimeNullableArrayArrayResponse(response Error, w
 func encodeTestRequestStringDurationResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3321,8 +3321,8 @@ func encodeTestRequestStringDurationResponse(response Error, w http.ResponseWrit
 func encodeTestRequestStringDurationArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3335,8 +3335,8 @@ func encodeTestRequestStringDurationArrayResponse(response Error, w http.Respons
 func encodeTestRequestStringDurationArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3349,8 +3349,8 @@ func encodeTestRequestStringDurationArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestStringDurationNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3363,8 +3363,8 @@ func encodeTestRequestStringDurationNullableResponse(response Error, w http.Resp
 func encodeTestRequestStringDurationNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3377,8 +3377,8 @@ func encodeTestRequestStringDurationNullableArrayResponse(response Error, w http
 func encodeTestRequestStringDurationNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3391,8 +3391,8 @@ func encodeTestRequestStringDurationNullableArrayArrayResponse(response Error, w
 func encodeTestRequestStringEmailResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3405,8 +3405,8 @@ func encodeTestRequestStringEmailResponse(response Error, w http.ResponseWriter,
 func encodeTestRequestStringEmailArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3419,8 +3419,8 @@ func encodeTestRequestStringEmailArrayResponse(response Error, w http.ResponseWr
 func encodeTestRequestStringEmailArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3433,8 +3433,8 @@ func encodeTestRequestStringEmailArrayArrayResponse(response Error, w http.Respo
 func encodeTestRequestStringEmailNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3447,8 +3447,8 @@ func encodeTestRequestStringEmailNullableResponse(response Error, w http.Respons
 func encodeTestRequestStringEmailNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3461,8 +3461,8 @@ func encodeTestRequestStringEmailNullableArrayResponse(response Error, w http.Re
 func encodeTestRequestStringEmailNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3475,8 +3475,8 @@ func encodeTestRequestStringEmailNullableArrayArrayResponse(response Error, w ht
 func encodeTestRequestStringHostnameResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3489,8 +3489,8 @@ func encodeTestRequestStringHostnameResponse(response Error, w http.ResponseWrit
 func encodeTestRequestStringHostnameArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3503,8 +3503,8 @@ func encodeTestRequestStringHostnameArrayResponse(response Error, w http.Respons
 func encodeTestRequestStringHostnameArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3517,8 +3517,8 @@ func encodeTestRequestStringHostnameArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestStringHostnameNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3531,8 +3531,8 @@ func encodeTestRequestStringHostnameNullableResponse(response Error, w http.Resp
 func encodeTestRequestStringHostnameNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3545,8 +3545,8 @@ func encodeTestRequestStringHostnameNullableArrayResponse(response Error, w http
 func encodeTestRequestStringHostnameNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3559,8 +3559,8 @@ func encodeTestRequestStringHostnameNullableArrayArrayResponse(response Error, w
 func encodeTestRequestStringIPResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3573,8 +3573,8 @@ func encodeTestRequestStringIPResponse(response Error, w http.ResponseWriter, sp
 func encodeTestRequestStringIPArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3587,8 +3587,8 @@ func encodeTestRequestStringIPArrayResponse(response Error, w http.ResponseWrite
 func encodeTestRequestStringIPArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3601,8 +3601,8 @@ func encodeTestRequestStringIPArrayArrayResponse(response Error, w http.Response
 func encodeTestRequestStringIPNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3615,8 +3615,8 @@ func encodeTestRequestStringIPNullableResponse(response Error, w http.ResponseWr
 func encodeTestRequestStringIPNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3629,8 +3629,8 @@ func encodeTestRequestStringIPNullableArrayResponse(response Error, w http.Respo
 func encodeTestRequestStringIPNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3643,8 +3643,8 @@ func encodeTestRequestStringIPNullableArrayArrayResponse(response Error, w http.
 func encodeTestRequestStringIpv4Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3657,8 +3657,8 @@ func encodeTestRequestStringIpv4Response(response Error, w http.ResponseWriter, 
 func encodeTestRequestStringIpv4ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3671,8 +3671,8 @@ func encodeTestRequestStringIpv4ArrayResponse(response Error, w http.ResponseWri
 func encodeTestRequestStringIpv4ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3685,8 +3685,8 @@ func encodeTestRequestStringIpv4ArrayArrayResponse(response Error, w http.Respon
 func encodeTestRequestStringIpv4NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3699,8 +3699,8 @@ func encodeTestRequestStringIpv4NullableResponse(response Error, w http.Response
 func encodeTestRequestStringIpv4NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3713,8 +3713,8 @@ func encodeTestRequestStringIpv4NullableArrayResponse(response Error, w http.Res
 func encodeTestRequestStringIpv4NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3727,8 +3727,8 @@ func encodeTestRequestStringIpv4NullableArrayArrayResponse(response Error, w htt
 func encodeTestRequestStringIpv6Response(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3741,8 +3741,8 @@ func encodeTestRequestStringIpv6Response(response Error, w http.ResponseWriter, 
 func encodeTestRequestStringIpv6ArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3755,8 +3755,8 @@ func encodeTestRequestStringIpv6ArrayResponse(response Error, w http.ResponseWri
 func encodeTestRequestStringIpv6ArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3769,8 +3769,8 @@ func encodeTestRequestStringIpv6ArrayArrayResponse(response Error, w http.Respon
 func encodeTestRequestStringIpv6NullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3783,8 +3783,8 @@ func encodeTestRequestStringIpv6NullableResponse(response Error, w http.Response
 func encodeTestRequestStringIpv6NullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3797,8 +3797,8 @@ func encodeTestRequestStringIpv6NullableArrayResponse(response Error, w http.Res
 func encodeTestRequestStringIpv6NullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3811,8 +3811,8 @@ func encodeTestRequestStringIpv6NullableArrayArrayResponse(response Error, w htt
 func encodeTestRequestStringNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3825,8 +3825,8 @@ func encodeTestRequestStringNullableResponse(response Error, w http.ResponseWrit
 func encodeTestRequestStringNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3839,8 +3839,8 @@ func encodeTestRequestStringNullableArrayResponse(response Error, w http.Respons
 func encodeTestRequestStringNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3853,8 +3853,8 @@ func encodeTestRequestStringNullableArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestStringPasswordResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3867,8 +3867,8 @@ func encodeTestRequestStringPasswordResponse(response Error, w http.ResponseWrit
 func encodeTestRequestStringPasswordArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3881,8 +3881,8 @@ func encodeTestRequestStringPasswordArrayResponse(response Error, w http.Respons
 func encodeTestRequestStringPasswordArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3895,8 +3895,8 @@ func encodeTestRequestStringPasswordArrayArrayResponse(response Error, w http.Re
 func encodeTestRequestStringPasswordNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3909,8 +3909,8 @@ func encodeTestRequestStringPasswordNullableResponse(response Error, w http.Resp
 func encodeTestRequestStringPasswordNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3923,8 +3923,8 @@ func encodeTestRequestStringPasswordNullableArrayResponse(response Error, w http
 func encodeTestRequestStringPasswordNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3937,8 +3937,8 @@ func encodeTestRequestStringPasswordNullableArrayArrayResponse(response Error, w
 func encodeTestRequestStringTimeResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3951,8 +3951,8 @@ func encodeTestRequestStringTimeResponse(response Error, w http.ResponseWriter, 
 func encodeTestRequestStringTimeArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3965,8 +3965,8 @@ func encodeTestRequestStringTimeArrayResponse(response Error, w http.ResponseWri
 func encodeTestRequestStringTimeArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3979,8 +3979,8 @@ func encodeTestRequestStringTimeArrayArrayResponse(response Error, w http.Respon
 func encodeTestRequestStringTimeNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -3993,8 +3993,8 @@ func encodeTestRequestStringTimeNullableResponse(response Error, w http.Response
 func encodeTestRequestStringTimeNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4007,8 +4007,8 @@ func encodeTestRequestStringTimeNullableArrayResponse(response Error, w http.Res
 func encodeTestRequestStringTimeNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4021,8 +4021,8 @@ func encodeTestRequestStringTimeNullableArrayArrayResponse(response Error, w htt
 func encodeTestRequestStringURIResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4035,8 +4035,8 @@ func encodeTestRequestStringURIResponse(response Error, w http.ResponseWriter, s
 func encodeTestRequestStringURIArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4049,8 +4049,8 @@ func encodeTestRequestStringURIArrayResponse(response Error, w http.ResponseWrit
 func encodeTestRequestStringURIArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4063,8 +4063,8 @@ func encodeTestRequestStringURIArrayArrayResponse(response Error, w http.Respons
 func encodeTestRequestStringURINullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4077,8 +4077,8 @@ func encodeTestRequestStringURINullableResponse(response Error, w http.ResponseW
 func encodeTestRequestStringURINullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4091,8 +4091,8 @@ func encodeTestRequestStringURINullableArrayResponse(response Error, w http.Resp
 func encodeTestRequestStringURINullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4105,8 +4105,8 @@ func encodeTestRequestStringURINullableArrayArrayResponse(response Error, w http
 func encodeTestRequestStringUUIDResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4119,8 +4119,8 @@ func encodeTestRequestStringUUIDResponse(response Error, w http.ResponseWriter, 
 func encodeTestRequestStringUUIDArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4133,8 +4133,8 @@ func encodeTestRequestStringUUIDArrayResponse(response Error, w http.ResponseWri
 func encodeTestRequestStringUUIDArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4147,8 +4147,8 @@ func encodeTestRequestStringUUIDArrayArrayResponse(response Error, w http.Respon
 func encodeTestRequestStringUUIDNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4161,8 +4161,8 @@ func encodeTestRequestStringUUIDNullableResponse(response Error, w http.Response
 func encodeTestRequestStringUUIDNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4175,8 +4175,8 @@ func encodeTestRequestStringUUIDNullableArrayResponse(response Error, w http.Res
 func encodeTestRequestStringUUIDNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4189,8 +4189,8 @@ func encodeTestRequestStringUUIDNullableArrayArrayResponse(response Error, w htt
 func encodeTestResponseAnyResponse(response jx.Raw, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	if len(response) != 0 {
 		e.Raw(response)
@@ -4205,8 +4205,8 @@ func encodeTestResponseAnyResponse(response jx.Raw, w http.ResponseWriter, span 
 func encodeTestResponseBooleanResponse(response bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Bool(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4219,20 +4219,12 @@ func encodeTestResponseBooleanResponse(response bool, w http.ResponseWriter, spa
 func encodeTestResponseBooleanArrayResponse(response []bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Bool(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Bool(elem)
-		}
+	for _, elem := range response {
+		e.Bool(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4245,44 +4237,16 @@ func encodeTestResponseBooleanArrayResponse(response []bool, w http.ResponseWrit
 func encodeTestResponseBooleanArrayArrayResponse(response [][]bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Bool(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Bool(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Bool(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Bool(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Bool(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4295,8 +4259,8 @@ func encodeTestResponseBooleanArrayArrayResponse(response [][]bool, w http.Respo
 func encodeTestResponseBooleanNullableResponse(response NilBool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4309,20 +4273,12 @@ func encodeTestResponseBooleanNullableResponse(response NilBool, w http.Response
 func encodeTestResponseBooleanNullableArrayResponse(response []bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Bool(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Bool(elem)
-		}
+	for _, elem := range response {
+		e.Bool(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4335,44 +4291,16 @@ func encodeTestResponseBooleanNullableArrayResponse(response []bool, w http.Resp
 func encodeTestResponseBooleanNullableArrayArrayResponse(response [][]bool, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Bool(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Bool(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Bool(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Bool(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Bool(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4385,8 +4313,8 @@ func encodeTestResponseBooleanNullableArrayArrayResponse(response [][]bool, w ht
 func encodeTestResponseEmptyStructResponse(response TestResponseEmptyStructOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4399,8 +4327,8 @@ func encodeTestResponseEmptyStructResponse(response TestResponseEmptyStructOK, w
 func encodeTestResponseFormatTestResponse(response TestResponseFormatTestOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4413,8 +4341,8 @@ func encodeTestResponseFormatTestResponse(response TestResponseFormatTestOK, w h
 func encodeTestResponseIntegerResponse(response int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Int(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4427,20 +4355,12 @@ func encodeTestResponseIntegerResponse(response int, w http.ResponseWriter, span
 func encodeTestResponseIntegerArrayResponse(response []int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int(elem)
-		}
+	for _, elem := range response {
+		e.Int(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4453,44 +4373,16 @@ func encodeTestResponseIntegerArrayResponse(response []int, w http.ResponseWrite
 func encodeTestResponseIntegerArrayArrayResponse(response [][]int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4503,8 +4395,8 @@ func encodeTestResponseIntegerArrayArrayResponse(response [][]int, w http.Respon
 func encodeTestResponseIntegerInt32Response(response int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Int32(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4517,20 +4409,12 @@ func encodeTestResponseIntegerInt32Response(response int32, w http.ResponseWrite
 func encodeTestResponseIntegerInt32ArrayResponse(response []int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int32(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int32(elem)
-		}
+	for _, elem := range response {
+		e.Int32(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4543,44 +4427,16 @@ func encodeTestResponseIntegerInt32ArrayResponse(response []int32, w http.Respon
 func encodeTestResponseIntegerInt32ArrayArrayResponse(response [][]int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int32(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4593,8 +4449,8 @@ func encodeTestResponseIntegerInt32ArrayArrayResponse(response [][]int32, w http
 func encodeTestResponseIntegerInt32NullableResponse(response NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4607,20 +4463,12 @@ func encodeTestResponseIntegerInt32NullableResponse(response NilInt32, w http.Re
 func encodeTestResponseIntegerInt32NullableArrayResponse(response []int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int32(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int32(elem)
-		}
+	for _, elem := range response {
+		e.Int32(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4633,44 +4481,16 @@ func encodeTestResponseIntegerInt32NullableArrayResponse(response []int32, w htt
 func encodeTestResponseIntegerInt32NullableArrayArrayResponse(response [][]int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int32(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4683,8 +4503,8 @@ func encodeTestResponseIntegerInt32NullableArrayArrayResponse(response [][]int32
 func encodeTestResponseIntegerInt64Response(response int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Int64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4697,20 +4517,12 @@ func encodeTestResponseIntegerInt64Response(response int64, w http.ResponseWrite
 func encodeTestResponseIntegerInt64ArrayResponse(response []int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int64(elem)
-		}
+	for _, elem := range response {
+		e.Int64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4723,44 +4535,16 @@ func encodeTestResponseIntegerInt64ArrayResponse(response []int64, w http.Respon
 func encodeTestResponseIntegerInt64ArrayArrayResponse(response [][]int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4773,8 +4557,8 @@ func encodeTestResponseIntegerInt64ArrayArrayResponse(response [][]int64, w http
 func encodeTestResponseIntegerInt64NullableResponse(response NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4787,20 +4571,12 @@ func encodeTestResponseIntegerInt64NullableResponse(response NilInt64, w http.Re
 func encodeTestResponseIntegerInt64NullableArrayResponse(response []int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int64(elem)
-		}
+	for _, elem := range response {
+		e.Int64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4813,44 +4589,16 @@ func encodeTestResponseIntegerInt64NullableArrayResponse(response []int64, w htt
 func encodeTestResponseIntegerInt64NullableArrayArrayResponse(response [][]int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4863,8 +4611,8 @@ func encodeTestResponseIntegerInt64NullableArrayArrayResponse(response [][]int64
 func encodeTestResponseIntegerNullableResponse(response NilInt, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4877,20 +4625,12 @@ func encodeTestResponseIntegerNullableResponse(response NilInt, w http.ResponseW
 func encodeTestResponseIntegerNullableArrayResponse(response []int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int(elem)
-		}
+	for _, elem := range response {
+		e.Int(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4903,44 +4643,16 @@ func encodeTestResponseIntegerNullableArrayResponse(response []int, w http.Respo
 func encodeTestResponseIntegerNullableArrayArrayResponse(response [][]int, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4953,8 +4665,8 @@ func encodeTestResponseIntegerNullableArrayArrayResponse(response [][]int, w htt
 func encodeTestResponseNumberResponse(response float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Float64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -4967,20 +4679,12 @@ func encodeTestResponseNumberResponse(response float64, w http.ResponseWriter, s
 func encodeTestResponseNumberArrayResponse(response []float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Float64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Float64(elem)
-		}
+	for _, elem := range response {
+		e.Float64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -4993,44 +4697,16 @@ func encodeTestResponseNumberArrayResponse(response []float64, w http.ResponseWr
 func encodeTestResponseNumberArrayArrayResponse(response [][]float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Float64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5043,8 +4719,8 @@ func encodeTestResponseNumberArrayArrayResponse(response [][]float64, w http.Res
 func encodeTestResponseNumberDoubleResponse(response float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Float64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5057,20 +4733,12 @@ func encodeTestResponseNumberDoubleResponse(response float64, w http.ResponseWri
 func encodeTestResponseNumberDoubleArrayResponse(response []float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Float64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Float64(elem)
-		}
+	for _, elem := range response {
+		e.Float64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5083,44 +4751,16 @@ func encodeTestResponseNumberDoubleArrayResponse(response []float64, w http.Resp
 func encodeTestResponseNumberDoubleArrayArrayResponse(response [][]float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Float64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5133,8 +4773,8 @@ func encodeTestResponseNumberDoubleArrayArrayResponse(response [][]float64, w ht
 func encodeTestResponseNumberDoubleNullableResponse(response NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5147,20 +4787,12 @@ func encodeTestResponseNumberDoubleNullableResponse(response NilFloat64, w http.
 func encodeTestResponseNumberDoubleNullableArrayResponse(response []float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Float64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Float64(elem)
-		}
+	for _, elem := range response {
+		e.Float64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5173,44 +4805,16 @@ func encodeTestResponseNumberDoubleNullableArrayResponse(response []float64, w h
 func encodeTestResponseNumberDoubleNullableArrayArrayResponse(response [][]float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Float64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5223,8 +4827,8 @@ func encodeTestResponseNumberDoubleNullableArrayArrayResponse(response [][]float
 func encodeTestResponseNumberFloatResponse(response float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Float32(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5237,20 +4841,12 @@ func encodeTestResponseNumberFloatResponse(response float32, w http.ResponseWrit
 func encodeTestResponseNumberFloatArrayResponse(response []float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Float32(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Float32(elem)
-		}
+	for _, elem := range response {
+		e.Float32(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5263,44 +4859,16 @@ func encodeTestResponseNumberFloatArrayResponse(response []float32, w http.Respo
 func encodeTestResponseNumberFloatArrayArrayResponse(response [][]float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float32(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Float32(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float32(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5313,8 +4881,8 @@ func encodeTestResponseNumberFloatArrayArrayResponse(response [][]float32, w htt
 func encodeTestResponseNumberFloatNullableResponse(response NilFloat32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5327,20 +4895,12 @@ func encodeTestResponseNumberFloatNullableResponse(response NilFloat32, w http.R
 func encodeTestResponseNumberFloatNullableArrayResponse(response []float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Float32(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Float32(elem)
-		}
+	for _, elem := range response {
+		e.Float32(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5353,44 +4913,16 @@ func encodeTestResponseNumberFloatNullableArrayResponse(response []float32, w ht
 func encodeTestResponseNumberFloatNullableArrayArrayResponse(response [][]float32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float32(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Float32(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float32(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5403,8 +4935,8 @@ func encodeTestResponseNumberFloatNullableArrayArrayResponse(response [][]float3
 func encodeTestResponseNumberInt32Response(response int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Int32(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5417,20 +4949,12 @@ func encodeTestResponseNumberInt32Response(response int32, w http.ResponseWriter
 func encodeTestResponseNumberInt32ArrayResponse(response []int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int32(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int32(elem)
-		}
+	for _, elem := range response {
+		e.Int32(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5443,44 +4967,16 @@ func encodeTestResponseNumberInt32ArrayResponse(response []int32, w http.Respons
 func encodeTestResponseNumberInt32ArrayArrayResponse(response [][]int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int32(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5493,8 +4989,8 @@ func encodeTestResponseNumberInt32ArrayArrayResponse(response [][]int32, w http.
 func encodeTestResponseNumberInt32NullableResponse(response NilInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5507,20 +5003,12 @@ func encodeTestResponseNumberInt32NullableResponse(response NilInt32, w http.Res
 func encodeTestResponseNumberInt32NullableArrayResponse(response []int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int32(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int32(elem)
-		}
+	for _, elem := range response {
+		e.Int32(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5533,44 +5021,16 @@ func encodeTestResponseNumberInt32NullableArrayResponse(response []int32, w http
 func encodeTestResponseNumberInt32NullableArrayArrayResponse(response [][]int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int32(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int32(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int32(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5583,8 +5043,8 @@ func encodeTestResponseNumberInt32NullableArrayArrayResponse(response [][]int32,
 func encodeTestResponseNumberInt64Response(response int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Int64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5597,20 +5057,12 @@ func encodeTestResponseNumberInt64Response(response int64, w http.ResponseWriter
 func encodeTestResponseNumberInt64ArrayResponse(response []int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int64(elem)
-		}
+	for _, elem := range response {
+		e.Int64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5623,44 +5075,16 @@ func encodeTestResponseNumberInt64ArrayResponse(response []int64, w http.Respons
 func encodeTestResponseNumberInt64ArrayArrayResponse(response [][]int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5673,8 +5097,8 @@ func encodeTestResponseNumberInt64ArrayArrayResponse(response [][]int64, w http.
 func encodeTestResponseNumberInt64NullableResponse(response NilInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5687,20 +5111,12 @@ func encodeTestResponseNumberInt64NullableResponse(response NilInt64, w http.Res
 func encodeTestResponseNumberInt64NullableArrayResponse(response []int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Int64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Int64(elem)
-		}
+	for _, elem := range response {
+		e.Int64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5713,44 +5129,16 @@ func encodeTestResponseNumberInt64NullableArrayResponse(response []int64, w http
 func encodeTestResponseNumberInt64NullableArrayArrayResponse(response [][]int64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Int64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Int64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Int64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5763,8 +5151,8 @@ func encodeTestResponseNumberInt64NullableArrayArrayResponse(response [][]int64,
 func encodeTestResponseNumberNullableResponse(response NilFloat64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5777,20 +5165,12 @@ func encodeTestResponseNumberNullableResponse(response NilFloat64, w http.Respon
 func encodeTestResponseNumberNullableArrayResponse(response []float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Float64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Float64(elem)
-		}
+	for _, elem := range response {
+		e.Float64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5803,44 +5183,16 @@ func encodeTestResponseNumberNullableArrayResponse(response []float64, w http.Re
 func encodeTestResponseNumberNullableArrayArrayResponse(response [][]float64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Float64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Float64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Float64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5853,8 +5205,8 @@ func encodeTestResponseNumberNullableArrayArrayResponse(response [][]float64, w 
 func encodeTestResponseStringResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5867,20 +5219,12 @@ func encodeTestResponseStringResponse(response string, w http.ResponseWriter, sp
 func encodeTestResponseStringArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5893,44 +5237,16 @@ func encodeTestResponseStringArrayResponse(response []string, w http.ResponseWri
 func encodeTestResponseStringArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5943,8 +5259,8 @@ func encodeTestResponseStringArrayArrayResponse(response [][]string, w http.Resp
 func encodeTestResponseStringBinaryResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -5957,20 +5273,12 @@ func encodeTestResponseStringBinaryResponse(response string, w http.ResponseWrit
 func encodeTestResponseStringBinaryArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -5983,44 +5291,16 @@ func encodeTestResponseStringBinaryArrayResponse(response []string, w http.Respo
 func encodeTestResponseStringBinaryArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6033,8 +5313,8 @@ func encodeTestResponseStringBinaryArrayArrayResponse(response [][]string, w htt
 func encodeTestResponseStringBinaryNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6047,20 +5327,12 @@ func encodeTestResponseStringBinaryNullableResponse(response NilString, w http.R
 func encodeTestResponseStringBinaryNullableArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6073,44 +5345,16 @@ func encodeTestResponseStringBinaryNullableArrayResponse(response []string, w ht
 func encodeTestResponseStringBinaryNullableArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6123,8 +5367,8 @@ func encodeTestResponseStringBinaryNullableArrayArrayResponse(response [][]strin
 func encodeTestResponseStringByteResponse(response []byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Base64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6137,20 +5381,12 @@ func encodeTestResponseStringByteResponse(response []byte, w http.ResponseWriter
 func encodeTestResponseStringByteArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Base64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Base64(elem)
-		}
+	for _, elem := range response {
+		e.Base64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6163,44 +5399,16 @@ func encodeTestResponseStringByteArrayResponse(response [][]byte, w http.Respons
 func encodeTestResponseStringByteArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Base64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Base64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Base64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Base64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Base64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6213,8 +5421,8 @@ func encodeTestResponseStringByteArrayArrayResponse(response [][][]byte, w http.
 func encodeTestResponseStringByteNullableResponse(response []byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Base64(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6227,20 +5435,12 @@ func encodeTestResponseStringByteNullableResponse(response []byte, w http.Respon
 func encodeTestResponseStringByteNullableArrayResponse(response [][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Base64(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Base64(elem)
-		}
+	for _, elem := range response {
+		e.Base64(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6253,44 +5453,16 @@ func encodeTestResponseStringByteNullableArrayResponse(response [][]byte, w http
 func encodeTestResponseStringByteNullableArrayArrayResponse(response [][][]byte, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Base64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Base64(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Base64(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Base64(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Base64(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6303,8 +5475,8 @@ func encodeTestResponseStringByteNullableArrayArrayResponse(response [][][]byte,
 func encodeTestResponseStringDateResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeDate(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6317,20 +5489,12 @@ func encodeTestResponseStringDateResponse(response time.Time, w http.ResponseWri
 func encodeTestResponseStringDateArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeDate(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeDate(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeDate(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6343,44 +5507,16 @@ func encodeTestResponseStringDateArrayResponse(response []time.Time, w http.Resp
 func encodeTestResponseStringDateArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDate(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDate(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeDate(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDate(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDate(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6393,8 +5529,8 @@ func encodeTestResponseStringDateArrayArrayResponse(response [][]time.Time, w ht
 func encodeTestResponseStringDateNullableResponse(response NilDate, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeDate)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6407,20 +5543,12 @@ func encodeTestResponseStringDateNullableResponse(response NilDate, w http.Respo
 func encodeTestResponseStringDateNullableArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeDate(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeDate(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeDate(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6433,44 +5561,16 @@ func encodeTestResponseStringDateNullableArrayResponse(response []time.Time, w h
 func encodeTestResponseStringDateNullableArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDate(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDate(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeDate(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDate(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDate(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6483,8 +5583,8 @@ func encodeTestResponseStringDateNullableArrayArrayResponse(response [][]time.Ti
 func encodeTestResponseStringDateTimeResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeDateTime(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6497,20 +5597,12 @@ func encodeTestResponseStringDateTimeResponse(response time.Time, w http.Respons
 func encodeTestResponseStringDateTimeArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeDateTime(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeDateTime(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeDateTime(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6523,44 +5615,16 @@ func encodeTestResponseStringDateTimeArrayResponse(response []time.Time, w http.
 func encodeTestResponseStringDateTimeArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDateTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDateTime(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeDateTime(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDateTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDateTime(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6573,8 +5637,8 @@ func encodeTestResponseStringDateTimeArrayArrayResponse(response [][]time.Time, 
 func encodeTestResponseStringDateTimeNullableResponse(response NilDateTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeDateTime)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6587,20 +5651,12 @@ func encodeTestResponseStringDateTimeNullableResponse(response NilDateTime, w ht
 func encodeTestResponseStringDateTimeNullableArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeDateTime(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeDateTime(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeDateTime(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6613,44 +5669,16 @@ func encodeTestResponseStringDateTimeNullableArrayResponse(response []time.Time,
 func encodeTestResponseStringDateTimeNullableArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDateTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDateTime(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeDateTime(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDateTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDateTime(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6663,8 +5691,8 @@ func encodeTestResponseStringDateTimeNullableArrayArrayResponse(response [][]tim
 func encodeTestResponseStringDurationResponse(response time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeDuration(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6677,20 +5705,12 @@ func encodeTestResponseStringDurationResponse(response time.Duration, w http.Res
 func encodeTestResponseStringDurationArrayResponse(response []time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeDuration(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeDuration(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeDuration(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6703,44 +5723,16 @@ func encodeTestResponseStringDurationArrayResponse(response []time.Duration, w h
 func encodeTestResponseStringDurationArrayArrayResponse(response [][]time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDuration(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDuration(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeDuration(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDuration(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDuration(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6753,8 +5745,8 @@ func encodeTestResponseStringDurationArrayArrayResponse(response [][]time.Durati
 func encodeTestResponseStringDurationNullableResponse(response NilDuration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6767,20 +5759,12 @@ func encodeTestResponseStringDurationNullableResponse(response NilDuration, w ht
 func encodeTestResponseStringDurationNullableArrayResponse(response []time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeDuration(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeDuration(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeDuration(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6793,44 +5777,16 @@ func encodeTestResponseStringDurationNullableArrayResponse(response []time.Durat
 func encodeTestResponseStringDurationNullableArrayArrayResponse(response [][]time.Duration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDuration(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDuration(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeDuration(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeDuration(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeDuration(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6843,8 +5799,8 @@ func encodeTestResponseStringDurationNullableArrayArrayResponse(response [][]tim
 func encodeTestResponseStringEmailResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6857,20 +5813,12 @@ func encodeTestResponseStringEmailResponse(response string, w http.ResponseWrite
 func encodeTestResponseStringEmailArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6883,44 +5831,16 @@ func encodeTestResponseStringEmailArrayResponse(response []string, w http.Respon
 func encodeTestResponseStringEmailArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6933,8 +5853,8 @@ func encodeTestResponseStringEmailArrayArrayResponse(response [][]string, w http
 func encodeTestResponseStringEmailNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -6947,20 +5867,12 @@ func encodeTestResponseStringEmailNullableResponse(response NilString, w http.Re
 func encodeTestResponseStringEmailNullableArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -6973,44 +5885,16 @@ func encodeTestResponseStringEmailNullableArrayResponse(response []string, w htt
 func encodeTestResponseStringEmailNullableArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7023,8 +5907,8 @@ func encodeTestResponseStringEmailNullableArrayArrayResponse(response [][]string
 func encodeTestResponseStringHostnameResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7037,20 +5921,12 @@ func encodeTestResponseStringHostnameResponse(response string, w http.ResponseWr
 func encodeTestResponseStringHostnameArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7063,44 +5939,16 @@ func encodeTestResponseStringHostnameArrayResponse(response []string, w http.Res
 func encodeTestResponseStringHostnameArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7113,8 +5961,8 @@ func encodeTestResponseStringHostnameArrayArrayResponse(response [][]string, w h
 func encodeTestResponseStringHostnameNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7127,20 +5975,12 @@ func encodeTestResponseStringHostnameNullableResponse(response NilString, w http
 func encodeTestResponseStringHostnameNullableArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7153,44 +5993,16 @@ func encodeTestResponseStringHostnameNullableArrayResponse(response []string, w 
 func encodeTestResponseStringHostnameNullableArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7203,8 +6015,8 @@ func encodeTestResponseStringHostnameNullableArrayArrayResponse(response [][]str
 func encodeTestResponseStringIPResponse(response net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeIP(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7217,20 +6029,12 @@ func encodeTestResponseStringIPResponse(response net.IP, w http.ResponseWriter, 
 func encodeTestResponseStringIPArrayResponse(response []net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeIP(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeIP(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeIP(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7243,44 +6047,16 @@ func encodeTestResponseStringIPArrayResponse(response []net.IP, w http.ResponseW
 func encodeTestResponseStringIPArrayArrayResponse(response [][]net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeIP(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7293,8 +6069,8 @@ func encodeTestResponseStringIPArrayArrayResponse(response [][]net.IP, w http.Re
 func encodeTestResponseStringIPNullableResponse(response NilIP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7307,20 +6083,12 @@ func encodeTestResponseStringIPNullableResponse(response NilIP, w http.ResponseW
 func encodeTestResponseStringIPNullableArrayResponse(response []net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeIP(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeIP(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeIP(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7333,44 +6101,16 @@ func encodeTestResponseStringIPNullableArrayResponse(response []net.IP, w http.R
 func encodeTestResponseStringIPNullableArrayArrayResponse(response [][]net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeIP(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7383,8 +6123,8 @@ func encodeTestResponseStringIPNullableArrayArrayResponse(response [][]net.IP, w
 func encodeTestResponseStringIpv4Response(response net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeIP(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7397,20 +6137,12 @@ func encodeTestResponseStringIpv4Response(response net.IP, w http.ResponseWriter
 func encodeTestResponseStringIpv4ArrayResponse(response []net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeIP(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeIP(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeIP(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7423,44 +6155,16 @@ func encodeTestResponseStringIpv4ArrayResponse(response []net.IP, w http.Respons
 func encodeTestResponseStringIpv4ArrayArrayResponse(response [][]net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeIP(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7473,8 +6177,8 @@ func encodeTestResponseStringIpv4ArrayArrayResponse(response [][]net.IP, w http.
 func encodeTestResponseStringIpv4NullableResponse(response NilIPv4, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7487,20 +6191,12 @@ func encodeTestResponseStringIpv4NullableResponse(response NilIPv4, w http.Respo
 func encodeTestResponseStringIpv4NullableArrayResponse(response []net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeIP(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeIP(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeIP(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7513,44 +6209,16 @@ func encodeTestResponseStringIpv4NullableArrayResponse(response []net.IP, w http
 func encodeTestResponseStringIpv4NullableArrayArrayResponse(response [][]net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeIP(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7563,8 +6231,8 @@ func encodeTestResponseStringIpv4NullableArrayArrayResponse(response [][]net.IP,
 func encodeTestResponseStringIpv6Response(response net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeIP(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7577,20 +6245,12 @@ func encodeTestResponseStringIpv6Response(response net.IP, w http.ResponseWriter
 func encodeTestResponseStringIpv6ArrayResponse(response []net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeIP(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeIP(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeIP(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7603,44 +6263,16 @@ func encodeTestResponseStringIpv6ArrayResponse(response []net.IP, w http.Respons
 func encodeTestResponseStringIpv6ArrayArrayResponse(response [][]net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeIP(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7653,8 +6285,8 @@ func encodeTestResponseStringIpv6ArrayArrayResponse(response [][]net.IP, w http.
 func encodeTestResponseStringIpv6NullableResponse(response NilIPv6, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7667,20 +6299,12 @@ func encodeTestResponseStringIpv6NullableResponse(response NilIPv6, w http.Respo
 func encodeTestResponseStringIpv6NullableArrayResponse(response []net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeIP(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeIP(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeIP(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7693,44 +6317,16 @@ func encodeTestResponseStringIpv6NullableArrayResponse(response []net.IP, w http
 func encodeTestResponseStringIpv6NullableArrayArrayResponse(response [][]net.IP, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeIP(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeIP(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeIP(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7743,8 +6339,8 @@ func encodeTestResponseStringIpv6NullableArrayArrayResponse(response [][]net.IP,
 func encodeTestResponseStringNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7757,20 +6353,12 @@ func encodeTestResponseStringNullableResponse(response NilString, w http.Respons
 func encodeTestResponseStringNullableArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7783,44 +6371,16 @@ func encodeTestResponseStringNullableArrayResponse(response []string, w http.Res
 func encodeTestResponseStringNullableArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7833,8 +6393,8 @@ func encodeTestResponseStringNullableArrayArrayResponse(response [][]string, w h
 func encodeTestResponseStringPasswordResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7847,20 +6407,12 @@ func encodeTestResponseStringPasswordResponse(response string, w http.ResponseWr
 func encodeTestResponseStringPasswordArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7873,44 +6425,16 @@ func encodeTestResponseStringPasswordArrayResponse(response []string, w http.Res
 func encodeTestResponseStringPasswordArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7923,8 +6447,8 @@ func encodeTestResponseStringPasswordArrayArrayResponse(response [][]string, w h
 func encodeTestResponseStringPasswordNullableResponse(response NilString, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -7937,20 +6461,12 @@ func encodeTestResponseStringPasswordNullableResponse(response NilString, w http
 func encodeTestResponseStringPasswordNullableArrayResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.Str(elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.Str(elem)
-		}
+	for _, elem := range response {
+		e.Str(elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7963,44 +6479,16 @@ func encodeTestResponseStringPasswordNullableArrayResponse(response []string, w 
 func encodeTestResponseStringPasswordNullableArrayArrayResponse(response [][]string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			e.Str(elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					e.Str(elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					e.Str(elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8013,8 +6501,8 @@ func encodeTestResponseStringPasswordNullableArrayArrayResponse(response [][]str
 func encodeTestResponseStringTimeResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeTime(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8027,20 +6515,12 @@ func encodeTestResponseStringTimeResponse(response time.Time, w http.ResponseWri
 func encodeTestResponseStringTimeArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeTime(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeTime(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeTime(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8053,44 +6533,16 @@ func encodeTestResponseStringTimeArrayResponse(response []time.Time, w http.Resp
 func encodeTestResponseStringTimeArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeTime(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeTime(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeTime(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8103,8 +6555,8 @@ func encodeTestResponseStringTimeArrayArrayResponse(response [][]time.Time, w ht
 func encodeTestResponseStringTimeNullableResponse(response NilTime, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e, json.EncodeTime)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8117,20 +6569,12 @@ func encodeTestResponseStringTimeNullableResponse(response NilTime, w http.Respo
 func encodeTestResponseStringTimeNullableArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeTime(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeTime(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeTime(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8143,44 +6587,16 @@ func encodeTestResponseStringTimeNullableArrayResponse(response []time.Time, w h
 func encodeTestResponseStringTimeNullableArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeTime(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeTime(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeTime(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeTime(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8193,8 +6609,8 @@ func encodeTestResponseStringTimeNullableArrayArrayResponse(response [][]time.Ti
 func encodeTestResponseStringURIResponse(response url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeURI(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8207,20 +6623,12 @@ func encodeTestResponseStringURIResponse(response url.URL, w http.ResponseWriter
 func encodeTestResponseStringURIArrayResponse(response []url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeURI(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeURI(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeURI(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8233,44 +6641,16 @@ func encodeTestResponseStringURIArrayResponse(response []url.URL, w http.Respons
 func encodeTestResponseStringURIArrayArrayResponse(response [][]url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeURI(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeURI(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeURI(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeURI(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeURI(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8283,8 +6663,8 @@ func encodeTestResponseStringURIArrayArrayResponse(response [][]url.URL, w http.
 func encodeTestResponseStringURINullableResponse(response NilURI, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8297,20 +6677,12 @@ func encodeTestResponseStringURINullableResponse(response NilURI, w http.Respons
 func encodeTestResponseStringURINullableArrayResponse(response []url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeURI(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeURI(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeURI(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8323,44 +6695,16 @@ func encodeTestResponseStringURINullableArrayResponse(response []url.URL, w http
 func encodeTestResponseStringURINullableArrayArrayResponse(response [][]url.URL, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeURI(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeURI(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeURI(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeURI(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeURI(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8373,8 +6717,8 @@ func encodeTestResponseStringURINullableArrayArrayResponse(response [][]url.URL,
 func encodeTestResponseStringUUIDResponse(response uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	json.EncodeUUID(e, response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8387,20 +6731,12 @@ func encodeTestResponseStringUUIDResponse(response uuid.UUID, w http.ResponseWri
 func encodeTestResponseStringUUIDArrayResponse(response []uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeUUID(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeUUID(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeUUID(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8413,44 +6749,16 @@ func encodeTestResponseStringUUIDArrayResponse(response []uuid.UUID, w http.Resp
 func encodeTestResponseStringUUIDArrayArrayResponse(response [][]uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeUUID(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeUUID(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUUID(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeUUID(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeUUID(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8463,8 +6771,8 @@ func encodeTestResponseStringUUIDArrayArrayResponse(response [][]uuid.UUID, w ht
 func encodeTestResponseStringUUIDNullableResponse(response NilUUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
@@ -8477,20 +6785,12 @@ func encodeTestResponseStringUUIDNullableResponse(response NilUUID, w http.Respo
 func encodeTestResponseStringUUIDNullableArrayResponse(response []uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			json.EncodeUUID(e, elem)
-		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			json.EncodeUUID(e, elem)
-		}
+	for _, elem := range response {
+		json.EncodeUUID(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8503,44 +6803,16 @@ func encodeTestResponseStringUUIDNullableArrayResponse(response []uuid.UUID, w h
 func encodeTestResponseStringUUIDNullableArrayArrayResponse(response [][]uuid.UUID, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	if len(response) >= 1 {
-		// Encode first element without comma.
-		{
-			elem := response[0]
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeUUID(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeUUID(e, elem)
-				}
-			}
-			e.ArrEnd()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUUID(e, elem)
 		}
-		for _, elem := range response[1:] {
-			e.Comma()
-			e.ArrStart()
-			if len(elem) >= 1 {
-				// Encode first element without comma.
-				{
-					elem := elem[0]
-					json.EncodeUUID(e, elem)
-				}
-				for _, elem := range elem[1:] {
-					e.Comma()
-					json.EncodeUUID(e, elem)
-				}
-			}
-			e.ArrEnd()
-		}
+		e.ArrEnd()
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {

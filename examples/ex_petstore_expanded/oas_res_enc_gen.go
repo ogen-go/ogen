@@ -78,8 +78,8 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {

@@ -70,8 +70,8 @@ var (
 	_ = codes.Unset
 )
 
-func encodeDataCreateRequestJSON(req OptData, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDataCreateRequestJSON(req OptData, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}

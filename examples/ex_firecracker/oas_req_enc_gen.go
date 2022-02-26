@@ -70,40 +70,40 @@ var (
 	_ = codes.Unset
 )
 
-func encodeCreateSnapshotRequestJSON(req SnapshotCreateParams, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreateSnapshotRequestJSON(req SnapshotCreateParams, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCreateSyncActionRequestJSON(req InstanceActionInfo, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreateSyncActionRequestJSON(req InstanceActionInfo, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeLoadSnapshotRequestJSON(req SnapshotLoadParams, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeLoadSnapshotRequestJSON(req SnapshotLoadParams, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeMmdsConfigPutRequestJSON(req MmdsConfig, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMmdsConfigPutRequestJSON(req MmdsConfig, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeMmdsPatchRequestJSON(req *MmdsPatchReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMmdsPatchRequestJSON(req *MmdsPatchReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req != nil {
 		req.Encode(e)
 	}
@@ -111,8 +111,8 @@ func encodeMmdsPatchRequestJSON(req *MmdsPatchReq, span trace.Span) (data *jx.Wr
 	return e, nil
 }
 
-func encodeMmdsPutRequestJSON(req *MmdsPutReq, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeMmdsPutRequestJSON(req *MmdsPutReq, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req != nil {
 		req.Encode(e)
 	}
@@ -120,40 +120,40 @@ func encodeMmdsPutRequestJSON(req *MmdsPutReq, span trace.Span) (data *jx.Writer
 	return e, nil
 }
 
-func encodePatchBalloonRequestJSON(req BalloonUpdate, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePatchBalloonRequestJSON(req BalloonUpdate, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePatchBalloonStatsIntervalRequestJSON(req BalloonStatsUpdate, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePatchBalloonStatsIntervalRequestJSON(req BalloonStatsUpdate, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePatchGuestDriveByIDRequestJSON(req PartialDrive, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePatchGuestDriveByIDRequestJSON(req PartialDrive, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePatchGuestNetworkInterfaceByIDRequestJSON(req PartialNetworkInterface, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePatchGuestNetworkInterfaceByIDRequestJSON(req PartialNetworkInterface, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePatchMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePatchMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -161,64 +161,64 @@ func encodePatchMachineConfigurationRequestJSON(req OptMachineConfiguration, spa
 	return e, nil
 }
 
-func encodePatchVmRequestJSON(req VM, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePatchVmRequestJSON(req VM, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePutBalloonRequestJSON(req Balloon, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutBalloonRequestJSON(req Balloon, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePutGuestBootSourceRequestJSON(req BootSource, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutGuestBootSourceRequestJSON(req BootSource, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePutGuestDriveByIDRequestJSON(req Drive, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutGuestDriveByIDRequestJSON(req Drive, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePutGuestNetworkInterfaceByIDRequestJSON(req NetworkInterface, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutGuestNetworkInterfaceByIDRequestJSON(req NetworkInterface, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePutGuestVsockRequestJSON(req Vsock, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutGuestVsockRequestJSON(req Vsock, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePutLoggerRequestJSON(req Logger, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutLoggerRequestJSON(req Logger, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePutMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -226,8 +226,8 @@ func encodePutMachineConfigurationRequestJSON(req OptMachineConfiguration, span 
 	return e, nil
 }
 
-func encodePutMetricsRequestJSON(req Metrics, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePutMetricsRequestJSON(req Metrics, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 

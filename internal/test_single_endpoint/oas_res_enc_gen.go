@@ -73,8 +73,8 @@ var (
 func encodeProbeLivenessResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	e.Str(response)
 	if _, err := e.WriteTo(w); err != nil {
@@ -86,8 +86,8 @@ func encodeProbeLivenessResponse(response string, w http.ResponseWriter, span tr
 func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)
-	e := jx.GetWriter()
-	defer jx.PutWriter(e)
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
 
 	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {

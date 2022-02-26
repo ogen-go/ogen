@@ -75,8 +75,8 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 	case *Book:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -97,8 +97,8 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 	case *SearchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -119,8 +119,8 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 	case *SearchByTagIDOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {

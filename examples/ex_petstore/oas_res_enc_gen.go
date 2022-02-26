@@ -78,8 +78,8 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -97,8 +97,8 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 	case *Pets:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -109,8 +109,8 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -128,8 +128,8 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
@@ -140,8 +140,8 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
-		e := jx.GetWriter()
-		defer jx.PutWriter(e)
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
 
 		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {

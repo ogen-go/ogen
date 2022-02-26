@@ -78,6 +78,7 @@ var (
 )
 
 var (
+	_ = std.Marshal
 	_ = testing.TB(nil)
 	_ = require.NoError
 )
@@ -103,12 +104,12 @@ func TestAPIOverview_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 APIOverview
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -134,12 +135,12 @@ func TestActionsBillingUsage_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsBillingUsage
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -165,12 +166,12 @@ func TestActionsEnterprisePermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsEnterprisePermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -196,12 +197,12 @@ func TestActionsListArtifactsForRepoOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListArtifactsForRepoOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -227,12 +228,12 @@ func TestActionsListEnvironmentSecretsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListEnvironmentSecretsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -258,12 +259,12 @@ func TestActionsListJobsForWorkflowRunOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListJobsForWorkflowRunOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -289,12 +290,12 @@ func TestActionsListOrgSecretsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListOrgSecretsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -320,12 +321,12 @@ func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_JSON(t *testing.T) 
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -351,12 +352,12 @@ func TestActionsListRepoSecretsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListRepoSecretsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -382,12 +383,12 @@ func TestActionsListRepoWorkflowsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListRepoWorkflowsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -413,12 +414,12 @@ func TestActionsListSelectedReposForOrgSecretOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListSelectedReposForOrgSecretOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -444,12 +445,12 @@ func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_JSON(
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -475,12 +476,12 @@ func TestActionsListSelfHostedRunnerGroupsForOrgOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListSelfHostedRunnerGroupsForOrgOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -506,12 +507,12 @@ func TestActionsListSelfHostedRunnersForOrgOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListSelfHostedRunnersForOrgOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -537,12 +538,12 @@ func TestActionsListSelfHostedRunnersForRepoOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListSelfHostedRunnersForRepoOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -568,12 +569,12 @@ func TestActionsListSelfHostedRunnersInGroupForOrgOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListSelfHostedRunnersInGroupForOrgOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -599,12 +600,12 @@ func TestActionsListWorkflowRunArtifactsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListWorkflowRunArtifactsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -630,12 +631,12 @@ func TestActionsListWorkflowRunsForRepoOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsListWorkflowRunsForRepoOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -661,12 +662,12 @@ func TestActionsOrganizationPermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsOrganizationPermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -692,12 +693,12 @@ func TestActionsPublicKey_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsPublicKey
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -723,12 +724,12 @@ func TestActionsRepositoryPermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsRepositoryPermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -754,12 +755,12 @@ func TestActionsReviewPendingDeploymentsForRunReqState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsReviewPendingDeploymentsForRunReqState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -785,12 +786,12 @@ func TestActionsSecret_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ActionsSecret
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -816,12 +817,12 @@ func TestAppPermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AppPermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -847,12 +848,12 @@ func TestApplicationGrant_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ApplicationGrant
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -878,12 +879,12 @@ func TestAppsListInstallationReposForAuthenticatedUserOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AppsListInstallationReposForAuthenticatedUserOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -909,12 +910,12 @@ func TestAppsListReposAccessibleToInstallationOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AppsListReposAccessibleToInstallationOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -940,12 +941,12 @@ func TestAppsUpdateWebhookConfigForAppReq_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AppsUpdateWebhookConfigForAppReq
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -971,12 +972,12 @@ func TestArtifact_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Artifact
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1003,12 +1004,12 @@ func TestAuthenticationToken_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AuthenticationToken
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1034,12 +1035,12 @@ func TestAuthenticationTokenPermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AuthenticationTokenPermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1065,12 +1066,12 @@ func TestAuthorAssociation_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 AuthorAssociation
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1100,12 +1101,12 @@ func TestAuthorization_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Authorization
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1131,12 +1132,12 @@ func TestAutolink_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Autolink
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1162,12 +1163,12 @@ func TestBaseGist_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 BaseGist
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1193,12 +1194,12 @@ func TestBlob_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Blob
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1224,12 +1225,12 @@ func TestBranchProtection_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 BranchProtection
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1255,12 +1256,12 @@ func TestBranchRestrictionPolicy_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 BranchRestrictionPolicy
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1286,12 +1287,12 @@ func TestBranchWithProtection_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 BranchWithProtection
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1317,12 +1318,12 @@ func TestCheckRun_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CheckRun
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1348,12 +1349,12 @@ func TestCheckRunConclusion_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CheckRunConclusion
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1379,12 +1380,12 @@ func TestCheckRunStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CheckRunStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1410,12 +1411,12 @@ func TestCheckSuite_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CheckSuite
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1441,12 +1442,12 @@ func TestCheckSuiteConclusion_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CheckSuiteConclusion
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1472,12 +1473,12 @@ func TestCheckSuitePreference_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CheckSuitePreference
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1503,12 +1504,12 @@ func TestCheckSuiteStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CheckSuiteStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1534,12 +1535,12 @@ func TestChecksListForRefOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ChecksListForRefOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1565,12 +1566,12 @@ func TestChecksListForSuiteOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ChecksListForSuiteOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1596,12 +1597,12 @@ func TestChecksListSuitesForRefOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ChecksListSuitesForRefOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1627,12 +1628,12 @@ func TestCloneTraffic_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CloneTraffic
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1658,12 +1659,12 @@ func TestCodeOfConduct_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CodeOfConduct
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1690,12 +1691,12 @@ func TestCodeScanningAlert_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CodeScanningAlert
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1721,12 +1722,12 @@ func TestCodeScanningAnalysis_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CodeScanningAnalysis
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1752,12 +1753,12 @@ func TestCodeScanningAnalysisDeletion_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CodeScanningAnalysisDeletion
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1783,12 +1784,12 @@ func TestCodeScanningSarifsReceipt_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CodeScanningSarifsReceipt
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1814,12 +1815,12 @@ func TestCodeScanningSarifsStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CodeScanningSarifsStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1845,12 +1846,12 @@ func TestCombinedBillingUsage_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CombinedBillingUsage
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1876,12 +1877,12 @@ func TestCombinedCommitStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CombinedCommitStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1907,12 +1908,12 @@ func TestCommit_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Commit
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1939,12 +1940,12 @@ func TestCommitComment_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CommitComment
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -1970,12 +1971,12 @@ func TestCommitComparison_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CommitComparison
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2001,12 +2002,12 @@ func TestCommitComparisonStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CommitComparisonStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2032,12 +2033,12 @@ func TestCommunityProfile_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 CommunityProfile
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2063,12 +2064,12 @@ func TestContentFile_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ContentFile
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2094,12 +2095,12 @@ func TestContentReferenceAttachment_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ContentReferenceAttachment
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2125,12 +2126,12 @@ func TestDeployKey_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 DeployKey
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2156,12 +2157,12 @@ func TestDeployment_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Deployment
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2187,12 +2188,12 @@ func TestDeploymentStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 DeploymentStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2218,12 +2219,12 @@ func TestDeploymentStatusState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 DeploymentStatusState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2249,12 +2250,12 @@ func TestDiffEntryStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 DiffEntryStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2280,12 +2281,12 @@ func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_JSON(
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2311,12 +2312,12 @@ func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2342,12 +2343,12 @@ func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_JSON(t *testin
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2373,12 +2374,12 @@ func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_JSON(t *testing.T) 
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2404,12 +2405,12 @@ func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_JSON(t *test
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2435,12 +2436,12 @@ func TestEnvironmentApprovalsState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 EnvironmentApprovalsState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2466,12 +2467,12 @@ func TestFeed_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Feed
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2499,12 +2500,12 @@ func TestFileCommit_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 FileCommit
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2531,12 +2532,12 @@ func TestFullRepository_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 FullRepository
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2562,12 +2563,12 @@ func TestGistComment_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GistComment
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2593,12 +2594,12 @@ func TestGistSimple_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GistSimple
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2625,13 +2626,13 @@ func TestGistsCreateReqFiles_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GistsCreateReqFiles
 			typ2 = make(GistsCreateReqFiles)
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2657,12 +2658,12 @@ func TestGistsCreateReqPublic1_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GistsCreateReqPublic1
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2689,12 +2690,12 @@ func TestGitCommit_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GitCommit
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2720,12 +2721,12 @@ func TestGitRef_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GitRef
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2751,12 +2752,12 @@ func TestGitTag_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GitTag
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2784,12 +2785,12 @@ func TestGitTree_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GitTree
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2815,12 +2816,12 @@ func TestGitignoreTemplate_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GitignoreTemplate
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2846,12 +2847,12 @@ func TestGpgKey_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GpgKey
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2878,12 +2879,12 @@ func TestGroupMapping_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 GroupMapping
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2909,12 +2910,12 @@ func TestHook_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Hook
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2940,12 +2941,12 @@ func TestHookDelivery_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 HookDelivery
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -2971,12 +2972,12 @@ func TestHovercard_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Hovercard
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3005,12 +3006,12 @@ func TestImport_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Import
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3036,12 +3037,12 @@ func TestInstallationToken_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 InstallationToken
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3067,12 +3068,12 @@ func TestIntegration_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Integration
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3098,12 +3099,12 @@ func TestIntegrationPermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 IntegrationPermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3129,12 +3130,12 @@ func TestInteractionExpiry_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 InteractionExpiry
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3160,12 +3161,12 @@ func TestInteractionGroup_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 InteractionGroup
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3193,12 +3194,12 @@ func TestInteractionLimitResponse_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 InteractionLimitResponse
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3224,12 +3225,12 @@ func TestIssue_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Issue
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3255,12 +3256,12 @@ func TestIssueComment_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 IssueComment
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3286,12 +3287,12 @@ func TestIssueEvent_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 IssueEvent
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3317,12 +3318,12 @@ func TestIssueSimple_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 IssueSimple
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3348,12 +3349,12 @@ func TestJob_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Job
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3379,12 +3380,12 @@ func TestJobStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 JobStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3410,12 +3411,12 @@ func TestJobStepsItemStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 JobStepsItemStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3441,12 +3442,12 @@ func TestKey_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Key
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3473,12 +3474,12 @@ func TestLabel_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Label
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3505,13 +3506,13 @@ func TestLanguage_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Language
 			typ2 = make(Language)
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3537,12 +3538,12 @@ func TestLicense_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 License
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3568,12 +3569,12 @@ func TestLicenseContent_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 LicenseContent
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3599,12 +3600,12 @@ func TestMarketplacePurchase_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 MarketplacePurchase
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3630,12 +3631,12 @@ func TestMergedUpstream_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 MergedUpstream
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3664,12 +3665,12 @@ func TestMigration_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Migration
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3695,12 +3696,12 @@ func TestMigrationsStartForAuthenticatedUserReqExcludeItem_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 MigrationsStartForAuthenticatedUserReqExcludeItem
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3726,12 +3727,12 @@ func TestMilestone_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Milestone
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3757,12 +3758,12 @@ func TestMilestoneState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 MilestoneState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3788,12 +3789,12 @@ func TestMinimalRepository_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 MinimalRepository
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3819,12 +3820,12 @@ func TestNullableIntegrationPermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 NullableIntegrationPermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3850,12 +3851,12 @@ func TestNullableMilestoneState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 NullableMilestoneState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3882,12 +3883,12 @@ func TestOrgHook_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrgHook
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3914,12 +3915,12 @@ func TestOrgMembership_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrgMembership
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3945,12 +3946,12 @@ func TestOrgMembershipRole_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrgMembershipRole
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -3976,12 +3977,12 @@ func TestOrgMembershipState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrgMembershipState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4007,12 +4008,12 @@ func TestOrganizationActionsSecret_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrganizationActionsSecret
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4039,12 +4040,12 @@ func TestOrganizationFull_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrganizationFull
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4070,12 +4071,12 @@ func TestOrganizationInvitation_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrganizationInvitation
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4101,12 +4102,12 @@ func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrgsRemoveOutsideCollaboratorUnprocessableEntity
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4132,12 +4133,12 @@ func TestOrgsUpdateWebhookConfigForOrgReq_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 OrgsUpdateWebhookConfigForOrgReq
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4164,12 +4165,12 @@ func TestPackage_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Package
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4195,12 +4196,12 @@ func TestPackagePackageType_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PackagePackageType
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4228,12 +4229,12 @@ func TestPackageVersion_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PackageVersion
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4259,12 +4260,12 @@ func TestPackageVersionMetadataPackageType_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PackageVersionMetadataPackageType
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4290,12 +4291,12 @@ func TestPackageVisibility_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PackageVisibility
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4321,12 +4322,12 @@ func TestPackagesBillingUsage_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PackagesBillingUsage
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4352,12 +4353,12 @@ func TestPage_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Page
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4383,12 +4384,12 @@ func TestPageBuild_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PageBuild
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4414,12 +4415,12 @@ func TestPageBuildStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PageBuildStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4445,12 +4446,12 @@ func TestPageProtectedDomainState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PageProtectedDomainState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4476,12 +4477,12 @@ func TestPageStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PageStatus
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4507,12 +4508,12 @@ func TestPagesHTTPSCertificateState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PagesHTTPSCertificateState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4538,12 +4539,12 @@ func TestPagesHealthCheck_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PagesHealthCheck
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4569,12 +4570,12 @@ func TestParticipationStats_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ParticipationStats
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4600,12 +4601,12 @@ func TestPorterAuthor_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PorterAuthor
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4631,12 +4632,12 @@ func TestPrivateUser_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PrivateUser
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4664,12 +4665,12 @@ func TestProject_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Project
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4695,12 +4696,12 @@ func TestProjectCard_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ProjectCard
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4727,12 +4728,12 @@ func TestProjectColumn_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ProjectColumn
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4758,12 +4759,12 @@ func TestProjectsAddCollaboratorReqPermission_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ProjectsAddCollaboratorReqPermission
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4790,12 +4791,12 @@ func TestProtectedBranchAdminEnforced_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ProtectedBranchAdminEnforced
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4821,12 +4822,12 @@ func TestProtectedBranchPullRequestReview_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ProtectedBranchPullRequestReview
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4852,12 +4853,12 @@ func TestPullRequest_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullRequest
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4883,12 +4884,12 @@ func TestPullRequestMergeResult_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullRequestMergeResult
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4917,12 +4918,12 @@ func TestPullRequestReview_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullRequestReview
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4949,12 +4950,12 @@ func TestPullRequestReviewComment_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullRequestReviewComment
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -4980,12 +4981,12 @@ func TestPullRequestReviewRequest_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullRequestReviewRequest
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5011,12 +5012,12 @@ func TestPullRequestSimple_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullRequestSimple
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5042,12 +5043,12 @@ func TestPullRequestState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullRequestState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5073,12 +5074,12 @@ func TestPullsMergeConflict_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullsMergeConflict
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5104,12 +5105,12 @@ func TestPullsMergeMethodNotAllowed_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullsMergeMethodNotAllowed
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5135,12 +5136,12 @@ func TestPullsUpdateBranchAccepted_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 PullsUpdateBranchAccepted
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5166,12 +5167,12 @@ func TestRateLimitOverview_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 RateLimitOverview
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5197,12 +5198,12 @@ func TestReaction_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Reaction
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5228,12 +5229,12 @@ func TestReactionContent_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReactionContent
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5259,12 +5260,12 @@ func TestRelease_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Release
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5290,12 +5291,12 @@ func TestReleaseAsset_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReleaseAsset
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5321,12 +5322,12 @@ func TestReposAddAppAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposAddAppAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5352,12 +5353,12 @@ func TestReposAddStatusCheckContextsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposAddStatusCheckContextsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5383,12 +5384,12 @@ func TestReposAddTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposAddTeamAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5414,12 +5415,12 @@ func TestReposAddUserAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposAddUserAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5445,12 +5446,12 @@ func TestReposCreateDeploymentAccepted_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposCreateDeploymentAccepted
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5476,12 +5477,12 @@ func TestReposDeleteForbidden_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposDeleteForbidden
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5507,12 +5508,12 @@ func TestReposRemoveAppAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposRemoveAppAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5538,12 +5539,12 @@ func TestReposRemoveStatusCheckContextsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposRemoveStatusCheckContextsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5569,12 +5570,12 @@ func TestReposRemoveTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposRemoveTeamAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5600,12 +5601,12 @@ func TestReposRemoveUserAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposRemoveUserAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5631,12 +5632,12 @@ func TestReposSetAppAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposSetAppAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5662,12 +5663,12 @@ func TestReposSetStatusCheckContextsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposSetStatusCheckContextsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5693,12 +5694,12 @@ func TestReposSetTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposSetTeamAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5724,12 +5725,12 @@ func TestReposSetUserAccessRestrictionsReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposSetUserAccessRestrictionsReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5755,12 +5756,12 @@ func TestReposUpdateWebhookConfigForRepoReq_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ReposUpdateWebhookConfigForRepoReq
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5787,12 +5788,12 @@ func TestRepository_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Repository
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5818,12 +5819,12 @@ func TestRepositoryCollaboratorPermission_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 RepositoryCollaboratorPermission
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5850,12 +5851,12 @@ func TestRepositoryInvitation_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 RepositoryInvitation
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5881,12 +5882,12 @@ func TestRepositoryInvitationPermissions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 RepositoryInvitationPermissions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5912,12 +5913,12 @@ func TestRepositorySubscription_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 RepositorySubscription
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5943,12 +5944,12 @@ func TestRunner_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Runner
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -5975,12 +5976,12 @@ func TestRunnerGroupsEnterprise_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 RunnerGroupsEnterprise
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6007,12 +6008,12 @@ func TestRunnerGroupsOrg_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 RunnerGroupsOrg
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6039,12 +6040,12 @@ func TestScimEnterpriseGroup_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ScimEnterpriseGroup
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6071,12 +6072,12 @@ func TestScimEnterpriseUser_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ScimEnterpriseUser
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6102,12 +6103,12 @@ func TestScimGroupListEnterprise_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ScimGroupListEnterprise
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6133,12 +6134,12 @@ func TestScimUserListEnterprise_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ScimUserListEnterprise
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6164,12 +6165,12 @@ func TestSearchCodeOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SearchCodeOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6195,12 +6196,12 @@ func TestSearchCommitsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SearchCommitsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6226,12 +6227,12 @@ func TestSearchIssuesAndPullRequestsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SearchIssuesAndPullRequestsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6257,12 +6258,12 @@ func TestSearchLabelsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SearchLabelsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6288,12 +6289,12 @@ func TestSearchReposOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SearchReposOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6319,12 +6320,12 @@ func TestSearchTopicsOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SearchTopicsOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6350,12 +6351,12 @@ func TestSearchUsersOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SearchUsersOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6382,12 +6383,12 @@ func TestSecretScanningAlert_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SecretScanningAlert
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6413,12 +6414,12 @@ func TestSelectedActions_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 SelectedActions
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6444,12 +6445,12 @@ func TestShortBlob_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ShortBlob
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6475,12 +6476,12 @@ func TestStatus_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Status
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6506,12 +6507,12 @@ func TestStatusCheckPolicy_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 StatusCheckPolicy
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6538,12 +6539,12 @@ func TestTeamDiscussion_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamDiscussion
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6570,12 +6571,12 @@ func TestTeamDiscussionComment_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamDiscussionComment
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6601,12 +6602,12 @@ func TestTeamFull_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamFull
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6632,12 +6633,12 @@ func TestTeamFullPrivacy_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamFullPrivacy
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6664,12 +6665,12 @@ func TestTeamMembership_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamMembership
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6695,12 +6696,12 @@ func TestTeamMembershipRole_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamMembershipRole
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6726,12 +6727,12 @@ func TestTeamProject_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamProject
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6757,12 +6758,12 @@ func TestTeamRepository_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamRepository
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6788,12 +6789,12 @@ func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamsAddOrUpdateProjectPermissionsInOrgForbidden
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6819,12 +6820,12 @@ func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 TeamsAddOrUpdateProjectPermissionsLegacyForbidden
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6850,12 +6851,12 @@ func TestThread_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Thread
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6881,12 +6882,12 @@ func TestThreadSubscription_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ThreadSubscription
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6912,12 +6913,12 @@ func TestTopic_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Topic
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6943,12 +6944,12 @@ func TestUsersAddEmailForAuthenticatedReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 UsersAddEmailForAuthenticatedReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -6974,12 +6975,12 @@ func TestUsersDeleteEmailForAuthenticatedReq0_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 UsersDeleteEmailForAuthenticatedReq0
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7006,12 +7007,12 @@ func TestUsersGetAuthenticatedOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 UsersGetAuthenticatedOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7038,12 +7039,12 @@ func TestUsersGetByUsernameOK_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 UsersGetByUsernameOK
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7069,12 +7070,12 @@ func TestViewTraffic_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 ViewTraffic
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7100,12 +7101,12 @@ func TestWebhookConfig_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 WebhookConfig
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7131,12 +7132,12 @@ func TestWorkflow_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 Workflow
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7162,12 +7163,12 @@ func TestWorkflowRun_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 WorkflowRun
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7193,12 +7194,12 @@ func TestWorkflowRunUsage_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 WorkflowRunUsage
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }
@@ -7224,12 +7225,12 @@ func TestWorkflowState_JSON(t *testing.T) {
 				require.NoErrorf(t, err, "Input: %s", tc.Input)
 			}
 
-			e := jx.Writer{}
+			e := jx.Encoder{}
 			typ.Encode(&e)
-			require.True(t, std.Valid(e.Buf), "Encoded: %s", e.Buf)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
 
 			var typ2 WorkflowState
-			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Buf)))
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
 }

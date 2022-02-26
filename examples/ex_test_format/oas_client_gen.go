@@ -133,8 +133,8 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_Any"
@@ -190,8 +190,8 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean"
@@ -247,8 +247,8 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_array"
@@ -326,8 +326,8 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_array_array"
@@ -383,8 +383,8 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_nullable"
@@ -440,8 +440,8 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_nullable_array"
@@ -519,8 +519,8 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_boolean_nullable_array_array"
@@ -576,8 +576,8 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_EmptyStruct"
@@ -649,8 +649,8 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_FormatTest"
@@ -706,8 +706,8 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer"
@@ -763,8 +763,8 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_array"
@@ -842,8 +842,8 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_array_array"
@@ -899,8 +899,8 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32"
@@ -956,8 +956,8 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_array"
@@ -1035,8 +1035,8 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_array_array"
@@ -1092,8 +1092,8 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_nullable"
@@ -1149,8 +1149,8 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_nullable_array"
@@ -1228,8 +1228,8 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int32_nullable_array_array"
@@ -1285,8 +1285,8 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64"
@@ -1342,8 +1342,8 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_array"
@@ -1421,8 +1421,8 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_array_array"
@@ -1478,8 +1478,8 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_nullable"
@@ -1535,8 +1535,8 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_nullable_array"
@@ -1614,8 +1614,8 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_int64_nullable_array_array"
@@ -1671,8 +1671,8 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_nullable"
@@ -1728,8 +1728,8 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_nullable_array"
@@ -1807,8 +1807,8 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_integer_nullable_array_array"
@@ -1880,8 +1880,8 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number"
@@ -1959,8 +1959,8 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_array"
@@ -2055,8 +2055,8 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_array_array"
@@ -2128,8 +2128,8 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double"
@@ -2207,8 +2207,8 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_array"
@@ -2303,8 +2303,8 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_array_array"
@@ -2376,8 +2376,8 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_nullable"
@@ -2455,8 +2455,8 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_nullable_array"
@@ -2551,8 +2551,8 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_double_nullable_array_array"
@@ -2624,8 +2624,8 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float"
@@ -2703,8 +2703,8 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_array"
@@ -2799,8 +2799,8 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_array_array"
@@ -2872,8 +2872,8 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_nullable"
@@ -2951,8 +2951,8 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_nullable_array"
@@ -3047,8 +3047,8 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_float_nullable_array_array"
@@ -3104,8 +3104,8 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32"
@@ -3161,8 +3161,8 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_array"
@@ -3240,8 +3240,8 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_array_array"
@@ -3297,8 +3297,8 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_nullable"
@@ -3354,8 +3354,8 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_nullable_array"
@@ -3433,8 +3433,8 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int32_nullable_array_array"
@@ -3490,8 +3490,8 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64"
@@ -3547,8 +3547,8 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_array"
@@ -3626,8 +3626,8 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_array_array"
@@ -3683,8 +3683,8 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_nullable"
@@ -3740,8 +3740,8 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_nullable_array"
@@ -3819,8 +3819,8 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_int64_nullable_array_array"
@@ -3892,8 +3892,8 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_nullable"
@@ -3971,8 +3971,8 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []f
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_nullable_array"
@@ -4067,8 +4067,8 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_number_nullable_array_array"
@@ -4124,8 +4124,8 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_Any"
@@ -4181,8 +4181,8 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean"
@@ -4246,8 +4246,8 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_array"
@@ -4328,8 +4328,8 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_array_array"
@@ -4385,8 +4385,8 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_nullable"
@@ -4450,8 +4450,8 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_nullable_array"
@@ -4532,8 +4532,8 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_boolean_nullable_array_array"
@@ -4589,8 +4589,8 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_EmptyStruct"
@@ -4654,8 +4654,8 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_FormatTest"
@@ -4711,8 +4711,8 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer"
@@ -4776,8 +4776,8 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_array"
@@ -4858,8 +4858,8 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_array_array"
@@ -4915,8 +4915,8 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32"
@@ -4980,8 +4980,8 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_array"
@@ -5062,8 +5062,8 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_array_array"
@@ -5119,8 +5119,8 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_nullable"
@@ -5184,8 +5184,8 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_nullable_array"
@@ -5266,8 +5266,8 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int32_nullable_array_array"
@@ -5323,8 +5323,8 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64"
@@ -5388,8 +5388,8 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_array"
@@ -5470,8 +5470,8 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_array_array"
@@ -5527,8 +5527,8 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_nullable"
@@ -5592,8 +5592,8 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_nullable_array"
@@ -5674,8 +5674,8 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_int64_nullable_array_array"
@@ -5731,8 +5731,8 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_nullable"
@@ -5796,8 +5796,8 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_nullable_array"
@@ -5878,8 +5878,8 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_integer_nullable_array_array"
@@ -5943,8 +5943,8 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number"
@@ -6025,8 +6025,8 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_array"
@@ -6124,8 +6124,8 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_array_array"
@@ -6189,8 +6189,8 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double"
@@ -6271,8 +6271,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_array"
@@ -6370,8 +6370,8 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_array_array"
@@ -6436,8 +6436,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_nullable"
@@ -6518,8 +6518,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_nullable_array"
@@ -6617,8 +6617,8 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_double_nullable_array_array"
@@ -6682,8 +6682,8 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float"
@@ -6764,8 +6764,8 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_array"
@@ -6863,8 +6863,8 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_array_array"
@@ -6929,8 +6929,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_nullable"
@@ -7011,8 +7011,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_nullable_array"
@@ -7110,8 +7110,8 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_float_nullable_array_array"
@@ -7167,8 +7167,8 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32"
@@ -7232,8 +7232,8 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_array"
@@ -7314,8 +7314,8 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_array_array"
@@ -7371,8 +7371,8 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_nullable"
@@ -7436,8 +7436,8 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_nullable_array"
@@ -7518,8 +7518,8 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int32_nullable_array_array"
@@ -7575,8 +7575,8 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64"
@@ -7640,8 +7640,8 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_array"
@@ -7722,8 +7722,8 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_array_array"
@@ -7779,8 +7779,8 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_nullable"
@@ -7844,8 +7844,8 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_nullable_array"
@@ -7926,8 +7926,8 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_int64_nullable_array_array"
@@ -7992,8 +7992,8 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_nullable"
@@ -8074,8 +8074,8 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_nullable_array"
@@ -8173,8 +8173,8 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_number_nullable_array_array"
@@ -8230,8 +8230,8 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string"
@@ -8295,8 +8295,8 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_array"
@@ -8377,8 +8377,8 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_array_array"
@@ -8434,8 +8434,8 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary"
@@ -8499,8 +8499,8 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_array"
@@ -8581,8 +8581,8 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_array_array"
@@ -8638,8 +8638,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_nullable"
@@ -8703,8 +8703,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_nullable_array"
@@ -8785,8 +8785,8 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_binary_nullable_array_array"
@@ -8842,8 +8842,8 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte"
@@ -8907,8 +8907,8 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_array"
@@ -8989,8 +8989,8 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_array_array"
@@ -9046,8 +9046,8 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_nullable"
@@ -9111,8 +9111,8 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_nullable_array"
@@ -9193,8 +9193,8 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_byte_nullable_array_array"
@@ -9250,8 +9250,8 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date"
@@ -9315,8 +9315,8 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_array"
@@ -9397,8 +9397,8 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_array_array"
@@ -9454,8 +9454,8 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_nullable"
@@ -9519,8 +9519,8 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_nullable_array"
@@ -9601,8 +9601,8 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date_nullable_array_array"
@@ -9658,8 +9658,8 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time"
@@ -9723,8 +9723,8 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_array"
@@ -9805,8 +9805,8 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_array_array"
@@ -9862,8 +9862,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_nullable"
@@ -9927,8 +9927,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_nullable_array"
@@ -10009,8 +10009,8 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_date-time_nullable_array_array"
@@ -10066,8 +10066,8 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration"
@@ -10131,8 +10131,8 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_array"
@@ -10213,8 +10213,8 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_array_array"
@@ -10270,8 +10270,8 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_nullable"
@@ -10335,8 +10335,8 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_nullable_array"
@@ -10417,8 +10417,8 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_duration_nullable_array_array"
@@ -10490,8 +10490,8 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email"
@@ -10580,8 +10580,8 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_array"
@@ -10687,8 +10687,8 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_array_array"
@@ -10761,8 +10761,8 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_nullable"
@@ -10851,8 +10851,8 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_nullable_array"
@@ -10958,8 +10958,8 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_email_nullable_array_array"
@@ -11031,8 +11031,8 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname"
@@ -11121,8 +11121,8 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_array"
@@ -11228,8 +11228,8 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_array_array"
@@ -11302,8 +11302,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_nullable"
@@ -11392,8 +11392,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_nullable_array"
@@ -11499,8 +11499,8 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_hostname_nullable_array_array"
@@ -11556,8 +11556,8 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request net.IP
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip"
@@ -11621,8 +11621,8 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_array"
@@ -11703,8 +11703,8 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_array_array"
@@ -11760,8 +11760,8 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_nullable"
@@ -11825,8 +11825,8 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_nullable_array"
@@ -11907,8 +11907,8 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ip_nullable_array_array"
@@ -11964,8 +11964,8 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request net.
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4"
@@ -12029,8 +12029,8 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_array"
@@ -12111,8 +12111,8 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_array_array"
@@ -12168,8 +12168,8 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_nullable"
@@ -12233,8 +12233,8 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_nullable_array"
@@ -12315,8 +12315,8 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv4_nullable_array_array"
@@ -12372,8 +12372,8 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request net.
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6"
@@ -12437,8 +12437,8 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_array"
@@ -12519,8 +12519,8 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_array_array"
@@ -12576,8 +12576,8 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_nullable"
@@ -12641,8 +12641,8 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_nullable_array"
@@ -12723,8 +12723,8 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_ipv6_nullable_array_array"
@@ -12780,8 +12780,8 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_nullable"
@@ -12845,8 +12845,8 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_nullable_array"
@@ -12927,8 +12927,8 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_nullable_array_array"
@@ -12984,8 +12984,8 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password"
@@ -13049,8 +13049,8 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_array"
@@ -13131,8 +13131,8 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_array_array"
@@ -13188,8 +13188,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_nullable"
@@ -13253,8 +13253,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_nullable_array"
@@ -13335,8 +13335,8 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_password_nullable_array_array"
@@ -13392,8 +13392,8 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time"
@@ -13457,8 +13457,8 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_array"
@@ -13539,8 +13539,8 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_array_array"
@@ -13596,8 +13596,8 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_nullable"
@@ -13661,8 +13661,8 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_nullable_array"
@@ -13743,8 +13743,8 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_time_nullable_array_array"
@@ -13800,8 +13800,8 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri"
@@ -13865,8 +13865,8 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_array"
@@ -13947,8 +13947,8 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_array_array"
@@ -14004,8 +14004,8 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_nullable"
@@ -14069,8 +14069,8 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_nullable_array"
@@ -14151,8 +14151,8 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uri_nullable_array_array"
@@ -14208,8 +14208,8 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid"
@@ -14273,8 +14273,8 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_array"
@@ -14355,8 +14355,8 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_array_array"
@@ -14412,8 +14412,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_nullable"
@@ -14477,8 +14477,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_nullable_array"
@@ -14559,8 +14559,8 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_required_string_uuid_nullable_array_array"
@@ -14616,8 +14616,8 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string"
@@ -14673,8 +14673,8 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_array"
@@ -14752,8 +14752,8 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_array_array"
@@ -14809,8 +14809,8 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary"
@@ -14866,8 +14866,8 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_array"
@@ -14945,8 +14945,8 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_array_array"
@@ -15002,8 +15002,8 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_nullable"
@@ -15059,8 +15059,8 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_nullable_array"
@@ -15138,8 +15138,8 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_binary_nullable_array_array"
@@ -15195,8 +15195,8 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte"
@@ -15252,8 +15252,8 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_array"
@@ -15331,8 +15331,8 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_array_array"
@@ -15388,8 +15388,8 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_nullable"
@@ -15445,8 +15445,8 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_nullable_array"
@@ -15524,8 +15524,8 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_byte_nullable_array_array"
@@ -15581,8 +15581,8 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date"
@@ -15638,8 +15638,8 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_array"
@@ -15717,8 +15717,8 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_array_array"
@@ -15774,8 +15774,8 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_nullable"
@@ -15831,8 +15831,8 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_nullable_array"
@@ -15910,8 +15910,8 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date_nullable_array_array"
@@ -15967,8 +15967,8 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time"
@@ -16024,8 +16024,8 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_array"
@@ -16103,8 +16103,8 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_array_array"
@@ -16160,8 +16160,8 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_nullable"
@@ -16217,8 +16217,8 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_nullable_array"
@@ -16296,8 +16296,8 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_date-time_nullable_array_array"
@@ -16353,8 +16353,8 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration"
@@ -16410,8 +16410,8 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_array"
@@ -16489,8 +16489,8 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_array_array"
@@ -16546,8 +16546,8 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_nullable"
@@ -16603,8 +16603,8 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_nullable_array"
@@ -16682,8 +16682,8 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_duration_nullable_array_array"
@@ -16763,8 +16763,8 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email"
@@ -16850,8 +16850,8 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_array"
@@ -16954,8 +16954,8 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_array_array"
@@ -17035,8 +17035,8 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_nullable"
@@ -17122,8 +17122,8 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_nullable_array"
@@ -17226,8 +17226,8 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_email_nullable_array_array"
@@ -17307,8 +17307,8 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname"
@@ -17394,8 +17394,8 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_array"
@@ -17498,8 +17498,8 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_array_array"
@@ -17579,8 +17579,8 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_nullable"
@@ -17666,8 +17666,8 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_nullable_array"
@@ -17770,8 +17770,8 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_hostname_nullable_array_array"
@@ -17827,8 +17827,8 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip"
@@ -17884,8 +17884,8 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []net.IP)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_array"
@@ -17963,8 +17963,8 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_array_array"
@@ -18020,8 +18020,8 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_nullable"
@@ -18077,8 +18077,8 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_nullable_array"
@@ -18156,8 +18156,8 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ip_nullable_array_array"
@@ -18213,8 +18213,8 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4"
@@ -18270,8 +18270,8 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []net.I
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_array"
@@ -18349,8 +18349,8 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_array_array"
@@ -18406,8 +18406,8 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_nullable"
@@ -18463,8 +18463,8 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_nullable_array"
@@ -18542,8 +18542,8 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv4_nullable_array_array"
@@ -18599,8 +18599,8 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6"
@@ -18656,8 +18656,8 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []net.I
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_array"
@@ -18735,8 +18735,8 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_array_array"
@@ -18792,8 +18792,8 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_nullable"
@@ -18849,8 +18849,8 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_nullable_array"
@@ -18928,8 +18928,8 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_ipv6_nullable_array_array"
@@ -18985,8 +18985,8 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_nullable"
@@ -19042,8 +19042,8 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_nullable_array"
@@ -19121,8 +19121,8 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_nullable_array_array"
@@ -19178,8 +19178,8 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password"
@@ -19235,8 +19235,8 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_array"
@@ -19314,8 +19314,8 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_array_array"
@@ -19371,8 +19371,8 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_nullable"
@@ -19428,8 +19428,8 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_nullable_array"
@@ -19507,8 +19507,8 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_password_nullable_array_array"
@@ -19564,8 +19564,8 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time"
@@ -19621,8 +19621,8 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_array"
@@ -19700,8 +19700,8 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_array_array"
@@ -19757,8 +19757,8 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_nullable"
@@ -19814,8 +19814,8 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_nullable_array"
@@ -19893,8 +19893,8 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_time_nullable_array_array"
@@ -19950,8 +19950,8 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri"
@@ -20007,8 +20007,8 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_array"
@@ -20086,8 +20086,8 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_array_array"
@@ -20143,8 +20143,8 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_nullable"
@@ -20200,8 +20200,8 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_nullable_array"
@@ -20279,8 +20279,8 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uri_nullable_array_array"
@@ -20336,8 +20336,8 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid"
@@ -20393,8 +20393,8 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_array"
@@ -20472,8 +20472,8 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_array_array"
@@ -20529,8 +20529,8 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_nullable"
@@ -20586,8 +20586,8 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_nullable_array"
@@ -20665,8 +20665,8 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_request_string_uuid_nullable_array_array"
@@ -20722,8 +20722,8 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_Any"
@@ -20779,8 +20779,8 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean"
@@ -20836,8 +20836,8 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_array"
@@ -20893,8 +20893,8 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_array_array"
@@ -20950,8 +20950,8 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_nullable"
@@ -21007,8 +21007,8 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_nullable_array"
@@ -21064,8 +21064,8 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_boolean_nullable_array_array"
@@ -21121,8 +21121,8 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_EmptyStruct"
@@ -21178,8 +21178,8 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_FormatTest"
@@ -21235,8 +21235,8 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer"
@@ -21292,8 +21292,8 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_array"
@@ -21349,8 +21349,8 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_array_array"
@@ -21406,8 +21406,8 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32"
@@ -21463,8 +21463,8 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_array"
@@ -21520,8 +21520,8 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_array_array"
@@ -21577,8 +21577,8 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_nullable"
@@ -21634,8 +21634,8 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_nullable_array"
@@ -21691,8 +21691,8 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int32_nullable_array_array"
@@ -21748,8 +21748,8 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64"
@@ -21805,8 +21805,8 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_array"
@@ -21862,8 +21862,8 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_array_array"
@@ -21919,8 +21919,8 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_nullable"
@@ -21976,8 +21976,8 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_nullable_array"
@@ -22033,8 +22033,8 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_int64_nullable_array_array"
@@ -22090,8 +22090,8 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_nullable"
@@ -22147,8 +22147,8 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_nullable_array"
@@ -22204,8 +22204,8 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_integer_nullable_array_array"
@@ -22261,8 +22261,8 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number"
@@ -22318,8 +22318,8 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_array"
@@ -22375,8 +22375,8 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_array_array"
@@ -22432,8 +22432,8 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double"
@@ -22489,8 +22489,8 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_array"
@@ -22546,8 +22546,8 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_array_array"
@@ -22603,8 +22603,8 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_nullable"
@@ -22660,8 +22660,8 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_nullable_array"
@@ -22717,8 +22717,8 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_double_nullable_array_array"
@@ -22774,8 +22774,8 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float"
@@ -22831,8 +22831,8 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_array"
@@ -22888,8 +22888,8 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_array_array"
@@ -22945,8 +22945,8 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_nullable"
@@ -23002,8 +23002,8 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_nullable_array"
@@ -23059,8 +23059,8 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_float_nullable_array_array"
@@ -23116,8 +23116,8 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32"
@@ -23173,8 +23173,8 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_array"
@@ -23230,8 +23230,8 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_array_array"
@@ -23287,8 +23287,8 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_nullable"
@@ -23344,8 +23344,8 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_nullable_array"
@@ -23401,8 +23401,8 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int32_nullable_array_array"
@@ -23458,8 +23458,8 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64"
@@ -23515,8 +23515,8 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_array"
@@ -23572,8 +23572,8 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_array_array"
@@ -23629,8 +23629,8 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_nullable"
@@ -23686,8 +23686,8 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_nullable_array"
@@ -23743,8 +23743,8 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_int64_nullable_array_array"
@@ -23800,8 +23800,8 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_nullable"
@@ -23857,8 +23857,8 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_nullable_array"
@@ -23914,8 +23914,8 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_number_nullable_array_array"
@@ -23971,8 +23971,8 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string"
@@ -24028,8 +24028,8 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_array"
@@ -24085,8 +24085,8 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_array_array"
@@ -24142,8 +24142,8 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary"
@@ -24199,8 +24199,8 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_array"
@@ -24256,8 +24256,8 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_array_array"
@@ -24313,8 +24313,8 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_nullable"
@@ -24370,8 +24370,8 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_nullable_array"
@@ -24427,8 +24427,8 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_binary_nullable_array_array"
@@ -24484,8 +24484,8 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte"
@@ -24541,8 +24541,8 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_array"
@@ -24598,8 +24598,8 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_array_array"
@@ -24655,8 +24655,8 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_nullable"
@@ -24712,8 +24712,8 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_nullable_array"
@@ -24769,8 +24769,8 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_byte_nullable_array_array"
@@ -24826,8 +24826,8 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date"
@@ -24883,8 +24883,8 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_array"
@@ -24940,8 +24940,8 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_array_array"
@@ -24997,8 +24997,8 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_nullable"
@@ -25054,8 +25054,8 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_nullable_array"
@@ -25111,8 +25111,8 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date_nullable_array_array"
@@ -25168,8 +25168,8 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time"
@@ -25225,8 +25225,8 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_array"
@@ -25282,8 +25282,8 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_array_array"
@@ -25339,8 +25339,8 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_nullable"
@@ -25396,8 +25396,8 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_nullable_array"
@@ -25453,8 +25453,8 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_date-time_nullable_array_array"
@@ -25510,8 +25510,8 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration"
@@ -25567,8 +25567,8 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_array"
@@ -25624,8 +25624,8 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_array_array"
@@ -25681,8 +25681,8 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_nullable"
@@ -25738,8 +25738,8 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_nullable_array"
@@ -25795,8 +25795,8 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_duration_nullable_array_array"
@@ -25852,8 +25852,8 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email"
@@ -25909,8 +25909,8 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_array"
@@ -25966,8 +25966,8 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_array_array"
@@ -26023,8 +26023,8 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_nullable"
@@ -26080,8 +26080,8 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_nullable_array"
@@ -26137,8 +26137,8 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_email_nullable_array_array"
@@ -26194,8 +26194,8 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname"
@@ -26251,8 +26251,8 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_array"
@@ -26308,8 +26308,8 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_array_array"
@@ -26365,8 +26365,8 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_nullable"
@@ -26422,8 +26422,8 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_nullable_array"
@@ -26479,8 +26479,8 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_hostname_nullable_array_array"
@@ -26536,8 +26536,8 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip"
@@ -26593,8 +26593,8 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_array"
@@ -26650,8 +26650,8 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_array_array"
@@ -26707,8 +26707,8 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_nullable"
@@ -26764,8 +26764,8 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_nullable_array"
@@ -26821,8 +26821,8 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ip_nullable_array_array"
@@ -26878,8 +26878,8 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4"
@@ -26935,8 +26935,8 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_array"
@@ -26992,8 +26992,8 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_array_array"
@@ -27049,8 +27049,8 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_nullable"
@@ -27106,8 +27106,8 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_nullable_array"
@@ -27163,8 +27163,8 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv4_nullable_array_array"
@@ -27220,8 +27220,8 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6"
@@ -27277,8 +27277,8 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_array"
@@ -27334,8 +27334,8 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_array_array"
@@ -27391,8 +27391,8 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_nullable"
@@ -27448,8 +27448,8 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_nullable_array"
@@ -27505,8 +27505,8 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_ipv6_nullable_array_array"
@@ -27562,8 +27562,8 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_nullable"
@@ -27619,8 +27619,8 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_nullable_array"
@@ -27676,8 +27676,8 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_nullable_array_array"
@@ -27733,8 +27733,8 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password"
@@ -27790,8 +27790,8 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_array"
@@ -27847,8 +27847,8 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_array_array"
@@ -27904,8 +27904,8 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_nullable"
@@ -27961,8 +27961,8 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_nullable_array"
@@ -28018,8 +28018,8 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_password_nullable_array_array"
@@ -28075,8 +28075,8 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time"
@@ -28132,8 +28132,8 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_array"
@@ -28189,8 +28189,8 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_array_array"
@@ -28246,8 +28246,8 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_nullable"
@@ -28303,8 +28303,8 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_nullable_array"
@@ -28360,8 +28360,8 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_time_nullable_array_array"
@@ -28417,8 +28417,8 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri"
@@ -28474,8 +28474,8 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_array"
@@ -28531,8 +28531,8 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_array_array"
@@ -28588,8 +28588,8 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_nullable"
@@ -28645,8 +28645,8 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_nullable_array"
@@ -28702,8 +28702,8 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uri_nullable_array_array"
@@ -28759,8 +28759,8 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid"
@@ -28816,8 +28816,8 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_array"
@@ -28873,8 +28873,8 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_array_array"
@@ -28930,8 +28930,8 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_nullable"
@@ -28987,8 +28987,8 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_nullable_array"
@@ -29044,8 +29044,8 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/test_response_string_uuid_nullable_array_array"

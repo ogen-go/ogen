@@ -848,10 +848,9 @@ func NewOneOfMappingAnyBOneOfMappingAny(v OneOfMappingAnyB) OneOfMappingAny {
 
 // Ref: #/components/schemas/OneOfMappingAnyB
 type OneOfMappingAnyB struct {
-	InfoType OptString             "json:\"infoType\""
-	Code     OptInt32              "json:\"code\""
-	Data     *OneOfMappingAnyBData "json:\"data\""
-	Info     OptString             "json:\"info\""
+	Code OptInt32              "json:\"code\""
+	Data *OneOfMappingAnyBData "json:\"data\""
+	Info OptString             "json:\"info\""
 }
 
 type OneOfMappingAnyBData struct{}
@@ -927,16 +926,14 @@ func NewOneOfMappingReferenceBOneOfMappingReference(v OneOfMappingReferenceB) On
 
 // Ref: #/components/schemas/OneOfMappingReferenceA
 type OneOfMappingReferenceA struct {
-	InfoType    OptString "json:\"infoType\""
 	Description OptString "json:\"description\""
 }
 
 // Ref: #/components/schemas/OneOfMappingReferenceB
 type OneOfMappingReferenceB struct {
-	InfoType OptString                   "json:\"infoType\""
-	Code     OptInt32                    "json:\"code\""
-	Data     *OneOfMappingReferenceBData "json:\"data\""
-	Info     OptString                   "json:\"info\""
+	Code OptInt32                    "json:\"code\""
+	Data *OneOfMappingReferenceBData "json:\"data\""
+	Info OptString                   "json:\"info\""
 }
 
 type OneOfMappingReferenceBData struct{}

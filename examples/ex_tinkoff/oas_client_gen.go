@@ -818,8 +818,8 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/limit-order"
@@ -913,8 +913,8 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/market-order"
@@ -1190,8 +1190,8 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/currencies/balance"
@@ -1272,8 +1272,8 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/positions/balance"
@@ -1364,8 +1364,8 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	if err != nil {
 		return res, err
 	}
-	defer jx.PutWriter(buf)
-	reqBody = bytes.NewReader(buf.Buf)
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/register"

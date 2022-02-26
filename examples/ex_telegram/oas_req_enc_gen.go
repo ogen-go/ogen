@@ -70,128 +70,128 @@ var (
 	_ = codes.Unset
 )
 
-func encodeAddStickerToSetRequestJSON(req AddStickerToSet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAddStickerToSetRequestJSON(req AddStickerToSet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAnswerCallbackQueryRequestJSON(req AnswerCallbackQuery, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAnswerCallbackQueryRequestJSON(req AnswerCallbackQuery, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAnswerInlineQueryRequestJSON(req AnswerInlineQuery, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAnswerInlineQueryRequestJSON(req AnswerInlineQuery, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAnswerPreCheckoutQueryRequestJSON(req AnswerPreCheckoutQuery, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAnswerPreCheckoutQueryRequestJSON(req AnswerPreCheckoutQuery, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeAnswerShippingQueryRequestJSON(req AnswerShippingQuery, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeAnswerShippingQueryRequestJSON(req AnswerShippingQuery, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeApproveChatJoinRequestRequestJSON(req ApproveChatJoinRequest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeApproveChatJoinRequestRequestJSON(req ApproveChatJoinRequest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeBanChatMemberRequestJSON(req BanChatMember, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeBanChatMemberRequestJSON(req BanChatMember, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeBanChatSenderChatRequestJSON(req BanChatSenderChat, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeBanChatSenderChatRequestJSON(req BanChatSenderChat, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCopyMessageRequestJSON(req CopyMessage, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCopyMessageRequestJSON(req CopyMessage, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCreateChatInviteLinkRequestJSON(req CreateChatInviteLink, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreateChatInviteLinkRequestJSON(req CreateChatInviteLink, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeCreateNewStickerSetRequestJSON(req CreateNewStickerSet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeCreateNewStickerSetRequestJSON(req CreateNewStickerSet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeDeclineChatJoinRequestRequestJSON(req DeclineChatJoinRequest, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDeclineChatJoinRequestRequestJSON(req DeclineChatJoinRequest, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeDeleteChatPhotoRequestJSON(req DeleteChatPhoto, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDeleteChatPhotoRequestJSON(req DeleteChatPhoto, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeDeleteChatStickerSetRequestJSON(req DeleteChatStickerSet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDeleteChatStickerSetRequestJSON(req DeleteChatStickerSet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeDeleteMessageRequestJSON(req DeleteMessage, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDeleteMessageRequestJSON(req DeleteMessage, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeDeleteMyCommandsRequestJSON(req OptDeleteMyCommands, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDeleteMyCommandsRequestJSON(req OptDeleteMyCommands, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -199,16 +199,16 @@ func encodeDeleteMyCommandsRequestJSON(req OptDeleteMyCommands, span trace.Span)
 	return e, nil
 }
 
-func encodeDeleteStickerFromSetRequestJSON(req DeleteStickerFromSet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDeleteStickerFromSetRequestJSON(req DeleteStickerFromSet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeDeleteWebhookRequestJSON(req OptDeleteWebhook, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeDeleteWebhookRequestJSON(req OptDeleteWebhook, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -216,120 +216,120 @@ func encodeDeleteWebhookRequestJSON(req OptDeleteWebhook, span trace.Span) (data
 	return e, nil
 }
 
-func encodeEditChatInviteLinkRequestJSON(req EditChatInviteLink, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEditChatInviteLinkRequestJSON(req EditChatInviteLink, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEditMessageCaptionRequestJSON(req EditMessageCaption, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEditMessageCaptionRequestJSON(req EditMessageCaption, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEditMessageLiveLocationRequestJSON(req EditMessageLiveLocation, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEditMessageLiveLocationRequestJSON(req EditMessageLiveLocation, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEditMessageMediaRequestJSON(req EditMessageMedia, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEditMessageMediaRequestJSON(req EditMessageMedia, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEditMessageReplyMarkupRequestJSON(req EditMessageReplyMarkup, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEditMessageReplyMarkupRequestJSON(req EditMessageReplyMarkup, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeEditMessageTextRequestJSON(req EditMessageText, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeEditMessageTextRequestJSON(req EditMessageText, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeExportChatInviteLinkRequestJSON(req ExportChatInviteLink, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeExportChatInviteLinkRequestJSON(req ExportChatInviteLink, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeForwardMessageRequestJSON(req ForwardMessage, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeForwardMessageRequestJSON(req ForwardMessage, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetChatRequestJSON(req GetChat, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetChatRequestJSON(req GetChat, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetChatAdministratorsRequestJSON(req GetChatAdministrators, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetChatAdministratorsRequestJSON(req GetChatAdministrators, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetChatMemberRequestJSON(req GetChatMember, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetChatMemberRequestJSON(req GetChatMember, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetChatMemberCountRequestJSON(req GetChatMemberCount, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetChatMemberCountRequestJSON(req GetChatMemberCount, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetFileRequestJSON(req GetFile, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetFileRequestJSON(req GetFile, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetGameHighScoresRequestJSON(req GetGameHighScores, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetGameHighScoresRequestJSON(req GetGameHighScores, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetMyCommandsRequestJSON(req OptGetMyCommands, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetMyCommandsRequestJSON(req OptGetMyCommands, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -337,16 +337,16 @@ func encodeGetMyCommandsRequestJSON(req OptGetMyCommands, span trace.Span) (data
 	return e, nil
 }
 
-func encodeGetStickerSetRequestJSON(req GetStickerSet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetStickerSetRequestJSON(req GetStickerSet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeGetUpdatesRequestJSON(req OptGetUpdates, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetUpdatesRequestJSON(req OptGetUpdates, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
@@ -354,344 +354,344 @@ func encodeGetUpdatesRequestJSON(req OptGetUpdates, span trace.Span) (data *jx.W
 	return e, nil
 }
 
-func encodeGetUserProfilePhotosRequestJSON(req GetUserProfilePhotos, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeGetUserProfilePhotosRequestJSON(req GetUserProfilePhotos, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeLeaveChatRequestJSON(req LeaveChat, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeLeaveChatRequestJSON(req LeaveChat, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePinChatMessageRequestJSON(req PinChatMessage, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePinChatMessageRequestJSON(req PinChatMessage, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodePromoteChatMemberRequestJSON(req PromoteChatMember, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodePromoteChatMemberRequestJSON(req PromoteChatMember, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeRestrictChatMemberRequestJSON(req RestrictChatMember, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeRestrictChatMemberRequestJSON(req RestrictChatMember, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeRevokeChatInviteLinkRequestJSON(req RevokeChatInviteLink, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeRevokeChatInviteLinkRequestJSON(req RevokeChatInviteLink, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendAnimationRequestJSON(req SendAnimation, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendAnimationRequestJSON(req SendAnimation, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendAudioRequestJSON(req SendAudio, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendAudioRequestJSON(req SendAudio, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendChatActionRequestJSON(req SendChatAction, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendChatActionRequestJSON(req SendChatAction, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendContactRequestJSON(req SendContact, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendContactRequestJSON(req SendContact, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendDiceRequestJSON(req SendDice, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendDiceRequestJSON(req SendDice, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendDocumentRequestJSON(req SendDocument, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendDocumentRequestJSON(req SendDocument, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendGameRequestJSON(req SendGame, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendGameRequestJSON(req SendGame, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendInvoiceRequestJSON(req SendInvoice, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendInvoiceRequestJSON(req SendInvoice, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendLocationRequestJSON(req SendLocation, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendLocationRequestJSON(req SendLocation, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendMediaGroupRequestJSON(req SendMediaGroup, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendMediaGroupRequestJSON(req SendMediaGroup, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendMessageRequestJSON(req SendMessage, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendMessageRequestJSON(req SendMessage, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendPhotoRequestJSON(req SendPhoto, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendPhotoRequestJSON(req SendPhoto, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendPollRequestJSON(req SendPoll, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendPollRequestJSON(req SendPoll, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendStickerRequestJSON(req SendSticker, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendStickerRequestJSON(req SendSticker, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendVenueRequestJSON(req SendVenue, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendVenueRequestJSON(req SendVenue, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendVideoRequestJSON(req SendVideo, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendVideoRequestJSON(req SendVideo, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendVideoNoteRequestJSON(req SendVideoNote, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendVideoNoteRequestJSON(req SendVideoNote, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSendVoiceRequestJSON(req SendVoice, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSendVoiceRequestJSON(req SendVoice, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetChatAdministratorCustomTitleRequestJSON(req SetChatAdministratorCustomTitle, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetChatAdministratorCustomTitleRequestJSON(req SetChatAdministratorCustomTitle, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetChatDescriptionRequestJSON(req SetChatDescription, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetChatDescriptionRequestJSON(req SetChatDescription, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetChatPermissionsRequestJSON(req SetChatPermissions, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetChatPermissionsRequestJSON(req SetChatPermissions, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetChatPhotoRequestJSON(req SetChatPhoto, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetChatPhotoRequestJSON(req SetChatPhoto, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetChatStickerSetRequestJSON(req SetChatStickerSet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetChatStickerSetRequestJSON(req SetChatStickerSet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetChatTitleRequestJSON(req SetChatTitle, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetChatTitleRequestJSON(req SetChatTitle, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetGameScoreRequestJSON(req SetGameScore, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetGameScoreRequestJSON(req SetGameScore, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetMyCommandsRequestJSON(req SetMyCommands, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetMyCommandsRequestJSON(req SetMyCommands, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetPassportDataErrorsRequestJSON(req SetPassportDataErrors, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetPassportDataErrorsRequestJSON(req SetPassportDataErrors, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetStickerPositionInSetRequestJSON(req SetStickerPositionInSet, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetStickerPositionInSetRequestJSON(req SetStickerPositionInSet, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetStickerSetThumbRequestJSON(req SetStickerSetThumb, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetStickerSetThumbRequestJSON(req SetStickerSetThumb, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeSetWebhookRequestJSON(req SetWebhook, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeSetWebhookRequestJSON(req SetWebhook, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeStopMessageLiveLocationRequestJSON(req StopMessageLiveLocation, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeStopMessageLiveLocationRequestJSON(req StopMessageLiveLocation, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeStopPollRequestJSON(req StopPoll, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeStopPollRequestJSON(req StopPoll, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUnbanChatMemberRequestJSON(req UnbanChatMember, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUnbanChatMemberRequestJSON(req UnbanChatMember, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUnbanChatSenderChatRequestJSON(req UnbanChatSenderChat, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUnbanChatSenderChatRequestJSON(req UnbanChatSenderChat, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUnpinAllChatMessagesRequestJSON(req UnpinAllChatMessages, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUnpinAllChatMessagesRequestJSON(req UnpinAllChatMessages, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUnpinChatMessageRequestJSON(req UnpinChatMessage, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUnpinChatMessageRequestJSON(req UnpinChatMessage, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
 	return e, nil
 }
 
-func encodeUploadStickerFileRequestJSON(req UploadStickerFile, span trace.Span) (data *jx.Writer, err error) {
-	e := jx.GetWriter()
+func encodeUploadStickerFileRequestJSON(req UploadStickerFile, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
 
 	req.Encode(e)
 
