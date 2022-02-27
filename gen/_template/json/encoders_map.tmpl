@@ -5,6 +5,12 @@
 // Encode implements json.Marshaler.
 func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s {{ $.Name }}) encodeFields(e *jx.Encoder) {
 	{{- if $fields.NotEmpty }}
 	{
 		{{- template "json/encode_struct_fields" $fields }}
@@ -14,7 +20,6 @@ func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 		e.FieldStart(k)
 		{{ template "json/enc" map_elem $.Item }}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{

@@ -126,6 +126,9 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 			// Explicit mapping.
 			var found bool
 			for i, s := range sum.SumOf {
+				if !s.Is(ir.KindStruct, ir.KindMap) {
+					return nil, errors.Wrapf(&ErrNotImplemented{"unsupported sum type variant"}, "%T", s.Kind)
+				}
 				var ref string
 				if s.Schema != nil {
 					ref = s.Schema.Ref
