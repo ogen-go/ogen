@@ -73,6 +73,12 @@ var (
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Error) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -83,7 +89,6 @@ func (s Error) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfError = [2]string{
@@ -192,6 +197,12 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Pet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Pet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -208,7 +219,6 @@ func (s Pet) Encode(e *jx.Encoder) {
 			s.Tag.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPet = [3]string{

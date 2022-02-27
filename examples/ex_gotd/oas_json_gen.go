@@ -73,6 +73,12 @@ var (
 // Encode implements json.Marshaler.
 func (s AddStickerToSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AddStickerToSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("user_id")
@@ -112,7 +118,6 @@ func (s AddStickerToSet) Encode(e *jx.Encoder) {
 			s.MaskPosition.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAddStickerToSet = [7]string{
@@ -256,6 +261,12 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Animation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Animation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -305,7 +316,6 @@ func (s Animation) Encode(e *jx.Encoder) {
 			s.FileSize.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnimation = [9]string{
@@ -476,6 +486,12 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerCallbackQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AnswerCallbackQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("callback_query_id")
@@ -505,7 +521,6 @@ func (s AnswerCallbackQuery) Encode(e *jx.Encoder) {
 			s.CacheTime.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnswerCallbackQuery = [5]string{
@@ -623,6 +638,12 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AnswerInlineQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("inline_query_id")
@@ -667,7 +688,6 @@ func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
 			s.SwitchPmParameter.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnswerInlineQuery = [7]string{
@@ -815,6 +835,12 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AnswerPreCheckoutQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("pre_checkout_query_id")
@@ -831,7 +857,6 @@ func (s AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
 			s.ErrorMessage.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnswerPreCheckoutQuery = [3]string{
@@ -929,6 +954,12 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AnswerShippingQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("shipping_query_id")
@@ -955,7 +986,6 @@ func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
 			s.ErrorMessage.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnswerShippingQuery = [4]string{
@@ -1071,6 +1101,12 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ApproveChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ApproveChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -1081,7 +1117,6 @@ func (s ApproveChatJoinRequest) Encode(e *jx.Encoder) {
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfApproveChatJoinRequest = [2]string{
@@ -1166,6 +1201,12 @@ func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Audio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Audio) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -1217,7 +1258,6 @@ func (s Audio) Encode(e *jx.Encoder) {
 			s.Thumb.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAudio = [9]string{
@@ -1384,6 +1424,12 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BanChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BanChatMember) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -1406,7 +1452,6 @@ func (s BanChatMember) Encode(e *jx.Encoder) {
 			s.RevokeMessages.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBanChatMember = [4]string{
@@ -1513,6 +1558,12 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BanChatSenderChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BanChatSenderChat) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -1523,7 +1574,6 @@ func (s BanChatSenderChat) Encode(e *jx.Encoder) {
 		e.FieldStart("sender_chat_id")
 		e.Int64(s.SenderChatID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBanChatSenderChat = [2]string{
@@ -1608,6 +1658,12 @@ func (s *BanChatSenderChat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommand) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommand) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("command")
@@ -1618,7 +1674,6 @@ func (s BotCommand) Encode(e *jx.Encoder) {
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBotCommand = [2]string{
@@ -1706,33 +1761,47 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 func (s BotCommandScope) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case BotCommandScopeAllChatAdministratorsBotCommandScope:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("all_chat_administrators")
-		s.BotCommandScopeAllChatAdministrators.Encode(e)
+		s.BotCommandScopeAllChatAdministrators.encodeFields(e)
+		e.ObjEnd()
 	case BotCommandScopeAllGroupChatsBotCommandScope:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("all_group_chats")
-		s.BotCommandScopeAllGroupChats.Encode(e)
+		s.BotCommandScopeAllGroupChats.encodeFields(e)
+		e.ObjEnd()
 	case BotCommandScopeAllPrivateChatsBotCommandScope:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("all_private_chats")
-		s.BotCommandScopeAllPrivateChats.Encode(e)
+		s.BotCommandScopeAllPrivateChats.encodeFields(e)
+		e.ObjEnd()
 	case BotCommandScopeChatBotCommandScope:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("chat")
-		s.BotCommandScopeChat.Encode(e)
+		s.BotCommandScopeChat.encodeFields(e)
+		e.ObjEnd()
 	case BotCommandScopeChatAdministratorsBotCommandScope:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("chat_administrators")
-		s.BotCommandScopeChatAdministrators.Encode(e)
+		s.BotCommandScopeChatAdministrators.encodeFields(e)
+		e.ObjEnd()
 	case BotCommandScopeChatMemberBotCommandScope:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("chat_member")
-		s.BotCommandScopeChatMember.Encode(e)
+		s.BotCommandScopeChatMember.encodeFields(e)
+		e.ObjEnd()
 	case BotCommandScopeDefaultBotCommandScope:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("default")
-		s.BotCommandScopeDefault.Encode(e)
+		s.BotCommandScopeDefault.encodeFields(e)
+		e.ObjEnd()
 	}
 }
 
@@ -1831,7 +1900,12 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommandScopeAllChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommandScopeAllChatAdministrators) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfBotCommandScopeAllChatAdministrators = [0]string{}
@@ -1858,7 +1932,12 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommandScopeAllGroupChats) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommandScopeAllGroupChats) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfBotCommandScopeAllGroupChats = [0]string{}
@@ -1885,7 +1964,12 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommandScopeAllPrivateChats) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommandScopeAllPrivateChats) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfBotCommandScopeAllPrivateChats = [0]string{}
@@ -1912,12 +1996,17 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommandScopeChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommandScopeChat) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBotCommandScopeChat = [1]string{
@@ -1989,12 +2078,17 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommandScopeChatAdministrators) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBotCommandScopeChatAdministrators = [1]string{
@@ -2066,6 +2160,12 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommandScopeChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommandScopeChatMember) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -2076,7 +2176,6 @@ func (s BotCommandScopeChatMember) Encode(e *jx.Encoder) {
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBotCommandScopeChatMember = [2]string{
@@ -2161,7 +2260,12 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BotCommandScopeDefault) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BotCommandScopeDefault) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfBotCommandScopeDefault = [0]string{}
@@ -2188,7 +2292,12 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CallbackGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CallbackGame) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfCallbackGame = [0]string{}
@@ -2215,6 +2324,12 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CallbackQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CallbackQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -2254,7 +2369,6 @@ func (s CallbackQuery) Encode(e *jx.Encoder) {
 			s.GameShortName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCallbackQuery = [7]string{
@@ -2396,6 +2510,12 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Chat) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Chat) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -2520,7 +2640,6 @@ func (s Chat) Encode(e *jx.Encoder) {
 			s.AllMembersAreAdministrators.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChat = [21]string{
@@ -2818,6 +2937,12 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("invite_link")
@@ -2867,7 +2992,6 @@ func (s ChatInviteLink) Encode(e *jx.Encoder) {
 			s.PendingJoinRequestCount.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatInviteLink = [9]string{
@@ -3036,6 +3160,12 @@ func (s *ChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat")
@@ -3063,7 +3193,6 @@ func (s ChatJoinRequest) Encode(e *jx.Encoder) {
 			s.InviteLink.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatJoinRequest = [5]string{
@@ -3181,6 +3310,12 @@ func (s *ChatJoinRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatLocation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("location")
@@ -3191,7 +3326,6 @@ func (s ChatLocation) Encode(e *jx.Encoder) {
 		e.FieldStart("address")
 		e.Str(s.Address)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatLocation = [2]string{
@@ -3277,29 +3411,41 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 func (s ChatMember) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case ChatMemberAdministratorChatMember:
+		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberAdministrator")
-		s.ChatMemberAdministrator.Encode(e)
+		s.ChatMemberAdministrator.encodeFields(e)
+		e.ObjEnd()
 	case ChatMemberBannedChatMember:
+		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberBanned")
-		s.ChatMemberBanned.Encode(e)
+		s.ChatMemberBanned.encodeFields(e)
+		e.ObjEnd()
 	case ChatMemberLeftChatMember:
+		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberLeft")
-		s.ChatMemberLeft.Encode(e)
+		s.ChatMemberLeft.encodeFields(e)
+		e.ObjEnd()
 	case ChatMemberMemberChatMember:
+		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberMember")
-		s.ChatMemberMember.Encode(e)
+		s.ChatMemberMember.encodeFields(e)
+		e.ObjEnd()
 	case ChatMemberOwnerChatMember:
+		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberOwner")
-		s.ChatMemberOwner.Encode(e)
+		s.ChatMemberOwner.encodeFields(e)
+		e.ObjEnd()
 	case ChatMemberRestrictedChatMember:
+		e.ObjStart()
 		e.FieldStart("status")
 		e.Str("ChatMemberRestricted")
-		s.ChatMemberRestricted.Encode(e)
+		s.ChatMemberRestricted.encodeFields(e)
+		e.ObjEnd()
 	}
 }
 
@@ -3391,6 +3537,12 @@ func (s *ChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatMemberAdministrator) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatMemberAdministrator) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("status")
@@ -3470,7 +3622,6 @@ func (s ChatMemberAdministrator) Encode(e *jx.Encoder) {
 			s.CustomTitle.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatMemberAdministrator = [15]string{
@@ -3717,6 +3868,12 @@ func (s *ChatMemberAdministrator) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatMemberBanned) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatMemberBanned) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("status")
@@ -3732,7 +3889,6 @@ func (s ChatMemberBanned) Encode(e *jx.Encoder) {
 		e.FieldStart("until_date")
 		e.Int(s.UntilDate)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatMemberBanned = [3]string{
@@ -3830,6 +3986,12 @@ func (s *ChatMemberBanned) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatMemberLeft) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatMemberLeft) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("status")
@@ -3840,7 +4002,6 @@ func (s ChatMemberLeft) Encode(e *jx.Encoder) {
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatMemberLeft = [2]string{
@@ -3925,6 +4086,12 @@ func (s *ChatMemberLeft) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatMemberMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatMemberMember) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("status")
@@ -3935,7 +4102,6 @@ func (s ChatMemberMember) Encode(e *jx.Encoder) {
 		e.FieldStart("user")
 		s.User.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatMemberMember = [2]string{
@@ -4020,6 +4186,12 @@ func (s *ChatMemberMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatMemberOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatMemberOwner) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("status")
@@ -4041,7 +4213,6 @@ func (s ChatMemberOwner) Encode(e *jx.Encoder) {
 			s.CustomTitle.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatMemberOwner = [4]string{
@@ -4150,6 +4321,12 @@ func (s *ChatMemberOwner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatMemberRestricted) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatMemberRestricted) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("status")
@@ -4210,7 +4387,6 @@ func (s ChatMemberRestricted) Encode(e *jx.Encoder) {
 		e.FieldStart("until_date")
 		e.Int(s.UntilDate)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatMemberRestricted = [12]string{
@@ -4426,6 +4602,12 @@ func (s *ChatMemberRestricted) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatMemberUpdated) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatMemberUpdated) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat")
@@ -4457,7 +4639,6 @@ func (s ChatMemberUpdated) Encode(e *jx.Encoder) {
 			s.InviteLink.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatMemberUpdated = [6]string{
@@ -4586,6 +4767,12 @@ func (s *ChatMemberUpdated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.CanSendMessages.Set {
 			e.FieldStart("can_send_messages")
@@ -4634,7 +4821,6 @@ func (s ChatPermissions) Encode(e *jx.Encoder) {
 			s.CanPinMessages.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatPermissions = [8]string{
@@ -4750,6 +4936,12 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChatPhoto) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("small_file_id")
@@ -4770,7 +4962,6 @@ func (s ChatPhoto) Encode(e *jx.Encoder) {
 		e.FieldStart("big_file_unique_id")
 		e.Str(s.BigFileUniqueID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChatPhoto = [4]string{
@@ -4914,6 +5105,12 @@ func (s *ChatType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ChosenInlineResult) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ChosenInlineResult) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("result_id")
@@ -4941,7 +5138,6 @@ func (s ChosenInlineResult) Encode(e *jx.Encoder) {
 		e.FieldStart("query")
 		e.Str(s.Query)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfChosenInlineResult = [5]string{
@@ -5061,6 +5257,12 @@ func (s *ChosenInlineResult) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Contact) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Contact) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("phone_number")
@@ -5089,7 +5291,6 @@ func (s Contact) Encode(e *jx.Encoder) {
 			s.Vcard.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfContact = [5]string{
@@ -5209,6 +5410,12 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CopyMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CopyMessage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -5276,7 +5483,6 @@ func (s CopyMessage) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCopyMessage = [11]string{
@@ -5468,6 +5674,12 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CreateChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -5497,7 +5709,6 @@ func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
 			s.CreatesJoinRequest.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCreateChatInviteLink = [5]string{
@@ -5613,6 +5824,12 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CreateNewStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("user_id")
@@ -5663,7 +5880,6 @@ func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
 			s.MaskPosition.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCreateNewStickerSet = [9]string{
@@ -5832,6 +6048,12 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeclineChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DeclineChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -5842,7 +6064,6 @@ func (s DeclineChatJoinRequest) Encode(e *jx.Encoder) {
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeclineChatJoinRequest = [2]string{
@@ -5927,12 +6148,17 @@ func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DeleteChatPhoto) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeleteChatPhoto = [1]string{
@@ -6004,12 +6230,17 @@ func (s *DeleteChatPhoto) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteChatStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DeleteChatStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeleteChatStickerSet = [1]string{
@@ -6081,6 +6312,12 @@ func (s *DeleteChatStickerSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DeleteMessage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -6091,7 +6328,6 @@ func (s DeleteMessage) Encode(e *jx.Encoder) {
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeleteMessage = [2]string{
@@ -6176,6 +6412,12 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DeleteMyCommands) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scope.Set {
 			e.FieldStart("scope")
@@ -6188,7 +6430,6 @@ func (s DeleteMyCommands) Encode(e *jx.Encoder) {
 			s.LanguageCode.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeleteMyCommands = [2]string{
@@ -6238,12 +6479,17 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteStickerFromSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DeleteStickerFromSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sticker")
 		e.Str(s.Sticker)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeleteStickerFromSet = [1]string{
@@ -6317,13 +6563,18 @@ func (s *DeleteStickerFromSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DeleteWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DeleteWebhook) encodeFields(e *jx.Encoder) {
 	{
 		if s.DropPendingUpdates.Set {
 			e.FieldStart("drop_pending_updates")
 			s.DropPendingUpdates.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDeleteWebhook = [1]string{
@@ -6362,6 +6613,12 @@ func (s *DeleteWebhook) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Dice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Dice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("emoji")
@@ -6372,7 +6629,6 @@ func (s Dice) Encode(e *jx.Encoder) {
 		e.FieldStart("value")
 		e.Int(s.Value)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDice = [2]string{
@@ -6459,6 +6715,12 @@ func (s *Dice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Document) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Document) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -6493,7 +6755,6 @@ func (s Document) Encode(e *jx.Encoder) {
 			s.FileSize.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDocument = [6]string{
@@ -6624,6 +6885,12 @@ func (s *Document) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EditChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -6658,7 +6925,6 @@ func (s EditChatInviteLink) Encode(e *jx.Encoder) {
 			s.CreatesJoinRequest.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEditChatInviteLink = [6]string{
@@ -6787,6 +7053,12 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageCaption) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EditMessageCaption) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
 			e.FieldStart("chat_id")
@@ -6833,7 +7105,6 @@ func (s EditMessageCaption) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEditMessageCaption = [7]string{
@@ -6945,6 +7216,12 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EditMessageLiveLocation) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
 			e.FieldStart("chat_id")
@@ -6997,7 +7274,6 @@ func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEditMessageLiveLocation = [9]string{
@@ -7162,6 +7438,12 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageMedia) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EditMessageMedia) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
 			e.FieldStart("chat_id")
@@ -7191,7 +7473,6 @@ func (s EditMessageMedia) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEditMessageMedia = [5]string{
@@ -7307,6 +7588,12 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EditMessageReplyMarkup) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
 			e.FieldStart("chat_id")
@@ -7331,7 +7618,6 @@ func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEditMessageReplyMarkup = [4]string{
@@ -7403,6 +7689,12 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EditMessageText) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EditMessageText) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
 			e.FieldStart("chat_id")
@@ -7454,7 +7746,6 @@ func (s EditMessageText) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEditMessageText = [8]string{
@@ -7612,6 +7903,12 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EncryptedCredentials) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EncryptedCredentials) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("data")
@@ -7627,7 +7924,6 @@ func (s EncryptedCredentials) Encode(e *jx.Encoder) {
 		e.FieldStart("secret")
 		e.Str(s.Secret)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEncryptedCredentials = [3]string{
@@ -7727,6 +8023,12 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EncryptedPassportElement) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -7793,7 +8095,6 @@ func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
 		e.FieldStart("hash")
 		e.Str(s.Hash)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEncryptedPassportElement = [10]string{
@@ -8030,6 +8331,12 @@ func (s *EncryptedPassportElementType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Error) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("ok")
@@ -8051,7 +8358,6 @@ func (s Error) Encode(e *jx.Encoder) {
 			s.Parameters.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfError = [4]string{
@@ -8163,12 +8469,17 @@ func (s *Error) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ExportChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ExportChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfExportChatInviteLink = [1]string{
@@ -8240,6 +8551,12 @@ func (s *ExportChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s File) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s File) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -8262,7 +8579,6 @@ func (s File) Encode(e *jx.Encoder) {
 			s.FilePath.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfFile = [4]string{
@@ -8371,6 +8687,12 @@ func (s *File) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ForceReply) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ForceReply) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("force_reply")
@@ -8388,7 +8710,6 @@ func (s ForceReply) Encode(e *jx.Encoder) {
 			s.Selective.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfForceReply = [3]string{
@@ -8484,6 +8805,12 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ForwardMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ForwardMessage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -8511,7 +8838,6 @@ func (s ForwardMessage) Encode(e *jx.Encoder) {
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfForwardMessage = [5]string{
@@ -8629,6 +8955,12 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Game) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Game) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -8670,7 +9002,6 @@ func (s Game) Encode(e *jx.Encoder) {
 			s.Animation.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGame = [6]string{
@@ -8816,6 +9147,12 @@ func (s *Game) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GameHighScore) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GameHighScore) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("position")
@@ -8831,7 +9168,6 @@ func (s GameHighScore) Encode(e *jx.Encoder) {
 		e.FieldStart("score")
 		e.Int(s.Score)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGameHighScore = [3]string{
@@ -8929,12 +9265,17 @@ func (s *GameHighScore) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetChat) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetChat = [1]string{
@@ -9006,12 +9347,17 @@ func (s *GetChat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetChatAdministrators) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetChatAdministrators = [1]string{
@@ -9083,6 +9429,12 @@ func (s *GetChatAdministrators) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetChatMember) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -9093,7 +9445,6 @@ func (s GetChatMember) Encode(e *jx.Encoder) {
 		e.FieldStart("user_id")
 		e.Int64(s.UserID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetChatMember = [2]string{
@@ -9178,12 +9529,17 @@ func (s *GetChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetChatMemberCount) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetChatMemberCount) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetChatMemberCount = [1]string{
@@ -9255,12 +9611,17 @@ func (s *GetChatMemberCount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
 		e.Str(s.FileID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetFile = [1]string{
@@ -9334,6 +9695,12 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetGameHighScores) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetGameHighScores) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("user_id")
@@ -9357,7 +9724,6 @@ func (s GetGameHighScores) Encode(e *jx.Encoder) {
 			s.InlineMessageID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetGameHighScores = [4]string{
@@ -9464,6 +9830,12 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetMyCommands) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scope.Set {
 			e.FieldStart("scope")
@@ -9476,7 +9848,6 @@ func (s GetMyCommands) Encode(e *jx.Encoder) {
 			s.LanguageCode.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetMyCommands = [2]string{
@@ -9526,12 +9897,17 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetStickerSet = [1]string{
@@ -9605,6 +9981,12 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetUpdates) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetUpdates) encodeFields(e *jx.Encoder) {
 	{
 		if s.Offset.Set {
 			e.FieldStart("offset")
@@ -9633,7 +10015,6 @@ func (s GetUpdates) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetUpdates = [4]string{
@@ -9715,6 +10096,12 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s GetUserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s GetUserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("user_id")
@@ -9732,7 +10119,6 @@ func (s GetUserProfilePhotos) Encode(e *jx.Encoder) {
 			s.Limit.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfGetUserProfilePhotos = [3]string{
@@ -9866,6 +10252,12 @@ func (s *ID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineKeyboardButton) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("text")
@@ -9913,7 +10305,6 @@ func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
 			s.Pay.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineKeyboardButton = [8]string{
@@ -10066,6 +10457,12 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineKeyboardMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineKeyboardMarkup) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("inline_keyboard")
@@ -10079,7 +10476,6 @@ func (s InlineKeyboardMarkup) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineKeyboardMarkup = [1]string{
@@ -10167,6 +10563,12 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -10199,7 +10601,6 @@ func (s InlineQuery) Encode(e *jx.Encoder) {
 			s.Location.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQuery = [6]string{
@@ -10366,57 +10767,83 @@ func (s *InlineQueryChatType) Decode(d *jx.Decoder) error {
 func (s InlineQueryResult) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case InlineQueryResultArticleInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("article")
-		s.InlineQueryResultArticle.Encode(e)
+		s.InlineQueryResultArticle.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultAudioInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("audio")
-		s.InlineQueryResultAudio.Encode(e)
+		s.InlineQueryResultAudio.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultContactInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("contact")
-		s.InlineQueryResultContact.Encode(e)
+		s.InlineQueryResultContact.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultDocumentInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("document")
-		s.InlineQueryResultDocument.Encode(e)
+		s.InlineQueryResultDocument.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultGameInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("game")
-		s.InlineQueryResultGame.Encode(e)
+		s.InlineQueryResultGame.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultGifInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("gif")
-		s.InlineQueryResultGif.Encode(e)
+		s.InlineQueryResultGif.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultLocationInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("location")
-		s.InlineQueryResultLocation.Encode(e)
+		s.InlineQueryResultLocation.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultMpeg4GifInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("mpeg4_gif")
-		s.InlineQueryResultMpeg4Gif.Encode(e)
+		s.InlineQueryResultMpeg4Gif.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultPhotoInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("photo")
-		s.InlineQueryResultPhoto.Encode(e)
+		s.InlineQueryResultPhoto.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultCachedStickerInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("sticker")
-		s.InlineQueryResultCachedSticker.Encode(e)
+		s.InlineQueryResultCachedSticker.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultVenueInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("venue")
-		s.InlineQueryResultVenue.Encode(e)
+		s.InlineQueryResultVenue.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultVideoInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("video")
-		s.InlineQueryResultVideo.Encode(e)
+		s.InlineQueryResultVideo.encodeFields(e)
+		e.ObjEnd()
 	case InlineQueryResultVoiceInlineQueryResult:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("voice")
-		s.InlineQueryResultVoice.Encode(e)
+		s.InlineQueryResultVoice.encodeFields(e)
+		e.ObjEnd()
 	}
 }
 
@@ -10585,6 +11012,12 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultArticle) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultArticle) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -10642,7 +11075,6 @@ func (s InlineQueryResultArticle) Encode(e *jx.Encoder) {
 			s.ThumbHeight.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultArticle = [10]string{
@@ -10818,6 +11250,12 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultAudio) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -10879,7 +11317,6 @@ func (s InlineQueryResultAudio) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultAudio = [10]string{
@@ -11064,6 +11501,12 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedAudio) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -11113,7 +11556,6 @@ func (s InlineQueryResultCachedAudio) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedAudio = [8]string{
@@ -11276,6 +11718,12 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedDocument) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -11336,7 +11784,6 @@ func (s InlineQueryResultCachedDocument) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedDocument = [10]string{
@@ -11524,6 +11971,12 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedGif) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedGif) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -11579,7 +12032,6 @@ func (s InlineQueryResultCachedGif) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedGif = [9]string{
@@ -11754,6 +12206,12 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedMpeg4Gif) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedMpeg4Gif) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -11809,7 +12267,6 @@ func (s InlineQueryResultCachedMpeg4Gif) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedMpeg4Gif = [9]string{
@@ -11984,6 +12441,12 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedPhoto) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -12045,7 +12508,6 @@ func (s InlineQueryResultCachedPhoto) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedPhoto = [10]string{
@@ -12231,6 +12693,12 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedSticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedSticker) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -12253,7 +12721,6 @@ func (s InlineQueryResultCachedSticker) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedSticker = [4]string{
@@ -12362,6 +12829,12 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedVideo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -12422,7 +12895,6 @@ func (s InlineQueryResultCachedVideo) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedVideo = [10]string{
@@ -12610,6 +13082,12 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedVoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultCachedVoice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -12664,7 +13142,6 @@ func (s InlineQueryResultCachedVoice) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultCachedVoice = [9]string{
@@ -12841,6 +13318,12 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultContact) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultContact) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -12898,7 +13381,6 @@ func (s InlineQueryResultContact) Encode(e *jx.Encoder) {
 			s.ThumbHeight.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultContact = [10]string{
@@ -13076,6 +13558,12 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultDocument) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -13154,7 +13642,6 @@ func (s InlineQueryResultDocument) Encode(e *jx.Encoder) {
 			s.ThumbHeight.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultDocument = [13]string{
@@ -13374,6 +13861,12 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultGame) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -13390,7 +13883,6 @@ func (s InlineQueryResultGame) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultGame = [3]string{
@@ -13488,6 +13980,12 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultGif) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultGif) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -13567,7 +14065,6 @@ func (s InlineQueryResultGif) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultGif = [13]string{
@@ -13785,6 +14282,12 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultLocation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -13859,7 +14362,6 @@ func (s InlineQueryResultLocation) Encode(e *jx.Encoder) {
 			s.ThumbHeight.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultLocation = [13]string{
@@ -14072,6 +14574,12 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultMpeg4Gif) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultMpeg4Gif) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -14151,7 +14659,6 @@ func (s InlineQueryResultMpeg4Gif) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultMpeg4Gif = [13]string{
@@ -14369,6 +14876,12 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultPhoto) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -14442,7 +14955,6 @@ func (s InlineQueryResultPhoto) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultPhoto = [12]string{
@@ -14649,6 +15161,12 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultVenue) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultVenue) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -14728,7 +15246,6 @@ func (s InlineQueryResultVenue) Encode(e *jx.Encoder) {
 			s.ThumbHeight.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultVenue = [14]string{
@@ -14954,6 +15471,12 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultVideo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -15037,7 +15560,6 @@ func (s InlineQueryResultVideo) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultVideo = [14]string{
@@ -15270,6 +15792,12 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InlineQueryResultVoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InlineQueryResultVoice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -15325,7 +15853,6 @@ func (s InlineQueryResultVoice) Encode(e *jx.Encoder) {
 			s.InputMessageContent.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInlineQueryResultVoice = [9]string{
@@ -15499,6 +16026,12 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputContactMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputContactMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("phone_number")
@@ -15521,7 +16054,6 @@ func (s InputContactMessageContent) Encode(e *jx.Encoder) {
 			s.Vcard.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputContactMessageContent = [4]string{
@@ -15630,6 +16162,12 @@ func (s *InputContactMessageContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputInvoiceMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputInvoiceMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -15752,7 +16290,6 @@ func (s InputInvoiceMessageContent) Encode(e *jx.Encoder) {
 			s.IsFlexible.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputInvoiceMessageContent = [20]string{
@@ -16062,6 +16599,12 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputLocationMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputLocationMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("latitude")
@@ -16096,7 +16639,6 @@ func (s InputLocationMessageContent) Encode(e *jx.Encoder) {
 			s.ProximityAlertRadius.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputLocationMessageContent = [6]string{
@@ -16228,25 +16770,35 @@ func (s *InputLocationMessageContent) Decode(d *jx.Decoder) error {
 func (s InputMedia) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case InputMediaAnimationInputMedia:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("animation")
-		s.InputMediaAnimation.Encode(e)
+		s.InputMediaAnimation.encodeFields(e)
+		e.ObjEnd()
 	case InputMediaAudioInputMedia:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("audio")
-		s.InputMediaAudio.Encode(e)
+		s.InputMediaAudio.encodeFields(e)
+		e.ObjEnd()
 	case InputMediaDocumentInputMedia:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("document")
-		s.InputMediaDocument.Encode(e)
+		s.InputMediaDocument.encodeFields(e)
+		e.ObjEnd()
 	case InputMediaPhotoInputMedia:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("photo")
-		s.InputMediaPhoto.Encode(e)
+		s.InputMediaPhoto.encodeFields(e)
+		e.ObjEnd()
 	case InputMediaVideoInputMedia:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("video")
-		s.InputMediaVideo.Encode(e)
+		s.InputMediaVideo.encodeFields(e)
+		e.ObjEnd()
 	}
 }
 
@@ -16331,6 +16883,12 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaAnimation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputMediaAnimation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("media")
@@ -16382,7 +16940,6 @@ func (s InputMediaAnimation) Encode(e *jx.Encoder) {
 			s.Duration.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputMediaAnimation = [8]string{
@@ -16540,6 +17097,12 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputMediaAudio) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("media")
@@ -16591,7 +17154,6 @@ func (s InputMediaAudio) Encode(e *jx.Encoder) {
 			s.Title.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputMediaAudio = [8]string{
@@ -16749,6 +17311,12 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputMediaDocument) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("media")
@@ -16788,7 +17356,6 @@ func (s InputMediaDocument) Encode(e *jx.Encoder) {
 			s.DisableContentTypeDetection.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputMediaDocument = [6]string{
@@ -16924,6 +17491,12 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputMediaPhoto) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("media")
@@ -16951,7 +17524,6 @@ func (s InputMediaPhoto) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputMediaPhoto = [4]string{
@@ -17065,6 +17637,12 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputMediaVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputMediaVideo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("media")
@@ -17122,7 +17700,6 @@ func (s InputMediaVideo) Encode(e *jx.Encoder) {
 			s.SupportsStreaming.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputMediaVideo = [9]string{
@@ -17469,6 +18046,12 @@ func (s *InputMessageContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputTextMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputTextMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message_text")
@@ -17496,7 +18079,6 @@ func (s InputTextMessageContent) Encode(e *jx.Encoder) {
 			s.DisableWebPagePreview.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputTextMessageContent = [4]string{
@@ -17610,6 +18192,12 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InputVenueMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InputVenueMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("latitude")
@@ -17654,7 +18242,6 @@ func (s InputVenueMessageContent) Encode(e *jx.Encoder) {
 			s.GooglePlaceType.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInputVenueMessageContent = [8]string{
@@ -17811,6 +18398,12 @@ func (s *InputVenueMessageContent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Invoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Invoice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -17836,7 +18429,6 @@ func (s Invoice) Encode(e *jx.Encoder) {
 		e.FieldStart("total_amount")
 		e.Int(s.TotalAmount)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInvoice = [5]string{
@@ -17997,6 +18589,12 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s KeyboardButtonObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s KeyboardButtonObject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("text")
@@ -18020,7 +18618,6 @@ func (s KeyboardButtonObject) Encode(e *jx.Encoder) {
 			s.RequestPoll.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfKeyboardButtonObject = [4]string{
@@ -18127,13 +18724,18 @@ func (s *KeyboardButtonObject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s KeyboardButtonPollType) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s KeyboardButtonPollType) encodeFields(e *jx.Encoder) {
 	{
 		if s.Type.Set {
 			e.FieldStart("type")
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfKeyboardButtonPollType = [1]string{
@@ -18172,6 +18774,12 @@ func (s *KeyboardButtonPollType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LabeledPrice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s LabeledPrice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("label")
@@ -18182,7 +18790,6 @@ func (s LabeledPrice) Encode(e *jx.Encoder) {
 		e.FieldStart("amount")
 		e.Int(s.Amount)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLabeledPrice = [2]string{
@@ -18269,12 +18876,17 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LeaveChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s LeaveChat) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLeaveChat = [1]string{
@@ -18346,6 +18958,12 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Location) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Location) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("longitude")
@@ -18380,7 +18998,6 @@ func (s Location) Encode(e *jx.Encoder) {
 			s.ProximityAlertRadius.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLocation = [6]string{
@@ -18511,6 +19128,12 @@ func (s *Location) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LoginUrl) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s LoginUrl) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -18534,7 +19157,6 @@ func (s LoginUrl) Encode(e *jx.Encoder) {
 			s.RequestWriteAccess.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLoginUrl = [4]string{
@@ -18641,6 +19263,12 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MaskPosition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MaskPosition) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("point")
@@ -18661,7 +19289,6 @@ func (s MaskPosition) Encode(e *jx.Encoder) {
 		e.FieldStart("scale")
 		e.Float64(s.Scale)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMaskPosition = [4]string{
@@ -18774,6 +19401,12 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Message) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Message) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message_id")
@@ -19157,7 +19790,6 @@ func (s Message) Encode(e *jx.Encoder) {
 			s.LeftChatParticipant.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMessage = [61]string{
@@ -19941,12 +20573,17 @@ func (s *Message) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MessageAutoDeleteTimerChanged) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message_auto_delete_time")
 		e.Int(s.MessageAutoDeleteTime)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMessageAutoDeleteTimerChanged = [1]string{
@@ -20020,6 +20657,12 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MessageEntity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MessageEntity) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -20053,7 +20696,6 @@ func (s MessageEntity) Encode(e *jx.Encoder) {
 			s.Language.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMessageEntity = [6]string{
@@ -20240,12 +20882,17 @@ func (s *MessageEntityType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MessageId) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MessageId) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message_id")
 		e.Int(s.MessageID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMessageId = [1]string{
@@ -21649,6 +22296,12 @@ func (o *OptWebhookInfo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrderInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OrderInfo) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -21673,7 +22326,6 @@ func (s OrderInfo) Encode(e *jx.Encoder) {
 			s.ShippingAddress.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrderInfo = [4]string{
@@ -21745,6 +22397,12 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportData) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportData) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("data")
@@ -21759,7 +22417,6 @@ func (s PassportData) Encode(e *jx.Encoder) {
 		e.FieldStart("credentials")
 		s.Credentials.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportData = [2]string{
@@ -21851,41 +22508,59 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 func (s PassportElementError) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case PassportElementErrorDataFieldPassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("data")
-		s.PassportElementErrorDataField.Encode(e)
+		s.PassportElementErrorDataField.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorFilePassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("file")
-		s.PassportElementErrorFile.Encode(e)
+		s.PassportElementErrorFile.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorFilesPassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("files")
-		s.PassportElementErrorFiles.Encode(e)
+		s.PassportElementErrorFiles.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorFrontSidePassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("front_side")
-		s.PassportElementErrorFrontSide.Encode(e)
+		s.PassportElementErrorFrontSide.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorReverseSidePassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("reverse_side")
-		s.PassportElementErrorReverseSide.Encode(e)
+		s.PassportElementErrorReverseSide.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorSelfiePassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("selfie")
-		s.PassportElementErrorSelfie.Encode(e)
+		s.PassportElementErrorSelfie.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorTranslationFilePassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("translation_file")
-		s.PassportElementErrorTranslationFile.Encode(e)
+		s.PassportElementErrorTranslationFile.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorTranslationFilesPassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("translation_files")
-		s.PassportElementErrorTranslationFiles.Encode(e)
+		s.PassportElementErrorTranslationFiles.encodeFields(e)
+		e.ObjEnd()
 	case PassportElementErrorUnspecifiedPassportElementError:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("unspecified")
-		s.PassportElementErrorUnspecified.Encode(e)
+		s.PassportElementErrorUnspecified.encodeFields(e)
+		e.ObjEnd()
 	}
 }
 
@@ -21998,6 +22673,12 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorDataField) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorDataField) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22018,7 +22699,6 @@ func (s PassportElementErrorDataField) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorDataField = [4]string{
@@ -22132,6 +22812,12 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22147,7 +22833,6 @@ func (s PassportElementErrorFile) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorFile = [3]string{
@@ -22248,6 +22933,12 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorFiles) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22267,7 +22958,6 @@ func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorFiles = [3]string{
@@ -22376,6 +23066,12 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorFrontSide) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22391,7 +23087,6 @@ func (s PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorFrontSide = [3]string{
@@ -22492,6 +23187,12 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorReverseSide) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22507,7 +23208,6 @@ func (s PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorReverseSide = [3]string{
@@ -22608,6 +23308,12 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorSelfie) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorSelfie) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22623,7 +23329,6 @@ func (s PassportElementErrorSelfie) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorSelfie = [3]string{
@@ -22724,6 +23429,12 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorTranslationFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22739,7 +23450,6 @@ func (s PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorTranslationFile = [3]string{
@@ -22840,6 +23550,12 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorTranslationFiles) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22859,7 +23575,6 @@ func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorTranslationFiles = [3]string{
@@ -22968,6 +23683,12 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportElementErrorUnspecified) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("source")
@@ -22983,7 +23704,6 @@ func (s PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportElementErrorUnspecified = [3]string{
@@ -23084,6 +23804,12 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PassportFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PassportFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -23104,7 +23830,6 @@ func (s PassportFile) Encode(e *jx.Encoder) {
 		e.FieldStart("file_date")
 		e.Int(s.FileDate)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPassportFile = [4]string{
@@ -23217,6 +23942,12 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PhotoSize) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PhotoSize) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -23243,7 +23974,6 @@ func (s PhotoSize) Encode(e *jx.Encoder) {
 			s.FileSize.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPhotoSize = [5]string{
@@ -23367,6 +24097,12 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PinChatMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PinChatMessage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -23383,7 +24119,6 @@ func (s PinChatMessage) Encode(e *jx.Encoder) {
 			s.DisableNotification.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPinChatMessage = [3]string{
@@ -23479,6 +24214,12 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Poll) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Poll) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -23557,7 +24298,6 @@ func (s Poll) Encode(e *jx.Encoder) {
 			s.CloseDate.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPoll = [13]string{
@@ -23789,6 +24529,12 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PollAnswer) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PollAnswer) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("poll_id")
@@ -23808,7 +24554,6 @@ func (s PollAnswer) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPollAnswer = [3]string{
@@ -23914,6 +24659,12 @@ func (s *PollAnswer) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PollOption) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PollOption) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("text")
@@ -23924,7 +24675,6 @@ func (s PollOption) Encode(e *jx.Encoder) {
 		e.FieldStart("voter_count")
 		e.Int(s.VoterCount)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPollOption = [2]string{
@@ -24038,6 +24788,12 @@ func (s *PollType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PreCheckoutQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PreCheckoutQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -24075,7 +24831,6 @@ func (s PreCheckoutQuery) Encode(e *jx.Encoder) {
 			s.OrderInfo.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPreCheckoutQuery = [7]string{
@@ -24221,6 +24976,12 @@ func (s *PreCheckoutQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PromoteChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PromoteChatMember) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -24297,7 +25058,6 @@ func (s PromoteChatMember) Encode(e *jx.Encoder) {
 			s.CanPinMessages.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPromoteChatMember = [13]string{
@@ -24504,6 +25264,12 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ProximityAlertTriggered) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ProximityAlertTriggered) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("traveler")
@@ -24519,7 +25285,6 @@ func (s ProximityAlertTriggered) Encode(e *jx.Encoder) {
 		e.FieldStart("distance")
 		e.Int(s.Distance)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfProximityAlertTriggered = [3]string{
@@ -24615,6 +25380,12 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ReplyKeyboardMarkup) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("keyboard")
@@ -24652,7 +25423,6 @@ func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
 			s.Selective.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfReplyKeyboardMarkup = [5]string{
@@ -24784,6 +25554,12 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ReplyKeyboardRemove) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ReplyKeyboardRemove) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("remove_keyboard")
@@ -24795,7 +25571,6 @@ func (s ReplyKeyboardRemove) Encode(e *jx.Encoder) {
 			s.Selective.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfReplyKeyboardRemove = [2]string{
@@ -24880,6 +25655,12 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Response) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Response) encodeFields(e *jx.Encoder) {
 	{
 		if s.MigrateToChatID.Set {
 			e.FieldStart("migrate_to_chat_id")
@@ -24892,7 +25673,6 @@ func (s Response) Encode(e *jx.Encoder) {
 			s.RetryAfter.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResponse = [2]string{
@@ -24942,6 +25722,12 @@ func (s *Response) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RestrictChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s RestrictChatMember) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -24963,7 +25749,6 @@ func (s RestrictChatMember) Encode(e *jx.Encoder) {
 			s.UntilDate.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfRestrictChatMember = [4]string{
@@ -25070,6 +25855,12 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Result) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Result) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -25081,7 +25872,6 @@ func (s Result) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResult = [2]string{
@@ -25167,6 +25957,12 @@ func (s *Result) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultArrayOfBotCommand) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultArrayOfBotCommand) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
 			e.FieldStart("result")
@@ -25182,7 +25978,6 @@ func (s ResultArrayOfBotCommand) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultArrayOfBotCommand = [2]string{
@@ -25275,6 +26070,12 @@ func (s *ResultArrayOfBotCommand) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultArrayOfChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultArrayOfChatMember) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
 			e.FieldStart("result")
@@ -25290,7 +26091,6 @@ func (s ResultArrayOfChatMember) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultArrayOfChatMember = [2]string{
@@ -25383,6 +26183,12 @@ func (s *ResultArrayOfChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultArrayOfGameHighScore) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultArrayOfGameHighScore) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
 			e.FieldStart("result")
@@ -25398,7 +26204,6 @@ func (s ResultArrayOfGameHighScore) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultArrayOfGameHighScore = [2]string{
@@ -25491,6 +26296,12 @@ func (s *ResultArrayOfGameHighScore) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultArrayOfMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultArrayOfMessage) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
 			e.FieldStart("result")
@@ -25506,7 +26317,6 @@ func (s ResultArrayOfMessage) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultArrayOfMessage = [2]string{
@@ -25599,6 +26409,12 @@ func (s *ResultArrayOfMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultArrayOfUpdate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultArrayOfUpdate) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
 			e.FieldStart("result")
@@ -25614,7 +26430,6 @@ func (s ResultArrayOfUpdate) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultArrayOfUpdate = [2]string{
@@ -25707,6 +26522,12 @@ func (s *ResultArrayOfUpdate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultChat) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -25718,7 +26539,6 @@ func (s ResultChat) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultChat = [2]string{
@@ -25804,6 +26624,12 @@ func (s *ResultChat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -25815,7 +26641,6 @@ func (s ResultChatInviteLink) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultChatInviteLink = [2]string{
@@ -25901,6 +26726,12 @@ func (s *ResultChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultChatMember) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -25912,7 +26743,6 @@ func (s ResultChatMember) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultChatMember = [2]string{
@@ -25998,6 +26828,12 @@ func (s *ResultChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultFile) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26009,7 +26845,6 @@ func (s ResultFile) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultFile = [2]string{
@@ -26095,6 +26930,12 @@ func (s *ResultFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultInt) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultInt) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26106,7 +26947,6 @@ func (s ResultInt) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultInt = [2]string{
@@ -26192,6 +27032,12 @@ func (s *ResultInt) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultMessage) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26203,7 +27049,6 @@ func (s ResultMessage) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultMessage = [2]string{
@@ -26289,6 +27134,12 @@ func (s *ResultMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultMessageId) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultMessageId) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26300,7 +27151,6 @@ func (s ResultMessageId) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultMessageId = [2]string{
@@ -26386,6 +27236,12 @@ func (s *ResultMessageId) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultMessageOrBoolean) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultMessageOrBoolean) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26397,7 +27253,6 @@ func (s ResultMessageOrBoolean) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultMessageOrBoolean = [2]string{
@@ -26518,6 +27373,12 @@ func (s *ResultMessageOrBooleanResult) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultPoll) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultPoll) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26529,7 +27390,6 @@ func (s ResultPoll) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultPoll = [2]string{
@@ -26615,6 +27475,12 @@ func (s *ResultPoll) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultStickerSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26626,7 +27492,6 @@ func (s ResultStickerSet) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultStickerSet = [2]string{
@@ -26712,6 +27577,12 @@ func (s *ResultStickerSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultString) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultString) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26723,7 +27594,6 @@ func (s ResultString) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultString = [2]string{
@@ -26809,6 +27679,12 @@ func (s *ResultString) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultUser) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26820,7 +27696,6 @@ func (s ResultUser) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultUser = [2]string{
@@ -26906,6 +27781,12 @@ func (s *ResultUser) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultUserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultUserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -26917,7 +27798,6 @@ func (s ResultUserProfilePhotos) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultUserProfilePhotos = [2]string{
@@ -27003,6 +27883,12 @@ func (s *ResultUserProfilePhotos) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ResultWebhookInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ResultWebhookInfo) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
 			e.FieldStart("result")
@@ -27014,7 +27900,6 @@ func (s ResultWebhookInfo) Encode(e *jx.Encoder) {
 		e.FieldStart("ok")
 		e.Bool(s.Ok)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfResultWebhookInfo = [2]string{
@@ -27100,6 +27985,12 @@ func (s *ResultWebhookInfo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RevokeChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s RevokeChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -27110,7 +28001,6 @@ func (s RevokeChatInviteLink) Encode(e *jx.Encoder) {
 		e.FieldStart("invite_link")
 		e.Str(s.InviteLink)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfRevokeChatInviteLink = [2]string{
@@ -27195,6 +28085,12 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendAnimation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendAnimation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -27281,7 +28177,6 @@ func (s SendAnimation) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendAnimation = [14]string{
@@ -27506,6 +28401,12 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendAudio) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -27592,7 +28493,6 @@ func (s SendAudio) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendAudio = [14]string{
@@ -27817,6 +28717,12 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendChatAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendChatAction) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -27827,7 +28733,6 @@ func (s SendChatAction) Encode(e *jx.Encoder) {
 		e.FieldStart("action")
 		e.Str(s.Action)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendChatAction = [2]string{
@@ -27912,6 +28817,12 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendContact) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendContact) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -27969,7 +28880,6 @@ func (s SendContact) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendContact = [10]string{
@@ -28145,6 +29055,12 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendDice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendDice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -28186,7 +29102,6 @@ func (s SendDice) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendDice = [7]string{
@@ -28324,6 +29239,12 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendDocument) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -28398,7 +29319,6 @@ func (s SendDocument) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendDocument = [12]string{
@@ -28601,6 +29521,12 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendGame) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -28641,7 +29567,6 @@ func (s SendGame) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendGame = [7]string{
@@ -28783,6 +29708,12 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendInvoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendInvoice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -28946,7 +29877,6 @@ func (s SendInvoice) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendInvoice = [27]string{
@@ -29334,6 +30264,12 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendLocation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -29403,7 +30339,6 @@ func (s SendLocation) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendLocation = [12]string{
@@ -29601,6 +30536,12 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendMediaGroup) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendMediaGroup) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -29639,7 +30580,6 @@ func (s SendMediaGroup) Encode(e *jx.Encoder) {
 			s.AllowSendingWithoutReply.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendMediaGroup = [6]string{
@@ -29775,21 +30715,29 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 func (s SendMediaGroupMediaItem) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case InputMediaAudioSendMediaGroupMediaItem:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("audio")
-		s.InputMediaAudio.Encode(e)
+		s.InputMediaAudio.encodeFields(e)
+		e.ObjEnd()
 	case InputMediaDocumentSendMediaGroupMediaItem:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("document")
-		s.InputMediaDocument.Encode(e)
+		s.InputMediaDocument.encodeFields(e)
+		e.ObjEnd()
 	case InputMediaPhotoSendMediaGroupMediaItem:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("photo")
-		s.InputMediaPhoto.Encode(e)
+		s.InputMediaPhoto.encodeFields(e)
+		e.ObjEnd()
 	case InputMediaVideoSendMediaGroupMediaItem:
+		e.ObjStart()
 		e.FieldStart("type")
 		e.Str("video")
-		s.InputMediaVideo.Encode(e)
+		s.InputMediaVideo.encodeFields(e)
+		e.ObjEnd()
 	}
 }
 
@@ -29867,6 +30815,12 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendMessage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -29929,7 +30883,6 @@ func (s SendMessage) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendMessage = [10]string{
@@ -30110,6 +31063,12 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendPhoto) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -30172,7 +31131,6 @@ func (s SendPhoto) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendPhoto = [10]string{
@@ -30353,6 +31311,12 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendPoll) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendPoll) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -30466,7 +31430,6 @@ func (s SendPoll) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendPoll = [18]string{
@@ -30827,6 +31790,12 @@ func (s *SendReplyMarkup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendSticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendSticker) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -30867,7 +31836,6 @@ func (s SendSticker) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendSticker = [7]string{
@@ -31007,6 +31975,12 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendVenue) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendVenue) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -31086,7 +32060,6 @@ func (s SendVenue) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendVenue = [14]string{
@@ -31310,6 +32283,12 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendVideo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -31402,7 +32381,6 @@ func (s SendVideo) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendVideo = [15]string{
@@ -31638,6 +32616,12 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendVideoNote) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendVideoNote) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -31696,7 +32680,6 @@ func (s SendVideoNote) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendVideoNote = [10]string{
@@ -31870,6 +32853,12 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SendVoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SendVoice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -31938,7 +32927,6 @@ func (s SendVoice) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSendVoice = [11]string{
@@ -32130,6 +33118,12 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetChatAdministratorCustomTitle) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -32145,7 +33139,6 @@ func (s SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
 		e.FieldStart("custom_title")
 		e.Str(s.CustomTitle)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetChatAdministratorCustomTitle = [3]string{
@@ -32243,6 +33236,12 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetChatDescription) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetChatDescription) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -32254,7 +33253,6 @@ func (s SetChatDescription) Encode(e *jx.Encoder) {
 			s.Description.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetChatDescription = [2]string{
@@ -32337,6 +33335,12 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetChatPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetChatPermissions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -32347,7 +33351,6 @@ func (s SetChatPermissions) Encode(e *jx.Encoder) {
 		e.FieldStart("permissions")
 		s.Permissions.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetChatPermissions = [2]string{
@@ -32430,6 +33433,12 @@ func (s *SetChatPermissions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetChatPhoto) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -32440,7 +33449,6 @@ func (s SetChatPhoto) Encode(e *jx.Encoder) {
 		e.FieldStart("photo")
 		e.Str(s.Photo)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetChatPhoto = [2]string{
@@ -32525,6 +33533,12 @@ func (s *SetChatPhoto) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetChatStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetChatStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -32535,7 +33549,6 @@ func (s SetChatStickerSet) Encode(e *jx.Encoder) {
 		e.FieldStart("sticker_set_name")
 		e.Str(s.StickerSetName)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetChatStickerSet = [2]string{
@@ -32620,6 +33633,12 @@ func (s *SetChatStickerSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetChatTitle) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetChatTitle) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -32630,7 +33649,6 @@ func (s SetChatTitle) Encode(e *jx.Encoder) {
 		e.FieldStart("title")
 		e.Str(s.Title)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetChatTitle = [2]string{
@@ -32715,6 +33733,12 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetGameScore) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetGameScore) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("user_id")
@@ -32755,7 +33779,6 @@ func (s SetGameScore) Encode(e *jx.Encoder) {
 			s.InlineMessageID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetGameScore = [7]string{
@@ -32897,6 +33920,12 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetMyCommands) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("commands")
@@ -32918,7 +33947,6 @@ func (s SetMyCommands) Encode(e *jx.Encoder) {
 			s.LanguageCode.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetMyCommands = [3]string{
@@ -33020,6 +34048,12 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetPassportDataErrors) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetPassportDataErrors) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("user_id")
@@ -33034,7 +34068,6 @@ func (s SetPassportDataErrors) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetPassportDataErrors = [2]string{
@@ -33127,6 +34160,12 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetStickerPositionInSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetStickerPositionInSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("sticker")
@@ -33137,7 +34176,6 @@ func (s SetStickerPositionInSet) Encode(e *jx.Encoder) {
 		e.FieldStart("position")
 		e.Int(s.Position)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetStickerPositionInSet = [2]string{
@@ -33224,6 +34262,12 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetStickerSetThumb) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetStickerSetThumb) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -33240,7 +34284,6 @@ func (s SetStickerSetThumb) Encode(e *jx.Encoder) {
 			s.Thumb.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetStickerSetThumb = [3]string{
@@ -33338,6 +34381,12 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SetWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SetWebhook) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -33377,7 +34426,6 @@ func (s SetWebhook) Encode(e *jx.Encoder) {
 			s.DropPendingUpdates.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSetWebhook = [6]string{
@@ -33515,6 +34563,12 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ShippingAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ShippingAddress) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("country_code")
@@ -33545,7 +34599,6 @@ func (s ShippingAddress) Encode(e *jx.Encoder) {
 		e.FieldStart("post_code")
 		e.Str(s.PostCode)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfShippingAddress = [6]string{
@@ -33684,6 +34737,12 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ShippingOption) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ShippingOption) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -33703,7 +34762,6 @@ func (s ShippingOption) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfShippingOption = [3]string{
@@ -33809,6 +34867,12 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ShippingQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ShippingQuery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -33829,7 +34893,6 @@ func (s ShippingQuery) Encode(e *jx.Encoder) {
 		e.FieldStart("shipping_address")
 		s.ShippingAddress.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfShippingQuery = [4]string{
@@ -33938,6 +35001,12 @@ func (s *ShippingQuery) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Sticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Sticker) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -33998,7 +35067,6 @@ func (s Sticker) Encode(e *jx.Encoder) {
 			s.FileSize.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSticker = [11]string{
@@ -34193,6 +35261,12 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s StickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s StickerSet) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -34233,7 +35307,6 @@ func (s StickerSet) Encode(e *jx.Encoder) {
 			s.Thumb.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfStickerSet = [7]string{
@@ -34389,6 +35462,12 @@ func (s *StickerSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s StopMessageLiveLocation) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
 			e.FieldStart("chat_id")
@@ -34413,7 +35492,6 @@ func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfStopMessageLiveLocation = [4]string{
@@ -34485,6 +35563,12 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s StopPoll) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s StopPoll) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -34501,7 +35585,6 @@ func (s StopPoll) Encode(e *jx.Encoder) {
 			s.ReplyMarkup.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfStopPoll = [3]string{
@@ -34597,6 +35680,12 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SuccessfulPayment) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SuccessfulPayment) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("currency")
@@ -34634,7 +35723,6 @@ func (s SuccessfulPayment) Encode(e *jx.Encoder) {
 		e.FieldStart("provider_payment_charge_id")
 		e.Str(s.ProviderPaymentChargeID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSuccessfulPayment = [7]string{
@@ -34782,6 +35870,12 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UnbanChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UnbanChatMember) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -34798,7 +35892,6 @@ func (s UnbanChatMember) Encode(e *jx.Encoder) {
 			s.OnlyIfBanned.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUnbanChatMember = [3]string{
@@ -34894,6 +35987,12 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UnbanChatSenderChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UnbanChatSenderChat) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -34904,7 +36003,6 @@ func (s UnbanChatSenderChat) Encode(e *jx.Encoder) {
 		e.FieldStart("sender_chat_id")
 		e.Int64(s.SenderChatID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUnbanChatSenderChat = [2]string{
@@ -34989,12 +36087,17 @@ func (s *UnbanChatSenderChat) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UnpinAllChatMessages) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UnpinAllChatMessages) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
 		s.ChatID.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUnpinAllChatMessages = [1]string{
@@ -35066,6 +36169,12 @@ func (s *UnpinAllChatMessages) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UnpinChatMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UnpinChatMessage) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("chat_id")
@@ -35077,7 +36186,6 @@ func (s UnpinChatMessage) Encode(e *jx.Encoder) {
 			s.MessageID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUnpinChatMessage = [2]string{
@@ -35160,6 +36268,12 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Update) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Update) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("update_id")
@@ -35249,7 +36363,6 @@ func (s Update) Encode(e *jx.Encoder) {
 			s.ChatJoinRequest.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUpdate = [15]string{
@@ -35478,6 +36591,12 @@ func (s *Update) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UploadStickerFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UploadStickerFile) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("user_id")
@@ -35488,7 +36607,6 @@ func (s UploadStickerFile) Encode(e *jx.Encoder) {
 		e.FieldStart("png_sticker")
 		e.Str(s.PNGSticker)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUploadStickerFile = [2]string{
@@ -35575,6 +36693,12 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s User) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s User) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -35626,7 +36750,6 @@ func (s User) Encode(e *jx.Encoder) {
 			s.SupportsInlineQueries.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUser = [9]string{
@@ -35793,6 +36916,12 @@ func (s *User) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total_count")
@@ -35811,7 +36940,6 @@ func (s UserProfilePhotos) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUserProfilePhotos = [2]string{
@@ -35912,6 +37040,12 @@ func (s *UserProfilePhotos) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Venue) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Venue) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("location")
@@ -35951,7 +37085,6 @@ func (s Venue) Encode(e *jx.Encoder) {
 			s.GooglePlaceType.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVenue = [7]string{
@@ -36093,6 +37226,12 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Video) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Video) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -36142,7 +37281,6 @@ func (s Video) Encode(e *jx.Encoder) {
 			s.FileSize.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVideo = [9]string{
@@ -36313,6 +37451,12 @@ func (s *Video) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s VideoNote) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s VideoNote) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -36345,7 +37489,6 @@ func (s VideoNote) Encode(e *jx.Encoder) {
 			s.FileSize.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVideoNote = [6]string{
@@ -36480,6 +37623,12 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Voice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Voice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("file_id")
@@ -36507,7 +37656,6 @@ func (s Voice) Encode(e *jx.Encoder) {
 			s.FileSize.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVoice = [5]string{
@@ -36629,12 +37777,17 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s VoiceChatEnded) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s VoiceChatEnded) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("duration")
 		e.Int(s.Duration)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVoiceChatEnded = [1]string{
@@ -36708,6 +37861,12 @@ func (s *VoiceChatEnded) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s VoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s VoiceChatParticipantsInvited) encodeFields(e *jx.Encoder) {
 	{
 		if s.Users != nil {
 			e.FieldStart("users")
@@ -36718,7 +37877,6 @@ func (s VoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVoiceChatParticipantsInvited = [1]string{
@@ -36764,12 +37922,17 @@ func (s *VoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s VoiceChatScheduled) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s VoiceChatScheduled) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("start_date")
 		e.Int(s.StartDate)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVoiceChatScheduled = [1]string{
@@ -36843,7 +38006,12 @@ func (s *VoiceChatScheduled) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s VoiceChatStarted) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s VoiceChatStarted) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfVoiceChatStarted = [0]string{}
@@ -36870,6 +38038,12 @@ func (s *VoiceChatStarted) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WebhookInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s WebhookInfo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -36919,7 +38093,6 @@ func (s WebhookInfo) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfWebhookInfo = [8]string{

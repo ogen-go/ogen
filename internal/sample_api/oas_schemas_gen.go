@@ -778,82 +778,7 @@ type OneOfBugs struct {
 	AdditionalMinusFields           OneVariantHasNoUniqueFields "json:\"additional-fields\""
 	OneOfMinusUUIDMinusIntMinusEnum OptOneOfUUIDAndIntEnum      "json:\"oneOf-uuid-int-enum\""
 	OneOfMinusMappingMinusReference OptOneOfMappingReference    "json:\"oneOf-mapping-reference\""
-	OneOfMinusMappingMinusAny       OptOneOfMappingAny          "json:\"oneOf-mapping-any\""
 }
-
-// Ref: #/components/schemas/OneOfMappingAny
-// OneOfMappingAny represents sum type.
-type OneOfMappingAny struct {
-	Type             OneOfMappingAnyType // switch on this field
-	Any              jx.Raw
-	OneOfMappingAnyB OneOfMappingAnyB
-}
-
-// OneOfMappingAnyType is oneOf type of OneOfMappingAny.
-type OneOfMappingAnyType string
-
-// Possible values for OneOfMappingAnyType.
-const (
-	AnyOneOfMappingAny              OneOfMappingAnyType = "jx.Raw"
-	OneOfMappingAnyBOneOfMappingAny OneOfMappingAnyType = "OneOfMappingAnyB"
-)
-
-// IsAny reports whether OneOfMappingAny is jx.Raw.
-func (s OneOfMappingAny) IsAny() bool { return s.Type == AnyOneOfMappingAny }
-
-// IsOneOfMappingAnyB reports whether OneOfMappingAny is OneOfMappingAnyB.
-func (s OneOfMappingAny) IsOneOfMappingAnyB() bool { return s.Type == OneOfMappingAnyBOneOfMappingAny }
-
-// SetAny sets OneOfMappingAny to jx.Raw.
-func (s *OneOfMappingAny) SetAny(v jx.Raw) {
-	s.Type = AnyOneOfMappingAny
-	s.Any = v
-}
-
-// GetAny returns jx.Raw and true boolean if OneOfMappingAny is jx.Raw.
-func (s OneOfMappingAny) GetAny() (v jx.Raw, ok bool) {
-	if !s.IsAny() {
-		return v, false
-	}
-	return s.Any, true
-}
-
-// NewAnyOneOfMappingAny returns new OneOfMappingAny from jx.Raw.
-func NewAnyOneOfMappingAny(v jx.Raw) OneOfMappingAny {
-	var s OneOfMappingAny
-	s.SetAny(v)
-	return s
-}
-
-// SetOneOfMappingAnyB sets OneOfMappingAny to OneOfMappingAnyB.
-func (s *OneOfMappingAny) SetOneOfMappingAnyB(v OneOfMappingAnyB) {
-	s.Type = OneOfMappingAnyBOneOfMappingAny
-	s.OneOfMappingAnyB = v
-}
-
-// GetOneOfMappingAnyB returns OneOfMappingAnyB and true boolean if OneOfMappingAny is OneOfMappingAnyB.
-func (s OneOfMappingAny) GetOneOfMappingAnyB() (v OneOfMappingAnyB, ok bool) {
-	if !s.IsOneOfMappingAnyB() {
-		return v, false
-	}
-	return s.OneOfMappingAnyB, true
-}
-
-// NewOneOfMappingAnyBOneOfMappingAny returns new OneOfMappingAny from OneOfMappingAnyB.
-func NewOneOfMappingAnyBOneOfMappingAny(v OneOfMappingAnyB) OneOfMappingAny {
-	var s OneOfMappingAny
-	s.SetOneOfMappingAnyB(v)
-	return s
-}
-
-// Ref: #/components/schemas/OneOfMappingAnyB
-type OneOfMappingAnyB struct {
-	Code OptInt32              "json:\"code\""
-	Data *OneOfMappingAnyBData "json:\"data\""
-	Info OptString             "json:\"info\""
-}
-
-type OneOfMappingAnyBData struct{}
 
 // Ref: #/components/schemas/OneOfMappingReference
 // OneOfMappingReference represents sum type.
@@ -2121,52 +2046,6 @@ func (o OptNullableEnums) Get() (v NullableEnums, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptNullableEnums) Or(d NullableEnums) NullableEnums {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptOneOfMappingAny returns new OptOneOfMappingAny with value set to v.
-func NewOptOneOfMappingAny(v OneOfMappingAny) OptOneOfMappingAny {
-	return OptOneOfMappingAny{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptOneOfMappingAny is optional OneOfMappingAny.
-type OptOneOfMappingAny struct {
-	Value OneOfMappingAny
-	Set   bool
-}
-
-// IsSet returns true if OptOneOfMappingAny was set.
-func (o OptOneOfMappingAny) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptOneOfMappingAny) Reset() {
-	var v OneOfMappingAny
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptOneOfMappingAny) SetTo(v OneOfMappingAny) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptOneOfMappingAny) Get() (v OneOfMappingAny, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptOneOfMappingAny) Or(d OneOfMappingAny) OneOfMappingAny {
 	if v, ok := o.Get(); ok {
 		return v
 	}

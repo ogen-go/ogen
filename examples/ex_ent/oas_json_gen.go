@@ -73,6 +73,12 @@ var (
 // Encode implements json.Marshaler.
 func (s CreatePetCategoriesReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CreatePetCategoriesReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -88,7 +94,6 @@ func (s CreatePetCategoriesReq) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCreatePetCategoriesReq = [2]string{
@@ -182,6 +187,12 @@ func (s *CreatePetCategoriesReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreatePetFriendsReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CreatePetFriendsReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -224,7 +235,6 @@ func (s CreatePetFriendsReq) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCreatePetFriendsReq = [6]string{
@@ -373,6 +383,12 @@ func (s *CreatePetFriendsReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreatePetOwnerReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CreatePetOwnerReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -393,7 +409,6 @@ func (s CreatePetOwnerReq) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCreatePetOwnerReq = [3]string{
@@ -500,6 +515,12 @@ func (s *CreatePetOwnerReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CreatePetReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CreatePetReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -542,7 +563,6 @@ func (s CreatePetReq) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCreatePetReq = [6]string{
@@ -843,6 +863,12 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCategoriesCreate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetCategoriesCreate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -853,7 +879,6 @@ func (s PetCategoriesCreate) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetCategoriesCreate = [2]string{
@@ -940,6 +965,12 @@ func (s *PetCategoriesCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCategoriesList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetCategoriesList) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -950,7 +981,6 @@ func (s PetCategoriesList) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetCategoriesList = [2]string{
@@ -1037,6 +1067,12 @@ func (s *PetCategoriesList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCreate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetCreate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1074,7 +1110,6 @@ func (s PetCreate) Encode(e *jx.Encoder) {
 		e.FieldStart("owner")
 		s.Owner.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetCreate = [6]string{
@@ -1212,6 +1247,12 @@ func (s *PetCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCreateCategories) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetCreateCategories) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1222,7 +1263,6 @@ func (s PetCreateCategories) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetCreateCategories = [2]string{
@@ -1309,6 +1349,12 @@ func (s *PetCreateCategories) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetCreateOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetCreateOwner) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1324,7 +1370,6 @@ func (s PetCreateOwner) Encode(e *jx.Encoder) {
 		e.FieldStart("age")
 		e.Int(s.Age)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetCreateOwner = [3]string{
@@ -1424,6 +1469,12 @@ func (s *PetCreateOwner) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetFriendsCreate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetFriendsCreate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1446,7 +1497,6 @@ func (s PetFriendsCreate) Encode(e *jx.Encoder) {
 			s.Birthday.Encode(e, json.EncodeDateTime)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetFriendsCreate = [4]string{
@@ -1555,6 +1605,12 @@ func (s *PetFriendsCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetFriendsList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetFriendsList) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1577,7 +1633,6 @@ func (s PetFriendsList) Encode(e *jx.Encoder) {
 			s.Birthday.Encode(e, json.EncodeDateTime)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetFriendsList = [4]string{
@@ -1686,6 +1741,12 @@ func (s *PetFriendsList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetList) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1708,7 +1769,6 @@ func (s PetList) Encode(e *jx.Encoder) {
 			s.Birthday.Encode(e, json.EncodeDateTime)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetList = [4]string{
@@ -1817,6 +1877,12 @@ func (s *PetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetOwnerCreate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetOwnerCreate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1832,7 +1898,6 @@ func (s PetOwnerCreate) Encode(e *jx.Encoder) {
 		e.FieldStart("age")
 		e.Int(s.Age)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetOwnerCreate = [3]string{
@@ -1932,6 +1997,12 @@ func (s *PetOwnerCreate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetOwnerRead) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetOwnerRead) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -1947,7 +2018,6 @@ func (s PetOwnerRead) Encode(e *jx.Encoder) {
 		e.FieldStart("age")
 		e.Int(s.Age)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetOwnerRead = [3]string{
@@ -2047,6 +2117,12 @@ func (s *PetOwnerRead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetRead) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetRead) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -2069,7 +2145,6 @@ func (s PetRead) Encode(e *jx.Encoder) {
 			s.Birthday.Encode(e, json.EncodeDateTime)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetRead = [4]string{
@@ -2178,6 +2253,12 @@ func (s *PetRead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetUpdate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetUpdate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -2200,7 +2281,6 @@ func (s PetUpdate) Encode(e *jx.Encoder) {
 			s.Birthday.Encode(e, json.EncodeDateTime)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetUpdate = [4]string{
@@ -2309,6 +2389,12 @@ func (s *PetUpdate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R400) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s R400) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -2319,7 +2405,6 @@ func (s R400) Encode(e *jx.Encoder) {
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfR400 = [2]string{
@@ -2406,6 +2491,12 @@ func (s *R400) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R404) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s R404) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -2416,7 +2507,6 @@ func (s R404) Encode(e *jx.Encoder) {
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfR404 = [2]string{
@@ -2503,6 +2593,12 @@ func (s *R404) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R409) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s R409) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -2513,7 +2609,6 @@ func (s R409) Encode(e *jx.Encoder) {
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfR409 = [2]string{
@@ -2600,6 +2695,12 @@ func (s *R409) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s R500) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s R500) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -2610,7 +2711,6 @@ func (s R500) Encode(e *jx.Encoder) {
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfR500 = [2]string{
@@ -2697,6 +2797,12 @@ func (s *R500) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UpdatePetReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UpdatePetReq) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -2739,7 +2845,6 @@ func (s UpdatePetReq) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUpdatePetReq = [6]string{
