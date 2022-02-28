@@ -1,0 +1,11 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "faker/faker_struct" }}
+// SetFake set fake values.
+func (s *{{ $.Name }}) SetFake() {
+{{- range $f := $.Fields }}
+	{
+    {{ template "faker/faker" field_elem $f }}
+	}
+{{- end }}
+}
+{{- end }}

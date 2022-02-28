@@ -41,7 +41,7 @@ func main() {
 		filterMethods     = flag.String("filter-methods", "", "Filter operations by HTTP methods (comma-separated)")
 		clean             = flag.Bool("clean", false, "Clean generated files before generation")
 		verbose           = flag.Bool("v", false, "verbose")
-		generateTests     = flag.Bool("generate-tests", false, "Generate tests based on schema examples")
+		generateTests     = flag.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
 		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
 		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
 		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")

@@ -83,8 +83,20 @@ var (
 	_ = require.NoError
 )
 
-func TestAPIOverview_JSON(t *testing.T) {
-	t.Parallel()
+func TestAPIOverview_EncodeDecode(t *testing.T) {
+	var typ APIOverview
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 APIOverview
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAPIOverview_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -113,9 +125,68 @@ func TestAPIOverview_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAPIOverviewSSHKeyFingerprints_EncodeDecode(t *testing.T) {
+	var typ APIOverviewSSHKeyFingerprints
+	typ.SetFake()
 
-func TestActionsBillingUsage_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 APIOverviewSSHKeyFingerprints
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAccepted_EncodeDecode(t *testing.T) {
+	var typ Accepted
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Accepted
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsApproveWorkflowRunApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActionsApproveWorkflowRunApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsApproveWorkflowRunApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsApproveWorkflowRunApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ActionsApproveWorkflowRunApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsApproveWorkflowRunApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsBillingUsage_EncodeDecode(t *testing.T) {
+	var typ ActionsBillingUsage
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsBillingUsage
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsBillingUsage_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -144,9 +215,144 @@ func TestActionsBillingUsage_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsBillingUsageMinutesUsedBreakdown_EncodeDecode(t *testing.T) {
+	var typ ActionsBillingUsageMinutesUsedBreakdown
+	typ.SetFake()
 
-func TestActionsEnterprisePermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsBillingUsageMinutesUsedBreakdown
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCancelWorkflowRunAccepted_EncodeDecode(t *testing.T) {
+	var typ ActionsCancelWorkflowRunAccepted
+	typ = make(ActionsCancelWorkflowRunAccepted)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCancelWorkflowRunAccepted
+	typ2 = make(ActionsCancelWorkflowRunAccepted)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCreateOrUpdateEnvironmentSecretReq_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateOrUpdateEnvironmentSecretReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateOrUpdateEnvironmentSecretReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCreateOrUpdateOrgSecretReq_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateOrUpdateOrgSecretReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateOrUpdateOrgSecretReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCreateOrUpdateOrgSecretReqVisibility_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateOrUpdateOrgSecretReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateOrUpdateOrgSecretReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCreateOrUpdateRepoSecretCreated_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateOrUpdateRepoSecretCreated
+	typ = make(ActionsCreateOrUpdateRepoSecretCreated)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateOrUpdateRepoSecretCreated
+	typ2 = make(ActionsCreateOrUpdateRepoSecretCreated)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCreateOrUpdateRepoSecretReq_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateOrUpdateRepoSecretReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateOrUpdateRepoSecretReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCreateSelfHostedRunnerGroupForOrgReq_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateSelfHostedRunnerGroupForOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateSelfHostedRunnerGroupForOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsCreateSelfHostedRunnerGroupForOrgReqVisibility_EncodeDecode(t *testing.T) {
+	var typ ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsEnabled_EncodeDecode(t *testing.T) {
+	var typ ActionsEnabled
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsEnabled
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsEnterprisePermissions_EncodeDecode(t *testing.T) {
+	var typ ActionsEnterprisePermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsEnterprisePermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsEnterprisePermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -175,9 +381,20 @@ func TestActionsEnterprisePermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListArtifactsForRepoOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListArtifactsForRepoOK
+	typ.SetFake()
 
-func TestActionsListArtifactsForRepoOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListArtifactsForRepoOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListArtifactsForRepoOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -206,9 +423,20 @@ func TestActionsListArtifactsForRepoOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListEnvironmentSecretsOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListEnvironmentSecretsOK
+	typ.SetFake()
 
-func TestActionsListEnvironmentSecretsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListEnvironmentSecretsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListEnvironmentSecretsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -237,9 +465,20 @@ func TestActionsListEnvironmentSecretsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListJobsForWorkflowRunOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListJobsForWorkflowRunOK
+	typ.SetFake()
 
-func TestActionsListJobsForWorkflowRunOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListJobsForWorkflowRunOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListJobsForWorkflowRunOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -268,9 +507,20 @@ func TestActionsListJobsForWorkflowRunOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListOrgSecretsOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListOrgSecretsOK
+	typ.SetFake()
 
-func TestActionsListOrgSecretsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListOrgSecretsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListOrgSecretsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -299,9 +549,20 @@ func TestActionsListOrgSecretsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
+	typ.SetFake()
 
-func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -330,9 +591,20 @@ func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_JSON(t *testing.T) 
 		})
 	}
 }
+func TestActionsListRepoSecretsOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListRepoSecretsOK
+	typ.SetFake()
 
-func TestActionsListRepoSecretsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListRepoSecretsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListRepoSecretsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -361,9 +633,20 @@ func TestActionsListRepoSecretsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListRepoWorkflowsOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListRepoWorkflowsOK
+	typ.SetFake()
 
-func TestActionsListRepoWorkflowsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListRepoWorkflowsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListRepoWorkflowsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -392,9 +675,20 @@ func TestActionsListRepoWorkflowsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListSelectedReposForOrgSecretOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListSelectedReposForOrgSecretOK
+	typ.SetFake()
 
-func TestActionsListSelectedReposForOrgSecretOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListSelectedReposForOrgSecretOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListSelectedReposForOrgSecretOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -423,9 +717,20 @@ func TestActionsListSelectedReposForOrgSecretOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
+	typ.SetFake()
 
-func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -454,9 +759,20 @@ func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_JSON(
 		})
 	}
 }
+func TestActionsListSelfHostedRunnerGroupsForOrgOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListSelfHostedRunnerGroupsForOrgOK
+	typ.SetFake()
 
-func TestActionsListSelfHostedRunnerGroupsForOrgOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListSelfHostedRunnerGroupsForOrgOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListSelfHostedRunnerGroupsForOrgOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -485,9 +801,20 @@ func TestActionsListSelfHostedRunnerGroupsForOrgOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListSelfHostedRunnersForOrgOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListSelfHostedRunnersForOrgOK
+	typ.SetFake()
 
-func TestActionsListSelfHostedRunnersForOrgOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListSelfHostedRunnersForOrgOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListSelfHostedRunnersForOrgOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -516,9 +843,20 @@ func TestActionsListSelfHostedRunnersForOrgOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListSelfHostedRunnersForRepoOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListSelfHostedRunnersForRepoOK
+	typ.SetFake()
 
-func TestActionsListSelfHostedRunnersForRepoOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListSelfHostedRunnersForRepoOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListSelfHostedRunnersForRepoOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -547,9 +885,20 @@ func TestActionsListSelfHostedRunnersForRepoOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListSelfHostedRunnersInGroupForOrgOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListSelfHostedRunnersInGroupForOrgOK
+	typ.SetFake()
 
-func TestActionsListSelfHostedRunnersInGroupForOrgOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListSelfHostedRunnersInGroupForOrgOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListSelfHostedRunnersInGroupForOrgOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -578,9 +927,20 @@ func TestActionsListSelfHostedRunnersInGroupForOrgOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListWorkflowRunArtifactsOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListWorkflowRunArtifactsOK
+	typ.SetFake()
 
-func TestActionsListWorkflowRunArtifactsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListWorkflowRunArtifactsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListWorkflowRunArtifactsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -609,9 +969,20 @@ func TestActionsListWorkflowRunArtifactsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsListWorkflowRunsForRepoOK_EncodeDecode(t *testing.T) {
+	var typ ActionsListWorkflowRunsForRepoOK
+	typ.SetFake()
 
-func TestActionsListWorkflowRunsForRepoOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsListWorkflowRunsForRepoOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsListWorkflowRunsForRepoOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -640,9 +1011,20 @@ func TestActionsListWorkflowRunsForRepoOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsOrganizationPermissions_EncodeDecode(t *testing.T) {
+	var typ ActionsOrganizationPermissions
+	typ.SetFake()
 
-func TestActionsOrganizationPermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsOrganizationPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsOrganizationPermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -671,9 +1053,20 @@ func TestActionsOrganizationPermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsPublicKey_EncodeDecode(t *testing.T) {
+	var typ ActionsPublicKey
+	typ.SetFake()
 
-func TestActionsPublicKey_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsPublicKey
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsPublicKey_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -702,9 +1095,34 @@ func TestActionsPublicKey_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsReRunWorkflowCreated_EncodeDecode(t *testing.T) {
+	var typ ActionsReRunWorkflowCreated
+	typ = make(ActionsReRunWorkflowCreated)
+	typ.SetFake()
 
-func TestActionsRepositoryPermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsReRunWorkflowCreated
+	typ2 = make(ActionsReRunWorkflowCreated)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ ActionsRepositoryPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsRepositoryPermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -733,9 +1151,46 @@ func TestActionsRepositoryPermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsRetryWorkflowCreated_EncodeDecode(t *testing.T) {
+	var typ ActionsRetryWorkflowCreated
+	typ = make(ActionsRetryWorkflowCreated)
+	typ.SetFake()
 
-func TestActionsReviewPendingDeploymentsForRunReqState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsRetryWorkflowCreated
+	typ2 = make(ActionsRetryWorkflowCreated)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsReviewPendingDeploymentsForRunReq_EncodeDecode(t *testing.T) {
+	var typ ActionsReviewPendingDeploymentsForRunReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsReviewPendingDeploymentsForRunReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsReviewPendingDeploymentsForRunReqState_EncodeDecode(t *testing.T) {
+	var typ ActionsReviewPendingDeploymentsForRunReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsReviewPendingDeploymentsForRunReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsReviewPendingDeploymentsForRunReqState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -764,9 +1219,20 @@ func TestActionsReviewPendingDeploymentsForRunReqState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsSecret_EncodeDecode(t *testing.T) {
+	var typ ActionsSecret
+	typ.SetFake()
 
-func TestActionsSecret_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsSecret
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsSecret_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -795,9 +1261,668 @@ func TestActionsSecret_JSON(t *testing.T) {
 		})
 	}
 }
+func TestActionsSetGithubActionsPermissionsOrganizationReq_EncodeDecode(t *testing.T) {
+	var typ ActionsSetGithubActionsPermissionsOrganizationReq
+	typ.SetFake()
 
-func TestAppPermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsSetGithubActionsPermissionsOrganizationReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsSetGithubActionsPermissionsRepositoryReq_EncodeDecode(t *testing.T) {
+	var typ ActionsSetGithubActionsPermissionsRepositoryReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsSetGithubActionsPermissionsRepositoryReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq_EncodeDecode(t *testing.T) {
+	var typ ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsSetSelectedReposForOrgSecretReq_EncodeDecode(t *testing.T) {
+	var typ ActionsSetSelectedReposForOrgSecretReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsSetSelectedReposForOrgSecretReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq_EncodeDecode(t *testing.T) {
+	var typ ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsSetSelfHostedRunnersInGroupForOrgReq_EncodeDecode(t *testing.T) {
+	var typ ActionsSetSelfHostedRunnersInGroupForOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsSetSelfHostedRunnersInGroupForOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsUpdateSelfHostedRunnerGroupForOrgReq_EncodeDecode(t *testing.T) {
+	var typ ActionsUpdateSelfHostedRunnerGroupForOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsUpdateSelfHostedRunnerGroupForOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility_EncodeDecode(t *testing.T) {
+	var typ ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityDeleteThreadSubscriptionApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityDeleteThreadSubscriptionApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityDeleteThreadSubscriptionApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityDeleteThreadSubscriptionApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityGetThreadApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityGetThreadApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityGetThreadApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityGetThreadApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityGetThreadApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityGetThreadApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListNotificationsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ActivityListNotificationsForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListNotificationsForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListPublicEventsForRepoNetworkApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently_EncodeDecode(t *testing.T) {
+	var typ ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListPublicEventsForRepoNetworkApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListPublicEventsForRepoNetworkOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ActivityListPublicEventsForRepoNetworkOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListPublicEventsForRepoNetworkOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListPublicEventsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ActivityListPublicEventsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListPublicEventsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListReposStarredByAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityListWatchedReposForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityMarkNotificationsAsReadAccepted_EncodeDecode(t *testing.T) {
+	var typ ActivityMarkNotificationsAsReadAccepted
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityMarkNotificationsAsReadAccepted
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityMarkNotificationsAsReadApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityMarkNotificationsAsReadApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityMarkNotificationsAsReadApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityMarkNotificationsAsReadApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityMarkNotificationsAsReadApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityMarkNotificationsAsReadApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityMarkNotificationsAsReadReq_EncodeDecode(t *testing.T) {
+	var typ ActivityMarkNotificationsAsReadReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityMarkNotificationsAsReadReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityMarkRepoNotificationsAsReadAccepted_EncodeDecode(t *testing.T) {
+	var typ ActivityMarkRepoNotificationsAsReadAccepted
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityMarkRepoNotificationsAsReadAccepted
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityMarkRepoNotificationsAsReadReq_EncodeDecode(t *testing.T) {
+	var typ ActivityMarkRepoNotificationsAsReadReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityMarkRepoNotificationsAsReadReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivitySetRepoSubscriptionReq_EncodeDecode(t *testing.T) {
+	var typ ActivitySetRepoSubscriptionReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivitySetRepoSubscriptionReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivitySetThreadSubscriptionApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivitySetThreadSubscriptionApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivitySetThreadSubscriptionApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivitySetThreadSubscriptionApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivitySetThreadSubscriptionApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivitySetThreadSubscriptionApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivitySetThreadSubscriptionReq_EncodeDecode(t *testing.T) {
+	var typ ActivitySetThreadSubscriptionReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivitySetThreadSubscriptionReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityStarRepoForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityStarRepoForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestActor_EncodeDecode(t *testing.T) {
+	var typ Actor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Actor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAlertCreatedAt_EncodeDecode(t *testing.T) {
+	var typ AlertCreatedAt
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AlertCreatedAt
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAlertHTMLURL_EncodeDecode(t *testing.T) {
+	var typ AlertHTMLURL
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AlertHTMLURL
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAlertInstancesURL_EncodeDecode(t *testing.T) {
+	var typ AlertInstancesURL
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AlertInstancesURL
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAlertNumber_EncodeDecode(t *testing.T) {
+	var typ AlertNumber
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AlertNumber
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAlertURL_EncodeDecode(t *testing.T) {
+	var typ AlertURL
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AlertURL
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAllowedActions_EncodeDecode(t *testing.T) {
+	var typ AllowedActions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AllowedActions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissions_EncodeDecode(t *testing.T) {
+	var typ AppPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAppPermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -826,9 +1951,392 @@ func TestAppPermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAppPermissionsActions_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsActions
+	typ.SetFake()
 
-func TestApplicationGrant_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsActions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsAdministration_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsAdministration
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsAdministration
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsChecks_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsChecks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsChecks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsContentReferences_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsContentReferences
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsContentReferences
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsContents_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsContents
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsContents
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsDeployments_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsDeployments
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsDeployments
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsEnvironments_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsEnvironments
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsEnvironments
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsIssues_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsIssues
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsIssues
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsMembers_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsMembers
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsMembers
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsMetadata_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsMetadata
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsMetadata
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationAdministration_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationAdministration
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationAdministration
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationHooks_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationHooks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationHooks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationPackages_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationPackages
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationPackages
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationPlan_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationPlan
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationPlan
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationProjects_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationProjects
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationProjects
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationSecrets_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationSecrets
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationSecrets
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationSelfHostedRunners_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationSelfHostedRunners
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationSelfHostedRunners
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsOrganizationUserBlocking_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsOrganizationUserBlocking
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsOrganizationUserBlocking
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsPackages_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsPackages
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsPackages
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsPages_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsPages
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsPages
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsPullRequests_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsPullRequests
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsPullRequests
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsRepositoryHooks_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsRepositoryHooks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsRepositoryHooks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsRepositoryProjects_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsRepositoryProjects
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsRepositoryProjects
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsSecretScanningAlerts_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsSecretScanningAlerts
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsSecretScanningAlerts
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsSecrets_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsSecrets
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsSecrets
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsSecurityEvents_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsSecurityEvents
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsSecurityEvents
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsSingleFile_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsSingleFile
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsSingleFile
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsStatuses_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsStatuses
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsStatuses
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsTeamDiscussions_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsTeamDiscussions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsTeamDiscussions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsVulnerabilityAlerts_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsVulnerabilityAlerts
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsVulnerabilityAlerts
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppPermissionsWorkflows_EncodeDecode(t *testing.T) {
+	var typ AppPermissionsWorkflows
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppPermissionsWorkflows
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestApplicationGrant_EncodeDecode(t *testing.T) {
+	var typ ApplicationGrant
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ApplicationGrant
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestApplicationGrant_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -857,9 +2365,308 @@ func TestApplicationGrant_JSON(t *testing.T) {
 		})
 	}
 }
+func TestApplicationGrantApp_EncodeDecode(t *testing.T) {
+	var typ ApplicationGrantApp
+	typ.SetFake()
 
-func TestAppsListInstallationReposForAuthenticatedUserOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ApplicationGrantApp
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsAddRepoToInstallationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsAddRepoToInstallationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsAddRepoToInstallationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsAddRepoToInstallationApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsAddRepoToInstallationApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsAddRepoToInstallationApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCheckTokenReq_EncodeDecode(t *testing.T) {
+	var typ AppsCheckTokenReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCheckTokenReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateContentAttachmentApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsCreateContentAttachmentApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateContentAttachmentApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateContentAttachmentApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ AppsCreateContentAttachmentApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateContentAttachmentApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateContentAttachmentApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsCreateContentAttachmentApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateContentAttachmentApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateContentAttachmentReq_EncodeDecode(t *testing.T) {
+	var typ AppsCreateContentAttachmentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateContentAttachmentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateInstallationAccessTokenApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsCreateInstallationAccessTokenApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateInstallationAccessTokenApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateInstallationAccessTokenApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsCreateInstallationAccessTokenApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateInstallationAccessTokenApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateInstallationAccessTokenApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ AppsCreateInstallationAccessTokenApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateInstallationAccessTokenApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsCreateInstallationAccessTokenReq_EncodeDecode(t *testing.T) {
+	var typ AppsCreateInstallationAccessTokenReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsCreateInstallationAccessTokenReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsDeleteAuthorizationReq_EncodeDecode(t *testing.T) {
+	var typ AppsDeleteAuthorizationReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsDeleteAuthorizationReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsDeleteTokenReq_EncodeDecode(t *testing.T) {
+	var typ AppsDeleteTokenReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsDeleteTokenReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsGetBySlugApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsGetBySlugApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsGetBySlugApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsGetBySlugApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsGetBySlugApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsGetBySlugApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsGetSubscriptionPlanForAccountApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsGetSubscriptionPlanForAccountApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsGetSubscriptionPlanForAccountApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListAccountsForPlanApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsListAccountsForPlanApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListAccountsForPlanApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListAccountsForPlanApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ AppsListAccountsForPlanApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListAccountsForPlanApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListAccountsForPlanOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ AppsListAccountsForPlanOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListAccountsForPlanOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListAccountsForPlanStubbedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ AppsListAccountsForPlanStubbedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListAccountsForPlanStubbedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListInstallationReposForAuthenticatedUserOK_EncodeDecode(t *testing.T) {
+	var typ AppsListInstallationReposForAuthenticatedUserOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListInstallationReposForAuthenticatedUserOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAppsListInstallationReposForAuthenticatedUserOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -888,9 +2695,92 @@ func TestAppsListInstallationReposForAuthenticatedUserOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAppsListPlansApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsListPlansApplicationJSONNotFound
+	typ.SetFake()
 
-func TestAppsListReposAccessibleToInstallationOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListPlansApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListPlansApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ AppsListPlansApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListPlansApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListPlansOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ AppsListPlansOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListPlansOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListPlansStubbedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ AppsListPlansStubbedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListPlansStubbedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListReposAccessibleToInstallationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsListReposAccessibleToInstallationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListReposAccessibleToInstallationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListReposAccessibleToInstallationApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ AppsListReposAccessibleToInstallationApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListReposAccessibleToInstallationApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListReposAccessibleToInstallationOK_EncodeDecode(t *testing.T) {
+	var typ AppsListReposAccessibleToInstallationOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListReposAccessibleToInstallationOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAppsListReposAccessibleToInstallationOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -919,9 +2809,164 @@ func TestAppsListReposAccessibleToInstallationOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
 
-func TestAppsUpdateWebhookConfigForAppReq_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListSubscriptionsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ AppsListWebhookDeliveriesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsListWebhookDeliveriesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsRemoveRepoFromInstallationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsRemoveRepoFromInstallationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsRemoveRepoFromInstallationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsRemoveRepoFromInstallationApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsRemoveRepoFromInstallationApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsRemoveRepoFromInstallationApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsResetTokenReq_EncodeDecode(t *testing.T) {
+	var typ AppsResetTokenReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsResetTokenReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsScopeTokenApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ AppsScopeTokenApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsScopeTokenApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsScopeTokenApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ AppsScopeTokenApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsScopeTokenApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsScopeTokenApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ AppsScopeTokenApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsScopeTokenApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsScopeTokenReq_EncodeDecode(t *testing.T) {
+	var typ AppsScopeTokenReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsScopeTokenReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAppsUpdateWebhookConfigForAppReq_EncodeDecode(t *testing.T) {
+	var typ AppsUpdateWebhookConfigForAppReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AppsUpdateWebhookConfigForAppReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAppsUpdateWebhookConfigForAppReq_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -950,9 +2995,20 @@ func TestAppsUpdateWebhookConfigForAppReq_JSON(t *testing.T) {
 		})
 	}
 }
+func TestArtifact_EncodeDecode(t *testing.T) {
+	var typ Artifact
+	typ.SetFake()
 
-func TestArtifact_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Artifact
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestArtifact_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -981,9 +3037,58 @@ func TestArtifact_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAuditLogEvent_EncodeDecode(t *testing.T) {
+	var typ AuditLogEvent
+	typ.SetFake()
 
-func TestAuthenticationToken_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuditLogEvent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAuditLogEventActorLocation_EncodeDecode(t *testing.T) {
+	var typ AuditLogEventActorLocation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuditLogEventActorLocation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAuditLogEventData_EncodeDecode(t *testing.T) {
+	var typ AuditLogEventData
+	typ = make(AuditLogEventData)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuditLogEventData
+	typ2 = make(AuditLogEventData)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAuthenticationToken_EncodeDecode(t *testing.T) {
+	var typ AuthenticationToken
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuthenticationToken
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAuthenticationToken_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1013,9 +3118,20 @@ func TestAuthenticationToken_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAuthenticationTokenPermissions_EncodeDecode(t *testing.T) {
+	var typ AuthenticationTokenPermissions
+	typ.SetFake()
 
-func TestAuthenticationTokenPermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuthenticationTokenPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAuthenticationTokenPermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1044,9 +3160,32 @@ func TestAuthenticationTokenPermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAuthenticationTokenRepositorySelection_EncodeDecode(t *testing.T) {
+	var typ AuthenticationTokenRepositorySelection
+	typ.SetFake()
 
-func TestAuthorAssociation_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuthenticationTokenRepositorySelection
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAuthorAssociation_EncodeDecode(t *testing.T) {
+	var typ AuthorAssociation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuthorAssociation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAuthorAssociation_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1075,9 +3214,20 @@ func TestAuthorAssociation_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAuthorization_EncodeDecode(t *testing.T) {
+	var typ Authorization
+	typ.SetFake()
 
-func TestAuthorization_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Authorization
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAuthorization_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1110,9 +3260,56 @@ func TestAuthorization_JSON(t *testing.T) {
 		})
 	}
 }
+func TestAuthorizationApp_EncodeDecode(t *testing.T) {
+	var typ AuthorizationApp
+	typ.SetFake()
 
-func TestAutolink_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AuthorizationApp
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAutoMerge_EncodeDecode(t *testing.T) {
+	var typ AutoMerge
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AutoMerge
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAutoMergeMergeMethod_EncodeDecode(t *testing.T) {
+	var typ AutoMergeMergeMethod
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AutoMergeMergeMethod
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestAutolink_EncodeDecode(t *testing.T) {
+	var typ Autolink
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Autolink
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAutolink_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1141,9 +3338,20 @@ func TestAutolink_JSON(t *testing.T) {
 		})
 	}
 }
+func TestBaseGist_EncodeDecode(t *testing.T) {
+	var typ BaseGist
+	typ.SetFake()
 
-func TestBaseGist_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BaseGist
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestBaseGist_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1172,9 +3380,58 @@ func TestBaseGist_JSON(t *testing.T) {
 		})
 	}
 }
+func TestBaseGistFiles_EncodeDecode(t *testing.T) {
+	var typ BaseGistFiles
+	typ = make(BaseGistFiles)
+	typ.SetFake()
 
-func TestBlob_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BaseGistFiles
+	typ2 = make(BaseGistFiles)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBaseGistFilesItem_EncodeDecode(t *testing.T) {
+	var typ BaseGistFilesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BaseGistFilesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBasicError_EncodeDecode(t *testing.T) {
+	var typ BasicError
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BasicError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBlob_EncodeDecode(t *testing.T) {
+	var typ Blob
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Blob
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestBlob_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1203,9 +3460,20 @@ func TestBlob_JSON(t *testing.T) {
 		})
 	}
 }
+func TestBranchProtection_EncodeDecode(t *testing.T) {
+	var typ BranchProtection
+	typ.SetFake()
 
-func TestBranchProtection_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchProtection
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestBranchProtection_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1234,9 +3502,92 @@ func TestBranchProtection_JSON(t *testing.T) {
 		})
 	}
 }
+func TestBranchProtectionAllowDeletions_EncodeDecode(t *testing.T) {
+	var typ BranchProtectionAllowDeletions
+	typ.SetFake()
 
-func TestBranchRestrictionPolicy_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchProtectionAllowDeletions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchProtectionAllowForcePushes_EncodeDecode(t *testing.T) {
+	var typ BranchProtectionAllowForcePushes
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchProtectionAllowForcePushes
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchProtectionRequiredConversationResolution_EncodeDecode(t *testing.T) {
+	var typ BranchProtectionRequiredConversationResolution
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchProtectionRequiredConversationResolution
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchProtectionRequiredLinearHistory_EncodeDecode(t *testing.T) {
+	var typ BranchProtectionRequiredLinearHistory
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchProtectionRequiredLinearHistory
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchProtectionRequiredSignatures_EncodeDecode(t *testing.T) {
+	var typ BranchProtectionRequiredSignatures
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchProtectionRequiredSignatures
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchProtectionRequiredStatusChecks_EncodeDecode(t *testing.T) {
+	var typ BranchProtectionRequiredStatusChecks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchProtectionRequiredStatusChecks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchRestrictionPolicy_EncodeDecode(t *testing.T) {
+	var typ BranchRestrictionPolicy
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchRestrictionPolicy
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestBranchRestrictionPolicy_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1265,9 +3616,104 @@ func TestBranchRestrictionPolicy_JSON(t *testing.T) {
 		})
 	}
 }
+func TestBranchRestrictionPolicyAppsItem_EncodeDecode(t *testing.T) {
+	var typ BranchRestrictionPolicyAppsItem
+	typ.SetFake()
 
-func TestBranchWithProtection_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchRestrictionPolicyAppsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchRestrictionPolicyAppsItemOwner_EncodeDecode(t *testing.T) {
+	var typ BranchRestrictionPolicyAppsItemOwner
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchRestrictionPolicyAppsItemOwner
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchRestrictionPolicyAppsItemPermissions_EncodeDecode(t *testing.T) {
+	var typ BranchRestrictionPolicyAppsItemPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchRestrictionPolicyAppsItemPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchRestrictionPolicyTeamsItem_EncodeDecode(t *testing.T) {
+	var typ BranchRestrictionPolicyTeamsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchRestrictionPolicyTeamsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchRestrictionPolicyUsersItem_EncodeDecode(t *testing.T) {
+	var typ BranchRestrictionPolicyUsersItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchRestrictionPolicyUsersItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchShort_EncodeDecode(t *testing.T) {
+	var typ BranchShort
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchShort
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchShortCommit_EncodeDecode(t *testing.T) {
+	var typ BranchShortCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchShortCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestBranchWithProtection_EncodeDecode(t *testing.T) {
+	var typ BranchWithProtection
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchWithProtection
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestBranchWithProtection_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1296,9 +3742,44 @@ func TestBranchWithProtection_JSON(t *testing.T) {
 		})
 	}
 }
+func TestBranchWithProtectionLinks_EncodeDecode(t *testing.T) {
+	var typ BranchWithProtectionLinks
+	typ.SetFake()
 
-func TestCheckRun_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 BranchWithProtectionLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCheckAnnotation_EncodeDecode(t *testing.T) {
+	var typ CheckAnnotation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckAnnotation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCheckRun_EncodeDecode(t *testing.T) {
+	var typ CheckRun
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckRun
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCheckRun_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1327,9 +3808,32 @@ func TestCheckRun_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCheckRunCheckSuite_EncodeDecode(t *testing.T) {
+	var typ CheckRunCheckSuite
+	typ.SetFake()
 
-func TestCheckRunConclusion_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckRunCheckSuite
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCheckRunConclusion_EncodeDecode(t *testing.T) {
+	var typ CheckRunConclusion
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckRunConclusion
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCheckRunConclusion_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1358,9 +3862,32 @@ func TestCheckRunConclusion_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCheckRunOutput_EncodeDecode(t *testing.T) {
+	var typ CheckRunOutput
+	typ.SetFake()
 
-func TestCheckRunStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckRunOutput
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCheckRunStatus_EncodeDecode(t *testing.T) {
+	var typ CheckRunStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckRunStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCheckRunStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1389,9 +3916,20 @@ func TestCheckRunStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCheckSuite_EncodeDecode(t *testing.T) {
+	var typ CheckSuite
+	typ.SetFake()
 
-func TestCheckSuite_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckSuite
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCheckSuite_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1420,9 +3958,20 @@ func TestCheckSuite_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCheckSuiteConclusion_EncodeDecode(t *testing.T) {
+	var typ CheckSuiteConclusion
+	typ.SetFake()
 
-func TestCheckSuiteConclusion_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckSuiteConclusion
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCheckSuiteConclusion_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1451,9 +4000,20 @@ func TestCheckSuiteConclusion_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCheckSuitePreference_EncodeDecode(t *testing.T) {
+	var typ CheckSuitePreference
+	typ.SetFake()
 
-func TestCheckSuitePreference_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckSuitePreference
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCheckSuitePreference_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1482,9 +4042,44 @@ func TestCheckSuitePreference_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCheckSuitePreferencePreferences_EncodeDecode(t *testing.T) {
+	var typ CheckSuitePreferencePreferences
+	typ.SetFake()
 
-func TestCheckSuiteStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckSuitePreferencePreferences
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCheckSuitePreferencePreferencesAutoTriggerChecksItem_EncodeDecode(t *testing.T) {
+	var typ CheckSuitePreferencePreferencesAutoTriggerChecksItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckSuitePreferencePreferencesAutoTriggerChecksItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCheckSuiteStatus_EncodeDecode(t *testing.T) {
+	var typ CheckSuiteStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CheckSuiteStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCheckSuiteStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1513,9 +4108,56 @@ func TestCheckSuiteStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestChecksCreateSuiteApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateSuiteApplicationJSONCreated
+	typ.SetFake()
 
-func TestChecksListForRefOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateSuiteApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateSuiteApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateSuiteApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateSuiteApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksCreateSuiteReq_EncodeDecode(t *testing.T) {
+	var typ ChecksCreateSuiteReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksCreateSuiteReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksListForRefOK_EncodeDecode(t *testing.T) {
+	var typ ChecksListForRefOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksListForRefOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestChecksListForRefOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1544,9 +4186,20 @@ func TestChecksListForRefOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestChecksListForSuiteOK_EncodeDecode(t *testing.T) {
+	var typ ChecksListForSuiteOK
+	typ.SetFake()
 
-func TestChecksListForSuiteOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksListForSuiteOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestChecksListForSuiteOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1575,9 +4228,20 @@ func TestChecksListForSuiteOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestChecksListSuitesForRefOK_EncodeDecode(t *testing.T) {
+	var typ ChecksListSuitesForRefOK
+	typ.SetFake()
 
-func TestChecksListSuitesForRefOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksListSuitesForRefOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestChecksListSuitesForRefOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1606,9 +4270,58 @@ func TestChecksListSuitesForRefOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestChecksRerequestSuiteCreated_EncodeDecode(t *testing.T) {
+	var typ ChecksRerequestSuiteCreated
+	typ = make(ChecksRerequestSuiteCreated)
+	typ.SetFake()
 
-func TestCloneTraffic_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksRerequestSuiteCreated
+	typ2 = make(ChecksRerequestSuiteCreated)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksSetSuitesPreferencesReq_EncodeDecode(t *testing.T) {
+	var typ ChecksSetSuitesPreferencesReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksSetSuitesPreferencesReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChecksSetSuitesPreferencesReqAutoTriggerChecksItem_EncodeDecode(t *testing.T) {
+	var typ ChecksSetSuitesPreferencesReqAutoTriggerChecksItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChecksSetSuitesPreferencesReqAutoTriggerChecksItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCloneTraffic_EncodeDecode(t *testing.T) {
+	var typ CloneTraffic
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CloneTraffic
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCloneTraffic_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1637,9 +4350,32 @@ func TestCloneTraffic_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCodeFrequencyStat_EncodeDecode(t *testing.T) {
+	var typ CodeFrequencyStat
+	typ.SetFake()
 
-func TestCodeOfConduct_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeFrequencyStat
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeOfConduct_EncodeDecode(t *testing.T) {
+	var typ CodeOfConduct
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeOfConduct
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCodeOfConduct_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1668,9 +4404,32 @@ func TestCodeOfConduct_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCodeOfConductSimple_EncodeDecode(t *testing.T) {
+	var typ CodeOfConductSimple
+	typ.SetFake()
 
-func TestCodeScanningAlert_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeOfConductSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlert_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlert
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlert
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCodeScanningAlert_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1700,9 +4459,200 @@ func TestCodeScanningAlert_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCodeScanningAlertClassification_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertClassification
+	typ.SetFake()
 
-func TestCodeScanningAnalysis_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertClassification
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertDismissedAt_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertDismissedAt
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertDismissedAt
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertDismissedReason_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertDismissedReason
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertDismissedReason
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertEnvironment_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertEnvironment
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertEnvironment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertInstance_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertInstance
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertInstance
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertInstanceMessage_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertInstanceMessage
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertInstanceMessage
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertItems_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertItems
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertItems
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertLocation_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertLocation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertLocation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertRule_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertRule
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertRule
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertRuleSecuritySeverityLevel_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertRuleSecuritySeverityLevel
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertRuleSecuritySeverityLevel
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertRuleSeverity_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertRuleSeverity
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertRuleSeverity
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertRuleSummary_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertRuleSummary
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertRuleSummary
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertRuleSummarySeverity_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertRuleSummarySeverity
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertRuleSummarySeverity
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertSetState_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertSetState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertSetState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAlertState_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAlertState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAlertState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysis_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysis
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysis
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCodeScanningAnalysis_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1731,9 +4681,68 @@ func TestCodeScanningAnalysis_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCodeScanningAnalysisAnalysisKey_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisAnalysisKey
+	typ.SetFake()
 
-func TestCodeScanningAnalysisDeletion_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisAnalysisKey
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisCategory_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisCategory
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisCategory
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisCommitSha_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisCommitSha
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisCommitSha
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisCreatedAt_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisCreatedAt
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisCreatedAt
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisDeletion_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisDeletion
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisDeletion
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCodeScanningAnalysisDeletion_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1762,9 +4771,320 @@ func TestCodeScanningAnalysisDeletion_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCodeScanningAnalysisEnvironment_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisEnvironment
+	typ.SetFake()
 
-func TestCodeScanningSarifsReceipt_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisEnvironment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisSarifFile_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisSarifFile
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisSarifFile
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisSarifID_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisSarifID
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisSarifID
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisTool_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisTool
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisTool
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisToolGUID_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisToolGUID
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisToolGUID
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisToolName_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisToolName
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisToolName
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisToolVersion_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisToolVersion
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisToolVersion
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningAnalysisURL_EncodeDecode(t *testing.T) {
+	var typ CodeScanningAnalysisURL
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningAnalysisURL
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningDeleteAnalysisApplicationJSONBadRequest_EncodeDecode(t *testing.T) {
+	var typ CodeScanningDeleteAnalysisApplicationJSONBadRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningDeleteAnalysisApplicationJSONBadRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningDeleteAnalysisApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningDeleteAnalysisApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningDeleteAnalysisApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningDeleteAnalysisApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningDeleteAnalysisApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningDeleteAnalysisApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningGetAlertApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningGetAlertApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningGetAlertApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningGetAlertApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningGetAlertApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningGetAlertApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningGetAnalysisApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningGetAnalysisApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningGetAnalysisApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningGetAnalysisApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningGetAnalysisApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningGetAnalysisApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListAlertInstancesApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListAlertInstancesApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListAlertInstancesApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListAlertInstancesApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListAlertInstancesApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListAlertInstancesApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListAlertInstancesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListAlertInstancesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListAlertInstancesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListAlertsForRepoApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListAlertsForRepoApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListAlertsForRepoApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListAlertsForRepoApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListAlertsForRepoApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListAlertsForRepoApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListAlertsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListAlertsForRepoOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListAlertsForRepoOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListRecentAnalysesApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListRecentAnalysesApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListRecentAnalysesApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListRecentAnalysesApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListRecentAnalysesApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListRecentAnalysesApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningListRecentAnalysesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ CodeScanningListRecentAnalysesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningListRecentAnalysesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningRef_EncodeDecode(t *testing.T) {
+	var typ CodeScanningRef
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningRef
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningSarifsReceipt_EncodeDecode(t *testing.T) {
+	var typ CodeScanningSarifsReceipt
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningSarifsReceipt
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCodeScanningSarifsReceipt_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1793,9 +5113,20 @@ func TestCodeScanningSarifsReceipt_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCodeScanningSarifsStatus_EncodeDecode(t *testing.T) {
+	var typ CodeScanningSarifsStatus
+	typ.SetFake()
 
-func TestCodeScanningSarifsStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningSarifsStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCodeScanningSarifsStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1824,9 +5155,152 @@ func TestCodeScanningSarifsStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCodeScanningSarifsStatusProcessingStatus_EncodeDecode(t *testing.T) {
+	var typ CodeScanningSarifsStatusProcessingStatus
+	typ.SetFake()
 
-func TestCombinedBillingUsage_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningSarifsStatusProcessingStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningUpdateAlertApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningUpdateAlertApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningUpdateAlertApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningUpdateAlertApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningUpdateAlertApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningUpdateAlertApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningUpdateAlertReq_EncodeDecode(t *testing.T) {
+	var typ CodeScanningUpdateAlertReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningUpdateAlertReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningUploadSarifApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ CodeScanningUploadSarifApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningUploadSarifApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningUploadSarifApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ CodeScanningUploadSarifApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningUploadSarifApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeScanningUploadSarifReq_EncodeDecode(t *testing.T) {
+	var typ CodeScanningUploadSarifReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeScanningUploadSarifReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodeSearchResultItem_EncodeDecode(t *testing.T) {
+	var typ CodeSearchResultItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodeSearchResultItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCodesOfConductGetAllCodesOfConductOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ CodesOfConductGetAllCodesOfConductOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CodesOfConductGetAllCodesOfConductOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCollaborator_EncodeDecode(t *testing.T) {
+	var typ Collaborator
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Collaborator
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCollaboratorPermissions_EncodeDecode(t *testing.T) {
+	var typ CollaboratorPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CollaboratorPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCombinedBillingUsage_EncodeDecode(t *testing.T) {
+	var typ CombinedBillingUsage
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CombinedBillingUsage
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCombinedBillingUsage_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1855,9 +5329,20 @@ func TestCombinedBillingUsage_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCombinedCommitStatus_EncodeDecode(t *testing.T) {
+	var typ CombinedCommitStatus
+	typ.SetFake()
 
-func TestCombinedCommitStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CombinedCommitStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCombinedCommitStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1886,9 +5371,20 @@ func TestCombinedCommitStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCommit_EncodeDecode(t *testing.T) {
+	var typ Commit
+	typ.SetFake()
 
-func TestCommit_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Commit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCommit_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1917,9 +5413,32 @@ func TestCommit_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCommitActivity_EncodeDecode(t *testing.T) {
+	var typ CommitActivity
+	typ.SetFake()
 
-func TestCommitComment_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitActivity
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitComment_EncodeDecode(t *testing.T) {
+	var typ CommitComment
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitComment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCommitComment_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1949,9 +5468,44 @@ func TestCommitComment_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCommitCommit_EncodeDecode(t *testing.T) {
+	var typ CommitCommit
+	typ.SetFake()
 
-func TestCommitComparison_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitCommitTree_EncodeDecode(t *testing.T) {
+	var typ CommitCommitTree
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitCommitTree
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitComparison_EncodeDecode(t *testing.T) {
+	var typ CommitComparison
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitComparison
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCommitComparison_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -1980,9 +5534,20 @@ func TestCommitComparison_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCommitComparisonStatus_EncodeDecode(t *testing.T) {
+	var typ CommitComparisonStatus
+	typ.SetFake()
 
-func TestCommitComparisonStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitComparisonStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCommitComparisonStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2011,9 +5576,116 @@ func TestCommitComparisonStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCommitFilesItem_EncodeDecode(t *testing.T) {
+	var typ CommitFilesItem
+	typ.SetFake()
 
-func TestCommunityProfile_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitFilesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitParentsItem_EncodeDecode(t *testing.T) {
+	var typ CommitParentsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitParentsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitSearchResultItem_EncodeDecode(t *testing.T) {
+	var typ CommitSearchResultItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitSearchResultItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitSearchResultItemCommit_EncodeDecode(t *testing.T) {
+	var typ CommitSearchResultItemCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitSearchResultItemCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitSearchResultItemCommitAuthor_EncodeDecode(t *testing.T) {
+	var typ CommitSearchResultItemCommitAuthor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitSearchResultItemCommitAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitSearchResultItemCommitTree_EncodeDecode(t *testing.T) {
+	var typ CommitSearchResultItemCommitTree
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitSearchResultItemCommitTree
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitSearchResultItemParentsItem_EncodeDecode(t *testing.T) {
+	var typ CommitSearchResultItemParentsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitSearchResultItemParentsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommitStats_EncodeDecode(t *testing.T) {
+	var typ CommitStats
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommitStats
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCommunityProfile_EncodeDecode(t *testing.T) {
+	var typ CommunityProfile
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommunityProfile
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCommunityProfile_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2042,9 +5714,32 @@ func TestCommunityProfile_JSON(t *testing.T) {
 		})
 	}
 }
+func TestCommunityProfileFiles_EncodeDecode(t *testing.T) {
+	var typ CommunityProfileFiles
+	typ.SetFake()
 
-func TestContentFile_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CommunityProfileFiles
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestContentFile_EncodeDecode(t *testing.T) {
+	var typ ContentFile
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ContentFile
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestContentFile_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2073,9 +5768,32 @@ func TestContentFile_JSON(t *testing.T) {
 		})
 	}
 }
+func TestContentFileLinks_EncodeDecode(t *testing.T) {
+	var typ ContentFileLinks
+	typ.SetFake()
 
-func TestContentReferenceAttachment_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ContentFileLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestContentReferenceAttachment_EncodeDecode(t *testing.T) {
+	var typ ContentReferenceAttachment
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ContentReferenceAttachment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestContentReferenceAttachment_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2104,9 +5822,80 @@ func TestContentReferenceAttachment_JSON(t *testing.T) {
 		})
 	}
 }
+func TestContentTraffic_EncodeDecode(t *testing.T) {
+	var typ ContentTraffic
+	typ.SetFake()
 
-func TestDeployKey_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ContentTraffic
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestContributor_EncodeDecode(t *testing.T) {
+	var typ Contributor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Contributor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestContributorActivity_EncodeDecode(t *testing.T) {
+	var typ ContributorActivity
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ContributorActivity
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestContributorActivityWeeksItem_EncodeDecode(t *testing.T) {
+	var typ ContributorActivityWeeksItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ContributorActivityWeeksItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestCredentialAuthorization_EncodeDecode(t *testing.T) {
+	var typ CredentialAuthorization
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 CredentialAuthorization
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDeployKey_EncodeDecode(t *testing.T) {
+	var typ DeployKey
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DeployKey
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestDeployKey_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2135,9 +5924,20 @@ func TestDeployKey_JSON(t *testing.T) {
 		})
 	}
 }
+func TestDeployment_EncodeDecode(t *testing.T) {
+	var typ Deployment
+	typ.SetFake()
 
-func TestDeployment_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Deployment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestDeployment_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2166,9 +5966,58 @@ func TestDeployment_JSON(t *testing.T) {
 		})
 	}
 }
+func TestDeploymentPayload_EncodeDecode(t *testing.T) {
+	var typ DeploymentPayload
+	typ.SetFake()
 
-func TestDeploymentStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DeploymentPayload
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDeploymentPayload0_EncodeDecode(t *testing.T) {
+	var typ DeploymentPayload0
+	typ = make(DeploymentPayload0)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DeploymentPayload0
+	typ2 = make(DeploymentPayload0)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDeploymentSimple_EncodeDecode(t *testing.T) {
+	var typ DeploymentSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DeploymentSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDeploymentStatus_EncodeDecode(t *testing.T) {
+	var typ DeploymentStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DeploymentStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestDeploymentStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2197,9 +6046,20 @@ func TestDeploymentStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestDeploymentStatusState_EncodeDecode(t *testing.T) {
+	var typ DeploymentStatusState
+	typ.SetFake()
 
-func TestDeploymentStatusState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DeploymentStatusState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestDeploymentStatusState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2228,9 +6088,32 @@ func TestDeploymentStatusState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestDiffEntry_EncodeDecode(t *testing.T) {
+	var typ DiffEntry
+	typ.SetFake()
 
-func TestDiffEntryStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DiffEntry
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestDiffEntryStatus_EncodeDecode(t *testing.T) {
+	var typ DiffEntryStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 DiffEntryStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestDiffEntryStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2259,9 +6142,108 @@ func TestDiffEntryStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestEmail_EncodeDecode(t *testing.T) {
+	var typ Email
+	typ.SetFake()
 
-func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Email
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEmojisGetOK_EncodeDecode(t *testing.T) {
+	var typ EmojisGetOK
+	typ = make(EmojisGetOK)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EmojisGetOK
+	typ2 = make(EmojisGetOK)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEmptyObject_EncodeDecode(t *testing.T) {
+	var typ EmptyObject
+	typ = make(EmptyObject)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EmptyObject
+	typ2 = make(EmptyObject)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnabledOrganizations_EncodeDecode(t *testing.T) {
+	var typ EnabledOrganizations
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnabledOrganizations
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnabledRepositories_EncodeDecode(t *testing.T) {
+	var typ EnabledRepositories
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnabledRepositories
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2290,9 +6272,20 @@ func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_JSON(
 		})
 	}
 }
+func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
+	typ.SetFake()
 
-func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2321,9 +6314,20 @@ func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 		})
 	}
 }
+func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
+	typ.SetFake()
 
-func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2352,9 +6356,20 @@ func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_JSON(t *testin
 		})
 	}
 }
+func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
+	typ.SetFake()
 
-func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2383,9 +6398,20 @@ func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_JSON(t *testing.T) 
 		})
 	}
 }
+func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
+	typ.SetFake()
 
-func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2414,9 +6440,344 @@ func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_JSON(t *test
 		})
 	}
 }
+func TestEnterpriseAdminProvisionAndInviteEnterpriseGroupReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
+	typ.SetFake()
 
-func TestEnvironmentApprovalsState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminProvisionAndInviteEnterpriseUserReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReqName_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminProvisionAndInviteEnterpriseUserReqName
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseUserReqName
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetGithubActionsPermissionsEnterpriseReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemOp
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateAttributeForEnterpriseUserReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility_EncodeDecode(t *testing.T) {
+	var typ EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnvironmentApprovals_EncodeDecode(t *testing.T) {
+	var typ EnvironmentApprovals
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnvironmentApprovals
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnvironmentApprovalsEnvironmentsItem_EncodeDecode(t *testing.T) {
+	var typ EnvironmentApprovalsEnvironmentsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnvironmentApprovalsEnvironmentsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEnvironmentApprovalsState_EncodeDecode(t *testing.T) {
+	var typ EnvironmentApprovalsState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EnvironmentApprovalsState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnvironmentApprovalsState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2445,9 +6806,68 @@ func TestEnvironmentApprovalsState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestEvent_EncodeDecode(t *testing.T) {
+	var typ Event
+	typ.SetFake()
 
-func TestFeed_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Event
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEventPayload_EncodeDecode(t *testing.T) {
+	var typ EventPayload
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EventPayload
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEventPayloadPagesItem_EncodeDecode(t *testing.T) {
+	var typ EventPayloadPagesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EventPayloadPagesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestEventRepo_EncodeDecode(t *testing.T) {
+	var typ EventRepo
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 EventRepo
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFeed_EncodeDecode(t *testing.T) {
+	var typ Feed
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Feed
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestFeed_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2476,9 +6896,32 @@ func TestFeed_JSON(t *testing.T) {
 		})
 	}
 }
+func TestFeedLinks_EncodeDecode(t *testing.T) {
+	var typ FeedLinks
+	typ.SetFake()
 
-func TestFileCommit_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FeedLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommit_EncodeDecode(t *testing.T) {
+	var typ FileCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestFileCommit_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2509,9 +6952,140 @@ func TestFileCommit_JSON(t *testing.T) {
 		})
 	}
 }
+func TestFileCommitCommit_EncodeDecode(t *testing.T) {
+	var typ FileCommitCommit
+	typ.SetFake()
 
-func TestFullRepository_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommitCommitAuthor_EncodeDecode(t *testing.T) {
+	var typ FileCommitCommitAuthor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitCommitAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommitCommitCommitter_EncodeDecode(t *testing.T) {
+	var typ FileCommitCommitCommitter
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitCommitCommitter
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommitCommitParentsItem_EncodeDecode(t *testing.T) {
+	var typ FileCommitCommitParentsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitCommitParentsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommitCommitTree_EncodeDecode(t *testing.T) {
+	var typ FileCommitCommitTree
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitCommitTree
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommitCommitVerification_EncodeDecode(t *testing.T) {
+	var typ FileCommitCommitVerification
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitCommitVerification
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommitContent_EncodeDecode(t *testing.T) {
+	var typ FileCommitContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFileCommitContentLinks_EncodeDecode(t *testing.T) {
+	var typ FileCommitContentLinks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FileCommitContentLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestForbiddenGist_EncodeDecode(t *testing.T) {
+	var typ ForbiddenGist
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ForbiddenGist
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestForbiddenGistBlock_EncodeDecode(t *testing.T) {
+	var typ ForbiddenGistBlock
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ForbiddenGistBlock
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFullRepository_EncodeDecode(t *testing.T) {
+	var typ FullRepository
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FullRepository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestFullRepository_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2541,9 +7115,92 @@ func TestFullRepository_JSON(t *testing.T) {
 		})
 	}
 }
+func TestFullRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ FullRepositoryPermissions
+	typ.SetFake()
 
-func TestGistComment_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FullRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFullRepositorySecurityAndAnalysis_EncodeDecode(t *testing.T) {
+	var typ FullRepositorySecurityAndAnalysis
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FullRepositorySecurityAndAnalysis
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFullRepositorySecurityAndAnalysisAdvancedSecurity_EncodeDecode(t *testing.T) {
+	var typ FullRepositorySecurityAndAnalysisAdvancedSecurity
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FullRepositorySecurityAndAnalysisAdvancedSecurity
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFullRepositorySecurityAndAnalysisAdvancedSecurityStatus_EncodeDecode(t *testing.T) {
+	var typ FullRepositorySecurityAndAnalysisAdvancedSecurityStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FullRepositorySecurityAndAnalysisAdvancedSecurityStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFullRepositorySecurityAndAnalysisSecretScanning_EncodeDecode(t *testing.T) {
+	var typ FullRepositorySecurityAndAnalysisSecretScanning
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FullRepositorySecurityAndAnalysisSecretScanning
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestFullRepositorySecurityAndAnalysisSecretScanningStatus_EncodeDecode(t *testing.T) {
+	var typ FullRepositorySecurityAndAnalysisSecretScanningStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 FullRepositorySecurityAndAnalysisSecretScanningStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistComment_EncodeDecode(t *testing.T) {
+	var typ GistComment
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistComment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGistComment_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2572,9 +7229,68 @@ func TestGistComment_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGistCommit_EncodeDecode(t *testing.T) {
+	var typ GistCommit
+	typ.SetFake()
 
-func TestGistSimple_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistCommitChangeStatus_EncodeDecode(t *testing.T) {
+	var typ GistCommitChangeStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistCommitChangeStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistHistory_EncodeDecode(t *testing.T) {
+	var typ GistHistory
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistHistory
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistHistoryChangeStatus_EncodeDecode(t *testing.T) {
+	var typ GistHistoryChangeStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistHistoryChangeStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistSimple_EncodeDecode(t *testing.T) {
+	var typ GistSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGistSimple_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2603,9 +7319,184 @@ func TestGistSimple_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGistSimpleFiles_EncodeDecode(t *testing.T) {
+	var typ GistSimpleFiles
+	typ = make(GistSimpleFiles)
+	typ.SetFake()
 
-func TestGistsCreateReqFiles_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistSimpleFiles
+	typ2 = make(GistSimpleFiles)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistSimpleFilesItem_EncodeDecode(t *testing.T) {
+	var typ GistSimpleFilesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistSimpleFilesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistSimpleForkOf_EncodeDecode(t *testing.T) {
+	var typ GistSimpleForkOf
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistSimpleForkOf
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistSimpleForkOfFiles_EncodeDecode(t *testing.T) {
+	var typ GistSimpleForkOfFiles
+	typ = make(GistSimpleForkOfFiles)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistSimpleForkOfFiles
+	typ2 = make(GistSimpleForkOfFiles)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistSimpleForkOfFilesItem_EncodeDecode(t *testing.T) {
+	var typ GistSimpleForkOfFilesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistSimpleForkOfFilesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistSimpleForksItem_EncodeDecode(t *testing.T) {
+	var typ GistSimpleForksItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistSimpleForksItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCheckIsStarredNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsCheckIsStarredNotFound
+	typ = make(GistsCheckIsStarredNotFound)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCheckIsStarredNotFound
+	typ2 = make(GistsCheckIsStarredNotFound)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsCreateApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsCreateApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateCommentApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsCreateCommentApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateCommentApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateCommentApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsCreateCommentApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateCommentApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateCommentReq_EncodeDecode(t *testing.T) {
+	var typ GistsCreateCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateReq_EncodeDecode(t *testing.T) {
+	var typ GistsCreateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateReqFiles_EncodeDecode(t *testing.T) {
+	var typ GistsCreateReqFiles
+	typ = make(GistsCreateReqFiles)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateReqFiles
+	typ2 = make(GistsCreateReqFiles)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGistsCreateReqFiles_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2636,9 +7527,44 @@ func TestGistsCreateReqFiles_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGistsCreateReqFilesItem_EncodeDecode(t *testing.T) {
+	var typ GistsCreateReqFilesItem
+	typ.SetFake()
 
-func TestGistsCreateReqPublic1_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateReqFilesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateReqPublic_EncodeDecode(t *testing.T) {
+	var typ GistsCreateReqPublic
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateReqPublic
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsCreateReqPublic1_EncodeDecode(t *testing.T) {
+	var typ GistsCreateReqPublic1
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsCreateReqPublic1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGistsCreateReqPublic1_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2667,9 +7593,356 @@ func TestGistsCreateReqPublic1_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGistsDeleteApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsDeleteApplicationJSONForbidden
+	typ.SetFake()
 
-func TestGitCommit_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsDeleteApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsDeleteApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsDeleteApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsDeleteApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsDeleteCommentApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsDeleteCommentApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsDeleteCommentApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsDeleteCommentApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsDeleteCommentApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsDeleteCommentApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsForkApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsForkApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsForkApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsForkApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsForkApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsForkApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsGetRevisionApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsGetRevisionApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsGetRevisionApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsGetRevisionApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsGetRevisionApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsGetRevisionApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListCommentsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsListCommentsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListCommentsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListCommentsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsListCommentsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListCommentsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListCommentsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GistsListCommentsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListCommentsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListCommitsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsListCommitsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListCommitsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListCommitsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsListCommitsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListCommitsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListCommitsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GistsListCommitsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListCommitsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GistsListForUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListForUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListForksApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsListForksApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListForksApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListForksApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsListForksApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListForksApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListForksOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GistsListForksOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListForksOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GistsListOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListPublicOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GistsListPublicOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListPublicOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListStarredApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsListStarredApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListStarredApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListStarredApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ GistsListStarredApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListStarredApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsListStarredOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GistsListStarredOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsListStarredOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsStarApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsStarApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsStarApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsStarApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsStarApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsStarApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsUnstarApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GistsUnstarApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsUnstarApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsUnstarApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GistsUnstarApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsUnstarApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGistsUpdateCommentReq_EncodeDecode(t *testing.T) {
+	var typ GistsUpdateCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GistsUpdateCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCommit_EncodeDecode(t *testing.T) {
+	var typ GitCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitCommit_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2699,9 +7972,308 @@ func TestGitCommit_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGitCommitAuthor_EncodeDecode(t *testing.T) {
+	var typ GitCommitAuthor
+	typ.SetFake()
 
-func TestGitRef_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCommitAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCommitCommitter_EncodeDecode(t *testing.T) {
+	var typ GitCommitCommitter
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCommitCommitter
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCommitParentsItem_EncodeDecode(t *testing.T) {
+	var typ GitCommitParentsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCommitParentsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCommitTree_EncodeDecode(t *testing.T) {
+	var typ GitCommitTree
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCommitTree
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCommitVerification_EncodeDecode(t *testing.T) {
+	var typ GitCommitVerification
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCommitVerification
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateBlobApplicationJSONConflict_EncodeDecode(t *testing.T) {
+	var typ GitCreateBlobApplicationJSONConflict
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateBlobApplicationJSONConflict
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateBlobApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GitCreateBlobApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateBlobApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateBlobApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GitCreateBlobApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateBlobApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateBlobReq_EncodeDecode(t *testing.T) {
+	var typ GitCreateBlobReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateBlobReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateCommitReq_EncodeDecode(t *testing.T) {
+	var typ GitCreateCommitReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateCommitReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateCommitReqAuthor_EncodeDecode(t *testing.T) {
+	var typ GitCreateCommitReqAuthor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateCommitReqAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateCommitReqCommitter_EncodeDecode(t *testing.T) {
+	var typ GitCreateCommitReqCommitter
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateCommitReqCommitter
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateRefReq_EncodeDecode(t *testing.T) {
+	var typ GitCreateRefReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateRefReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTagReq_EncodeDecode(t *testing.T) {
+	var typ GitCreateTagReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTagReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTagReqTagger_EncodeDecode(t *testing.T) {
+	var typ GitCreateTagReqTagger
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTagReqTagger
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTagReqType_EncodeDecode(t *testing.T) {
+	var typ GitCreateTagReqType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTagReqType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTreeApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GitCreateTreeApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTreeApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTreeApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GitCreateTreeApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTreeApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTreeReq_EncodeDecode(t *testing.T) {
+	var typ GitCreateTreeReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTreeReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTreeReqTreeItem_EncodeDecode(t *testing.T) {
+	var typ GitCreateTreeReqTreeItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTreeReqTreeItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTreeReqTreeItemMode_EncodeDecode(t *testing.T) {
+	var typ GitCreateTreeReqTreeItemMode
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTreeReqTreeItemMode
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitCreateTreeReqTreeItemType_EncodeDecode(t *testing.T) {
+	var typ GitCreateTreeReqTreeItemType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitCreateTreeReqTreeItemType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitGetBlobApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ GitGetBlobApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitGetBlobApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitGetBlobApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ GitGetBlobApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitGetBlobApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitRef_EncodeDecode(t *testing.T) {
+	var typ GitRef
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitRef
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitRef_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2730,9 +8302,32 @@ func TestGitRef_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGitRefObject_EncodeDecode(t *testing.T) {
+	var typ GitRefObject
+	typ.SetFake()
 
-func TestGitTag_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitRefObject
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitTag_EncodeDecode(t *testing.T) {
+	var typ GitTag
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitTag
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitTag_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2761,9 +8356,44 @@ func TestGitTag_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGitTagObject_EncodeDecode(t *testing.T) {
+	var typ GitTagObject
+	typ.SetFake()
 
-func TestGitTree_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitTagObject
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitTagTagger_EncodeDecode(t *testing.T) {
+	var typ GitTagTagger
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitTagTagger
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitTree_EncodeDecode(t *testing.T) {
+	var typ GitTree
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitTree
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitTree_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2794,9 +8424,56 @@ func TestGitTree_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGitTreeTreeItem_EncodeDecode(t *testing.T) {
+	var typ GitTreeTreeItem
+	typ.SetFake()
 
-func TestGitignoreTemplate_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitTreeTreeItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitUpdateRefReq_EncodeDecode(t *testing.T) {
+	var typ GitUpdateRefReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitUpdateRefReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitignoreGetAllTemplatesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ GitignoreGetAllTemplatesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitignoreGetAllTemplatesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGitignoreTemplate_EncodeDecode(t *testing.T) {
+	var typ GitignoreTemplate
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GitignoreTemplate
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitignoreTemplate_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2825,9 +8502,20 @@ func TestGitignoreTemplate_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGpgKey_EncodeDecode(t *testing.T) {
+	var typ GpgKey
+	typ.SetFake()
 
-func TestGpgKey_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GpgKey
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGpgKey_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2856,9 +8544,44 @@ func TestGpgKey_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGpgKeyEmailsItem_EncodeDecode(t *testing.T) {
+	var typ GpgKeyEmailsItem
+	typ.SetFake()
 
-func TestGroupMapping_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GpgKeyEmailsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGpgKeySubkeysItem_EncodeDecode(t *testing.T) {
+	var typ GpgKeySubkeysItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GpgKeySubkeysItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGroupMapping_EncodeDecode(t *testing.T) {
+	var typ GroupMapping
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GroupMapping
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGroupMapping_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2888,9 +8611,32 @@ func TestGroupMapping_JSON(t *testing.T) {
 		})
 	}
 }
+func TestGroupMappingGroupsItem_EncodeDecode(t *testing.T) {
+	var typ GroupMappingGroupsItem
+	typ.SetFake()
 
-func TestHook_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GroupMappingGroupsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHook_EncodeDecode(t *testing.T) {
+	var typ Hook
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Hook
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestHook_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2919,9 +8665,32 @@ func TestHook_JSON(t *testing.T) {
 		})
 	}
 }
+func TestHookConfig_EncodeDecode(t *testing.T) {
+	var typ HookConfig
+	typ.SetFake()
 
-func TestHookDelivery_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookConfig
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHookDelivery_EncodeDecode(t *testing.T) {
+	var typ HookDelivery
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookDelivery
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestHookDelivery_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2950,9 +8719,110 @@ func TestHookDelivery_JSON(t *testing.T) {
 		})
 	}
 }
+func TestHookDeliveryItem_EncodeDecode(t *testing.T) {
+	var typ HookDeliveryItem
+	typ.SetFake()
 
-func TestHovercard_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookDeliveryItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHookDeliveryRequest_EncodeDecode(t *testing.T) {
+	var typ HookDeliveryRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookDeliveryRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHookDeliveryRequestHeaders_EncodeDecode(t *testing.T) {
+	var typ HookDeliveryRequestHeaders
+	typ = make(HookDeliveryRequestHeaders)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookDeliveryRequestHeaders
+	typ2 = make(HookDeliveryRequestHeaders)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHookDeliveryRequestPayload_EncodeDecode(t *testing.T) {
+	var typ HookDeliveryRequestPayload
+	typ = make(HookDeliveryRequestPayload)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookDeliveryRequestPayload
+	typ2 = make(HookDeliveryRequestPayload)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHookDeliveryResponse_EncodeDecode(t *testing.T) {
+	var typ HookDeliveryResponse
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookDeliveryResponse
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHookDeliveryResponseHeaders_EncodeDecode(t *testing.T) {
+	var typ HookDeliveryResponseHeaders
+	typ = make(HookDeliveryResponseHeaders)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookDeliveryResponseHeaders
+	typ2 = make(HookDeliveryResponseHeaders)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHookResponse_EncodeDecode(t *testing.T) {
+	var typ HookResponse
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HookResponse
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestHovercard_EncodeDecode(t *testing.T) {
+	var typ Hovercard
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Hovercard
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestHovercard_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -2981,9 +8851,32 @@ func TestHovercard_JSON(t *testing.T) {
 		})
 	}
 }
+func TestHovercardContextsItem_EncodeDecode(t *testing.T) {
+	var typ HovercardContextsItem
+	typ.SetFake()
 
-func TestImport_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 HovercardContextsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestImport_EncodeDecode(t *testing.T) {
+	var typ Import
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Import
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestImport_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3015,9 +8908,44 @@ func TestImport_JSON(t *testing.T) {
 		})
 	}
 }
+func TestImportProjectChoicesItem_EncodeDecode(t *testing.T) {
+	var typ ImportProjectChoicesItem
+	typ.SetFake()
 
-func TestInstallationToken_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ImportProjectChoicesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestImportStatus_EncodeDecode(t *testing.T) {
+	var typ ImportStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ImportStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestInstallationToken_EncodeDecode(t *testing.T) {
+	var typ InstallationToken
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InstallationToken
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestInstallationToken_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3046,9 +8974,32 @@ func TestInstallationToken_JSON(t *testing.T) {
 		})
 	}
 }
+func TestInstallationTokenRepositorySelection_EncodeDecode(t *testing.T) {
+	var typ InstallationTokenRepositorySelection
+	typ.SetFake()
 
-func TestIntegration_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InstallationTokenRepositorySelection
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIntegration_EncodeDecode(t *testing.T) {
+	var typ Integration
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Integration
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIntegration_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3077,9 +9028,20 @@ func TestIntegration_JSON(t *testing.T) {
 		})
 	}
 }
+func TestIntegrationPermissions_EncodeDecode(t *testing.T) {
+	var typ IntegrationPermissions
+	typ.SetFake()
 
-func TestIntegrationPermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IntegrationPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIntegrationPermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3108,9 +9070,20 @@ func TestIntegrationPermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestInteractionExpiry_EncodeDecode(t *testing.T) {
+	var typ InteractionExpiry
+	typ.SetFake()
 
-func TestInteractionExpiry_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InteractionExpiry
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestInteractionExpiry_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3139,9 +9112,20 @@ func TestInteractionExpiry_JSON(t *testing.T) {
 		})
 	}
 }
+func TestInteractionGroup_EncodeDecode(t *testing.T) {
+	var typ InteractionGroup
+	typ.SetFake()
 
-func TestInteractionGroup_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InteractionGroup
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestInteractionGroup_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3170,9 +9154,32 @@ func TestInteractionGroup_JSON(t *testing.T) {
 		})
 	}
 }
+func TestInteractionLimit_EncodeDecode(t *testing.T) {
+	var typ InteractionLimit
+	typ.SetFake()
 
-func TestInteractionLimitResponse_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InteractionLimit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestInteractionLimitResponse_EncodeDecode(t *testing.T) {
+	var typ InteractionLimitResponse
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 InteractionLimitResponse
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestInteractionLimitResponse_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3203,9 +9210,20 @@ func TestInteractionLimitResponse_JSON(t *testing.T) {
 		})
 	}
 }
+func TestIssue_EncodeDecode(t *testing.T) {
+	var typ Issue
+	typ.SetFake()
 
-func TestIssue_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Issue
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssue_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3234,9 +9252,20 @@ func TestIssue_JSON(t *testing.T) {
 		})
 	}
 }
+func TestIssueComment_EncodeDecode(t *testing.T) {
+	var typ IssueComment
+	typ.SetFake()
 
-func TestIssueComment_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueComment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssueComment_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3265,9 +9294,20 @@ func TestIssueComment_JSON(t *testing.T) {
 		})
 	}
 }
+func TestIssueEvent_EncodeDecode(t *testing.T) {
+	var typ IssueEvent
+	typ.SetFake()
 
-func TestIssueEvent_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueEvent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssueEvent_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3296,9 +9336,152 @@ func TestIssueEvent_JSON(t *testing.T) {
 		})
 	}
 }
+func TestIssueEventDismissedReview_EncodeDecode(t *testing.T) {
+	var typ IssueEventDismissedReview
+	typ.SetFake()
 
-func TestIssueSimple_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueEventDismissedReview
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueEventLabel_EncodeDecode(t *testing.T) {
+	var typ IssueEventLabel
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueEventLabel
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueEventMilestone_EncodeDecode(t *testing.T) {
+	var typ IssueEventMilestone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueEventMilestone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueEventProjectCard_EncodeDecode(t *testing.T) {
+	var typ IssueEventProjectCard
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueEventProjectCard
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueEventRename_EncodeDecode(t *testing.T) {
+	var typ IssueEventRename
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueEventRename
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueLabelsItem_EncodeDecode(t *testing.T) {
+	var typ IssueLabelsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueLabelsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueLabelsItem1_EncodeDecode(t *testing.T) {
+	var typ IssueLabelsItem1
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueLabelsItem1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuePullRequest_EncodeDecode(t *testing.T) {
+	var typ IssuePullRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuePullRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueSearchResultItem_EncodeDecode(t *testing.T) {
+	var typ IssueSearchResultItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueSearchResultItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueSearchResultItemLabelsItem_EncodeDecode(t *testing.T) {
+	var typ IssueSearchResultItemLabelsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueSearchResultItemLabelsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueSearchResultItemPullRequest_EncodeDecode(t *testing.T) {
+	var typ IssueSearchResultItemPullRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueSearchResultItemPullRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssueSimple_EncodeDecode(t *testing.T) {
+	var typ IssueSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssueSimple_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3327,9 +9510,776 @@ func TestIssueSimple_JSON(t *testing.T) {
 		})
 	}
 }
+func TestIssueSimplePullRequest_EncodeDecode(t *testing.T) {
+	var typ IssueSimplePullRequest
+	typ.SetFake()
 
-func TestJob_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssueSimplePullRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesAddAssigneesReq_EncodeDecode(t *testing.T) {
+	var typ IssuesAddAssigneesReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesAddAssigneesReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateCommentApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateCommentApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateCommentApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateCommentApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateCommentApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateCommentApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateCommentApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateCommentApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateCommentApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateCommentReq_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateLabelReq_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateLabelReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateLabelReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateMilestoneReq_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateMilestoneReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateMilestoneReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateMilestoneReqState_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateMilestoneReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateMilestoneReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateReq_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateReqLabelsItem_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateReqLabelsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateReqLabelsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateReqLabelsItem1_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateReqLabelsItem1
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateReqLabelsItem1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateReqMilestone_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateReqMilestone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateReqMilestone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesCreateReqTitle_EncodeDecode(t *testing.T) {
+	var typ IssuesCreateReqTitle
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesCreateReqTitle
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesGetApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesGetApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesGetApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesGetApplicationJSONMovedPermanently_EncodeDecode(t *testing.T) {
+	var typ IssuesGetApplicationJSONMovedPermanently
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesGetApplicationJSONMovedPermanently
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesGetApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesGetApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesGetApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesGetEventApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ IssuesGetEventApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesGetEventApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesGetEventApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesGetEventApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesGetEventApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesGetEventApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesGetEventApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesGetEventApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListAssigneesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListAssigneesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListAssigneesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListCommentsApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesListCommentsApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListCommentsApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListCommentsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesListCommentsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListCommentsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListCommentsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListCommentsForRepoOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListCommentsForRepoOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListCommentsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListCommentsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListCommentsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListEventsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListEventsForRepoOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListEventsForRepoOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListForOrgOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListForOrgOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListForRepoApplicationJSONMovedPermanently_EncodeDecode(t *testing.T) {
+	var typ IssuesListForRepoApplicationJSONMovedPermanently
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListForRepoApplicationJSONMovedPermanently
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListForRepoApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesListForRepoApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListForRepoApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListForRepoOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListForRepoOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListLabelsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListLabelsForRepoOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListLabelsForRepoOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListLabelsOnIssueOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListLabelsOnIssueOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListLabelsOnIssueOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListMilestonesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListMilestonesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListMilestonesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesListOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesListOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesListOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesLockApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ IssuesLockApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesLockApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesLockApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesLockApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesLockApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesLockApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesLockApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesLockApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesLockReq_EncodeDecode(t *testing.T) {
+	var typ IssuesLockReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesLockReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesLockReqLockReason_EncodeDecode(t *testing.T) {
+	var typ IssuesLockReqLockReason
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesLockReqLockReason
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesRemoveAssigneesReq_EncodeDecode(t *testing.T) {
+	var typ IssuesRemoveAssigneesReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesRemoveAssigneesReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesRemoveLabelApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesRemoveLabelApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesRemoveLabelApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesRemoveLabelApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesRemoveLabelApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesRemoveLabelApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesRemoveLabelOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ IssuesRemoveLabelOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesRemoveLabelOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUnlockApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ IssuesUnlockApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUnlockApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUnlockApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesUnlockApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUnlockApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateApplicationJSONMovedPermanently_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateApplicationJSONMovedPermanently
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateApplicationJSONMovedPermanently
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateCommentReq_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateLabelReq_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateLabelReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateLabelReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateMilestoneReq_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateMilestoneReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateMilestoneReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateMilestoneReqState_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateMilestoneReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateMilestoneReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateReq_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateReqLabelsItem_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateReqLabelsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateReqLabelsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateReqLabelsItem1_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateReqLabelsItem1
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateReqLabelsItem1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateReqMilestone_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateReqMilestone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateReqMilestone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateReqState_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestIssuesUpdateReqTitle_EncodeDecode(t *testing.T) {
+	var typ IssuesUpdateReqTitle
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IssuesUpdateReqTitle
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestJob_EncodeDecode(t *testing.T) {
+	var typ Job
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Job
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestJob_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3358,9 +10308,20 @@ func TestJob_JSON(t *testing.T) {
 		})
 	}
 }
+func TestJobStatus_EncodeDecode(t *testing.T) {
+	var typ JobStatus
+	typ.SetFake()
 
-func TestJobStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 JobStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestJobStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3389,9 +10350,32 @@ func TestJobStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestJobStepsItem_EncodeDecode(t *testing.T) {
+	var typ JobStepsItem
+	typ.SetFake()
 
-func TestJobStepsItemStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 JobStepsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestJobStepsItemStatus_EncodeDecode(t *testing.T) {
+	var typ JobStepsItemStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 JobStepsItemStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestJobStepsItemStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3420,9 +10404,20 @@ func TestJobStepsItemStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestKey_EncodeDecode(t *testing.T) {
+	var typ Key
+	typ.SetFake()
 
-func TestKey_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Key
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestKey_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3451,9 +10446,32 @@ func TestKey_JSON(t *testing.T) {
 		})
 	}
 }
+func TestKeySimple_EncodeDecode(t *testing.T) {
+	var typ KeySimple
+	typ.SetFake()
 
-func TestLabel_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 KeySimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLabel_EncodeDecode(t *testing.T) {
+	var typ Label
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Label
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestLabel_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3483,9 +10501,34 @@ func TestLabel_JSON(t *testing.T) {
 		})
 	}
 }
+func TestLabelSearchResultItem_EncodeDecode(t *testing.T) {
+	var typ LabelSearchResultItem
+	typ.SetFake()
 
-func TestLanguage_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LabelSearchResultItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLanguage_EncodeDecode(t *testing.T) {
+	var typ Language
+	typ = make(Language)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Language
+	typ2 = make(Language)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestLanguage_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3516,9 +10559,20 @@ func TestLanguage_JSON(t *testing.T) {
 		})
 	}
 }
+func TestLicense_EncodeDecode(t *testing.T) {
+	var typ License
+	typ.SetFake()
 
-func TestLicense_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 License
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestLicense_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3547,9 +10601,20 @@ func TestLicense_JSON(t *testing.T) {
 		})
 	}
 }
+func TestLicenseContent_EncodeDecode(t *testing.T) {
+	var typ LicenseContent
+	typ.SetFake()
 
-func TestLicenseContent_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LicenseContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestLicenseContent_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3578,9 +10643,128 @@ func TestLicenseContent_JSON(t *testing.T) {
 		})
 	}
 }
+func TestLicenseContentLinks_EncodeDecode(t *testing.T) {
+	var typ LicenseContentLinks
+	typ.SetFake()
 
-func TestMarketplacePurchase_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LicenseContentLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLicenseSimple_EncodeDecode(t *testing.T) {
+	var typ LicenseSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LicenseSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLicensesGetAllCommonlyUsedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ LicensesGetAllCommonlyUsedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LicensesGetAllCommonlyUsedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLicensesGetApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ LicensesGetApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LicensesGetApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLicensesGetApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ LicensesGetApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LicensesGetApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLink_EncodeDecode(t *testing.T) {
+	var typ Link
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Link
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestLinkWithType_EncodeDecode(t *testing.T) {
+	var typ LinkWithType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 LinkWithType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMarketplaceAccount_EncodeDecode(t *testing.T) {
+	var typ MarketplaceAccount
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MarketplaceAccount
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMarketplaceListingPlan_EncodeDecode(t *testing.T) {
+	var typ MarketplaceListingPlan
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MarketplaceListingPlan
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMarketplacePurchase_EncodeDecode(t *testing.T) {
+	var typ MarketplacePurchase
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MarketplacePurchase
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMarketplacePurchase_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3609,9 +10793,44 @@ func TestMarketplacePurchase_JSON(t *testing.T) {
 		})
 	}
 }
+func TestMarketplacePurchaseMarketplacePendingChange_EncodeDecode(t *testing.T) {
+	var typ MarketplacePurchaseMarketplacePendingChange
+	typ.SetFake()
 
-func TestMergedUpstream_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MarketplacePurchaseMarketplacePendingChange
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMarketplacePurchaseMarketplacePurchase_EncodeDecode(t *testing.T) {
+	var typ MarketplacePurchaseMarketplacePurchase
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MarketplacePurchaseMarketplacePurchase
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMergedUpstream_EncodeDecode(t *testing.T) {
+	var typ MergedUpstream
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MergedUpstream
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMergedUpstream_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3640,9 +10859,44 @@ func TestMergedUpstream_JSON(t *testing.T) {
 		})
 	}
 }
+func TestMergedUpstreamMergeType_EncodeDecode(t *testing.T) {
+	var typ MergedUpstreamMergeType
+	typ.SetFake()
 
-func TestMigration_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MergedUpstreamMergeType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMetaRootOK_EncodeDecode(t *testing.T) {
+	var typ MetaRootOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MetaRootOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigration_EncodeDecode(t *testing.T) {
+	var typ Migration
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Migration
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMigration_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3674,9 +10928,260 @@ func TestMigration_JSON(t *testing.T) {
 		})
 	}
 }
+func TestMigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
 
-func TestMigrationsStartForAuthenticatedUserReqExcludeItem_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsGetCommitAuthorsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ MigrationsGetCommitAuthorsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsGetCommitAuthorsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsListForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ MigrationsListForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsListForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsListForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ MigrationsListForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsListForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsListReposForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ MigrationsListReposForOrgOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsListReposForOrgOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsListReposForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ MigrationsListReposForUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsListReposForUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsMapCommitAuthorReq_EncodeDecode(t *testing.T) {
+	var typ MigrationsMapCommitAuthorReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsMapCommitAuthorReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsSetLfsPreferenceReq_EncodeDecode(t *testing.T) {
+	var typ MigrationsSetLfsPreferenceReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsSetLfsPreferenceReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsSetLfsPreferenceReqUseLfs_EncodeDecode(t *testing.T) {
+	var typ MigrationsSetLfsPreferenceReqUseLfs
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsSetLfsPreferenceReqUseLfs
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsStartForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsStartForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsStartForAuthenticatedUserReq_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartForAuthenticatedUserReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartForAuthenticatedUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsStartForAuthenticatedUserReqExcludeItem_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartForAuthenticatedUserReqExcludeItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartForAuthenticatedUserReqExcludeItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMigrationsStartForAuthenticatedUserReqExcludeItem_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3705,9 +11210,116 @@ func TestMigrationsStartForAuthenticatedUserReqExcludeItem_JSON(t *testing.T) {
 		})
 	}
 }
+func TestMigrationsStartForOrgReq_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartForOrgReq
+	typ.SetFake()
 
-func TestMilestone_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartForOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsStartForOrgReqExcludeItem_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartForOrgReqExcludeItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartForOrgReqExcludeItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsStartImportReq_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartImportReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartImportReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsStartImportReqVcs_EncodeDecode(t *testing.T) {
+	var typ MigrationsStartImportReqVcs
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsStartImportReqVcs
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMigrationsUpdateImportReq_EncodeDecode(t *testing.T) {
+	var typ MigrationsUpdateImportReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsUpdateImportReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMilestone_EncodeDecode(t *testing.T) {
+	var typ Milestone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Milestone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMilestone_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3736,9 +11348,20 @@ func TestMilestone_JSON(t *testing.T) {
 		})
 	}
 }
+func TestMilestoneState_EncodeDecode(t *testing.T) {
+	var typ MilestoneState
+	typ.SetFake()
 
-func TestMilestoneState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MilestoneState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMilestoneState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3767,9 +11390,20 @@ func TestMilestoneState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestMinimalRepository_EncodeDecode(t *testing.T) {
+	var typ MinimalRepository
+	typ.SetFake()
 
-func TestMinimalRepository_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MinimalRepository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMinimalRepository_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3798,9 +11432,92 @@ func TestMinimalRepository_JSON(t *testing.T) {
 		})
 	}
 }
+func TestMinimalRepositoryLicense_EncodeDecode(t *testing.T) {
+	var typ MinimalRepositoryLicense
+	typ.SetFake()
 
-func TestNullableIntegrationPermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MinimalRepositoryLicense
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMinimalRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ MinimalRepositoryPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MinimalRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableCodeOfConductSimple_EncodeDecode(t *testing.T) {
+	var typ NullableCodeOfConductSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableCodeOfConductSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableCommunityHealthFile_EncodeDecode(t *testing.T) {
+	var typ NullableCommunityHealthFile
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableCommunityHealthFile
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableGitUser_EncodeDecode(t *testing.T) {
+	var typ NullableGitUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableGitUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableIntegration_EncodeDecode(t *testing.T) {
+	var typ NullableIntegration
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableIntegration
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableIntegrationPermissions_EncodeDecode(t *testing.T) {
+	var typ NullableIntegrationPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableIntegrationPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestNullableIntegrationPermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3829,9 +11546,44 @@ func TestNullableIntegrationPermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestNullableLicenseSimple_EncodeDecode(t *testing.T) {
+	var typ NullableLicenseSimple
+	typ.SetFake()
 
-func TestNullableMilestoneState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableLicenseSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableMilestone_EncodeDecode(t *testing.T) {
+	var typ NullableMilestone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableMilestone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableMilestoneState_EncodeDecode(t *testing.T) {
+	var typ NullableMilestoneState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableMilestoneState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestNullableMilestoneState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3860,9 +11612,548 @@ func TestNullableMilestoneState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestNullableMinimalRepository_EncodeDecode(t *testing.T) {
+	var typ NullableMinimalRepository
+	typ.SetFake()
 
-func TestOrgHook_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableMinimalRepository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableMinimalRepositoryLicense_EncodeDecode(t *testing.T) {
+	var typ NullableMinimalRepositoryLicense
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableMinimalRepositoryLicense
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableMinimalRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ NullableMinimalRepositoryPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableMinimalRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableRepository_EncodeDecode(t *testing.T) {
+	var typ NullableRepository
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableRepository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ NullableRepositoryPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableRepositoryTemplateRepository_EncodeDecode(t *testing.T) {
+	var typ NullableRepositoryTemplateRepository
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableRepositoryTemplateRepository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableRepositoryTemplateRepositoryOwner_EncodeDecode(t *testing.T) {
+	var typ NullableRepositoryTemplateRepositoryOwner
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableRepositoryTemplateRepositoryOwner
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableRepositoryTemplateRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ NullableRepositoryTemplateRepositoryPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableRepositoryTemplateRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableScopedInstallation_EncodeDecode(t *testing.T) {
+	var typ NullableScopedInstallation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableScopedInstallation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableScopedInstallationRepositorySelection_EncodeDecode(t *testing.T) {
+	var typ NullableScopedInstallationRepositorySelection
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableScopedInstallationRepositorySelection
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableSimpleCommit_EncodeDecode(t *testing.T) {
+	var typ NullableSimpleCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableSimpleCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableSimpleCommitAuthor_EncodeDecode(t *testing.T) {
+	var typ NullableSimpleCommitAuthor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableSimpleCommitAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableSimpleCommitCommitter_EncodeDecode(t *testing.T) {
+	var typ NullableSimpleCommitCommitter
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableSimpleCommitCommitter
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableSimpleUser_EncodeDecode(t *testing.T) {
+	var typ NullableSimpleUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableSimpleUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestNullableTeamSimple_EncodeDecode(t *testing.T) {
+	var typ NullableTeamSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableTeamSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsCreateAuthorizationApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsCreateAuthorizationApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsCreateAuthorizationApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsCreateAuthorizationReq_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsCreateAuthorizationReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsCreateAuthorizationReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsDeleteGrantApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsDeleteGrantApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsDeleteGrantApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetAuthorizationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetGrantApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetGrantApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetGrantApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetGrantApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppReq_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListAuthorizationsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListAuthorizationsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListAuthorizationsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListAuthorizationsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListAuthorizationsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListGrantsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListGrantsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListGrantsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListGrantsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListGrantsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListGrantsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListGrantsApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsListGrantsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsListGrantsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsListGrantsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOAuthAuthorizationsUpdateAuthorizationReq_EncodeDecode(t *testing.T) {
+	var typ OAuthAuthorizationsUpdateAuthorizationReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OAuthAuthorizationsUpdateAuthorizationReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgHook_EncodeDecode(t *testing.T) {
+	var typ OrgHook
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgHook
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgHook_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3892,9 +12183,32 @@ func TestOrgHook_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrgHookConfig_EncodeDecode(t *testing.T) {
+	var typ OrgHookConfig
+	typ.SetFake()
 
-func TestOrgMembership_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgHookConfig
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgMembership_EncodeDecode(t *testing.T) {
+	var typ OrgMembership
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgMembership
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgMembership_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3924,9 +12238,32 @@ func TestOrgMembership_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrgMembershipPermissions_EncodeDecode(t *testing.T) {
+	var typ OrgMembershipPermissions
+	typ.SetFake()
 
-func TestOrgMembershipRole_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgMembershipPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgMembershipRole_EncodeDecode(t *testing.T) {
+	var typ OrgMembershipRole
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgMembershipRole
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgMembershipRole_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3955,9 +12292,20 @@ func TestOrgMembershipRole_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrgMembershipState_EncodeDecode(t *testing.T) {
+	var typ OrgMembershipState
+	typ.SetFake()
 
-func TestOrgMembershipState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgMembershipState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgMembershipState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -3986,9 +12334,20 @@ func TestOrgMembershipState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrganizationActionsSecret_EncodeDecode(t *testing.T) {
+	var typ OrganizationActionsSecret
+	typ.SetFake()
 
-func TestOrganizationActionsSecret_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrganizationActionsSecret
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrganizationActionsSecret_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4017,9 +12376,32 @@ func TestOrganizationActionsSecret_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrganizationActionsSecretVisibility_EncodeDecode(t *testing.T) {
+	var typ OrganizationActionsSecretVisibility
+	typ.SetFake()
 
-func TestOrganizationFull_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrganizationActionsSecretVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrganizationFull_EncodeDecode(t *testing.T) {
+	var typ OrganizationFull
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrganizationFull
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrganizationFull_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4049,9 +12431,32 @@ func TestOrganizationFull_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrganizationFullPlan_EncodeDecode(t *testing.T) {
+	var typ OrganizationFullPlan
+	typ.SetFake()
 
-func TestOrganizationInvitation_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrganizationFullPlan
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrganizationInvitation_EncodeDecode(t *testing.T) {
+	var typ OrganizationInvitation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrganizationInvitation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrganizationInvitation_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4080,9 +12485,346 @@ func TestOrganizationInvitation_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrganizationSecretScanningAlert_EncodeDecode(t *testing.T) {
+	var typ OrganizationSecretScanningAlert
+	typ.SetFake()
 
-func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrganizationSecretScanningAlert
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrganizationSimple_EncodeDecode(t *testing.T) {
+	var typ OrganizationSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrganizationSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsConvertMemberToOutsideCollaboratorAccepted_EncodeDecode(t *testing.T) {
+	var typ OrgsConvertMemberToOutsideCollaboratorAccepted
+	typ = make(OrgsConvertMemberToOutsideCollaboratorAccepted)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsConvertMemberToOutsideCollaboratorAccepted
+	typ2 = make(OrgsConvertMemberToOutsideCollaboratorAccepted)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsCreateInvitationReq_EncodeDecode(t *testing.T) {
+	var typ OrgsCreateInvitationReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsCreateInvitationReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsCreateInvitationReqRole_EncodeDecode(t *testing.T) {
+	var typ OrgsCreateInvitationReqRole
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsCreateInvitationReqRole
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsCreateWebhookReq_EncodeDecode(t *testing.T) {
+	var typ OrgsCreateWebhookReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsCreateWebhookReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsCreateWebhookReqConfig_EncodeDecode(t *testing.T) {
+	var typ OrgsCreateWebhookReqConfig
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsCreateWebhookReqConfig
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsGetMembershipForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OrgsGetMembershipForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsGetMembershipForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsGetMembershipForUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ OrgsGetMembershipForUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsGetMembershipForUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListBlockedUsersOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListBlockedUsersOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListBlockedUsersOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListFailedInvitationsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListFailedInvitationsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListFailedInvitationsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OrgsListForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OrgsListForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListInvitationTeamsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListInvitationTeamsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListInvitationTeamsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListMembersOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListMembersOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListMembersOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListMembershipsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListMembershipsForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListMembershipsForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListPendingInvitationsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListPendingInvitationsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListPendingInvitationsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListWebhookDeliveriesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListWebhookDeliveriesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsListWebhooksOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ OrgsListWebhooksOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsListWebhooksOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsRemoveMembershipForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OrgsRemoveMembershipForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsRemoveMembershipForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsRemoveMembershipForUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ OrgsRemoveMembershipForUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsRemoveMembershipForUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_EncodeDecode(t *testing.T) {
+	var typ OrgsRemoveOutsideCollaboratorUnprocessableEntity
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsRemoveOutsideCollaboratorUnprocessableEntity
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4111,9 +12853,92 @@ func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrgsSetMembershipForUserReq_EncodeDecode(t *testing.T) {
+	var typ OrgsSetMembershipForUserReq
+	typ.SetFake()
 
-func TestOrgsUpdateWebhookConfigForOrgReq_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsSetMembershipForUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsSetMembershipForUserReqRole_EncodeDecode(t *testing.T) {
+	var typ OrgsSetMembershipForUserReqRole
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsSetMembershipForUserReqRole
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsUpdateMembershipForAuthenticatedUserReq_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateMembershipForAuthenticatedUserReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateMembershipForAuthenticatedUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsUpdateMembershipForAuthenticatedUserReqState_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateMembershipForAuthenticatedUserReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateMembershipForAuthenticatedUserReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsUpdateWebhookConfigForOrgReq_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateWebhookConfigForOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateWebhookConfigForOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgsUpdateWebhookConfigForOrgReq_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4142,9 +12967,44 @@ func TestOrgsUpdateWebhookConfigForOrgReq_JSON(t *testing.T) {
 		})
 	}
 }
+func TestOrgsUpdateWebhookReq_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateWebhookReq
+	typ.SetFake()
 
-func TestPackage_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateWebhookReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOrgsUpdateWebhookReqConfig_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateWebhookReqConfig
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateWebhookReqConfig
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackage_EncodeDecode(t *testing.T) {
+	var typ Package
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Package
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPackage_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4174,9 +13034,20 @@ func TestPackage_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPackagePackageType_EncodeDecode(t *testing.T) {
+	var typ PackagePackageType
+	typ.SetFake()
 
-func TestPackagePackageType_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagePackageType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPackagePackageType_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4205,9 +13076,20 @@ func TestPackagePackageType_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPackageVersion_EncodeDecode(t *testing.T) {
+	var typ PackageVersion
+	typ.SetFake()
 
-func TestPackageVersion_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackageVersion
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPackageVersion_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4238,9 +13120,56 @@ func TestPackageVersion_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPackageVersionMetadata_EncodeDecode(t *testing.T) {
+	var typ PackageVersionMetadata
+	typ.SetFake()
 
-func TestPackageVersionMetadataPackageType_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackageVersionMetadata
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackageVersionMetadataContainer_EncodeDecode(t *testing.T) {
+	var typ PackageVersionMetadataContainer
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackageVersionMetadataContainer
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackageVersionMetadataDocker_EncodeDecode(t *testing.T) {
+	var typ PackageVersionMetadataDocker
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackageVersionMetadataDocker
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackageVersionMetadataPackageType_EncodeDecode(t *testing.T) {
+	var typ PackageVersionMetadataPackageType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackageVersionMetadataPackageType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPackageVersionMetadataPackageType_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4269,9 +13198,20 @@ func TestPackageVersionMetadataPackageType_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPackageVisibility_EncodeDecode(t *testing.T) {
+	var typ PackageVisibility
+	typ.SetFake()
 
-func TestPackageVisibility_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackageVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPackageVisibility_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4300,9 +13240,20 @@ func TestPackageVisibility_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPackagesBillingUsage_EncodeDecode(t *testing.T) {
+	var typ PackagesBillingUsage
+	typ.SetFake()
 
-func TestPackagesBillingUsage_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesBillingUsage
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPackagesBillingUsage_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4331,9 +13282,668 @@ func TestPackagesBillingUsage_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
 
-func TestPage_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForOrgApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForOrgApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForOrgApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForOrgApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForOrgApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForOrgApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForOrgApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForOrgApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForOrgApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageForUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageForUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageForUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForOrgApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForOrgApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForOrgApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForOrgApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForOrgApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForOrgApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForOrgApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesDeletePackageVersionForUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesDeletePackageVersionForUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesDeletePackageVersionForUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesListPackagesForOrganizationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesListPackagesForOrganizationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesListPackagesForOrganizationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesListPackagesForOrganizationApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesListPackagesForOrganizationApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesListPackagesForOrganizationApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesListPackagesForOrganizationOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PackagesListPackagesForOrganizationOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesListPackagesForOrganizationOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesListPackagesForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesListPackagesForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesListPackagesForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesListPackagesForUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesListPackagesForUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesListPackagesForUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesListPackagesForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PackagesListPackagesForUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesListPackagesForUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForOrgApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForOrgApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForOrgApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForOrgApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForOrgApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForOrgApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForOrgApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForOrgApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForOrgApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageForUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageForUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageForUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForOrgApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForOrgApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForOrgApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForOrgApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForOrgApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForOrgApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForOrgApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPackagesRestorePackageVersionForUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ PackagesRestorePackageVersionForUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PackagesRestorePackageVersionForUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPage_EncodeDecode(t *testing.T) {
+	var typ Page
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Page
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPage_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4362,9 +13972,20 @@ func TestPage_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPageBuild_EncodeDecode(t *testing.T) {
+	var typ PageBuild
+	typ.SetFake()
 
-func TestPageBuild_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PageBuild
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPageBuild_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4393,9 +14014,32 @@ func TestPageBuild_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPageBuildError_EncodeDecode(t *testing.T) {
+	var typ PageBuildError
+	typ.SetFake()
 
-func TestPageBuildStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PageBuildError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPageBuildStatus_EncodeDecode(t *testing.T) {
+	var typ PageBuildStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PageBuildStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPageBuildStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4424,9 +14068,20 @@ func TestPageBuildStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPageProtectedDomainState_EncodeDecode(t *testing.T) {
+	var typ PageProtectedDomainState
+	typ.SetFake()
 
-func TestPageProtectedDomainState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PageProtectedDomainState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPageProtectedDomainState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4455,9 +14110,20 @@ func TestPageProtectedDomainState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPageStatus_EncodeDecode(t *testing.T) {
+	var typ PageStatus
+	typ.SetFake()
 
-func TestPageStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PageStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPageStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4486,9 +14152,32 @@ func TestPageStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPagesHTTPSCertificate_EncodeDecode(t *testing.T) {
+	var typ PagesHTTPSCertificate
+	typ.SetFake()
 
-func TestPagesHTTPSCertificateState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PagesHTTPSCertificate
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPagesHTTPSCertificateState_EncodeDecode(t *testing.T) {
+	var typ PagesHTTPSCertificateState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PagesHTTPSCertificateState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPagesHTTPSCertificateState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4517,9 +14206,20 @@ func TestPagesHTTPSCertificateState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPagesHealthCheck_EncodeDecode(t *testing.T) {
+	var typ PagesHealthCheck
+	typ.SetFake()
 
-func TestPagesHealthCheck_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PagesHealthCheck
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPagesHealthCheck_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4548,9 +14248,56 @@ func TestPagesHealthCheck_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPagesHealthCheckAltDomain_EncodeDecode(t *testing.T) {
+	var typ PagesHealthCheckAltDomain
+	typ.SetFake()
 
-func TestParticipationStats_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PagesHealthCheckAltDomain
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPagesHealthCheckDomain_EncodeDecode(t *testing.T) {
+	var typ PagesHealthCheckDomain
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PagesHealthCheckDomain
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPagesSourceHash_EncodeDecode(t *testing.T) {
+	var typ PagesSourceHash
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PagesSourceHash
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestParticipationStats_EncodeDecode(t *testing.T) {
+	var typ ParticipationStats
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ParticipationStats
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestParticipationStats_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4579,9 +14326,20 @@ func TestParticipationStats_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPorterAuthor_EncodeDecode(t *testing.T) {
+	var typ PorterAuthor
+	typ.SetFake()
 
-func TestPorterAuthor_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PorterAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPorterAuthor_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4610,9 +14368,44 @@ func TestPorterAuthor_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPorterLargeFile_EncodeDecode(t *testing.T) {
+	var typ PorterLargeFile
+	typ.SetFake()
 
-func TestPrivateUser_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PorterLargeFile
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPreviewHeaderMissing_EncodeDecode(t *testing.T) {
+	var typ PreviewHeaderMissing
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PreviewHeaderMissing
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPrivateUser_EncodeDecode(t *testing.T) {
+	var typ PrivateUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PrivateUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPrivateUser_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4641,9 +14434,32 @@ func TestPrivateUser_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPrivateUserPlan_EncodeDecode(t *testing.T) {
+	var typ PrivateUserPlan
+	typ.SetFake()
 
-func TestProject_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PrivateUserPlan
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProject_EncodeDecode(t *testing.T) {
+	var typ Project
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Project
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestProject_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4674,9 +14490,20 @@ func TestProject_JSON(t *testing.T) {
 		})
 	}
 }
+func TestProjectCard_EncodeDecode(t *testing.T) {
+	var typ ProjectCard
+	typ.SetFake()
 
-func TestProjectCard_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectCard
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestProjectCard_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4705,9 +14532,20 @@ func TestProjectCard_JSON(t *testing.T) {
 		})
 	}
 }
+func TestProjectColumn_EncodeDecode(t *testing.T) {
+	var typ ProjectColumn
+	typ.SetFake()
 
-func TestProjectColumn_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectColumn
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestProjectColumn_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4737,9 +14575,80 @@ func TestProjectColumn_JSON(t *testing.T) {
 		})
 	}
 }
+func TestProjectOrganizationPermission_EncodeDecode(t *testing.T) {
+	var typ ProjectOrganizationPermission
+	typ.SetFake()
 
-func TestProjectsAddCollaboratorReqPermission_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectOrganizationPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsAddCollaboratorApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsAddCollaboratorApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsAddCollaboratorApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsAddCollaboratorApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsAddCollaboratorApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsAddCollaboratorApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsAddCollaboratorApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsAddCollaboratorApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsAddCollaboratorApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsAddCollaboratorReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsAddCollaboratorReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsAddCollaboratorReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsAddCollaboratorReqPermission_EncodeDecode(t *testing.T) {
+	var typ ProjectsAddCollaboratorReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsAddCollaboratorReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestProjectsAddCollaboratorReqPermission_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4768,9 +14677,972 @@ func TestProjectsAddCollaboratorReqPermission_JSON(t *testing.T) {
 		})
 	}
 }
+func TestProjectsCreateColumnApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateColumnApplicationJSONForbidden
+	typ.SetFake()
 
-func TestProtectedBranchAdminEnforced_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateColumnApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateColumnApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateColumnApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateColumnApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateColumnReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateColumnReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateColumnReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForAuthenticatedUserReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForAuthenticatedUserReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForAuthenticatedUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForOrgApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForOrgApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForOrgApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForOrgApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForOrgApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForOrgApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForOrgApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForOrgApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForOrgApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForOrgApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForOrgApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForOrgApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForOrgReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForRepoApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForRepoApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForRepoApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForRepoApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForRepoApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForRepoApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForRepoApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForRepoApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForRepoApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForRepoApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForRepoApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForRepoApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsCreateForRepoReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsCreateForRepoReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsCreateForRepoReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteCardApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteCardApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteCardApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteCardApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteCardApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteCardApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteCardForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteCardForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteCardForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteColumnApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteColumnApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteColumnApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteColumnApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteColumnApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteColumnApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsDeleteForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsDeleteForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsDeleteForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetCardApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetCardApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetCardApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetCardApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetCardApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetCardApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetCardApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetCardApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetCardApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetColumnApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetColumnApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetColumnApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetColumnApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetColumnApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetColumnApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetColumnApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetColumnApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetColumnApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetPermissionForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetPermissionForUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetPermissionForUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetPermissionForUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetPermissionForUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetPermissionForUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsGetPermissionForUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsGetPermissionForUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsGetPermissionForUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListCardsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsListCardsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListCardsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListCardsApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsListCardsApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListCardsApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListCardsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ProjectsListCardsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListCardsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListCollaboratorsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsListCollaboratorsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListCollaboratorsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListCollaboratorsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsListCollaboratorsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListCollaboratorsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListCollaboratorsApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsListCollaboratorsApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListCollaboratorsApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListCollaboratorsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ProjectsListCollaboratorsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListCollaboratorsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListColumnsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsListColumnsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListColumnsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListColumnsApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsListColumnsApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListColumnsApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListColumnsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ProjectsListColumnsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListColumnsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ProjectsListForOrgOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListForOrgOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListForRepoApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsListForRepoApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListForRepoApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListForRepoApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ ProjectsListForRepoApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListForRepoApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListForRepoApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsListForRepoApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListForRepoApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListForRepoApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsListForRepoApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListForRepoApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ProjectsListForRepoOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListForRepoOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsListForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ProjectsListForUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsListForUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveCardCreated_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveCardCreated
+	typ = make(ProjectsMoveCardCreated)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveCardCreated
+	typ2 = make(ProjectsMoveCardCreated)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveCardForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveCardForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveCardForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveCardForbiddenErrorsItem_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveCardForbiddenErrorsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveCardForbiddenErrorsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveCardReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveCardReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveCardReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveCardServiceUnavailable_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveCardServiceUnavailable
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveCardServiceUnavailable
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveCardServiceUnavailableErrorsItem_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveCardServiceUnavailableErrorsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveCardServiceUnavailableErrorsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveColumnApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveColumnApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveColumnApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveColumnApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveColumnApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveColumnApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveColumnCreated_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveColumnCreated
+	typ = make(ProjectsMoveColumnCreated)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveColumnCreated
+	typ2 = make(ProjectsMoveColumnCreated)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsMoveColumnReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsMoveColumnReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsMoveColumnReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsRemoveCollaboratorApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsRemoveCollaboratorApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsRemoveCollaboratorApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsRemoveCollaboratorApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsRemoveCollaboratorApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsRemoveCollaboratorApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsRemoveCollaboratorApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsRemoveCollaboratorApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsRemoveCollaboratorApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateCardApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateCardApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateCardApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateCardApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateCardApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateCardApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateCardApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateCardApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateCardApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateCardReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateCardReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateCardReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateColumnApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateColumnApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateColumnApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateColumnApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateColumnApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateColumnApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateColumnReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateColumnReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateColumnReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateForbidden_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateReq_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProjectsUpdateReqOrganizationPermission_EncodeDecode(t *testing.T) {
+	var typ ProjectsUpdateReqOrganizationPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProjectsUpdateReqOrganizationPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranch_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranch
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranch
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchAdminEnforced_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchAdminEnforced
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchAdminEnforced
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestProtectedBranchAdminEnforced_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4800,9 +15672,56 @@ func TestProtectedBranchAdminEnforced_JSON(t *testing.T) {
 		})
 	}
 }
+func TestProtectedBranchAllowDeletions_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchAllowDeletions
+	typ.SetFake()
 
-func TestProtectedBranchPullRequestReview_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchAllowDeletions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchAllowForcePushes_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchAllowForcePushes
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchAllowForcePushes
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchEnforceAdmins_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchEnforceAdmins
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchEnforceAdmins
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchPullRequestReview_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchPullRequestReview
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchPullRequestReview
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestProtectedBranchPullRequestReview_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4831,9 +15750,116 @@ func TestProtectedBranchPullRequestReview_JSON(t *testing.T) {
 		})
 	}
 }
+func TestProtectedBranchPullRequestReviewDismissalRestrictions_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchPullRequestReviewDismissalRestrictions
+	typ.SetFake()
 
-func TestPullRequest_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchPullRequestReviewDismissalRestrictions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchRequiredConversationResolution_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchRequiredConversationResolution
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchRequiredConversationResolution
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchRequiredLinearHistory_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchRequiredLinearHistory
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchRequiredLinearHistory
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchRequiredPullRequestReviews_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchRequiredPullRequestReviews
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchRequiredPullRequestReviews
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchRequiredPullRequestReviewsDismissalRestrictions_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchRequiredSignatures_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchRequiredSignatures
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchRequiredSignatures
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPublicUser_EncodeDecode(t *testing.T) {
+	var typ PublicUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PublicUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPublicUserPlan_EncodeDecode(t *testing.T) {
+	var typ PublicUserPlan
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PublicUserPlan
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequest_EncodeDecode(t *testing.T) {
+	var typ PullRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullRequest_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4862,9 +15888,176 @@ func TestPullRequest_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullRequestBase_EncodeDecode(t *testing.T) {
+	var typ PullRequestBase
+	typ.SetFake()
 
-func TestPullRequestMergeResult_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestBase
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestBaseRepo_EncodeDecode(t *testing.T) {
+	var typ PullRequestBaseRepo
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestBaseRepo
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestBaseRepoOwner_EncodeDecode(t *testing.T) {
+	var typ PullRequestBaseRepoOwner
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestBaseRepoOwner
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestBaseRepoPermissions_EncodeDecode(t *testing.T) {
+	var typ PullRequestBaseRepoPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestBaseRepoPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestBaseUser_EncodeDecode(t *testing.T) {
+	var typ PullRequestBaseUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestBaseUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestHead_EncodeDecode(t *testing.T) {
+	var typ PullRequestHead
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestHead
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestHeadRepo_EncodeDecode(t *testing.T) {
+	var typ PullRequestHeadRepo
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestHeadRepo
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestHeadRepoLicense_EncodeDecode(t *testing.T) {
+	var typ PullRequestHeadRepoLicense
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestHeadRepoLicense
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestHeadRepoOwner_EncodeDecode(t *testing.T) {
+	var typ PullRequestHeadRepoOwner
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestHeadRepoOwner
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestHeadRepoPermissions_EncodeDecode(t *testing.T) {
+	var typ PullRequestHeadRepoPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestHeadRepoPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestHeadUser_EncodeDecode(t *testing.T) {
+	var typ PullRequestHeadUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestHeadUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestLabelsItem_EncodeDecode(t *testing.T) {
+	var typ PullRequestLabelsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestLabelsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestLinks_EncodeDecode(t *testing.T) {
+	var typ PullRequestLinks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestMergeResult_EncodeDecode(t *testing.T) {
+	var typ PullRequestMergeResult
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestMergeResult
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullRequestMergeResult_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4893,9 +16086,80 @@ func TestPullRequestMergeResult_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullRequestMinimal_EncodeDecode(t *testing.T) {
+	var typ PullRequestMinimal
+	typ.SetFake()
 
-func TestPullRequestReview_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestMinimal
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestMinimalBase_EncodeDecode(t *testing.T) {
+	var typ PullRequestMinimalBase
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestMinimalBase
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestMinimalBaseRepo_EncodeDecode(t *testing.T) {
+	var typ PullRequestMinimalBaseRepo
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestMinimalBaseRepo
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestMinimalHead_EncodeDecode(t *testing.T) {
+	var typ PullRequestMinimalHead
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestMinimalHead
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestMinimalHeadRepo_EncodeDecode(t *testing.T) {
+	var typ PullRequestMinimalHeadRepo
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestMinimalHeadRepo
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReview_EncodeDecode(t *testing.T) {
+	var typ PullRequestReview
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReview
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullRequestReview_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4927,9 +16191,20 @@ func TestPullRequestReview_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullRequestReviewComment_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewComment
+	typ.SetFake()
 
-func TestPullRequestReviewComment_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewComment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullRequestReviewComment_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4959,9 +16234,128 @@ func TestPullRequestReviewComment_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullRequestReviewCommentLinks_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewCommentLinks
+	typ.SetFake()
 
-func TestPullRequestReviewRequest_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewCommentLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewCommentLinksHTML_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewCommentLinksHTML
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewCommentLinksHTML
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewCommentLinksPullRequest_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewCommentLinksPullRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewCommentLinksPullRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewCommentLinksSelf_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewCommentLinksSelf
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewCommentLinksSelf
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewCommentSide_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewCommentSide
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewCommentSide
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewCommentStartSide_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewCommentStartSide
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewCommentStartSide
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewLinks_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewLinks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewLinksHTML_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewLinksHTML
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewLinksHTML
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewLinksPullRequest_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewLinksPullRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewLinksPullRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestReviewRequest_EncodeDecode(t *testing.T) {
+	var typ PullRequestReviewRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestReviewRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullRequestReviewRequest_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -4990,9 +16384,20 @@ func TestPullRequestReviewRequest_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullRequestSimple_EncodeDecode(t *testing.T) {
+	var typ PullRequestSimple
+	typ.SetFake()
 
-func TestPullRequestSimple_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullRequestSimple_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5021,9 +16426,68 @@ func TestPullRequestSimple_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullRequestSimpleBase_EncodeDecode(t *testing.T) {
+	var typ PullRequestSimpleBase
+	typ.SetFake()
 
-func TestPullRequestState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestSimpleBase
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestSimpleHead_EncodeDecode(t *testing.T) {
+	var typ PullRequestSimpleHead
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestSimpleHead
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestSimpleLabelsItem_EncodeDecode(t *testing.T) {
+	var typ PullRequestSimpleLabelsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestSimpleLabelsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestSimpleLinks_EncodeDecode(t *testing.T) {
+	var typ PullRequestSimpleLinks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestSimpleLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullRequestState_EncodeDecode(t *testing.T) {
+	var typ PullRequestState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullRequestState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullRequestState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5052,9 +16516,212 @@ func TestPullRequestState_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullsCreateReplyForReviewCommentReq_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReplyForReviewCommentReq
+	typ.SetFake()
 
-func TestPullsMergeConflict_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReplyForReviewCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsCreateReq_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsCreateReviewCommentReq_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReviewCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReviewCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsCreateReviewCommentReqSide_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReviewCommentReqSide
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReviewCommentReqSide
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsCreateReviewCommentReqStartSide_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReviewCommentReqStartSide
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReviewCommentReqStartSide
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsCreateReviewReq_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReviewReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReviewReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsCreateReviewReqCommentsItem_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReviewReqCommentsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReviewReqCommentsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsCreateReviewReqEvent_EncodeDecode(t *testing.T) {
+	var typ PullsCreateReviewReqEvent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsCreateReviewReqEvent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsDismissReviewReq_EncodeDecode(t *testing.T) {
+	var typ PullsDismissReviewReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsDismissReviewReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsGetApplicationJSONInternalServerError_EncodeDecode(t *testing.T) {
+	var typ PullsGetApplicationJSONInternalServerError
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsGetApplicationJSONInternalServerError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsGetApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PullsGetApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsGetApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsListCommentsForReviewOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PullsListCommentsForReviewOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsListCommentsForReviewOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsListFilesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PullsListFilesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsListFilesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsListOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ PullsListOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsListOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsMergeApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PullsMergeApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsMergeApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsMergeApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PullsMergeApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsMergeApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsMergeConflict_EncodeDecode(t *testing.T) {
+	var typ PullsMergeConflict
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsMergeConflict
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullsMergeConflict_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5083,9 +16750,20 @@ func TestPullsMergeConflict_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullsMergeMethodNotAllowed_EncodeDecode(t *testing.T) {
+	var typ PullsMergeMethodNotAllowed
+	typ.SetFake()
 
-func TestPullsMergeMethodNotAllowed_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsMergeMethodNotAllowed
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullsMergeMethodNotAllowed_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5114,9 +16792,104 @@ func TestPullsMergeMethodNotAllowed_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullsMergeReq_EncodeDecode(t *testing.T) {
+	var typ PullsMergeReq
+	typ.SetFake()
 
-func TestPullsUpdateBranchAccepted_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsMergeReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsMergeReqMergeMethod_EncodeDecode(t *testing.T) {
+	var typ PullsMergeReqMergeMethod
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsMergeReqMergeMethod
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsRemoveRequestedReviewersReq_EncodeDecode(t *testing.T) {
+	var typ PullsRemoveRequestedReviewersReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsRemoveRequestedReviewersReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsSubmitReviewApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ PullsSubmitReviewApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsSubmitReviewApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsSubmitReviewApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ PullsSubmitReviewApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsSubmitReviewApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsSubmitReviewReq_EncodeDecode(t *testing.T) {
+	var typ PullsSubmitReviewReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsSubmitReviewReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsSubmitReviewReqEvent_EncodeDecode(t *testing.T) {
+	var typ PullsSubmitReviewReqEvent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsSubmitReviewReqEvent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsUpdateBranchAccepted_EncodeDecode(t *testing.T) {
+	var typ PullsUpdateBranchAccepted
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsUpdateBranchAccepted
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullsUpdateBranchAccepted_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5145,9 +16918,92 @@ func TestPullsUpdateBranchAccepted_JSON(t *testing.T) {
 		})
 	}
 }
+func TestPullsUpdateBranchReq_EncodeDecode(t *testing.T) {
+	var typ PullsUpdateBranchReq
+	typ.SetFake()
 
-func TestRateLimitOverview_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsUpdateBranchReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsUpdateReq_EncodeDecode(t *testing.T) {
+	var typ PullsUpdateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsUpdateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsUpdateReqState_EncodeDecode(t *testing.T) {
+	var typ PullsUpdateReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsUpdateReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsUpdateReviewCommentReq_EncodeDecode(t *testing.T) {
+	var typ PullsUpdateReviewCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsUpdateReviewCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPullsUpdateReviewReq_EncodeDecode(t *testing.T) {
+	var typ PullsUpdateReviewReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PullsUpdateReviewReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRateLimit_EncodeDecode(t *testing.T) {
+	var typ RateLimit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RateLimit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRateLimitOverview_EncodeDecode(t *testing.T) {
+	var typ RateLimitOverview
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RateLimitOverview
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRateLimitOverview_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5176,9 +17032,32 @@ func TestRateLimitOverview_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRateLimitOverviewResources_EncodeDecode(t *testing.T) {
+	var typ RateLimitOverviewResources
+	typ.SetFake()
 
-func TestReaction_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RateLimitOverviewResources
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReaction_EncodeDecode(t *testing.T) {
+	var typ Reaction
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Reaction
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReaction_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5207,9 +17086,20 @@ func TestReaction_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReactionContent_EncodeDecode(t *testing.T) {
+	var typ ReactionContent
+	typ.SetFake()
 
-func TestReactionContent_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReactionContent_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5238,9 +17128,536 @@ func TestReactionContent_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReactionRollup_EncodeDecode(t *testing.T) {
+	var typ ReactionRollup
+	typ.SetFake()
 
-func TestRelease_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionRollup
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForCommitCommentApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForCommitCommentApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForCommitCommentApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForCommitCommentApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForCommitCommentApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForCommitCommentApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForCommitCommentReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForCommitCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForCommitCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForCommitCommentReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForCommitCommentReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForCommitCommentReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueCommentApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueCommentApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueCommentApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueCommentApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueCommentApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueCommentApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueCommentReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueCommentReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueCommentReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueCommentReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForIssueReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForIssueReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForIssueReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForPullRequestReviewCommentApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForPullRequestReviewCommentApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForPullRequestReviewCommentApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForPullRequestReviewCommentApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForPullRequestReviewCommentReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForPullRequestReviewCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForPullRequestReviewCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForPullRequestReviewCommentReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForPullRequestReviewCommentReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForPullRequestReviewCommentReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForReleaseApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForReleaseApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForReleaseApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForReleaseApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForReleaseApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForReleaseApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForReleaseReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForReleaseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForReleaseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForReleaseReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForReleaseReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForReleaseReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionCommentInOrgReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionCommentInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionCommentInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionCommentInOrgReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionCommentInOrgReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionCommentInOrgReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionCommentLegacyReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionCommentLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionCommentLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionCommentLegacyReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionCommentLegacyReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionCommentLegacyReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionInOrgApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionInOrgReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionInOrgReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionInOrgReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionInOrgReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionLegacyReq_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsCreateForTeamDiscussionLegacyReqContent_EncodeDecode(t *testing.T) {
+	var typ ReactionsCreateForTeamDiscussionLegacyReqContent
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsCreateForTeamDiscussionLegacyReqContent
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsDeleteLegacyApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReactionsDeleteLegacyApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsDeleteLegacyApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsDeleteLegacyApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ ReactionsDeleteLegacyApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsDeleteLegacyApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsDeleteLegacyApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ReactionsDeleteLegacyApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsDeleteLegacyApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsListForCommitCommentOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReactionsListForCommitCommentOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsListForCommitCommentOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsListForIssueApplicationJSONGone_EncodeDecode(t *testing.T) {
+	var typ ReactionsListForIssueApplicationJSONGone
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsListForIssueApplicationJSONGone
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsListForIssueApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReactionsListForIssueApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsListForIssueApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsListForIssueCommentOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReactionsListForIssueCommentOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsListForIssueCommentOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsListForIssueOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReactionsListForIssueOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsListForIssueOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReactionsListForPullRequestReviewCommentOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReactionsListForPullRequestReviewCommentOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReactionsListForPullRequestReviewCommentOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReferrerTraffic_EncodeDecode(t *testing.T) {
+	var typ ReferrerTraffic
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReferrerTraffic
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRelease_EncodeDecode(t *testing.T) {
+	var typ Release
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Release
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRelease_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5269,9 +17686,20 @@ func TestRelease_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReleaseAsset_EncodeDecode(t *testing.T) {
+	var typ ReleaseAsset
+	typ.SetFake()
 
-func TestReleaseAsset_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReleaseAsset
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReleaseAsset_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5300,9 +17728,116 @@ func TestReleaseAsset_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReleaseAssetState_EncodeDecode(t *testing.T) {
+	var typ ReleaseAssetState
+	typ.SetFake()
 
-func TestReposAddAppAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReleaseAssetState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRepoSearchResultItem_EncodeDecode(t *testing.T) {
+	var typ RepoSearchResultItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepoSearchResultItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRepoSearchResultItemPermissions_EncodeDecode(t *testing.T) {
+	var typ RepoSearchResultItemPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepoSearchResultItemPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAcceptInvitationApplicationJSONConflict_EncodeDecode(t *testing.T) {
+	var typ ReposAcceptInvitationApplicationJSONConflict
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAcceptInvitationApplicationJSONConflict
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAcceptInvitationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposAcceptInvitationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAcceptInvitationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAcceptInvitationApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposAcceptInvitationApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAcceptInvitationApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddAppAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposAddAppAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddAppAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddAppAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposAddAppAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddAppAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddAppAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposAddAppAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddAppAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposAddAppAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5331,9 +17866,92 @@ func TestReposAddAppAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposAddCollaboratorReq_EncodeDecode(t *testing.T) {
+	var typ ReposAddCollaboratorReq
+	typ.SetFake()
 
-func TestReposAddStatusCheckContextsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddCollaboratorReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddCollaboratorReqPermission_EncodeDecode(t *testing.T) {
+	var typ ReposAddCollaboratorReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddCollaboratorReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddStatusCheckContextsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposAddStatusCheckContextsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddStatusCheckContextsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddStatusCheckContextsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposAddStatusCheckContextsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddStatusCheckContextsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddStatusCheckContextsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposAddStatusCheckContextsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddStatusCheckContextsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddStatusCheckContextsReq_EncodeDecode(t *testing.T) {
+	var typ ReposAddStatusCheckContextsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddStatusCheckContextsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddStatusCheckContextsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposAddStatusCheckContextsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddStatusCheckContextsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposAddStatusCheckContextsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5362,9 +17980,44 @@ func TestReposAddStatusCheckContextsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposAddTeamAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposAddTeamAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposAddTeamAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddTeamAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddTeamAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposAddTeamAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddTeamAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddTeamAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposAddTeamAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddTeamAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposAddTeamAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5393,9 +18046,44 @@ func TestReposAddTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposAddUserAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposAddUserAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposAddUserAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddUserAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddUserAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposAddUserAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddUserAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposAddUserAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposAddUserAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposAddUserAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposAddUserAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5424,9 +18112,104 @@ func TestReposAddUserAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposCompareCommitsApplicationJSONInternalServerError_EncodeDecode(t *testing.T) {
+	var typ ReposCompareCommitsApplicationJSONInternalServerError
+	typ.SetFake()
 
-func TestReposCreateDeploymentAccepted_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCompareCommitsApplicationJSONInternalServerError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCompareCommitsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposCompareCommitsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCompareCommitsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateAutolinkReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateAutolinkReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateAutolinkReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateCommitCommentReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateCommitCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateCommitCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateCommitStatusReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateCommitStatusReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateCommitStatusReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateCommitStatusReqState_EncodeDecode(t *testing.T) {
+	var typ ReposCreateCommitStatusReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateCommitStatusReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDeployKeyReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeployKeyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeployKeyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDeploymentAccepted_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeploymentAccepted
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeploymentAccepted
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposCreateDeploymentAccepted_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5455,9 +18238,564 @@ func TestReposCreateDeploymentAccepted_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposCreateDeploymentReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeploymentReq
+	typ.SetFake()
 
-func TestReposDeleteForbidden_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeploymentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDeploymentReqPayload_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeploymentReqPayload
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeploymentReqPayload
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDeploymentReqPayload0_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeploymentReqPayload0
+	typ = make(ReposCreateDeploymentReqPayload0)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeploymentReqPayload0
+	typ2 = make(ReposCreateDeploymentReqPayload0)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDeploymentStatusReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeploymentStatusReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeploymentStatusReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDeploymentStatusReqEnvironment_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeploymentStatusReqEnvironment
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeploymentStatusReqEnvironment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDeploymentStatusReqState_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDeploymentStatusReqState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDeploymentStatusReqState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDispatchEventReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDispatchEventReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDispatchEventReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateDispatchEventReqClientPayload_EncodeDecode(t *testing.T) {
+	var typ ReposCreateDispatchEventReqClientPayload
+	typ = make(ReposCreateDispatchEventReqClientPayload)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateDispatchEventReqClientPayload
+	typ2 = make(ReposCreateDispatchEventReqClientPayload)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForAuthenticatedUserApplicationJSONBadRequest_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForAuthenticatedUserApplicationJSONBadRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForAuthenticatedUserApplicationJSONBadRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForAuthenticatedUserReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForAuthenticatedUserReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForAuthenticatedUserReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForkApplicationJSONBadRequest_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForkApplicationJSONBadRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForkApplicationJSONBadRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForkApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForkApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForkApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForkApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForkApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForkApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateForkReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateForkReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateForkReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateInOrgReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateInOrgReqVisibility_EncodeDecode(t *testing.T) {
+	var typ ReposCreateInOrgReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateInOrgReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateOrUpdateFileContentsApplicationJSONConflict_EncodeDecode(t *testing.T) {
+	var typ ReposCreateOrUpdateFileContentsApplicationJSONConflict
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateOrUpdateFileContentsApplicationJSONConflict
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateOrUpdateFileContentsApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ ReposCreateOrUpdateFileContentsApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateOrUpdateFileContentsApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateOrUpdateFileContentsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposCreateOrUpdateFileContentsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateOrUpdateFileContentsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateOrUpdateFileContentsApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ ReposCreateOrUpdateFileContentsApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateOrUpdateFileContentsApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateOrUpdateFileContentsReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateOrUpdateFileContentsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateOrUpdateFileContentsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateOrUpdateFileContentsReqAuthor_EncodeDecode(t *testing.T) {
+	var typ ReposCreateOrUpdateFileContentsReqAuthor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateOrUpdateFileContentsReqAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateOrUpdateFileContentsReqCommitter_EncodeDecode(t *testing.T) {
+	var typ ReposCreateOrUpdateFileContentsReqCommitter
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateOrUpdateFileContentsReqCommitter
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreatePagesSiteReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreatePagesSiteReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreatePagesSiteReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreatePagesSiteReqSource_EncodeDecode(t *testing.T) {
+	var typ ReposCreatePagesSiteReqSource
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreatePagesSiteReqSource
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreatePagesSiteReqSourcePath_EncodeDecode(t *testing.T) {
+	var typ ReposCreatePagesSiteReqSourcePath
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreatePagesSiteReqSourcePath
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateReleaseReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateReleaseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateReleaseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateUsingTemplateReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateUsingTemplateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateUsingTemplateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateWebhookApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposCreateWebhookApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateWebhookApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateWebhookApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposCreateWebhookApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateWebhookApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateWebhookReq_EncodeDecode(t *testing.T) {
+	var typ ReposCreateWebhookReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateWebhookReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposCreateWebhookReqConfig_EncodeDecode(t *testing.T) {
+	var typ ReposCreateWebhookReqConfig
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateWebhookReqConfig
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeclineInvitationApplicationJSONConflict_EncodeDecode(t *testing.T) {
+	var typ ReposDeclineInvitationApplicationJSONConflict
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeclineInvitationApplicationJSONConflict
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeclineInvitationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposDeclineInvitationApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeclineInvitationApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeclineInvitationApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposDeclineInvitationApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeclineInvitationApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteApplicationJSONTemporaryRedirect_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteApplicationJSONTemporaryRedirect
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteApplicationJSONTemporaryRedirect
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteFileApplicationJSONConflict_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteFileApplicationJSONConflict
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteFileApplicationJSONConflict
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteFileApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteFileApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteFileApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteFileReq_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteFileReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteFileReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteFileReqAuthor_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteFileReqAuthor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteFileReqAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteFileReqCommitter_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteFileReqCommitter
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteFileReqCommitter
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposDeleteForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposDeleteForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposDeleteForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposDeleteForbidden_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5486,9 +18824,572 @@ func TestReposDeleteForbidden_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposGetAllStatusCheckContextsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetAllStatusCheckContextsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposRemoveAppAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetAllStatusCheckContextsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposGetApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetApplicationJSONMovedPermanently_EncodeDecode(t *testing.T) {
+	var typ ReposGetApplicationJSONMovedPermanently
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetApplicationJSONMovedPermanently
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposGetApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetAppsWithAccessToProtectedBranchOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetBranchApplicationJSONMovedPermanently_EncodeDecode(t *testing.T) {
+	var typ ReposGetBranchApplicationJSONMovedPermanently
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetBranchApplicationJSONMovedPermanently
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetBranchApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposGetBranchApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetBranchApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetCodeFrequencyStatsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetCodeFrequencyStatsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetCodeFrequencyStatsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetCommitActivityStatsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetCommitActivityStatsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetCommitActivityStatsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetCommitApplicationJSONInternalServerError_EncodeDecode(t *testing.T) {
+	var typ ReposGetCommitApplicationJSONInternalServerError
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetCommitApplicationJSONInternalServerError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetCommitApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposGetCommitApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetCommitApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetContributorsStatsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetContributorsStatsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetContributorsStatsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetPunchCardStatsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetPunchCardStatsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetPunchCardStatsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetTopPathsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetTopPathsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetTopPathsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetTopReferrersOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetTopReferrersOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetTopReferrersOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposGetUsersWithAccessToProtectedBranchOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListBranchesForHeadCommitOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListBranchesForHeadCommitOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListBranchesForHeadCommitOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListBranchesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListBranchesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListBranchesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListCollaboratorsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListCollaboratorsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListCollaboratorsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListCommitStatusesForRefOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListCommitStatusesForRefOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListCommitStatusesForRefOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListCommitsApplicationJSONBadRequest_EncodeDecode(t *testing.T) {
+	var typ ReposListCommitsApplicationJSONBadRequest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListCommitsApplicationJSONBadRequest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListCommitsApplicationJSONConflict_EncodeDecode(t *testing.T) {
+	var typ ReposListCommitsApplicationJSONConflict
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListCommitsApplicationJSONConflict
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListCommitsApplicationJSONInternalServerError_EncodeDecode(t *testing.T) {
+	var typ ReposListCommitsApplicationJSONInternalServerError
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListCommitsApplicationJSONInternalServerError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListCommitsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposListCommitsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListCommitsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListCommitsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListCommitsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListCommitsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListContributorsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposListContributorsApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListContributorsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListContributorsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposListContributorsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListContributorsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListContributorsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListContributorsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListContributorsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListDeploymentStatusesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListDeploymentStatusesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListDeploymentStatusesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposListForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ReposListForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListForksOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListForksOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListForksOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListInvitationsForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListInvitationsForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListInvitationsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListInvitationsForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListInvitationsForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListPublicOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListPublicOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListPublicOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListReleasesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListReleasesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListReleasesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListWebhookDeliveriesOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListWebhookDeliveriesOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposListWebhooksOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposListWebhooksOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposListWebhooksOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposMergeReq_EncodeDecode(t *testing.T) {
+	var typ ReposMergeReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposMergeReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposMergeUpstreamReq_EncodeDecode(t *testing.T) {
+	var typ ReposMergeUpstreamReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposMergeUpstreamReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveAppAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveAppAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveAppAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveAppAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveAppAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveAppAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveAppAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveAppAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveAppAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposRemoveAppAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5517,9 +19418,44 @@ func TestReposRemoveAppAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposRemoveStatusCheckContextsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveStatusCheckContextsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposRemoveStatusCheckContextsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveStatusCheckContextsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveStatusCheckContextsReq_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveStatusCheckContextsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveStatusCheckContextsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveStatusCheckContextsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveStatusCheckContextsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveStatusCheckContextsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposRemoveStatusCheckContextsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5548,9 +19484,44 @@ func TestReposRemoveStatusCheckContextsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposRemoveTeamAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveTeamAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposRemoveTeamAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveTeamAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveTeamAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveTeamAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveTeamAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveTeamAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveTeamAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveTeamAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposRemoveTeamAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5579,9 +19550,44 @@ func TestReposRemoveTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposRemoveUserAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveUserAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposRemoveUserAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveUserAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveUserAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveUserAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveUserAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRemoveUserAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposRemoveUserAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRemoveUserAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposRemoveUserAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5610,9 +19616,92 @@ func TestReposRemoveUserAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposRenameBranchApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposRenameBranchApplicationJSONForbidden
+	typ.SetFake()
 
-func TestReposSetAppAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRenameBranchApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRenameBranchApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposRenameBranchApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRenameBranchApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposRenameBranchReq_EncodeDecode(t *testing.T) {
+	var typ ReposRenameBranchReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposRenameBranchReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposReplaceAllTopicsReq_EncodeDecode(t *testing.T) {
+	var typ ReposReplaceAllTopicsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposReplaceAllTopicsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetAppAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposSetAppAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetAppAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetAppAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposSetAppAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetAppAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetAppAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposSetAppAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetAppAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposSetAppAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5641,9 +19730,44 @@ func TestReposSetAppAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposSetStatusCheckContextsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposSetStatusCheckContextsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposSetStatusCheckContextsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetStatusCheckContextsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetStatusCheckContextsReq_EncodeDecode(t *testing.T) {
+	var typ ReposSetStatusCheckContextsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetStatusCheckContextsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetStatusCheckContextsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposSetStatusCheckContextsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetStatusCheckContextsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposSetStatusCheckContextsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5672,9 +19796,44 @@ func TestReposSetStatusCheckContextsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposSetTeamAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposSetTeamAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposSetTeamAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetTeamAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetTeamAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposSetTeamAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetTeamAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetTeamAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposSetTeamAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetTeamAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposSetTeamAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5703,9 +19862,44 @@ func TestReposSetTeamAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposSetUserAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ ReposSetUserAccessRestrictionsOKApplicationJSON
+	typ.SetFake()
 
-func TestReposSetUserAccessRestrictionsReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetUserAccessRestrictionsOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetUserAccessRestrictionsReq_EncodeDecode(t *testing.T) {
+	var typ ReposSetUserAccessRestrictionsReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetUserAccessRestrictionsReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposSetUserAccessRestrictionsReq0_EncodeDecode(t *testing.T) {
+	var typ ReposSetUserAccessRestrictionsReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposSetUserAccessRestrictionsReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposSetUserAccessRestrictionsReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5734,9 +19928,308 @@ func TestReposSetUserAccessRestrictionsReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposTransferReq_EncodeDecode(t *testing.T) {
+	var typ ReposTransferReq
+	typ.SetFake()
 
-func TestReposUpdateWebhookConfigForRepoReq_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposTransferReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateApplicationJSONTemporaryRedirect_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateApplicationJSONTemporaryRedirect
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateApplicationJSONTemporaryRedirect
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateBranchProtectionApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateBranchProtectionApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateBranchProtectionApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateBranchProtectionApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateBranchProtectionApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateBranchProtectionApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateBranchProtectionReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateBranchProtectionReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateBranchProtectionReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateBranchProtectionReqRequiredPullRequestReviews_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateBranchProtectionReqRequiredPullRequestReviews
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateBranchProtectionReqRequiredPullRequestReviews
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateBranchProtectionReqRequiredStatusChecks_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateBranchProtectionReqRequiredStatusChecks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateBranchProtectionReqRequiredStatusChecks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateBranchProtectionReqRestrictions_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateBranchProtectionReqRestrictions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateBranchProtectionReqRestrictions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateCommitCommentReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateCommitCommentReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateCommitCommentReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateInvitationReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateInvitationReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateInvitationReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateInvitationReqPermissions_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateInvitationReqPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateInvitationReqPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdatePullRequestReviewProtectionReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdatePullRequestReviewProtectionReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdatePullRequestReviewProtectionReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdatePullRequestReviewProtectionReqDismissalRestrictions_EncodeDecode(t *testing.T) {
+	var typ ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateReleaseAssetReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateReleaseAssetReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateReleaseAssetReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateReleaseReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateReleaseReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateReleaseReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateReqSecurityAndAnalysis_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateReqSecurityAndAnalysis
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateReqSecurityAndAnalysis
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateReqSecurityAndAnalysisAdvancedSecurity_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateReqSecurityAndAnalysisAdvancedSecurity
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateReqSecurityAndAnalysisAdvancedSecurity
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateReqSecurityAndAnalysisSecretScanning_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateReqSecurityAndAnalysisSecretScanning
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateReqSecurityAndAnalysisSecretScanning
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateReqVisibility_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateStatusCheckProtectionReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateStatusCheckProtectionReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateStatusCheckProtectionReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateWebhookConfigForRepoReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateWebhookConfigForRepoReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateWebhookConfigForRepoReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposUpdateWebhookConfigForRepoReq_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5765,9 +20258,44 @@ func TestReposUpdateWebhookConfigForRepoReq_JSON(t *testing.T) {
 		})
 	}
 }
+func TestReposUpdateWebhookReq_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateWebhookReq
+	typ.SetFake()
 
-func TestRepository_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateWebhookReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReposUpdateWebhookReqConfig_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateWebhookReqConfig
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateWebhookReqConfig
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRepository_EncodeDecode(t *testing.T) {
+	var typ Repository
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Repository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRepository_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5797,9 +20325,20 @@ func TestRepository_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRepositoryCollaboratorPermission_EncodeDecode(t *testing.T) {
+	var typ RepositoryCollaboratorPermission
+	typ.SetFake()
 
-func TestRepositoryCollaboratorPermission_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositoryCollaboratorPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRepositoryCollaboratorPermission_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5828,9 +20367,20 @@ func TestRepositoryCollaboratorPermission_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRepositoryInvitation_EncodeDecode(t *testing.T) {
+	var typ RepositoryInvitation
+	typ.SetFake()
 
-func TestRepositoryInvitation_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositoryInvitation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRepositoryInvitation_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5860,9 +20410,20 @@ func TestRepositoryInvitation_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRepositoryInvitationPermissions_EncodeDecode(t *testing.T) {
+	var typ RepositoryInvitationPermissions
+	typ.SetFake()
 
-func TestRepositoryInvitationPermissions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositoryInvitationPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRepositoryInvitationPermissions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5891,9 +20452,32 @@ func TestRepositoryInvitationPermissions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ RepositoryPermissions
+	typ.SetFake()
 
-func TestRepositorySubscription_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRepositorySubscription_EncodeDecode(t *testing.T) {
+	var typ RepositorySubscription
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositorySubscription
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRepositorySubscription_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5922,9 +20506,104 @@ func TestRepositorySubscription_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRepositoryTemplateRepository_EncodeDecode(t *testing.T) {
+	var typ RepositoryTemplateRepository
+	typ.SetFake()
 
-func TestRunner_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositoryTemplateRepository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRepositoryTemplateRepositoryOwner_EncodeDecode(t *testing.T) {
+	var typ RepositoryTemplateRepositoryOwner
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositoryTemplateRepositoryOwner
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRepositoryTemplateRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ RepositoryTemplateRepositoryPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RepositoryTemplateRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReviewComment_EncodeDecode(t *testing.T) {
+	var typ ReviewComment
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReviewComment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReviewCommentLinks_EncodeDecode(t *testing.T) {
+	var typ ReviewCommentLinks
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReviewCommentLinks
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReviewCommentSide_EncodeDecode(t *testing.T) {
+	var typ ReviewCommentSide
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReviewCommentSide
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestReviewCommentStartSide_EncodeDecode(t *testing.T) {
+	var typ ReviewCommentStartSide
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReviewCommentStartSide
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRunner_EncodeDecode(t *testing.T) {
+	var typ Runner
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Runner
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRunner_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5953,9 +20632,32 @@ func TestRunner_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRunnerApplication_EncodeDecode(t *testing.T) {
+	var typ RunnerApplication
+	typ.SetFake()
 
-func TestRunnerGroupsEnterprise_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RunnerApplication
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRunnerGroupsEnterprise_EncodeDecode(t *testing.T) {
+	var typ RunnerGroupsEnterprise
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RunnerGroupsEnterprise
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRunnerGroupsEnterprise_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -5985,9 +20687,20 @@ func TestRunnerGroupsEnterprise_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRunnerGroupsOrg_EncodeDecode(t *testing.T) {
+	var typ RunnerGroupsOrg
+	typ.SetFake()
 
-func TestRunnerGroupsOrg_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RunnerGroupsOrg
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestRunnerGroupsOrg_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6017,9 +20730,68 @@ func TestRunnerGroupsOrg_JSON(t *testing.T) {
 		})
 	}
 }
+func TestRunnerLabelsItem_EncodeDecode(t *testing.T) {
+	var typ RunnerLabelsItem
+	typ.SetFake()
 
-func TestScimEnterpriseGroup_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RunnerLabelsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRunnerLabelsItemType_EncodeDecode(t *testing.T) {
+	var typ RunnerLabelsItemType
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RunnerLabelsItemType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimDeleteUserFromOrgApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ ScimDeleteUserFromOrgApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimDeleteUserFromOrgApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimDeleteUserFromOrgApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ ScimDeleteUserFromOrgApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimDeleteUserFromOrgApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimEnterpriseGroup_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseGroup
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseGroup
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestScimEnterpriseGroup_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6049,9 +20821,44 @@ func TestScimEnterpriseGroup_JSON(t *testing.T) {
 		})
 	}
 }
+func TestScimEnterpriseGroupMembersItem_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseGroupMembersItem
+	typ.SetFake()
 
-func TestScimEnterpriseUser_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseGroupMembersItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimEnterpriseGroupMeta_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseGroupMeta
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseGroupMeta
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimEnterpriseUser_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestScimEnterpriseUser_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6081,9 +20888,80 @@ func TestScimEnterpriseUser_JSON(t *testing.T) {
 		})
 	}
 }
+func TestScimEnterpriseUserEmailsItem_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseUserEmailsItem
+	typ.SetFake()
 
-func TestScimGroupListEnterprise_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseUserEmailsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimEnterpriseUserGroupsItem_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseUserGroupsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseUserGroupsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimEnterpriseUserMeta_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseUserMeta
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseUserMeta
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimEnterpriseUserName_EncodeDecode(t *testing.T) {
+	var typ ScimEnterpriseUserName
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimEnterpriseUserName
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimError_EncodeDecode(t *testing.T) {
+	var typ ScimError
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimGroupListEnterprise_EncodeDecode(t *testing.T) {
+	var typ ScimGroupListEnterprise
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimGroupListEnterprise
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestScimGroupListEnterprise_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6112,9 +20990,56 @@ func TestScimGroupListEnterprise_JSON(t *testing.T) {
 		})
 	}
 }
+func TestScimGroupListEnterpriseResourcesItem_EncodeDecode(t *testing.T) {
+	var typ ScimGroupListEnterpriseResourcesItem
+	typ.SetFake()
 
-func TestScimUserListEnterprise_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimGroupListEnterpriseResourcesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimGroupListEnterpriseResourcesItemMembersItem_EncodeDecode(t *testing.T) {
+	var typ ScimGroupListEnterpriseResourcesItemMembersItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimGroupListEnterpriseResourcesItemMembersItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimGroupListEnterpriseResourcesItemMeta_EncodeDecode(t *testing.T) {
+	var typ ScimGroupListEnterpriseResourcesItemMeta
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimGroupListEnterpriseResourcesItemMeta
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimUserListEnterprise_EncodeDecode(t *testing.T) {
+	var typ ScimUserListEnterprise
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimUserListEnterprise
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestScimUserListEnterprise_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6143,9 +21068,80 @@ func TestScimUserListEnterprise_JSON(t *testing.T) {
 		})
 	}
 }
+func TestScimUserListEnterpriseResourcesItem_EncodeDecode(t *testing.T) {
+	var typ ScimUserListEnterpriseResourcesItem
+	typ.SetFake()
 
-func TestSearchCodeOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimUserListEnterpriseResourcesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimUserListEnterpriseResourcesItemEmailsItem_EncodeDecode(t *testing.T) {
+	var typ ScimUserListEnterpriseResourcesItemEmailsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimUserListEnterpriseResourcesItemEmailsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimUserListEnterpriseResourcesItemGroupsItem_EncodeDecode(t *testing.T) {
+	var typ ScimUserListEnterpriseResourcesItemGroupsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimUserListEnterpriseResourcesItemGroupsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimUserListEnterpriseResourcesItemMeta_EncodeDecode(t *testing.T) {
+	var typ ScimUserListEnterpriseResourcesItemMeta
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimUserListEnterpriseResourcesItemMeta
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestScimUserListEnterpriseResourcesItemName_EncodeDecode(t *testing.T) {
+	var typ ScimUserListEnterpriseResourcesItemName
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ScimUserListEnterpriseResourcesItemName
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSearchCodeOK_EncodeDecode(t *testing.T) {
+	var typ SearchCodeOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchCodeOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSearchCodeOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6174,9 +21170,20 @@ func TestSearchCodeOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSearchCommitsOK_EncodeDecode(t *testing.T) {
+	var typ SearchCommitsOK
+	typ.SetFake()
 
-func TestSearchCommitsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchCommitsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSearchCommitsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6205,9 +21212,20 @@ func TestSearchCommitsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSearchIssuesAndPullRequestsOK_EncodeDecode(t *testing.T) {
+	var typ SearchIssuesAndPullRequestsOK
+	typ.SetFake()
 
-func TestSearchIssuesAndPullRequestsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchIssuesAndPullRequestsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSearchIssuesAndPullRequestsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6236,9 +21254,44 @@ func TestSearchIssuesAndPullRequestsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSearchLabelsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ SearchLabelsApplicationJSONForbidden
+	typ.SetFake()
 
-func TestSearchLabelsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchLabelsApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSearchLabelsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ SearchLabelsApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchLabelsApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSearchLabelsOK_EncodeDecode(t *testing.T) {
+	var typ SearchLabelsOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchLabelsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSearchLabelsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6267,9 +21320,20 @@ func TestSearchLabelsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSearchReposOK_EncodeDecode(t *testing.T) {
+	var typ SearchReposOK
+	typ.SetFake()
 
-func TestSearchReposOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchReposOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSearchReposOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6298,9 +21362,56 @@ func TestSearchReposOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSearchResultTextMatches_EncodeDecode(t *testing.T) {
+	var typ SearchResultTextMatches
+	typ.SetFake()
 
-func TestSearchTopicsOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchResultTextMatches
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSearchResultTextMatchesItem_EncodeDecode(t *testing.T) {
+	var typ SearchResultTextMatchesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchResultTextMatchesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSearchResultTextMatchesItemMatchesItem_EncodeDecode(t *testing.T) {
+	var typ SearchResultTextMatchesItemMatchesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchResultTextMatchesItemMatchesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSearchTopicsOK_EncodeDecode(t *testing.T) {
+	var typ SearchTopicsOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchTopicsOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSearchTopicsOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6329,9 +21440,20 @@ func TestSearchTopicsOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSearchUsersOK_EncodeDecode(t *testing.T) {
+	var typ SearchUsersOK
+	typ.SetFake()
 
-func TestSearchUsersOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SearchUsersOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSearchUsersOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6360,9 +21482,20 @@ func TestSearchUsersOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSecretScanningAlert_EncodeDecode(t *testing.T) {
+	var typ SecretScanningAlert
+	typ.SetFake()
 
-func TestSecretScanningAlert_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SecretScanningAlert
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSecretScanningAlert_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6392,9 +21525,80 @@ func TestSecretScanningAlert_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSecretScanningAlertResolution_EncodeDecode(t *testing.T) {
+	var typ SecretScanningAlertResolution
+	typ.SetFake()
 
-func TestSelectedActions_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SecretScanningAlertResolution
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSecretScanningAlertState_EncodeDecode(t *testing.T) {
+	var typ SecretScanningAlertState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SecretScanningAlertState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSecretScanningListAlertsForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ SecretScanningListAlertsForOrgOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SecretScanningListAlertsForOrgOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSecretScanningListAlertsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ SecretScanningListAlertsForRepoOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SecretScanningListAlertsForRepoOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSecretScanningUpdateAlertReq_EncodeDecode(t *testing.T) {
+	var typ SecretScanningUpdateAlertReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SecretScanningUpdateAlertReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSelectedActions_EncodeDecode(t *testing.T) {
+	var typ SelectedActions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SelectedActions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestSelectedActions_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6423,9 +21627,44 @@ func TestSelectedActions_JSON(t *testing.T) {
 		})
 	}
 }
+func TestSelectedActionsURL_EncodeDecode(t *testing.T) {
+	var typ SelectedActionsURL
+	typ.SetFake()
 
-func TestShortBlob_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SelectedActionsURL
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestServiceUnavailable_EncodeDecode(t *testing.T) {
+	var typ ServiceUnavailable
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ServiceUnavailable
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestShortBlob_EncodeDecode(t *testing.T) {
+	var typ ShortBlob
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ShortBlob
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestShortBlob_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6454,9 +21693,104 @@ func TestShortBlob_JSON(t *testing.T) {
 		})
 	}
 }
+func TestShortBranch_EncodeDecode(t *testing.T) {
+	var typ ShortBranch
+	typ.SetFake()
 
-func TestStatus_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ShortBranch
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestShortBranchCommit_EncodeDecode(t *testing.T) {
+	var typ ShortBranchCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ShortBranchCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSimpleCommit_EncodeDecode(t *testing.T) {
+	var typ SimpleCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SimpleCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSimpleCommitAuthor_EncodeDecode(t *testing.T) {
+	var typ SimpleCommitAuthor
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SimpleCommitAuthor
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSimpleCommitCommitter_EncodeDecode(t *testing.T) {
+	var typ SimpleCommitCommitter
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SimpleCommitCommitter
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSimpleCommitStatus_EncodeDecode(t *testing.T) {
+	var typ SimpleCommitStatus
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SimpleCommitStatus
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSimpleUser_EncodeDecode(t *testing.T) {
+	var typ SimpleUser
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SimpleUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestStatus_EncodeDecode(t *testing.T) {
+	var typ Status
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Status
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestStatus_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6485,9 +21819,20 @@ func TestStatus_JSON(t *testing.T) {
 		})
 	}
 }
+func TestStatusCheckPolicy_EncodeDecode(t *testing.T) {
+	var typ StatusCheckPolicy
+	typ.SetFake()
 
-func TestStatusCheckPolicy_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 StatusCheckPolicy
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestStatusCheckPolicy_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6516,9 +21861,56 @@ func TestStatusCheckPolicy_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTag_EncodeDecode(t *testing.T) {
+	var typ Tag
+	typ.SetFake()
 
-func TestTeamDiscussion_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Tag
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTagCommit_EncodeDecode(t *testing.T) {
+	var typ TagCommit
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TagCommit
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeam_EncodeDecode(t *testing.T) {
+	var typ Team
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Team
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamDiscussion_EncodeDecode(t *testing.T) {
+	var typ TeamDiscussion
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamDiscussion
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamDiscussion_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6548,9 +21940,20 @@ func TestTeamDiscussion_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamDiscussionComment_EncodeDecode(t *testing.T) {
+	var typ TeamDiscussionComment
+	typ.SetFake()
 
-func TestTeamDiscussionComment_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamDiscussionComment
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamDiscussionComment_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6580,9 +21983,20 @@ func TestTeamDiscussionComment_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamFull_EncodeDecode(t *testing.T) {
+	var typ TeamFull
+	typ.SetFake()
 
-func TestTeamFull_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamFull
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamFull_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6611,9 +22025,20 @@ func TestTeamFull_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamFullPrivacy_EncodeDecode(t *testing.T) {
+	var typ TeamFullPrivacy
+	typ.SetFake()
 
-func TestTeamFullPrivacy_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamFullPrivacy
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamFullPrivacy_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6642,9 +22067,20 @@ func TestTeamFullPrivacy_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamMembership_EncodeDecode(t *testing.T) {
+	var typ TeamMembership
+	typ.SetFake()
 
-func TestTeamMembership_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamMembership
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamMembership_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6674,9 +22110,20 @@ func TestTeamMembership_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamMembershipRole_EncodeDecode(t *testing.T) {
+	var typ TeamMembershipRole
+	typ.SetFake()
 
-func TestTeamMembershipRole_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamMembershipRole
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamMembershipRole_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6705,9 +22152,44 @@ func TestTeamMembershipRole_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamMembershipState_EncodeDecode(t *testing.T) {
+	var typ TeamMembershipState
+	typ.SetFake()
 
-func TestTeamProject_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamMembershipState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamPermissions_EncodeDecode(t *testing.T) {
+	var typ TeamPermissions
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamProject_EncodeDecode(t *testing.T) {
+	var typ TeamProject
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamProject
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamProject_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6736,9 +22218,32 @@ func TestTeamProject_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamProjectPermissions_EncodeDecode(t *testing.T) {
+	var typ TeamProjectPermissions
+	typ.SetFake()
 
-func TestTeamRepository_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamProjectPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamRepository_EncodeDecode(t *testing.T) {
+	var typ TeamRepository
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamRepository
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamRepository_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6767,9 +22272,92 @@ func TestTeamRepository_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamRepositoryPermissions_EncodeDecode(t *testing.T) {
+	var typ TeamRepositoryPermissions
+	typ.SetFake()
 
-func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamRepositoryPermissions
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamSimple_EncodeDecode(t *testing.T) {
+	var typ TeamSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateMembershipForUserInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateMembershipForUserInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateMembershipForUserInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateMembershipForUserInOrgReqRole_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateMembershipForUserInOrgReqRole
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateMembershipForUserInOrgReqRole
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateMembershipForUserLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateMembershipForUserLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateMembershipForUserLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateMembershipForUserLegacyReqRole_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateMembershipForUserLegacyReqRole
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateMembershipForUserLegacyReqRole
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateProjectPermissionsInOrgForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateProjectPermissionsInOrgForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6798,9 +22386,44 @@ func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamsAddOrUpdateProjectPermissionsInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateProjectPermissionsInOrgReq
+	typ.SetFake()
 
-func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateProjectPermissionsInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateProjectPermissionsInOrgReqPermission_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateProjectPermissionsInOrgReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateProjectPermissionsInOrgReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateProjectPermissionsLegacyForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateProjectPermissionsLegacyForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6829,9 +22452,536 @@ func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTeamsAddOrUpdateProjectPermissionsLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateProjectPermissionsLegacyReq
+	typ.SetFake()
 
-func TestThread_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateProjectPermissionsLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateProjectPermissionsLegacyReqPermission_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateProjectPermissionsLegacyReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateProjectPermissionsLegacyReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateRepoPermissionsInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateRepoPermissionsInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateRepoPermissionsInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateRepoPermissionsInOrgReqPermission_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateRepoPermissionsInOrgReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateRepoPermissionsInOrgReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateRepoPermissionsLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateRepoPermissionsLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateRepoPermissionsLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsAddOrUpdateRepoPermissionsLegacyReqPermission_EncodeDecode(t *testing.T) {
+	var typ TeamsAddOrUpdateRepoPermissionsLegacyReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsAddOrUpdateRepoPermissionsLegacyReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateDiscussionCommentInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateDiscussionCommentInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateDiscussionCommentInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateDiscussionCommentLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateDiscussionCommentLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateDiscussionCommentLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateDiscussionInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateDiscussionInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateDiscussionInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateDiscussionLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateDiscussionLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateDiscussionLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateOrUpdateIdpGroupConnectionsLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateReq_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateReqPermission_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateReqPrivacy_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateReqPrivacy
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateReqPrivacy
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListChildLegacyApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ TeamsListChildLegacyApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListChildLegacyApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListChildLegacyApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ TeamsListChildLegacyApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListChildLegacyApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListChildLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ TeamsListChildLegacyOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListChildLegacyOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ TeamsListForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ TeamsListForAuthenticatedUserApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListForAuthenticatedUserApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ TeamsListForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListIdpGroupsForLegacyApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ TeamsListIdpGroupsForLegacyApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListIdpGroupsForLegacyApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListIdpGroupsForLegacyApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ TeamsListIdpGroupsForLegacyApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListIdpGroupsForLegacyApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListMembersLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ TeamsListMembersLegacyOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListMembersLegacyOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ TeamsListOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListProjectsLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ TeamsListProjectsLegacyOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListProjectsLegacyOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsListReposLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ TeamsListReposLegacyOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsListReposLegacyOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateDiscussionCommentInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateDiscussionCommentInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateDiscussionCommentInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateDiscussionCommentLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateDiscussionCommentLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateDiscussionCommentLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateDiscussionInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateDiscussionInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateDiscussionInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateDiscussionLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateDiscussionLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateDiscussionLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateInOrgReq_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateInOrgReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateInOrgReqPermission_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateInOrgReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateInOrgReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateInOrgReqPrivacy_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateInOrgReqPrivacy
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateInOrgReqPrivacy
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateLegacyApplicationJSONCreated_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateLegacyApplicationJSONCreated
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateLegacyApplicationJSONCreated
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateLegacyApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateLegacyApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateLegacyApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateLegacyApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateLegacyApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateLegacyApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateLegacyApplicationJSONOK_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateLegacyApplicationJSONOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateLegacyApplicationJSONOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateLegacyReq_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateLegacyReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateLegacyReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateLegacyReqPermission_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateLegacyReqPermission
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateLegacyReqPermission
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsUpdateLegacyReqPrivacy_EncodeDecode(t *testing.T) {
+	var typ TeamsUpdateLegacyReqPrivacy
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsUpdateLegacyReqPrivacy
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestThread_EncodeDecode(t *testing.T) {
+	var typ Thread
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Thread
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestThread_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6860,9 +23010,32 @@ func TestThread_JSON(t *testing.T) {
 		})
 	}
 }
+func TestThreadSubject_EncodeDecode(t *testing.T) {
+	var typ ThreadSubject
+	typ.SetFake()
 
-func TestThreadSubscription_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ThreadSubject
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestThreadSubscription_EncodeDecode(t *testing.T) {
+	var typ ThreadSubscription
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ThreadSubscription
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestThreadSubscription_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6891,9 +23064,20 @@ func TestThreadSubscription_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTopic_EncodeDecode(t *testing.T) {
+	var typ Topic
+	typ.SetFake()
 
-func TestTopic_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Topic
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTopic_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6922,9 +23106,176 @@ func TestTopic_JSON(t *testing.T) {
 		})
 	}
 }
+func TestTopicSearchResultItem_EncodeDecode(t *testing.T) {
+	var typ TopicSearchResultItem
+	typ.SetFake()
 
-func TestUsersAddEmailForAuthenticatedReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TopicSearchResultItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTopicSearchResultItemAliasesItem_EncodeDecode(t *testing.T) {
+	var typ TopicSearchResultItemAliasesItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TopicSearchResultItemAliasesItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTopicSearchResultItemAliasesItemTopicRelation_EncodeDecode(t *testing.T) {
+	var typ TopicSearchResultItemAliasesItemTopicRelation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TopicSearchResultItemAliasesItemTopicRelation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTopicSearchResultItemRelatedItem_EncodeDecode(t *testing.T) {
+	var typ TopicSearchResultItemRelatedItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TopicSearchResultItemRelatedItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTopicSearchResultItemRelatedItemTopicRelation_EncodeDecode(t *testing.T) {
+	var typ TopicSearchResultItemRelatedItemTopicRelation
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TopicSearchResultItemRelatedItemTopicRelation
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTraffic_EncodeDecode(t *testing.T) {
+	var typ Traffic
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Traffic
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUserMarketplacePurchase_EncodeDecode(t *testing.T) {
+	var typ UserMarketplacePurchase
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UserMarketplacePurchase
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUserSearchResultItem_EncodeDecode(t *testing.T) {
+	var typ UserSearchResultItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UserSearchResultItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersAddEmailForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersAddEmailForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersAddEmailForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersAddEmailForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersAddEmailForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersAddEmailForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersAddEmailForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersAddEmailForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersAddEmailForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersAddEmailForAuthenticatedCreatedApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersAddEmailForAuthenticatedCreatedApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersAddEmailForAuthenticatedCreatedApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersAddEmailForAuthenticatedReq_EncodeDecode(t *testing.T) {
+	var typ UsersAddEmailForAuthenticatedReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersAddEmailForAuthenticatedReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersAddEmailForAuthenticatedReq0_EncodeDecode(t *testing.T) {
+	var typ UsersAddEmailForAuthenticatedReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersAddEmailForAuthenticatedReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestUsersAddEmailForAuthenticatedReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6953,9 +23304,272 @@ func TestUsersAddEmailForAuthenticatedReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestUsersBlockApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersBlockApplicationJSONForbidden
+	typ.SetFake()
 
-func TestUsersDeleteEmailForAuthenticatedReq0_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersBlockApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersBlockApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersBlockApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersBlockApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersBlockApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersBlockApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersBlockApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCheckBlockedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersCheckBlockedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCheckBlockedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCheckBlockedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersCheckBlockedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCheckBlockedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCheckBlockedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersCheckBlockedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCheckBlockedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreateGpgKeyForAuthenticatedReq_EncodeDecode(t *testing.T) {
+	var typ UsersCreateGpgKeyForAuthenticatedReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreateGpgKeyForAuthenticatedReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersCreatePublicSSHKeyForAuthenticatedReq_EncodeDecode(t *testing.T) {
+	var typ UsersCreatePublicSSHKeyForAuthenticatedReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersCreatePublicSSHKeyForAuthenticatedReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeleteEmailForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteEmailForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteEmailForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeleteEmailForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteEmailForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteEmailForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeleteEmailForAuthenticatedReq_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteEmailForAuthenticatedReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteEmailForAuthenticatedReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeleteEmailForAuthenticatedReq0_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteEmailForAuthenticatedReq0
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteEmailForAuthenticatedReq0
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestUsersDeleteEmailForAuthenticatedReq0_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -6984,9 +23598,152 @@ func TestUsersDeleteEmailForAuthenticatedReq0_JSON(t *testing.T) {
 		})
 	}
 }
+func TestUsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
 
-func TestUsersGetAuthenticatedOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersFollowApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersFollowApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersFollowApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersFollowApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersFollowApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersFollowApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersFollowApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersFollowApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersFollowApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersGetAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersGetAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetAuthenticatedOK_EncodeDecode(t *testing.T) {
+	var typ UsersGetAuthenticatedOK
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetAuthenticatedOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestUsersGetAuthenticatedOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -7016,9 +23773,20 @@ func TestUsersGetAuthenticatedOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestUsersGetByUsernameOK_EncodeDecode(t *testing.T) {
+	var typ UsersGetByUsernameOK
+	typ.SetFake()
 
-func TestUsersGetByUsernameOK_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetByUsernameOK
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestUsersGetByUsernameOK_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -7048,9 +23816,668 @@ func TestUsersGetByUsernameOK_JSON(t *testing.T) {
 		})
 	}
 }
+func TestUsersGetGpgKeyForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
 
-func TestViewTraffic_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetGpgKeyForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListBlockedByAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersListBlockedByAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListBlockedByAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListBlockedByAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersListBlockedByAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListBlockedByAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListBlockedByAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersListBlockedByAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListBlockedByAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListBlockedByAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListBlockedByAuthenticatedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListBlockedByAuthenticatedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListEmailsForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersListEmailsForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListEmailsForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListEmailsForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersListEmailsForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListEmailsForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListEmailsForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListEmailsForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListEmailsForAuthenticatedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListEmailsForAuthenticatedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListFollowedByAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersListFollowedByAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListFollowedByAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListFollowedByAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListFollowedByAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListFollowedByAuthenticatedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListFollowedByAuthenticatedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListFollowersForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListFollowersForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListFollowersForAuthenticatedUserOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListFollowersForAuthenticatedUserOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListGpgKeysForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersListGpgKeysForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListGpgKeysForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListGpgKeysForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersListGpgKeysForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListGpgKeysForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListGpgKeysForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListGpgKeysForAuthenticatedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListGpgKeysForAuthenticatedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicEmailsForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicEmailsForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicEmailsForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicEmailsForAuthenticatedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicEmailsForAuthenticatedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersListPublicSSHKeysForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
+	var typ UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersSetPrimaryEmailVisibilityForAuthenticatedReq_EncodeDecode(t *testing.T) {
+	var typ UsersSetPrimaryEmailVisibilityForAuthenticatedReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersSetPrimaryEmailVisibilityForAuthenticatedReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility_EncodeDecode(t *testing.T) {
+	var typ UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersSetPrimaryEmailVisibilityForAuthenticatedReqVisibility
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUnblockApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersUnblockApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUnblockApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUnblockApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersUnblockApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUnblockApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUnblockApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersUnblockApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUnblockApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUnfollowApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersUnfollowApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUnfollowApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUnfollowApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersUnfollowApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUnfollowApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUnfollowApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersUnfollowApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUnfollowApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUpdateAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
+	var typ UsersUpdateAuthenticatedApplicationJSONForbidden
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUpdateAuthenticatedApplicationJSONForbidden
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUpdateAuthenticatedApplicationJSONNotFound_EncodeDecode(t *testing.T) {
+	var typ UsersUpdateAuthenticatedApplicationJSONNotFound
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUpdateAuthenticatedApplicationJSONNotFound
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUpdateAuthenticatedApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
+	var typ UsersUpdateAuthenticatedApplicationJSONUnauthorized
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUpdateAuthenticatedApplicationJSONUnauthorized
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestUsersUpdateAuthenticatedReq_EncodeDecode(t *testing.T) {
+	var typ UsersUpdateAuthenticatedReq
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 UsersUpdateAuthenticatedReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestValidationError_EncodeDecode(t *testing.T) {
+	var typ ValidationError
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ValidationError
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestValidationErrorErrorsItem_EncodeDecode(t *testing.T) {
+	var typ ValidationErrorErrorsItem
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ValidationErrorErrorsItem
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestValidationErrorErrorsItemValue_EncodeDecode(t *testing.T) {
+	var typ ValidationErrorErrorsItemValue
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ValidationErrorErrorsItemValue
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestValidationErrorSimple_EncodeDecode(t *testing.T) {
+	var typ ValidationErrorSimple
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ValidationErrorSimple
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestVerification_EncodeDecode(t *testing.T) {
+	var typ Verification
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Verification
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestViewTraffic_EncodeDecode(t *testing.T) {
+	var typ ViewTraffic
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ViewTraffic
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestViewTraffic_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -7079,9 +24506,20 @@ func TestViewTraffic_JSON(t *testing.T) {
 		})
 	}
 }
+func TestWebhookConfig_EncodeDecode(t *testing.T) {
+	var typ WebhookConfig
+	typ.SetFake()
 
-func TestWebhookConfig_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WebhookConfig
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestWebhookConfig_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -7110,9 +24548,68 @@ func TestWebhookConfig_JSON(t *testing.T) {
 		})
 	}
 }
+func TestWebhookConfigContentType_EncodeDecode(t *testing.T) {
+	var typ WebhookConfigContentType
+	typ.SetFake()
 
-func TestWorkflow_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WebhookConfigContentType
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWebhookConfigInsecureSsl_EncodeDecode(t *testing.T) {
+	var typ WebhookConfigInsecureSsl
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WebhookConfigInsecureSsl
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWebhookConfigSecret_EncodeDecode(t *testing.T) {
+	var typ WebhookConfigSecret
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WebhookConfigSecret
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWebhookConfigURL_EncodeDecode(t *testing.T) {
+	var typ WebhookConfigURL
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WebhookConfigURL
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflow_EncodeDecode(t *testing.T) {
+	var typ Workflow
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 Workflow
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestWorkflow_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -7141,9 +24638,20 @@ func TestWorkflow_JSON(t *testing.T) {
 		})
 	}
 }
+func TestWorkflowRun_EncodeDecode(t *testing.T) {
+	var typ WorkflowRun
+	typ.SetFake()
 
-func TestWorkflowRun_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowRun
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestWorkflowRun_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -7172,9 +24680,20 @@ func TestWorkflowRun_JSON(t *testing.T) {
 		})
 	}
 }
+func TestWorkflowRunUsage_EncodeDecode(t *testing.T) {
+	var typ WorkflowRunUsage
+	typ.SetFake()
 
-func TestWorkflowRunUsage_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowRunUsage
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestWorkflowRunUsage_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string
@@ -7203,9 +24722,68 @@ func TestWorkflowRunUsage_JSON(t *testing.T) {
 		})
 	}
 }
+func TestWorkflowRunUsageBillable_EncodeDecode(t *testing.T) {
+	var typ WorkflowRunUsageBillable
+	typ.SetFake()
 
-func TestWorkflowState_JSON(t *testing.T) {
-	t.Parallel()
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowRunUsageBillable
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflowRunUsageBillableMACOS_EncodeDecode(t *testing.T) {
+	var typ WorkflowRunUsageBillableMACOS
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowRunUsageBillableMACOS
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflowRunUsageBillableUBUNTU_EncodeDecode(t *testing.T) {
+	var typ WorkflowRunUsageBillableUBUNTU
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowRunUsageBillableUBUNTU
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflowRunUsageBillableWINDOWS_EncodeDecode(t *testing.T) {
+	var typ WorkflowRunUsageBillableWINDOWS
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowRunUsageBillableWINDOWS
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestWorkflowState_EncodeDecode(t *testing.T) {
+	var typ WorkflowState
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 WorkflowState
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestWorkflowState_Examples(t *testing.T) {
 
 	for i, tc := range []struct {
 		Input string

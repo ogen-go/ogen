@@ -1,0 +1,20 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "faker/fakers" }}
+
+{{- if $.IsStruct }}
+	{{ template "faker/faker_struct" $ }}
+{{- else if $.IsMap }}
+	{{ template "faker/faker_map" $ }}
+{{- else if $.IsGeneric }}
+	{{ template "faker/faker_generic" $ }}
+{{- else if $.IsEnum }}
+	{{ template "faker/faker_enum" $ }}
+{{- else if $.IsSum }}
+	{{ template "faker/faker_sum" $ }}
+{{- else if $.IsAlias }}
+	{{ template "faker/faker_alias" $ }}
+{{- else }}
+	{{ errorf "unexpected kind %s" $.Kind }}
+{{- end }}
+
+{{ end }}

@@ -1,0 +1,12 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "faker/faker_generic" }}
+// SetFake set fake values.
+func (s *{{ $.Name }}) SetFake() {
+	{{- if $.GenericVariant.NullableOptional }}
+		s.Null = true
+		s.Set = true
+	{{- else if $.GenericVariant.Nullable }}
+		s.Null = true
+	{{- end }}
+}
+{{- end }}

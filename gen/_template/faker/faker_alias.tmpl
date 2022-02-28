@@ -1,0 +1,9 @@
+{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- define "faker/faker_alias" }}
+// SetFake set fake values.
+func (s *{{ $.Name }}) SetFake() {
+	var unwrapped {{ $.AliasTo.Go }}
+	{{ template "faker/faker" elem $.AliasTo "unwrapped" }}
+	*s = {{ $.Go }}(unwrapped)
+}
+{{- end }}
