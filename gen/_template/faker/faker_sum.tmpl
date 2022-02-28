@@ -1,10 +1,17 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
-{{- define "faker/faker_sum" }}
+{{- define "faker/faker_sum" }}{{ $d := $.JSON.Sum -}}
 // SetFake set fake values.
 func (s *{{ $.Name }}) SetFake() {
+	{{- if $d.Discriminator -}}
+	{{- $variant := index $.SumSpec.Mapping 0 }}
+	var elem {{ $variant.Type.Go }}
+	{{ template "faker/faker" elem $variant.Type "elem" }}
+	s.Set{{ $variant.Type.Name }}(elem)
+	{{- else }}
 	{{- $variant := index $.SumOf 0 }}
 	var elem {{ $variant.Go }}
 	{{ template "faker/faker" elem $variant "elem" }}
 	s.Set{{ $variant.Name }}(elem)
+	{{- end }}
 }
 {{- end }}
