@@ -7,14 +7,19 @@ func (s {{ if $.Fields }}*{{ end }}{{ $.Name }}) SetFake() {
     {{ template "faker/faker" field_elem $f }}
 	}
 	{{- end }}
-	var elem {{ $.Item.Go }}
+	var (
+		elem {{ $.Item.Go }}
+		m map[string]{{ $.Item.Go }}
+	)
+
     {{- if not $.Fields }}
-        {{ template "faker/faker" map_elem $.Item }}
-		s["fake"] = elem
+        m = s
     {{- else }}
         s.{{ $.AdditionalPropsField }} = map[string]{{ $.Item.Go }}{}
-        {{ template "faker/faker" map_elem $.Item }}
-		s.{{ $.AdditionalPropsField }}["fake"] = elem
+		m = s.{{ $.AdditionalPropsField }}
     {{- end }}
+	for i := 0; i < {{ $.Validators.Object.MinProperties }}; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
 }
 {{- end }}
