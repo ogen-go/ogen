@@ -99,6 +99,12 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admissionReviewVersions")
@@ -169,7 +175,6 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Encoder) {
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1MutatingWebhook = [11]string{
@@ -373,6 +378,12 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -401,7 +412,6 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *j
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration = [4]string{
@@ -480,6 +490,12 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -507,7 +523,6 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList = [4]string{
@@ -620,6 +635,12 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroups != nil {
 			e.FieldStart("apiGroups")
@@ -666,7 +687,6 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Encoder)
 			s.Scope.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1RuleWithOperations = [5]string{
@@ -785,6 +805,12 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -807,7 +833,6 @@ func (s IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 			s.Port.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1ServiceReference = [4]string{
@@ -916,6 +941,12 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("admissionReviewVersions")
@@ -980,7 +1011,6 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Encoder) 
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1ValidatingWebhook = [10]string{
@@ -1173,6 +1203,12 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -1201,7 +1237,6 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e 
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration = [4]string{
@@ -1280,6 +1315,12 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -1307,7 +1348,6 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encod
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList = [4]string{
@@ -1420,6 +1460,12 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("caBundle")
@@ -1437,7 +1483,6 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Encoder
 			s.URL.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAdmissionregistrationV1WebhookClientConfig = [3]string{
@@ -1499,6 +1544,12 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiServerID.Set {
 			e.FieldStart("apiServerID")
@@ -1521,7 +1572,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Enco
 			s.EncodingVersion.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIApiserverinternalV1alpha1ServerStorageVersion = [3]string{
@@ -1591,6 +1641,12 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -1619,7 +1675,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Encoder) {
 		e.FieldStart("status")
 		s.Status.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIApiserverinternalV1alpha1StorageVersion = [5]string{
@@ -1735,6 +1790,12 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -1768,7 +1829,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Encode(e *jx.E
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIApiserverinternalV1alpha1StorageVersionCondition = [6]string{
@@ -1901,6 +1961,12 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -1928,7 +1994,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Encode
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIApiserverinternalV1alpha1StorageVersionList = [4]string{
@@ -2041,7 +2106,12 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sAPIApiserverinternalV1alpha1StorageVersionSpec = [0]string{}
@@ -2068,6 +2138,12 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CommonEncodingVersion.Set {
 			e.FieldStart("commonEncodingVersion")
@@ -2094,7 +2170,6 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Enco
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIApiserverinternalV1alpha1StorageVersionStatus = [3]string{
@@ -2169,6 +2244,12 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevision) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1ControllerRevision) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -2198,7 +2279,6 @@ func (s IoK8sAPIAppsV1ControllerRevision) Encode(e *jx.Encoder) {
 		e.FieldStart("revision")
 		e.Int64(s.Revision)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1ControllerRevision = [5]string{
@@ -2318,6 +2398,12 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1ControllerRevisionList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -2345,7 +2431,6 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1ControllerRevisionList = [4]string{
@@ -2458,6 +2543,12 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -2488,7 +2579,6 @@ func (s IoK8sAPIAppsV1DaemonSet) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DaemonSet = [5]string{
@@ -2571,6 +2661,12 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -2599,7 +2695,6 @@ func (s IoK8sAPIAppsV1DaemonSetCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DaemonSetCondition = [5]string{
@@ -2719,6 +2814,12 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -2746,7 +2847,6 @@ func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DaemonSetList = [4]string{
@@ -2859,6 +2959,12 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
 			e.FieldStart("minReadySeconds")
@@ -2887,7 +2993,6 @@ func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Encoder) {
 			s.UpdateStrategy.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DaemonSetSpec = [5]string{
@@ -3003,6 +3108,12 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CollisionCount.Set {
 			e.FieldStart("collisionCount")
@@ -3063,7 +3174,6 @@ func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Encoder) {
 			s.UpdatedNumberScheduled.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DaemonSetStatus = [10]string{
@@ -3250,6 +3360,12 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.RollingUpdate.Set {
 			e.FieldStart("rollingUpdate")
@@ -3262,7 +3378,6 @@ func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DaemonSetUpdateStrategy = [2]string{
@@ -3312,6 +3427,12 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1Deployment) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1Deployment) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -3342,7 +3463,6 @@ func (s IoK8sAPIAppsV1Deployment) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1Deployment = [5]string{
@@ -3425,6 +3545,12 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -3459,7 +3585,6 @@ func (s IoK8sAPIAppsV1DeploymentCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DeploymentCondition = [6]string{
@@ -3590,6 +3715,12 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -3617,7 +3748,6 @@ func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DeploymentList = [4]string{
@@ -3730,6 +3860,12 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
 			e.FieldStart("minReadySeconds")
@@ -3776,7 +3912,6 @@ func (s IoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Encoder) {
 		e.FieldStart("template")
 		s.Template.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DeploymentSpec = [8]string{
@@ -3925,6 +4060,12 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AvailableReplicas.Set {
 			e.FieldStart("availableReplicas")
@@ -3977,7 +4118,6 @@ func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Encoder) {
 			s.UpdatedReplicas.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DeploymentStatus = [8]string{
@@ -4100,6 +4240,12 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.RollingUpdate.Set {
 			e.FieldStart("rollingUpdate")
@@ -4112,7 +4258,6 @@ func (s IoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1DeploymentStrategy = [2]string{
@@ -4162,6 +4307,12 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -4192,7 +4343,6 @@ func (s IoK8sAPIAppsV1ReplicaSet) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1ReplicaSet = [5]string{
@@ -4275,6 +4425,12 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -4303,7 +4459,6 @@ func (s IoK8sAPIAppsV1ReplicaSetCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1ReplicaSetCondition = [5]string{
@@ -4423,6 +4578,12 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -4450,7 +4611,6 @@ func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1ReplicaSetList = [4]string{
@@ -4563,6 +4723,12 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
 			e.FieldStart("minReadySeconds")
@@ -4586,7 +4752,6 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Encoder) {
 			s.Template.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1ReplicaSetSpec = [4]string{
@@ -4691,6 +4856,12 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AvailableReplicas.Set {
 			e.FieldStart("availableReplicas")
@@ -4730,7 +4901,6 @@ func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1ReplicaSetStatus = [6]string{
@@ -4866,6 +5036,12 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxSurge.Set {
 			e.FieldStart("maxSurge")
@@ -4878,7 +5054,6 @@ func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Encoder) {
 			s.MaxUnavailable.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1RollingUpdateDaemonSet = [2]string{
@@ -4928,6 +5103,12 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1RollingUpdateDeployment) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxSurge.Set {
 			e.FieldStart("maxSurge")
@@ -4940,7 +5121,6 @@ func (s IoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Encoder) {
 			s.MaxUnavailable.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1RollingUpdateDeployment = [2]string{
@@ -4990,13 +5170,18 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.Partition.Set {
 			e.FieldStart("partition")
 			s.Partition.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy = [1]string{
@@ -5035,6 +5220,12 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -5065,7 +5256,6 @@ func (s IoK8sAPIAppsV1StatefulSet) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1StatefulSet = [5]string{
@@ -5148,6 +5338,12 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -5176,7 +5372,6 @@ func (s IoK8sAPIAppsV1StatefulSetCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1StatefulSetCondition = [5]string{
@@ -5296,6 +5491,12 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -5323,7 +5524,6 @@ func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1StatefulSetList = [4]string{
@@ -5436,6 +5636,12 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
 			e.FieldStart("minReadySeconds")
@@ -5491,7 +5697,6 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1StatefulSetSpec = [9]string{
@@ -5661,6 +5866,12 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("availableReplicas")
@@ -5723,7 +5934,6 @@ func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Encoder) {
 			s.UpdatedReplicas.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1StatefulSetStatus = [10]string{
@@ -5906,6 +6116,12 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.RollingUpdate.Set {
 			e.FieldStart("rollingUpdate")
@@ -5918,7 +6134,6 @@ func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAppsV1StatefulSetUpdateStrategy = [2]string{
@@ -5968,6 +6183,12 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -5984,7 +6205,6 @@ func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) Encode(e *jx.Encoder) 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1CrossVersionObjectReference = [3]string{
@@ -6082,6 +6302,12 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -6112,7 +6338,6 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1HorizontalPodAutoscaler = [5]string{
@@ -6195,6 +6420,12 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -6222,7 +6453,6 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) 
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1HorizontalPodAutoscalerList = [4]string{
@@ -6335,6 +6565,12 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("maxReplicas")
@@ -6357,7 +6593,6 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) 
 			s.TargetCPUUtilizationPercentage.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec = [4]string{
@@ -6464,6 +6699,12 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CurrentCPUUtilizationPercentage.Set {
 			e.FieldStart("currentCPUUtilizationPercentage")
@@ -6492,7 +6733,6 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder
 			s.ObservedGeneration.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus = [5]string{
@@ -6612,6 +6852,12 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1Scale) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1Scale) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -6642,7 +6888,6 @@ func (s IoK8sAPIAutoscalingV1Scale) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1Scale = [5]string{
@@ -6725,13 +6970,18 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1ScaleSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Replicas.Set {
 			e.FieldStart("replicas")
 			s.Replicas.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1ScaleSpec = [1]string{
@@ -6770,6 +7020,12 @@ func (s *IoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV1ScaleStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("replicas")
@@ -6781,7 +7037,6 @@ func (s IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 			s.Selector.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV1ScaleStatus = [2]string{
@@ -6866,6 +7121,12 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("container")
@@ -6888,7 +7149,6 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.En
 			s.TargetAverageValue.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource = [4]string{
@@ -6997,6 +7257,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("container")
@@ -7018,7 +7284,6 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.En
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus = [4]string{
@@ -7127,6 +7392,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -7143,7 +7414,6 @@ func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Encode(e *jx.Enco
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1CrossVersionObjectReference = [3]string{
@@ -7241,6 +7511,12 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("metricName")
@@ -7264,7 +7540,6 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Encoder) {
 			s.TargetValue.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ExternalMetricSource = [4]string{
@@ -7371,6 +7646,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CurrentAverageValue.Set {
 			e.FieldStart("currentAverageValue")
@@ -7393,7 +7674,6 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 			s.MetricSelector.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ExternalMetricStatus = [4]string{
@@ -7500,6 +7780,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -7530,7 +7816,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Encode(e *jx.Encoder)
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler = [5]string{
@@ -7613,6 +7898,12 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -7641,7 +7932,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Encode(e *jx
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition = [5]string{
@@ -7761,6 +8051,12 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -7788,7 +8084,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Enco
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList = [4]string{
@@ -7901,6 +8196,12 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("maxReplicas")
@@ -7927,7 +8228,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Enco
 		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec = [4]string{
@@ -8041,6 +8341,12 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("conditions")
@@ -8082,7 +8388,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.En
 			s.ObservedGeneration.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus = [6]string{
@@ -8228,6 +8533,12 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
 			e.FieldStart("containerResource")
@@ -8263,7 +8574,6 @@ func (s IoK8sAPIAutoscalingV2beta1MetricSpec) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1MetricSpec = [6]string{
@@ -8392,6 +8702,12 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
 			e.FieldStart("containerResource")
@@ -8427,7 +8743,6 @@ func (s IoK8sAPIAutoscalingV2beta1MetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1MetricStatus = [6]string{
@@ -8556,6 +8871,12 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageValue.Set {
 			e.FieldStart("averageValue")
@@ -8583,7 +8904,6 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Encoder) {
 		e.FieldStart("targetValue")
 		s.TargetValue.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ObjectMetricSource = [5]string{
@@ -8701,6 +9021,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageValue.Set {
 			e.FieldStart("averageValue")
@@ -8728,7 +9054,6 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ObjectMetricStatus = [5]string{
@@ -8846,6 +9171,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("metricName")
@@ -8862,7 +9193,6 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 		e.FieldStart("targetAverageValue")
 		s.TargetAverageValue.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1PodsMetricSource = [3]string{
@@ -8958,6 +9288,12 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("currentAverageValue")
@@ -8974,7 +9310,6 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 			s.Selector.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1PodsMetricStatus = [3]string{
@@ -9070,6 +9405,12 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -9087,7 +9428,6 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Encoder) {
 			s.TargetAverageValue.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ResourceMetricSource = [3]string{
@@ -9183,6 +9523,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CurrentAverageUtilization.Set {
 			e.FieldStart("currentAverageUtilization")
@@ -9199,7 +9545,6 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta1ResourceMetricStatus = [3]string{
@@ -9295,6 +9640,12 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("container")
@@ -9310,7 +9661,6 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.En
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource = [3]string{
@@ -9408,6 +9758,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("container")
@@ -9423,7 +9779,6 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.En
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus = [3]string{
@@ -9521,6 +9876,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -9537,7 +9898,6 @@ func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Encode(e *jx.Enco
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2CrossVersionObjectReference = [3]string{
@@ -9635,6 +9995,12 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("metric")
@@ -9645,7 +10011,6 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Encoder) {
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ExternalMetricSource = [2]string{
@@ -9728,6 +10093,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("current")
@@ -9738,7 +10109,6 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ExternalMetricStatus = [2]string{
@@ -9821,6 +10191,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("periodSeconds")
@@ -9836,7 +10212,6 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Encoder) {
 		e.FieldStart("value")
 		e.Int32(s.Value)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HPAScalingPolicy = [3]string{
@@ -9936,6 +10311,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) encodeFields(e *jx.Encoder) {
 	{
 		if s.Policies != nil {
 			e.FieldStart("policies")
@@ -9958,7 +10339,6 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Encoder) {
 			s.StabilizationWindowSeconds.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HPAScalingRules = [3]string{
@@ -10026,6 +10406,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -10056,7 +10442,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Encode(e *jx.Encoder)
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler = [5]string{
@@ -10139,6 +10524,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) encodeFields(e *jx.Encoder) {
 	{
 		if s.ScaleDown.Set {
 			e.FieldStart("scaleDown")
@@ -10151,7 +10542,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.
 			s.ScaleUp.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior = [2]string{
@@ -10201,6 +10591,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -10229,7 +10625,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Encode(e *jx
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition = [5]string{
@@ -10349,6 +10744,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -10376,7 +10777,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Enco
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList = [4]string{
@@ -10489,6 +10889,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Behavior.Set {
 			e.FieldStart("behavior")
@@ -10521,7 +10927,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Enco
 		e.FieldStart("scaleTargetRef")
 		s.ScaleTargetRef.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec = [5]string{
@@ -10646,6 +11051,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("conditions")
@@ -10687,7 +11098,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.En
 			s.ObservedGeneration.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus = [6]string{
@@ -10833,6 +11243,12 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -10844,7 +11260,6 @@ func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Encoder) {
 			s.Selector.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2MetricIdentifier = [2]string{
@@ -10929,6 +11344,12 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
 			e.FieldStart("containerResource")
@@ -10964,7 +11385,6 @@ func (s IoK8sAPIAutoscalingV2beta2MetricSpec) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2MetricSpec = [6]string{
@@ -11093,6 +11513,12 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
 			e.FieldStart("containerResource")
@@ -11128,7 +11554,6 @@ func (s IoK8sAPIAutoscalingV2beta2MetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2MetricStatus = [6]string{
@@ -11257,6 +11682,12 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricTarget) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricTarget) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageUtilization.Set {
 			e.FieldStart("averageUtilization")
@@ -11280,7 +11711,6 @@ func (s IoK8sAPIAutoscalingV2beta2MetricTarget) Encode(e *jx.Encoder) {
 			s.Value.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2MetricTarget = [4]string{
@@ -11387,6 +11817,12 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageUtilization.Set {
 			e.FieldStart("averageUtilization")
@@ -11405,7 +11841,6 @@ func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) Encode(e *jx.Encoder) {
 			s.Value.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2MetricValueStatus = [3]string{
@@ -11466,6 +11901,12 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("describedObject")
@@ -11481,7 +11922,6 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Encoder) {
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ObjectMetricSource = [3]string{
@@ -11575,6 +12015,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("current")
@@ -11590,7 +12036,6 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ObjectMetricStatus = [3]string{
@@ -11684,6 +12129,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("metric")
@@ -11694,7 +12145,6 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Encoder) {
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2PodsMetricSource = [2]string{
@@ -11777,6 +12227,12 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("current")
@@ -11787,7 +12243,6 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("metric")
 		s.Metric.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2PodsMetricStatus = [2]string{
@@ -11870,6 +12325,12 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -11880,7 +12341,6 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Encoder) {
 		e.FieldStart("target")
 		s.Target.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ResourceMetricSource = [2]string{
@@ -11965,6 +12425,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("current")
@@ -11975,7 +12441,6 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIAutoscalingV2beta2ResourceMetricStatus = [2]string{
@@ -12060,6 +12525,12 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJob) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1CronJob) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -12090,7 +12561,6 @@ func (s IoK8sAPIBatchV1CronJob) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1CronJob = [5]string{
@@ -12173,6 +12643,12 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1CronJobList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -12200,7 +12676,6 @@ func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1CronJobList = [4]string{
@@ -12313,6 +12788,12 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1CronJobSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConcurrencyPolicy.Set {
 			e.FieldStart("concurrencyPolicy")
@@ -12353,7 +12834,6 @@ func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Encoder) {
 			s.Suspend.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1CronJobSpec = [7]string{
@@ -12493,6 +12973,12 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1CronJobStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active != nil {
 			e.FieldStart("active")
@@ -12515,7 +13001,6 @@ func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Encoder) {
 			s.LastSuccessfulTime.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1CronJobStatus = [3]string{
@@ -12583,6 +13068,12 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1Job) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1Job) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -12613,7 +13104,6 @@ func (s IoK8sAPIBatchV1Job) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1Job = [5]string{
@@ -12696,6 +13186,12 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1JobCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastProbeTime.Set {
 			e.FieldStart("lastProbeTime")
@@ -12730,7 +13226,6 @@ func (s IoK8sAPIBatchV1JobCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1JobCondition = [6]string{
@@ -12861,6 +13356,12 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1JobList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -12888,7 +13389,6 @@ func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1JobList = [4]string{
@@ -13001,6 +13501,12 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1JobSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ActiveDeadlineSeconds.Set {
 			e.FieldStart("activeDeadlineSeconds")
@@ -13060,7 +13566,6 @@ func (s IoK8sAPIBatchV1JobSpec) Encode(e *jx.Encoder) {
 			s.TtlSecondsAfterFinished.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1JobSpec = [10]string{
@@ -13232,6 +13737,12 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1JobStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active.Set {
 			e.FieldStart("active")
@@ -13284,7 +13795,6 @@ func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Encoder) {
 			s.UncountedTerminatedPods.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1JobStatus = [8]string{
@@ -13407,6 +13917,12 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1JobTemplateSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
 			e.FieldStart("metadata")
@@ -13419,7 +13935,6 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1JobTemplateSpec = [2]string{
@@ -13469,6 +13984,12 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1UncountedTerminatedPods) encodeFields(e *jx.Encoder) {
 	{
 		if s.Failed != nil {
 			e.FieldStart("failed")
@@ -13489,7 +14010,6 @@ func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1UncountedTerminatedPods = [2]string{
@@ -13557,6 +14077,12 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJob) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJob) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -13587,7 +14113,6 @@ func (s IoK8sAPIBatchV1beta1CronJob) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1beta1CronJob = [5]string{
@@ -13670,6 +14195,12 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJobList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -13697,7 +14228,6 @@ func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1beta1CronJobList = [4]string{
@@ -13810,6 +14340,12 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConcurrencyPolicy.Set {
 			e.FieldStart("concurrencyPolicy")
@@ -13850,7 +14386,6 @@ func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Encoder) {
 			s.Suspend.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1beta1CronJobSpec = [7]string{
@@ -13990,6 +14525,12 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJobStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active != nil {
 			e.FieldStart("active")
@@ -14012,7 +14553,6 @@ func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Encoder) {
 			s.LastSuccessfulTime.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1beta1CronJobStatus = [3]string{
@@ -14080,6 +14620,12 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIBatchV1beta1JobTemplateSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
 			e.FieldStart("metadata")
@@ -14092,7 +14638,6 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIBatchV1beta1JobTemplateSpec = [2]string{
@@ -14142,6 +14687,12 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -14171,7 +14722,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequest = [5]string{
@@ -14287,6 +14837,12 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -14321,7 +14877,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) Encode(e *jx.E
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequestCondition = [6]string{
@@ -14452,6 +15007,12 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -14479,7 +15040,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Encode
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequestList = [4]string{
@@ -14592,6 +15152,12 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ExpirationSeconds.Set {
 			e.FieldStart("expirationSeconds")
@@ -14646,7 +15212,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Encode
 			s.Username.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequestSpec = [8]string{
@@ -14817,6 +15382,12 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -14826,7 +15397,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.E
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra = [0]string{}
@@ -14873,6 +15443,12 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.D
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("certificate")
@@ -14888,7 +15464,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Enco
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequestStatus = [2]string{
@@ -14946,6 +15521,12 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1Lease) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoordinationV1Lease) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -14970,7 +15551,6 @@ func (s IoK8sAPICoordinationV1Lease) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoordinationV1Lease = [4]string{
@@ -15042,6 +15622,12 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoordinationV1LeaseList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -15069,7 +15655,6 @@ func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoordinationV1LeaseList = [4]string{
@@ -15182,6 +15767,12 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoordinationV1LeaseSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AcquireTime.Set {
 			e.FieldStart("acquireTime")
@@ -15212,7 +15803,6 @@ func (s IoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Encoder) {
 			s.RenewTime.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoordinationV1LeaseSpec = [5]string{
@@ -15295,6 +15885,12 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -15318,7 +15914,6 @@ func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource = [4]string{
@@ -15425,6 +16020,12 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Affinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Affinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeAffinity.Set {
 			e.FieldStart("nodeAffinity")
@@ -15443,7 +16044,6 @@ func (s IoK8sAPICoreV1Affinity) Encode(e *jx.Encoder) {
 			s.PodAntiAffinity.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Affinity = [3]string{
@@ -15504,6 +16104,12 @@ func (s *IoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1AttachedVolume) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("devicePath")
@@ -15514,7 +16120,6 @@ func (s IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1AttachedVolume = [2]string{
@@ -15601,6 +16206,12 @@ func (s *IoK8sAPICoreV1AttachedVolume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.CachingMode.Set {
 			e.FieldStart("cachingMode")
@@ -15635,7 +16246,6 @@ func (s IoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Encoder) {
 			s.ReadOnly.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1AzureDiskVolumeSource = [6]string{
@@ -15766,6 +16376,12 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ReadOnly.Set {
 			e.FieldStart("readOnly")
@@ -15788,7 +16404,6 @@ func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("shareName")
 		e.Str(s.ShareName)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1AzureFilePersistentVolumeSource = [4]string{
@@ -15897,6 +16512,12 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1AzureFileVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ReadOnly.Set {
 			e.FieldStart("readOnly")
@@ -15913,7 +16534,6 @@ func (s IoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("shareName")
 		e.Str(s.ShareName)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1AzureFileVolumeSource = [3]string{
@@ -16011,6 +16631,12 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ControllerExpandSecretRef.Set {
 			e.FieldStart("controllerExpandSecretRef")
@@ -16063,7 +16689,6 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("volumeHandle")
 		e.Str(s.VolumeHandle)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CSIPersistentVolumeSource = [9]string{
@@ -16228,12 +16853,17 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes = [0]string{}
@@ -16272,6 +16902,12 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CSIVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("driver")
@@ -16301,7 +16937,6 @@ func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 			s.VolumeAttributes.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CSIVolumeSource = [5]string{
@@ -16419,12 +17054,17 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes = [0]string{}
@@ -16463,6 +17103,12 @@ func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Capabilities) encodeFields(e *jx.Encoder) {
 	{
 		if s.Add != nil {
 			e.FieldStart("add")
@@ -16483,7 +17129,6 @@ func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Capabilities = [2]string{
@@ -16551,6 +17196,12 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("monitors")
@@ -16590,7 +17241,6 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Encoder) {
 			s.User.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CephFSPersistentVolumeSource = [6]string{
@@ -16727,6 +17377,12 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CephFSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("monitors")
@@ -16766,7 +17422,6 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 			s.User.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CephFSVolumeSource = [6]string{
@@ -16903,6 +17558,12 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CinderPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -16926,7 +17587,6 @@ func (s IoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CinderPersistentVolumeSource = [4]string{
@@ -17033,6 +17693,12 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1CinderVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -17056,7 +17722,6 @@ func (s IoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1CinderVolumeSource = [4]string{
@@ -17163,13 +17828,18 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ClientIPConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.TimeoutSeconds.Set {
 			e.FieldStart("timeoutSeconds")
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ClientIPConfig = [1]string{
@@ -17208,6 +17878,12 @@ func (s *IoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ComponentCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.Error.Set {
 			e.FieldStart("error")
@@ -17230,7 +17906,6 @@ func (s IoK8sAPICoreV1ComponentCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ComponentCondition = [4]string{
@@ -17339,6 +18014,12 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ComponentStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -17367,7 +18048,6 @@ func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ComponentStatus = [4]string{
@@ -17446,6 +18126,12 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ComponentStatusList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -17473,7 +18159,6 @@ func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ComponentStatusList = [4]string{
@@ -17586,6 +18271,12 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMap) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -17622,7 +18313,6 @@ func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMap = [6]string{
@@ -17716,12 +18406,17 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapBinaryData) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Base64(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapBinaryData = [0]string{}
@@ -17760,12 +18455,17 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapData) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapData) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapData = [0]string{}
@@ -17804,6 +18504,12 @@ func (s IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapEnvSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -17816,7 +18522,6 @@ func (s IoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Encoder) {
 			s.Optional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapEnvSource = [2]string{
@@ -17866,6 +18571,12 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapKeySelector) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -17883,7 +18594,6 @@ func (s IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 			s.Optional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapKeySelector = [3]string{
@@ -17979,6 +18689,12 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -18006,7 +18722,6 @@ func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapList = [4]string{
@@ -18119,6 +18834,12 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("kubeletConfigKey")
@@ -18146,7 +18867,6 @@ func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Encoder) {
 			s.UID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapNodeConfigSource = [5]string{
@@ -18268,6 +18988,12 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Items != nil {
 			e.FieldStart("items")
@@ -18290,7 +19016,6 @@ func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Encoder) {
 			s.Optional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapProjection = [3]string{
@@ -18358,6 +19083,12 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
 			e.FieldStart("defaultMode")
@@ -18386,7 +19117,6 @@ func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Encoder) {
 			s.Optional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapVolumeSource = [4]string{
@@ -18465,6 +19195,12 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Container) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Container) encodeFields(e *jx.Encoder) {
 	{
 		if s.Args != nil {
 			e.FieldStart("args")
@@ -18624,7 +19360,6 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Encoder) {
 			s.WorkingDir.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Container = [22]string{
@@ -18984,6 +19719,12 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ContainerImage) encodeFields(e *jx.Encoder) {
 	{
 		if s.Names != nil {
 			e.FieldStart("names")
@@ -19000,7 +19741,6 @@ func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Encoder) {
 			s.SizeBytes.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ContainerImage = [2]string{
@@ -19059,6 +19799,12 @@ func (s *IoK8sAPICoreV1ContainerImage) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ContainerPort) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("containerPort")
@@ -19088,7 +19834,6 @@ func (s IoK8sAPICoreV1ContainerPort) Encode(e *jx.Encoder) {
 			s.Protocol.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ContainerPort = [5]string{
@@ -19206,6 +19951,12 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerState) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ContainerState) encodeFields(e *jx.Encoder) {
 	{
 		if s.Running.Set {
 			e.FieldStart("running")
@@ -19224,7 +19975,6 @@ func (s IoK8sAPICoreV1ContainerState) Encode(e *jx.Encoder) {
 			s.Waiting.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ContainerState = [3]string{
@@ -19285,13 +20035,18 @@ func (s *IoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ContainerStateRunning) encodeFields(e *jx.Encoder) {
 	{
 		if s.StartedAt.Set {
 			e.FieldStart("startedAt")
 			s.StartedAt.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ContainerStateRunning = [1]string{
@@ -19330,6 +20085,12 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ContainerStateTerminated) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerID.Set {
 			e.FieldStart("containerID")
@@ -19371,7 +20132,6 @@ func (s IoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Encoder) {
 			s.StartedAt.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ContainerStateTerminated = [7]string{
@@ -19511,6 +20271,12 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ContainerStateWaiting) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -19523,7 +20289,6 @@ func (s IoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Encoder) {
 			s.Reason.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ContainerStateWaiting = [2]string{
@@ -19573,6 +20338,12 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ContainerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerID.Set {
 			e.FieldStart("containerID")
@@ -19622,7 +20393,6 @@ func (s IoK8sAPICoreV1ContainerStatus) Encode(e *jx.Encoder) {
 			s.State.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ContainerStatus = [9]string{
@@ -19793,12 +20563,17 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1DaemonEndpoint) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("Port")
 		e.Int32(s.Port)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1DaemonEndpoint = [1]string{
@@ -19872,6 +20647,12 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1DownwardAPIProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Items != nil {
 			e.FieldStart("items")
@@ -19882,7 +20663,6 @@ func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1DownwardAPIProjection = [1]string{
@@ -19928,6 +20708,12 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1DownwardAPIVolumeFile) encodeFields(e *jx.Encoder) {
 	{
 		if s.FieldRef.Set {
 			e.FieldStart("fieldRef")
@@ -19951,7 +20737,6 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeFile) Encode(e *jx.Encoder) {
 			s.ResourceFieldRef.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1DownwardAPIVolumeFile = [4]string{
@@ -20058,6 +20843,12 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1DownwardAPIVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
 			e.FieldStart("defaultMode")
@@ -20074,7 +20865,6 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1DownwardAPIVolumeSource = [2]string{
@@ -20131,6 +20921,12 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EmptyDirVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Medium.Set {
 			e.FieldStart("medium")
@@ -20143,7 +20939,6 @@ func (s IoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Encoder) {
 			s.SizeLimit.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EmptyDirVolumeSource = [2]string{
@@ -20193,6 +20988,12 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EndpointAddress) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hostname.Set {
 			e.FieldStart("hostname")
@@ -20216,7 +21017,6 @@ func (s IoK8sAPICoreV1EndpointAddress) Encode(e *jx.Encoder) {
 			s.TargetRef.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EndpointAddress = [4]string{
@@ -20323,6 +21123,12 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EndpointPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
 			e.FieldStart("appProtocol")
@@ -20346,7 +21152,6 @@ func (s IoK8sAPICoreV1EndpointPort) Encode(e *jx.Encoder) {
 			s.Protocol.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EndpointPort = [4]string{
@@ -20453,6 +21258,12 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EndpointSubset) encodeFields(e *jx.Encoder) {
 	{
 		if s.Addresses != nil {
 			e.FieldStart("addresses")
@@ -20483,7 +21294,6 @@ func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EndpointSubset = [3]string{
@@ -20565,6 +21375,12 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Endpoints) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -20593,7 +21409,6 @@ func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Endpoints = [4]string{
@@ -20672,6 +21487,12 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EndpointsList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -20699,7 +21520,6 @@ func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EndpointsList = [4]string{
@@ -20812,6 +21632,12 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvFromSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EnvFromSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMapRef.Set {
 			e.FieldStart("configMapRef")
@@ -20830,7 +21656,6 @@ func (s IoK8sAPICoreV1EnvFromSource) Encode(e *jx.Encoder) {
 			s.SecretRef.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EnvFromSource = [3]string{
@@ -20891,6 +21716,12 @@ func (s *IoK8sAPICoreV1EnvFromSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVar) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EnvVar) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -20908,7 +21739,6 @@ func (s IoK8sAPICoreV1EnvVar) Encode(e *jx.Encoder) {
 			s.ValueFrom.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EnvVar = [3]string{
@@ -21004,6 +21834,12 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVarSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EnvVarSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMapKeyRef.Set {
 			e.FieldStart("configMapKeyRef")
@@ -21028,7 +21864,6 @@ func (s IoK8sAPICoreV1EnvVarSource) Encode(e *jx.Encoder) {
 			s.SecretKeyRef.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EnvVarSource = [4]string{
@@ -21100,6 +21935,12 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EphemeralContainer) encodeFields(e *jx.Encoder) {
 	{
 		if s.Args != nil {
 			e.FieldStart("args")
@@ -21265,7 +22106,6 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Encoder) {
 			s.WorkingDir.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EphemeralContainer = [23]string{
@@ -21636,13 +22476,18 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EphemeralVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.VolumeClaimTemplate.Set {
 			e.FieldStart("volumeClaimTemplate")
 			s.VolumeClaimTemplate.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EphemeralVolumeSource = [1]string{
@@ -21681,6 +22526,12 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Event) encodeFields(e *jx.Encoder) {
 	{
 		if s.Action.Set {
 			e.FieldStart("action")
@@ -21781,7 +22632,6 @@ func (s IoK8sAPICoreV1Event) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Event = [17]string{
@@ -22031,6 +22881,12 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EventList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -22058,7 +22914,6 @@ func (s IoK8sAPICoreV1EventList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EventList = [4]string{
@@ -22171,6 +23026,12 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EventSeries) encodeFields(e *jx.Encoder) {
 	{
 		if s.Count.Set {
 			e.FieldStart("count")
@@ -22183,7 +23044,6 @@ func (s IoK8sAPICoreV1EventSeries) Encode(e *jx.Encoder) {
 			s.LastObservedTime.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EventSeries = [2]string{
@@ -22233,6 +23093,12 @@ func (s *IoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1EventSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Component.Set {
 			e.FieldStart("component")
@@ -22245,7 +23111,6 @@ func (s IoK8sAPICoreV1EventSource) Encode(e *jx.Encoder) {
 			s.Host.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1EventSource = [2]string{
@@ -22295,6 +23160,12 @@ func (s *IoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ExecAction) encodeFields(e *jx.Encoder) {
 	{
 		if s.Command != nil {
 			e.FieldStart("command")
@@ -22305,7 +23176,6 @@ func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ExecAction = [1]string{
@@ -22353,6 +23223,12 @@ func (s *IoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1FCVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -22391,7 +23267,6 @@ func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1FCVolumeSource = [5]string{
@@ -22492,6 +23367,12 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("driver")
@@ -22521,7 +23402,6 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 			s.SecretRef.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1FlexPersistentVolumeSource = [5]string{
@@ -22639,12 +23519,17 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1FlexPersistentVolumeSourceOptions = [0]string{}
@@ -22683,6 +23568,12 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1FlexVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("driver")
@@ -22712,7 +23603,6 @@ func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 			s.SecretRef.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1FlexVolumeSource = [5]string{
@@ -22830,12 +23720,17 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1FlexVolumeSourceOptions) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1FlexVolumeSourceOptions = [0]string{}
@@ -22874,6 +23769,12 @@ func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1FlockerVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DatasetName.Set {
 			e.FieldStart("datasetName")
@@ -22886,7 +23787,6 @@ func (s IoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Encoder) {
 			s.DatasetUUID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1FlockerVolumeSource = [2]string{
@@ -22936,6 +23836,12 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -22959,7 +23865,6 @@ func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 			s.ReadOnly.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1GCEPersistentDiskVolumeSource = [4]string{
@@ -23066,6 +23971,12 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1GitRepoVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Directory.Set {
 			e.FieldStart("directory")
@@ -23083,7 +23994,6 @@ func (s IoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Encoder) {
 			s.Revision.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1GitRepoVolumeSource = [3]string{
@@ -23179,6 +24089,12 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("endpoints")
@@ -23201,7 +24117,6 @@ func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Encoder) {
 			s.ReadOnly.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1GlusterfsPersistentVolumeSource = [4]string{
@@ -23310,6 +24225,12 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1GlusterfsVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("endpoints")
@@ -23326,7 +24247,6 @@ func (s IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 			s.ReadOnly.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1GlusterfsVolumeSource = [3]string{
@@ -23424,6 +24344,12 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1HTTPGetAction) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
 			e.FieldStart("host")
@@ -23457,7 +24383,6 @@ func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Encoder) {
 			s.Scheme.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1HTTPGetAction = [5]string{
@@ -23580,6 +24505,12 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1HTTPHeader) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -23590,7 +24521,6 @@ func (s IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Encoder) {
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1HTTPHeader = [2]string{
@@ -23677,6 +24607,12 @@ func (s *IoK8sAPICoreV1HTTPHeader) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Handler) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Handler) encodeFields(e *jx.Encoder) {
 	{
 		if s.Exec.Set {
 			e.FieldStart("exec")
@@ -23695,7 +24631,6 @@ func (s IoK8sAPICoreV1Handler) Encode(e *jx.Encoder) {
 			s.TcpSocket.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Handler = [3]string{
@@ -23756,6 +24691,12 @@ func (s *IoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1HostAlias) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hostnames != nil {
 			e.FieldStart("hostnames")
@@ -23772,7 +24713,6 @@ func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Encoder) {
 			s.IP.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1HostAlias = [2]string{
@@ -23831,6 +24771,12 @@ func (s *IoK8sAPICoreV1HostAlias) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1HostPathVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("path")
@@ -23842,7 +24788,6 @@ func (s IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1HostPathVolumeSource = [2]string{
@@ -23927,6 +24872,12 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChapAuthDiscovery.Set {
 			e.FieldStart("chapAuthDiscovery")
@@ -23994,7 +24945,6 @@ func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("targetPortal")
 		e.Str(s.TargetPortal)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ISCSIPersistentVolumeSource = [11]string{
@@ -24192,6 +25142,12 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChapAuthDiscovery.Set {
 			e.FieldStart("chapAuthDiscovery")
@@ -24259,7 +25215,6 @@ func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("targetPortal")
 		e.Str(s.TargetPortal)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ISCSIVolumeSource = [11]string{
@@ -24457,6 +25412,12 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1KeyToPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1KeyToPath) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -24473,7 +25434,6 @@ func (s IoK8sAPICoreV1KeyToPath) Encode(e *jx.Encoder) {
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1KeyToPath = [3]string{
@@ -24571,6 +25531,12 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Lifecycle) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Lifecycle) encodeFields(e *jx.Encoder) {
 	{
 		if s.PostStart.Set {
 			e.FieldStart("postStart")
@@ -24583,7 +25549,6 @@ func (s IoK8sAPICoreV1Lifecycle) Encode(e *jx.Encoder) {
 			s.PreStop.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Lifecycle = [2]string{
@@ -24633,6 +25598,12 @@ func (s *IoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRange) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -24657,7 +25628,6 @@ func (s IoK8sAPICoreV1LimitRange) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRange = [4]string{
@@ -24729,6 +25699,12 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Default.Set {
 			e.FieldStart("default")
@@ -24764,7 +25740,6 @@ func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItem = [6]string{
@@ -24893,12 +25868,17 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemDefault) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemDefault = [0]string{}
@@ -24935,12 +25915,17 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemDefaultRequest = [0]string{}
@@ -24977,12 +25962,17 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMax) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMax = [0]string{}
@@ -25019,12 +26009,17 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio = [0]string{}
@@ -25061,12 +26056,17 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMin) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMin = [0]string{}
@@ -25103,6 +26103,12 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -25130,7 +26136,6 @@ func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeList = [4]string{
@@ -25243,6 +26248,12 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeSpec) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("limits")
@@ -25252,7 +26263,6 @@ func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeSpec = [1]string{
@@ -25332,6 +26342,12 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LoadBalancerIngress) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hostname.Set {
 			e.FieldStart("hostname")
@@ -25354,7 +26370,6 @@ func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LoadBalancerIngress = [3]string{
@@ -25422,6 +26437,12 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LoadBalancerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ingress != nil {
 			e.FieldStart("ingress")
@@ -25432,7 +26453,6 @@ func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LoadBalancerStatus = [1]string{
@@ -25478,13 +26498,18 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LocalObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
 			s.Name.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LocalObjectReference = [1]string{
@@ -25523,6 +26548,12 @@ func (s *IoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1LocalVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -25534,7 +26565,6 @@ func (s IoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1LocalVolumeSource = [2]string{
@@ -25619,6 +26649,12 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NFSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("path")
@@ -25635,7 +26671,6 @@ func (s IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("server")
 		e.Str(s.Server)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NFSVolumeSource = [3]string{
@@ -25733,6 +26768,12 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Namespace) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Namespace) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -25763,7 +26804,6 @@ func (s IoK8sAPICoreV1Namespace) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Namespace = [5]string{
@@ -25846,6 +26886,12 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NamespaceCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -25874,7 +26920,6 @@ func (s IoK8sAPICoreV1NamespaceCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NamespaceCondition = [5]string{
@@ -25994,6 +27039,12 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NamespaceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -26021,7 +27072,6 @@ func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NamespaceList = [4]string{
@@ -26134,6 +27184,12 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NamespaceSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Finalizers != nil {
 			e.FieldStart("finalizers")
@@ -26144,7 +27200,6 @@ func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NamespaceSpec = [1]string{
@@ -26192,6 +27247,12 @@ func (s *IoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NamespaceStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -26208,7 +27269,6 @@ func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Encoder) {
 			s.Phase.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NamespaceStatus = [2]string{
@@ -26265,6 +27325,12 @@ func (s *IoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Node) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Node) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -26295,7 +27361,6 @@ func (s IoK8sAPICoreV1Node) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Node = [5]string{
@@ -26378,6 +27443,12 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeAddress) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("address")
@@ -26388,7 +27459,6 @@ func (s IoK8sAPICoreV1NodeAddress) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeAddress = [2]string{
@@ -26475,6 +27545,12 @@ func (s *IoK8sAPICoreV1NodeAddress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
 			e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
@@ -26491,7 +27567,6 @@ func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Encoder) {
 			s.RequiredDuringSchedulingIgnoredDuringExecution.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeAffinity = [2]string{
@@ -26548,6 +27623,12 @@ func (s *IoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastHeartbeatTime.Set {
 			e.FieldStart("lastHeartbeatTime")
@@ -26582,7 +27663,6 @@ func (s IoK8sAPICoreV1NodeCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeCondition = [6]string{
@@ -26713,13 +27793,18 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeConfigSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMap.Set {
 			e.FieldStart("configMap")
 			s.ConfigMap.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeConfigSource = [1]string{
@@ -26758,6 +27843,12 @@ func (s *IoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeConfigStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active.Set {
 			e.FieldStart("active")
@@ -26782,7 +27873,6 @@ func (s IoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Encoder) {
 			s.LastKnownGood.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeConfigStatus = [4]string{
@@ -26854,13 +27944,18 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeDaemonEndpoints) encodeFields(e *jx.Encoder) {
 	{
 		if s.KubeletEndpoint.Set {
 			e.FieldStart("kubeletEndpoint")
 			s.KubeletEndpoint.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeDaemonEndpoints = [1]string{
@@ -26899,6 +27994,12 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -26926,7 +28027,6 @@ func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeList = [4]string{
@@ -27039,6 +28139,12 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeSelector) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("nodeSelectorTerms")
@@ -27048,7 +28154,6 @@ func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeSelector = [1]string{
@@ -27128,6 +28233,12 @@ func (s *IoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -27148,7 +28259,6 @@ func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeSelectorRequirement = [3]string{
@@ -27255,6 +28365,12 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeSelectorTerm) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchExpressions != nil {
 			e.FieldStart("matchExpressions")
@@ -27275,7 +28391,6 @@ func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeSelectorTerm = [2]string{
@@ -27339,6 +28454,12 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigSource.Set {
 			e.FieldStart("configSource")
@@ -27389,7 +28510,6 @@ func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Encoder) {
 			s.Unschedulable.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeSpec = [7]string{
@@ -27510,6 +28630,12 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Addresses != nil {
 			e.FieldStart("addresses")
@@ -27596,7 +28722,6 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeStatus = [11]string{
@@ -27782,12 +28907,17 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeStatusAllocatable) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeStatusAllocatable = [0]string{}
@@ -27824,12 +28954,17 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeStatusCapacity) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeStatusCapacity = [0]string{}
@@ -27866,6 +29001,12 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1NodeSystemInfo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("architecture")
@@ -27916,7 +29057,6 @@ func (s IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Encoder) {
 		e.FieldStart("systemUUID")
 		e.Str(s.SystemUUID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1NodeSystemInfo = [10]string{
@@ -28108,6 +29248,12 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ObjectFieldSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -28119,7 +29265,6 @@ func (s IoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Encoder) {
 		e.FieldStart("fieldPath")
 		e.Str(s.FieldPath)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ObjectFieldSelector = [2]string{
@@ -28204,6 +29349,12 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -28246,7 +29397,6 @@ func (s IoK8sAPICoreV1ObjectReference) Encode(e *jx.Encoder) {
 			s.UID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ObjectReference = [7]string{
@@ -28351,6 +29501,12 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolume) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -28381,7 +29537,6 @@ func (s IoK8sAPICoreV1PersistentVolume) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolume = [5]string{
@@ -28464,6 +29619,12 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaim) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaim) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -28494,7 +29655,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaim) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaim = [5]string{
@@ -28577,6 +29737,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastProbeTime.Set {
 			e.FieldStart("lastProbeTime")
@@ -28611,7 +29777,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimCondition = [6]string{
@@ -28742,6 +29907,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -28769,7 +29940,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimList = [4]string{
@@ -28882,6 +30052,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AccessModes != nil {
 			e.FieldStart("accessModes")
@@ -28934,7 +30110,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Encoder) {
 			s.VolumeName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimSpec = [8]string{
@@ -29059,6 +30234,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AccessModes != nil {
 			e.FieldStart("accessModes")
@@ -29091,7 +30272,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Encoder) {
 			s.Phase.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimStatus = [4]string{
@@ -29179,12 +30359,17 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity = [0]string{}
@@ -29221,6 +30406,12 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
 			e.FieldStart("metadata")
@@ -29232,7 +30423,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Encoder) {
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimTemplate = [2]string{
@@ -29315,6 +30505,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("claimName")
@@ -29326,7 +30522,6 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Encoder) {
 			s.ReadOnly.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimVolumeSource = [2]string{
@@ -29411,6 +30606,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -29438,7 +30639,6 @@ func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeList = [4]string{
@@ -29551,6 +30751,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AccessModes != nil {
 			e.FieldStart("accessModes")
@@ -29739,7 +30945,6 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Encoder) {
 			s.VsphereVolume.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeSpec = [30]string{
@@ -30115,12 +31320,17 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeSpecCapacity = [0]string{}
@@ -30157,6 +31367,12 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -30175,7 +31391,6 @@ func (s IoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Encoder) {
 			s.Reason.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeStatus = [3]string{
@@ -30236,6 +31451,12 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -30247,7 +31468,6 @@ func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("pdID")
 		e.Str(s.PdID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PhotonPersistentDiskVolumeSource = [2]string{
@@ -30332,6 +31552,12 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Pod) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Pod) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -30362,7 +31588,6 @@ func (s IoK8sAPICoreV1Pod) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Pod = [5]string{
@@ -30445,6 +31670,12 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
 			e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
@@ -30465,7 +31696,6 @@ func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodAffinity = [2]string{
@@ -30529,6 +31759,12 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodAffinityTerm) encodeFields(e *jx.Encoder) {
 	{
 		if s.LabelSelector.Set {
 			e.FieldStart("labelSelector")
@@ -30556,7 +31792,6 @@ func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Encoder) {
 		e.FieldStart("topologyKey")
 		e.Str(s.TopologyKey)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodAffinityTerm = [4]string{
@@ -30672,6 +31907,12 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodAntiAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
 			e.FieldStart("preferredDuringSchedulingIgnoredDuringExecution")
@@ -30692,7 +31933,6 @@ func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodAntiAffinity = [2]string{
@@ -30756,6 +31996,12 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastProbeTime.Set {
 			e.FieldStart("lastProbeTime")
@@ -30790,7 +32036,6 @@ func (s IoK8sAPICoreV1PodCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodCondition = [6]string{
@@ -30921,6 +32166,12 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodDNSConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.Nameservers != nil {
 			e.FieldStart("nameservers")
@@ -30951,7 +32202,6 @@ func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodDNSConfig = [3]string{
@@ -31037,6 +32287,12 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfigOption) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodDNSConfigOption) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -31049,7 +32305,6 @@ func (s IoK8sAPICoreV1PodDNSConfigOption) Encode(e *jx.Encoder) {
 			s.Value.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodDNSConfigOption = [2]string{
@@ -31099,13 +32354,18 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodIP) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodIP) encodeFields(e *jx.Encoder) {
 	{
 		if s.IP.Set {
 			e.FieldStart("ip")
 			s.IP.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodIP = [1]string{
@@ -31144,6 +32404,12 @@ func (s *IoK8sAPICoreV1PodIP) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -31171,7 +32437,6 @@ func (s IoK8sAPICoreV1PodList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodList = [4]string{
@@ -31284,12 +32549,17 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodReadinessGate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodReadinessGate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("conditionType")
 		e.Str(s.ConditionType)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodReadinessGate = [1]string{
@@ -31363,6 +32633,12 @@ func (s *IoK8sAPICoreV1PodReadinessGate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodSecurityContext) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsGroup.Set {
 			e.FieldStart("fsGroup")
@@ -31431,7 +32707,6 @@ func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Encoder) {
 			s.WindowsOptions.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodSecurityContext = [10]string{
@@ -31585,6 +32860,12 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ActiveDeadlineSeconds.Set {
 			e.FieldStart("activeDeadlineSeconds")
@@ -31830,7 +33111,6 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodSpec = [35]string{
@@ -32344,12 +33624,17 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodSpecNodeSelector) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodSpecNodeSelector = [0]string{}
@@ -32388,12 +33673,17 @@ func (s IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodSpecOverhead) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodSpecOverhead = [0]string{}
@@ -32430,6 +33720,12 @@ func (s IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -32528,7 +33824,6 @@ func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Encoder) {
 			s.StartTime.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodStatus = [13]string{
@@ -32734,6 +34029,12 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodTemplate) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -32758,7 +34059,6 @@ func (s IoK8sAPICoreV1PodTemplate) Encode(e *jx.Encoder) {
 			s.Template.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodTemplate = [4]string{
@@ -32830,6 +34130,12 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodTemplateList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -32857,7 +34163,6 @@ func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodTemplateList = [4]string{
@@ -32970,6 +34275,12 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PodTemplateSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
 			e.FieldStart("metadata")
@@ -32982,7 +34293,6 @@ func (s IoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PodTemplateSpec = [2]string{
@@ -33032,6 +34342,12 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PortStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PortStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Error.Set {
 			e.FieldStart("error")
@@ -33048,7 +34364,6 @@ func (s IoK8sAPICoreV1PortStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("protocol")
 		e.Str(s.Protocol)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PortStatus = [3]string{
@@ -33146,6 +34461,12 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PortworxVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -33163,7 +34484,6 @@ func (s IoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("volumeID")
 		e.Str(s.VolumeID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PortworxVolumeSource = [3]string{
@@ -33259,6 +34579,12 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1PreferredSchedulingTerm) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("preference")
@@ -33269,7 +34595,6 @@ func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Encoder) {
 		e.FieldStart("weight")
 		e.Int32(s.Weight)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1PreferredSchedulingTerm = [2]string{
@@ -33354,6 +34679,12 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Probe) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Probe) encodeFields(e *jx.Encoder) {
 	{
 		if s.Exec.Set {
 			e.FieldStart("exec")
@@ -33408,7 +34739,6 @@ func (s IoK8sAPICoreV1Probe) Encode(e *jx.Encoder) {
 			s.TimeoutSeconds.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Probe = [9]string{
@@ -33535,6 +34865,12 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ProjectedVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
 			e.FieldStart("defaultMode")
@@ -33551,7 +34887,6 @@ func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ProjectedVolumeSource = [2]string{
@@ -33608,6 +34943,12 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Group.Set {
 			e.FieldStart("group")
@@ -33642,7 +34983,6 @@ func (s IoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("volume")
 		e.Str(s.Volume)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1QuobyteVolumeSource = [6]string{
@@ -33773,6 +35113,12 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -33823,7 +35169,6 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Encoder) {
 			s.User.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1RBDPersistentVolumeSource = [8]string{
@@ -33984,6 +35329,12 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1RBDVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -34034,7 +35385,6 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Encoder) {
 			s.User.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1RBDVolumeSource = [8]string{
@@ -34195,6 +35545,12 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationController) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ReplicationController) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -34225,7 +35581,6 @@ func (s IoK8sAPICoreV1ReplicationController) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ReplicationController = [5]string{
@@ -34308,6 +35663,12 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -34336,7 +35697,6 @@ func (s IoK8sAPICoreV1ReplicationControllerCondition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ReplicationControllerCondition = [5]string{
@@ -34456,6 +35816,12 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -34483,7 +35849,6 @@ func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ReplicationControllerList = [4]string{
@@ -34596,6 +35961,12 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
 			e.FieldStart("minReadySeconds")
@@ -34620,7 +35991,6 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Encoder) {
 			s.Template.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ReplicationControllerSpec = [4]string{
@@ -34692,12 +36062,17 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ReplicationControllerSpecSelector = [0]string{}
@@ -34736,6 +36111,12 @@ func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AvailableReplicas.Set {
 			e.FieldStart("availableReplicas")
@@ -34775,7 +36156,6 @@ func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Encoder) {
 		e.FieldStart("replicas")
 		e.Int32(s.Replicas)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ReplicationControllerStatus = [6]string{
@@ -34911,6 +36291,12 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceFieldSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerName.Set {
 			e.FieldStart("containerName")
@@ -34928,7 +36314,6 @@ func (s IoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Encoder) {
 		e.FieldStart("resource")
 		e.Str(s.Resource)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceFieldSelector = [3]string{
@@ -35024,6 +36409,12 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuota) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuota) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -35054,7 +36445,6 @@ func (s IoK8sAPICoreV1ResourceQuota) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuota = [5]string{
@@ -35137,6 +36527,12 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -35164,7 +36560,6 @@ func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaList = [4]string{
@@ -35277,6 +36672,12 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hard.Set {
 			e.FieldStart("hard")
@@ -35299,7 +36700,6 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaSpec = [3]string{
@@ -35369,12 +36769,17 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaSpecHard) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaSpecHard = [0]string{}
@@ -35411,6 +36816,12 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hard.Set {
 			e.FieldStart("hard")
@@ -35423,7 +36834,6 @@ func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Encoder) {
 			s.Used.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaStatus = [2]string{
@@ -35473,12 +36883,17 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatusHard) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaStatusHard = [0]string{}
@@ -35515,12 +36930,17 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaStatusUsed = [0]string{}
@@ -35557,6 +36977,12 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirements) encodeFields(e *jx.Encoder) {
 	{
 		if s.Limits.Set {
 			e.FieldStart("limits")
@@ -35569,7 +36995,6 @@ func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Encoder) {
 			s.Requests.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceRequirements = [2]string{
@@ -35619,12 +37044,17 @@ func (s *IoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirementsLimits) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceRequirementsLimits = [0]string{}
@@ -35661,12 +37091,17 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirementsRequests) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ResourceRequirementsRequests = [0]string{}
@@ -35703,6 +37138,12 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SELinuxOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Level.Set {
 			e.FieldStart("level")
@@ -35727,7 +37168,6 @@ func (s IoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Encoder) {
 			s.User.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SELinuxOptions = [4]string{
@@ -35799,6 +37239,12 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -35856,7 +37302,6 @@ func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Encoder) {
 			s.VolumeName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ScaleIOPersistentVolumeSource = [10]string{
@@ -36032,6 +37477,12 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -36089,7 +37540,6 @@ func (s IoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Encoder) {
 			s.VolumeName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ScaleIOVolumeSource = [10]string{
@@ -36265,6 +37715,12 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ScopeSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchExpressions != nil {
 			e.FieldStart("matchExpressions")
@@ -36275,7 +37731,6 @@ func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ScopeSelector = [1]string{
@@ -36321,6 +37776,12 @@ func (s *IoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("operator")
@@ -36341,7 +37802,6 @@ func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ScopedResourceSelectorRequirement = [3]string{
@@ -36448,6 +37908,12 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SeccompProfile) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SeccompProfile) encodeFields(e *jx.Encoder) {
 	{
 		if s.LocalhostProfile.Set {
 			e.FieldStart("localhostProfile")
@@ -36459,7 +37925,6 @@ func (s IoK8sAPICoreV1SeccompProfile) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SeccompProfile = [2]string{
@@ -36544,6 +38009,12 @@ func (s *IoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Secret) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Secret) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -36586,7 +38057,6 @@ func (s IoK8sAPICoreV1Secret) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Secret = [7]string{
@@ -36691,12 +38161,17 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretData) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretData) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Base64(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretData = [0]string{}
@@ -36735,6 +38210,12 @@ func (s IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretEnvSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -36747,7 +38228,6 @@ func (s IoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Encoder) {
 			s.Optional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretEnvSource = [2]string{
@@ -36797,6 +38277,12 @@ func (s *IoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretKeySelector) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -36814,7 +38300,6 @@ func (s IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Encoder) {
 			s.Optional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretKeySelector = [3]string{
@@ -36910,6 +38395,12 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -36937,7 +38428,6 @@ func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretList = [4]string{
@@ -37050,6 +38540,12 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Items != nil {
 			e.FieldStart("items")
@@ -37072,7 +38568,6 @@ func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Encoder) {
 			s.Optional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretProjection = [3]string{
@@ -37140,6 +38635,12 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -37152,7 +38653,6 @@ func (s IoK8sAPICoreV1SecretReference) Encode(e *jx.Encoder) {
 			s.Namespace.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretReference = [2]string{
@@ -37202,12 +38702,17 @@ func (s *IoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretStringData) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretStringData) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretStringData = [0]string{}
@@ -37246,6 +38751,12 @@ func (s IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecretVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
 			e.FieldStart("defaultMode")
@@ -37274,7 +38785,6 @@ func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Encoder) {
 			s.SecretName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecretVolumeSource = [4]string{
@@ -37353,6 +38863,12 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecurityContext) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SecurityContext) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllowPrivilegeEscalation.Set {
 			e.FieldStart("allowPrivilegeEscalation")
@@ -37419,7 +38935,6 @@ func (s IoK8sAPICoreV1SecurityContext) Encode(e *jx.Encoder) {
 			s.WindowsOptions.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SecurityContext = [11]string{
@@ -37568,6 +39083,12 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Service) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Service) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -37598,7 +39119,6 @@ func (s IoK8sAPICoreV1Service) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Service = [5]string{
@@ -37681,6 +39201,12 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceAccount) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -37725,7 +39251,6 @@ func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServiceAccount = [6]string{
@@ -37833,6 +39358,12 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceAccountList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -37860,7 +39391,6 @@ func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServiceAccountList = [4]string{
@@ -37973,6 +39503,12 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceAccountTokenProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Audience.Set {
 			e.FieldStart("audience")
@@ -37990,7 +39526,6 @@ func (s IoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Encoder) {
 		e.FieldStart("path")
 		e.Str(s.Path)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServiceAccountTokenProjection = [3]string{
@@ -38086,6 +39621,12 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -38113,7 +39654,6 @@ func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServiceList = [4]string{
@@ -38226,6 +39766,12 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServicePort) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServicePort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
 			e.FieldStart("appProtocol")
@@ -38261,7 +39807,6 @@ func (s IoK8sAPICoreV1ServicePort) Encode(e *jx.Encoder) {
 			s.TargetPort.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServicePort = [6]string{
@@ -38390,6 +39935,12 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllocateLoadBalancerNodePorts.Set {
 			e.FieldStart("allocateLoadBalancerNodePorts")
@@ -38524,7 +40075,6 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServiceSpec = [19]string{
@@ -38804,12 +40354,17 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceSpecSelector) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServiceSpecSelector = [0]string{}
@@ -38848,6 +40403,12 @@ func (s IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1ServiceStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -38864,7 +40425,6 @@ func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Encoder) {
 			s.LoadBalancer.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1ServiceStatus = [2]string{
@@ -38921,13 +40481,18 @@ func (s *IoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1SessionAffinityConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.ClientIP.Set {
 			e.FieldStart("clientIP")
 			s.ClientIP.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1SessionAffinityConfig = [1]string{
@@ -38966,6 +40531,12 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -38996,7 +40567,6 @@ func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Encoder) {
 			s.VolumeNamespace.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1StorageOSPersistentVolumeSource = [5]string{
@@ -39079,6 +40649,12 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1StorageOSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -39109,7 +40685,6 @@ func (s IoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Encoder) {
 			s.VolumeNamespace.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1StorageOSVolumeSource = [5]string{
@@ -39192,6 +40767,12 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Sysctl) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Sysctl) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -39202,7 +40783,6 @@ func (s IoK8sAPICoreV1Sysctl) Encode(e *jx.Encoder) {
 		e.FieldStart("value")
 		e.Str(s.Value)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Sysctl = [2]string{
@@ -39289,6 +40869,12 @@ func (s *IoK8sAPICoreV1Sysctl) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1TCPSocketAction) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
 			e.FieldStart("host")
@@ -39300,7 +40886,6 @@ func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 		e.FieldStart("port")
 		s.Port.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1TCPSocketAction = [2]string{
@@ -39383,6 +40968,12 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Taint) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Taint) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("effect")
@@ -39405,7 +40996,6 @@ func (s IoK8sAPICoreV1Taint) Encode(e *jx.Encoder) {
 			s.Value.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Taint = [4]string{
@@ -39514,6 +41104,12 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Toleration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Toleration) encodeFields(e *jx.Encoder) {
 	{
 		if s.Effect.Set {
 			e.FieldStart("effect")
@@ -39544,7 +41140,6 @@ func (s IoK8sAPICoreV1Toleration) Encode(e *jx.Encoder) {
 			s.Value.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Toleration = [5]string{
@@ -39627,6 +41222,12 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -39641,7 +41242,6 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1TopologySelectorLabelRequirement = [2]string{
@@ -39736,6 +41336,12 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1TopologySelectorTerm) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchLabelExpressions != nil {
 			e.FieldStart("matchLabelExpressions")
@@ -39746,7 +41352,6 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1TopologySelectorTerm = [1]string{
@@ -39792,6 +41397,12 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySpreadConstraint) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1TopologySpreadConstraint) encodeFields(e *jx.Encoder) {
 	{
 		if s.LabelSelector.Set {
 			e.FieldStart("labelSelector")
@@ -39813,7 +41424,6 @@ func (s IoK8sAPICoreV1TopologySpreadConstraint) Encode(e *jx.Encoder) {
 		e.FieldStart("whenUnsatisfiable")
 		e.Str(s.WhenUnsatisfiable)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1TopologySpreadConstraint = [4]string{
@@ -39924,6 +41534,12 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1TypedLocalObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroup.Set {
 			e.FieldStart("apiGroup")
@@ -39940,7 +41556,6 @@ func (s IoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1TypedLocalObjectReference = [3]string{
@@ -40038,6 +41653,12 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Volume) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1Volume) encodeFields(e *jx.Encoder) {
 	{
 		if s.AwsElasticBlockStore.Set {
 			e.FieldStart("awsElasticBlockStore")
@@ -40217,7 +41838,6 @@ func (s IoK8sAPICoreV1Volume) Encode(e *jx.Encoder) {
 			s.VsphereVolume.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1Volume = [30]string{
@@ -40613,6 +42233,12 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1VolumeDevice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("devicePath")
@@ -40623,7 +42249,6 @@ func (s IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1VolumeDevice = [2]string{
@@ -40710,6 +42335,12 @@ func (s *IoK8sAPICoreV1VolumeDevice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeMount) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1VolumeMount) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("mountPath")
@@ -40744,7 +42375,6 @@ func (s IoK8sAPICoreV1VolumeMount) Encode(e *jx.Encoder) {
 			s.SubPathExpr.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1VolumeMount = [6]string{
@@ -40875,13 +42505,18 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1VolumeNodeAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.Required.Set {
 			e.FieldStart("required")
 			s.Required.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1VolumeNodeAffinity = [1]string{
@@ -40920,6 +42555,12 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1VolumeProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMap.Set {
 			e.FieldStart("configMap")
@@ -40944,7 +42585,6 @@ func (s IoK8sAPICoreV1VolumeProjection) Encode(e *jx.Encoder) {
 			s.ServiceAccountToken.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1VolumeProjection = [4]string{
@@ -41016,6 +42656,12 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
 			e.FieldStart("fsType")
@@ -41039,7 +42685,6 @@ func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Encoder) {
 		e.FieldStart("volumePath")
 		e.Str(s.VolumePath)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1VsphereVirtualDiskVolumeSource = [4]string{
@@ -41146,6 +42791,12 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1WeightedPodAffinityTerm) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("podAffinityTerm")
@@ -41156,7 +42807,6 @@ func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Encoder) {
 		e.FieldStart("weight")
 		e.Int32(s.Weight)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1WeightedPodAffinityTerm = [2]string{
@@ -41241,6 +42891,12 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPICoreV1WindowsSecurityContextOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.GmsaCredentialSpec.Set {
 			e.FieldStart("gmsaCredentialSpec")
@@ -41265,7 +42921,6 @@ func (s IoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Encoder) {
 			s.RunAsUserName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPICoreV1WindowsSecurityContextOptions = [4]string{
@@ -41337,6 +42992,12 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1Endpoint) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("addresses")
@@ -41388,7 +43049,6 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Encoder) {
 			s.Zone.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1Endpoint = [8]string{
@@ -41547,6 +43207,12 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointConditions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ready.Set {
 			e.FieldStart("ready")
@@ -41565,7 +43231,6 @@ func (s IoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Encoder) {
 			s.Terminating.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointConditions = [3]string{
@@ -41626,12 +43291,17 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointDeprecatedTopology = [0]string{}
@@ -41670,6 +43340,12 @@ func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointHints) encodeFields(e *jx.Encoder) {
 	{
 		if s.ForZones != nil {
 			e.FieldStart("forZones")
@@ -41680,7 +43356,6 @@ func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointHints = [1]string{
@@ -41726,6 +43401,12 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
 			e.FieldStart("appProtocol")
@@ -41750,7 +43431,6 @@ func (s IoK8sAPIDiscoveryV1EndpointPort) Encode(e *jx.Encoder) {
 			s.Protocol.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointPort = [4]string{
@@ -41822,6 +43502,12 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("addressType")
@@ -41864,7 +43550,6 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointSlice = [6]string{
@@ -42008,6 +43693,12 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -42035,7 +43726,6 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointSliceList = [4]string{
@@ -42148,12 +43838,17 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1ForZone) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1ForZone) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1ForZone = [1]string{
@@ -42227,6 +43922,12 @@ func (s *IoK8sAPIDiscoveryV1ForZone) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("addresses")
@@ -42272,7 +43973,6 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Encoder) {
 			s.Topology.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1Endpoint = [7]string{
@@ -42420,6 +44120,12 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ready.Set {
 			e.FieldStart("ready")
@@ -42438,7 +44144,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Encoder) {
 			s.Terminating.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointConditions = [3]string{
@@ -42499,6 +44204,12 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointHints) encodeFields(e *jx.Encoder) {
 	{
 		if s.ForZones != nil {
 			e.FieldStart("forZones")
@@ -42509,7 +44220,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointHints = [1]string{
@@ -42555,6 +44265,12 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
 			e.FieldStart("appProtocol")
@@ -42579,7 +44295,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointPort) Encode(e *jx.Encoder) {
 			s.Protocol.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointPort = [4]string{
@@ -42651,6 +44366,12 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("addressType")
@@ -42693,7 +44414,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointSlice = [6]string{
@@ -42837,6 +44557,12 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -42864,7 +44590,6 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointSliceList = [4]string{
@@ -42977,12 +44702,17 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointTopology = [0]string{}
@@ -43021,12 +44751,17 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1ForZone) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1ForZone) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1ForZone = [1]string{
@@ -43100,6 +44835,12 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIEventsV1Event) encodeFields(e *jx.Encoder) {
 	{
 		if s.Action.Set {
 			e.FieldStart("action")
@@ -43201,7 +44942,6 @@ func (s IoK8sAPIEventsV1Event) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIEventsV1Event = [17]string{
@@ -43451,6 +45191,12 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIEventsV1EventList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -43478,7 +45224,6 @@ func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIEventsV1EventList = [4]string{
@@ -43591,6 +45336,12 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIEventsV1EventSeries) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("count")
@@ -43601,7 +45352,6 @@ func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 		e.FieldStart("lastObservedTime")
 		s.LastObservedTime.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIEventsV1EventSeries = [2]string{
@@ -43686,6 +45436,12 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIEventsV1beta1Event) encodeFields(e *jx.Encoder) {
 	{
 		if s.Action.Set {
 			e.FieldStart("action")
@@ -43787,7 +45543,6 @@ func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIEventsV1beta1Event = [17]string{
@@ -44037,6 +45792,12 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIEventsV1beta1EventList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -44064,7 +45825,6 @@ func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIEventsV1beta1EventList = [4]string{
@@ -44177,6 +45937,12 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIEventsV1beta1EventSeries) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("count")
@@ -44187,7 +45953,6 @@ func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 		e.FieldStart("lastObservedTime")
 		s.LastObservedTime.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIEventsV1beta1EventSeries = [2]string{
@@ -44272,12 +46037,17 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod = [1]string{
@@ -44351,6 +46121,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -44381,7 +46157,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1FlowSchema = [5]string{
@@ -44464,6 +46239,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -44494,7 +46275,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1FlowSchemaCondition = [5]string{
@@ -44577,6 +46357,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -44604,7 +46390,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1FlowSchemaList = [4]string{
@@ -44717,6 +46502,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.DistinguisherMethod.Set {
 			e.FieldStart("distinguisherMethod")
@@ -44744,7 +46535,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec = [4]string{
@@ -44856,6 +46646,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -44866,7 +46662,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus = [1]string{
@@ -44912,12 +46707,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1GroupSubject = [1]string{
@@ -44991,6 +46791,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) encodeFields(e *jx.Encoder) {
 	{
 		if s.Queuing.Set {
 			e.FieldStart("queuing")
@@ -45002,7 +46808,6 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1LimitResponse = [2]string{
@@ -45087,6 +46892,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.AssuredConcurrencyShares.Set {
 			e.FieldStart("assuredConcurrencyShares")
@@ -45099,7 +46910,6 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *j
 			s.LimitResponse.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration = [2]string{
@@ -45149,6 +46959,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("nonResourceURLs")
@@ -45167,7 +46983,6 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule = [2]string{
@@ -45270,6 +47085,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) encodeFields(e *jx.Encoder) {
 	{
 		if s.NonResourceRules != nil {
 			e.FieldStart("nonResourceRules")
@@ -45299,7 +47120,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Encoder)
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects = [3]string{
@@ -45415,6 +47235,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -45445,7 +47271,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Encode(e *jx.Encod
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration = [5]string{
@@ -45528,6 +47353,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -45558,7 +47389,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Encode(e 
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition = [5]string{
@@ -45641,6 +47471,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -45668,7 +47504,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.E
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList = [4]string{
@@ -45781,12 +47616,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference = [1]string{
@@ -45860,6 +47700,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Limited.Set {
 			e.FieldStart("limited")
@@ -45871,7 +47717,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.E
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec = [2]string{
@@ -45956,6 +47801,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -45966,7 +47817,6 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus = [1]string{
@@ -46012,6 +47862,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.HandSize.Set {
 			e.FieldStart("handSize")
@@ -46030,7 +47886,6 @@ func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Encoder) {
 			s.Queues.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1QueuingConfiguration = [3]string{
@@ -46091,6 +47946,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("apiGroups")
@@ -46134,7 +47995,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1ResourcePolicyRule = [5]string{
@@ -46289,6 +48149,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -46299,7 +48165,6 @@ func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Encoder) {
 		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject = [2]string{
@@ -46386,6 +48251,12 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1Subject) encodeFields(e *jx.Encoder) {
 	{
 		if s.Group.Set {
 			e.FieldStart("group")
@@ -46409,7 +48280,6 @@ func (s IoK8sAPIFlowcontrolV1beta1Subject) Encode(e *jx.Encoder) {
 			s.User.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1Subject = [4]string{
@@ -46516,12 +48386,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1UserSubject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta1UserSubject = [1]string{
@@ -46595,12 +48470,17 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod = [1]string{
@@ -46674,6 +48554,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -46704,7 +48590,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2FlowSchema = [5]string{
@@ -46787,6 +48672,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -46817,7 +48708,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Encode(e *jx.Encoder) {
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2FlowSchemaCondition = [5]string{
@@ -46900,6 +48790,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -46927,7 +48823,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2FlowSchemaList = [4]string{
@@ -47040,6 +48935,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.DistinguisherMethod.Set {
 			e.FieldStart("distinguisherMethod")
@@ -47067,7 +48968,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec = [4]string{
@@ -47179,6 +49079,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -47189,7 +49095,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus = [1]string{
@@ -47235,12 +49140,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2GroupSubject = [1]string{
@@ -47314,6 +49224,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) encodeFields(e *jx.Encoder) {
 	{
 		if s.Queuing.Set {
 			e.FieldStart("queuing")
@@ -47325,7 +49241,6 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2LimitResponse = [2]string{
@@ -47410,6 +49325,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.AssuredConcurrencyShares.Set {
 			e.FieldStart("assuredConcurrencyShares")
@@ -47422,7 +49343,6 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *j
 			s.LimitResponse.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration = [2]string{
@@ -47472,6 +49392,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("nonResourceURLs")
@@ -47490,7 +49416,6 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule = [2]string{
@@ -47593,6 +49518,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) encodeFields(e *jx.Encoder) {
 	{
 		if s.NonResourceRules != nil {
 			e.FieldStart("nonResourceRules")
@@ -47622,7 +49553,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Encoder)
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects = [3]string{
@@ -47738,6 +49668,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -47768,7 +49704,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Encode(e *jx.Encod
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration = [5]string{
@@ -47851,6 +49786,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -47881,7 +49822,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Encode(e 
 			s.Type.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition = [5]string{
@@ -47964,6 +49904,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -47991,7 +49937,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.E
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList = [4]string{
@@ -48104,12 +50049,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference = [1]string{
@@ -48183,6 +50133,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Decode(d
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Limited.Set {
 			e.FieldStart("limited")
@@ -48194,7 +50150,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.E
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec = [2]string{
@@ -48279,6 +50234,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -48289,7 +50250,6 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus = [1]string{
@@ -48335,6 +50295,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.HandSize.Set {
 			e.FieldStart("handSize")
@@ -48353,7 +50319,6 @@ func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Encoder) {
 			s.Queues.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2QueuingConfiguration = [3]string{
@@ -48414,6 +50379,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("apiGroups")
@@ -48457,7 +50428,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2ResourcePolicyRule = [5]string{
@@ -48612,6 +50582,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -48622,7 +50598,6 @@ func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) {
 		e.FieldStart("namespace")
 		e.Str(s.Namespace)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject = [2]string{
@@ -48709,6 +50684,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decoder) 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2Subject) encodeFields(e *jx.Encoder) {
 	{
 		if s.Group.Set {
 			e.FieldStart("group")
@@ -48732,7 +50713,6 @@ func (s IoK8sAPIFlowcontrolV1beta2Subject) Encode(e *jx.Encoder) {
 			s.User.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2Subject = [4]string{
@@ -48839,12 +50819,17 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2UserSubject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIFlowcontrolV1beta2UserSubject = [1]string{
@@ -48918,6 +50903,12 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1HTTPIngressPath) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("backend")
@@ -48934,7 +50925,6 @@ func (s IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Encoder) {
 		e.FieldStart("pathType")
 		e.Str(s.PathType)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1HTTPIngressPath = [3]string{
@@ -49030,6 +51020,12 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("paths")
@@ -49039,7 +51035,6 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1HTTPIngressRuleValue = [1]string{
@@ -49119,6 +51114,12 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IPBlock) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("cidr")
@@ -49134,7 +51135,6 @@ func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IPBlock = [2]string{
@@ -49228,6 +51228,12 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1Ingress) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1Ingress) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -49258,7 +51264,6 @@ func (s IoK8sAPINetworkingV1Ingress) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1Ingress = [5]string{
@@ -49341,6 +51346,12 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressBackend) encodeFields(e *jx.Encoder) {
 	{
 		if s.Resource.Set {
 			e.FieldStart("resource")
@@ -49353,7 +51364,6 @@ func (s IoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Encoder) {
 			s.Service.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressBackend = [2]string{
@@ -49403,6 +51413,12 @@ func (s *IoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -49427,7 +51443,6 @@ func (s IoK8sAPINetworkingV1IngressClass) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressClass = [4]string{
@@ -49499,6 +51514,12 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -49526,7 +51547,6 @@ func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressClassList = [4]string{
@@ -49639,6 +51659,12 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroup.Set {
 			e.FieldStart("apiGroup")
@@ -49667,7 +51693,6 @@ func (s IoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Encode
 			s.Scope.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressClassParametersReference = [5]string{
@@ -49787,6 +51812,12 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClassSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Controller.Set {
 			e.FieldStart("controller")
@@ -49799,7 +51830,6 @@ func (s IoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Encoder) {
 			s.Parameters.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressClassSpec = [2]string{
@@ -49849,6 +51879,12 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -49876,7 +51912,6 @@ func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressList = [4]string{
@@ -49989,6 +52024,12 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
 			e.FieldStart("host")
@@ -50001,7 +52042,6 @@ func (s IoK8sAPINetworkingV1IngressRule) Encode(e *jx.Encoder) {
 			s.HTTP.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressRule = [2]string{
@@ -50051,6 +52091,12 @@ func (s *IoK8sAPINetworkingV1IngressRule) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressServiceBackend) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -50062,7 +52108,6 @@ func (s IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Encoder) {
 			s.Port.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressServiceBackend = [2]string{
@@ -50147,6 +52192,12 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultBackend.Set {
 			e.FieldStart("defaultBackend")
@@ -50179,7 +52230,6 @@ func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressSpec = [4]string{
@@ -50265,13 +52315,18 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.LoadBalancer.Set {
 			e.FieldStart("loadBalancer")
 			s.LoadBalancer.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressStatus = [1]string{
@@ -50310,6 +52365,12 @@ func (s *IoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1IngressTLS) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hosts != nil {
 			e.FieldStart("hosts")
@@ -50326,7 +52387,6 @@ func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Encoder) {
 			s.SecretName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1IngressTLS = [2]string{
@@ -50385,6 +52445,12 @@ func (s *IoK8sAPINetworkingV1IngressTLS) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicy) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -50409,7 +52475,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicy) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1NetworkPolicy = [4]string{
@@ -50481,6 +52546,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ports != nil {
 			e.FieldStart("ports")
@@ -50501,7 +52572,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1NetworkPolicyEgressRule = [2]string{
@@ -50565,6 +52635,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.From != nil {
 			e.FieldStart("from")
@@ -50585,7 +52661,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1NetworkPolicyIngressRule = [2]string{
@@ -50649,6 +52724,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -50676,7 +52757,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1NetworkPolicyList = [4]string{
@@ -50789,6 +52869,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPeer) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyPeer) encodeFields(e *jx.Encoder) {
 	{
 		if s.IpBlock.Set {
 			e.FieldStart("ipBlock")
@@ -50807,7 +52893,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPeer) Encode(e *jx.Encoder) {
 			s.PodSelector.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1NetworkPolicyPeer = [3]string{
@@ -50868,6 +52953,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.EndPort.Set {
 			e.FieldStart("endPort")
@@ -50886,7 +52977,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPort) Encode(e *jx.Encoder) {
 			s.Protocol.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1NetworkPolicyPort = [3]string{
@@ -50947,6 +53037,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicySpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Egress != nil {
 			e.FieldStart("egress")
@@ -50982,7 +53078,6 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1NetworkPolicySpec = [4]string{
@@ -51110,6 +53205,12 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINetworkingV1ServiceBackendPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -51122,7 +53223,6 @@ func (s IoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Encoder) {
 			s.Number.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINetworkingV1ServiceBackendPort = [2]string{
@@ -51172,13 +53272,18 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1Overhead) encodeFields(e *jx.Encoder) {
 	{
 		if s.PodFixed.Set {
 			e.FieldStart("podFixed")
 			s.PodFixed.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1Overhead = [1]string{
@@ -51217,12 +53322,17 @@ func (s *IoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1OverheadPodFixed) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1OverheadPodFixed) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1OverheadPodFixed = [0]string{}
@@ -51259,6 +53369,12 @@ func (s IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1RuntimeClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -51294,7 +53410,6 @@ func (s IoK8sAPINodeV1RuntimeClass) Encode(e *jx.Encoder) {
 			s.Scheduling.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1RuntimeClass = [6]string{
@@ -51423,6 +53538,12 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1RuntimeClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -51450,7 +53571,6 @@ func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1RuntimeClassList = [4]string{
@@ -51563,6 +53683,12 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1Scheduling) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeSelector.Set {
 			e.FieldStart("nodeSelector")
@@ -51579,7 +53705,6 @@ func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1Scheduling = [2]string{
@@ -51636,12 +53761,17 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1SchedulingNodeSelector) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1SchedulingNodeSelector = [0]string{}
@@ -51680,13 +53810,18 @@ func (s IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1Overhead) encodeFields(e *jx.Encoder) {
 	{
 		if s.PodFixed.Set {
 			e.FieldStart("podFixed")
 			s.PodFixed.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1alpha1Overhead = [1]string{
@@ -51725,12 +53860,17 @@ func (s *IoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1OverheadPodFixed) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1alpha1OverheadPodFixed = [0]string{}
@@ -51767,6 +53907,12 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1RuntimeClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -51790,7 +53936,6 @@ func (s IoK8sAPINodeV1alpha1RuntimeClass) Encode(e *jx.Encoder) {
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1alpha1RuntimeClass = [4]string{
@@ -51895,6 +54040,12 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -51922,7 +54073,6 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1alpha1RuntimeClassList = [4]string{
@@ -52035,6 +54185,12 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Overhead.Set {
 			e.FieldStart("overhead")
@@ -52052,7 +54208,6 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) Encode(e *jx.Encoder) {
 			s.Scheduling.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1alpha1RuntimeClassSpec = [3]string{
@@ -52148,6 +54303,12 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1Scheduling) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeSelector.Set {
 			e.FieldStart("nodeSelector")
@@ -52164,7 +54325,6 @@ func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1alpha1Scheduling = [2]string{
@@ -52221,12 +54381,17 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1alpha1SchedulingNodeSelector = [0]string{}
@@ -52265,13 +54430,18 @@ func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1Overhead) encodeFields(e *jx.Encoder) {
 	{
 		if s.PodFixed.Set {
 			e.FieldStart("podFixed")
 			s.PodFixed.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1beta1Overhead = [1]string{
@@ -52310,12 +54480,17 @@ func (s *IoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1OverheadPodFixed) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1OverheadPodFixed) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1beta1OverheadPodFixed = [0]string{}
@@ -52352,6 +54527,12 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1RuntimeClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -52387,7 +54568,6 @@ func (s IoK8sAPINodeV1beta1RuntimeClass) Encode(e *jx.Encoder) {
 			s.Scheduling.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1beta1RuntimeClass = [6]string{
@@ -52516,6 +54696,12 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1RuntimeClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -52543,7 +54729,6 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1beta1RuntimeClassList = [4]string{
@@ -52656,6 +54841,12 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1Scheduling) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeSelector.Set {
 			e.FieldStart("nodeSelector")
@@ -52672,7 +54863,6 @@ func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1beta1Scheduling = [2]string{
@@ -52729,12 +54919,17 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPINodeV1beta1SchedulingNodeSelector = [0]string{}
@@ -52773,6 +54968,12 @@ func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -52803,7 +55004,6 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudget) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1PodDisruptionBudget = [5]string{
@@ -52886,6 +55086,12 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -52913,7 +55119,6 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1PodDisruptionBudgetList = [4]string{
@@ -53026,6 +55231,12 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxUnavailable.Set {
 			e.FieldStart("maxUnavailable")
@@ -53044,7 +55255,6 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 			s.Selector.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1PodDisruptionBudgetSpec = [3]string{
@@ -53105,6 +55315,12 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -53147,7 +55363,6 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 			s.ObservedGeneration.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1PodDisruptionBudgetStatus = [7]string{
@@ -53300,12 +55515,17 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods = [0]string{}
@@ -53342,12 +55562,17 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1AllowedCSIDriver = [1]string{
@@ -53421,12 +55646,17 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("driver")
 		e.Str(s.Driver)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1AllowedFlexVolume = [1]string{
@@ -53500,6 +55730,12 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedHostPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1AllowedHostPath) encodeFields(e *jx.Encoder) {
 	{
 		if s.PathPrefix.Set {
 			e.FieldStart("pathPrefix")
@@ -53512,7 +55748,6 @@ func (s IoK8sAPIPolicyV1beta1AllowedHostPath) Encode(e *jx.Encoder) {
 			s.ReadOnly.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1AllowedHostPath = [2]string{
@@ -53562,6 +55797,12 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
 			e.FieldStart("ranges")
@@ -53578,7 +55819,6 @@ func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Encoder) {
 			s.Rule.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1FSGroupStrategyOptions = [2]string{
@@ -53635,6 +55875,12 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1HostPortRange) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("max")
@@ -53645,7 +55891,6 @@ func (s IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Encoder) {
 		e.FieldStart("min")
 		e.Int32(s.Min)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1HostPortRange = [2]string{
@@ -53732,6 +55977,12 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1IDRange) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("max")
@@ -53742,7 +55993,6 @@ func (s IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Encoder) {
 		e.FieldStart("min")
 		e.Int64(s.Min)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1IDRange = [2]string{
@@ -53829,6 +56079,12 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -53859,7 +56115,6 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodDisruptionBudget = [5]string{
@@ -53942,6 +56197,12 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -53969,7 +56230,6 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodDisruptionBudgetList = [4]string{
@@ -54082,6 +56342,12 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxUnavailable.Set {
 			e.FieldStart("maxUnavailable")
@@ -54100,7 +56366,6 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 			s.Selector.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec = [3]string{
@@ -54161,6 +56426,12 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -54203,7 +56474,6 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 			s.ObservedGeneration.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus = [7]string{
@@ -54356,12 +56626,17 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods = [0]string{}
@@ -54398,6 +56673,12 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *j
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -54422,7 +56703,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Encode(e *jx.Encoder) {
 			s.Spec.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodSecurityPolicy = [4]string{
@@ -54494,6 +56774,12 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -54521,7 +56807,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodSecurityPolicyList = [4]string{
@@ -54634,6 +56919,12 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllowPrivilegeEscalation.Set {
 			e.FieldStart("allowPrivilegeEscalation")
@@ -54818,7 +57109,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodSecurityPolicySpec = [24]string{
@@ -55236,6 +57526,12 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
 			e.FieldStart("ranges")
@@ -55251,7 +57547,6 @@ func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Encoder) {
 		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions = [2]string{
@@ -55343,6 +57638,12 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
 			e.FieldStart("ranges")
@@ -55358,7 +57659,6 @@ func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Encoder) {
 		e.FieldStart("rule")
 		e.Str(s.Rule)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1RunAsUserStrategyOptions = [2]string{
@@ -55450,6 +57750,12 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("allowedRuntimeClassNames")
@@ -55465,7 +57771,6 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder) 
 			s.DefaultRuntimeClassName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions = [2]string{
@@ -55558,6 +57863,12 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("rule")
@@ -55569,7 +57880,6 @@ func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Encoder) {
 			s.SeLinuxOptions.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1SELinuxStrategyOptions = [2]string{
@@ -55654,6 +57964,12 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
 			e.FieldStart("ranges")
@@ -55670,7 +57986,6 @@ func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Enc
 			s.Rule.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions = [2]string{
@@ -55727,6 +58042,12 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1AggregationRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.ClusterRoleSelectors != nil {
 			e.FieldStart("clusterRoleSelectors")
@@ -55737,7 +58058,6 @@ func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1AggregationRule = [1]string{
@@ -55783,6 +58103,12 @@ func (s *IoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRole) encodeFields(e *jx.Encoder) {
 	{
 		if s.AggregationRule.Set {
 			e.FieldStart("aggregationRule")
@@ -55817,7 +58143,6 @@ func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1ClusterRole = [5]string{
@@ -55907,6 +58232,12 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRoleBinding) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -55940,7 +58271,6 @@ func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1ClusterRoleBinding = [5]string{
@@ -56063,6 +58393,12 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -56090,7 +58426,6 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1ClusterRoleBindingList = [4]string{
@@ -56203,6 +58538,12 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRoleList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -56230,7 +58571,6 @@ func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1ClusterRoleList = [4]string{
@@ -56343,6 +58683,12 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1PolicyRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroups != nil {
 			e.FieldStart("apiGroups")
@@ -56392,7 +58738,6 @@ func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1PolicyRule = [5]string{
@@ -56554,6 +58899,12 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1Role) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1Role) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -56582,7 +58933,6 @@ func (s IoK8sAPIRbacV1Role) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1Role = [4]string{
@@ -56661,6 +59011,12 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1RoleBinding) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -56694,7 +59050,6 @@ func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1RoleBinding = [5]string{
@@ -56817,6 +59172,12 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1RoleBindingList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -56844,7 +59205,6 @@ func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1RoleBindingList = [4]string{
@@ -56957,6 +59317,12 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1RoleList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -56984,7 +59350,6 @@ func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1RoleList = [4]string{
@@ -57097,6 +59462,12 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleRef) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1RoleRef) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("apiGroup")
@@ -57112,7 +59483,6 @@ func (s IoK8sAPIRbacV1RoleRef) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1RoleRef = [3]string{
@@ -57212,6 +59582,12 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIRbacV1Subject) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroup.Set {
 			e.FieldStart("apiGroup")
@@ -57234,7 +59610,6 @@ func (s IoK8sAPIRbacV1Subject) Encode(e *jx.Encoder) {
 			s.Namespace.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIRbacV1Subject = [4]string{
@@ -57343,6 +59718,12 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPISchedulingV1PriorityClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -57384,7 +59765,6 @@ func (s IoK8sAPISchedulingV1PriorityClass) Encode(e *jx.Encoder) {
 		e.FieldStart("value")
 		e.Int32(s.Value)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPISchedulingV1PriorityClass = [7]string{
@@ -57524,6 +59904,12 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPISchedulingV1PriorityClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -57551,7 +59937,6 @@ func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPISchedulingV1PriorityClassList = [4]string{
@@ -57664,6 +60049,12 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1CSIDriver) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -57687,7 +60078,6 @@ func (s IoK8sAPIStorageV1CSIDriver) Encode(e *jx.Encoder) {
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1CSIDriver = [4]string{
@@ -57792,6 +60182,12 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1CSIDriverList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -57819,7 +60215,6 @@ func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1CSIDriverList = [4]string{
@@ -57932,6 +60327,12 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1CSIDriverSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AttachRequired.Set {
 			e.FieldStart("attachRequired")
@@ -57982,7 +60383,6 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1CSIDriverSpec = [7]string{
@@ -58103,6 +60503,12 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINode) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1CSINode) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -58126,7 +60532,6 @@ func (s IoK8sAPIStorageV1CSINode) Encode(e *jx.Encoder) {
 		e.FieldStart("spec")
 		s.Spec.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1CSINode = [4]string{
@@ -58231,6 +60636,12 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1CSINodeDriver) encodeFields(e *jx.Encoder) {
 	{
 		if s.Allocatable.Set {
 			e.FieldStart("allocatable")
@@ -58257,7 +60668,6 @@ func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1CSINodeDriver = [4]string{
@@ -58375,6 +60785,12 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1CSINodeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -58402,7 +60818,6 @@ func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1CSINodeList = [4]string{
@@ -58515,6 +60930,12 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1CSINodeSpec) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("drivers")
@@ -58524,7 +60945,6 @@ func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1CSINodeSpec = [1]string{
@@ -58604,6 +61024,12 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1StorageClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllowVolumeExpansion.Set {
 			e.FieldStart("allowVolumeExpansion")
@@ -58671,7 +61097,6 @@ func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Encoder) {
 			s.VolumeBindingMode.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1StorageClass = [10]string{
@@ -58861,6 +61286,12 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1StorageClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -58888,7 +61319,6 @@ func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1StorageClassList = [4]string{
@@ -59001,12 +61431,17 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1StorageClassParameters) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1StorageClassParameters = [0]string{}
@@ -59045,6 +61480,12 @@ func (s IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1TokenRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("audience")
@@ -59056,7 +61497,6 @@ func (s IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Encoder) {
 			s.ExpirationSeconds.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1TokenRequest = [2]string{
@@ -59141,6 +61581,12 @@ func (s *IoK8sAPIStorageV1TokenRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachment) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachment) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -59170,7 +61616,6 @@ func (s IoK8sAPIStorageV1VolumeAttachment) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachment = [5]string{
@@ -59286,6 +61731,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -59313,7 +61764,6 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachmentList = [4]string{
@@ -59426,6 +61876,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.InlineVolumeSpec.Set {
 			e.FieldStart("inlineVolumeSpec")
@@ -59438,7 +61894,6 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) Encode(e *jx.Encoder) {
 			s.PersistentVolumeName.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachmentSource = [2]string{
@@ -59488,6 +61943,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentSpec) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("attacher")
@@ -59503,7 +61964,6 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Encoder) {
 		e.FieldStart("source")
 		s.Source.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachmentSpec = [3]string{
@@ -59601,6 +62061,12 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AttachError.Set {
 			e.FieldStart("attachError")
@@ -59624,7 +62090,6 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Encoder) {
 			s.DetachError.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachmentStatus = [4]string{
@@ -59731,12 +62196,17 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata = [0]string{}
@@ -59775,6 +62245,12 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeError) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeError) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -59787,7 +62263,6 @@ func (s IoK8sAPIStorageV1VolumeError) Encode(e *jx.Encoder) {
 			s.Time.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeError = [2]string{
@@ -59837,13 +62312,18 @@ func (s *IoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1VolumeNodeResources) encodeFields(e *jx.Encoder) {
 	{
 		if s.Count.Set {
 			e.FieldStart("count")
 			s.Count.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1VolumeNodeResources = [1]string{
@@ -59882,6 +62362,12 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -59923,7 +62409,6 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) Encode(e *jx.Encoder) {
 		e.FieldStart("storageClassName")
 		e.Str(s.StorageClassName)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1alpha1CSIStorageCapacity = [7]string{
@@ -60063,6 +62548,12 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -60090,7 +62581,6 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1alpha1CSIStorageCapacityList = [4]string{
@@ -60203,6 +62693,12 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -60244,7 +62740,6 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) Encode(e *jx.Encoder) {
 		e.FieldStart("storageClassName")
 		e.Str(s.StorageClassName)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1beta1CSIStorageCapacity = [7]string{
@@ -60384,6 +62879,12 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -60411,7 +62912,6 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sAPIStorageV1beta1CSIStorageCapacityList = [4]string{
@@ -60524,6 +63024,12 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -60557,7 +63063,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDef
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition = [6]string{
@@ -60690,6 +63195,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("strategy")
@@ -60701,7 +63212,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 			s.Webhook.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion = [2]string{
@@ -60786,6 +63296,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -60815,7 +63331,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition = [5]string{
@@ -60931,6 +63446,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -60959,7 +63480,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition = [5]string{
@@ -61079,6 +63599,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -61106,7 +63632,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList = [4]string{
@@ -61219,6 +63744,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) encodeFields(e *jx.Encoder) {
 	{
 		if s.Categories != nil {
 			e.FieldStart("categories")
@@ -61261,7 +63792,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			s.Singular.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames = [6]string{
@@ -61410,6 +63940,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conversion.Set {
 			e.FieldStart("conversion")
@@ -61446,7 +63982,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec = [6]string{
@@ -61585,6 +64120,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AcceptedNames.Set {
 			e.FieldStart("acceptedNames")
@@ -61611,7 +64152,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus = [3]string{
@@ -61688,6 +64228,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) encodeFields(e *jx.Encoder) {
 	{
 		if s.AdditionalPrinterColumns != nil {
 			e.FieldStart("additionalPrinterColumns")
@@ -61737,7 +64283,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			s.Subresources.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion = [8]string{
@@ -61899,6 +64444,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) encodeFields(e *jx.Encoder) {
 	{
 		if s.LabelSelectorPath.Set {
 			e.FieldStart("labelSelectorPath")
@@ -61915,7 +64466,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 		e.FieldStart("statusReplicasPath")
 		e.Str(s.StatusReplicasPath)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale = [3]string{
@@ -62013,7 +64563,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus = [0]string{}
@@ -62040,6 +64595,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scale.Set {
 			e.FieldStart("scale")
@@ -62052,7 +64613,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources = [2]string{
@@ -62104,13 +64664,18 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) encodeFields(e *jx.Encoder) {
 	{
 		if s.OpenAPIV3Schema.Set {
 			e.FieldStart("openAPIV3Schema")
 			s.OpenAPIV3Schema.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation = [1]string{
@@ -62149,6 +64714,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -62161,7 +64732,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) 
 			s.URL.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation = [2]string{
@@ -62211,7 +64781,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON = [0]string{}
@@ -62238,6 +64813,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ref.Set {
 			e.FieldStart("$ref")
@@ -62520,7 +65101,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 			s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps = [43]string{
@@ -63079,12 +65659,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions = [0]string{}
@@ -63121,12 +65706,17 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies = [0]string{}
@@ -63163,7 +65753,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependen
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray = [0]string{}
@@ -63190,7 +65785,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool = [0]string{}
@@ -63217,7 +65817,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray = [0]string{}
@@ -63244,12 +65849,17 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties = [0]string{}
@@ -63286,12 +65896,17 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties = [0]string{}
@@ -63328,6 +65943,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -63350,7 +65971,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encod
 			s.Port.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference = [4]string{
@@ -63459,6 +66079,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("caBundle")
@@ -63476,7 +66102,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) En
 			s.URL.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig = [3]string{
@@ -63538,6 +66163,12 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) encodeFields(e *jx.Encoder) {
 	{
 		if s.ClientConfig.Set {
 			e.FieldStart("clientConfig")
@@ -63553,7 +66184,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Enco
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion = [2]string{
@@ -63672,6 +66302,12 @@ func (s *IoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -63714,7 +66350,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1APIGroup = [6]string{
@@ -63858,6 +66493,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -63879,7 +66520,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Encoder) {
 			s.Kind.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1APIGroupList = [3]string{
@@ -63981,6 +66621,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Categories != nil {
 			e.FieldStart("categories")
@@ -64048,7 +66694,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Encoder) {
 			s.Version.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1APIResource = [10]string{
@@ -64256,6 +66901,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -64282,7 +66933,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1APIResourceList = [4]string{
@@ -64397,6 +67047,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -64427,7 +67083,6 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1APIVersions = [4]string{
@@ -64550,6 +67205,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("lastTransitionTime")
@@ -64581,7 +67242,6 @@ func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1Condition = [6]string{
@@ -64716,7 +67376,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1FieldsV1 = [0]string{}
@@ -64743,6 +67408,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("groupVersion")
@@ -64753,7 +67424,6 @@ func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Enc
 		e.FieldStart("version")
 		e.Str(s.Version)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = [2]string{
@@ -64840,6 +67510,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchExpressions != nil {
 			e.FieldStart("matchExpressions")
@@ -64856,7 +67532,6 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Encoder) {
 			s.MatchLabels.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1LabelSelector = [2]string{
@@ -64913,12 +67588,17 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels = [0]string{}
@@ -64957,6 +67637,12 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("key")
@@ -64977,7 +67663,6 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Enc
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = [3]string{
@@ -65084,6 +67769,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ListMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.Continue.Set {
 			e.FieldStart("continue")
@@ -65108,7 +67799,6 @@ func (s IoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Encoder) {
 			s.SelfLink.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ListMeta = [4]string{
@@ -65180,6 +67870,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -65222,7 +67918,6 @@ func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Encode(e *jx.Encoder) 
 			s.Time.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = [7]string{
@@ -65355,6 +68050,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.Annotations.Set {
 			e.FieldStart("annotations")
@@ -65463,7 +68164,6 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
 			s.UID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ObjectMeta = [16]string{
@@ -65690,12 +68390,17 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations = [0]string{}
@@ -65734,12 +68439,17 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decode
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels = [0]string{}
@@ -65778,6 +68488,12 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) er
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("apiVersion")
@@ -65810,7 +68526,6 @@ func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Encoder) {
 		e.FieldStart("uid")
 		e.Str(s.UID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1OwnerReference = [6]string{
@@ -65945,6 +68660,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("clientCIDR")
@@ -65955,7 +68676,6 @@ func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.En
 		e.FieldStart("serverAddress")
 		e.Str(s.ServerAddress)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = [2]string{
@@ -66068,6 +68788,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("object")
@@ -66078,7 +68804,6 @@ func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1WatchEvent = [2]string{
@@ -66163,7 +68888,12 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgRuntimeRawExtension) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgRuntimeRawExtension = [0]string{}
@@ -66216,6 +68946,12 @@ func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) error 
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sApimachineryPkgVersionInfo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("buildDate")
@@ -66261,7 +68997,6 @@ func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Encoder) {
 		e.FieldStart("platform")
 		e.Str(s.Platform)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sApimachineryPkgVersionInfo = [9]string{
@@ -66440,6 +69175,12 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -66470,7 +69211,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Encode(e *jx.Enco
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sKubeAggregatorPkgApisApiregistrationV1APIService = [5]string{
@@ -66553,6 +69293,12 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
 			e.FieldStart("lastTransitionTime")
@@ -66581,7 +69327,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Encode(e
 		e.FieldStart("type")
 		e.Str(s.Type)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition = [5]string{
@@ -66701,6 +69446,12 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
 			e.FieldStart("apiVersion")
@@ -66728,7 +69479,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.
 			s.Metadata.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList = [4]string{
@@ -66841,6 +69591,12 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("caBundle")
@@ -66880,7 +69636,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.
 		e.FieldStart("versionPriority")
 		e.Int32(s.VersionPriority)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec = [7]string{
@@ -67023,6 +69778,12 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
 			e.FieldStart("conditions")
@@ -67033,7 +69794,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *j
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus = [1]string{
@@ -67079,6 +69839,12 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(d *
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -67097,7 +69863,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *j
 			s.Port.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference = [3]string{

@@ -73,6 +73,12 @@ var (
 // Encode implements json.Marshaler.
 func (s Balloon) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Balloon) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("amount_mib")
@@ -89,7 +95,6 @@ func (s Balloon) Encode(e *jx.Encoder) {
 			s.StatsPollingIntervalS.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBalloon = [3]string{
@@ -187,6 +192,12 @@ func (s *Balloon) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BalloonStats) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BalloonStats) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("target_pages")
@@ -267,7 +278,6 @@ func (s BalloonStats) Encode(e *jx.Encoder) {
 			s.HugetlbFailures.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBalloonStats = [14]string{
@@ -491,12 +501,17 @@ func (s *BalloonStats) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BalloonStatsUpdate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BalloonStatsUpdate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("stats_polling_interval_s")
 		e.Int(s.StatsPollingIntervalS)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBalloonStatsUpdate = [1]string{
@@ -570,12 +585,17 @@ func (s *BalloonStatsUpdate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BalloonUpdate) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BalloonUpdate) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("amount_mib")
 		e.Int(s.AmountMib)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBalloonUpdate = [1]string{
@@ -649,6 +669,12 @@ func (s *BalloonUpdate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s BootSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s BootSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.BootArgs.Set {
 			e.FieldStart("boot_args")
@@ -666,7 +692,6 @@ func (s BootSource) Encode(e *jx.Encoder) {
 		e.FieldStart("kernel_image_path")
 		e.Str(s.KernelImagePath)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBootSource = [3]string{
@@ -789,6 +814,12 @@ func (s *CpuTemplate) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Drive) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Drive) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("drive_id")
@@ -827,7 +858,6 @@ func (s Drive) Encode(e *jx.Encoder) {
 			s.RateLimiter.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDrive = [7]string{
@@ -974,13 +1004,18 @@ func (s *Drive) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Error) encodeFields(e *jx.Encoder) {
 	{
 		if s.FaultMessage.Set {
 			e.FieldStart("fault_message")
 			s.FaultMessage.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfError = [1]string{
@@ -1019,6 +1054,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s FullVmConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s FullVmConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.BalloonDevice.Set {
 			e.FieldStart("balloon_device")
@@ -1081,7 +1122,6 @@ func (s FullVmConfiguration) Encode(e *jx.Encoder) {
 			s.VsockDevice.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfFullVmConfiguration = [9]string{
@@ -1222,12 +1262,17 @@ func (s *FullVmConfiguration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InstanceActionInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InstanceActionInfo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("action_type")
 		s.ActionType.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInstanceActionInfo = [1]string{
@@ -1328,6 +1373,12 @@ func (s *InstanceActionInfoActionType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s InstanceInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s InstanceInfo) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("app_name")
@@ -1348,7 +1399,6 @@ func (s InstanceInfo) Encode(e *jx.Encoder) {
 		e.FieldStart("vmm_version")
 		e.Str(s.VmmVersion)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfInstanceInfo = [4]string{
@@ -1488,6 +1538,12 @@ func (s *InstanceInfoState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Logger) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Logger) encodeFields(e *jx.Encoder) {
 	{
 		if s.Level.Set {
 			e.FieldStart("level")
@@ -1511,7 +1567,6 @@ func (s Logger) Encode(e *jx.Encoder) {
 			s.ShowLogOrigin.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLogger = [4]string{
@@ -1650,6 +1705,12 @@ func (s *LoggerLevel) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MachineConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MachineConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.CPUTemplate.Set {
 			e.FieldStart("cpu_template")
@@ -1677,7 +1738,6 @@ func (s MachineConfiguration) Encode(e *jx.Encoder) {
 		e.FieldStart("vcpu_count")
 		e.Int(s.VcpuCount)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMachineConfiguration = [5]string{
@@ -1799,12 +1859,17 @@ func (s *MachineConfiguration) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Metrics) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Metrics) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("metrics_path")
 		e.Str(s.MetricsPath)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMetrics = [1]string{
@@ -1878,13 +1943,18 @@ func (s *Metrics) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MmdsConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ipv4Address.Set {
 			e.FieldStart("ipv4_address")
 			s.Ipv4Address.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMmdsConfig = [1]string{
@@ -1924,7 +1994,12 @@ func (s *MmdsConfig) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsGetOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MmdsGetOK) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfMmdsGetOK = [0]string{}
@@ -1951,7 +2026,12 @@ func (s *MmdsGetOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsPatchReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MmdsPatchReq) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfMmdsPatchReq = [0]string{}
@@ -1978,7 +2058,12 @@ func (s *MmdsPatchReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MmdsPutReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MmdsPutReq) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfMmdsPutReq = [0]string{}
@@ -2005,6 +2090,12 @@ func (s *MmdsPutReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NetworkInterface) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s NetworkInterface) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllowMmdsRequests.Set {
 			e.FieldStart("allow_mmds_requests")
@@ -2039,7 +2130,6 @@ func (s NetworkInterface) Encode(e *jx.Encoder) {
 			s.TxRateLimiter.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfNetworkInterface = [6]string{
@@ -2498,6 +2588,12 @@ func (o *OptVsock) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PartialDrive) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PartialDrive) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("drive_id")
@@ -2515,7 +2611,6 @@ func (s PartialDrive) Encode(e *jx.Encoder) {
 			s.RateLimiter.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPartialDrive = [3]string{
@@ -2611,6 +2706,12 @@ func (s *PartialDrive) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PartialNetworkInterface) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PartialNetworkInterface) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("iface_id")
@@ -2628,7 +2729,6 @@ func (s PartialNetworkInterface) Encode(e *jx.Encoder) {
 			s.TxRateLimiter.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPartialNetworkInterface = [3]string{
@@ -2724,6 +2824,12 @@ func (s *PartialNetworkInterface) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RateLimiter) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s RateLimiter) encodeFields(e *jx.Encoder) {
 	{
 		if s.Bandwidth.Set {
 			e.FieldStart("bandwidth")
@@ -2736,7 +2842,6 @@ func (s RateLimiter) Encode(e *jx.Encoder) {
 			s.Ops.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfRateLimiter = [2]string{
@@ -2786,6 +2891,12 @@ func (s *RateLimiter) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SnapshotCreateParams) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SnapshotCreateParams) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("mem_file_path")
@@ -2808,7 +2919,6 @@ func (s SnapshotCreateParams) Encode(e *jx.Encoder) {
 			s.Version.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSnapshotCreateParams = [4]string{
@@ -2944,6 +3054,12 @@ func (s *SnapshotCreateParamsSnapshotType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SnapshotLoadParams) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SnapshotLoadParams) encodeFields(e *jx.Encoder) {
 	{
 		if s.EnableDiffSnapshots.Set {
 			e.FieldStart("enable_diff_snapshots")
@@ -2966,7 +3082,6 @@ func (s SnapshotLoadParams) Encode(e *jx.Encoder) {
 			s.ResumeVM.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSnapshotLoadParams = [4]string{
@@ -3075,6 +3190,12 @@ func (s *SnapshotLoadParams) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TokenBucket) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TokenBucket) encodeFields(e *jx.Encoder) {
 	{
 		if s.OneTimeBurst.Set {
 			e.FieldStart("one_time_burst")
@@ -3091,7 +3212,6 @@ func (s TokenBucket) Encode(e *jx.Encoder) {
 		e.FieldStart("size")
 		e.Int64(s.Size)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTokenBucket = [3]string{
@@ -3189,12 +3309,17 @@ func (s *TokenBucket) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s VM) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s VM) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("state")
 		s.State.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVM = [1]string{
@@ -3293,6 +3418,12 @@ func (s *VMState) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Vsock) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Vsock) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("guest_cid")
@@ -3308,7 +3439,6 @@ func (s Vsock) Encode(e *jx.Encoder) {
 		e.FieldStart("vsock_id")
 		e.Str(s.VsockID)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfVsock = [3]string{

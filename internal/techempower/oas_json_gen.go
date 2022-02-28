@@ -73,12 +73,17 @@ var (
 // Encode implements json.Marshaler.
 func (s HelloWorld) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s HelloWorld) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHelloWorld = [1]string{
@@ -153,6 +158,12 @@ func (s *HelloWorld) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s WorldObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s WorldObject) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -163,7 +174,6 @@ func (s WorldObject) Encode(e *jx.Encoder) {
 		e.FieldStart("randomNumber")
 		e.Int64(s.RandomNumber)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfWorldObject = [2]string{

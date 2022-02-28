@@ -1189,9 +1189,6 @@
           },
           "oneOf-mapping-reference": {
             "$ref": "#/components/schemas/OneOfMappingReference"
-          },
-          "oneOf-mapping-any": {
-            "$ref": "#/components/schemas/OneOfMappingAny"
           }
         }
       },
@@ -1362,46 +1359,6 @@
         }
       },
       "OneOfMappingReferenceB": {
-        "type": "object",
-        "properties": {
-          "infoType": {
-            "type": "string"
-          },
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "data": {
-            "type": "object",
-            "not": {
-              "type": "integer"
-            }
-          },
-          "info": {
-            "type": "string"
-          }
-        }
-      },
-      "OneOfMappingAny": {
-        "type": "object",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/OneOfMappingAnyA"
-          },
-          {
-            "$ref": "#/components/schemas/OneOfMappingAnyB"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "infoType",
-          "mapping": {
-            "simple": "#/components/schemas/OneOfMappingAnyA",
-            "extended": "#/components/schemas/OneOfMappingAnyB"
-          }
-        }
-      },
-      "OneOfMappingAnyA": {},
-      "OneOfMappingAnyB": {
         "type": "object",
         "properties": {
           "infoType": {

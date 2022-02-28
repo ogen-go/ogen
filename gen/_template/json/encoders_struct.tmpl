@@ -15,8 +15,13 @@
 // Encode implements json.Marshaler.
 func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	e.ObjStart()
-	{{- template "json/encode_struct_fields" $fields }}
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s {{ $.Name }}) encodeFields(e *jx.Encoder) {
+	{{- template "json/encode_struct_fields" $fields }}
 }
 
 var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{

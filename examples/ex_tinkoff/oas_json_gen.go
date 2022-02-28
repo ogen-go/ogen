@@ -100,6 +100,12 @@ func (s *BrokerAccountType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Candle) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Candle) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("figi")
@@ -140,7 +146,6 @@ func (s Candle) Encode(e *jx.Encoder) {
 		e.FieldStart("time")
 		json.EncodeDateTime(e, s.Time)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCandle = [8]string{
@@ -348,6 +353,12 @@ func (s *CandleResolution) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Candles) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Candles) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("figi")
@@ -367,7 +378,6 @@ func (s Candles) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCandles = [3]string{
@@ -471,6 +481,12 @@ func (s *Candles) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CandlesResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CandlesResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -486,7 +502,6 @@ func (s CandlesResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCandlesResponse = [3]string{
@@ -585,6 +600,12 @@ func (s *CandlesResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Currencies) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Currencies) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("currencies")
@@ -594,7 +615,6 @@ func (s Currencies) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCurrencies = [1]string{
@@ -715,6 +735,12 @@ func (s *Currency) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s CurrencyPosition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s CurrencyPosition) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("currency")
@@ -731,7 +757,6 @@ func (s CurrencyPosition) Encode(e *jx.Encoder) {
 			s.Blocked.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfCurrencyPosition = [3]string{
@@ -827,6 +852,12 @@ func (s *CurrencyPosition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Empty) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Empty) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -842,7 +873,6 @@ func (s Empty) Encode(e *jx.Encoder) {
 		e.FieldStart("status")
 		e.Str(s.Status)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfEmpty = [3]string{
@@ -941,7 +971,12 @@ func (s *Empty) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s EmptyPayload) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s EmptyPayload) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfEmptyPayload = [0]string{}
@@ -968,6 +1003,12 @@ func (s *EmptyPayload) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Error) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -983,7 +1024,6 @@ func (s Error) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfError = [3]string{
@@ -1082,6 +1122,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ErrorPayload) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ErrorPayload) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
 			e.FieldStart("message")
@@ -1094,7 +1140,6 @@ func (s ErrorPayload) Encode(e *jx.Encoder) {
 			s.Code.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfErrorPayload = [2]string{
@@ -1175,6 +1220,12 @@ func (s *InstrumentType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LimitOrderRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s LimitOrderRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("lots")
@@ -1190,7 +1241,6 @@ func (s LimitOrderRequest) Encode(e *jx.Encoder) {
 		e.FieldStart("price")
 		e.Float64(s.Price)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLimitOrderRequest = [3]string{
@@ -1288,6 +1338,12 @@ func (s *LimitOrderRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s LimitOrderResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s LimitOrderResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -1303,7 +1359,6 @@ func (s LimitOrderResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfLimitOrderResponse = [3]string{
@@ -1402,6 +1457,12 @@ func (s *LimitOrderResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketInstrument) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MarketInstrument) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("figi")
@@ -1451,7 +1512,6 @@ func (s MarketInstrument) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMarketInstrument = [9]string{
@@ -1620,6 +1680,12 @@ func (s *MarketInstrument) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketInstrumentList) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MarketInstrumentList) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("total")
@@ -1634,7 +1700,6 @@ func (s MarketInstrumentList) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMarketInstrumentList = [2]string{
@@ -1727,6 +1792,12 @@ func (s *MarketInstrumentList) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketInstrumentListResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MarketInstrumentListResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -1742,7 +1813,6 @@ func (s MarketInstrumentListResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMarketInstrumentListResponse = [3]string{
@@ -1841,6 +1911,12 @@ func (s *MarketInstrumentListResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketOrderRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MarketOrderRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("lots")
@@ -1851,7 +1927,6 @@ func (s MarketOrderRequest) Encode(e *jx.Encoder) {
 		e.FieldStart("operation")
 		s.Operation.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMarketOrderRequest = [2]string{
@@ -1936,6 +2011,12 @@ func (s *MarketOrderRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MarketOrderResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MarketOrderResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -1951,7 +2032,6 @@ func (s MarketOrderResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMarketOrderResponse = [3]string{
@@ -2050,6 +2130,12 @@ func (s *MarketOrderResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MoneyAmount) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MoneyAmount) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("currency")
@@ -2060,7 +2146,6 @@ func (s MoneyAmount) Encode(e *jx.Encoder) {
 		e.FieldStart("value")
 		e.Float64(s.Value)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMoneyAmount = [2]string{
@@ -2145,6 +2230,12 @@ func (s *MoneyAmount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Operation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Operation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -2227,7 +2318,6 @@ func (s Operation) Encode(e *jx.Encoder) {
 			s.OperationType.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOperation = [14]string{
@@ -2487,6 +2577,12 @@ func (s *OperationStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OperationTrade) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OperationTrade) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("tradeId")
@@ -2507,7 +2603,6 @@ func (s OperationTrade) Encode(e *jx.Encoder) {
 		e.FieldStart("quantity")
 		e.Int32(s.Quantity)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOperationTrade = [4]string{
@@ -2712,6 +2807,12 @@ func (s *OperationTypeWithCommission) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Operations) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Operations) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("operations")
@@ -2721,7 +2822,6 @@ func (s Operations) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOperations = [1]string{
@@ -2801,6 +2901,12 @@ func (s *Operations) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OperationsResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OperationsResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -2816,7 +2922,6 @@ func (s OperationsResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOperationsResponse = [3]string{
@@ -3101,6 +3206,12 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Order) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Order) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("orderId")
@@ -3141,7 +3252,6 @@ func (s Order) Encode(e *jx.Encoder) {
 		e.FieldStart("price")
 		e.Float64(s.Price)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrder = [8]string{
@@ -3300,6 +3410,12 @@ func (s *Order) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrderResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OrderResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("price")
@@ -3310,7 +3426,6 @@ func (s OrderResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("quantity")
 		e.Int32(s.Quantity)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrderResponse = [2]string{
@@ -3465,6 +3580,12 @@ func (s *OrderType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Orderbook) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Orderbook) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("figi")
@@ -3533,7 +3654,6 @@ func (s Orderbook) Encode(e *jx.Encoder) {
 			s.LimitDown.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrderbook = [11]string{
@@ -3738,6 +3858,12 @@ func (s *Orderbook) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrderbookResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OrderbookResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -3753,7 +3879,6 @@ func (s OrderbookResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrderbookResponse = [3]string{
@@ -3852,6 +3977,12 @@ func (s *OrderbookResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OrdersResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OrdersResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -3871,7 +4002,6 @@ func (s OrdersResponse) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOrdersResponse = [3]string{
@@ -3978,6 +4108,12 @@ func (s *OrdersResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PlacedLimitOrder) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PlacedLimitOrder) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("orderId")
@@ -4021,7 +4157,6 @@ func (s PlacedLimitOrder) Encode(e *jx.Encoder) {
 			s.Commission.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPlacedLimitOrder = [8]string{
@@ -4176,6 +4311,12 @@ func (s *PlacedLimitOrder) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PlacedMarketOrder) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PlacedMarketOrder) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("orderId")
@@ -4219,7 +4360,6 @@ func (s PlacedMarketOrder) Encode(e *jx.Encoder) {
 			s.Commission.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPlacedMarketOrder = [8]string{
@@ -4374,6 +4514,12 @@ func (s *PlacedMarketOrder) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Portfolio) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Portfolio) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("positions")
@@ -4383,7 +4529,6 @@ func (s Portfolio) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPortfolio = [1]string{
@@ -4463,6 +4608,12 @@ func (s *Portfolio) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PortfolioCurrenciesResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PortfolioCurrenciesResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -4478,7 +4629,6 @@ func (s PortfolioCurrenciesResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPortfolioCurrenciesResponse = [3]string{
@@ -4577,6 +4727,12 @@ func (s *PortfolioCurrenciesResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PortfolioPosition) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PortfolioPosition) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("figi")
@@ -4638,7 +4794,6 @@ func (s PortfolioPosition) Encode(e *jx.Encoder) {
 		e.FieldStart("name")
 		e.Str(s.Name)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPortfolioPosition = [11]string{
@@ -4829,6 +4984,12 @@ func (s *PortfolioPosition) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PortfolioResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PortfolioResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -4844,7 +5005,6 @@ func (s PortfolioResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPortfolioResponse = [3]string{
@@ -4943,6 +5103,12 @@ func (s *PortfolioResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SandboxAccount) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SandboxAccount) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("brokerAccountType")
@@ -4953,7 +5119,6 @@ func (s SandboxAccount) Encode(e *jx.Encoder) {
 		e.FieldStart("brokerAccountId")
 		e.Str(s.BrokerAccountId)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSandboxAccount = [2]string{
@@ -5079,13 +5244,18 @@ func (s *SandboxCurrency) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SandboxRegisterRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SandboxRegisterRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.BrokerAccountType.Set {
 			e.FieldStart("brokerAccountType")
 			s.BrokerAccountType.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSandboxRegisterRequest = [1]string{
@@ -5124,6 +5294,12 @@ func (s *SandboxRegisterRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SandboxRegisterResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SandboxRegisterResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -5139,7 +5315,6 @@ func (s SandboxRegisterResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSandboxRegisterResponse = [3]string{
@@ -5238,6 +5413,12 @@ func (s *SandboxRegisterResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SandboxSetCurrencyBalanceRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SandboxSetCurrencyBalanceRequest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("currency")
@@ -5248,7 +5429,6 @@ func (s SandboxSetCurrencyBalanceRequest) Encode(e *jx.Encoder) {
 		e.FieldStart("balance")
 		e.Float64(s.Balance)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSandboxSetCurrencyBalanceRequest = [2]string{
@@ -5333,6 +5513,12 @@ func (s *SandboxSetCurrencyBalanceRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SandboxSetPositionBalanceRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SandboxSetPositionBalanceRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.Figi.Set {
 			e.FieldStart("figi")
@@ -5344,7 +5530,6 @@ func (s SandboxSetPositionBalanceRequest) Encode(e *jx.Encoder) {
 		e.FieldStart("balance")
 		e.Float64(s.Balance)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSandboxSetPositionBalanceRequest = [2]string{
@@ -5429,6 +5614,12 @@ func (s *SandboxSetPositionBalanceRequest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchMarketInstrument) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SearchMarketInstrument) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("figi")
@@ -5472,7 +5663,6 @@ func (s SearchMarketInstrument) Encode(e *jx.Encoder) {
 		e.FieldStart("type")
 		s.Type.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSearchMarketInstrument = [8]string{
@@ -5629,6 +5819,12 @@ func (s *SearchMarketInstrument) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchMarketInstrumentResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SearchMarketInstrumentResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -5644,7 +5840,6 @@ func (s SearchMarketInstrumentResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSearchMarketInstrumentResponse = [3]string{
@@ -5770,6 +5965,12 @@ func (s *TradeStatus) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UserAccount) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UserAccount) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("brokerAccountType")
@@ -5780,7 +5981,6 @@ func (s UserAccount) Encode(e *jx.Encoder) {
 		e.FieldStart("brokerAccountId")
 		e.Str(s.BrokerAccountId)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUserAccount = [2]string{
@@ -5865,6 +6065,12 @@ func (s *UserAccount) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UserAccounts) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UserAccounts) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("accounts")
@@ -5874,7 +6080,6 @@ func (s UserAccounts) Encode(e *jx.Encoder) {
 		}
 		e.ArrEnd()
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUserAccounts = [1]string{
@@ -5954,6 +6159,12 @@ func (s *UserAccounts) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s UserAccountsResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s UserAccountsResponse) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("trackingId")
@@ -5969,7 +6180,6 @@ func (s UserAccountsResponse) Encode(e *jx.Encoder) {
 		e.FieldStart("payload")
 		s.Payload.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfUserAccountsResponse = [3]string{

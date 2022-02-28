@@ -73,6 +73,12 @@ var (
 // Encode implements json.Marshaler.
 func (s Book) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Book) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -131,7 +137,6 @@ func (s Book) Encode(e *jx.Encoder) {
 			s.NumFavorites.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfBook = [9]string{
@@ -265,6 +270,12 @@ func (s *Book) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Image) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Image) encodeFields(e *jx.Encoder) {
 	{
 		if s.T.Set {
 			e.FieldStart("t")
@@ -283,7 +294,6 @@ func (s Image) Encode(e *jx.Encoder) {
 			s.H.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfImage = [3]string{
@@ -344,6 +354,12 @@ func (s *Image) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Images) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Images) encodeFields(e *jx.Encoder) {
 	{
 		if s.Pages != nil {
 			e.FieldStart("pages")
@@ -366,7 +382,6 @@ func (s Images) Encode(e *jx.Encoder) {
 			s.Thumbnail.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfImages = [3]string{
@@ -630,6 +645,12 @@ func (s *SearchOKApplicationJSON) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s SearchResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s SearchResponse) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
 			e.FieldStart("result")
@@ -652,7 +673,6 @@ func (s SearchResponse) Encode(e *jx.Encoder) {
 			s.PerPage.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfSearchResponse = [3]string{
@@ -720,6 +740,12 @@ func (s *SearchResponse) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Tag) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Tag) encodeFields(e *jx.Encoder) {
 	{
 		if s.ID.Set {
 			e.FieldStart("id")
@@ -750,7 +776,6 @@ func (s Tag) Encode(e *jx.Encoder) {
 			s.Count.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTag = [5]string{
@@ -870,6 +895,12 @@ func (s *TagType) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Title) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Title) encodeFields(e *jx.Encoder) {
 	{
 		if s.English.Set {
 			e.FieldStart("english")
@@ -888,7 +919,6 @@ func (s Title) Encode(e *jx.Encoder) {
 			s.Pretty.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTitle = [3]string{

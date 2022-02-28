@@ -703,6 +703,46 @@ func TestJSONSum(t *testing.T) {
 			})
 		}
 	})
+	t.Run("Discriminator", func(t *testing.T) {
+		for i, tc := range []struct {
+			Input    string
+			Expected api.OneOfMappingReference
+		}{
+			{
+				`{"infoType":"simple","description":"description"}`,
+				api.OneOfMappingReference{
+					Type: api.OneOfMappingReferenceAOneOfMappingReference,
+					OneOfMappingReferenceA: api.OneOfMappingReferenceA{
+						Description: api.NewOptString("description"),
+					},
+				},
+			},
+			{
+				`{"infoType":"extended"}`,
+				api.OneOfMappingReference{
+					Type:                   api.OneOfMappingReferenceBOneOfMappingReference,
+					OneOfMappingReferenceB: api.OneOfMappingReferenceB{},
+				},
+			},
+			{
+				`{"infoType":"extended", "code":10}`,
+				api.OneOfMappingReference{
+					Type: api.OneOfMappingReferenceBOneOfMappingReference,
+					OneOfMappingReferenceB: api.OneOfMappingReferenceB{
+						Code: api.NewOptInt32(10),
+					},
+				},
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := api.OneOfMappingReference{}
+				require.NoError(t, r.Decode(jx.DecodeStr(tc.Input)))
+				testEncode(t, r, tc.Input)
+			})
+		}
+	})
 }
 
 func TestJSONAny(t *testing.T) {

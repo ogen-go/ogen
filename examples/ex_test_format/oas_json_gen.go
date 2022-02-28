@@ -73,6 +73,12 @@ var (
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Error) encodeFields(e *jx.Encoder) {
 	{
 		if s.Code.Set {
 			e.FieldStart("code")
@@ -85,7 +91,6 @@ func (s Error) Encode(e *jx.Encoder) {
 			s.Status.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfError = [2]string{
@@ -1681,7 +1686,12 @@ func (o *OptUUID) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestRequestEmptyStructReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestRequestEmptyStructReq) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfTestRequestEmptyStructReq = [0]string{}
@@ -1708,6 +1718,12 @@ func (s *TestRequestEmptyStructReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestRequestFormatTestReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
 		if len(s.RequiredAny) != 0 {
@@ -3143,7 +3159,6 @@ func (s TestRequestFormatTestReq) Encode(e *jx.Encoder) {
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTestRequestFormatTestReq = [150]string{
@@ -6274,7 +6289,12 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestRequestRequiredEmptyStructReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestRequestRequiredEmptyStructReq) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfTestRequestRequiredEmptyStructReq = [0]string{}
@@ -6301,6 +6321,12 @@ func (s *TestRequestRequiredEmptyStructReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestRequestRequiredFormatTestReq) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
 		if len(s.RequiredAny) != 0 {
@@ -7736,7 +7762,6 @@ func (s TestRequestRequiredFormatTestReq) Encode(e *jx.Encoder) {
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTestRequestRequiredFormatTestReq = [150]string{
@@ -10867,7 +10892,12 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestResponseEmptyStructOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestResponseEmptyStructOK) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfTestResponseEmptyStructOK = [0]string{}
@@ -10894,6 +10924,12 @@ func (s *TestResponseEmptyStructOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestResponseFormatTestOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	{
 
 		if len(s.RequiredAny) != 0 {
@@ -12329,7 +12365,6 @@ func (s TestResponseFormatTestOK) Encode(e *jx.Encoder) {
 			s.OptionalStringUUID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTestResponseFormatTestOK = [150]string{

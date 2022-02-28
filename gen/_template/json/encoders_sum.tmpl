@@ -6,9 +6,11 @@ func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	switch s.Type {
 	{{- range $m := $.SumSpec.Mapping }}
 	case {{ $m.Type.Name }}{{ $.Name }}:
+		e.ObjStart()
 		e.FieldStart({{ quote $.SumSpec.Discriminator }})
 		e.Str({{ quote $m.Key }})
-		{{- template "json/enc" elem $m.Type (printf "s.%s" $m.Type.Name) -}}
+		s.{{ $m.Type.Name }}.encodeFields(e)
+		e.ObjEnd()
 	{{- end }}
 	}
 	{{- else }}

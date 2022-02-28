@@ -73,6 +73,12 @@ var (
 // Encode implements json.Marshaler.
 func (s AnyOfTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AnyOfTest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("medium")
@@ -83,7 +89,6 @@ func (s AnyOfTest) Encode(e *jx.Encoder) {
 		e.FieldStart("sizeLimit")
 		s.SizeLimit.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnyOfTest = [2]string{
@@ -205,6 +210,12 @@ func (s *AnyOfTestSizeLimit) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnyTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AnyTest) encodeFields(e *jx.Encoder) {
 	{
 
 		if len(s.Empty) != 0 {
@@ -230,7 +241,6 @@ func (s AnyTest) Encode(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnyTest = [3]string{
@@ -301,6 +311,12 @@ func (s *AnyTest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s AnyTestAnyMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s AnyTestAnyMap) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -308,7 +324,6 @@ func (s AnyTestAnyMap) Encode(e *jx.Encoder) {
 			e.Raw(elem)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfAnyTestAnyMap = [0]string{}
@@ -347,6 +362,12 @@ func (s AnyTestAnyMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ArrayTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ArrayTest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("required")
@@ -385,7 +406,6 @@ func (s ArrayTest) Encode(e *jx.Encoder) {
 			s.NullableOptional.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfArrayTest = [4]string{
@@ -526,6 +546,12 @@ func (s *ArrayTest) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Data) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Data) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("id")
@@ -562,7 +588,6 @@ func (s Data) Encode(e *jx.Encoder) {
 			s.NullableEnum.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfData = [7]string{
@@ -770,6 +795,12 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DefaultTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DefaultTest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("required")
@@ -858,7 +889,6 @@ func (s DefaultTest) Encode(e *jx.Encoder) {
 		e.FieldStart("base64")
 		e.Base64(s.Base64)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDefaultTest = [15]string{
@@ -1116,6 +1146,12 @@ func (s *DefaultTestEnum) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DescriptionDetailed) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DescriptionDetailed) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -1132,7 +1168,6 @@ func (s DescriptionDetailed) Encode(e *jx.Encoder) {
 			s.ID.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDescriptionDetailed = [3]string{
@@ -1230,12 +1265,17 @@ func (s *DescriptionDetailed) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s DescriptionSimple) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s DescriptionSimple) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("description")
 		e.Str(s.Description)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfDescriptionSimple = [1]string{
@@ -1309,6 +1349,12 @@ func (s *DescriptionSimple) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Error) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("code")
@@ -1319,7 +1365,6 @@ func (s Error) Encode(e *jx.Encoder) {
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfError = [2]string{
@@ -1406,6 +1451,12 @@ func (s *Error) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Hash) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Hash) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("raw")
@@ -1416,7 +1467,6 @@ func (s Hash) Encode(e *jx.Encoder) {
 		e.FieldStart("hex")
 		e.Str(s.Hex)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfHash = [2]string{
@@ -1615,6 +1665,12 @@ func (s *Issue143) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Issue1430) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Issue1430) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("common-1")
@@ -1630,7 +1686,6 @@ func (s Issue1430) Encode(e *jx.Encoder) {
 		e.FieldStart("unique-1")
 		e.Str(s.UniqueMinus1)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIssue1430 = [3]string{
@@ -1730,6 +1785,12 @@ func (s *Issue1430) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Issue1431) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Issue1431) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("common-1")
@@ -1745,7 +1806,6 @@ func (s Issue1431) Encode(e *jx.Encoder) {
 		e.FieldStart("unique-2")
 		e.Str(s.UniqueMinus2)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIssue1431 = [3]string{
@@ -1845,6 +1905,12 @@ func (s *Issue1431) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Issue1432) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Issue1432) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("common-1")
@@ -1866,7 +1932,6 @@ func (s Issue1432) Encode(e *jx.Encoder) {
 		e.FieldStart("unique-3")
 		e.Str(s.UniqueMinus3)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIssue1432 = [4]string{
@@ -1977,6 +2042,12 @@ func (s *Issue1432) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Issue1433) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Issue1433) encodeFields(e *jx.Encoder) {
 	{
 		if s.CommonMinus3.Set {
 			e.FieldStart("common-3")
@@ -1988,7 +2059,6 @@ func (s Issue1433) Encode(e *jx.Encoder) {
 		e.FieldStart("unique-4")
 		e.Str(s.UniqueMinus4)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfIssue1433 = [2]string{
@@ -2073,6 +2143,12 @@ func (s *Issue1433) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MapWithProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MapWithProperties) encodeFields(e *jx.Encoder) {
 	{
 		{
 
@@ -2109,7 +2185,6 @@ func (s MapWithProperties) Encode(e *jx.Encoder) {
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMapWithProperties = [5]string{
@@ -2254,12 +2329,17 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MapWithPropertiesInlinedSubMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MapWithPropertiesInlinedSubMap) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMapWithPropertiesInlinedSubMap = [0]string{}
@@ -2298,6 +2378,12 @@ func (s MapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s MaxPropertiesTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MaxPropertiesTest) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("required")
@@ -2321,7 +2407,6 @@ func (s MaxPropertiesTest) Encode(e *jx.Encoder) {
 			s.OptionalC.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfMaxPropertiesTest = [4]string{
@@ -2598,6 +2683,12 @@ func (o *NilString) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s NullableEnums) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s NullableEnums) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("only_nullable")
@@ -2613,7 +2704,6 @@ func (s NullableEnums) Encode(e *jx.Encoder) {
 		e.FieldStart("both")
 		s.Both.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfNullableEnums = [3]string{
@@ -2788,6 +2878,12 @@ func (s *NullableEnumsOnlyNullable) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OneOfBugs) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OneOfBugs) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("issue143")
@@ -2810,21 +2906,13 @@ func (s OneOfBugs) Encode(e *jx.Encoder) {
 			s.OneOfMinusMappingMinusReference.Encode(e)
 		}
 	}
-	{
-		if s.OneOfMinusMappingMinusAny.Set {
-			e.FieldStart("oneOf-mapping-any")
-			s.OneOfMinusMappingMinusAny.Encode(e)
-		}
-	}
-	e.ObjEnd()
 }
 
-var jsonFieldsNameOfOneOfBugs = [5]string{
+var jsonFieldsNameOfOneOfBugs = [4]string{
 	0: "issue143",
 	1: "additional-fields",
 	2: "oneOf-uuid-int-enum",
 	3: "oneOf-mapping-reference",
-	4: "oneOf-mapping-any",
 }
 
 // Decode decodes OneOfBugs from json.
@@ -2876,16 +2964,6 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"oneOf-mapping-reference\"")
 			}
-		case "oneOf-mapping-any":
-			if err := func() error {
-				s.OneOfMinusMappingMinusAny.Reset()
-				if err := s.OneOfMinusMappingMinusAny.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"oneOf-mapping-any\"")
-			}
 		default:
 			return d.Skip()
 		}
@@ -2929,200 +3007,21 @@ func (s *OneOfBugs) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-// Encode encodes OneOfMappingAny as json.
-func (s OneOfMappingAny) Encode(e *jx.Encoder) {
-	switch s.Type {
-	case OneOfMappingAnyBOneOfMappingAny:
-		e.FieldStart("infoType")
-		e.Str("extended")
-		s.OneOfMappingAnyB.Encode(e)
-	case AnyOneOfMappingAny:
-		e.FieldStart("infoType")
-		e.Str("simple")
-		if len(s.Any) != 0 {
-			e.Raw(s.Any)
-		}
-	}
-}
-
-// Decode decodes OneOfMappingAny from json.
-func (s *OneOfMappingAny) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OneOfMappingAny to nil")
-	}
-	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
-	}
-
-	var found bool
-	if err := d.Capture(func(d *jx.Decoder) error {
-		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
-			switch string(key) {
-			case "infoType":
-				typ, err := d.Str()
-				if err != nil {
-					return err
-				}
-				switch typ {
-				case "extended":
-					s.Type = OneOfMappingAnyBOneOfMappingAny
-					found = true
-				case "simple":
-					s.Type = AnyOneOfMappingAny
-					found = true
-				default:
-					return errors.Errorf("unknown type %s", typ)
-				}
-				return nil
-			}
-			return d.Skip()
-		})
-	}); err != nil {
-		return errors.Wrap(err, "capture")
-	}
-	if !found {
-		return errors.New("unable to detect sum type variant")
-	}
-	switch s.Type {
-	case AnyOneOfMappingAny:
-		v, err := d.RawAppend(nil)
-		s.Any = jx.Raw(v)
-		if err != nil {
-			return err
-		}
-	case OneOfMappingAnyBOneOfMappingAny:
-		if err := s.OneOfMappingAnyB.Decode(d); err != nil {
-			return err
-		}
-	default:
-		return errors.Errorf("inferred invalid type: %s", s.Type)
-	}
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s OneOfMappingAnyB) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	{
-		if s.Code.Set {
-			e.FieldStart("code")
-			s.Code.Encode(e)
-		}
-	}
-	{
-		if s.Data != nil {
-			e.FieldStart("data")
-			s.Data.Encode(e)
-		}
-	}
-	{
-		if s.Info.Set {
-			e.FieldStart("info")
-			s.Info.Encode(e)
-		}
-	}
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfOneOfMappingAnyB = [3]string{
-	0: "code",
-	1: "data",
-	2: "info",
-}
-
-// Decode decodes OneOfMappingAnyB from json.
-func (s *OneOfMappingAnyB) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OneOfMappingAnyB to nil")
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "code":
-			if err := func() error {
-				s.Code.Reset()
-				if err := s.Code.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"code\"")
-			}
-		case "data":
-			if err := func() error {
-				s.Data = nil
-				var elem OneOfMappingAnyBData
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				s.Data = &elem
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"data\"")
-			}
-		case "info":
-			if err := func() error {
-				s.Info.Reset()
-				if err := s.Info.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"info\"")
-			}
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode OneOfMappingAnyB")
-	}
-
-	return nil
-}
-
-// Encode implements json.Marshaler.
-func (s OneOfMappingAnyBData) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	e.ObjEnd()
-}
-
-var jsonFieldsNameOfOneOfMappingAnyBData = [0]string{}
-
-// Decode decodes OneOfMappingAnyBData from json.
-func (s *OneOfMappingAnyBData) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OneOfMappingAnyBData to nil")
-	}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			return d.Skip()
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode OneOfMappingAnyBData")
-	}
-
-	return nil
-}
-
 // Encode encodes OneOfMappingReference as json.
 func (s OneOfMappingReference) Encode(e *jx.Encoder) {
 	switch s.Type {
 	case OneOfMappingReferenceBOneOfMappingReference:
+		e.ObjStart()
 		e.FieldStart("infoType")
 		e.Str("extended")
-		s.OneOfMappingReferenceB.Encode(e)
+		s.OneOfMappingReferenceB.encodeFields(e)
+		e.ObjEnd()
 	case OneOfMappingReferenceAOneOfMappingReference:
+		e.ObjStart()
 		e.FieldStart("infoType")
 		e.Str("simple")
-		s.OneOfMappingReferenceA.Encode(e)
+		s.OneOfMappingReferenceA.encodeFields(e)
+		e.ObjEnd()
 	}
 }
 
@@ -3186,13 +3085,18 @@ func (s *OneOfMappingReference) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OneOfMappingReferenceA) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OneOfMappingReferenceA) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
 			s.Description.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOneOfMappingReferenceA = [1]string{
@@ -3231,6 +3135,12 @@ func (s *OneOfMappingReferenceA) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OneOfMappingReferenceB) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OneOfMappingReferenceB) encodeFields(e *jx.Encoder) {
 	{
 		if s.Code.Set {
 			e.FieldStart("code")
@@ -3249,7 +3159,6 @@ func (s OneOfMappingReferenceB) Encode(e *jx.Encoder) {
 			s.Info.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOneOfMappingReferenceB = [3]string{
@@ -3312,7 +3221,12 @@ func (s *OneOfMappingReferenceB) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OneOfMappingReferenceBData) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
 	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OneOfMappingReferenceBData) encodeFields(e *jx.Encoder) {
 }
 
 var jsonFieldsNameOfOneOfMappingReferenceBData = [0]string{}
@@ -3447,6 +3361,12 @@ func (s *OneVariantHasNoUniqueFields) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OneVariantHasNoUniqueFields0) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OneVariantHasNoUniqueFields0) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("a")
@@ -3463,7 +3383,6 @@ func (s OneVariantHasNoUniqueFields0) Encode(e *jx.Encoder) {
 		e.FieldStart("c")
 		e.Str(s.C)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOneVariantHasNoUniqueFields0 = [3]string{
@@ -3561,6 +3480,12 @@ func (s *OneVariantHasNoUniqueFields0) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s OneVariantHasNoUniqueFields1) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OneVariantHasNoUniqueFields1) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("a")
@@ -3583,7 +3508,6 @@ func (s OneVariantHasNoUniqueFields1) Encode(e *jx.Encoder) {
 			s.D.Encode(e)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfOneVariantHasNoUniqueFields1 = [4]string{
@@ -4197,26 +4121,6 @@ func (o *OptNullableEnums) Decode(d *jx.Decoder) error {
 	return nil
 }
 
-// Encode encodes OneOfMappingAny as json.
-func (o OptOneOfMappingAny) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes OneOfMappingAny from json.
-func (o *OptOneOfMappingAny) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptOneOfMappingAny to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
 // Encode encodes OneOfMappingReference as json.
 func (o OptOneOfMappingReference) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -4471,6 +4375,12 @@ func (o *OptValidationStringMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s Pet) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Pet) encodeFields(e *jx.Encoder) {
 	{
 		if s.Primary != nil {
 			e.FieldStart("primary")
@@ -4652,7 +4562,6 @@ func (s Pet) Encode(e *jx.Encoder) {
 			s.TestDateTime.Encode(e, json.EncodeDateTime)
 		}
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPet = [30]string{
@@ -5090,12 +4999,17 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s PetGetDef) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PetGetDef) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("message")
 		e.Str(s.Message)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfPetGetDef = [1]string{
@@ -5285,6 +5199,12 @@ func (s *RecursiveArray) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s RecursiveMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s RecursiveMap) encodeFields(e *jx.Encoder) {
 	{
 		{
 			if s.OptionalRecursiveField != nil {
@@ -5298,7 +5218,6 @@ func (s RecursiveMap) Encode(e *jx.Encoder) {
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfRecursiveMap = [1]string{
@@ -5353,12 +5272,17 @@ func (s *RecursiveMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s StringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s StringMap) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfStringMap = [0]string{}
@@ -5397,12 +5321,17 @@ func (s StringMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s StringStringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s StringStringMap) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		elem.Encode(e)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfStringStringMap = [0]string{}
@@ -5440,6 +5369,12 @@ func (s StringStringMap) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestFloatValidation) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestFloatValidation) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("minmax")
@@ -5450,7 +5385,6 @@ func (s TestFloatValidation) Encode(e *jx.Encoder) {
 		e.FieldStart("multipleOf")
 		e.Float64(s.MultipleOf)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTestFloatValidation = [2]string{
@@ -5537,6 +5471,12 @@ func (s *TestFloatValidation) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s TestObjectQueryParameterOK) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TestObjectQueryParameterOK) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("style")
@@ -5557,7 +5497,6 @@ func (s TestObjectQueryParameterOK) Encode(e *jx.Encoder) {
 		e.FieldStart("filter")
 		e.Str(s.Filter)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfTestObjectQueryParameterOK = [4]string{
@@ -5670,12 +5609,17 @@ func (s *TestObjectQueryParameterOK) Decode(d *jx.Decoder) error {
 // Encode implements json.Marshaler.
 func (s ValidationStringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s ValidationStringMap) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.Str(elem)
 	}
-	e.ObjEnd()
 }
 
 var jsonFieldsNameOfValidationStringMap = [0]string{}
