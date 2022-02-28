@@ -1,8 +1,8 @@
 {{- define "faker" -}}{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ template "header" $ }}
 
-{{- range $_, $s := $.Types }}
+{{- range $_, $s := $.Types }}{{- if $s.HasFeature "json" }}
     {{ template "faker/fakers" $s }}
-{{- end }}
+{{- end }}{{- end }}
 
 {{- end }}
