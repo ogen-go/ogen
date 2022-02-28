@@ -80,7 +80,7 @@ func (s *Candle) SetFake() {
 	{
 
 		{
-			s.Figi = "string"
+			s.Figi = ""
 		}
 	}
 	{
@@ -116,7 +116,7 @@ func (s *Candle) SetFake() {
 	{
 
 		{
-			s.V = int32(0)
+			s.V = int32(1)
 		}
 	}
 	{
@@ -137,7 +137,7 @@ func (s *Candles) SetFake() {
 	{
 
 		{
-			s.Figi = "string"
+			s.Figi = ""
 		}
 	}
 	{
@@ -148,8 +148,16 @@ func (s *Candles) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Candles = nil
+			for i := 0; i < 0; i++ {
+				var elem Candle
+
+				{
+					elem.SetFake()
+				}
+				s.Candles = append(s.Candles, elem)
+			}
 		}
 	}
 }
@@ -159,13 +167,13 @@ func (s *CandlesResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -180,8 +188,16 @@ func (s *CandlesResponse) SetFake() {
 func (s *Currencies) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Currencies = nil
+			for i := 0; i < 0; i++ {
+				var elem CurrencyPosition
+
+				{
+					elem.SetFake()
+				}
+				s.Currencies = append(s.Currencies, elem)
+			}
 		}
 	}
 }
@@ -218,7 +234,7 @@ func (s *Empty) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
@@ -230,7 +246,7 @@ func (s *Empty) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 }
@@ -244,13 +260,13 @@ func (s *Error) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -287,7 +303,7 @@ func (s *LimitOrderRequest) SetFake() {
 	{
 
 		{
-			s.Lots = int32(0)
+			s.Lots = int32(1)
 		}
 	}
 	{
@@ -309,13 +325,13 @@ func (s *LimitOrderResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -331,13 +347,13 @@ func (s *MarketInstrument) SetFake() {
 	{
 
 		{
-			s.Figi = "string"
+			s.Figi = ""
 		}
 	}
 	{
 
 		{
-			s.Ticker = "string"
+			s.Ticker = ""
 		}
 	}
 	{
@@ -355,7 +371,7 @@ func (s *MarketInstrument) SetFake() {
 	{
 
 		{
-			s.Lot = int32(0)
+			s.Lot = int32(1)
 		}
 	}
 	{
@@ -373,7 +389,7 @@ func (s *MarketInstrument) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -389,13 +405,21 @@ func (s *MarketInstrumentList) SetFake() {
 	{
 
 		{
-			s.Total = int32(0)
+			s.Total = int32(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Instruments = nil
+			for i := 0; i < 0; i++ {
+				var elem MarketInstrument
+
+				{
+					elem.SetFake()
+				}
+				s.Instruments = append(s.Instruments, elem)
+			}
 		}
 	}
 }
@@ -405,13 +429,13 @@ func (s *MarketInstrumentListResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -427,7 +451,7 @@ func (s *MarketOrderRequest) SetFake() {
 	{
 
 		{
-			s.Lots = int32(0)
+			s.Lots = int32(1)
 		}
 	}
 	{
@@ -443,13 +467,13 @@ func (s *MarketOrderResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -481,7 +505,7 @@ func (s *Operation) SetFake() {
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
@@ -492,8 +516,16 @@ func (s *Operation) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Trades = nil
+			for i := 0; i < 0; i++ {
+				var elem OperationTrade
+
+				{
+					elem.SetFake()
+				}
+				s.Trades = append(s.Trades, elem)
+			}
 		}
 	}
 	{
@@ -574,7 +606,7 @@ func (s *OperationTrade) SetFake() {
 	{
 
 		{
-			s.TradeId = "string"
+			s.TradeId = ""
 		}
 	}
 	{
@@ -592,7 +624,7 @@ func (s *OperationTrade) SetFake() {
 	{
 
 		{
-			s.Quantity = int32(0)
+			s.Quantity = int32(1)
 		}
 	}
 }
@@ -611,8 +643,16 @@ func (s *OperationTypeWithCommission) SetFake() {
 func (s *Operations) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Operations = nil
+			for i := 0; i < 0; i++ {
+				var elem Operation
+
+				{
+					elem.SetFake()
+				}
+				s.Operations = append(s.Operations, elem)
+			}
 		}
 	}
 }
@@ -622,13 +662,13 @@ func (s *OperationsResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -641,38 +681,92 @@ func (s *OperationsResponse) SetFake() {
 
 // SetFake set fake values.
 func (s *OptBrokerAccountType) SetFake() {
+	var elem BrokerAccountType
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCurrency) SetFake() {
+	var elem Currency
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFloat64) SetFake() {
+	var elem float64
+
+	{
+		elem = float64(0)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInstrumentType) SetFake() {
+	var elem InstrumentType
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt32) SetFake() {
+	var elem int32
+
+	{
+		elem = int32(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptMoneyAmount) SetFake() {
+	var elem MoneyAmount
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOperationTypeWithCommission) SetFake() {
+	var elem OperationTypeWithCommission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptSandboxRegisterRequest) SetFake() {
+	var elem SandboxRegisterRequest
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptString) SetFake() {
+	var elem string
+
+	{
+		elem = ""
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -680,13 +774,13 @@ func (s *Order) SetFake() {
 	{
 
 		{
-			s.OrderId = "string"
+			s.OrderId = ""
 		}
 	}
 	{
 
 		{
-			s.Figi = "string"
+			s.Figi = ""
 		}
 	}
 	{
@@ -704,13 +798,13 @@ func (s *Order) SetFake() {
 	{
 
 		{
-			s.RequestedLots = int32(0)
+			s.RequestedLots = int32(1)
 		}
 	}
 	{
 
 		{
-			s.ExecutedLots = int32(0)
+			s.ExecutedLots = int32(1)
 		}
 	}
 	{
@@ -738,7 +832,7 @@ func (s *OrderResponse) SetFake() {
 	{
 
 		{
-			s.Quantity = int32(0)
+			s.Quantity = int32(1)
 		}
 	}
 }
@@ -758,25 +852,41 @@ func (s *Orderbook) SetFake() {
 	{
 
 		{
-			s.Figi = "string"
+			s.Figi = ""
 		}
 	}
 	{
 
 		{
-			s.Depth = int32(0)
+			s.Depth = int32(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Bids = nil
+			for i := 0; i < 0; i++ {
+				var elem OrderResponse
+
+				{
+					elem.SetFake()
+				}
+				s.Bids = append(s.Bids, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Asks = nil
+			for i := 0; i < 0; i++ {
+				var elem OrderResponse
+
+				{
+					elem.SetFake()
+				}
+				s.Asks = append(s.Asks, elem)
+			}
 		}
 	}
 	{
@@ -828,13 +938,13 @@ func (s *OrderbookResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -850,19 +960,27 @@ func (s *OrdersResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Payload = nil
+			for i := 0; i < 0; i++ {
+				var elem Order
+
+				{
+					elem.SetFake()
+				}
+				s.Payload = append(s.Payload, elem)
+			}
 		}
 	}
 }
@@ -872,7 +990,7 @@ func (s *PlacedLimitOrder) SetFake() {
 	{
 
 		{
-			s.OrderId = "string"
+			s.OrderId = ""
 		}
 	}
 	{
@@ -902,13 +1020,13 @@ func (s *PlacedLimitOrder) SetFake() {
 	{
 
 		{
-			s.RequestedLots = int(0)
+			s.RequestedLots = int(1)
 		}
 	}
 	{
 
 		{
-			s.ExecutedLots = int(0)
+			s.ExecutedLots = int(1)
 		}
 	}
 	{
@@ -924,7 +1042,7 @@ func (s *PlacedMarketOrder) SetFake() {
 	{
 
 		{
-			s.OrderId = "string"
+			s.OrderId = ""
 		}
 	}
 	{
@@ -954,13 +1072,13 @@ func (s *PlacedMarketOrder) SetFake() {
 	{
 
 		{
-			s.RequestedLots = int(0)
+			s.RequestedLots = int(1)
 		}
 	}
 	{
 
 		{
-			s.ExecutedLots = int(0)
+			s.ExecutedLots = int(1)
 		}
 	}
 	{
@@ -975,8 +1093,16 @@ func (s *PlacedMarketOrder) SetFake() {
 func (s *Portfolio) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Positions = nil
+			for i := 0; i < 0; i++ {
+				var elem PortfolioPosition
+
+				{
+					elem.SetFake()
+				}
+				s.Positions = append(s.Positions, elem)
+			}
 		}
 	}
 }
@@ -986,13 +1112,13 @@ func (s *PortfolioCurrenciesResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -1008,7 +1134,7 @@ func (s *PortfolioPosition) SetFake() {
 	{
 
 		{
-			s.Figi = "string"
+			s.Figi = ""
 		}
 	}
 	{
@@ -1050,7 +1176,7 @@ func (s *PortfolioPosition) SetFake() {
 	{
 
 		{
-			s.Lots = int32(0)
+			s.Lots = int32(1)
 		}
 	}
 	{
@@ -1068,7 +1194,7 @@ func (s *PortfolioPosition) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -1078,13 +1204,13 @@ func (s *PortfolioResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -1106,7 +1232,7 @@ func (s *SandboxAccount) SetFake() {
 	{
 
 		{
-			s.BrokerAccountId = "string"
+			s.BrokerAccountId = ""
 		}
 	}
 }
@@ -1131,13 +1257,13 @@ func (s *SandboxRegisterResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -1185,13 +1311,13 @@ func (s *SearchMarketInstrument) SetFake() {
 	{
 
 		{
-			s.Figi = "string"
+			s.Figi = ""
 		}
 	}
 	{
 
 		{
-			s.Ticker = "string"
+			s.Ticker = ""
 		}
 	}
 	{
@@ -1209,7 +1335,7 @@ func (s *SearchMarketInstrument) SetFake() {
 	{
 
 		{
-			s.Lot = int32(0)
+			s.Lot = int32(1)
 		}
 	}
 	{
@@ -1221,7 +1347,7 @@ func (s *SearchMarketInstrument) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -1237,13 +1363,13 @@ func (s *SearchMarketInstrumentResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -1270,7 +1396,7 @@ func (s *UserAccount) SetFake() {
 	{
 
 		{
-			s.BrokerAccountId = "string"
+			s.BrokerAccountId = ""
 		}
 	}
 }
@@ -1279,8 +1405,16 @@ func (s *UserAccount) SetFake() {
 func (s *UserAccounts) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Accounts = nil
+			for i := 0; i < 0; i++ {
+				var elem UserAccount
+
+				{
+					elem.SetFake()
+				}
+				s.Accounts = append(s.Accounts, elem)
+			}
 		}
 	}
 }
@@ -1290,13 +1424,13 @@ func (s *UserAccountsResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = "string"
+			s.TrackingId = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{

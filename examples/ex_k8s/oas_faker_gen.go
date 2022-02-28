@@ -71,245 +71,29 @@ var (
 )
 
 // SetFake set fake values.
-func (s *GetAPIVersionsUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAdmissionregistrationAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAdmissionregistrationV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetApiextensionsAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetApiextensionsV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetApiregistrationAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetApiregistrationV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAppsAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAppsV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAuthenticationAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAuthenticationV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAuthorizationAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAuthorizationV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAutoscalingAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAutoscalingV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAutoscalingV2beta1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetAutoscalingV2beta2APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetBatchAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetBatchV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetBatchV1beta1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetCertificatesAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetCertificatesV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetCodeVersionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetCoordinationAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetCoordinationV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetCoreAPIVersionsUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetCoreV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetDiscoveryAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetDiscoveryV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetDiscoveryV1beta1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetEventsAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetEventsV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetEventsV1beta1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetFlowcontrolApiserverAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetInternalApiserverAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetInternalApiserverV1alpha1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetNetworkingAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetNetworkingV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetNodeAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetNodeV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetNodeV1alpha1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetNodeV1beta1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetPolicyAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetPolicyV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetPolicyV1beta1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetRbacAuthorizationAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetRbacAuthorizationV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetSchedulingAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetSchedulingV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GetServiceAccountIssuerOpenIDConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetStorageAPIGroupUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetStorageV1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetStorageV1alpha1APIResourcesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GetStorageV1beta1APIResourcesUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AdmissionReviewVersions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AdmissionReviewVersions = append(s.AdmissionReviewVersions, elem)
+			}
 		}
 	}
 	{
@@ -333,7 +117,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -356,14 +140,22 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Rules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAdmissionregistrationV1RuleWithOperations
+
+				{
+					elem.SetFake()
+				}
+				s.Rules = append(s.Rules, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.SideEffects = "string"
+			s.SideEffects = ""
 		}
 	}
 	{
@@ -396,8 +188,16 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) SetFake() 
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Webhooks = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAdmissionregistrationV1MutatingWebhook
+
+				{
+					elem.SetFake()
+				}
+				s.Webhooks = append(s.Webhooks, elem)
+			}
 		}
 	}
 }
@@ -412,8 +212,16 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) SetFak
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -434,26 +242,58 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) SetFak
 func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ApiGroups = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ApiGroups = append(s.ApiGroups, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ApiVersions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ApiVersions = append(s.ApiVersions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Operations = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Operations = append(s.Operations, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 	{
@@ -469,13 +309,13 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Namespace = "string"
+			s.Namespace = ""
 		}
 	}
 	{
@@ -496,8 +336,16 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetFake() {
 func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AdmissionReviewVersions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AdmissionReviewVersions = append(s.AdmissionReviewVersions, elem)
+			}
 		}
 	}
 	{
@@ -521,7 +369,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -538,14 +386,22 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Rules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAdmissionregistrationV1RuleWithOperations
+
+				{
+					elem.SetFake()
+				}
+				s.Rules = append(s.Rules, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.SideEffects = "string"
+			s.SideEffects = ""
 		}
 	}
 	{
@@ -578,8 +434,16 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) SetFake(
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Webhooks = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAdmissionregistrationV1ValidatingWebhook
+
+				{
+					elem.SetFake()
+				}
+				s.Webhooks = append(s.Webhooks, elem)
+			}
 		}
 	}
 }
@@ -594,8 +458,16 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) SetF
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -644,8 +516,16 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.DecodableVersions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.DecodableVersions = append(s.DecodableVersions, elem)
+			}
 		}
 	}
 	{
@@ -713,19 +593,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetFake() {
 	{
 
 		{
-			s.Reason = "string"
+			s.Reason = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -740,8 +620,16 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIApiserverinternalV1alpha1StorageVersion
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -772,14 +660,30 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.StorageVersions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion
+
+				{
+					elem.SetFake()
+				}
+				s.StorageVersions = append(s.StorageVersions, elem)
+			}
 		}
 	}
 }
@@ -813,7 +717,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) SetFake() {
 	{
 
 		{
-			s.Revision = int64(0)
+			s.Revision = int64(1)
 		}
 	}
 }
@@ -828,8 +732,16 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1ControllerRevision
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -903,13 +815,13 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -924,8 +836,16 @@ func (s *IoK8sAPIAppsV1DaemonSetList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1DaemonSet
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -986,20 +906,28 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1DaemonSetCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.CurrentNumberScheduled = int32(0)
+			s.CurrentNumberScheduled = int32(1)
 		}
 	}
 	{
 
 		{
-			s.DesiredNumberScheduled = int32(0)
+			s.DesiredNumberScheduled = int32(1)
 		}
 	}
 	{
@@ -1011,13 +939,13 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) SetFake() {
 	{
 
 		{
-			s.NumberMisscheduled = int32(0)
+			s.NumberMisscheduled = int32(1)
 		}
 	}
 	{
 
 		{
-			s.NumberReady = int32(0)
+			s.NumberReady = int32(1)
 		}
 	}
 	{
@@ -1119,13 +1047,13 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -1140,8 +1068,16 @@ func (s *IoK8sAPIAppsV1DeploymentList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1Deployment
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -1226,8 +1162,16 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1DeploymentCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -1335,13 +1279,13 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -1356,8 +1300,16 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1ReplicaSet
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -1412,8 +1364,16 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1ReplicaSetCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -1437,7 +1397,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(0)
+			s.Replicas = int32(1)
 		}
 	}
 }
@@ -1541,13 +1501,13 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -1562,8 +1522,16 @@ func (s *IoK8sAPIAppsV1StatefulSetList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1StatefulSet
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -1615,7 +1583,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) SetFake() {
 	{
 
 		{
-			s.ServiceName = "string"
+			s.ServiceName = ""
 		}
 	}
 	{
@@ -1632,8 +1600,16 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumeClaimTemplates = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PersistentVolumeClaim
+
+				{
+					elem.SetFake()
+				}
+				s.VolumeClaimTemplates = append(s.VolumeClaimTemplates, elem)
+			}
 		}
 	}
 }
@@ -1643,7 +1619,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) SetFake() {
 	{
 
 		{
-			s.AvailableReplicas = int32(0)
+			s.AvailableReplicas = int32(1)
 		}
 	}
 	{
@@ -1654,8 +1630,16 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAppsV1StatefulSetCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -1685,7 +1669,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(0)
+			s.Replicas = int32(1)
 		}
 	}
 	{
@@ -1729,13 +1713,13 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -1784,8 +1768,16 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV1HorizontalPodAutoscaler
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -1807,7 +1799,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetFake() {
 	{
 
 		{
-			s.MaxReplicas = int32(0)
+			s.MaxReplicas = int32(1)
 		}
 	}
 	{
@@ -1841,13 +1833,13 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetFake() {
 	{
 
 		{
-			s.CurrentReplicas = int32(0)
+			s.CurrentReplicas = int32(1)
 		}
 	}
 	{
 
 		{
-			s.DesiredReplicas = int32(0)
+			s.DesiredReplicas = int32(1)
 		}
 	}
 	{
@@ -1913,7 +1905,7 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(0)
+			s.Replicas = int32(1)
 		}
 	}
 	{
@@ -1929,13 +1921,13 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Container = "string"
+			s.Container = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -1957,7 +1949,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Container = "string"
+			s.Container = ""
 		}
 	}
 	{
@@ -1975,7 +1967,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -1991,13 +1983,13 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -2007,7 +1999,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetFake() {
 	{
 
 		{
-			s.MetricName = "string"
+			s.MetricName = ""
 		}
 	}
 	{
@@ -2047,7 +2039,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetFake() {
 	{
 
 		{
-			s.MetricName = "string"
+			s.MetricName = ""
 		}
 	}
 	{
@@ -2115,13 +2107,13 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -2136,8 +2128,16 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -2159,13 +2159,21 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetFake() {
 	{
 
 		{
-			s.MaxReplicas = int32(0)
+			s.MaxReplicas = int32(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Metrics = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta1MetricSpec
+
+				{
+					elem.SetFake()
+				}
+				s.Metrics = append(s.Metrics, elem)
+			}
 		}
 	}
 	{
@@ -2186,26 +2194,42 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetFake() {
 func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.CurrentMetrics = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta1MetricStatus
+
+				{
+					elem.SetFake()
+				}
+				s.CurrentMetrics = append(s.CurrentMetrics, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.CurrentReplicas = int32(0)
+			s.CurrentReplicas = int32(1)
 		}
 	}
 	{
 
 		{
-			s.DesiredReplicas = int32(0)
+			s.DesiredReplicas = int32(1)
 		}
 	}
 	{
@@ -2257,7 +2281,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -2297,7 +2321,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -2313,7 +2337,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetFake() {
 	{
 
 		{
-			s.MetricName = "string"
+			s.MetricName = ""
 		}
 	}
 	{
@@ -2353,7 +2377,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetFake() {
 	{
 
 		{
-			s.MetricName = "string"
+			s.MetricName = ""
 		}
 	}
 	{
@@ -2375,7 +2399,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) SetFake() {
 	{
 
 		{
-			s.MetricName = "string"
+			s.MetricName = ""
 		}
 	}
 	{
@@ -2403,7 +2427,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetFake() {
 	{
 
 		{
-			s.MetricName = "string"
+			s.MetricName = ""
 		}
 	}
 	{
@@ -2419,7 +2443,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -2453,7 +2477,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -2463,13 +2487,13 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Container = "string"
+			s.Container = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -2485,7 +2509,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Container = "string"
+			s.Container = ""
 		}
 	}
 	{
@@ -2497,7 +2521,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -2513,13 +2537,13 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -2561,19 +2585,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) SetFake() {
 	{
 
 		{
-			s.PeriodSeconds = int32(0)
+			s.PeriodSeconds = int32(1)
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
 
 		{
-			s.Value = int32(0)
+			s.Value = int32(1)
 		}
 	}
 }
@@ -2582,8 +2606,16 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) SetFake() {
 func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Policies = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta2HPAScalingPolicy
+
+				{
+					elem.SetFake()
+				}
+				s.Policies = append(s.Policies, elem)
+			}
 		}
 	}
 	{
@@ -2673,13 +2705,13 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -2694,8 +2726,16 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -2723,13 +2763,21 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetFake() {
 	{
 
 		{
-			s.MaxReplicas = int32(0)
+			s.MaxReplicas = int32(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Metrics = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta2MetricSpec
+
+				{
+					elem.SetFake()
+				}
+				s.Metrics = append(s.Metrics, elem)
+			}
 		}
 	}
 	{
@@ -2750,26 +2798,42 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetFake() {
 func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.CurrentMetrics = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIAutoscalingV2beta2MetricStatus
+
+				{
+					elem.SetFake()
+				}
+				s.CurrentMetrics = append(s.CurrentMetrics, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.CurrentReplicas = int32(0)
+			s.CurrentReplicas = int32(1)
 		}
 	}
 	{
 
 		{
-			s.DesiredReplicas = int32(0)
+			s.DesiredReplicas = int32(1)
 		}
 	}
 	{
@@ -2791,7 +2855,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -2837,7 +2901,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -2877,7 +2941,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -2899,7 +2963,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -3013,7 +3077,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -3035,7 +3099,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -3084,8 +3148,16 @@ func (s *IoK8sAPIBatchV1CronJobList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIBatchV1CronJob
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -3125,7 +3197,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) SetFake() {
 	{
 
 		{
-			s.Schedule = "string"
+			s.Schedule = ""
 		}
 	}
 	{
@@ -3152,8 +3224,16 @@ func (s *IoK8sAPIBatchV1CronJobSpec) SetFake() {
 func (s *IoK8sAPIBatchV1CronJobStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Active = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ObjectReference
+
+				{
+					elem.SetFake()
+				}
+				s.Active = append(s.Active, elem)
+			}
 		}
 	}
 	{
@@ -3233,13 +3313,13 @@ func (s *IoK8sAPIBatchV1JobCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -3254,8 +3334,16 @@ func (s *IoK8sAPIBatchV1JobList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIBatchV1Job
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -3358,8 +3446,16 @@ func (s *IoK8sAPIBatchV1JobStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIBatchV1JobCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -3408,14 +3504,30 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) SetFake() {
 func (s *IoK8sAPIBatchV1UncountedTerminatedPods) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Failed = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Failed = append(s.Failed, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Succeeded = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Succeeded = append(s.Succeeded, elem)
+			}
 		}
 	}
 }
@@ -3464,8 +3576,16 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIBatchV1beta1CronJob
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -3505,7 +3625,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetFake() {
 	{
 
 		{
-			s.Schedule = "string"
+			s.Schedule = ""
 		}
 	}
 	{
@@ -3532,8 +3652,16 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetFake() {
 func (s *IoK8sAPIBatchV1beta1CronJobStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Active = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ObjectReference
+
+				{
+					elem.SetFake()
+				}
+				s.Active = append(s.Active, elem)
+			}
 		}
 	}
 	{
@@ -3629,13 +3757,13 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -3650,8 +3778,16 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICertificatesV1CertificateSigningRequest
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -3684,8 +3820,16 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 	{
@@ -3697,7 +3841,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 	{
 
 		{
-			s.SignerName = "string"
+			s.SignerName = ""
 		}
 	}
 	{
@@ -3708,8 +3852,16 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Usages = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Usages = append(s.Usages, elem)
+			}
 		}
 	}
 	{
@@ -3722,12 +3874,14 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) SetFake() {
-	var elem []string
-
-	{ // Keep slice nil to prevent infinite recursion.
-		elem = nil
+	var (
+		elem []string
+		m    map[string][]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -3740,8 +3894,16 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICertificatesV1CertificateSigningRequestCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 }
@@ -3784,8 +3946,16 @@ func (s *IoK8sAPICoordinationV1LeaseList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoordinationV1Lease
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -3859,7 +4029,7 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = "string"
+			s.VolumeID = ""
 		}
 	}
 }
@@ -3891,13 +4061,13 @@ func (s *IoK8sAPICoreV1AttachedVolume) SetFake() {
 	{
 
 		{
-			s.DevicePath = "string"
+			s.DevicePath = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -3913,13 +4083,13 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.DiskName = "string"
+			s.DiskName = ""
 		}
 	}
 	{
 
 		{
-			s.DiskURI = "string"
+			s.DiskURI = ""
 		}
 	}
 	{
@@ -3953,7 +4123,7 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.SecretName = "string"
+			s.SecretName = ""
 		}
 	}
 	{
@@ -3965,7 +4135,7 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.ShareName = "string"
+			s.ShareName = ""
 		}
 	}
 }
@@ -3981,13 +4151,13 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) SetFake() {
 	{
 
 		{
-			s.SecretName = "string"
+			s.SecretName = ""
 		}
 	}
 	{
 
 		{
-			s.ShareName = "string"
+			s.ShareName = ""
 		}
 	}
 }
@@ -4009,7 +4179,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = "string"
+			s.Driver = ""
 		}
 	}
 	{
@@ -4045,19 +4215,21 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeHandle = "string"
+			s.VolumeHandle = ""
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -4065,7 +4237,7 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = "string"
+			s.Driver = ""
 		}
 	}
 	{
@@ -4096,26 +4268,44 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s *IoK8sAPICoreV1Capabilities) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Add = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Add = append(s.Add, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Drop = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Drop = append(s.Drop, elem)
+			}
 		}
 	}
 }
@@ -4124,8 +4314,16 @@ func (s *IoK8sAPICoreV1Capabilities) SetFake() {
 func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Monitors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Monitors = append(s.Monitors, elem)
+			}
 		}
 	}
 	{
@@ -4164,8 +4362,16 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetFake() {
 func (s *IoK8sAPICoreV1CephFSVolumeSource) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Monitors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Monitors = append(s.Monitors, elem)
+			}
 		}
 	}
 	{
@@ -4223,7 +4429,7 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = "string"
+			s.VolumeID = ""
 		}
 	}
 }
@@ -4251,7 +4457,7 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = "string"
+			s.VolumeID = ""
 		}
 	}
 }
@@ -4283,13 +4489,13 @@ func (s *IoK8sAPICoreV1ComponentCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -4304,8 +4510,16 @@ func (s *IoK8sAPICoreV1ComponentStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ComponentCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -4332,8 +4546,16 @@ func (s *IoK8sAPICoreV1ComponentStatusList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ComponentStatus
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -4392,22 +4614,26 @@ func (s *IoK8sAPICoreV1ConfigMap) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ConfigMapBinaryData) SetFake() {
-	var elem []byte
-
-	{
-		elem = []byte("[]byte")
+	var (
+		elem []byte
+		m    map[string][]byte
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ConfigMapData) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -4431,7 +4657,7 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
@@ -4458,8 +4684,16 @@ func (s *IoK8sAPICoreV1ConfigMapList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ConfigMap
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -4481,19 +4715,19 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetFake() {
 	{
 
 		{
-			s.KubeletConfigKey = "string"
+			s.KubeletConfigKey = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Namespace = "string"
+			s.Namespace = ""
 		}
 	}
 	{
@@ -4514,8 +4748,16 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetFake() {
 func (s *IoK8sAPICoreV1ConfigMapProjection) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1KeyToPath
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -4542,8 +4784,16 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1KeyToPath
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -4564,26 +4814,58 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) SetFake() {
 func (s *IoK8sAPICoreV1Container) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Args = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Args = append(s.Args, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Command = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Command = append(s.Command, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Env = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EnvVar
+
+				{
+					elem.SetFake()
+				}
+				s.Env = append(s.Env, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.EnvFrom = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EnvFromSource
+
+				{
+					elem.SetFake()
+				}
+				s.EnvFrom = append(s.EnvFrom, elem)
+			}
 		}
 	}
 	{
@@ -4613,13 +4895,21 @@ func (s *IoK8sAPICoreV1Container) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ContainerPort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 	{
@@ -4678,14 +4968,30 @@ func (s *IoK8sAPICoreV1Container) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumeDevices = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1VolumeDevice
+
+				{
+					elem.SetFake()
+				}
+				s.VolumeDevices = append(s.VolumeDevices, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumeMounts = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1VolumeMount
+
+				{
+					elem.SetFake()
+				}
+				s.VolumeMounts = append(s.VolumeMounts, elem)
+			}
 		}
 	}
 	{
@@ -4700,8 +5006,16 @@ func (s *IoK8sAPICoreV1Container) SetFake() {
 func (s *IoK8sAPICoreV1ContainerImage) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Names = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Names = append(s.Names, elem)
+			}
 		}
 	}
 	{
@@ -4717,7 +5031,7 @@ func (s *IoK8sAPICoreV1ContainerPort) SetFake() {
 	{
 
 		{
-			s.ContainerPort = int32(0)
+			s.ContainerPort = int32(1)
 		}
 	}
 	{
@@ -4789,7 +5103,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) SetFake() {
 	{
 
 		{
-			s.ExitCode = int32(0)
+			s.ExitCode = int32(1)
 		}
 	}
 	{
@@ -4851,13 +5165,13 @@ func (s *IoK8sAPICoreV1ContainerStatus) SetFake() {
 	{
 
 		{
-			s.Image = "string"
+			s.Image = ""
 		}
 	}
 	{
 
 		{
-			s.ImageID = "string"
+			s.ImageID = ""
 		}
 	}
 	{
@@ -4869,7 +5183,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -4881,7 +5195,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) SetFake() {
 	{
 
 		{
-			s.RestartCount = int32(0)
+			s.RestartCount = int32(1)
 		}
 	}
 	{
@@ -4903,7 +5217,7 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) SetFake() {
 	{
 
 		{
-			s.Port = int32(0)
+			s.Port = int32(1)
 		}
 	}
 }
@@ -4912,8 +5226,16 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) SetFake() {
 func (s *IoK8sAPICoreV1DownwardAPIProjection) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1DownwardAPIVolumeFile
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 }
@@ -4935,7 +5257,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -4956,8 +5278,16 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1DownwardAPIVolumeFile
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 }
@@ -4989,7 +5319,7 @@ func (s *IoK8sAPICoreV1EndpointAddress) SetFake() {
 	{
 
 		{
-			s.IP = "string"
+			s.IP = ""
 		}
 	}
 	{
@@ -5023,7 +5353,7 @@ func (s *IoK8sAPICoreV1EndpointPort) SetFake() {
 	{
 
 		{
-			s.Port = int32(0)
+			s.Port = int32(1)
 		}
 	}
 	{
@@ -5038,20 +5368,44 @@ func (s *IoK8sAPICoreV1EndpointPort) SetFake() {
 func (s *IoK8sAPICoreV1EndpointSubset) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Addresses = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EndpointAddress
+
+				{
+					elem.SetFake()
+				}
+				s.Addresses = append(s.Addresses, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.NotReadyAddresses = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EndpointAddress
+
+				{
+					elem.SetFake()
+				}
+				s.NotReadyAddresses = append(s.NotReadyAddresses, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EndpointPort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 }
@@ -5078,8 +5432,16 @@ func (s *IoK8sAPICoreV1Endpoints) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Subsets = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EndpointSubset
+
+				{
+					elem.SetFake()
+				}
+				s.Subsets = append(s.Subsets, elem)
+			}
 		}
 	}
 }
@@ -5094,8 +5456,16 @@ func (s *IoK8sAPICoreV1EndpointsList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Endpoints
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -5139,7 +5509,7 @@ func (s *IoK8sAPICoreV1EnvVar) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -5188,26 +5558,58 @@ func (s *IoK8sAPICoreV1EnvVarSource) SetFake() {
 func (s *IoK8sAPICoreV1EphemeralContainer) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Args = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Args = append(s.Args, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Command = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Command = append(s.Command, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Env = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EnvVar
+
+				{
+					elem.SetFake()
+				}
+				s.Env = append(s.Env, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.EnvFrom = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EnvFromSource
+
+				{
+					elem.SetFake()
+				}
+				s.EnvFrom = append(s.EnvFrom, elem)
+			}
 		}
 	}
 	{
@@ -5237,13 +5639,21 @@ func (s *IoK8sAPICoreV1EphemeralContainer) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ContainerPort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 	{
@@ -5308,14 +5718,30 @@ func (s *IoK8sAPICoreV1EphemeralContainer) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumeDevices = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1VolumeDevice
+
+				{
+					elem.SetFake()
+				}
+				s.VolumeDevices = append(s.VolumeDevices, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumeMounts = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1VolumeMount
+
+				{
+					elem.SetFake()
+				}
+				s.VolumeMounts = append(s.VolumeMounts, elem)
+			}
 		}
 	}
 	{
@@ -5452,8 +5878,16 @@ func (s *IoK8sAPICoreV1EventList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Event
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -5506,8 +5940,16 @@ func (s *IoK8sAPICoreV1EventSource) SetFake() {
 func (s *IoK8sAPICoreV1ExecAction) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Command = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Command = append(s.Command, elem)
+			}
 		}
 	}
 }
@@ -5534,14 +5976,30 @@ func (s *IoK8sAPICoreV1FCVolumeSource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TargetWWNs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.TargetWWNs = append(s.TargetWWNs, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Wwids = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Wwids = append(s.Wwids, elem)
+			}
 		}
 	}
 }
@@ -5551,7 +6009,7 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = "string"
+			s.Driver = ""
 		}
 	}
 	{
@@ -5582,12 +6040,14 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -5595,7 +6055,7 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = "string"
+			s.Driver = ""
 		}
 	}
 	{
@@ -5626,12 +6086,14 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1FlexVolumeSourceOptions) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -5667,7 +6129,7 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.PdName = "string"
+			s.PdName = ""
 		}
 	}
 	{
@@ -5689,7 +6151,7 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) SetFake() {
 	{
 
 		{
-			s.Repository = "string"
+			s.Repository = ""
 		}
 	}
 	{
@@ -5705,7 +6167,7 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Endpoints = "string"
+			s.Endpoints = ""
 		}
 	}
 	{
@@ -5717,7 +6179,7 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -5733,13 +6195,13 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) SetFake() {
 	{
 
 		{
-			s.Endpoints = "string"
+			s.Endpoints = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -5760,8 +6222,16 @@ func (s *IoK8sAPICoreV1HTTPGetAction) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.HttpHeaders = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1HTTPHeader
+
+				{
+					elem.SetFake()
+				}
+				s.HttpHeaders = append(s.HttpHeaders, elem)
+			}
 		}
 	}
 	{
@@ -5789,13 +6259,13 @@ func (s *IoK8sAPICoreV1HTTPHeader) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Value = "string"
+			s.Value = ""
 		}
 	}
 }
@@ -5826,8 +6296,16 @@ func (s *IoK8sAPICoreV1Handler) SetFake() {
 func (s *IoK8sAPICoreV1HostAlias) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Hostnames = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Hostnames = append(s.Hostnames, elem)
+			}
 		}
 	}
 	{
@@ -5843,7 +6321,7 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -5883,7 +6361,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Iqn = "string"
+			s.Iqn = ""
 		}
 	}
 	{
@@ -5895,13 +6373,21 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Lun = int32(0)
+			s.Lun = int32(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Portals = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Portals = append(s.Portals, elem)
+			}
 		}
 	}
 	{
@@ -5919,7 +6405,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.TargetPortal = "string"
+			s.TargetPortal = ""
 		}
 	}
 }
@@ -5953,7 +6439,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.Iqn = "string"
+			s.Iqn = ""
 		}
 	}
 	{
@@ -5965,13 +6451,21 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.Lun = int32(0)
+			s.Lun = int32(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Portals = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Portals = append(s.Portals, elem)
+			}
 		}
 	}
 	{
@@ -5989,7 +6483,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.TargetPortal = "string"
+			s.TargetPortal = ""
 		}
 	}
 }
@@ -5999,7 +6493,7 @@ func (s *IoK8sAPICoreV1KeyToPath) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
@@ -6011,7 +6505,7 @@ func (s *IoK8sAPICoreV1KeyToPath) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 }
@@ -6095,59 +6589,69 @@ func (s *IoK8sAPICoreV1LimitRangeItem) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1LimitRangeItemDefault) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1LimitRangeItemMax) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1LimitRangeItemMin) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -6160,8 +6664,16 @@ func (s *IoK8sAPICoreV1LimitRangeList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1LimitRange
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -6182,8 +6694,16 @@ func (s *IoK8sAPICoreV1LimitRangeList) SetFake() {
 func (s *IoK8sAPICoreV1LimitRangeSpec) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Limits = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1LimitRangeItem
+
+				{
+					elem.SetFake()
+				}
+				s.Limits = append(s.Limits, elem)
+			}
 		}
 	}
 }
@@ -6204,8 +6724,16 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PortStatus
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 }
@@ -6214,8 +6742,16 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) SetFake() {
 func (s *IoK8sAPICoreV1LoadBalancerStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ingress = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1LoadBalancerIngress
+
+				{
+					elem.SetFake()
+				}
+				s.Ingress = append(s.Ingress, elem)
+			}
 		}
 	}
 }
@@ -6241,7 +6777,7 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 }
@@ -6251,7 +6787,7 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -6263,7 +6799,7 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) SetFake() {
 	{
 
 		{
-			s.Server = "string"
+			s.Server = ""
 		}
 	}
 }
@@ -6325,13 +6861,13 @@ func (s *IoK8sAPICoreV1NamespaceCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -6346,8 +6882,16 @@ func (s *IoK8sAPICoreV1NamespaceList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Namespace
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -6368,8 +6912,16 @@ func (s *IoK8sAPICoreV1NamespaceList) SetFake() {
 func (s *IoK8sAPICoreV1NamespaceSpec) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Finalizers = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Finalizers = append(s.Finalizers, elem)
+			}
 		}
 	}
 }
@@ -6378,8 +6930,16 @@ func (s *IoK8sAPICoreV1NamespaceSpec) SetFake() {
 func (s *IoK8sAPICoreV1NamespaceStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1NamespaceCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -6429,13 +6989,13 @@ func (s *IoK8sAPICoreV1NodeAddress) SetFake() {
 	{
 
 		{
-			s.Address = "string"
+			s.Address = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -6444,8 +7004,16 @@ func (s *IoK8sAPICoreV1NodeAddress) SetFake() {
 func (s *IoK8sAPICoreV1NodeAffinity) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PreferredDuringSchedulingIgnoredDuringExecution = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PreferredSchedulingTerm
+
+				{
+					elem.SetFake()
+				}
+				s.PreferredDuringSchedulingIgnoredDuringExecution = append(s.PreferredDuringSchedulingIgnoredDuringExecution, elem)
+			}
 		}
 	}
 	{
@@ -6485,13 +7053,13 @@ func (s *IoK8sAPICoreV1NodeCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -6554,8 +7122,16 @@ func (s *IoK8sAPICoreV1NodeList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Node
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -6576,8 +7152,16 @@ func (s *IoK8sAPICoreV1NodeList) SetFake() {
 func (s *IoK8sAPICoreV1NodeSelector) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.NodeSelectorTerms = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1NodeSelectorTerm
+
+				{
+					elem.SetFake()
+				}
+				s.NodeSelectorTerms = append(s.NodeSelectorTerms, elem)
+			}
 		}
 	}
 }
@@ -6587,19 +7171,27 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Operator = "string"
+			s.Operator = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Values = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Values = append(s.Values, elem)
+			}
 		}
 	}
 }
@@ -6608,14 +7200,30 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) SetFake() {
 func (s *IoK8sAPICoreV1NodeSelectorTerm) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.MatchExpressions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1NodeSelectorRequirement
+
+				{
+					elem.SetFake()
+				}
+				s.MatchExpressions = append(s.MatchExpressions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.MatchFields = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1NodeSelectorRequirement
+
+				{
+					elem.SetFake()
+				}
+				s.MatchFields = append(s.MatchFields, elem)
+			}
 		}
 	}
 }
@@ -6642,8 +7250,16 @@ func (s *IoK8sAPICoreV1NodeSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PodCIDRs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.PodCIDRs = append(s.PodCIDRs, elem)
+			}
 		}
 	}
 	{
@@ -6654,8 +7270,16 @@ func (s *IoK8sAPICoreV1NodeSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Taints = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Taint
+
+				{
+					elem.SetFake()
+				}
+				s.Taints = append(s.Taints, elem)
+			}
 		}
 	}
 	{
@@ -6670,8 +7294,16 @@ func (s *IoK8sAPICoreV1NodeSpec) SetFake() {
 func (s *IoK8sAPICoreV1NodeStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Addresses = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1NodeAddress
+
+				{
+					elem.SetFake()
+				}
+				s.Addresses = append(s.Addresses, elem)
+			}
 		}
 	}
 	{
@@ -6688,8 +7320,16 @@ func (s *IoK8sAPICoreV1NodeStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1NodeCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -6706,8 +7346,16 @@ func (s *IoK8sAPICoreV1NodeStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Images = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ContainerImage
+
+				{
+					elem.SetFake()
+				}
+				s.Images = append(s.Images, elem)
+			}
 		}
 	}
 	{
@@ -6724,36 +7372,56 @@ func (s *IoK8sAPICoreV1NodeStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumesAttached = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1AttachedVolume
+
+				{
+					elem.SetFake()
+				}
+				s.VolumesAttached = append(s.VolumesAttached, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumesInUse = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.VolumesInUse = append(s.VolumesInUse, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1NodeStatusAllocatable) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1NodeStatusCapacity) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -6761,61 +7429,61 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) SetFake() {
 	{
 
 		{
-			s.Architecture = "string"
+			s.Architecture = ""
 		}
 	}
 	{
 
 		{
-			s.BootID = "string"
+			s.BootID = ""
 		}
 	}
 	{
 
 		{
-			s.ContainerRuntimeVersion = "string"
+			s.ContainerRuntimeVersion = ""
 		}
 	}
 	{
 
 		{
-			s.KernelVersion = "string"
+			s.KernelVersion = ""
 		}
 	}
 	{
 
 		{
-			s.KubeProxyVersion = "string"
+			s.KubeProxyVersion = ""
 		}
 	}
 	{
 
 		{
-			s.KubeletVersion = "string"
+			s.KubeletVersion = ""
 		}
 	}
 	{
 
 		{
-			s.MachineID = "string"
+			s.MachineID = ""
 		}
 	}
 	{
 
 		{
-			s.OperatingSystem = "string"
+			s.OperatingSystem = ""
 		}
 	}
 	{
 
 		{
-			s.OsImage = "string"
+			s.OsImage = ""
 		}
 	}
 	{
 
 		{
-			s.SystemUUID = "string"
+			s.SystemUUID = ""
 		}
 	}
 }
@@ -6831,7 +7499,7 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) SetFake() {
 	{
 
 		{
-			s.FieldPath = "string"
+			s.FieldPath = ""
 		}
 	}
 }
@@ -6979,13 +7647,13 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -7000,8 +7668,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PersistentVolumeClaim
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -7022,8 +7698,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) SetFake() {
 func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AccessModes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AccessModes = append(s.AccessModes, elem)
+			}
 		}
 	}
 	{
@@ -7074,8 +7758,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetFake() {
 func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AccessModes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AccessModes = append(s.AccessModes, elem)
+			}
 		}
 	}
 	{
@@ -7086,8 +7778,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PersistentVolumeClaimCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -7100,12 +7800,14 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -7129,7 +7831,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetFake() {
 	{
 
 		{
-			s.ClaimName = "string"
+			s.ClaimName = ""
 		}
 	}
 	{
@@ -7150,8 +7852,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PersistentVolume
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -7172,8 +7882,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) SetFake() {
 func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AccessModes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AccessModes = append(s.AccessModes, elem)
+			}
 		}
 	}
 	{
@@ -7274,8 +7992,16 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.MountOptions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.MountOptions = append(s.MountOptions, elem)
+			}
 		}
 	}
 	{
@@ -7354,12 +8080,14 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -7395,7 +8123,7 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.PdID = "string"
+			s.PdID = ""
 		}
 	}
 }
@@ -7438,14 +8166,30 @@ func (s *IoK8sAPICoreV1Pod) SetFake() {
 func (s *IoK8sAPICoreV1PodAffinity) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PreferredDuringSchedulingIgnoredDuringExecution = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1WeightedPodAffinityTerm
+
+				{
+					elem.SetFake()
+				}
+				s.PreferredDuringSchedulingIgnoredDuringExecution = append(s.PreferredDuringSchedulingIgnoredDuringExecution, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDuringSchedulingIgnoredDuringExecution = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PodAffinityTerm
+
+				{
+					elem.SetFake()
+				}
+				s.RequiredDuringSchedulingIgnoredDuringExecution = append(s.RequiredDuringSchedulingIgnoredDuringExecution, elem)
+			}
 		}
 	}
 }
@@ -7466,14 +8210,22 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Namespaces = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Namespaces = append(s.Namespaces, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.TopologyKey = "string"
+			s.TopologyKey = ""
 		}
 	}
 }
@@ -7482,14 +8234,30 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) SetFake() {
 func (s *IoK8sAPICoreV1PodAntiAffinity) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PreferredDuringSchedulingIgnoredDuringExecution = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1WeightedPodAffinityTerm
+
+				{
+					elem.SetFake()
+				}
+				s.PreferredDuringSchedulingIgnoredDuringExecution = append(s.PreferredDuringSchedulingIgnoredDuringExecution, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDuringSchedulingIgnoredDuringExecution = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PodAffinityTerm
+
+				{
+					elem.SetFake()
+				}
+				s.RequiredDuringSchedulingIgnoredDuringExecution = append(s.RequiredDuringSchedulingIgnoredDuringExecution, elem)
+			}
 		}
 	}
 }
@@ -7523,13 +8291,13 @@ func (s *IoK8sAPICoreV1PodCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -7538,20 +8306,44 @@ func (s *IoK8sAPICoreV1PodCondition) SetFake() {
 func (s *IoK8sAPICoreV1PodDNSConfig) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Nameservers = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Nameservers = append(s.Nameservers, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Options = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PodDNSConfigOption
+
+				{
+					elem.SetFake()
+				}
+				s.Options = append(s.Options, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Searches = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Searches = append(s.Searches, elem)
+			}
 		}
 	}
 }
@@ -7592,8 +8384,16 @@ func (s *IoK8sAPICoreV1PodList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Pod
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -7615,7 +8415,7 @@ func (s *IoK8sAPICoreV1PodReadinessGate) SetFake() {
 	{
 
 		{
-			s.ConditionType = "string"
+			s.ConditionType = ""
 		}
 	}
 }
@@ -7666,14 +8466,30 @@ func (s *IoK8sAPICoreV1PodSecurityContext) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SupplementalGroups = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.SupplementalGroups = append(s.SupplementalGroups, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Sysctls = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Sysctl
+
+				{
+					elem.SetFake()
+				}
+				s.Sysctls = append(s.Sysctls, elem)
+			}
 		}
 	}
 	{
@@ -7706,8 +8522,16 @@ func (s *IoK8sAPICoreV1PodSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Containers = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Container
+
+				{
+					elem.SetFake()
+				}
+				s.Containers = append(s.Containers, elem)
+			}
 		}
 	}
 	{
@@ -7730,14 +8554,30 @@ func (s *IoK8sAPICoreV1PodSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.EphemeralContainers = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1EphemeralContainer
+
+				{
+					elem.SetFake()
+				}
+				s.EphemeralContainers = append(s.EphemeralContainers, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.HostAliases = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1HostAlias
+
+				{
+					elem.SetFake()
+				}
+				s.HostAliases = append(s.HostAliases, elem)
+			}
 		}
 	}
 	{
@@ -7766,14 +8606,30 @@ func (s *IoK8sAPICoreV1PodSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ImagePullSecrets = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1LocalObjectReference
+
+				{
+					elem.SetFake()
+				}
+				s.ImagePullSecrets = append(s.ImagePullSecrets, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.InitContainers = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Container
+
+				{
+					elem.SetFake()
+				}
+				s.InitContainers = append(s.InitContainers, elem)
+			}
 		}
 	}
 	{
@@ -7814,8 +8670,16 @@ func (s *IoK8sAPICoreV1PodSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ReadinessGates = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PodReadinessGate
+
+				{
+					elem.SetFake()
+				}
+				s.ReadinessGates = append(s.ReadinessGates, elem)
+			}
 		}
 	}
 	{
@@ -7880,62 +8744,114 @@ func (s *IoK8sAPICoreV1PodSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tolerations = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Toleration
+
+				{
+					elem.SetFake()
+				}
+				s.Tolerations = append(s.Tolerations, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TopologySpreadConstraints = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1TopologySpreadConstraint
+
+				{
+					elem.SetFake()
+				}
+				s.TopologySpreadConstraints = append(s.TopologySpreadConstraints, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Volumes = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Volume
+
+				{
+					elem.SetFake()
+				}
+				s.Volumes = append(s.Volumes, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1PodSpecNodeSelector) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1PodSpecOverhead) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s *IoK8sAPICoreV1PodStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PodCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ContainerStatuses = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ContainerStatus
+
+				{
+					elem.SetFake()
+				}
+				s.ContainerStatuses = append(s.ContainerStatuses, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.EphemeralContainerStatuses = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ContainerStatus
+
+				{
+					elem.SetFake()
+				}
+				s.EphemeralContainerStatuses = append(s.EphemeralContainerStatuses, elem)
+			}
 		}
 	}
 	{
@@ -7946,8 +8862,16 @@ func (s *IoK8sAPICoreV1PodStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.InitContainerStatuses = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ContainerStatus
+
+				{
+					elem.SetFake()
+				}
+				s.InitContainerStatuses = append(s.InitContainerStatuses, elem)
+			}
 		}
 	}
 	{
@@ -7976,8 +8900,16 @@ func (s *IoK8sAPICoreV1PodStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PodIPs = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PodIP
+
+				{
+					elem.SetFake()
+				}
+				s.PodIPs = append(s.PodIPs, elem)
+			}
 		}
 	}
 	{
@@ -8038,8 +8970,16 @@ func (s *IoK8sAPICoreV1PodTemplateList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1PodTemplate
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -8083,13 +9023,13 @@ func (s *IoK8sAPICoreV1PortStatus) SetFake() {
 	{
 
 		{
-			s.Port = int32(0)
+			s.Port = int32(1)
 		}
 	}
 	{
 
 		{
-			s.Protocol = "string"
+			s.Protocol = ""
 		}
 	}
 }
@@ -8111,7 +9051,7 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = "string"
+			s.VolumeID = ""
 		}
 	}
 }
@@ -8127,7 +9067,7 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) SetFake() {
 	{
 
 		{
-			s.Weight = int32(0)
+			s.Weight = int32(1)
 		}
 	}
 }
@@ -8200,8 +9140,16 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Sources = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1VolumeProjection
+
+				{
+					elem.SetFake()
+				}
+				s.Sources = append(s.Sources, elem)
+			}
 		}
 	}
 }
@@ -8223,7 +9171,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetFake() {
 	{
 
 		{
-			s.Registry = "string"
+			s.Registry = ""
 		}
 	}
 	{
@@ -8241,7 +9189,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetFake() {
 	{
 
 		{
-			s.Volume = "string"
+			s.Volume = ""
 		}
 	}
 }
@@ -8257,7 +9205,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Image = "string"
+			s.Image = ""
 		}
 	}
 	{
@@ -8268,8 +9216,16 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Monitors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Monitors = append(s.Monitors, elem)
+			}
 		}
 	}
 	{
@@ -8309,7 +9265,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) SetFake() {
 	{
 
 		{
-			s.Image = "string"
+			s.Image = ""
 		}
 	}
 	{
@@ -8320,8 +9276,16 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Monitors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Monitors = append(s.Monitors, elem)
+			}
 		}
 	}
 	{
@@ -8407,13 +9371,13 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -8428,8 +9392,16 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ReplicationController
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -8476,12 +9448,14 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -8494,8 +9468,16 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ReplicationControllerCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -8519,7 +9501,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(0)
+			s.Replicas = int32(1)
 		}
 	}
 }
@@ -8541,7 +9523,7 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) SetFake() {
 	{
 
 		{
-			s.Resource = "string"
+			s.Resource = ""
 		}
 	}
 }
@@ -8590,8 +9572,16 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ResourceQuota
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -8624,20 +9614,30 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Scopes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Scopes = append(s.Scopes, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ResourceQuotaSpecHard) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -8658,22 +9658,26 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ResourceQuotaStatusHard) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -8694,22 +9698,26 @@ func (s *IoK8sAPICoreV1ResourceRequirements) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ResourceRequirementsLimits) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ResourceRequirementsRequests) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -8751,7 +9759,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Gateway = "string"
+			s.Gateway = ""
 		}
 	}
 	{
@@ -8793,7 +9801,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.System = "string"
+			s.System = ""
 		}
 	}
 	{
@@ -8815,7 +9823,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetFake() {
 	{
 
 		{
-			s.Gateway = "string"
+			s.Gateway = ""
 		}
 	}
 	{
@@ -8857,7 +9865,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetFake() {
 	{
 
 		{
-			s.System = "string"
+			s.System = ""
 		}
 	}
 	{
@@ -8872,8 +9880,16 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetFake() {
 func (s *IoK8sAPICoreV1ScopeSelector) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.MatchExpressions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ScopedResourceSelectorRequirement
+
+				{
+					elem.SetFake()
+				}
+				s.MatchExpressions = append(s.MatchExpressions, elem)
+			}
 		}
 	}
 }
@@ -8883,19 +9899,27 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) SetFake() {
 	{
 
 		{
-			s.Operator = "string"
+			s.Operator = ""
 		}
 	}
 	{
 
 		{
-			s.ScopeName = "string"
+			s.ScopeName = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Values = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Values = append(s.Values, elem)
+			}
 		}
 	}
 }
@@ -8911,7 +9935,7 @@ func (s *IoK8sAPICoreV1SeccompProfile) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -8964,12 +9988,14 @@ func (s *IoK8sAPICoreV1Secret) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1SecretData) SetFake() {
-	var elem []byte
-
-	{
-		elem = []byte("[]byte")
+	var (
+		elem []byte
+		m    map[string][]byte
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -8993,7 +10019,7 @@ func (s *IoK8sAPICoreV1SecretKeySelector) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
@@ -9020,8 +10046,16 @@ func (s *IoK8sAPICoreV1SecretList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Secret
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -9042,8 +10076,16 @@ func (s *IoK8sAPICoreV1SecretList) SetFake() {
 func (s *IoK8sAPICoreV1SecretProjection) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1KeyToPath
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -9078,12 +10120,14 @@ func (s *IoK8sAPICoreV1SecretReference) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1SecretStringData) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -9096,8 +10140,16 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1KeyToPath
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -9234,8 +10286,16 @@ func (s *IoK8sAPICoreV1ServiceAccount) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ImagePullSecrets = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1LocalObjectReference
+
+				{
+					elem.SetFake()
+				}
+				s.ImagePullSecrets = append(s.ImagePullSecrets, elem)
+			}
 		}
 	}
 	{
@@ -9252,8 +10312,16 @@ func (s *IoK8sAPICoreV1ServiceAccount) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Secrets = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ObjectReference
+
+				{
+					elem.SetFake()
+				}
+				s.Secrets = append(s.Secrets, elem)
+			}
 		}
 	}
 }
@@ -9268,8 +10336,16 @@ func (s *IoK8sAPICoreV1ServiceAccountList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ServiceAccount
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -9303,7 +10379,7 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 }
@@ -9318,8 +10394,16 @@ func (s *IoK8sAPICoreV1ServiceList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Service
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -9359,7 +10443,7 @@ func (s *IoK8sAPICoreV1ServicePort) SetFake() {
 	{
 
 		{
-			s.Port = int32(0)
+			s.Port = int32(1)
 		}
 	}
 	{
@@ -9392,14 +10476,30 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ClusterIPs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ClusterIPs = append(s.ClusterIPs, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ExternalIPs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ExternalIPs = append(s.ExternalIPs, elem)
+			}
 		}
 	}
 	{
@@ -9428,8 +10528,16 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.IpFamilies = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.IpFamilies = append(s.IpFamilies, elem)
+			}
 		}
 	}
 	{
@@ -9452,14 +10560,30 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.LoadBalancerSourceRanges = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.LoadBalancerSourceRanges = append(s.LoadBalancerSourceRanges, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1ServicePort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 	{
@@ -9496,20 +10620,30 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPICoreV1ServiceSpecSelector) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s *IoK8sAPICoreV1ServiceStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1Condition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
@@ -9603,13 +10737,13 @@ func (s *IoK8sAPICoreV1Sysctl) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Value = "string"
+			s.Value = ""
 		}
 	}
 }
@@ -9635,13 +10769,13 @@ func (s *IoK8sAPICoreV1Taint) SetFake() {
 	{
 
 		{
-			s.Effect = "string"
+			s.Effect = ""
 		}
 	}
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
@@ -9697,13 +10831,21 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Values = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Values = append(s.Values, elem)
+			}
 		}
 	}
 }
@@ -9712,8 +10854,16 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) SetFake() {
 func (s *IoK8sAPICoreV1TopologySelectorTerm) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.MatchLabelExpressions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1TopologySelectorLabelRequirement
+
+				{
+					elem.SetFake()
+				}
+				s.MatchLabelExpressions = append(s.MatchLabelExpressions, elem)
+			}
 		}
 	}
 }
@@ -9729,19 +10879,19 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) SetFake() {
 	{
 
 		{
-			s.MaxSkew = int32(0)
+			s.MaxSkew = int32(1)
 		}
 	}
 	{
 
 		{
-			s.TopologyKey = "string"
+			s.TopologyKey = ""
 		}
 	}
 	{
 
 		{
-			s.WhenUnsatisfiable = "string"
+			s.WhenUnsatisfiable = ""
 		}
 	}
 }
@@ -9757,13 +10907,13 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -9881,7 +11031,7 @@ func (s *IoK8sAPICoreV1Volume) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -9957,13 +11107,13 @@ func (s *IoK8sAPICoreV1VolumeDevice) SetFake() {
 	{
 
 		{
-			s.DevicePath = "string"
+			s.DevicePath = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -9973,7 +11123,7 @@ func (s *IoK8sAPICoreV1VolumeMount) SetFake() {
 	{
 
 		{
-			s.MountPath = "string"
+			s.MountPath = ""
 		}
 	}
 	{
@@ -9985,7 +11135,7 @@ func (s *IoK8sAPICoreV1VolumeMount) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -10069,7 +11219,7 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumePath = "string"
+			s.VolumePath = ""
 		}
 	}
 }
@@ -10085,7 +11235,7 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) SetFake() {
 	{
 
 		{
-			s.Weight = int32(0)
+			s.Weight = int32(1)
 		}
 	}
 }
@@ -10122,8 +11272,16 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) SetFake() {
 func (s *IoK8sAPIDiscoveryV1Endpoint) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Addresses = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Addresses = append(s.Addresses, elem)
+			}
 		}
 	}
 	{
@@ -10194,20 +11352,30 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s *IoK8sAPIDiscoveryV1EndpointHints) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ForZones = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1ForZone
+
+				{
+					elem.SetFake()
+				}
+				s.ForZones = append(s.ForZones, elem)
+			}
 		}
 	}
 }
@@ -10245,7 +11413,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetFake() {
 	{
 
 		{
-			s.AddressType = "string"
+			s.AddressType = ""
 		}
 	}
 	{
@@ -10256,8 +11424,16 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Endpoints = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1Endpoint
+
+				{
+					elem.SetFake()
+				}
+				s.Endpoints = append(s.Endpoints, elem)
+			}
 		}
 	}
 	{
@@ -10274,8 +11450,16 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1EndpointPort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 }
@@ -10290,8 +11474,16 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1EndpointSlice
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -10313,7 +11505,7 @@ func (s *IoK8sAPIDiscoveryV1ForZone) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -10322,8 +11514,16 @@ func (s *IoK8sAPIDiscoveryV1ForZone) SetFake() {
 func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Addresses = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Addresses = append(s.Addresses, elem)
+			}
 		}
 	}
 	{
@@ -10390,8 +11590,16 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) SetFake() {
 func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ForZones = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1beta1ForZone
+
+				{
+					elem.SetFake()
+				}
+				s.ForZones = append(s.ForZones, elem)
+			}
 		}
 	}
 }
@@ -10429,7 +11637,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetFake() {
 	{
 
 		{
-			s.AddressType = "string"
+			s.AddressType = ""
 		}
 	}
 	{
@@ -10440,8 +11648,16 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Endpoints = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1beta1Endpoint
+
+				{
+					elem.SetFake()
+				}
+				s.Endpoints = append(s.Endpoints, elem)
+			}
 		}
 	}
 	{
@@ -10458,8 +11674,16 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1beta1EndpointPort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 }
@@ -10474,8 +11698,16 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIDiscoveryV1beta1EndpointSlice
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -10494,12 +11726,14 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -10507,7 +11741,7 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -10628,8 +11862,16 @@ func (s *IoK8sAPIEventsV1EventList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIEventsV1Event
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -10651,7 +11893,7 @@ func (s *IoK8sAPIEventsV1EventSeries) SetFake() {
 	{
 
 		{
-			s.Count = int32(0)
+			s.Count = int32(1)
 		}
 	}
 	{
@@ -10778,8 +12020,16 @@ func (s *IoK8sAPIEventsV1beta1EventList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIEventsV1beta1Event
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -10801,7 +12051,7 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) SetFake() {
 	{
 
 		{
-			s.Count = int32(0)
+			s.Count = int32(1)
 		}
 	}
 	{
@@ -10817,7 +12067,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -10900,8 +12150,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1FlowSchema
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -10940,8 +12198,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Rules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects
+
+				{
+					elem.SetFake()
+				}
+				s.Rules = append(s.Rules, elem)
+			}
 		}
 	}
 }
@@ -10950,8 +12216,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 }
@@ -10961,7 +12235,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -10977,7 +12251,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -11002,14 +12276,30 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) SetFake() 
 func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.NonResourceURLs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.NonResourceURLs = append(s.NonResourceURLs, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Verbs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Verbs = append(s.Verbs, elem)
+			}
 		}
 	}
 }
@@ -11018,20 +12308,44 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.NonResourceRules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule
+
+				{
+					elem.SetFake()
+				}
+				s.NonResourceRules = append(s.NonResourceRules, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ResourceRules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule
+
+				{
+					elem.SetFake()
+				}
+				s.ResourceRules = append(s.ResourceRules, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Subjects = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1Subject
+
+				{
+					elem.SetFake()
+				}
+				s.Subjects = append(s.Subjects, elem)
+			}
 		}
 	}
 }
@@ -11114,8 +12428,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -11137,7 +12459,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) SetFake(
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -11153,7 +12475,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -11162,8 +12484,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 }
@@ -11194,8 +12524,16 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ApiGroups = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ApiGroups = append(s.ApiGroups, elem)
+			}
 		}
 	}
 	{
@@ -11206,20 +12544,44 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Namespaces = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Namespaces = append(s.Namespaces, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Verbs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Verbs = append(s.Verbs, elem)
+			}
 		}
 	}
 }
@@ -11229,13 +12591,13 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Namespace = "string"
+			s.Namespace = ""
 		}
 	}
 }
@@ -11251,7 +12613,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
@@ -11273,7 +12635,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -11283,7 +12645,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -11366,8 +12728,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2FlowSchema
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -11406,8 +12776,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Rules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects
+
+				{
+					elem.SetFake()
+				}
+				s.Rules = append(s.Rules, elem)
+			}
 		}
 	}
 }
@@ -11416,8 +12794,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 }
@@ -11427,7 +12813,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -11443,7 +12829,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -11468,14 +12854,30 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) SetFake() 
 func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.NonResourceURLs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.NonResourceURLs = append(s.NonResourceURLs, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Verbs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Verbs = append(s.Verbs, elem)
+			}
 		}
 	}
 }
@@ -11484,20 +12886,44 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.NonResourceRules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule
+
+				{
+					elem.SetFake()
+				}
+				s.NonResourceRules = append(s.NonResourceRules, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ResourceRules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule
+
+				{
+					elem.SetFake()
+				}
+				s.ResourceRules = append(s.ResourceRules, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Subjects = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2Subject
+
+				{
+					elem.SetFake()
+				}
+				s.Subjects = append(s.Subjects, elem)
+			}
 		}
 	}
 }
@@ -11580,8 +13006,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -11603,7 +13037,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) SetFake(
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -11619,7 +13053,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -11628,8 +13062,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 }
@@ -11660,8 +13102,16 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) SetFake() {
 func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ApiGroups = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ApiGroups = append(s.ApiGroups, elem)
+			}
 		}
 	}
 	{
@@ -11672,20 +13122,44 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Namespaces = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Namespaces = append(s.Namespaces, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Verbs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Verbs = append(s.Verbs, elem)
+			}
 		}
 	}
 }
@@ -11695,13 +13169,13 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Namespace = "string"
+			s.Namespace = ""
 		}
 	}
 }
@@ -11717,7 +13191,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
@@ -11739,7 +13213,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -11761,7 +13235,7 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) SetFake() {
 	{
 
 		{
-			s.PathType = "string"
+			s.PathType = ""
 		}
 	}
 }
@@ -11770,8 +13244,16 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) SetFake() {
 func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Paths = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1HTTPIngressPath
+
+				{
+					elem.SetFake()
+				}
+				s.Paths = append(s.Paths, elem)
+			}
 		}
 	}
 }
@@ -11781,13 +13263,21 @@ func (s *IoK8sAPINetworkingV1IPBlock) SetFake() {
 	{
 
 		{
-			s.Cidr = "string"
+			s.Cidr = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Except = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Except = append(s.Except, elem)
+			}
 		}
 	}
 }
@@ -11880,8 +13370,16 @@ func (s *IoK8sAPINetworkingV1IngressClassList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1IngressClass
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -11909,13 +13407,13 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -11958,8 +13456,16 @@ func (s *IoK8sAPINetworkingV1IngressList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1Ingress
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -11997,7 +13503,7 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -12024,14 +13530,30 @@ func (s *IoK8sAPINetworkingV1IngressSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Rules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1IngressRule
+
+				{
+					elem.SetFake()
+				}
+				s.Rules = append(s.Rules, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TLS = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1IngressTLS
+
+				{
+					elem.SetFake()
+				}
+				s.TLS = append(s.TLS, elem)
+			}
 		}
 	}
 }
@@ -12050,8 +13572,16 @@ func (s *IoK8sAPINetworkingV1IngressStatus) SetFake() {
 func (s *IoK8sAPINetworkingV1IngressTLS) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Hosts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Hosts = append(s.Hosts, elem)
+			}
 		}
 	}
 	{
@@ -12094,14 +13624,30 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) SetFake() {
 func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1NetworkPolicyPort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.To = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1NetworkPolicyPeer
+
+				{
+					elem.SetFake()
+				}
+				s.To = append(s.To, elem)
+			}
 		}
 	}
 }
@@ -12110,14 +13656,30 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) SetFake() {
 func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.From = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1NetworkPolicyPeer
+
+				{
+					elem.SetFake()
+				}
+				s.From = append(s.From, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ports = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1NetworkPolicyPort
+
+				{
+					elem.SetFake()
+				}
+				s.Ports = append(s.Ports, elem)
+			}
 		}
 	}
 }
@@ -12132,8 +13694,16 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1NetworkPolicy
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -12198,14 +13768,30 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) SetFake() {
 func (s *IoK8sAPINetworkingV1NetworkPolicySpec) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Egress = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1NetworkPolicyEgressRule
+
+				{
+					elem.SetFake()
+				}
+				s.Egress = append(s.Egress, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ingress = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINetworkingV1NetworkPolicyIngressRule
+
+				{
+					elem.SetFake()
+				}
+				s.Ingress = append(s.Ingress, elem)
+			}
 		}
 	}
 	{
@@ -12216,8 +13802,16 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PolicyTypes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.PolicyTypes = append(s.PolicyTypes, elem)
+			}
 		}
 	}
 }
@@ -12250,12 +13844,14 @@ func (s *IoK8sAPINodeV1Overhead) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPINodeV1OverheadPodFixed) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12269,7 +13865,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) SetFake() {
 	{
 
 		{
-			s.Handler = "string"
+			s.Handler = ""
 		}
 	}
 	{
@@ -12308,8 +13904,16 @@ func (s *IoK8sAPINodeV1RuntimeClassList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINodeV1RuntimeClass
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -12336,20 +13940,30 @@ func (s *IoK8sAPINodeV1Scheduling) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tolerations = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Toleration
+
+				{
+					elem.SetFake()
+				}
+				s.Tolerations = append(s.Tolerations, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPINodeV1SchedulingNodeSelector) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12364,12 +13978,14 @@ func (s *IoK8sAPINodeV1alpha1Overhead) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPINodeV1alpha1OverheadPodFixed) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12410,8 +14026,16 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINodeV1alpha1RuntimeClass
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -12439,7 +14063,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) SetFake() {
 	{
 
 		{
-			s.RuntimeHandler = "string"
+			s.RuntimeHandler = ""
 		}
 	}
 	{
@@ -12460,20 +14084,30 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tolerations = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Toleration
+
+				{
+					elem.SetFake()
+				}
+				s.Tolerations = append(s.Tolerations, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12488,12 +14122,14 @@ func (s *IoK8sAPINodeV1beta1Overhead) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPINodeV1beta1OverheadPodFixed) SetFake() {
-	var elem IoK8sApimachineryPkgAPIResourceQuantity
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12507,7 +14143,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) SetFake() {
 	{
 
 		{
-			s.Handler = "string"
+			s.Handler = ""
 		}
 	}
 	{
@@ -12546,8 +14182,16 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPINodeV1beta1RuntimeClass
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -12574,20 +14218,30 @@ func (s *IoK8sAPINodeV1beta1Scheduling) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tolerations = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1Toleration
+
+				{
+					elem.SetFake()
+				}
+				s.Tolerations = append(s.Tolerations, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12634,8 +14288,16 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1PodDisruptionBudget
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -12678,20 +14340,28 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetFake() {
 func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1Condition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.CurrentHealthy = int32(0)
+			s.CurrentHealthy = int32(1)
 		}
 	}
 	{
 
 		{
-			s.DesiredHealthy = int32(0)
+			s.DesiredHealthy = int32(1)
 		}
 	}
 	{
@@ -12703,13 +14373,13 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetFake() {
 	{
 
 		{
-			s.DisruptionsAllowed = int32(0)
+			s.DisruptionsAllowed = int32(1)
 		}
 	}
 	{
 
 		{
-			s.ExpectedPods = int32(0)
+			s.ExpectedPods = int32(1)
 		}
 	}
 	{
@@ -12722,12 +14392,14 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
-	var elem IoK8sApimachineryPkgApisMetaV1Time
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgApisMetaV1Time
+		m    map[string]IoK8sApimachineryPkgApisMetaV1Time
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12735,7 +14407,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -12745,7 +14417,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) SetFake() {
 	{
 
 		{
-			s.Driver = "string"
+			s.Driver = ""
 		}
 	}
 }
@@ -12770,8 +14442,16 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) SetFake() {
 func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ranges = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1IDRange
+
+				{
+					elem.SetFake()
+				}
+				s.Ranges = append(s.Ranges, elem)
+			}
 		}
 	}
 	{
@@ -12787,13 +14467,13 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) SetFake() {
 	{
 
 		{
-			s.Max = int32(0)
+			s.Max = int32(1)
 		}
 	}
 	{
 
 		{
-			s.Min = int32(0)
+			s.Min = int32(1)
 		}
 	}
 }
@@ -12803,13 +14483,13 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) SetFake() {
 	{
 
 		{
-			s.Max = int64(0)
+			s.Max = int64(1)
 		}
 	}
 	{
 
 		{
-			s.Min = int64(0)
+			s.Min = int64(1)
 		}
 	}
 }
@@ -12858,8 +14538,16 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1PodDisruptionBudget
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -12902,20 +14590,28 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetFake() {
 func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1Condition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.CurrentHealthy = int32(0)
+			s.CurrentHealthy = int32(1)
 		}
 	}
 	{
 
 		{
-			s.DesiredHealthy = int32(0)
+			s.DesiredHealthy = int32(1)
 		}
 	}
 	{
@@ -12927,13 +14623,13 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetFake() {
 	{
 
 		{
-			s.DisruptionsAllowed = int32(0)
+			s.DisruptionsAllowed = int32(1)
 		}
 	}
 	{
 
 		{
-			s.ExpectedPods = int32(0)
+			s.ExpectedPods = int32(1)
 		}
 	}
 	{
@@ -12946,12 +14642,14 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
-	var elem IoK8sApimachineryPkgApisMetaV1Time
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApimachineryPkgApisMetaV1Time
+		m    map[string]IoK8sApimachineryPkgApisMetaV1Time
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12992,8 +14690,16 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1PodSecurityPolicy
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13020,44 +14726,100 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedCSIDrivers = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1AllowedCSIDriver
+
+				{
+					elem.SetFake()
+				}
+				s.AllowedCSIDrivers = append(s.AllowedCSIDrivers, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedCapabilities = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AllowedCapabilities = append(s.AllowedCapabilities, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedFlexVolumes = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1AllowedFlexVolume
+
+				{
+					elem.SetFake()
+				}
+				s.AllowedFlexVolumes = append(s.AllowedFlexVolumes, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedHostPaths = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1AllowedHostPath
+
+				{
+					elem.SetFake()
+				}
+				s.AllowedHostPaths = append(s.AllowedHostPaths, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedProcMountTypes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AllowedProcMountTypes = append(s.AllowedProcMountTypes, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedUnsafeSysctls = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AllowedUnsafeSysctls = append(s.AllowedUnsafeSysctls, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.DefaultAddCapabilities = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.DefaultAddCapabilities = append(s.DefaultAddCapabilities, elem)
+			}
 		}
 	}
 	{
@@ -13068,8 +14830,16 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ForbiddenSysctls = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ForbiddenSysctls = append(s.ForbiddenSysctls, elem)
+			}
 		}
 	}
 	{
@@ -13098,8 +14868,16 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.HostPorts = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1HostPortRange
+
+				{
+					elem.SetFake()
+				}
+				s.HostPorts = append(s.HostPorts, elem)
+			}
 		}
 	}
 	{
@@ -13116,8 +14894,16 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDropCapabilities = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredDropCapabilities = append(s.RequiredDropCapabilities, elem)
+			}
 		}
 	}
 	{
@@ -13152,8 +14938,16 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Volumes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Volumes = append(s.Volumes, elem)
+			}
 		}
 	}
 }
@@ -13162,14 +14956,22 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ranges = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1IDRange
+
+				{
+					elem.SetFake()
+				}
+				s.Ranges = append(s.Ranges, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Rule = "string"
+			s.Rule = ""
 		}
 	}
 }
@@ -13178,14 +14980,22 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetFake() {
 func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ranges = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1IDRange
+
+				{
+					elem.SetFake()
+				}
+				s.Ranges = append(s.Ranges, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Rule = "string"
+			s.Rule = ""
 		}
 	}
 }
@@ -13194,8 +15004,16 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) SetFake() {
 func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedRuntimeClassNames = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AllowedRuntimeClassNames = append(s.AllowedRuntimeClassNames, elem)
+			}
 		}
 	}
 	{
@@ -13211,7 +15029,7 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) SetFake() {
 	{
 
 		{
-			s.Rule = "string"
+			s.Rule = ""
 		}
 	}
 	{
@@ -13226,8 +15044,16 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) SetFake() {
 func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Ranges = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIPolicyV1beta1IDRange
+
+				{
+					elem.SetFake()
+				}
+				s.Ranges = append(s.Ranges, elem)
+			}
 		}
 	}
 	{
@@ -13242,8 +15068,16 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) SetFake() {
 func (s *IoK8sAPIRbacV1AggregationRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ClusterRoleSelectors = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1LabelSelector
+
+				{
+					elem.SetFake()
+				}
+				s.ClusterRoleSelectors = append(s.ClusterRoleSelectors, elem)
+			}
 		}
 	}
 }
@@ -13276,8 +15110,16 @@ func (s *IoK8sAPIRbacV1ClusterRole) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Rules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1PolicyRule
+
+				{
+					elem.SetFake()
+				}
+				s.Rules = append(s.Rules, elem)
+			}
 		}
 	}
 }
@@ -13310,8 +15152,16 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Subjects = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1Subject
+
+				{
+					elem.SetFake()
+				}
+				s.Subjects = append(s.Subjects, elem)
+			}
 		}
 	}
 }
@@ -13326,8 +15176,16 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1ClusterRoleBinding
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13354,8 +15212,16 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1ClusterRole
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13376,32 +15242,72 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) SetFake() {
 func (s *IoK8sAPIRbacV1PolicyRule) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ApiGroups = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ApiGroups = append(s.ApiGroups, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.NonResourceURLs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.NonResourceURLs = append(s.NonResourceURLs, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ResourceNames = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ResourceNames = append(s.ResourceNames, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Verbs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Verbs = append(s.Verbs, elem)
+			}
 		}
 	}
 }
@@ -13428,8 +15334,16 @@ func (s *IoK8sAPIRbacV1Role) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Rules = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1PolicyRule
+
+				{
+					elem.SetFake()
+				}
+				s.Rules = append(s.Rules, elem)
+			}
 		}
 	}
 }
@@ -13462,8 +15376,16 @@ func (s *IoK8sAPIRbacV1RoleBinding) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Subjects = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1Subject
+
+				{
+					elem.SetFake()
+				}
+				s.Subjects = append(s.Subjects, elem)
+			}
 		}
 	}
 }
@@ -13478,8 +15400,16 @@ func (s *IoK8sAPIRbacV1RoleBindingList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1RoleBinding
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13506,8 +15436,16 @@ func (s *IoK8sAPIRbacV1RoleList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIRbacV1Role
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13529,19 +15467,19 @@ func (s *IoK8sAPIRbacV1RoleRef) SetFake() {
 	{
 
 		{
-			s.ApiGroup = "string"
+			s.ApiGroup = ""
 		}
 	}
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -13557,13 +15495,13 @@ func (s *IoK8sAPIRbacV1Subject) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -13615,7 +15553,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) SetFake() {
 	{
 
 		{
-			s.Value = int32(0)
+			s.Value = int32(1)
 		}
 	}
 }
@@ -13630,8 +15568,16 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPISchedulingV1PriorityClass
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13686,8 +15632,16 @@ func (s *IoK8sAPIStorageV1CSIDriverList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1CSIDriver
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13738,14 +15692,30 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TokenRequests = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1TokenRequest
+
+				{
+					elem.SetFake()
+				}
+				s.TokenRequests = append(s.TokenRequests, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.VolumeLifecycleModes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.VolumeLifecycleModes = append(s.VolumeLifecycleModes, elem)
+			}
 		}
 	}
 }
@@ -13789,19 +15759,27 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TopologyKeys = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.TopologyKeys = append(s.TopologyKeys, elem)
+			}
 		}
 	}
 }
@@ -13816,8 +15794,16 @@ func (s *IoK8sAPIStorageV1CSINodeList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1CSINode
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13838,8 +15824,16 @@ func (s *IoK8sAPIStorageV1CSINodeList) SetFake() {
 func (s *IoK8sAPIStorageV1CSINodeSpec) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Drivers = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1CSINodeDriver
+
+				{
+					elem.SetFake()
+				}
+				s.Drivers = append(s.Drivers, elem)
+			}
 		}
 	}
 }
@@ -13854,8 +15848,16 @@ func (s *IoK8sAPIStorageV1StorageClass) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllowedTopologies = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPICoreV1TopologySelectorTerm
+
+				{
+					elem.SetFake()
+				}
+				s.AllowedTopologies = append(s.AllowedTopologies, elem)
+			}
 		}
 	}
 	{
@@ -13878,8 +15880,16 @@ func (s *IoK8sAPIStorageV1StorageClass) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.MountOptions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.MountOptions = append(s.MountOptions, elem)
+			}
 		}
 	}
 	{
@@ -13891,7 +15901,7 @@ func (s *IoK8sAPIStorageV1StorageClass) SetFake() {
 	{
 
 		{
-			s.Provisioner = "string"
+			s.Provisioner = ""
 		}
 	}
 	{
@@ -13918,8 +15928,16 @@ func (s *IoK8sAPIStorageV1StorageClassList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1StorageClass
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -13938,12 +15956,14 @@ func (s *IoK8sAPIStorageV1StorageClassList) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPIStorageV1StorageClassParameters) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -13951,7 +15971,7 @@ func (s *IoK8sAPIStorageV1TokenRequest) SetFake() {
 	{
 
 		{
-			s.Audience = "string"
+			s.Audience = ""
 		}
 	}
 	{
@@ -14006,8 +16026,16 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1VolumeAttachment
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -14045,13 +16073,13 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) SetFake() {
 	{
 
 		{
-			s.Attacher = "string"
+			s.Attacher = ""
 		}
 	}
 	{
 
 		{
-			s.NodeName = "string"
+			s.NodeName = ""
 		}
 	}
 	{
@@ -14092,12 +16120,14 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -14167,7 +16197,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetFake() {
 	{
 
 		{
-			s.StorageClassName = "string"
+			s.StorageClassName = ""
 		}
 	}
 }
@@ -14182,8 +16212,16 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1alpha1CSIStorageCapacity
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -14241,7 +16279,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetFake() {
 	{
 
 		{
-			s.StorageClassName = "string"
+			s.StorageClassName = ""
 		}
 	}
 }
@@ -14256,8 +16294,16 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sAPIStorageV1beta1CSIStorageCapacity
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -14291,13 +16337,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 	{
 
 		{
-			s.JsonPath = "string"
+			s.JsonPath = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -14309,7 +16355,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -14319,7 +16365,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 	{
 
 		{
-			s.Strategy = "string"
+			s.Strategy = ""
 		}
 	}
 	{
@@ -14387,13 +16433,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -14408,8 +16454,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -14430,14 +16484,22 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Categories = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Categories = append(s.Categories, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
@@ -14449,13 +16511,21 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Plural = "string"
+			s.Plural = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ShortNames = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ShortNames = append(s.ShortNames, elem)
+			}
 		}
 	}
 	{
@@ -14477,7 +16547,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Group = "string"
+			s.Group = ""
 		}
 	}
 	{
@@ -14495,13 +16565,21 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Scope = "string"
+			s.Scope = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Versions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion
+
+				{
+					elem.SetFake()
+				}
+				s.Versions = append(s.Versions, elem)
+			}
 		}
 	}
 }
@@ -14516,14 +16594,30 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.StoredVersions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.StoredVersions = append(s.StoredVersions, elem)
+			}
 		}
 	}
 }
@@ -14532,8 +16626,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AdditionalPrinterColumns = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition
+
+				{
+					elem.SetFake()
+				}
+				s.AdditionalPrinterColumns = append(s.AdditionalPrinterColumns, elem)
+			}
 		}
 	}
 	{
@@ -14551,7 +16653,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -14591,13 +16693,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	{
 
 		{
-			s.SpecReplicasPath = "string"
+			s.SpecReplicasPath = ""
 		}
 	}
 	{
 
 		{
-			s.StatusReplicasPath = "string"
+			s.StatusReplicasPath = ""
 		}
 	}
 }
@@ -14680,14 +16782,30 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AllOf = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+
+				{
+					elem.SetFake()
+				}
+				s.AllOf = append(s.AllOf, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AnyOf = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+
+				{
+					elem.SetFake()
+				}
+				s.AnyOf = append(s.AnyOf, elem)
+			}
 		}
 	}
 	{
@@ -14716,8 +16834,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Enum = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON
+
+				{
+					elem.SetFake()
+				}
+				s.Enum = append(s.Enum, elem)
+			}
 		}
 	}
 	{
@@ -14830,8 +16956,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OneOf = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+
+				{
+					elem.SetFake()
+				}
+				s.OneOf = append(s.OneOf, elem)
+			}
 		}
 	}
 	{
@@ -14854,8 +16988,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Required = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Required = append(s.Required, elem)
+			}
 		}
 	}
 	{
@@ -14890,8 +17032,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.XMinusKubernetesMinusListMinusMapMinusKeys = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.XMinusKubernetesMinusListMinusMapMinusKeys = append(s.XMinusKubernetesMinusListMinusMapMinusKeys, elem)
+			}
 		}
 	}
 	{
@@ -14916,22 +17066,26 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 
 // SetFake set fake values.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) SetFake() {
-	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) SetFake() {
-	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -14948,22 +17102,26 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 
 // SetFake set fake values.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) SetFake() {
-	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) SetFake() {
-	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-
-	{
-		elem.SetFake()
+	var (
+		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -14971,13 +17129,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetF
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Namespace = "string"
+			s.Namespace = ""
 		}
 	}
 	{
@@ -15026,8 +17184,16 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Set
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ConversionReviewVersions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ConversionReviewVersions = append(s.ConversionReviewVersions, elem)
+			}
 		}
 	}
 }
@@ -15037,7 +17203,7 @@ func (s *IoK8sApimachineryPkgAPIResourceQuantity) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
 }
@@ -15059,7 +17225,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -15070,14 +17236,30 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ServerAddressByClientCIDRs = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
+
+				{
+					elem.SetFake()
+				}
+				s.ServerAddressByClientCIDRs = append(s.ServerAddressByClientCIDRs, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Versions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
+
+				{
+					elem.SetFake()
+				}
+				s.Versions = append(s.Versions, elem)
+			}
 		}
 	}
 }
@@ -15092,8 +17274,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1APIGroup
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 	{
@@ -15108,8 +17298,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) SetFake() {
 func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Categories = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Categories = append(s.Categories, elem)
+			}
 		}
 	}
 	{
@@ -15121,13 +17319,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -15138,14 +17336,22 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ShortNames = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.ShortNames = append(s.ShortNames, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.SingularName = "string"
+			s.SingularName = ""
 		}
 	}
 	{
@@ -15156,8 +17362,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Verbs = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Verbs = append(s.Verbs, elem)
+			}
 		}
 	}
 	{
@@ -15179,7 +17393,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetFake() {
 	{
 
 		{
-			s.GroupVersion = "string"
+			s.GroupVersion = ""
 		}
 	}
 	{
@@ -15190,8 +17404,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1APIResource
+
+				{
+					elem.SetFake()
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 }
@@ -15212,14 +17434,30 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ServerAddressByClientCIDRs = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
+
+				{
+					elem.SetFake()
+				}
+				s.ServerAddressByClientCIDRs = append(s.ServerAddressByClientCIDRs, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Versions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Versions = append(s.Versions, elem)
+			}
 		}
 	}
 }
@@ -15235,7 +17473,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
@@ -15247,19 +17485,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetFake() {
 	{
 
 		{
-			s.Reason = "string"
+			s.Reason = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -15273,13 +17511,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetFake() {
 	{
 
 		{
-			s.GroupVersion = "string"
+			s.GroupVersion = ""
 		}
 	}
 	{
 
 		{
-			s.Version = "string"
+			s.Version = ""
 		}
 	}
 }
@@ -15288,8 +17526,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetFake() {
 func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.MatchExpressions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement
+
+				{
+					elem.SetFake()
+				}
+				s.MatchExpressions = append(s.MatchExpressions, elem)
+			}
 		}
 	}
 	{
@@ -15302,12 +17548,14 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -15315,19 +17563,27 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Operator = "string"
+			s.Operator = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Values = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Values = append(s.Values, elem)
+			}
 		}
 	}
 }
@@ -15450,8 +17706,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Finalizers = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Finalizers = append(s.Finalizers, elem)
+			}
 		}
 	}
 	{
@@ -15474,8 +17738,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ManagedFields = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry
+
+				{
+					elem.SetFake()
+				}
+				s.ManagedFields = append(s.ManagedFields, elem)
+			}
 		}
 	}
 	{
@@ -15492,8 +17764,16 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OwnerReferences = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sApimachineryPkgApisMetaV1OwnerReference
+
+				{
+					elem.SetFake()
+				}
+				s.OwnerReferences = append(s.OwnerReferences, elem)
+			}
 		}
 	}
 	{
@@ -15518,22 +17798,26 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFake() {
 
 // SetFake set fake values.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -15541,7 +17825,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetFake() {
 	{
 
 		{
-			s.ApiVersion = "string"
+			s.ApiVersion = ""
 		}
 	}
 	{
@@ -15559,19 +17843,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetFake() {
 	{
 
 		{
-			s.Kind = "string"
+			s.Kind = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.UID = "string"
+			s.UID = ""
 		}
 	}
 }
@@ -15581,13 +17865,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) SetFake() {
 	{
 
 		{
-			s.ClientCIDR = "string"
+			s.ClientCIDR = ""
 		}
 	}
 	{
 
 		{
-			s.ServerAddress = "string"
+			s.ServerAddress = ""
 		}
 	}
 }
@@ -15613,7 +17897,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -15627,7 +17911,7 @@ func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = IoK8sApimachineryPkgUtilIntstrIntOrString(unwrapped)
 }
@@ -15637,55 +17921,55 @@ func (s *IoK8sApimachineryPkgVersionInfo) SetFake() {
 	{
 
 		{
-			s.BuildDate = "string"
+			s.BuildDate = ""
 		}
 	}
 	{
 
 		{
-			s.Compiler = "string"
+			s.Compiler = ""
 		}
 	}
 	{
 
 		{
-			s.GitCommit = "string"
+			s.GitCommit = ""
 		}
 	}
 	{
 
 		{
-			s.GitTreeState = "string"
+			s.GitTreeState = ""
 		}
 	}
 	{
 
 		{
-			s.GitVersion = "string"
+			s.GitVersion = ""
 		}
 	}
 	{
 
 		{
-			s.GoVersion = "string"
+			s.GoVersion = ""
 		}
 	}
 	{
 
 		{
-			s.Major = "string"
+			s.Major = ""
 		}
 	}
 	{
 
 		{
-			s.Minor = "string"
+			s.Minor = ""
 		}
 	}
 	{
 
 		{
-			s.Platform = "string"
+			s.Platform = ""
 		}
 	}
 }
@@ -15747,13 +18031,13 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetFake
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -15768,8 +18052,16 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 	{
@@ -15803,7 +18095,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetFake() {
 	{
 
 		{
-			s.GroupPriorityMinimum = int32(0)
+			s.GroupPriorityMinimum = int32(1)
 		}
 	}
 	{
@@ -15827,7 +18119,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetFake() {
 	{
 
 		{
-			s.VersionPriority = int32(0)
+			s.VersionPriority = int32(1)
 		}
 	}
 }
@@ -15836,8 +18128,16 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetFake() {
 func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition
+
+				{
+					elem.SetFake()
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
 		}
 	}
 }
@@ -15865,1751 +18165,2969 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) SetFake() 
 }
 
 // SetFake set fake values.
-func (s *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListApiextensionsV1CustomResourceDefinitionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListApiregistrationV1APIServiceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1DaemonSetForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1DeploymentForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1NamespacedControllerRevisionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1NamespacedDaemonSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1NamespacedDeploymentUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1NamespacedReplicaSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1NamespacedStatefulSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1ReplicaSetForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAppsV1StatefulSetForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListBatchV1CronJobForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListBatchV1JobForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListBatchV1NamespacedCronJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListBatchV1NamespacedJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListBatchV1beta1CronJobForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListBatchV1beta1NamespacedCronJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCertificatesV1CertificateSigningRequestUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoordinationV1LeaseForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoordinationV1NamespacedLeaseUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1ComponentStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1ConfigMapForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1EndpointsForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1EventForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1LimitRangeForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespaceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedConfigMapUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedEndpointsUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedLimitRangeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedPersistentVolumeClaimUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedPodTemplateUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedPodUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedReplicationControllerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedResourceQuotaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedSecretUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedServiceAccountUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NamespacedServiceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1NodeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1PersistentVolumeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1PodForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1PodTemplateForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1SecretForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1ServiceAccountForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListCoreV1ServiceForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListDiscoveryV1NamespacedEndpointSliceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListEventsV1EventForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListEventsV1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListEventsV1beta1EventForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListEventsV1beta1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListInternalApiserverV1alpha1StorageVersionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNetworkingV1IngressClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNetworkingV1IngressForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNetworkingV1NamespacedIngressUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNetworkingV1NamespacedNetworkPolicyUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNodeV1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNodeV1alpha1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListNodeV1beta1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListPolicyV1beta1PodSecurityPolicyUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListRbacAuthorizationV1ClusterRoleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListRbacAuthorizationV1NamespacedRoleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListSchedulingV1PriorityClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1CSIDriverUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1CSINodeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1StorageClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1VolumeAttachmentUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *LogFileHandlerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *LogFileListHandlerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *OptBool) SetFake() {
+	var elem bool
+
+	{
+		elem = true
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFloat64) SetFake() {
-}
+	var elem float64
 
-// SetFake set fake values.
-func (s *OptInt) SetFake() {
+	{
+		elem = float64(0)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt32) SetFake() {
+	var elem int32
+
+	{
+		elem = int32(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt64) SetFake() {
+	var elem int64
+
+	{
+		elem = int64(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAdmissionregistrationV1ServiceReference) SetFake() {
+	var elem IoK8sAPIAdmissionregistrationV1ServiceReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1DaemonSetSpec) SetFake() {
+	var elem IoK8sAPIAppsV1DaemonSetSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1DaemonSetStatus) SetFake() {
+	var elem IoK8sAPIAppsV1DaemonSetStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) SetFake() {
+	var elem IoK8sAPIAppsV1DaemonSetUpdateStrategy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1DeploymentSpec) SetFake() {
+	var elem IoK8sAPIAppsV1DeploymentSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1DeploymentStatus) SetFake() {
+	var elem IoK8sAPIAppsV1DeploymentStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1DeploymentStrategy) SetFake() {
+	var elem IoK8sAPIAppsV1DeploymentStrategy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1ReplicaSetSpec) SetFake() {
+	var elem IoK8sAPIAppsV1ReplicaSetSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1ReplicaSetStatus) SetFake() {
+	var elem IoK8sAPIAppsV1ReplicaSetStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) SetFake() {
+	var elem IoK8sAPIAppsV1RollingUpdateDaemonSet
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1RollingUpdateDeployment) SetFake() {
+	var elem IoK8sAPIAppsV1RollingUpdateDeployment
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) SetFake() {
+	var elem IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1StatefulSetSpec) SetFake() {
+	var elem IoK8sAPIAppsV1StatefulSetSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1StatefulSetStatus) SetFake() {
+	var elem IoK8sAPIAppsV1StatefulSetStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) SetFake() {
+	var elem IoK8sAPIAppsV1StatefulSetUpdateStrategy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetFake() {
+	var elem IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV1ScaleSpec) SetFake() {
+	var elem IoK8sAPIAutoscalingV1ScaleSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV1ScaleStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV1ScaleStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ExternalMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ExternalMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ObjectMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ObjectMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1PodsMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1PodsMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ResourceMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta1ResourceMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ExternalMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ExternalMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2HPAScalingRules
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ObjectMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ObjectMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2PodsMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2PodsMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ResourceMetricSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetFake() {
+	var elem IoK8sAPIAutoscalingV2beta2ResourceMetricStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIBatchV1CronJobSpec) SetFake() {
+	var elem IoK8sAPIBatchV1CronJobSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIBatchV1CronJobStatus) SetFake() {
+	var elem IoK8sAPIBatchV1CronJobStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIBatchV1JobSpec) SetFake() {
+	var elem IoK8sAPIBatchV1JobSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIBatchV1JobStatus) SetFake() {
+	var elem IoK8sAPIBatchV1JobStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIBatchV1UncountedTerminatedPods) SetFake() {
+	var elem IoK8sAPIBatchV1UncountedTerminatedPods
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIBatchV1beta1CronJobSpec) SetFake() {
+	var elem IoK8sAPIBatchV1beta1CronJobSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIBatchV1beta1CronJobStatus) SetFake() {
+	var elem IoK8sAPIBatchV1beta1CronJobStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) SetFake() {
+	var elem IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra
+
+	{
+		elem = make(IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) SetFake() {
+	var elem IoK8sAPICertificatesV1CertificateSigningRequestStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoordinationV1LeaseSpec) SetFake() {
+	var elem IoK8sAPICoordinationV1LeaseSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1Affinity) SetFake() {
+	var elem IoK8sAPICoreV1Affinity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1AzureDiskVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1AzureDiskVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1AzureFilePersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1AzureFileVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1AzureFileVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CSIPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1CSIPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) SetFake() {
+	var elem IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes
+
+	{
+		elem = make(IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CSIVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1CSIVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) SetFake() {
+	var elem IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes
+
+	{
+		elem = make(IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1Capabilities) SetFake() {
+	var elem IoK8sAPICoreV1Capabilities
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1CephFSPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CephFSVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1CephFSVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CinderPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1CinderPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1CinderVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1CinderVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ClientIPConfig) SetFake() {
+	var elem IoK8sAPICoreV1ClientIPConfig
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ConfigMapBinaryData) SetFake() {
+	var elem IoK8sAPICoreV1ConfigMapBinaryData
+
+	{
+		elem = make(IoK8sAPICoreV1ConfigMapBinaryData)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ConfigMapData) SetFake() {
+	var elem IoK8sAPICoreV1ConfigMapData
+
+	{
+		elem = make(IoK8sAPICoreV1ConfigMapData)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ConfigMapEnvSource) SetFake() {
+	var elem IoK8sAPICoreV1ConfigMapEnvSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ConfigMapKeySelector) SetFake() {
+	var elem IoK8sAPICoreV1ConfigMapKeySelector
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) SetFake() {
+	var elem IoK8sAPICoreV1ConfigMapNodeConfigSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ConfigMapProjection) SetFake() {
+	var elem IoK8sAPICoreV1ConfigMapProjection
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ConfigMapVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1ConfigMapVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ContainerState) SetFake() {
+	var elem IoK8sAPICoreV1ContainerState
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ContainerStateRunning) SetFake() {
+	var elem IoK8sAPICoreV1ContainerStateRunning
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ContainerStateTerminated) SetFake() {
+	var elem IoK8sAPICoreV1ContainerStateTerminated
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ContainerStateWaiting) SetFake() {
+	var elem IoK8sAPICoreV1ContainerStateWaiting
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1DaemonEndpoint) SetFake() {
+	var elem IoK8sAPICoreV1DaemonEndpoint
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1DownwardAPIProjection) SetFake() {
+	var elem IoK8sAPICoreV1DownwardAPIProjection
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1DownwardAPIVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1DownwardAPIVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1EmptyDirVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1EmptyDirVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1EnvVarSource) SetFake() {
+	var elem IoK8sAPICoreV1EnvVarSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1EphemeralVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1EphemeralVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1EventSeries) SetFake() {
+	var elem IoK8sAPICoreV1EventSeries
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1EventSource) SetFake() {
+	var elem IoK8sAPICoreV1EventSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ExecAction) SetFake() {
+	var elem IoK8sAPICoreV1ExecAction
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1FCVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1FCVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1FlexPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1FlexPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) SetFake() {
+	var elem IoK8sAPICoreV1FlexPersistentVolumeSourceOptions
+
+	{
+		elem = make(IoK8sAPICoreV1FlexPersistentVolumeSourceOptions)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1FlexVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1FlexVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1FlexVolumeSourceOptions) SetFake() {
+	var elem IoK8sAPICoreV1FlexVolumeSourceOptions
+
+	{
+		elem = make(IoK8sAPICoreV1FlexVolumeSourceOptions)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1FlockerVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1FlockerVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1GCEPersistentDiskVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1GitRepoVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1GitRepoVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1GlusterfsPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1GlusterfsVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1GlusterfsVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1HTTPGetAction) SetFake() {
+	var elem IoK8sAPICoreV1HTTPGetAction
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1Handler) SetFake() {
+	var elem IoK8sAPICoreV1Handler
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1HostPathVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1HostPathVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1ISCSIPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1ISCSIVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1Lifecycle) SetFake() {
+	var elem IoK8sAPICoreV1Lifecycle
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LimitRangeItemDefault) SetFake() {
+	var elem IoK8sAPICoreV1LimitRangeItemDefault
+
+	{
+		elem = make(IoK8sAPICoreV1LimitRangeItemDefault)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) SetFake() {
+	var elem IoK8sAPICoreV1LimitRangeItemDefaultRequest
+
+	{
+		elem = make(IoK8sAPICoreV1LimitRangeItemDefaultRequest)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LimitRangeItemMax) SetFake() {
+	var elem IoK8sAPICoreV1LimitRangeItemMax
+
+	{
+		elem = make(IoK8sAPICoreV1LimitRangeItemMax)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) SetFake() {
+	var elem IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio
+
+	{
+		elem = make(IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LimitRangeItemMin) SetFake() {
+	var elem IoK8sAPICoreV1LimitRangeItemMin
+
+	{
+		elem = make(IoK8sAPICoreV1LimitRangeItemMin)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LimitRangeSpec) SetFake() {
+	var elem IoK8sAPICoreV1LimitRangeSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LoadBalancerStatus) SetFake() {
+	var elem IoK8sAPICoreV1LoadBalancerStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LocalObjectReference) SetFake() {
+	var elem IoK8sAPICoreV1LocalObjectReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1LocalVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1LocalVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NFSVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1NFSVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NamespaceSpec) SetFake() {
+	var elem IoK8sAPICoreV1NamespaceSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NamespaceStatus) SetFake() {
+	var elem IoK8sAPICoreV1NamespaceStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeAffinity) SetFake() {
+	var elem IoK8sAPICoreV1NodeAffinity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeConfigSource) SetFake() {
+	var elem IoK8sAPICoreV1NodeConfigSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeConfigStatus) SetFake() {
+	var elem IoK8sAPICoreV1NodeConfigStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeDaemonEndpoints) SetFake() {
+	var elem IoK8sAPICoreV1NodeDaemonEndpoints
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeSelector) SetFake() {
+	var elem IoK8sAPICoreV1NodeSelector
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeSpec) SetFake() {
+	var elem IoK8sAPICoreV1NodeSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeStatus) SetFake() {
+	var elem IoK8sAPICoreV1NodeStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeStatusAllocatable) SetFake() {
+	var elem IoK8sAPICoreV1NodeStatusAllocatable
+
+	{
+		elem = make(IoK8sAPICoreV1NodeStatusAllocatable)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeStatusCapacity) SetFake() {
+	var elem IoK8sAPICoreV1NodeStatusCapacity
+
+	{
+		elem = make(IoK8sAPICoreV1NodeStatusCapacity)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1NodeSystemInfo) SetFake() {
+	var elem IoK8sAPICoreV1NodeSystemInfo
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ObjectFieldSelector) SetFake() {
+	var elem IoK8sAPICoreV1ObjectFieldSelector
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ObjectReference) SetFake() {
+	var elem IoK8sAPICoreV1ObjectReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeClaimSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeClaimStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity
+
+	{
+		elem = make(IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeClaimTemplate
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeClaimVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeSpec) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeSpecCapacity
+
+	{
+		elem = make(IoK8sAPICoreV1PersistentVolumeSpecCapacity)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PersistentVolumeStatus) SetFake() {
+	var elem IoK8sAPICoreV1PersistentVolumeStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1PhotonPersistentDiskVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodAffinity) SetFake() {
+	var elem IoK8sAPICoreV1PodAffinity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodAntiAffinity) SetFake() {
+	var elem IoK8sAPICoreV1PodAntiAffinity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodDNSConfig) SetFake() {
+	var elem IoK8sAPICoreV1PodDNSConfig
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodSecurityContext) SetFake() {
+	var elem IoK8sAPICoreV1PodSecurityContext
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodSpec) SetFake() {
+	var elem IoK8sAPICoreV1PodSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodSpecNodeSelector) SetFake() {
+	var elem IoK8sAPICoreV1PodSpecNodeSelector
+
+	{
+		elem = make(IoK8sAPICoreV1PodSpecNodeSelector)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodSpecOverhead) SetFake() {
+	var elem IoK8sAPICoreV1PodSpecOverhead
+
+	{
+		elem = make(IoK8sAPICoreV1PodSpecOverhead)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodStatus) SetFake() {
+	var elem IoK8sAPICoreV1PodStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PodTemplateSpec) SetFake() {
+	var elem IoK8sAPICoreV1PodTemplateSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1PortworxVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1PortworxVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1Probe) SetFake() {
+	var elem IoK8sAPICoreV1Probe
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ProjectedVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1ProjectedVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1QuobyteVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1QuobyteVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1RBDPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1RBDPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1RBDVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1RBDVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ReplicationControllerSpec) SetFake() {
+	var elem IoK8sAPICoreV1ReplicationControllerSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) SetFake() {
+	var elem IoK8sAPICoreV1ReplicationControllerSpecSelector
+
+	{
+		elem = make(IoK8sAPICoreV1ReplicationControllerSpecSelector)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ReplicationControllerStatus) SetFake() {
+	var elem IoK8sAPICoreV1ReplicationControllerStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceFieldSelector) SetFake() {
+	var elem IoK8sAPICoreV1ResourceFieldSelector
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceQuotaSpec) SetFake() {
+	var elem IoK8sAPICoreV1ResourceQuotaSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceQuotaSpecHard) SetFake() {
+	var elem IoK8sAPICoreV1ResourceQuotaSpecHard
+
+	{
+		elem = make(IoK8sAPICoreV1ResourceQuotaSpecHard)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceQuotaStatus) SetFake() {
+	var elem IoK8sAPICoreV1ResourceQuotaStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceQuotaStatusHard) SetFake() {
+	var elem IoK8sAPICoreV1ResourceQuotaStatusHard
+
+	{
+		elem = make(IoK8sAPICoreV1ResourceQuotaStatusHard)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) SetFake() {
+	var elem IoK8sAPICoreV1ResourceQuotaStatusUsed
+
+	{
+		elem = make(IoK8sAPICoreV1ResourceQuotaStatusUsed)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceRequirements) SetFake() {
+	var elem IoK8sAPICoreV1ResourceRequirements
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceRequirementsLimits) SetFake() {
+	var elem IoK8sAPICoreV1ResourceRequirementsLimits
+
+	{
+		elem = make(IoK8sAPICoreV1ResourceRequirementsLimits)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ResourceRequirementsRequests) SetFake() {
+	var elem IoK8sAPICoreV1ResourceRequirementsRequests
+
+	{
+		elem = make(IoK8sAPICoreV1ResourceRequirementsRequests)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SELinuxOptions) SetFake() {
+	var elem IoK8sAPICoreV1SELinuxOptions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1ScaleIOPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ScaleIOVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1ScaleIOVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ScopeSelector) SetFake() {
+	var elem IoK8sAPICoreV1ScopeSelector
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SeccompProfile) SetFake() {
+	var elem IoK8sAPICoreV1SeccompProfile
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecretData) SetFake() {
+	var elem IoK8sAPICoreV1SecretData
+
+	{
+		elem = make(IoK8sAPICoreV1SecretData)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecretEnvSource) SetFake() {
+	var elem IoK8sAPICoreV1SecretEnvSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecretKeySelector) SetFake() {
+	var elem IoK8sAPICoreV1SecretKeySelector
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecretProjection) SetFake() {
+	var elem IoK8sAPICoreV1SecretProjection
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecretReference) SetFake() {
+	var elem IoK8sAPICoreV1SecretReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecretStringData) SetFake() {
+	var elem IoK8sAPICoreV1SecretStringData
+
+	{
+		elem = make(IoK8sAPICoreV1SecretStringData)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecretVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1SecretVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SecurityContext) SetFake() {
+	var elem IoK8sAPICoreV1SecurityContext
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ServiceAccountTokenProjection) SetFake() {
+	var elem IoK8sAPICoreV1ServiceAccountTokenProjection
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ServiceSpec) SetFake() {
+	var elem IoK8sAPICoreV1ServiceSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ServiceSpecSelector) SetFake() {
+	var elem IoK8sAPICoreV1ServiceSpecSelector
+
+	{
+		elem = make(IoK8sAPICoreV1ServiceSpecSelector)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1ServiceStatus) SetFake() {
+	var elem IoK8sAPICoreV1ServiceStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1SessionAffinityConfig) SetFake() {
+	var elem IoK8sAPICoreV1SessionAffinityConfig
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1StorageOSPersistentVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1StorageOSVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1StorageOSVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1TCPSocketAction) SetFake() {
+	var elem IoK8sAPICoreV1TCPSocketAction
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1TypedLocalObjectReference) SetFake() {
+	var elem IoK8sAPICoreV1TypedLocalObjectReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1VolumeNodeAffinity) SetFake() {
+	var elem IoK8sAPICoreV1VolumeNodeAffinity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetFake() {
+	var elem IoK8sAPICoreV1VsphereVirtualDiskVolumeSource
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPICoreV1WindowsSecurityContextOptions) SetFake() {
+	var elem IoK8sAPICoreV1WindowsSecurityContextOptions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIDiscoveryV1EndpointConditions) SetFake() {
+	var elem IoK8sAPIDiscoveryV1EndpointConditions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) SetFake() {
+	var elem IoK8sAPIDiscoveryV1EndpointDeprecatedTopology
+
+	{
+		elem = make(IoK8sAPIDiscoveryV1EndpointDeprecatedTopology)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIDiscoveryV1EndpointHints) SetFake() {
+	var elem IoK8sAPIDiscoveryV1EndpointHints
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) SetFake() {
+	var elem IoK8sAPIDiscoveryV1beta1EndpointConditions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIDiscoveryV1beta1EndpointHints) SetFake() {
+	var elem IoK8sAPIDiscoveryV1beta1EndpointHints
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) SetFake() {
+	var elem IoK8sAPIDiscoveryV1beta1EndpointTopology
+
+	{
+		elem = make(IoK8sAPIDiscoveryV1beta1EndpointTopology)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIEventsV1EventSeries) SetFake() {
+	var elem IoK8sAPIEventsV1EventSeries
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIEventsV1beta1EventSeries) SetFake() {
+	var elem IoK8sAPIEventsV1beta1EventSeries
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1GroupSubject
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1LimitResponse
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1QueuingConfiguration
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta1UserSubject) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta1UserSubject
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2GroupSubject
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2LimitResponse
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2QueuingConfiguration
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIFlowcontrolV1beta2UserSubject) SetFake() {
+	var elem IoK8sAPIFlowcontrolV1beta2UserSubject
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) SetFake() {
+	var elem IoK8sAPINetworkingV1HTTPIngressRuleValue
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1IPBlock) SetFake() {
+	var elem IoK8sAPINetworkingV1IPBlock
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1IngressBackend) SetFake() {
+	var elem IoK8sAPINetworkingV1IngressBackend
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1IngressClassParametersReference) SetFake() {
+	var elem IoK8sAPINetworkingV1IngressClassParametersReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1IngressClassSpec) SetFake() {
+	var elem IoK8sAPINetworkingV1IngressClassSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1IngressServiceBackend) SetFake() {
+	var elem IoK8sAPINetworkingV1IngressServiceBackend
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1IngressSpec) SetFake() {
+	var elem IoK8sAPINetworkingV1IngressSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1IngressStatus) SetFake() {
+	var elem IoK8sAPINetworkingV1IngressStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1NetworkPolicySpec) SetFake() {
+	var elem IoK8sAPINetworkingV1NetworkPolicySpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINetworkingV1ServiceBackendPort) SetFake() {
+	var elem IoK8sAPINetworkingV1ServiceBackendPort
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1Overhead) SetFake() {
+	var elem IoK8sAPINodeV1Overhead
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1OverheadPodFixed) SetFake() {
+	var elem IoK8sAPINodeV1OverheadPodFixed
+
+	{
+		elem = make(IoK8sAPINodeV1OverheadPodFixed)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1Scheduling) SetFake() {
+	var elem IoK8sAPINodeV1Scheduling
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1SchedulingNodeSelector) SetFake() {
+	var elem IoK8sAPINodeV1SchedulingNodeSelector
+
+	{
+		elem = make(IoK8sAPINodeV1SchedulingNodeSelector)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1alpha1Overhead) SetFake() {
+	var elem IoK8sAPINodeV1alpha1Overhead
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1alpha1OverheadPodFixed) SetFake() {
+	var elem IoK8sAPINodeV1alpha1OverheadPodFixed
+
+	{
+		elem = make(IoK8sAPINodeV1alpha1OverheadPodFixed)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1alpha1Scheduling) SetFake() {
+	var elem IoK8sAPINodeV1alpha1Scheduling
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) SetFake() {
+	var elem IoK8sAPINodeV1alpha1SchedulingNodeSelector
+
+	{
+		elem = make(IoK8sAPINodeV1alpha1SchedulingNodeSelector)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1beta1Overhead) SetFake() {
+	var elem IoK8sAPINodeV1beta1Overhead
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1beta1OverheadPodFixed) SetFake() {
+	var elem IoK8sAPINodeV1beta1OverheadPodFixed
+
+	{
+		elem = make(IoK8sAPINodeV1beta1OverheadPodFixed)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1beta1Scheduling) SetFake() {
+	var elem IoK8sAPINodeV1beta1Scheduling
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) SetFake() {
+	var elem IoK8sAPINodeV1beta1SchedulingNodeSelector
+
+	{
+		elem = make(IoK8sAPINodeV1beta1SchedulingNodeSelector)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetFake() {
+	var elem IoK8sAPIPolicyV1PodDisruptionBudgetSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetFake() {
+	var elem IoK8sAPIPolicyV1PodDisruptionBudgetStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
+	var elem IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods
+
+	{
+		elem = make(IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetFake() {
+	var elem IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetFake() {
+	var elem IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
+	var elem IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods
+
+	{
+		elem = make(IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
+	var elem IoK8sAPIPolicyV1beta1PodSecurityPolicySpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetFake() {
+	var elem IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) SetFake() {
+	var elem IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIRbacV1AggregationRule) SetFake() {
+	var elem IoK8sAPIRbacV1AggregationRule
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIStorageV1StorageClassParameters) SetFake() {
+	var elem IoK8sAPIStorageV1StorageClassParameters
+
+	{
+		elem = make(IoK8sAPIStorageV1StorageClassParameters)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIStorageV1VolumeAttachmentStatus) SetFake() {
+	var elem IoK8sAPIStorageV1VolumeAttachmentStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) SetFake() {
+	var elem IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata
+
+	{
+		elem = make(IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIStorageV1VolumeError) SetFake() {
+	var elem IoK8sAPIStorageV1VolumeError
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sAPIStorageV1VolumeNodeResources) SetFake() {
+	var elem IoK8sAPIStorageV1VolumeNodeResources
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions
+
+	{
+		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies
+
+	{
+		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties
+
+	{
+		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties
+
+	{
+		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) SetFake() {
+	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgAPIResourceQuantity) SetFake() {
+	var elem IoK8sApimachineryPkgAPIResourceQuantity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1LabelSelector
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels
+
+	{
+		elem = make(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1ListMeta) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1ListMeta
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1MicroTime) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1MicroTime
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1ObjectMeta
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations
+
+	{
+		elem = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels
+
+	{
+		elem = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgApisMetaV1Time) SetFake() {
+	var elem IoK8sApimachineryPkgApisMetaV1Time
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sApimachineryPkgUtilIntstrIntOrString) SetFake() {
+	var elem IoK8sApimachineryPkgUtilIntstrIntOrString
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetFake() {
+	var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) SetFake() {
+	var elem IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) SetFake() {
+	var elem IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptString) SetFake() {
-}
+	var elem string
 
-// SetFake set fake values.
-func (s *ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadApiextensionsV1CustomResourceDefinitionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadApiregistrationV1APIServiceStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadApiregistrationV1APIServiceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedControllerRevisionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedDaemonSetStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedDaemonSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedDeploymentScaleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedDeploymentStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedDeploymentUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedReplicaSetScaleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedReplicaSetStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedReplicaSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedStatefulSetScaleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedStatefulSetStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAppsV1NamespacedStatefulSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadBatchV1NamespacedCronJobStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadBatchV1NamespacedCronJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadBatchV1NamespacedJobStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadBatchV1NamespacedJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadBatchV1beta1NamespacedCronJobStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadBatchV1beta1NamespacedCronJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCertificatesV1CertificateSigningRequestStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCertificatesV1CertificateSigningRequestUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoordinationV1NamespacedLeaseUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1ComponentStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespaceStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespaceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedConfigMapUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedEndpointsUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedLimitRangeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized) SetFake() {
+	{
+		elem = ""
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -17617,859 +21135,7 @@ func (s *ReadCoreV1NamespacedPodLogOKApplicationJSON) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = ReadCoreV1NamespacedPodLogOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedPodLogUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedPodStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedPodTemplateUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedPodUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedReplicationControllerScaleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedReplicationControllerStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedReplicationControllerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedResourceQuotaStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedResourceQuotaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedSecretUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedServiceAccountUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedServiceStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NamespacedServiceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NodeStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1NodeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1PersistentVolumeStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadCoreV1PersistentVolumeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadDiscoveryV1NamespacedEndpointSliceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadEventsV1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadEventsV1beta1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadInternalApiserverV1alpha1StorageVersionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadNetworkingV1IngressClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadNetworkingV1NamespacedIngressStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadNetworkingV1NamespacedIngressUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadNetworkingV1NamespacedNetworkPolicyUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadNodeV1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadNodeV1alpha1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadNodeV1beta1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadPolicyV1beta1PodSecurityPolicyUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadRbacAuthorizationV1ClusterRoleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadRbacAuthorizationV1NamespacedRoleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadSchedulingV1PriorityClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadStorageV1CSIDriverUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadStorageV1CSINodeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadStorageV1StorageClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadStorageV1VolumeAttachmentStatusUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadStorageV1VolumeAttachmentUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchApiextensionsV1CustomResourceDefinitionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchApiregistrationV1APIServiceListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchApiregistrationV1APIServiceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1DeploymentListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedControllerRevisionListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedControllerRevisionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedDaemonSetListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedDaemonSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedDeploymentListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedDeploymentUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedReplicaSetListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedReplicaSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedStatefulSetListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1NamespacedStatefulSetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1CronJobListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1JobListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1NamespacedCronJobListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1NamespacedCronJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1NamespacedJobListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1NamespacedJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1beta1NamespacedCronJobListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchBatchV1beta1NamespacedCronJobUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCertificatesV1CertificateSigningRequestListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCertificatesV1CertificateSigningRequestUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoordinationV1NamespacedLeaseListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoordinationV1NamespacedLeaseUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1EndpointsListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1EventListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespaceListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespaceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedConfigMapListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedConfigMapUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedEndpointsListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedEndpointsUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedEventListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedLimitRangeListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedLimitRangeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedPodListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedPodTemplateListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedPodTemplateUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedPodUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedReplicationControllerListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedReplicationControllerUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedResourceQuotaListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedResourceQuotaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedSecretListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedSecretUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedServiceAccountListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedServiceAccountUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedServiceListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NamespacedServiceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NodeListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1NodeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1PersistentVolumeListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1PersistentVolumeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1PodListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1SecretListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchCoreV1ServiceListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchDiscoveryV1NamespacedEndpointSliceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchEventsV1EventListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchEventsV1NamespacedEventListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchEventsV1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchEventsV1beta1EventListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchEventsV1beta1NamespacedEventListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchEventsV1beta1NamespacedEventUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchInternalApiserverV1alpha1StorageVersionUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1IngressClassListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1IngressClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1IngressListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1NamespacedIngressListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1NamespacedIngressUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1NamespacedNetworkPolicyUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNodeV1RuntimeClassListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNodeV1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNodeV1alpha1RuntimeClassListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNodeV1alpha1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNodeV1beta1RuntimeClassListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchNodeV1beta1RuntimeClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchPolicyV1beta1PodSecurityPolicyUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1ClusterRoleListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1ClusterRoleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1NamespacedRoleListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1NamespacedRoleUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchSchedulingV1PriorityClassListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchSchedulingV1PriorityClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1CSIDriverListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1CSIDriverUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1CSINodeListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1CSINodeUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1StorageClassListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1StorageClassUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1VolumeAttachmentListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1VolumeAttachmentUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *WatchStorageV1beta1NamespacedCSIStorageCapacityUnauthorized) SetFake() {
 }

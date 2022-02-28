@@ -75,13 +75,21 @@ func (s *CreatePetCategoriesReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Pets = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Pets = append(s.Pets, elem)
+			}
 		}
 	}
 }
@@ -91,7 +99,7 @@ func (s *CreatePetFriendsReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -108,20 +116,36 @@ func (s *CreatePetFriendsReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Categories = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Categories = append(s.Categories, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Owner = int(0)
+			s.Owner = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Friends = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Friends = append(s.Friends, elem)
+			}
 		}
 	}
 }
@@ -131,19 +155,27 @@ func (s *CreatePetOwnerReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Age = int(0)
+			s.Age = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Pets = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Pets = append(s.Pets, elem)
+			}
 		}
 	}
 }
@@ -153,7 +185,7 @@ func (s *CreatePetReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -170,38 +202,54 @@ func (s *CreatePetReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Categories = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Categories = append(s.Categories, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Owner = int(0)
+			s.Owner = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Friends = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Friends = append(s.Friends, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *DeletePetNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *DeletePetOwnerNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ListPetCategoriesOKApplicationJSON) SetFake() {
 	var unwrapped []PetCategoriesList
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PetCategoriesList
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ListPetCategoriesOKApplicationJSON(unwrapped)
 }
@@ -210,8 +258,16 @@ func (s *ListPetCategoriesOKApplicationJSON) SetFake() {
 func (s *ListPetFriendsOKApplicationJSON) SetFake() {
 	var unwrapped []PetFriendsList
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PetFriendsList
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ListPetFriendsOKApplicationJSON(unwrapped)
 }
@@ -220,22 +276,38 @@ func (s *ListPetFriendsOKApplicationJSON) SetFake() {
 func (s *ListPetOKApplicationJSON) SetFake() {
 	var unwrapped []PetList
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PetList
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ListPetOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
 func (s *OptDateTime) SetFake() {
+	var elem time.Time
+
+	{
+		elem = time.Now()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt) SetFake() {
-}
+	var elem int
 
-// SetFake set fake values.
-func (s *OptInt32) SetFake() {
+	{
+		elem = int(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -243,13 +315,13 @@ func (s *PetCategoriesCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -259,13 +331,13 @@ func (s *PetCategoriesList) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -275,13 +347,13 @@ func (s *PetCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -298,8 +370,16 @@ func (s *PetCreate) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Categories = nil
+			for i := 0; i < 0; i++ {
+				var elem PetCreateCategories
+
+				{
+					elem.SetFake()
+				}
+				s.Categories = append(s.Categories, elem)
+			}
 		}
 	}
 	{
@@ -315,13 +395,13 @@ func (s *PetCreateCategories) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -331,19 +411,19 @@ func (s *PetCreateOwner) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Age = int(0)
+			s.Age = int(1)
 		}
 	}
 }
@@ -353,13 +433,13 @@ func (s *PetFriendsCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -381,13 +461,13 @@ func (s *PetFriendsList) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -409,13 +489,13 @@ func (s *PetList) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -437,19 +517,19 @@ func (s *PetOwnerCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Age = int(0)
+			s.Age = int(1)
 		}
 	}
 }
@@ -459,19 +539,19 @@ func (s *PetOwnerRead) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Age = int(0)
+			s.Age = int(1)
 		}
 	}
 }
@@ -481,13 +561,13 @@ func (s *PetRead) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -509,13 +589,13 @@ func (s *PetUpdate) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -537,13 +617,13 @@ func (s *R400) SetFake() {
 	{
 
 		{
-			s.Code = int(0)
+			s.Code = int(1)
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 }
@@ -553,13 +633,13 @@ func (s *R404) SetFake() {
 	{
 
 		{
-			s.Code = int(0)
+			s.Code = int(1)
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 }
@@ -569,13 +649,13 @@ func (s *R409) SetFake() {
 	{
 
 		{
-			s.Code = int(0)
+			s.Code = int(1)
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 }
@@ -585,13 +665,13 @@ func (s *R500) SetFake() {
 	{
 
 		{
-			s.Code = int(0)
+			s.Code = int(1)
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 }
@@ -601,7 +681,7 @@ func (s *UpdatePetReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -618,20 +698,36 @@ func (s *UpdatePetReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Categories = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Categories = append(s.Categories, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Owner = int(0)
+			s.Owner = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Friends = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Friends = append(s.Friends, elem)
+			}
 		}
 	}
 }

@@ -71,47 +71,29 @@ var (
 )
 
 // SetFake set fake values.
-func (s *CreatePetsCreated) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *Error) SetFake() {
 	{
 
 		{
-			s.Code = int32(0)
+			s.Code = int32(1)
 		}
 	}
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ErrorStatusCode) SetFake() {
-	{
-
-		{
-			s.StatusCode = int(0)
-		}
-	}
-	{
-
-		{
-			s.Response.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *OptInt32) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *OptString) SetFake() {
+	var elem string
+
+	{
+		elem = ""
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -119,13 +101,13 @@ func (s *Pet) SetFake() {
 	{
 
 		{
-			s.ID = int64(0)
+			s.ID = int64(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -140,8 +122,16 @@ func (s *Pet) SetFake() {
 func (s *Pets) SetFake() {
 	var unwrapped []Pet
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Pet
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = Pets(unwrapped)
 }

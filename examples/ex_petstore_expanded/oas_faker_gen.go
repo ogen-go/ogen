@@ -71,37 +71,17 @@ var (
 )
 
 // SetFake set fake values.
-func (s *DeletePetNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *Error) SetFake() {
 	{
 
 		{
-			s.Code = int32(0)
+			s.Code = int32(1)
 		}
 	}
 	{
 
 		{
-			s.Message = "string"
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ErrorStatusCode) SetFake() {
-	{
-
-		{
-			s.StatusCode = int(0)
-		}
-	}
-	{
-
-		{
-			s.Response.SetFake()
+			s.Message = ""
 		}
 	}
 }
