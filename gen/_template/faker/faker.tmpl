@@ -13,9 +13,8 @@
     // Keep pointer nil to prevent infinite recursion.
     {{ $.Var }} = nil
 {{- else if $t.IsArray -}}
-	var {{ $.NextVar }} {{ $.Type.Item.Go }}
-    {{ template "faker/faker" sub_array_elem $ $t.Item }}
-    {{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
+	// Keep slice nil to prevent infinite recursion.
+    {{ $.Var }} = nil
 {{- else if $t.IsAny }}
     {{ $.Var }} = []byte("null")
 {{- else if $t.IsPrimitive -}}
