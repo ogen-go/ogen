@@ -86,56 +86,128 @@ func (s *APIOverview) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Hooks = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Hooks = append(s.Hooks, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Web = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Web = append(s.Web, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.API = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.API = append(s.API, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Git = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Git = append(s.Git, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Packages = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Packages = append(s.Packages, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Pages = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Pages = append(s.Pages, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Importer = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Importer = append(s.Importer, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Actions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Actions = append(s.Actions, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Dependabot = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Dependabot = append(s.Dependabot, elem)
+			}
 		}
 	}
 }
@@ -173,22 +245,6 @@ func (s *Accepted) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsAddSelectedRepoToOrgSecretConflict) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsAddSelectedRepoToOrgSecretNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsAddSelfHostedRunnerToGroupForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ActionsApproveWorkflowRunApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -213,19 +269,19 @@ func (s *ActionsBillingUsage) SetFake() {
 	{
 
 		{
-			s.TotalMinutesUsed = int(0)
+			s.TotalMinutesUsed = int(1)
 		}
 	}
 	{
 
 		{
-			s.TotalPaidMinutesUsed = int(0)
+			s.TotalPaidMinutesUsed = int(1)
 		}
 	}
 	{
 
 		{
-			s.IncludedMinutes = int(0)
+			s.IncludedMinutes = int(1)
 		}
 	}
 	{
@@ -260,16 +316,14 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) SetFake() {
 
 // SetFake set fake values.
 func (s ActionsCancelWorkflowRunAccepted) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
-}
-
-// SetFake set fake values.
-func (s *ActionsCreateOrUpdateEnvironmentSecretNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -277,19 +331,15 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) SetFake() {
 	{
 
 		{
-			s.EncryptedValue = "string"
+			s.EncryptedValue = ""
 		}
 	}
 	{
 
 		{
-			s.KeyID = "string"
+			s.KeyID = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActionsCreateOrUpdateOrgSecretNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -314,8 +364,16 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedRepositoryIds = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
+			}
 		}
 	}
 }
@@ -327,16 +385,14 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) SetFake() {
 
 // SetFake set fake values.
 func (s ActionsCreateOrUpdateRepoSecretCreated) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
-}
-
-// SetFake set fake values.
-func (s *ActionsCreateOrUpdateRepoSecretNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -360,7 +416,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -371,14 +427,30 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedRepositoryIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -386,62 +458,6 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) SetFake() {
 // SetFake set fake values.
 func (s *ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) SetFake() {
 	*s = ActionsCreateSelfHostedRunnerGroupForOrgReqVisibilitySelected
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteArtifactNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteEnvironmentSecretNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteOrgSecretNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteRepoSecretNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteSelfHostedRunnerFromOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteSelfHostedRunnerFromRepoNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteWorkflowRunLogsNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDeleteWorkflowRunNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDownloadArtifactFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDownloadJobLogsForWorkflowRunFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsDownloadWorkflowRunLogsFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -487,13 +503,21 @@ func (s *ActionsListArtifactsForRepoOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Artifacts = nil
+			for i := 0; i < 0; i++ {
+				var elem Artifact
+
+				{
+					elem.SetFake()
+				}
+				s.Artifacts = append(s.Artifacts, elem)
+			}
 		}
 	}
 }
@@ -503,20 +527,23 @@ func (s *ActionsListEnvironmentSecretsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Secrets = nil
+			for i := 0; i < 0; i++ {
+				var elem ActionsSecret
+
+				{
+					elem.SetFake()
+				}
+				s.Secrets = append(s.Secrets, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActionsListJobsForWorkflowRunFilter) SetFake() {
-	*s = ActionsListJobsForWorkflowRunFilterLatest
 }
 
 // SetFake set fake values.
@@ -524,13 +551,21 @@ func (s *ActionsListJobsForWorkflowRunOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Jobs = nil
+			for i := 0; i < 0; i++ {
+				var elem Job
+
+				{
+					elem.SetFake()
+				}
+				s.Jobs = append(s.Jobs, elem)
+			}
 		}
 	}
 }
@@ -540,13 +575,21 @@ func (s *ActionsListOrgSecretsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Secrets = nil
+			for i := 0; i < 0; i++ {
+				var elem OrganizationActionsSecret
+
+				{
+					elem.SetFake()
+				}
+				s.Secrets = append(s.Secrets, elem)
+			}
 		}
 	}
 }
@@ -561,8 +604,16 @@ func (s *ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem MinimalRepository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 }
@@ -572,13 +623,21 @@ func (s *ActionsListRepoSecretsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Secrets = nil
+			for i := 0; i < 0; i++ {
+				var elem ActionsSecret
+
+				{
+					elem.SetFake()
+				}
+				s.Secrets = append(s.Secrets, elem)
+			}
 		}
 	}
 }
@@ -588,13 +647,21 @@ func (s *ActionsListRepoWorkflowsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Workflows = nil
+			for i := 0; i < 0; i++ {
+				var elem Workflow
+
+				{
+					elem.SetFake()
+				}
+				s.Workflows = append(s.Workflows, elem)
+			}
 		}
 	}
 }
@@ -604,13 +671,21 @@ func (s *ActionsListSelectedReposForOrgSecretOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem MinimalRepository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 }
@@ -625,8 +700,16 @@ func (s *ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK) SetF
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem Repository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 }
@@ -641,8 +724,16 @@ func (s *ActionsListSelfHostedRunnerGroupsForOrgOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RunnerGroups = nil
+			for i := 0; i < 0; i++ {
+				var elem RunnerGroupsOrg
+
+				{
+					elem.SetFake()
+				}
+				s.RunnerGroups = append(s.RunnerGroups, elem)
+			}
 		}
 	}
 }
@@ -652,13 +743,21 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem Runner
+
+				{
+					elem.SetFake()
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -668,13 +767,21 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem Runner
+
+				{
+					elem.SetFake()
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -689,8 +796,16 @@ func (s *ActionsListSelfHostedRunnersInGroupForOrgOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem Runner
+
+				{
+					elem.SetFake()
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -700,13 +815,21 @@ func (s *ActionsListWorkflowRunArtifactsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Artifacts = nil
+			for i := 0; i < 0; i++ {
+				var elem Artifact
+
+				{
+					elem.SetFake()
+				}
+				s.Artifacts = append(s.Artifacts, elem)
+			}
 		}
 	}
 }
@@ -716,20 +839,23 @@ func (s *ActionsListWorkflowRunsForRepoOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.WorkflowRuns = nil
+			for i := 0; i < 0; i++ {
+				var elem WorkflowRun
+
+				{
+					elem.SetFake()
+				}
+				s.WorkflowRuns = append(s.WorkflowRuns, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActionsListWorkflowRunsForRepoStatus) SetFake() {
-	*s = ActionsListWorkflowRunsForRepoStatusCompleted
 }
 
 // SetFake set fake values.
@@ -765,13 +891,13 @@ func (s *ActionsPublicKey) SetFake() {
 	{
 
 		{
-			s.KeyID = "string"
+			s.KeyID = ""
 		}
 	}
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
@@ -802,28 +928,14 @@ func (s *ActionsPublicKey) SetFake() {
 
 // SetFake set fake values.
 func (s ActionsReRunWorkflowCreated) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
-}
-
-// SetFake set fake values.
-func (s *ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsRemoveSelectedRepoFromOrgSecretConflict) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsRemoveSelectedRepoFromOrgSecretNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -850,20 +962,30 @@ func (s *ActionsRepositoryPermissions) SetFake() {
 
 // SetFake set fake values.
 func (s ActionsRetryWorkflowCreated) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s *ActionsReviewPendingDeploymentsForRunReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.EnvironmentIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.EnvironmentIds = append(s.EnvironmentIds, elem)
+			}
 		}
 	}
 	{
@@ -875,7 +997,7 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) SetFake() {
 	{
 
 		{
-			s.Comment = "string"
+			s.Comment = ""
 		}
 	}
 }
@@ -890,7 +1012,7 @@ func (s *ActionsSecret) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -905,18 +1027,6 @@ func (s *ActionsSecret) SetFake() {
 			s.UpdatedAt = time.Now()
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActionsSetAllowedActionsOrganizationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsSetAllowedActionsRepositoryNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActionsSetGithubActionsPermissionsOrganizationNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -936,10 +1046,6 @@ func (s *ActionsSetGithubActionsPermissionsOrganizationReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActionsSetGithubActionsPermissionsRepositoryNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ActionsSetGithubActionsPermissionsRepositoryReq) SetFake() {
 	{
 
@@ -956,57 +1062,73 @@ func (s *ActionsSetGithubActionsPermissionsRepositoryReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedRepositoryIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActionsSetSelectedReposForOrgSecretNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ActionsSetSelectedReposForOrgSecretReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedRepositoryIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedRepositoryIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActionsSetSelfHostedRunnersInGroupForOrgNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -1016,7 +1138,7 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -1063,14 +1185,6 @@ func (s *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorize
 }
 
 // SetFake set fake values.
-func (s *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActivityDeleteRepoSubscriptionNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ActivityDeleteThreadSubscriptionApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -1088,14 +1202,6 @@ func (s *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized) SetFake() 
 		unwrapped.SetFake()
 	}
 	*s = ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ActivityDeleteThreadSubscriptionNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActivityGetRepoSubscriptionNotFound) SetFake() {
 }
 
 // SetFake set fake values.
@@ -1162,8 +1268,16 @@ func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorize
 func (s *ActivityListNotificationsForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []Thread
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Thread
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ActivityListNotificationsForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
@@ -1202,8 +1316,16 @@ func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound) SetFake(
 func (s *ActivityListPublicEventsForRepoNetworkOKApplicationJSON) SetFake() {
 	var unwrapped []Event
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Event
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ActivityListPublicEventsForRepoNetworkOKApplicationJSON(unwrapped)
 }
@@ -1212,8 +1334,16 @@ func (s *ActivityListPublicEventsForRepoNetworkOKApplicationJSON) SetFake() {
 func (s *ActivityListPublicEventsOKApplicationJSON) SetFake() {
 	var unwrapped []Event
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Event
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ActivityListPublicEventsOKApplicationJSON(unwrapped)
 }
@@ -1239,23 +1369,21 @@ func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized)
 }
 
 // SetFake set fake values.
-func (s *ActivityListReposStarredByAuthenticatedUserDirection) SetFake() {
-	*s = ActivityListReposStarredByAuthenticatedUserDirectionAsc
-}
-
-// SetFake set fake values.
 func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []Repository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Repository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ActivityListReposStarredByAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ActivityListReposStarredByAuthenticatedUserSort) SetFake() {
-	*s = ActivityListReposStarredByAuthenticatedUserSortCreated
 }
 
 // SetFake set fake values.
@@ -1282,8 +1410,16 @@ func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 func (s *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []MinimalRepository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MinimalRepository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
@@ -1335,10 +1471,6 @@ func (s *ActivityMarkNotificationsAsReadReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ActivityMarkNotificationsAsReadResetContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ActivityMarkRepoNotificationsAsReadAccepted) SetFake() {
 	{
 
@@ -1362,14 +1494,6 @@ func (s *ActivityMarkRepoNotificationsAsReadReq) SetFake() {
 			s.LastReadAt.SetFake()
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ActivityMarkRepoNotificationsAsReadResetContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ActivityMarkThreadAsReadResetContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -1449,10 +1573,6 @@ func (s *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized) SetFak
 }
 
 // SetFake set fake values.
-func (s *ActivityStarRepoForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -1483,21 +1603,17 @@ func (s *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized) SetF
 }
 
 // SetFake set fake values.
-func (s *ActivityUnstarRepoForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *Actor) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
@@ -1561,7 +1677,7 @@ func (s *AlertNumber) SetFake() {
 	var unwrapped int
 
 	{
-		unwrapped = int(0)
+		unwrapped = int(1)
 	}
 	*s = AlertNumber(unwrapped)
 }
@@ -1931,7 +2047,7 @@ func (s *ApplicationGrant) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -1960,8 +2076,16 @@ func (s *ApplicationGrant) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Scopes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Scopes = append(s.Scopes, elem)
+			}
 		}
 	}
 	{
@@ -1977,13 +2101,13 @@ func (s *ApplicationGrantApp) SetFake() {
 	{
 
 		{
-			s.ClientID = "string"
+			s.ClientID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -2015,15 +2139,11 @@ func (s *AppsAddRepoToInstallationApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsAddRepoToInstallationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *AppsCheckTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = "string"
+			s.AccessToken = ""
 		}
 	}
 }
@@ -2063,13 +2183,13 @@ func (s *AppsCreateContentAttachmentReq) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -2108,14 +2228,30 @@ func (s *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized) SetFake()
 func (s *AppsCreateInstallationAccessTokenReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RepositoryIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.RepositoryIds = append(s.RepositoryIds, elem)
+			}
 		}
 	}
 	{
@@ -2127,25 +2263,13 @@ func (s *AppsCreateInstallationAccessTokenReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsDeleteAuthorizationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *AppsDeleteAuthorizationReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = "string"
+			s.AccessToken = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *AppsDeleteInstallationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *AppsDeleteTokenNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -2153,7 +2277,7 @@ func (s *AppsDeleteTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = "string"
+			s.AccessToken = ""
 		}
 	}
 }
@@ -2199,10 +2323,6 @@ func (s *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized) SetFake()
 }
 
 // SetFake set fake values.
-func (s *AppsGetSubscriptionPlanForAccountStubbedNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *AppsListAccountsForPlanApplicationJSONNotFound) SetFake() {
 	var unwrapped BasicError
 
@@ -2223,43 +2343,39 @@ func (s *AppsListAccountsForPlanApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsListAccountsForPlanDirection) SetFake() {
-	*s = AppsListAccountsForPlanDirectionAsc
-}
-
-// SetFake set fake values.
 func (s *AppsListAccountsForPlanOKApplicationJSON) SetFake() {
 	var unwrapped []MarketplacePurchase
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MarketplacePurchase
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = AppsListAccountsForPlanOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsListAccountsForPlanSort) SetFake() {
-	*s = AppsListAccountsForPlanSortCreated
-}
-
-// SetFake set fake values.
-func (s *AppsListAccountsForPlanStubbedDirection) SetFake() {
-	*s = AppsListAccountsForPlanStubbedDirectionAsc
 }
 
 // SetFake set fake values.
 func (s *AppsListAccountsForPlanStubbedOKApplicationJSON) SetFake() {
 	var unwrapped []MarketplacePurchase
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MarketplacePurchase
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = AppsListAccountsForPlanStubbedOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsListAccountsForPlanStubbedSort) SetFake() {
-	*s = AppsListAccountsForPlanStubbedSortCreated
 }
 
 // SetFake set fake values.
@@ -2287,7 +2403,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -2298,8 +2414,16 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem Repository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 }
@@ -2328,8 +2452,16 @@ func (s *AppsListPlansApplicationJSONUnauthorized) SetFake() {
 func (s *AppsListPlansOKApplicationJSON) SetFake() {
 	var unwrapped []MarketplaceListingPlan
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MarketplaceListingPlan
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = AppsListPlansOKApplicationJSON(unwrapped)
 }
@@ -2338,8 +2470,16 @@ func (s *AppsListPlansOKApplicationJSON) SetFake() {
 func (s *AppsListPlansStubbedOKApplicationJSON) SetFake() {
 	var unwrapped []MarketplaceListingPlan
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MarketplaceListingPlan
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = AppsListPlansStubbedOKApplicationJSON(unwrapped)
 }
@@ -2369,13 +2509,21 @@ func (s *AppsListReposAccessibleToInstallationOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem Repository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 	{
@@ -2410,8 +2558,16 @@ func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) S
 func (s *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []UserMarketplacePurchase
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem UserMarketplacePurchase
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
@@ -2420,8 +2576,16 @@ func (s *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) SetFake() {
 func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) SetFake() {
 	var unwrapped []UserMarketplacePurchase
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem UserMarketplacePurchase
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON(unwrapped)
 }
@@ -2430,8 +2594,16 @@ func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) SetF
 func (s *AppsListWebhookDeliveriesOKApplicationJSON) SetFake() {
 	var unwrapped []HookDeliveryItem
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem HookDeliveryItem
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = AppsListWebhookDeliveriesOKApplicationJSON(unwrapped)
 }
@@ -2457,21 +2629,13 @@ func (s *AppsRemoveRepoFromInstallationApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsRemoveRepoFromInstallationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *AppsResetTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = "string"
+			s.AccessToken = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *AppsRevokeInstallationAccessTokenNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -2509,7 +2673,7 @@ func (s *AppsScopeTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = "string"
+			s.AccessToken = ""
 		}
 	}
 	{
@@ -2526,14 +2690,30 @@ func (s *AppsScopeTokenReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RepositoryIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.RepositoryIds = append(s.RepositoryIds, elem)
+			}
 		}
 	}
 	{
@@ -2542,14 +2722,6 @@ func (s *AppsScopeTokenReq) SetFake() {
 			s.Permissions.SetFake()
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *AppsSuspendInstallationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *AppsUnsuspendInstallationNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -2585,37 +2757,37 @@ func (s *Artifact) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.SizeInBytes = int(0)
+			s.SizeInBytes = int(1)
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.ArchiveDownloadURL = "string"
+			s.ArchiveDownloadURL = ""
 		}
 	}
 	{
@@ -2714,14 +2886,30 @@ func (s *AuditLogEvent) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Config = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Config = append(s.Config, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ConfigWas = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.ConfigWas = append(s.ConfigWas, elem)
+			}
 		}
 	}
 	{
@@ -2756,14 +2944,30 @@ func (s *AuditLogEvent) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.EventsWere = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.EventsWere = append(s.EventsWere, elem)
+			}
 		}
 	}
 	{
@@ -2900,12 +3104,14 @@ func (s *AuditLogEventActorLocation) SetFake() {
 
 // SetFake set fake values.
 func (s AuditLogEventData) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -2913,7 +3119,7 @@ func (s *AuthenticationToken) SetFake() {
 	{
 
 		{
-			s.Token = "string"
+			s.Token = ""
 		}
 	}
 	{
@@ -2930,8 +3136,16 @@ func (s *AuthenticationToken) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem Repository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 	{
@@ -2967,7 +3181,7 @@ func (s *Authorization) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -2978,14 +3192,22 @@ func (s *Authorization) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Scopes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Scopes = append(s.Scopes, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Token = "string"
+			s.Token = ""
 		}
 	}
 	{
@@ -3061,13 +3283,13 @@ func (s *AuthorizationApp) SetFake() {
 	{
 
 		{
-			s.ClientID = "string"
+			s.ClientID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -3095,13 +3317,13 @@ func (s *AutoMerge) SetFake() {
 	{
 
 		{
-			s.CommitTitle = "string"
+			s.CommitTitle = ""
 		}
 	}
 	{
 
 		{
-			s.CommitMessage = "string"
+			s.CommitMessage = ""
 		}
 	}
 }
@@ -3116,19 +3338,19 @@ func (s *Autolink) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.KeyPrefix = "string"
+			s.KeyPrefix = ""
 		}
 	}
 	{
 
 		{
-			s.URLTemplate = "string"
+			s.URLTemplate = ""
 		}
 	}
 }
@@ -3156,13 +3378,13 @@ func (s *BaseGist) SetFake() {
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -3217,7 +3439,7 @@ func (s *BaseGist) SetFake() {
 	{
 
 		{
-			s.Comments = int(0)
+			s.Comments = int(1)
 		}
 	}
 	{
@@ -3246,26 +3468,44 @@ func (s *BaseGist) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Forks = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Forks = append(s.Forks, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.History = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.History = append(s.History, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s BaseGistFiles) SetFake() {
-	var elem BaseGistFilesItem
-
-	{
-		elem.SetFake()
+	var (
+		elem BaseGistFilesItem
+		m    map[string]BaseGistFilesItem
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -3335,13 +3575,13 @@ func (s *Blob) SetFake() {
 	{
 
 		{
-			s.Content = "string"
+			s.Content = ""
 		}
 	}
 	{
 
 		{
-			s.Encoding = "string"
+			s.Encoding = ""
 		}
 	}
 	{
@@ -3353,7 +3593,7 @@ func (s *Blob) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -3365,7 +3605,7 @@ func (s *Blob) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -3530,8 +3770,16 @@ func (s *BranchProtectionRequiredStatusChecks) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
 	{
@@ -3576,20 +3824,44 @@ func (s *BranchRestrictionPolicy) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem BranchRestrictionPolicyUsersItem
+
+				{
+					elem.SetFake()
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem BranchRestrictionPolicyTeamsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Apps = nil
+			for i := 0; i < 0; i++ {
+				var elem BranchRestrictionPolicyAppsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Apps = append(s.Apps, elem)
+			}
 		}
 	}
 }
@@ -3664,8 +3936,16 @@ func (s *BranchRestrictionPolicyAppsItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 }
@@ -4033,7 +4313,7 @@ func (s *BranchShort) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -4055,13 +4335,13 @@ func (s *BranchShortCommit) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 }
@@ -4071,7 +4351,7 @@ func (s *BranchWithProtection) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -4123,7 +4403,7 @@ func (s *BranchWithProtectionLinks) SetFake() {
 	{
 
 		{
-			s.HTML = "string"
+			s.HTML = ""
 		}
 	}
 	{
@@ -4139,19 +4419,19 @@ func (s *CheckAnnotation) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
 
 		{
-			s.StartLine = int(0)
+			s.StartLine = int(1)
 		}
 	}
 	{
 
 		{
-			s.EndLine = int(0)
+			s.EndLine = int(1)
 		}
 	}
 	{
@@ -4193,7 +4473,7 @@ func (s *CheckAnnotation) SetFake() {
 	{
 
 		{
-			s.BlobHref = "string"
+			s.BlobHref = ""
 		}
 	}
 }
@@ -4203,19 +4483,19 @@ func (s *CheckRun) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.HeadSha = "string"
+			s.HeadSha = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -4227,7 +4507,7 @@ func (s *CheckRun) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
@@ -4275,7 +4555,7 @@ func (s *CheckRun) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -4292,8 +4572,16 @@ func (s *CheckRun) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PullRequests = nil
+			for i := 0; i < 0; i++ {
+				var elem PullRequestMinimal
+
+				{
+					elem.SetFake()
+				}
+				s.PullRequests = append(s.PullRequests, elem)
+			}
 		}
 	}
 	{
@@ -4309,7 +4597,7 @@ func (s *CheckRunCheckSuite) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 }
@@ -4342,7 +4630,7 @@ func (s *CheckRunOutput) SetFake() {
 	{
 
 		{
-			s.AnnotationsCount = int(0)
+			s.AnnotationsCount = int(1)
 		}
 	}
 	{
@@ -4363,13 +4651,13 @@ func (s *CheckSuite) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -4381,7 +4669,7 @@ func (s *CheckSuite) SetFake() {
 	{
 
 		{
-			s.HeadSha = "string"
+			s.HeadSha = ""
 		}
 	}
 	{
@@ -4416,8 +4704,16 @@ func (s *CheckSuite) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PullRequests = nil
+			for i := 0; i < 0; i++ {
+				var elem PullRequestMinimal
+
+				{
+					elem.SetFake()
+				}
+				s.PullRequests = append(s.PullRequests, elem)
+			}
 		}
 	}
 	{
@@ -4453,13 +4749,13 @@ func (s *CheckSuite) SetFake() {
 	{
 
 		{
-			s.LatestCheckRunsCount = int(0)
+			s.LatestCheckRunsCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.CheckRunsURL = "string"
+			s.CheckRunsURL = ""
 		}
 	}
 }
@@ -4489,8 +4785,16 @@ func (s *CheckSuitePreference) SetFake() {
 func (s *CheckSuitePreferencePreferences) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AutoTriggerChecks = nil
+			for i := 0; i < 0; i++ {
+				var elem CheckSuitePreferencePreferencesAutoTriggerChecksItem
+
+				{
+					elem.SetFake()
+				}
+				s.AutoTriggerChecks = append(s.AutoTriggerChecks, elem)
+			}
 		}
 	}
 }
@@ -4500,7 +4804,7 @@ func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) SetFake() {
 	{
 
 		{
-			s.AppID = int(0)
+			s.AppID = int(1)
 		}
 	}
 	{
@@ -4541,14 +4845,9 @@ func (s *ChecksCreateSuiteReq) SetFake() {
 	{
 
 		{
-			s.HeadSha = "string"
+			s.HeadSha = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ChecksListForRefFilter) SetFake() {
-	*s = ChecksListForRefFilterLatest
 }
 
 // SetFake set fake values.
@@ -4556,25 +4855,23 @@ func (s *ChecksListForRefOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.CheckRuns = nil
+			for i := 0; i < 0; i++ {
+				var elem CheckRun
+
+				{
+					elem.SetFake()
+				}
+				s.CheckRuns = append(s.CheckRuns, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ChecksListForRefStatus) SetFake() {
-	*s = ChecksListForRefStatusQueued
-}
-
-// SetFake set fake values.
-func (s *ChecksListForSuiteFilter) SetFake() {
-	*s = ChecksListForSuiteFilterLatest
 }
 
 // SetFake set fake values.
@@ -4582,20 +4879,23 @@ func (s *ChecksListForSuiteOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.CheckRuns = nil
+			for i := 0; i < 0; i++ {
+				var elem CheckRun
+
+				{
+					elem.SetFake()
+				}
+				s.CheckRuns = append(s.CheckRuns, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ChecksListForSuiteStatus) SetFake() {
-	*s = ChecksListForSuiteStatusQueued
 }
 
 // SetFake set fake values.
@@ -4603,33 +4903,51 @@ func (s *ChecksListSuitesForRefOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.CheckSuites = nil
+			for i := 0; i < 0; i++ {
+				var elem CheckSuite
+
+				{
+					elem.SetFake()
+				}
+				s.CheckSuites = append(s.CheckSuites, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s ChecksRerequestSuiteCreated) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s *ChecksSetSuitesPreferencesReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AutoTriggerChecks = nil
+			for i := 0; i < 0; i++ {
+				var elem ChecksSetSuitesPreferencesReqAutoTriggerChecksItem
+
+				{
+					elem.SetFake()
+				}
+				s.AutoTriggerChecks = append(s.AutoTriggerChecks, elem)
+			}
 		}
 	}
 }
@@ -4639,7 +4957,7 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) SetFake() {
 	{
 
 		{
-			s.AppID = int(0)
+			s.AppID = int(1)
 		}
 	}
 	{
@@ -4655,19 +4973,27 @@ func (s *CloneTraffic) SetFake() {
 	{
 
 		{
-			s.Count = int(0)
+			s.Count = int(1)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(0)
+			s.Uniques = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Clones = nil
+			for i := 0; i < 0; i++ {
+				var elem Traffic
+
+				{
+					elem.SetFake()
+				}
+				s.Clones = append(s.Clones, elem)
+			}
 		}
 	}
 }
@@ -4676,8 +5002,16 @@ func (s *CloneTraffic) SetFake() {
 func (s *CodeFrequencyStat) SetFake() {
 	var unwrapped []int
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem int
+
+			{
+				elem = int(1)
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = CodeFrequencyStat(unwrapped)
 }
@@ -4687,13 +5021,13 @@ func (s *CodeOfConduct) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -4727,13 +5061,13 @@ func (s *CodeOfConductSimple) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -4851,7 +5185,7 @@ func (s *CodeScanningAlertEnvironment) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAlertEnvironment(unwrapped)
 }
@@ -4914,8 +5248,16 @@ func (s *CodeScanningAlertInstance) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Classifications = nil
+			for i := 0; i < 0; i++ {
+				var elem CodeScanningAlertClassification
+
+				{
+					elem.SetFake()
+				}
+				s.Classifications = append(s.Classifications, elem)
+			}
 		}
 	}
 }
@@ -5180,7 +5522,7 @@ func (s *CodeScanningAnalysis) SetFake() {
 	{
 
 		{
-			s.Error = "string"
+			s.Error = ""
 		}
 	}
 	{
@@ -5192,19 +5534,19 @@ func (s *CodeScanningAnalysis) SetFake() {
 	{
 
 		{
-			s.ResultsCount = int(0)
+			s.ResultsCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.RulesCount = int(0)
+			s.RulesCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -5234,7 +5576,7 @@ func (s *CodeScanningAnalysis) SetFake() {
 	{
 
 		{
-			s.Warning = "string"
+			s.Warning = ""
 		}
 	}
 	{
@@ -5250,7 +5592,7 @@ func (s *CodeScanningAnalysisAnalysisKey) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisAnalysisKey(unwrapped)
 }
@@ -5260,7 +5602,7 @@ func (s *CodeScanningAnalysisCategory) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisCategory(unwrapped)
 }
@@ -5270,7 +5612,7 @@ func (s *CodeScanningAnalysisCommitSha) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 	}
 	*s = CodeScanningAnalysisCommitSha(unwrapped)
 }
@@ -5306,7 +5648,7 @@ func (s *CodeScanningAnalysisEnvironment) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisEnvironment(unwrapped)
 }
@@ -5316,7 +5658,7 @@ func (s *CodeScanningAnalysisSarifFile) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisSarifFile(unwrapped)
 }
@@ -5326,7 +5668,7 @@ func (s *CodeScanningAnalysisSarifID) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisSarifID(unwrapped)
 }
@@ -5358,7 +5700,7 @@ func (s *CodeScanningAnalysisToolGUID) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisToolGUID(unwrapped)
 }
@@ -5368,7 +5710,7 @@ func (s *CodeScanningAnalysisToolName) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisToolName(unwrapped)
 }
@@ -5378,7 +5720,7 @@ func (s *CodeScanningAnalysisToolVersion) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningAnalysisToolVersion(unwrapped)
 }
@@ -5464,10 +5806,6 @@ func (s *CodeScanningGetAnalysisApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningGetSarifNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *CodeScanningListAlertInstancesApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -5491,8 +5829,16 @@ func (s *CodeScanningListAlertInstancesApplicationJSONNotFound) SetFake() {
 func (s *CodeScanningListAlertInstancesOKApplicationJSON) SetFake() {
 	var unwrapped []CodeScanningAlertInstance
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem CodeScanningAlertInstance
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = CodeScanningListAlertInstancesOKApplicationJSON(unwrapped)
 }
@@ -5521,8 +5867,16 @@ func (s *CodeScanningListAlertsForRepoApplicationJSONNotFound) SetFake() {
 func (s *CodeScanningListAlertsForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []CodeScanningAlertItems
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem CodeScanningAlertItems
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = CodeScanningListAlertsForRepoOKApplicationJSON(unwrapped)
 }
@@ -5551,8 +5905,16 @@ func (s *CodeScanningListRecentAnalysesApplicationJSONNotFound) SetFake() {
 func (s *CodeScanningListRecentAnalysesOKApplicationJSON) SetFake() {
 	var unwrapped []CodeScanningAnalysis
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem CodeScanningAnalysis
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = CodeScanningListRecentAnalysesOKApplicationJSON(unwrapped)
 }
@@ -5562,7 +5924,7 @@ func (s *CodeScanningRef) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = CodeScanningRef(unwrapped)
 }
@@ -5661,10 +6023,6 @@ func (s *CodeScanningUploadSarifApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningUploadSarifBadRequest) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *CodeScanningUploadSarifReq) SetFake() {
 	{
 
@@ -5705,27 +6063,23 @@ func (s *CodeScanningUploadSarifReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *CodeScanningUploadSarifRequestEntityTooLarge) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *CodeSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -5778,8 +6132,16 @@ func (s *CodeSearchResultItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.LineNumbers = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.LineNumbers = append(s.LineNumbers, elem)
+			}
 		}
 	}
 	{
@@ -5794,8 +6156,16 @@ func (s *CodeSearchResultItem) SetFake() {
 func (s *CodesOfConductGetAllCodesOfConductOKApplicationJSON) SetFake() {
 	var unwrapped []CodeOfConduct
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem CodeOfConduct
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = CodesOfConductGetAllCodesOfConductOKApplicationJSON(unwrapped)
 }
@@ -5805,13 +6175,13 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -5829,7 +6199,7 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -5865,19 +6235,19 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -5901,7 +6271,7 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -5913,7 +6283,7 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -5969,19 +6339,19 @@ func (s *CombinedBillingUsage) SetFake() {
 	{
 
 		{
-			s.DaysLeftInBillingCycle = int(0)
+			s.DaysLeftInBillingCycle = int(1)
 		}
 	}
 	{
 
 		{
-			s.EstimatedPaidStorageForMonth = int(0)
+			s.EstimatedPaidStorageForMonth = int(1)
 		}
 	}
 	{
 
 		{
-			s.EstimatedStorageForMonth = int(0)
+			s.EstimatedStorageForMonth = int(1)
 		}
 	}
 }
@@ -5991,25 +6361,33 @@ func (s *CombinedCommitStatus) SetFake() {
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Statuses = nil
+			for i := 0; i < 0; i++ {
+				var elem SimpleCommitStatus
+
+				{
+					elem.SetFake()
+				}
+				s.Statuses = append(s.Statuses, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -6043,13 +6421,13 @@ func (s *Commit) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -6084,8 +6462,16 @@ func (s *Commit) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Parents = nil
+			for i := 0; i < 0; i++ {
+				var elem CommitParentsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Parents = append(s.Parents, elem)
+			}
 		}
 	}
 	{
@@ -6096,8 +6482,16 @@ func (s *Commit) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Files = nil
+			for i := 0; i < 0; i++ {
+				var elem CommitFilesItem
+
+				{
+					elem.SetFake()
+				}
+				s.Files = append(s.Files, elem)
+			}
 		}
 	}
 }
@@ -6106,20 +6500,28 @@ func (s *Commit) SetFake() {
 func (s *CommitActivity) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Days = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Days = append(s.Days, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Total = int(0)
+			s.Total = int(1)
 		}
 	}
 	{
 
 		{
-			s.Week = int(0)
+			s.Week = int(1)
 		}
 	}
 }
@@ -6141,19 +6543,19 @@ func (s *CommitComment) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -6177,7 +6579,7 @@ func (s *CommitComment) SetFake() {
 	{
 
 		{
-			s.CommitID = "string"
+			s.CommitID = ""
 		}
 	}
 	{
@@ -6235,13 +6637,13 @@ func (s *CommitCommit) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.CommentCount = int(0)
+			s.CommentCount = int(1)
 		}
 	}
 	{
@@ -6263,7 +6665,7 @@ func (s *CommitCommitTree) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -6327,31 +6729,47 @@ func (s *CommitComparison) SetFake() {
 	{
 
 		{
-			s.AheadBy = int(0)
+			s.AheadBy = int(1)
 		}
 	}
 	{
 
 		{
-			s.BehindBy = int(0)
+			s.BehindBy = int(1)
 		}
 	}
 	{
 
 		{
-			s.TotalCommits = int(0)
+			s.TotalCommits = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Commits = nil
+			for i := 0; i < 0; i++ {
+				var elem Commit
+
+				{
+					elem.SetFake()
+				}
+				s.Commits = append(s.Commits, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Files = nil
+			for i := 0; i < 0; i++ {
+				var elem DiffEntry
+
+				{
+					elem.SetFake()
+				}
+				s.Files = append(s.Files, elem)
+			}
 		}
 	}
 }
@@ -6436,7 +6854,7 @@ func (s *CommitParentsItem) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -6464,7 +6882,7 @@ func (s *CommitSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -6499,8 +6917,16 @@ func (s *CommitSearchResultItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Parents = nil
+			for i := 0; i < 0; i++ {
+				var elem CommitSearchResultItemParentsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Parents = append(s.Parents, elem)
+			}
 		}
 	}
 	{
@@ -6518,7 +6944,7 @@ func (s *CommitSearchResultItem) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -6546,13 +6972,13 @@ func (s *CommitSearchResultItemCommit) SetFake() {
 	{
 
 		{
-			s.CommentCount = int(0)
+			s.CommentCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
@@ -6580,13 +7006,13 @@ func (s *CommitSearchResultItemCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
@@ -6602,7 +7028,7 @@ func (s *CommitSearchResultItemCommitTree) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -6662,7 +7088,7 @@ func (s *CommunityProfile) SetFake() {
 	{
 
 		{
-			s.HealthPercentage = int(0)
+			s.HealthPercentage = int(1)
 		}
 	}
 	{
@@ -6748,43 +7174,43 @@ func (s *ContentFile) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
 
 		{
-			s.Encoding = "string"
+			s.Encoding = ""
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
 
 		{
-			s.Content = "string"
+			s.Content = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -6858,19 +7284,19 @@ func (s *ContentReferenceAttachment) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -6886,25 +7312,25 @@ func (s *ContentTraffic) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
 
 		{
-			s.Count = int(0)
+			s.Count = int(1)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(0)
+			s.Uniques = int(1)
 		}
 	}
 }
@@ -7010,7 +7436,7 @@ func (s *Contributor) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -7022,7 +7448,7 @@ func (s *Contributor) SetFake() {
 	{
 
 		{
-			s.Contributions = int(0)
+			s.Contributions = int(1)
 		}
 	}
 	{
@@ -7050,13 +7476,21 @@ func (s *ContributorActivity) SetFake() {
 	{
 
 		{
-			s.Total = int(0)
+			s.Total = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Weeks = nil
+			for i := 0; i < 0; i++ {
+				var elem ContributorActivityWeeksItem
+
+				{
+					elem.SetFake()
+				}
+				s.Weeks = append(s.Weeks, elem)
+			}
 		}
 	}
 }
@@ -7094,19 +7528,19 @@ func (s *CredentialAuthorization) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.CredentialID = int(0)
+			s.CredentialID = int(1)
 		}
 	}
 	{
 
 		{
-			s.CredentialType = "string"
+			s.CredentialType = ""
 		}
 	}
 	{
@@ -7123,8 +7557,16 @@ func (s *CredentialAuthorization) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Scopes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Scopes = append(s.Scopes, elem)
+			}
 		}
 	}
 	{
@@ -7164,25 +7606,25 @@ func (s *DeployKey) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -7194,7 +7636,7 @@ func (s *DeployKey) SetFake() {
 	{
 
 		{
-			s.CreatedAt = "string"
+			s.CreatedAt = ""
 		}
 	}
 	{
@@ -7216,31 +7658,31 @@ func (s *Deployment) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
 
 		{
-			s.Task = "string"
+			s.Task = ""
 		}
 	}
 	{
@@ -7258,7 +7700,7 @@ func (s *Deployment) SetFake() {
 	{
 
 		{
-			s.Environment = "string"
+			s.Environment = ""
 		}
 	}
 	{
@@ -7330,12 +7772,14 @@ func (s *DeploymentPayload) SetFake() {
 
 // SetFake set fake values.
 func (s DeploymentPayload0) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -7349,19 +7793,19 @@ func (s *DeploymentSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Task = "string"
+			s.Task = ""
 		}
 	}
 	{
@@ -7373,7 +7817,7 @@ func (s *DeploymentSimple) SetFake() {
 	{
 
 		{
-			s.Environment = "string"
+			s.Environment = ""
 		}
 	}
 	{
@@ -7437,13 +7881,13 @@ func (s *DeploymentStatus) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -7461,7 +7905,7 @@ func (s *DeploymentStatus) SetFake() {
 	{
 
 		{
-			s.Description = "string"
+			s.Description = ""
 		}
 	}
 	{
@@ -7530,13 +7974,13 @@ func (s *DiffEntry) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.Filename = "string"
+			s.Filename = ""
 		}
 	}
 	{
@@ -7548,19 +7992,19 @@ func (s *DiffEntry) SetFake() {
 	{
 
 		{
-			s.Additions = int(0)
+			s.Additions = int(1)
 		}
 	}
 	{
 
 		{
-			s.Deletions = int(0)
+			s.Deletions = int(1)
 		}
 	}
 	{
 
 		{
-			s.Changes = int(0)
+			s.Changes = int(1)
 		}
 	}
 	{
@@ -7605,7 +8049,7 @@ func (s *Email) SetFake() {
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
@@ -7630,22 +8074,26 @@ func (s *Email) SetFake() {
 
 // SetFake set fake values.
 func (s EmojisGetOK) SetFake() {
-	var elem string
-
-	{
-		elem = "string"
+	var (
+		elem string
+		m    map[string]string
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s EmptyObject) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -7659,19 +8107,11 @@ func (s *EnabledRepositories) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -7682,14 +8122,30 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedOrganizationIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.SelectedOrganizationIds = append(s.SelectedOrganizationIds, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -7697,40 +8153,6 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) SetFake() {
 // SetFake set fake values.
 func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) SetFake() {
 	*s = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibilitySelected
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminDeleteUserFromEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminGetAuditLogInclude) SetFake() {
-	*s = EnterpriseAdminGetAuditLogIncludeWeb
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminGetAuditLogOrder) SetFake() {
-	*s = EnterpriseAdminGetAuditLogOrderDesc
 }
 
 // SetFake set fake values.
@@ -7743,8 +8165,16 @@ func (s *EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK) SetF
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Organizations = nil
+			for i := 0; i < 0; i++ {
+				var elem OrganizationSimple
+
+				{
+					elem.SetFake()
+				}
+				s.Organizations = append(s.Organizations, elem)
+			}
 		}
 	}
 }
@@ -7759,8 +8189,16 @@ func (s *EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Organizations = nil
+			for i := 0; i < 0; i++ {
+				var elem OrganizationSimple
+
+				{
+					elem.SetFake()
+				}
+				s.Organizations = append(s.Organizations, elem)
+			}
 		}
 	}
 }
@@ -7775,8 +8213,16 @@ func (s *EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RunnerGroups = nil
+			for i := 0; i < 0; i++ {
+				var elem RunnerGroupsEnterprise
+
+				{
+					elem.SetFake()
+				}
+				s.RunnerGroups = append(s.RunnerGroups, elem)
+			}
 		}
 	}
 }
@@ -7791,8 +8237,16 @@ func (s *EnterpriseAdminListSelfHostedRunnersForEnterpriseOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem Runner
+
+				{
+					elem.SetFake()
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -7807,8 +8261,16 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem Runner
+
+				{
+					elem.SetFake()
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -7817,20 +8279,36 @@ func (s *EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK) SetFake() {
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.DisplayName = "string"
+			s.DisplayName = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Members = nil
+			for i := 0; i < 0; i++ {
+				var elem EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem
+
+				{
+					elem.SetFake()
+				}
+				s.Members = append(s.Members, elem)
+			}
 		}
 	}
 }
@@ -7840,7 +8318,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) SetFake
 	{
 
 		{
-			s.Value = "string"
+			s.Value = ""
 		}
 	}
 }
@@ -7849,14 +8327,22 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) SetFake
 func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.UserName = "string"
+			s.UserName = ""
 		}
 	}
 	{
@@ -7867,14 +8353,30 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem EnterpriseAdminProvisionAndInviteEnterpriseUserReqGroupsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 }
@@ -7884,13 +8386,13 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) SetFake()
 	{
 
 		{
-			s.Value = "string"
+			s.Value = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -7916,31 +8418,15 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) SetFake() {
 	{
 
 		{
-			s.GivenName = "string"
+			s.GivenName = ""
 		}
 	}
 	{
 
 		{
-			s.FamilyName = "string"
+			s.FamilyName = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminSetAllowedActionsEnterpriseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -7963,20 +8449,36 @@ func (s *EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq) SetFake() {
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.DisplayName = "string"
+			s.DisplayName = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Members = nil
+			for i := 0; i < 0; i++ {
+				var elem EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem
+
+				{
+					elem.SetFake()
+				}
+				s.Members = append(s.Members, elem)
+			}
 		}
 	}
 }
@@ -7986,7 +8488,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 	{
 
 		{
-			s.Value = "string"
+			s.Value = ""
 		}
 	}
 }
@@ -7995,14 +8497,22 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.UserName = "string"
+			s.UserName = ""
 		}
 	}
 	{
@@ -8013,14 +8523,30 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) SetFake()
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqGroupsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 }
@@ -8030,13 +8556,13 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 	{
 
 		{
-			s.Value = "string"
+			s.Value = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -8062,55 +8588,67 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) SetFa
 	{
 
 		{
-			s.GivenName = "string"
+			s.GivenName = ""
 		}
 	}
 	{
 
 		{
-			s.FamilyName = "string"
+			s.FamilyName = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedOrganizationIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.SelectedOrganizationIds = append(s.SelectedOrganizationIds, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SelectedOrganizationIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.SelectedOrganizationIds = append(s.SelectedOrganizationIds, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Runners = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Runners = append(s.Runners, elem)
+			}
 		}
 	}
 }
@@ -8119,14 +8657,30 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) SetFake() {
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Operations = nil
+			for i := 0; i < 1; i++ {
+				var elem EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Operations = append(s.Operations, elem)
+			}
 		}
 	}
 }
@@ -8163,7 +8717,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -8176,14 +8730,30 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue1
 func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Operations = nil
+			for i := 0; i < 0; i++ {
+				var elem EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Operations = append(s.Operations, elem)
+			}
 		}
 	}
 }
@@ -8217,8 +8787,16 @@ func (s *EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) S
 func (s *EnvironmentApprovals) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Environments = nil
+			for i := 0; i < 0; i++ {
+				var elem EnvironmentApprovalsEnvironmentsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Environments = append(s.Environments, elem)
+			}
 		}
 	}
 	{
@@ -8236,7 +8814,7 @@ func (s *EnvironmentApprovals) SetFake() {
 	{
 
 		{
-			s.Comment = "string"
+			s.Comment = ""
 		}
 	}
 }
@@ -8297,7 +8875,7 @@ func (s *Event) SetFake() {
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
@@ -8366,8 +8944,16 @@ func (s *EventPayload) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Pages = nil
+			for i := 0; i < 0; i++ {
+				var elem EventPayloadPagesItem
+
+				{
+					elem.SetFake()
+				}
+				s.Pages = append(s.Pages, elem)
+			}
 		}
 	}
 }
@@ -8417,13 +9003,13 @@ func (s *EventRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -8439,13 +9025,13 @@ func (s *Feed) SetFake() {
 	{
 
 		{
-			s.TimelineURL = "string"
+			s.TimelineURL = ""
 		}
 	}
 	{
 
 		{
-			s.UserURL = "string"
+			s.UserURL = ""
 		}
 	}
 	{
@@ -8474,8 +9060,16 @@ func (s *Feed) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.CurrentUserOrganizationUrls = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.CurrentUserOrganizationUrls = append(s.CurrentUserOrganizationUrls, elem)
+			}
 		}
 	}
 	{
@@ -8538,8 +9132,16 @@ func (s *FeedLinks) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.CurrentUserOrganizations = nil
+			for i := 0; i < 0; i++ {
+				var elem LinkWithType
+
+				{
+					elem.SetFake()
+				}
+				s.CurrentUserOrganizations = append(s.CurrentUserOrganizations, elem)
+			}
 		}
 	}
 }
@@ -8612,8 +9214,16 @@ func (s *FileCommitCommit) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Parents = nil
+			for i := 0; i < 0; i++ {
+				var elem FileCommitCommitParentsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Parents = append(s.Parents, elem)
+			}
 		}
 	}
 	{
@@ -8865,33 +9475,29 @@ func (s *ForbiddenGistBlock) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *Found) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
@@ -8933,55 +9539,55 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -9017,55 +9623,55 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitURL = "string"
+			s.GitURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -9083,31 +9689,31 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
 
 		{
-			s.SSHURL = "string"
+			s.SSHURL = ""
 		}
 	}
 	{
@@ -9119,7 +9725,7 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -9149,13 +9755,13 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CloneURL = "string"
+			s.CloneURL = ""
 		}
 	}
 	{
@@ -9191,37 +9797,37 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(0)
+			s.ForksCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(0)
+			s.StargazersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(0)
+			s.WatchersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = "string"
+			s.DefaultBranch = ""
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(0)
+			s.OpenIssuesCount = int(1)
 		}
 	}
 	{
@@ -9232,8 +9838,16 @@ func (s *FullRepository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -9359,13 +9973,13 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.SubscribersCount = int(0)
+			s.SubscribersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.NetworkCount = int(0)
+			s.NetworkCount = int(1)
 		}
 	}
 	{
@@ -9395,7 +10009,7 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.Forks = int(0)
+			s.Forks = int(1)
 		}
 	}
 	{
@@ -9407,13 +10021,13 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(0)
+			s.Watchers = int(1)
 		}
 	}
 	{
@@ -9521,13 +10135,13 @@ func (s *GistComment) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -9539,7 +10153,7 @@ func (s *GistComment) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -9579,7 +10193,7 @@ func (s *GistCommit) SetFake() {
 	{
 
 		{
-			s.Version = "string"
+			s.Version = ""
 		}
 	}
 	{
@@ -9812,12 +10426,14 @@ func (s *GistSimple) SetFake() {
 
 // SetFake set fake values.
 func (s GistSimpleFiles) SetFake() {
-	var elem GistSimpleFilesItem
-
-	{
-		elem.SetFake()
+	var (
+		elem GistSimpleFilesItem
+		m    map[string]GistSimpleFilesItem
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -9889,13 +10505,13 @@ func (s *GistSimpleForkOf) SetFake() {
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -9950,7 +10566,7 @@ func (s *GistSimpleForkOf) SetFake() {
 	{
 
 		{
-			s.Comments = int(0)
+			s.Comments = int(1)
 		}
 	}
 	{
@@ -9979,26 +10595,44 @@ func (s *GistSimpleForkOf) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Forks = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Forks = append(s.Forks, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.History = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.History = append(s.History, elem)
+			}
 		}
 	}
 }
 
 // SetFake set fake values.
 func (s GistSimpleForkOfFiles) SetFake() {
-	var elem GistSimpleForkOfFilesItem
-
-	{
-		elem.SetFake()
+	var (
+		elem GistSimpleForkOfFilesItem
+		m    map[string]GistSimpleForkOfFilesItem
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -10070,17 +10704,15 @@ func (s *GistSimpleForksItem) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GistsCheckIsStarredNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s GistsCheckIsStarredNotFound) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -10128,7 +10760,7 @@ func (s *GistsCreateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -10158,12 +10790,14 @@ func (s *GistsCreateReq) SetFake() {
 
 // SetFake set fake values.
 func (s GistsCreateReqFiles) SetFake() {
-	var elem GistsCreateReqFilesItem
-
-	{
-		elem.SetFake()
+	var (
+		elem GistsCreateReqFilesItem
+		m    map[string]GistsCreateReqFilesItem
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -10171,7 +10805,7 @@ func (s *GistsCreateReqFilesItem) SetFake() {
 	{
 
 		{
-			s.Content = "string"
+			s.Content = ""
 		}
 	}
 }
@@ -10229,14 +10863,6 @@ func (s *GistsDeleteCommentApplicationJSONNotFound) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = GistsDeleteCommentApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsDeleteCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *GistsDeleteNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -10303,8 +10929,16 @@ func (s *GistsListCommentsApplicationJSONNotFound) SetFake() {
 func (s *GistsListCommentsOKApplicationJSON) SetFake() {
 	var unwrapped []GistComment
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem GistComment
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GistsListCommentsOKApplicationJSON(unwrapped)
 }
@@ -10333,8 +10967,16 @@ func (s *GistsListCommitsApplicationJSONNotFound) SetFake() {
 func (s *GistsListCommitsOKApplicationJSON) SetFake() {
 	var unwrapped []GistCommit
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem GistCommit
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GistsListCommitsOKApplicationJSON(unwrapped)
 }
@@ -10343,8 +10985,16 @@ func (s *GistsListCommitsOKApplicationJSON) SetFake() {
 func (s *GistsListForUserOKApplicationJSON) SetFake() {
 	var unwrapped []BaseGist
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem BaseGist
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GistsListForUserOKApplicationJSON(unwrapped)
 }
@@ -10373,8 +11023,16 @@ func (s *GistsListForksApplicationJSONNotFound) SetFake() {
 func (s *GistsListForksOKApplicationJSON) SetFake() {
 	var unwrapped []GistSimple
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem GistSimple
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GistsListForksOKApplicationJSON(unwrapped)
 }
@@ -10383,8 +11041,16 @@ func (s *GistsListForksOKApplicationJSON) SetFake() {
 func (s *GistsListOKApplicationJSON) SetFake() {
 	var unwrapped []BaseGist
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem BaseGist
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GistsListOKApplicationJSON(unwrapped)
 }
@@ -10393,8 +11059,16 @@ func (s *GistsListOKApplicationJSON) SetFake() {
 func (s *GistsListPublicOKApplicationJSON) SetFake() {
 	var unwrapped []BaseGist
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem BaseGist
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GistsListPublicOKApplicationJSON(unwrapped)
 }
@@ -10423,8 +11097,16 @@ func (s *GistsListStarredApplicationJSONUnauthorized) SetFake() {
 func (s *GistsListStarredOKApplicationJSON) SetFake() {
 	var unwrapped []BaseGist
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem BaseGist
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GistsListStarredOKApplicationJSON(unwrapped)
 }
@@ -10450,10 +11132,6 @@ func (s *GistsStarApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GistsStarNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *GistsUnstarApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -10474,15 +11152,11 @@ func (s *GistsUnstarApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GistsUnstarNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *GistsUpdateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -10492,13 +11166,13 @@ func (s *GitCommit) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -10522,7 +11196,7 @@ func (s *GitCommit) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
@@ -10533,8 +11207,16 @@ func (s *GitCommit) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Parents = nil
+			for i := 0; i < 0; i++ {
+				var elem GitCommitParentsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Parents = append(s.Parents, elem)
+			}
 		}
 	}
 	{
@@ -10562,13 +11244,13 @@ func (s *GitCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -10584,13 +11266,13 @@ func (s *GitCommitCommitter) SetFake() {
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -10600,7 +11282,7 @@ func (s *GitCommitParentsItem) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -10622,7 +11304,7 @@ func (s *GitCommitTree) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -10644,7 +11326,7 @@ func (s *GitCommitVerification) SetFake() {
 	{
 
 		{
-			s.Reason = "string"
+			s.Reason = ""
 		}
 	}
 	{
@@ -10696,7 +11378,7 @@ func (s *GitCreateBlobReq) SetFake() {
 	{
 
 		{
-			s.Content = "string"
+			s.Content = ""
 		}
 	}
 	{
@@ -10712,19 +11394,27 @@ func (s *GitCreateCommitReq) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.Tree = "string"
+			s.Tree = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Parents = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Parents = append(s.Parents, elem)
+			}
 		}
 	}
 	{
@@ -10752,13 +11442,13 @@ func (s *GitCreateCommitReqAuthor) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
@@ -10796,13 +11486,13 @@ func (s *GitCreateRefReq) SetFake() {
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -10818,19 +11508,19 @@ func (s *GitCreateTagReq) SetFake() {
 	{
 
 		{
-			s.Tag = "string"
+			s.Tag = ""
 		}
 	}
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.Object = "string"
+			s.Object = ""
 		}
 	}
 	{
@@ -10852,13 +11542,13 @@ func (s *GitCreateTagReqTagger) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
@@ -10898,8 +11588,16 @@ func (s *GitCreateTreeApplicationJSONNotFound) SetFake() {
 func (s *GitCreateTreeReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tree = nil
+			for i := 0; i < 0; i++ {
+				var elem GitCreateTreeReqTreeItem
+
+				{
+					elem.SetFake()
+				}
+				s.Tree = append(s.Tree, elem)
+			}
 		}
 	}
 	{
@@ -10955,10 +11653,6 @@ func (s *GitCreateTreeReqTreeItemType) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GitDeleteRefNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *GitGetBlobApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -10983,13 +11677,13 @@ func (s *GitRef) SetFake() {
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -11011,13 +11705,13 @@ func (s *GitRefObject) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 		}
 	}
 	{
@@ -11033,19 +11727,19 @@ func (s *GitTag) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Tag = "string"
+			s.Tag = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -11057,7 +11751,7 @@ func (s *GitTag) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
@@ -11085,13 +11779,13 @@ func (s *GitTagObject) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -11107,19 +11801,19 @@ func (s *GitTagTagger) SetFake() {
 	{
 
 		{
-			s.Date = "string"
+			s.Date = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -11129,7 +11823,7 @@ func (s *GitTree) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -11146,8 +11840,16 @@ func (s *GitTree) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tree = nil
+			for i := 0; i < 0; i++ {
+				var elem GitTreeTreeItem
+
+				{
+					elem.SetFake()
+				}
+				s.Tree = append(s.Tree, elem)
+			}
 		}
 	}
 }
@@ -11197,7 +11899,7 @@ func (s *GitUpdateRefReq) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -11212,8 +11914,16 @@ func (s *GitUpdateRefReq) SetFake() {
 func (s *GitignoreGetAllTemplatesOKApplicationJSON) SetFake() {
 	var unwrapped []string
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem string
+
+			{
+				elem = ""
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = GitignoreGetAllTemplatesOKApplicationJSON(unwrapped)
 }
@@ -11223,13 +11933,13 @@ func (s *GitignoreTemplate) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Source = "string"
+			s.Source = ""
 		}
 	}
 }
@@ -11239,7 +11949,7 @@ func (s *GpgKey) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -11251,25 +11961,41 @@ func (s *GpgKey) SetFake() {
 	{
 
 		{
-			s.KeyID = "string"
+			s.KeyID = ""
 		}
 	}
 	{
 
 		{
-			s.PublicKey = "string"
+			s.PublicKey = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem GpgKeyEmailsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Subkeys = nil
+			for i := 0; i < 0; i++ {
+				var elem GpgKeySubkeysItem
+
+				{
+					elem.SetFake()
+				}
+				s.Subkeys = append(s.Subkeys, elem)
+			}
 		}
 	}
 	{
@@ -11360,14 +12086,30 @@ func (s *GpgKeySubkeysItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Subkeys = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Subkeys = append(s.Subkeys, elem)
+			}
 		}
 	}
 	{
@@ -11418,8 +12160,16 @@ func (s *GpgKeySubkeysItem) SetFake() {
 func (s *GroupMapping) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem GroupMappingGroupsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 }
@@ -11429,19 +12179,19 @@ func (s *GroupMappingGroupsItem) SetFake() {
 	{
 
 		{
-			s.GroupID = "string"
+			s.GroupID = ""
 		}
 	}
 	{
 
 		{
-			s.GroupName = "string"
+			s.GroupName = ""
 		}
 	}
 	{
 
 		{
-			s.GroupDescription = "string"
+			s.GroupDescription = ""
 		}
 	}
 	{
@@ -11463,19 +12213,19 @@ func (s *Hook) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -11486,8 +12236,16 @@ func (s *Hook) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
@@ -11609,13 +12367,13 @@ func (s *HookDelivery) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.GUID = "string"
+			s.GUID = ""
 		}
 	}
 	{
@@ -11639,19 +12397,19 @@ func (s *HookDelivery) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.StatusCode = int(0)
+			s.StatusCode = int(1)
 		}
 	}
 	{
 
 		{
-			s.Event = "string"
+			s.Event = ""
 		}
 	}
 	{
@@ -11697,13 +12455,13 @@ func (s *HookDeliveryItem) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.GUID = "string"
+			s.GUID = ""
 		}
 	}
 	{
@@ -11727,19 +12485,19 @@ func (s *HookDeliveryItem) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
 
 		{
-			s.StatusCode = int(0)
+			s.StatusCode = int(1)
 		}
 	}
 	{
 
 		{
-			s.Event = "string"
+			s.Event = ""
 		}
 	}
 	{
@@ -11780,22 +12538,26 @@ func (s *HookDeliveryRequest) SetFake() {
 
 // SetFake set fake values.
 func (s HookDeliveryRequestHeaders) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
 func (s HookDeliveryRequestPayload) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -11816,12 +12578,14 @@ func (s *HookDeliveryResponse) SetFake() {
 
 // SetFake set fake values.
 func (s HookDeliveryResponseHeaders) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -11850,8 +12614,16 @@ func (s *HookResponse) SetFake() {
 func (s *Hovercard) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem HovercardContextsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
 }
@@ -11861,13 +12633,13 @@ func (s *HovercardContextsItem) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.Octicon = "string"
+			s.Octicon = ""
 		}
 	}
 }
@@ -11889,7 +12661,7 @@ func (s *Import) SetFake() {
 	{
 
 		{
-			s.VcsURL = "string"
+			s.VcsURL = ""
 		}
 	}
 	{
@@ -11966,8 +12738,16 @@ func (s *Import) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.ProjectChoices = nil
+			for i := 0; i < 0; i++ {
+				var elem ImportProjectChoicesItem
+
+				{
+					elem.SetFake()
+				}
+				s.ProjectChoices = append(s.ProjectChoices, elem)
+			}
 		}
 	}
 	{
@@ -12046,13 +12826,13 @@ func (s *InstallationToken) SetFake() {
 	{
 
 		{
-			s.Token = "string"
+			s.Token = ""
 		}
 	}
 	{
 
 		{
-			s.ExpiresAt = "string"
+			s.ExpiresAt = ""
 		}
 	}
 	{
@@ -12069,8 +12849,16 @@ func (s *InstallationToken) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem Repository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 	{
@@ -12087,8 +12875,16 @@ func (s *InstallationToken) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SingleFilePaths = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.SingleFilePaths = append(s.SingleFilePaths, elem)
+			}
 		}
 	}
 }
@@ -12103,7 +12899,7 @@ func (s *Integration) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -12115,7 +12911,7 @@ func (s *Integration) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -12127,7 +12923,7 @@ func (s *Integration) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -12168,8 +12964,16 @@ func (s *Integration) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
@@ -12236,13 +13040,15 @@ func (s *IntegrationPermissions) SetFake() {
 			s.Deployments.SetFake()
 		}
 	}
-	var elem string
+	var (
+		elem string
+		m    map[string]string
+	)
 	s.AdditionalProps = map[string]string{}
-
-	{
-		elem = "string"
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -12282,7 +13088,7 @@ func (s *InteractionLimitResponse) SetFake() {
 	{
 
 		{
-			s.Origin = "string"
+			s.Origin = ""
 		}
 	}
 	{
@@ -12294,37 +13100,17 @@ func (s *InteractionLimitResponse) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *InteractionsRemoveRestrictionsForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *InteractionsRemoveRestrictionsForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *InteractionsRemoveRestrictionsForRepoConflict) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *InteractionsRemoveRestrictionsForRepoNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *InteractionsSetRestrictionsForRepoConflict) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *Issue) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -12342,7 +13128,7 @@ func (s *Issue) SetFake() {
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -12366,19 +13152,19 @@ func (s *Issue) SetFake() {
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -12395,8 +13181,16 @@ func (s *Issue) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem IssueLabelsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 	{
@@ -12432,7 +13226,7 @@ func (s *Issue) SetFake() {
 	{
 
 		{
-			s.Comments = int(0)
+			s.Comments = int(1)
 		}
 	}
 	{
@@ -12514,13 +13308,13 @@ func (s *IssueComment) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -12602,13 +13396,13 @@ func (s *IssueEvent) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -12626,7 +13420,7 @@ func (s *IssueEvent) SetFake() {
 	{
 
 		{
-			s.Event = "string"
+			s.Event = ""
 		}
 	}
 	{
@@ -12738,13 +13532,13 @@ func (s *IssueEventDismissedReview) SetFake() {
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
 
 		{
-			s.ReviewID = int(0)
+			s.ReviewID = int(1)
 		}
 	}
 	{
@@ -12782,7 +13576,7 @@ func (s *IssueEventMilestone) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 }
@@ -12798,7 +13592,7 @@ func (s *IssueEventProjectCard) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -12810,13 +13604,13 @@ func (s *IssueEventProjectCard) SetFake() {
 	{
 
 		{
-			s.ProjectID = int(0)
+			s.ProjectID = int(1)
 		}
 	}
 	{
 
 		{
-			s.ColumnName = "string"
+			s.ColumnName = ""
 		}
 	}
 	{
@@ -12832,13 +13626,13 @@ func (s *IssueEventRename) SetFake() {
 	{
 
 		{
-			s.From = "string"
+			s.From = ""
 		}
 	}
 	{
 
 		{
-			s.To = "string"
+			s.To = ""
 		}
 	}
 }
@@ -12848,7 +13642,7 @@ func (s *IssueLabelsItem) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -12950,7 +13744,7 @@ func (s *IssueSearchResultItem) SetFake() {
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -12974,25 +13768,25 @@ func (s *IssueSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -13021,14 +13815,22 @@ func (s *IssueSearchResultItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem IssueSearchResultItemLabelsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
@@ -13046,7 +13848,7 @@ func (s *IssueSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Comments = int(0)
+			s.Comments = int(1)
 		}
 	}
 	{
@@ -13220,13 +14022,13 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -13244,7 +14046,7 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -13268,19 +14070,19 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -13297,8 +14099,16 @@ func (s *IssueSimple) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem Label
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 	{
@@ -13334,7 +14144,7 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.Comments = int(0)
+			s.Comments = int(1)
 		}
 	}
 	{
@@ -13437,14 +14247,18 @@ func (s *IssueSimplePullRequest) SetFake() {
 func (s *IssuesAddAssigneesReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Assignees = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Assignees = append(s.Assignees, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *IssuesCheckUserCanBeAssignedNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -13512,7 +14326,7 @@ func (s *IssuesCreateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -13522,7 +14336,7 @@ func (s *IssuesCreateLabelReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -13544,7 +14358,7 @@ func (s *IssuesCreateMilestoneReq) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -13600,14 +14414,30 @@ func (s *IssuesCreateReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem IssuesCreateReqLabelsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Assignees = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Assignees = append(s.Assignees, elem)
+			}
 		}
 	}
 }
@@ -13617,7 +14447,7 @@ func (s *IssuesCreateReqLabelsItem) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -13655,7 +14485,7 @@ func (s *IssuesCreateReqMilestone) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -13665,21 +14495,9 @@ func (s *IssuesCreateReqTitle) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
-}
-
-// SetFake set fake values.
-func (s *IssuesDeleteCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *IssuesDeleteLabelNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *IssuesDeleteMilestoneNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -13746,8 +14564,16 @@ func (s *IssuesGetEventApplicationJSONNotFound) SetFake() {
 func (s *IssuesListAssigneesOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListAssigneesOKApplicationJSON(unwrapped)
 }
@@ -13773,113 +14599,93 @@ func (s *IssuesListCommentsApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesListCommentsForRepoDirection) SetFake() {
-	*s = IssuesListCommentsForRepoDirectionAsc
-}
-
-// SetFake set fake values.
 func (s *IssuesListCommentsForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []IssueComment
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem IssueComment
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListCommentsForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListCommentsForRepoSort) SetFake() {
-	*s = IssuesListCommentsForRepoSortCreated
 }
 
 // SetFake set fake values.
 func (s *IssuesListCommentsOKApplicationJSON) SetFake() {
 	var unwrapped []IssueComment
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem IssueComment
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListCommentsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListDirection) SetFake() {
-	*s = IssuesListDirectionAsc
 }
 
 // SetFake set fake values.
 func (s *IssuesListEventsForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []IssueEvent
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem IssueEvent
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListEventsForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListFilter) SetFake() {
-	*s = IssuesListFilterAssigned
-}
-
-// SetFake set fake values.
-func (s *IssuesListForAuthenticatedUserDirection) SetFake() {
-	*s = IssuesListForAuthenticatedUserDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *IssuesListForAuthenticatedUserFilter) SetFake() {
-	*s = IssuesListForAuthenticatedUserFilterAssigned
 }
 
 // SetFake set fake values.
 func (s *IssuesListForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []Issue
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Issue
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListForAuthenticatedUserSort) SetFake() {
-	*s = IssuesListForAuthenticatedUserSortCreated
-}
-
-// SetFake set fake values.
-func (s *IssuesListForAuthenticatedUserState) SetFake() {
-	*s = IssuesListForAuthenticatedUserStateOpen
-}
-
-// SetFake set fake values.
-func (s *IssuesListForOrgDirection) SetFake() {
-	*s = IssuesListForOrgDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *IssuesListForOrgFilter) SetFake() {
-	*s = IssuesListForOrgFilterAssigned
 }
 
 // SetFake set fake values.
 func (s *IssuesListForOrgOKApplicationJSON) SetFake() {
 	var unwrapped []Issue
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Issue
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListForOrgOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListForOrgSort) SetFake() {
-	*s = IssuesListForOrgSortCreated
-}
-
-// SetFake set fake values.
-func (s *IssuesListForOrgState) SetFake() {
-	*s = IssuesListForOrgStateOpen
 }
 
 // SetFake set fake values.
@@ -13903,36 +14709,37 @@ func (s *IssuesListForRepoApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesListForRepoDirection) SetFake() {
-	*s = IssuesListForRepoDirectionAsc
-}
-
-// SetFake set fake values.
 func (s *IssuesListForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []IssueSimple
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem IssueSimple
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListForRepoSort) SetFake() {
-	*s = IssuesListForRepoSortCreated
-}
-
-// SetFake set fake values.
-func (s *IssuesListForRepoState) SetFake() {
-	*s = IssuesListForRepoStateOpen
 }
 
 // SetFake set fake values.
 func (s *IssuesListLabelsForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []Label
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Label
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListLabelsForRepoOKApplicationJSON(unwrapped)
 }
@@ -13941,55 +14748,54 @@ func (s *IssuesListLabelsForRepoOKApplicationJSON) SetFake() {
 func (s *IssuesListLabelsOnIssueOKApplicationJSON) SetFake() {
 	var unwrapped []Label
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Label
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListLabelsOnIssueOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListMilestonesDirection) SetFake() {
-	*s = IssuesListMilestonesDirectionAsc
 }
 
 // SetFake set fake values.
 func (s *IssuesListMilestonesOKApplicationJSON) SetFake() {
 	var unwrapped []Milestone
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Milestone
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListMilestonesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListMilestonesSort) SetFake() {
-	*s = IssuesListMilestonesSortDueOn
-}
-
-// SetFake set fake values.
-func (s *IssuesListMilestonesState) SetFake() {
-	*s = IssuesListMilestonesStateOpen
 }
 
 // SetFake set fake values.
 func (s *IssuesListOKApplicationJSON) SetFake() {
 	var unwrapped []Issue
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Issue
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListSort) SetFake() {
-	*s = IssuesListSortCreated
-}
-
-// SetFake set fake values.
-func (s *IssuesListState) SetFake() {
-	*s = IssuesListStateOpen
 }
 
 // SetFake set fake values.
@@ -14023,10 +14829,6 @@ func (s *IssuesLockApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesLockNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *IssuesLockReq) SetFake() {
 	{
 
@@ -14042,15 +14844,19 @@ func (s *IssuesLockReqLockReason) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesRemoveAllLabelsNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *IssuesRemoveAssigneesReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Assignees = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Assignees = append(s.Assignees, elem)
+			}
 		}
 	}
 }
@@ -14079,8 +14885,16 @@ func (s *IssuesRemoveLabelApplicationJSONNotFound) SetFake() {
 func (s *IssuesRemoveLabelOKApplicationJSON) SetFake() {
 	var unwrapped []Label
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Label
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = IssuesRemoveLabelOKApplicationJSON(unwrapped)
 }
@@ -14103,10 +14917,6 @@ func (s *IssuesUnlockApplicationJSONNotFound) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = IssuesUnlockApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesUnlockNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -14154,7 +14964,7 @@ func (s *IssuesUpdateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -14248,14 +15058,30 @@ func (s *IssuesUpdateReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem IssuesUpdateReqLabelsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Assignees = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Assignees = append(s.Assignees, elem)
+			}
 		}
 	}
 }
@@ -14265,7 +15091,7 @@ func (s *IssuesUpdateReqLabelsItem) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -14303,7 +15129,7 @@ func (s *IssuesUpdateReqMilestone) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -14318,7 +15144,7 @@ func (s *IssuesUpdateReqTitle) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -14328,37 +15154,37 @@ func (s *Job) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.RunID = int(0)
+			s.RunID = int(1)
 		}
 	}
 	{
 
 		{
-			s.RunURL = "string"
+			s.RunURL = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.HeadSha = "string"
+			s.HeadSha = ""
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
@@ -14394,19 +15220,27 @@ func (s *Job) SetFake() {
 	{
 
 		{
-			s.Name = "string"
-		}
-	}
-	{
-
-		{ // Keep slice nil to prevent infinite recursion.
-			s.Steps = nil
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.CheckRunURL = "string"
+			s.Steps = nil
+			for i := 0; i < 0; i++ {
+				var elem JobStepsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Steps = append(s.Steps, elem)
+			}
+		}
+	}
+	{
+
+		{
+			s.CheckRunURL = ""
 		}
 	}
 }
@@ -14433,13 +15267,13 @@ func (s *JobStepsItem) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
@@ -14466,25 +15300,25 @@ func (s *Key) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -14512,13 +15346,13 @@ func (s *KeySimple) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 }
@@ -14528,13 +15362,13 @@ func (s *Label) SetFake() {
 	{
 
 		{
-			s.ID = int64(0)
+			s.ID = int64(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -14546,7 +15380,7 @@ func (s *Label) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -14558,7 +15392,7 @@ func (s *Label) SetFake() {
 	{
 
 		{
-			s.Color = "string"
+			s.Color = ""
 		}
 	}
 	{
@@ -14574,13 +15408,13 @@ func (s *LabelSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -14592,13 +15426,13 @@ func (s *LabelSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Color = "string"
+			s.Color = ""
 		}
 	}
 	{
@@ -14629,12 +15463,14 @@ func (s *LabelSearchResultItem) SetFake() {
 
 // SetFake set fake values.
 func (s Language) SetFake() {
-	var elem int
-
-	{
-		elem = int(0)
+	var (
+		elem int
+		m    map[string]int
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -14642,13 +15478,13 @@ func (s *License) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -14666,7 +15502,7 @@ func (s *License) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -14678,37 +15514,61 @@ func (s *License) SetFake() {
 	{
 
 		{
-			s.Description = "string"
+			s.Description = ""
 		}
 	}
 	{
 
 		{
-			s.Implementation = "string"
+			s.Implementation = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Permissions = nil
-		}
-	}
-	{
+			for i := 0; i < 0; i++ {
+				var elem string
 
-		{ // Keep slice nil to prevent infinite recursion.
-			s.Conditions = nil
-		}
-	}
-	{
-
-		{ // Keep slice nil to prevent infinite recursion.
-			s.Limitations = nil
+				{
+					elem = ""
+				}
+				s.Permissions = append(s.Permissions, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Body = "string"
+			s.Conditions = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Conditions = append(s.Conditions, elem)
+			}
+		}
+	}
+	{
+
+		{
+			s.Limitations = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Limitations = append(s.Limitations, elem)
+			}
+		}
+	}
+	{
+
+		{
+			s.Body = ""
 		}
 	}
 	{
@@ -14724,25 +15584,25 @@ func (s *LicenseContent) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
@@ -14772,19 +15632,19 @@ func (s *LicenseContent) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
 
 		{
-			s.Content = "string"
+			s.Content = ""
 		}
 	}
 	{
 
 		{
-			s.Encoding = "string"
+			s.Encoding = ""
 		}
 	}
 	{
@@ -14828,13 +15688,13 @@ func (s *LicenseSimple) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -14852,7 +15712,7 @@ func (s *LicenseSimple) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -14867,8 +15727,16 @@ func (s *LicenseSimple) SetFake() {
 func (s *LicensesGetAllCommonlyUsedOKApplicationJSON) SetFake() {
 	var unwrapped []LicenseSimple
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem LicenseSimple
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = LicensesGetAllCommonlyUsedOKApplicationJSON(unwrapped)
 }
@@ -14898,7 +15766,7 @@ func (s *Link) SetFake() {
 	{
 
 		{
-			s.Href = "string"
+			s.Href = ""
 		}
 	}
 }
@@ -14908,13 +15776,13 @@ func (s *LinkWithType) SetFake() {
 	{
 
 		{
-			s.Href = "string"
+			s.Href = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -14930,13 +15798,13 @@ func (s *MarketplaceAccount) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -14948,7 +15816,7 @@ func (s *MarketplaceAccount) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
@@ -14982,43 +15850,43 @@ func (s *MarketplaceListingPlan) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Description = "string"
+			s.Description = ""
 		}
 	}
 	{
 
 		{
-			s.MonthlyPriceInCents = int(0)
+			s.MonthlyPriceInCents = int(1)
 		}
 	}
 	{
 
 		{
-			s.YearlyPriceInCents = int(0)
+			s.YearlyPriceInCents = int(1)
 		}
 	}
 	{
 
 		{
-			s.PriceModel = "string"
+			s.PriceModel = ""
 		}
 	}
 	{
@@ -15036,13 +15904,21 @@ func (s *MarketplaceListingPlan) SetFake() {
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Bullets = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Bullets = append(s.Bullets, elem)
+			}
 		}
 	}
 }
@@ -15052,25 +15928,25 @@ func (s *MarketplacePurchase) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
@@ -15217,169 +16093,169 @@ func (s *MetaRootOK) SetFake() {
 	{
 
 		{
-			s.CurrentUserURL = "string"
+			s.CurrentUserURL = ""
 		}
 	}
 	{
 
 		{
-			s.CurrentUserAuthorizationsHTMLURL = "string"
+			s.CurrentUserAuthorizationsHTMLURL = ""
 		}
 	}
 	{
 
 		{
-			s.AuthorizationsURL = "string"
+			s.AuthorizationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CodeSearchURL = "string"
+			s.CodeSearchURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitSearchURL = "string"
+			s.CommitSearchURL = ""
 		}
 	}
 	{
 
 		{
-			s.EmailsURL = "string"
+			s.EmailsURL = ""
 		}
 	}
 	{
 
 		{
-			s.EmojisURL = "string"
+			s.EmojisURL = ""
 		}
 	}
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.FeedsURL = "string"
+			s.FeedsURL = ""
 		}
 	}
 	{
 
 		{
-			s.FollowersURL = "string"
+			s.FollowersURL = ""
 		}
 	}
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.HubURL = "string"
+			s.HubURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueSearchURL = "string"
+			s.IssueSearchURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelSearchURL = "string"
+			s.LabelSearchURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.OrganizationURL = "string"
+			s.OrganizationURL = ""
 		}
 	}
 	{
 
 		{
-			s.OrganizationRepositoriesURL = "string"
+			s.OrganizationRepositoriesURL = ""
 		}
 	}
 	{
 
 		{
-			s.OrganizationTeamsURL = "string"
+			s.OrganizationTeamsURL = ""
 		}
 	}
 	{
 
 		{
-			s.PublicGistsURL = "string"
+			s.PublicGistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.RateLimitURL = "string"
+			s.RateLimitURL = ""
 		}
 	}
 	{
 
 		{
-			s.RepositoryURL = "string"
+			s.RepositoryURL = ""
 		}
 	}
 	{
 
 		{
-			s.RepositorySearchURL = "string"
+			s.RepositorySearchURL = ""
 		}
 	}
 	{
 
 		{
-			s.CurrentUserRepositoriesURL = "string"
+			s.CurrentUserRepositoriesURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredGistsURL = "string"
+			s.StarredGistsURL = ""
 		}
 	}
 	{
@@ -15391,25 +16267,25 @@ func (s *MetaRootOK) SetFake() {
 	{
 
 		{
-			s.UserURL = "string"
+			s.UserURL = ""
 		}
 	}
 	{
 
 		{
-			s.UserOrganizationsURL = "string"
+			s.UserOrganizationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.UserRepositoriesURL = "string"
+			s.UserRepositoriesURL = ""
 		}
 	}
 	{
 
 		{
-			s.UserSearchURL = "string"
+			s.UserSearchURL = ""
 		}
 	}
 }
@@ -15419,7 +16295,7 @@ func (s *Migration) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -15431,13 +16307,13 @@ func (s *Migration) SetFake() {
 	{
 
 		{
-			s.GUID = "string"
+			s.GUID = ""
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
@@ -15478,8 +16354,16 @@ func (s *Migration) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem Repository
+
+				{
+					elem.SetFake()
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 	{
@@ -15503,7 +16387,7 @@ func (s *Migration) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -15514,14 +16398,18 @@ func (s *Migration) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Exclude = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Exclude = append(s.Exclude, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *MigrationsCancelImportNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -15555,18 +16443,6 @@ func (s *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized)
 }
 
 // SetFake set fake values.
-func (s *MigrationsDeleteArchiveForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *MigrationsDeleteArchiveForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *MigrationsDownloadArchiveForOrgFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -15587,15 +16463,19 @@ func (s *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized) Se
 }
 
 // SetFake set fake values.
-func (s *MigrationsGetArchiveForAuthenticatedUserFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *MigrationsGetCommitAuthorsOKApplicationJSON) SetFake() {
 	var unwrapped []PorterAuthor
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PorterAuthor
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = MigrationsGetCommitAuthorsOKApplicationJSON(unwrapped)
 }
@@ -15631,11 +16511,6 @@ func (s *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized) Set
 }
 
 // SetFake set fake values.
-func (s *MigrationsGetStatusForOrgExcludeItem) SetFake() {
-	*s = MigrationsGetStatusForOrgExcludeItemRepositories
-}
-
-// SetFake set fake values.
 func (s *MigrationsListForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -15659,23 +16534,34 @@ func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) SetFake(
 func (s *MigrationsListForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []Migration
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Migration
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = MigrationsListForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *MigrationsListForOrgExcludeItem) SetFake() {
-	*s = MigrationsListForOrgExcludeItemRepositories
 }
 
 // SetFake set fake values.
 func (s *MigrationsListReposForOrgOKApplicationJSON) SetFake() {
 	var unwrapped []MinimalRepository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MinimalRepository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = MigrationsListReposForOrgOKApplicationJSON(unwrapped)
 }
@@ -15684,8 +16570,16 @@ func (s *MigrationsListReposForOrgOKApplicationJSON) SetFake() {
 func (s *MigrationsListReposForUserOKApplicationJSON) SetFake() {
 	var unwrapped []MinimalRepository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MinimalRepository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = MigrationsListReposForUserOKApplicationJSON(unwrapped)
 }
@@ -15704,13 +16598,15 @@ func (s *MigrationsMapCommitAuthorReq) SetFake() {
 			s.Name.SetFake()
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -15776,14 +16672,30 @@ func (s *MigrationsStartForAuthenticatedUserReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Exclude = nil
+			for i := 0; i < 0; i++ {
+				var elem MigrationsStartForAuthenticatedUserReqExcludeItem
+
+				{
+					elem.SetFake()
+				}
+				s.Exclude = append(s.Exclude, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 }
@@ -15797,8 +16709,16 @@ func (s *MigrationsStartForAuthenticatedUserReqExcludeItem) SetFake() {
 func (s *MigrationsStartForOrgReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Repositories = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Repositories = append(s.Repositories, elem)
+			}
 		}
 	}
 	{
@@ -15827,8 +16747,16 @@ func (s *MigrationsStartForOrgReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Exclude = nil
+			for i := 0; i < 0; i++ {
+				var elem MigrationsStartForOrgReqExcludeItem
+
+				{
+					elem.SetFake()
+				}
+				s.Exclude = append(s.Exclude, elem)
+			}
 		}
 	}
 }
@@ -15843,7 +16771,7 @@ func (s *MigrationsStartImportReq) SetFake() {
 	{
 
 		{
-			s.VcsURL = "string"
+			s.VcsURL = ""
 		}
 	}
 	{
@@ -15908,14 +16836,6 @@ func (s *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized) Se
 }
 
 // SetFake set fake values.
-func (s *MigrationsUnlockRepoForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *MigrationsUnlockRepoForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *MigrationsUpdateImportReq) SetFake() {
 	{
 
@@ -15966,19 +16886,19 @@ func (s *Milestone) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
@@ -15990,7 +16910,7 @@ func (s *Milestone) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -16008,13 +16928,13 @@ func (s *Milestone) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.ClosedIssues = int(0)
+			s.ClosedIssues = int(1)
 		}
 	}
 	{
@@ -16053,25 +16973,25 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
@@ -16113,55 +17033,55 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -16197,19 +17117,19 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
@@ -16221,31 +17141,31 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -16263,25 +17183,25 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
@@ -16299,7 +17219,7 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -16329,7 +17249,7 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
@@ -16412,8 +17332,16 @@ func (s *MinimalRepository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -16805,14 +17733,6 @@ func (s *NilURI) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *NoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *NotModified) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *NullableCodeOfConductSimple) SetFake() {
 	{
 
@@ -16823,13 +17743,13 @@ func (s *NullableCodeOfConductSimple) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -16883,7 +17803,7 @@ func (s *NullableIntegration) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -16895,7 +17815,7 @@ func (s *NullableIntegration) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -16907,7 +17827,7 @@ func (s *NullableIntegration) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -16948,8 +17868,16 @@ func (s *NullableIntegration) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
@@ -17016,13 +17944,15 @@ func (s *NullableIntegrationPermissions) SetFake() {
 			s.Deployments.SetFake()
 		}
 	}
-	var elem string
+	var (
+		elem string
+		m    map[string]string
+	)
 	s.AdditionalProps = map[string]string{}
-
-	{
-		elem = "string"
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -17030,13 +17960,13 @@ func (s *NullableLicenseSimple) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -17054,7 +17984,7 @@ func (s *NullableLicenseSimple) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -17088,19 +18018,19 @@ func (s *NullableMilestone) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
@@ -17112,7 +18042,7 @@ func (s *NullableMilestone) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -17130,13 +18060,13 @@ func (s *NullableMilestone) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.ClosedIssues = int(0)
+			s.ClosedIssues = int(1)
 		}
 	}
 	{
@@ -17175,25 +18105,25 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
@@ -17235,55 +18165,55 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -17319,19 +18249,19 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
@@ -17343,31 +18273,31 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -17385,25 +18315,25 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
@@ -17421,7 +18351,7 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -17451,7 +18381,7 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
@@ -17534,8 +18464,16 @@ func (s *NullableMinimalRepository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -17751,25 +18689,25 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
@@ -17787,7 +18725,7 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.Forks = int(0)
+			s.Forks = int(1)
 		}
 	}
 	{
@@ -17835,55 +18773,55 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -17919,55 +18857,55 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitURL = "string"
+			s.GitURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -17985,31 +18923,31 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
 
 		{
-			s.SSHURL = "string"
+			s.SSHURL = ""
 		}
 	}
 	{
@@ -18021,7 +18959,7 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -18051,13 +18989,13 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CloneURL = "string"
+			s.CloneURL = ""
 		}
 	}
 	{
@@ -18093,37 +19031,37 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(0)
+			s.ForksCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(0)
+			s.StargazersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(0)
+			s.WatchersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = "string"
+			s.DefaultBranch = ""
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(0)
+			s.OpenIssuesCount = int(1)
 		}
 	}
 	{
@@ -18134,8 +19072,16 @@ func (s *NullableRepository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -18267,13 +19213,13 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(0)
+			s.Watchers = int(1)
 		}
 	}
 	{
@@ -18688,8 +19634,16 @@ func (s *NullableRepositoryTemplateRepository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -18988,8 +19942,16 @@ func (s *NullableScopedInstallation) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.SingleFilePaths = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.SingleFilePaths = append(s.SingleFilePaths, elem)
+			}
 		}
 	}
 	{
@@ -19016,19 +19978,19 @@ func (s *NullableSimpleCommit) SetFake() {
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
 
 		{
-			s.TreeID = "string"
+			s.TreeID = ""
 		}
 	}
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
@@ -19056,13 +20018,13 @@ func (s *NullableSimpleCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 }
@@ -19072,13 +20034,13 @@ func (s *NullableSimpleCommitCommitter) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 }
@@ -19100,19 +20062,19 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -19148,19 +20110,19 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -19184,7 +20146,7 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -19196,7 +20158,7 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -19218,13 +20180,13 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -19236,13 +20198,13 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.MembersURL = "string"
+			s.MembersURL = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -19254,7 +20216,7 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.Permission = "string"
+			s.Permission = ""
 		}
 	}
 	{
@@ -19278,7 +20240,7 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.Slug = "string"
+			s.Slug = ""
 		}
 	}
 	{
@@ -19380,10 +20342,6 @@ func (s *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized) SetF
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsDeleteAuthorizationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -19401,10 +20359,6 @@ func (s *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OAuthAuthorizationsDeleteGrantNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -19472,7 +20426,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Set
 	{
 
 		{
-			s.ClientSecret = "string"
+			s.ClientSecret = ""
 		}
 	}
 	{
@@ -19540,7 +20494,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) SetFake() {
 	{
 
 		{
-			s.ClientSecret = "string"
+			s.ClientSecret = ""
 		}
 	}
 	{
@@ -19603,8 +20557,16 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) SetFa
 func (s *OAuthAuthorizationsListAuthorizationsOKApplicationJSON) SetFake() {
 	var unwrapped []Authorization
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Authorization
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OAuthAuthorizationsListAuthorizationsOKApplicationJSON(unwrapped)
 }
@@ -19643,8 +20605,16 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) SetFake() {
 func (s *OAuthAuthorizationsListGrantsOKApplicationJSON) SetFake() {
 	var unwrapped []ApplicationGrant
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ApplicationGrant
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OAuthAuthorizationsListGrantsOKApplicationJSON(unwrapped)
 }
@@ -19659,14 +20629,30 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AddScopes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AddScopes = append(s.AddScopes, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RemoveScopes = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RemoveScopes = append(s.RemoveScopes, elem)
+			}
 		}
 	}
 	{
@@ -19691,670 +20677,1334 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) SetFake() {
 
 // SetFake set fake values.
 func (s *OptAPIOverviewSSHKeyFingerprints) SetFake() {
+	var elem APIOverviewSSHKeyFingerprints
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptActionsCreateSelfHostedRunnerGroupForOrgReqVisibility) SetFake() {
-}
+	var elem ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility
 
-// SetFake set fake values.
-func (s *OptActionsListJobsForWorkflowRunFilter) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptActionsListWorkflowRunsForRepoStatus) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility) SetFake() {
-}
+	var elem ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility
 
-// SetFake set fake values.
-func (s *OptActivityListReposStarredByAuthenticatedUserDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptActivityListReposStarredByAuthenticatedUserSort) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptActivityMarkNotificationsAsReadReq) SetFake() {
+	var elem ActivityMarkNotificationsAsReadReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptActivityMarkRepoNotificationsAsReadReq) SetFake() {
+	var elem ActivityMarkRepoNotificationsAsReadReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptActivitySetRepoSubscriptionReq) SetFake() {
+	var elem ActivitySetRepoSubscriptionReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptActivitySetThreadSubscriptionReq) SetFake() {
+	var elem ActivitySetThreadSubscriptionReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptActor) SetFake() {
+	var elem Actor
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAlertCreatedAt) SetFake() {
+	var elem AlertCreatedAt
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAlertHTMLURL) SetFake() {
+	var elem AlertHTMLURL
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAlertNumber) SetFake() {
+	var elem AlertNumber
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAlertURL) SetFake() {
+	var elem AlertURL
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAllowedActions) SetFake() {
+	var elem AllowedActions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissions) SetFake() {
+	var elem AppPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsActions) SetFake() {
+	var elem AppPermissionsActions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsAdministration) SetFake() {
+	var elem AppPermissionsAdministration
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsChecks) SetFake() {
+	var elem AppPermissionsChecks
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsContentReferences) SetFake() {
+	var elem AppPermissionsContentReferences
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsContents) SetFake() {
+	var elem AppPermissionsContents
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsDeployments) SetFake() {
+	var elem AppPermissionsDeployments
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsEnvironments) SetFake() {
+	var elem AppPermissionsEnvironments
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsIssues) SetFake() {
+	var elem AppPermissionsIssues
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsMembers) SetFake() {
+	var elem AppPermissionsMembers
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsMetadata) SetFake() {
+	var elem AppPermissionsMetadata
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationAdministration) SetFake() {
+	var elem AppPermissionsOrganizationAdministration
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationHooks) SetFake() {
+	var elem AppPermissionsOrganizationHooks
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationPackages) SetFake() {
+	var elem AppPermissionsOrganizationPackages
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationPlan) SetFake() {
+	var elem AppPermissionsOrganizationPlan
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationProjects) SetFake() {
+	var elem AppPermissionsOrganizationProjects
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationSecrets) SetFake() {
+	var elem AppPermissionsOrganizationSecrets
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationSelfHostedRunners) SetFake() {
+	var elem AppPermissionsOrganizationSelfHostedRunners
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsOrganizationUserBlocking) SetFake() {
+	var elem AppPermissionsOrganizationUserBlocking
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsPackages) SetFake() {
+	var elem AppPermissionsPackages
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsPages) SetFake() {
+	var elem AppPermissionsPages
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsPullRequests) SetFake() {
+	var elem AppPermissionsPullRequests
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsRepositoryHooks) SetFake() {
+	var elem AppPermissionsRepositoryHooks
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsRepositoryProjects) SetFake() {
+	var elem AppPermissionsRepositoryProjects
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsSecretScanningAlerts) SetFake() {
+	var elem AppPermissionsSecretScanningAlerts
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsSecrets) SetFake() {
+	var elem AppPermissionsSecrets
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsSecurityEvents) SetFake() {
+	var elem AppPermissionsSecurityEvents
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsSingleFile) SetFake() {
+	var elem AppPermissionsSingleFile
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsStatuses) SetFake() {
+	var elem AppPermissionsStatuses
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsTeamDiscussions) SetFake() {
+	var elem AppPermissionsTeamDiscussions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsVulnerabilityAlerts) SetFake() {
+	var elem AppPermissionsVulnerabilityAlerts
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppPermissionsWorkflows) SetFake() {
+	var elem AppPermissionsWorkflows
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppsCreateInstallationAccessTokenReq) SetFake() {
-}
+	var elem AppsCreateInstallationAccessTokenReq
 
-// SetFake set fake values.
-func (s *OptAppsListAccountsForPlanDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptAppsListAccountsForPlanSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptAppsListAccountsForPlanStubbedDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptAppsListAccountsForPlanStubbedSort) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAppsUpdateWebhookConfigForAppReq) SetFake() {
+	var elem AppsUpdateWebhookConfigForAppReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAuditLogEventActorLocation) SetFake() {
+	var elem AuditLogEventActorLocation
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAuditLogEventData) SetFake() {
+	var elem AuditLogEventData
+
+	{
+		elem = make(AuditLogEventData)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAuthenticationTokenRepositorySelection) SetFake() {
+	var elem AuthenticationTokenRepositorySelection
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptAuthorAssociation) SetFake() {
+	var elem AuthorAssociation
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBool) SetFake() {
+	var elem bool
+
+	{
+		elem = true
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchProtection) SetFake() {
+	var elem BranchProtection
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchProtectionAllowDeletions) SetFake() {
+	var elem BranchProtectionAllowDeletions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchProtectionAllowForcePushes) SetFake() {
+	var elem BranchProtectionAllowForcePushes
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchProtectionRequiredConversationResolution) SetFake() {
+	var elem BranchProtectionRequiredConversationResolution
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchProtectionRequiredLinearHistory) SetFake() {
+	var elem BranchProtectionRequiredLinearHistory
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchProtectionRequiredSignatures) SetFake() {
+	var elem BranchProtectionRequiredSignatures
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchProtectionRequiredStatusChecks) SetFake() {
+	var elem BranchProtectionRequiredStatusChecks
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchRestrictionPolicy) SetFake() {
+	var elem BranchRestrictionPolicy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchRestrictionPolicyAppsItemOwner) SetFake() {
+	var elem BranchRestrictionPolicyAppsItemOwner
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptBranchRestrictionPolicyAppsItemPermissions) SetFake() {
-}
+	var elem BranchRestrictionPolicyAppsItemPermissions
 
-// SetFake set fake values.
-func (s *OptChecksListForRefFilter) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptChecksListForRefStatus) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptChecksListForSuiteFilter) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptChecksListForSuiteStatus) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeOfConduct) SetFake() {
+	var elem CodeOfConduct
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeOfConductSimple) SetFake() {
+	var elem CodeOfConductSimple
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAlertEnvironment) SetFake() {
+	var elem CodeScanningAlertEnvironment
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAlertInstanceMessage) SetFake() {
+	var elem CodeScanningAlertInstanceMessage
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAlertLocation) SetFake() {
+	var elem CodeScanningAlertLocation
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAlertState) SetFake() {
+	var elem CodeScanningAlertState
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAnalysisAnalysisKey) SetFake() {
+	var elem CodeScanningAnalysisAnalysisKey
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAnalysisCategory) SetFake() {
+	var elem CodeScanningAnalysisCategory
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAnalysisSarifID) SetFake() {
+	var elem CodeScanningAnalysisSarifID
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningAnalysisToolName) SetFake() {
+	var elem CodeScanningAnalysisToolName
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningRef) SetFake() {
+	var elem CodeScanningRef
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCodeScanningSarifsStatusProcessingStatus) SetFake() {
+	var elem CodeScanningSarifsStatusProcessingStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCollaboratorPermissions) SetFake() {
+	var elem CollaboratorPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptCommitStats) SetFake() {
+	var elem CommitStats
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptDate) SetFake() {
+	var elem time.Time
+
+	{
+		elem = time.Now()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptDateTime) SetFake() {
+	var elem time.Time
+
+	{
+		elem = time.Now()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptDeploymentSimple) SetFake() {
+	var elem DeploymentSimple
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility) SetFake() {
-}
+	var elem EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 
-// SetFake set fake values.
-func (s *OptEnterpriseAdminGetAuditLogInclude) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptEnterpriseAdminGetAuditLogOrder) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue) SetFake() {
+	var elem EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq) SetFake() {
+	var elem EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility) SetFake() {
+	var elem EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFileCommitCommitAuthor) SetFake() {
+	var elem FileCommitCommitAuthor
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFileCommitCommitCommitter) SetFake() {
+	var elem FileCommitCommitCommitter
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFileCommitCommitTree) SetFake() {
+	var elem FileCommitCommitTree
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFileCommitCommitVerification) SetFake() {
+	var elem FileCommitCommitVerification
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFileCommitContentLinks) SetFake() {
+	var elem FileCommitContentLinks
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFloat64) SetFake() {
+	var elem float64
+
+	{
+		elem = float64(0)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptForbiddenGistBlock) SetFake() {
+	var elem ForbiddenGistBlock
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFullRepositoryPermissions) SetFake() {
+	var elem FullRepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFullRepositorySecurityAndAnalysisAdvancedSecurity) SetFake() {
+	var elem FullRepositorySecurityAndAnalysisAdvancedSecurity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFullRepositorySecurityAndAnalysisAdvancedSecurityStatus) SetFake() {
+	var elem FullRepositorySecurityAndAnalysisAdvancedSecurityStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFullRepositorySecurityAndAnalysisSecretScanning) SetFake() {
+	var elem FullRepositorySecurityAndAnalysisSecretScanning
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFullRepositorySecurityAndAnalysisSecretScanningStatus) SetFake() {
+	var elem FullRepositorySecurityAndAnalysisSecretScanningStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGistHistoryChangeStatus) SetFake() {
+	var elem GistHistoryChangeStatus
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGistSimpleFiles) SetFake() {
+	var elem GistSimpleFiles
+
+	{
+		elem = make(GistSimpleFiles)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGistsCreateReqPublic) SetFake() {
+	var elem GistsCreateReqPublic
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGitCreateCommitReqAuthor) SetFake() {
+	var elem GitCreateCommitReqAuthor
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGitCreateCommitReqCommitter) SetFake() {
+	var elem GitCreateCommitReqCommitter
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGitCreateTagReqTagger) SetFake() {
+	var elem GitCreateTagReqTagger
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGitCreateTreeReqTreeItemMode) SetFake() {
+	var elem GitCreateTreeReqTreeItemMode
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptGitCreateTreeReqTreeItemType) SetFake() {
+	var elem GitCreateTreeReqTreeItemType
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInstallationTokenRepositorySelection) SetFake() {
+	var elem InstallationTokenRepositorySelection
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt) SetFake() {
+	var elem int
+
+	{
+		elem = int(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt64) SetFake() {
+	var elem int64
+
+	{
+		elem = int64(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInteractionExpiry) SetFake() {
+	var elem InteractionExpiry
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueComment) SetFake() {
+	var elem IssueComment
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueEventDismissedReview) SetFake() {
+	var elem IssueEventDismissedReview
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueEventLabel) SetFake() {
+	var elem IssueEventLabel
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueEventMilestone) SetFake() {
+	var elem IssueEventMilestone
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueEventProjectCard) SetFake() {
+	var elem IssueEventProjectCard
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueEventRename) SetFake() {
+	var elem IssueEventRename
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuePullRequest) SetFake() {
+	var elem IssuePullRequest
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueSearchResultItemPullRequest) SetFake() {
+	var elem IssueSearchResultItemPullRequest
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueSimple) SetFake() {
+	var elem IssueSimple
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssueSimplePullRequest) SetFake() {
+	var elem IssueSimplePullRequest
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesAddAssigneesReq) SetFake() {
+	var elem IssuesAddAssigneesReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesCreateMilestoneReqState) SetFake() {
-}
+	var elem IssuesCreateMilestoneReqState
 
-// SetFake set fake values.
-func (s *OptIssuesListCommentsForRepoDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListCommentsForRepoSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListFilter) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForAuthenticatedUserDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForAuthenticatedUserFilter) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForAuthenticatedUserSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForAuthenticatedUserState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForOrgDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForOrgFilter) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForOrgSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForOrgState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForRepoDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForRepoSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListForRepoState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListMilestonesDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListMilestonesSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListMilestonesState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptIssuesListState) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesLockReqLockReason) SetFake() {
+	var elem IssuesLockReqLockReason
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesRemoveAssigneesReq) SetFake() {
+	var elem IssuesRemoveAssigneesReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesUpdateLabelReq) SetFake() {
+	var elem IssuesUpdateLabelReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesUpdateMilestoneReq) SetFake() {
+	var elem IssuesUpdateMilestoneReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesUpdateMilestoneReqState) SetFake() {
+	var elem IssuesUpdateMilestoneReqState
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesUpdateReq) SetFake() {
+	var elem IssuesUpdateReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIssuesUpdateReqState) SetFake() {
+	var elem IssuesUpdateReqState
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptLinkWithType) SetFake() {
+	var elem LinkWithType
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptMarketplaceListingPlan) SetFake() {
+	var elem MarketplaceListingPlan
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptMergedUpstreamMergeType) SetFake() {
+	var elem MergedUpstreamMergeType
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptMigrationsMapCommitAuthorReq) SetFake() {
+	var elem MigrationsMapCommitAuthorReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptMigrationsStartImportReqVcs) SetFake() {
+	var elem MigrationsStartImportReqVcs
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptMinimalRepository) SetFake() {
+	var elem MinimalRepository
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptMinimalRepositoryPermissions) SetFake() {
+	var elem MinimalRepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -20653,866 +22303,1503 @@ func (s *OptNilURI) SetFake() {
 
 // SetFake set fake values.
 func (s *OptNullableMinimalRepositoryPermissions) SetFake() {
+	var elem NullableMinimalRepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptNullableRepositoryPermissions) SetFake() {
+	var elem NullableRepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptNullableRepositoryTemplateRepositoryOwner) SetFake() {
+	var elem NullableRepositoryTemplateRepositoryOwner
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptNullableRepositoryTemplateRepositoryPermissions) SetFake() {
+	var elem NullableRepositoryTemplateRepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOAuthAuthorizationsCreateAuthorizationReq) SetFake() {
+	var elem OAuthAuthorizationsCreateAuthorizationReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOAuthAuthorizationsUpdateAuthorizationReq) SetFake() {
+	var elem OAuthAuthorizationsUpdateAuthorizationReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgMembershipPermissions) SetFake() {
+	var elem OrgMembershipPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrganizationFullPlan) SetFake() {
+	var elem OrganizationFullPlan
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgsCreateInvitationReq) SetFake() {
+	var elem OrgsCreateInvitationReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgsCreateInvitationReqRole) SetFake() {
-}
+	var elem OrgsCreateInvitationReqRole
 
-// SetFake set fake values.
-func (s *OptOrgsGetAuditLogInclude) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptOrgsGetAuditLogOrder) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptOrgsListMembersFilter) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptOrgsListMembersRole) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptOrgsListMembershipsForAuthenticatedUserState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptOrgsListOutsideCollaboratorsFilter) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgsSetMembershipForUserReq) SetFake() {
+	var elem OrgsSetMembershipForUserReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgsSetMembershipForUserReqRole) SetFake() {
+	var elem OrgsSetMembershipForUserReqRole
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgsUpdateWebhookConfigForOrgReq) SetFake() {
+	var elem OrgsUpdateWebhookConfigForOrgReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgsUpdateWebhookReq) SetFake() {
+	var elem OrgsUpdateWebhookReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptOrgsUpdateWebhookReqConfig) SetFake() {
+	var elem OrgsUpdateWebhookReqConfig
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPackageVersionMetadata) SetFake() {
+	var elem PackageVersionMetadata
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPackageVersionMetadataContainer) SetFake() {
+	var elem PackageVersionMetadataContainer
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPackageVersionMetadataDocker) SetFake() {
-}
+	var elem PackageVersionMetadataDocker
 
-// SetFake set fake values.
-func (s *OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPackagesListPackagesForAuthenticatedUserVisibility) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPackagesListPackagesForOrganizationVisibility) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPackagesListPackagesForUserVisibility) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPagesHTTPSCertificate) SetFake() {
+	var elem PagesHTTPSCertificate
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPagesHealthCheckDomain) SetFake() {
+	var elem PagesHealthCheckDomain
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPagesSourceHash) SetFake() {
+	var elem PagesSourceHash
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPrivateUserPlan) SetFake() {
+	var elem PrivateUserPlan
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProjectOrganizationPermission) SetFake() {
+	var elem ProjectOrganizationPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProjectsAddCollaboratorReqPermission) SetFake() {
-}
+	var elem ProjectsAddCollaboratorReqPermission
 
-// SetFake set fake values.
-func (s *OptProjectsListCardsArchivedState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptProjectsListCollaboratorsAffiliation) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptProjectsListForOrgState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptProjectsListForRepoState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptProjectsListForUserState) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProjectsUpdateCardReq) SetFake() {
+	var elem ProjectsUpdateCardReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProjectsUpdateReq) SetFake() {
+	var elem ProjectsUpdateReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProjectsUpdateReqOrganizationPermission) SetFake() {
+	var elem ProjectsUpdateReqOrganizationPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchAdminEnforced) SetFake() {
+	var elem ProtectedBranchAdminEnforced
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchAllowDeletions) SetFake() {
+	var elem ProtectedBranchAllowDeletions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchAllowForcePushes) SetFake() {
+	var elem ProtectedBranchAllowForcePushes
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchEnforceAdmins) SetFake() {
+	var elem ProtectedBranchEnforceAdmins
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchPullRequestReview) SetFake() {
+	var elem ProtectedBranchPullRequestReview
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchPullRequestReviewDismissalRestrictions) SetFake() {
+	var elem ProtectedBranchPullRequestReviewDismissalRestrictions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchRequiredConversationResolution) SetFake() {
+	var elem ProtectedBranchRequiredConversationResolution
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchRequiredLinearHistory) SetFake() {
+	var elem ProtectedBranchRequiredLinearHistory
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchRequiredPullRequestReviews) SetFake() {
+	var elem ProtectedBranchRequiredPullRequestReviews
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) SetFake() {
+	var elem ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptProtectedBranchRequiredSignatures) SetFake() {
+	var elem ProtectedBranchRequiredSignatures
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPublicUser) SetFake() {
+	var elem PublicUser
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPublicUserPlan) SetFake() {
+	var elem PublicUserPlan
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullRequestBaseRepoPermissions) SetFake() {
+	var elem PullRequestBaseRepoPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullRequestHeadRepoPermissions) SetFake() {
+	var elem PullRequestHeadRepoPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullRequestReviewCommentSide) SetFake() {
+	var elem PullRequestReviewCommentSide
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullsCreateReviewCommentReqSide) SetFake() {
+	var elem PullsCreateReviewCommentReqSide
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullsCreateReviewCommentReqStartSide) SetFake() {
+	var elem PullsCreateReviewCommentReqStartSide
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullsCreateReviewReq) SetFake() {
+	var elem PullsCreateReviewReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullsCreateReviewReqEvent) SetFake() {
-}
+	var elem PullsCreateReviewReqEvent
 
-// SetFake set fake values.
-func (s *OptPullsListDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPullsListReviewCommentsDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPullsListReviewCommentsForRepoDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPullsListReviewCommentsForRepoSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPullsListReviewCommentsSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPullsListSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptPullsListState) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullsMergeReqMergeMethod) SetFake() {
+	var elem PullsMergeReqMergeMethod
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullsUpdateReq) SetFake() {
+	var elem PullsUpdateReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptPullsUpdateReqState) SetFake() {
+	var elem PullsUpdateReqState
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptRateLimit) SetFake() {
+	var elem RateLimit
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReactionRollup) SetFake() {
-}
+	var elem ReactionRollup
 
-// SetFake set fake values.
-func (s *OptReactionsListForCommitCommentContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReactionsListForIssueCommentContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReactionsListForIssueContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReactionsListForPullRequestReviewCommentContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReactionsListForTeamDiscussionCommentInOrgContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReactionsListForTeamDiscussionCommentLegacyContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReactionsListForTeamDiscussionInOrgContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReactionsListForTeamDiscussionLegacyContent) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptRepoSearchResultItemPermissions) SetFake() {
+	var elem RepoSearchResultItemPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposAddAppAccessRestrictionsReq) SetFake() {
+	var elem ReposAddAppAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposAddCollaboratorReq) SetFake() {
+	var elem ReposAddCollaboratorReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposAddCollaboratorReqPermission) SetFake() {
+	var elem ReposAddCollaboratorReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposAddStatusCheckContextsReq) SetFake() {
+	var elem ReposAddStatusCheckContextsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposAddTeamAccessRestrictionsReq) SetFake() {
+	var elem ReposAddTeamAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposAddUserAccessRestrictionsReq) SetFake() {
+	var elem ReposAddUserAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreateDeploymentReqPayload) SetFake() {
+	var elem ReposCreateDeploymentReqPayload
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreateDeploymentStatusReqEnvironment) SetFake() {
+	var elem ReposCreateDeploymentStatusReqEnvironment
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreateDispatchEventReqClientPayload) SetFake() {
+	var elem ReposCreateDispatchEventReqClientPayload
+
+	{
+		elem = make(ReposCreateDispatchEventReqClientPayload)
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreateInOrgReqVisibility) SetFake() {
+	var elem ReposCreateInOrgReqVisibility
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreateOrUpdateFileContentsReqAuthor) SetFake() {
+	var elem ReposCreateOrUpdateFileContentsReqAuthor
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreateOrUpdateFileContentsReqCommitter) SetFake() {
+	var elem ReposCreateOrUpdateFileContentsReqCommitter
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreatePagesSiteReqSourcePath) SetFake() {
+	var elem ReposCreatePagesSiteReqSourcePath
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposCreateWebhookReqConfig) SetFake() {
+	var elem ReposCreateWebhookReqConfig
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposDeleteFileReqAuthor) SetFake() {
+	var elem ReposDeleteFileReqAuthor
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposDeleteFileReqCommitter) SetFake() {
-}
+	var elem ReposDeleteFileReqCommitter
 
-// SetFake set fake values.
-func (s *OptReposGetClonesPer) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposGetViewsPer) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListCollaboratorsAffiliation) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForAuthenticatedUserDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForAuthenticatedUserSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForAuthenticatedUserType) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForAuthenticatedUserVisibility) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForOrgDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForOrgSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForOrgType) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForUserDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForUserSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForUserType) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptReposListForksSort) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposRemoveAppAccessRestrictionsReq) SetFake() {
+	var elem ReposRemoveAppAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposRemoveStatusCheckContextsReq) SetFake() {
+	var elem ReposRemoveStatusCheckContextsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposRemoveTeamAccessRestrictionsReq) SetFake() {
+	var elem ReposRemoveTeamAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposRemoveUserAccessRestrictionsReq) SetFake() {
+	var elem ReposRemoveUserAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposRenameBranchReq) SetFake() {
+	var elem ReposRenameBranchReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposSetAppAccessRestrictionsReq) SetFake() {
+	var elem ReposSetAppAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposSetStatusCheckContextsReq) SetFake() {
+	var elem ReposSetStatusCheckContextsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposSetTeamAccessRestrictionsReq) SetFake() {
+	var elem ReposSetTeamAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposSetUserAccessRestrictionsReq) SetFake() {
+	var elem ReposSetUserAccessRestrictionsReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) SetFake() {
+	var elem ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateInvitationReq) SetFake() {
+	var elem ReposUpdateInvitationReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateInvitationReqPermissions) SetFake() {
+	var elem ReposUpdateInvitationReqPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdatePullRequestReviewProtectionReq) SetFake() {
+	var elem ReposUpdatePullRequestReviewProtectionReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) SetFake() {
+	var elem ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateReleaseAssetReq) SetFake() {
+	var elem ReposUpdateReleaseAssetReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateReleaseReq) SetFake() {
+	var elem ReposUpdateReleaseReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateReq) SetFake() {
+	var elem ReposUpdateReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateReqSecurityAndAnalysisAdvancedSecurity) SetFake() {
+	var elem ReposUpdateReqSecurityAndAnalysisAdvancedSecurity
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateReqSecurityAndAnalysisSecretScanning) SetFake() {
+	var elem ReposUpdateReqSecurityAndAnalysisSecretScanning
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateReqVisibility) SetFake() {
+	var elem ReposUpdateReqVisibility
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateStatusCheckProtectionReq) SetFake() {
+	var elem ReposUpdateStatusCheckProtectionReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateWebhookConfigForRepoReq) SetFake() {
+	var elem ReposUpdateWebhookConfigForRepoReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateWebhookReq) SetFake() {
+	var elem ReposUpdateWebhookReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReposUpdateWebhookReqConfig) SetFake() {
+	var elem ReposUpdateWebhookReqConfig
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptRepository) SetFake() {
+	var elem Repository
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptRepositoryPermissions) SetFake() {
+	var elem RepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptRepositoryTemplateRepositoryOwner) SetFake() {
+	var elem RepositoryTemplateRepositoryOwner
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptRepositoryTemplateRepositoryPermissions) SetFake() {
+	var elem RepositoryTemplateRepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptReviewCommentSide) SetFake() {
+	var elem ReviewCommentSide
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptRunnerLabelsItemType) SetFake() {
+	var elem RunnerLabelsItemType
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptScimEnterpriseGroupMeta) SetFake() {
+	var elem ScimEnterpriseGroupMeta
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptScimEnterpriseUserMeta) SetFake() {
+	var elem ScimEnterpriseUserMeta
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptScimEnterpriseUserName) SetFake() {
+	var elem ScimEnterpriseUserName
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptScimGroupListEnterpriseResourcesItemMeta) SetFake() {
+	var elem ScimGroupListEnterpriseResourcesItemMeta
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptScimUserListEnterpriseResourcesItemMeta) SetFake() {
+	var elem ScimUserListEnterpriseResourcesItemMeta
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptScimUserListEnterpriseResourcesItemName) SetFake() {
-}
+	var elem ScimUserListEnterpriseResourcesItemName
 
-// SetFake set fake values.
-func (s *OptSearchCodeOrder) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchCodeSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchCommitsOrder) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchCommitsSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchIssuesAndPullRequestsOrder) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchIssuesAndPullRequestsSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchLabelsOrder) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchLabelsSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchReposOrder) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchReposSort) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchUsersOrder) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSearchUsersSort) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptSecretScanningAlertState) SetFake() {
-}
+	var elem SecretScanningAlertState
 
-// SetFake set fake values.
-func (s *OptSecretScanningListAlertsForOrgState) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptSecretScanningListAlertsForRepoState) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptSelectedActions) SetFake() {
+	var elem SelectedActions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptSelectedActionsURL) SetFake() {
+	var elem SelectedActionsURL
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptSimpleUser) SetFake() {
+	var elem SimpleUser
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptStatusCheckPolicy) SetFake() {
+	var elem StatusCheckPolicy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptString) SetFake() {
+	var elem string
+
+	{
+		elem = ""
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeam) SetFake() {
+	var elem Team
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamFullPrivacy) SetFake() {
+	var elem TeamFullPrivacy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamPermissions) SetFake() {
+	var elem TeamPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamRepositoryPermissions) SetFake() {
+	var elem TeamRepositoryPermissions
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateMembershipForUserInOrgReq) SetFake() {
+	var elem TeamsAddOrUpdateMembershipForUserInOrgReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateMembershipForUserInOrgReqRole) SetFake() {
+	var elem TeamsAddOrUpdateMembershipForUserInOrgReqRole
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateMembershipForUserLegacyReq) SetFake() {
+	var elem TeamsAddOrUpdateMembershipForUserLegacyReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateMembershipForUserLegacyReqRole) SetFake() {
+	var elem TeamsAddOrUpdateMembershipForUserLegacyReqRole
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateProjectPermissionsInOrgReqPermission) SetFake() {
+	var elem TeamsAddOrUpdateProjectPermissionsInOrgReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateProjectPermissionsLegacyReq) SetFake() {
+	var elem TeamsAddOrUpdateProjectPermissionsLegacyReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateProjectPermissionsLegacyReqPermission) SetFake() {
+	var elem TeamsAddOrUpdateProjectPermissionsLegacyReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateRepoPermissionsInOrgReq) SetFake() {
+	var elem TeamsAddOrUpdateRepoPermissionsInOrgReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateRepoPermissionsInOrgReqPermission) SetFake() {
+	var elem TeamsAddOrUpdateRepoPermissionsInOrgReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateRepoPermissionsLegacyReq) SetFake() {
+	var elem TeamsAddOrUpdateRepoPermissionsLegacyReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsAddOrUpdateRepoPermissionsLegacyReqPermission) SetFake() {
+	var elem TeamsAddOrUpdateRepoPermissionsLegacyReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsCreateReqPermission) SetFake() {
+	var elem TeamsCreateReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsCreateReqPrivacy) SetFake() {
-}
+	var elem TeamsCreateReqPrivacy
 
-// SetFake set fake values.
-func (s *OptTeamsListDiscussionCommentsInOrgDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptTeamsListDiscussionCommentsLegacyDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptTeamsListDiscussionsInOrgDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptTeamsListDiscussionsLegacyDirection) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptTeamsListMembersInOrgRole) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OptTeamsListMembersLegacyRole) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsUpdateDiscussionInOrgReq) SetFake() {
+	var elem TeamsUpdateDiscussionInOrgReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsUpdateDiscussionLegacyReq) SetFake() {
+	var elem TeamsUpdateDiscussionLegacyReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsUpdateInOrgReq) SetFake() {
+	var elem TeamsUpdateInOrgReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsUpdateInOrgReqPermission) SetFake() {
+	var elem TeamsUpdateInOrgReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsUpdateInOrgReqPrivacy) SetFake() {
+	var elem TeamsUpdateInOrgReqPrivacy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsUpdateLegacyReqPermission) SetFake() {
+	var elem TeamsUpdateLegacyReqPermission
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTeamsUpdateLegacyReqPrivacy) SetFake() {
+	var elem TeamsUpdateLegacyReqPrivacy
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTopicSearchResultItemAliasesItemTopicRelation) SetFake() {
+	var elem TopicSearchResultItemAliasesItemTopicRelation
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTopicSearchResultItemRelatedItemTopicRelation) SetFake() {
+	var elem TopicSearchResultItemRelatedItemTopicRelation
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptURI) SetFake() {
+	var elem url.URL
+
+	{
+		elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptUsersAddEmailForAuthenticatedReq) SetFake() {
+	var elem UsersAddEmailForAuthenticatedReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptUsersDeleteEmailForAuthenticatedReq) SetFake() {
-}
+	var elem UsersDeleteEmailForAuthenticatedReq
 
-// SetFake set fake values.
-func (s *OptUsersGetContextForUserSubjectType) SetFake() {
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptUsersUpdateAuthenticatedReq) SetFake() {
+	var elem UsersUpdateAuthenticatedReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptValidationErrorErrorsItemValue) SetFake() {
+	var elem ValidationErrorErrorsItemValue
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptVerification) SetFake() {
+	var elem Verification
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptWebhookConfigContentType) SetFake() {
+	var elem WebhookConfigContentType
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptWebhookConfigInsecureSsl) SetFake() {
+	var elem WebhookConfigInsecureSsl
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptWebhookConfigSecret) SetFake() {
+	var elem WebhookConfigSecret
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptWebhookConfigURL) SetFake() {
+	var elem WebhookConfigURL
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptWorkflowRunUsageBillableMACOS) SetFake() {
+	var elem WorkflowRunUsageBillableMACOS
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptWorkflowRunUsageBillableUBUNTU) SetFake() {
+	var elem WorkflowRunUsageBillableUBUNTU
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptWorkflowRunUsageBillableWINDOWS) SetFake() {
+	var elem WorkflowRunUsageBillableWINDOWS
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -21520,7 +23807,7 @@ func (s *OrgHook) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -21544,13 +23831,21 @@ func (s *OrgHook) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
@@ -21580,7 +23875,7 @@ func (s *OrgHook) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -21684,7 +23979,7 @@ func (s *OrganizationActionsSecret) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -21723,19 +24018,19 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -21759,31 +24054,31 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.HooksURL = "string"
+			s.HooksURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.MembersURL = "string"
+			s.MembersURL = ""
 		}
 	}
 	{
 
 		{
-			s.PublicMembersURL = "string"
+			s.PublicMembersURL = ""
 		}
 	}
 	{
 
 		{
-			s.AvatarURL = "string"
+			s.AvatarURL = ""
 		}
 	}
 	{
@@ -21849,25 +24144,25 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.PublicRepos = int(0)
+			s.PublicRepos = int(1)
 		}
 	}
 	{
 
 		{
-			s.PublicGists = int(0)
+			s.PublicGists = int(1)
 		}
 	}
 	{
 
 		{
-			s.Followers = int(0)
+			s.Followers = int(1)
 		}
 	}
 	{
 
 		{
-			s.Following = int(0)
+			s.Following = int(1)
 		}
 	}
 	{
@@ -21885,7 +24180,7 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -22003,19 +24298,19 @@ func (s *OrganizationFullPlan) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Space = int(0)
+			s.Space = int(1)
 		}
 	}
 	{
 
 		{
-			s.PrivateRepos = int(0)
+			s.PrivateRepos = int(1)
 		}
 	}
 	{
@@ -22037,7 +24332,7 @@ func (s *OrganizationInvitation) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -22055,13 +24350,13 @@ func (s *OrganizationInvitation) SetFake() {
 	{
 
 		{
-			s.Role = "string"
+			s.Role = ""
 		}
 	}
 	{
 
 		{
-			s.CreatedAt = "string"
+			s.CreatedAt = ""
 		}
 	}
 	{
@@ -22085,19 +24380,19 @@ func (s *OrganizationInvitation) SetFake() {
 	{
 
 		{
-			s.TeamCount = int(0)
+			s.TeamCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.InvitationTeamsURL = "string"
+			s.InvitationTeamsURL = ""
 		}
 	}
 }
@@ -22183,19 +24478,19 @@ func (s *OrganizationSimple) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -22219,31 +24514,31 @@ func (s *OrganizationSimple) SetFake() {
 	{
 
 		{
-			s.HooksURL = "string"
+			s.HooksURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.MembersURL = "string"
+			s.MembersURL = ""
 		}
 	}
 	{
 
 		{
-			s.PublicMembersURL = "string"
+			s.PublicMembersURL = ""
 		}
 	}
 	{
 
 		{
-			s.AvatarURL = "string"
+			s.AvatarURL = ""
 		}
 	}
 	{
@@ -22255,53 +24550,15 @@ func (s *OrganizationSimple) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsBlockUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsCancelInvitationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsCheckBlockedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsCheckMembershipForUserFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsCheckMembershipForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsCheckMembershipForUserNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsCheckPublicMembershipForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsCheckPublicMembershipForUserNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s OrgsConvertMemberToOutsideCollaboratorAccepted) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
-}
-
-// SetFake set fake values.
-func (s *OrgsConvertMemberToOutsideCollaboratorForbidden) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsConvertMemberToOutsideCollaboratorNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -22326,8 +24583,16 @@ func (s *OrgsCreateInvitationReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TeamIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.TeamIds = append(s.TeamIds, elem)
+			}
 		}
 	}
 }
@@ -22342,7 +24607,7 @@ func (s *OrgsCreateWebhookReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -22353,8 +24618,16 @@ func (s *OrgsCreateWebhookReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
@@ -22406,20 +24679,6 @@ func (s *OrgsCreateWebhookReqConfig) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsDeleteWebhookNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsGetAuditLogInclude) SetFake() {
-	*s = OrgsGetAuditLogIncludeWeb
-}
-
-// SetFake set fake values.
-func (s *OrgsGetAuditLogOrder) SetFake() {
-	*s = OrgsGetAuditLogOrderDesc
-}
-
-// SetFake set fake values.
 func (s *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -22463,8 +24722,16 @@ func (s *OrgsGetMembershipForUserApplicationJSONNotFound) SetFake() {
 func (s *OrgsListBlockedUsersOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListBlockedUsersOKApplicationJSON(unwrapped)
 }
@@ -22473,8 +24740,16 @@ func (s *OrgsListBlockedUsersOKApplicationJSON) SetFake() {
 func (s *OrgsListFailedInvitationsOKApplicationJSON) SetFake() {
 	var unwrapped []OrganizationInvitation
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem OrganizationInvitation
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListFailedInvitationsOKApplicationJSON(unwrapped)
 }
@@ -22503,8 +24778,16 @@ func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
 func (s *OrgsListForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []OrganizationSimple
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem OrganizationSimple
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
@@ -22513,34 +24796,36 @@ func (s *OrgsListForAuthenticatedUserOKApplicationJSON) SetFake() {
 func (s *OrgsListInvitationTeamsOKApplicationJSON) SetFake() {
 	var unwrapped []Team
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Team
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListInvitationTeamsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListMembersFilter) SetFake() {
-	*s = OrgsListMembersFilter2FADisabled
-}
-
-// SetFake set fake values.
-func (s *OrgsListMembersFound) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *OrgsListMembersOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListMembersOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListMembersRole) SetFake() {
-	*s = OrgsListMembersRoleAll
 }
 
 // SetFake set fake values.
@@ -22567,38 +24852,52 @@ func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) Set
 func (s *OrgsListMembershipsForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []OrgMembership
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem OrgMembership
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListMembershipsForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListMembershipsForAuthenticatedUserState) SetFake() {
-	*s = OrgsListMembershipsForAuthenticatedUserStateActive
 }
 
 // SetFake set fake values.
 func (s *OrgsListOKApplicationJSON) SetFake() {
 	var unwrapped []OrganizationSimple
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem OrganizationSimple
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListOutsideCollaboratorsFilter) SetFake() {
-	*s = OrgsListOutsideCollaboratorsFilter2FADisabled
 }
 
 // SetFake set fake values.
 func (s *OrgsListPendingInvitationsOKApplicationJSON) SetFake() {
 	var unwrapped []OrganizationInvitation
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem OrganizationInvitation
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListPendingInvitationsOKApplicationJSON(unwrapped)
 }
@@ -22607,8 +24906,16 @@ func (s *OrgsListPendingInvitationsOKApplicationJSON) SetFake() {
 func (s *OrgsListWebhookDeliveriesOKApplicationJSON) SetFake() {
 	var unwrapped []HookDeliveryItem
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem HookDeliveryItem
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListWebhookDeliveriesOKApplicationJSON(unwrapped)
 }
@@ -22617,18 +24924,18 @@ func (s *OrgsListWebhookDeliveriesOKApplicationJSON) SetFake() {
 func (s *OrgsListWebhooksOKApplicationJSON) SetFake() {
 	var unwrapped []OrgHook
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem OrgHook
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = OrgsListWebhooksOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsPingWebhookNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsRemoveMemberNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -22652,14 +24959,6 @@ func (s *OrgsRemoveMembershipForUserApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsRemoveMembershipForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsRemoveOutsideCollaboratorNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) SetFake() {
 	{
 
@@ -22676,14 +24975,6 @@ func (s *OrgsRemoveOutsideCollaboratorUnprocessableEntity) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsRemovePublicMembershipForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsRemoveSamlSSOAuthorizationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *OrgsSetMembershipForUserReq) SetFake() {
 	{
 
@@ -22696,14 +24987,6 @@ func (s *OrgsSetMembershipForUserReq) SetFake() {
 // SetFake set fake values.
 func (s *OrgsSetMembershipForUserReqRole) SetFake() {
 	*s = OrgsSetMembershipForUserReqRoleAdmin
-}
-
-// SetFake set fake values.
-func (s *OrgsSetPublicMembershipForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *OrgsUnblockUserNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -22767,13 +25050,15 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) SetFake() {
 			s.InsecureSsl.SetFake()
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -22786,8 +25071,16 @@ func (s *OrgsUpdateWebhookReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
@@ -22837,13 +25130,13 @@ func (s *Package) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -22855,19 +25148,19 @@ func (s *Package) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = "string"
+			s.HTMLURL = ""
 		}
 	}
 	{
 
 		{
-			s.VersionCount = int(0)
+			s.VersionCount = int(1)
 		}
 	}
 	{
@@ -22912,25 +25205,25 @@ func (s *PackageVersion) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.PackageHTMLURL = "string"
+			s.PackageHTMLURL = ""
 		}
 	}
 	{
@@ -23003,8 +25296,16 @@ func (s *PackageVersionMetadata) SetFake() {
 func (s *PackageVersionMetadataContainer) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tags = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Tags = append(s.Tags, elem)
+			}
 		}
 	}
 }
@@ -23013,8 +25314,16 @@ func (s *PackageVersionMetadataContainer) SetFake() {
 func (s *PackageVersionMetadataDocker) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Tag = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Tag = append(s.Tag, elem)
+			}
 		}
 	}
 }
@@ -23034,19 +25343,19 @@ func (s *PackagesBillingUsage) SetFake() {
 	{
 
 		{
-			s.TotalGigabytesBandwidthUsed = int(0)
+			s.TotalGigabytesBandwidthUsed = int(1)
 		}
 	}
 	{
 
 		{
-			s.TotalPaidGigabytesBandwidthUsed = int(0)
+			s.TotalPaidGigabytesBandwidthUsed = int(1)
 		}
 	}
 	{
 
 		{
-			s.IncludedGigabytesBandwidth = int(0)
+			s.IncludedGigabytesBandwidth = int(1)
 		}
 	}
 }
@@ -23082,15 +25391,6 @@ func (s *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized) S
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageForAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesDeletePackageForAuthenticatedUserPackageTypeNpm
-}
-
-// SetFake set fake values.
 func (s *PackagesDeletePackageForOrgApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -23118,15 +25418,6 @@ func (s *PackagesDeletePackageForOrgApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = PackagesDeletePackageForOrgApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageForOrgPackageType) SetFake() {
-	*s = PackagesDeletePackageForOrgPackageTypeNpm
 }
 
 // SetFake set fake values.
@@ -23160,15 +25451,6 @@ func (s *PackagesDeletePackageForUserApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageForUserPackageType) SetFake() {
-	*s = PackagesDeletePackageForUserPackageTypeNpm
-}
-
-// SetFake set fake values.
 func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -23196,15 +25478,6 @@ func (s *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthor
 		unwrapped.SetFake()
 	}
 	*s = PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageVersionForAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesDeletePackageVersionForAuthenticatedUserPackageTypeNpm
 }
 
 // SetFake set fake values.
@@ -23238,15 +25511,6 @@ func (s *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized) SetFake(
 }
 
 // SetFake set fake values.
-func (s *PackagesDeletePackageVersionForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageVersionForOrgPackageType) SetFake() {
-	*s = PackagesDeletePackageVersionForOrgPackageTypeNpm
-}
-
-// SetFake set fake values.
 func (s *PackagesDeletePackageVersionForUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -23274,15 +25538,6 @@ func (s *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized) SetFake
 		unwrapped.SetFake()
 	}
 	*s = PackagesDeletePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageVersionForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesDeletePackageVersionForUserPackageType) SetFake() {
-	*s = PackagesDeletePackageVersionForUserPackageTypeNpm
 }
 
 // SetFake set fake values.
@@ -23319,20 +25574,18 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicat
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []PackageVersion
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PackageVersion
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState) SetFake() {
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserStateActive
 }
 
 // SetFake set fake values.
@@ -23369,20 +25622,18 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnautho
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON) SetFake() {
 	var unwrapped []PackageVersion
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PackageVersion
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType) SetFake() {
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByOrgState) SetFake() {
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByOrgStateActive
 }
 
 // SetFake set fake values.
@@ -23419,55 +25670,18 @@ func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauth
 func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON) SetFake() {
 	var unwrapped []PackageVersion
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PackageVersion
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType) SetFake() {
-	*s = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetPackageForAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesGetPackageForAuthenticatedUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetPackageForOrganizationPackageType) SetFake() {
-	*s = PackagesGetPackageForOrganizationPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetPackageForUserPackageType) SetFake() {
-	*s = PackagesGetPackageForUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetPackageVersionForAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesGetPackageVersionForAuthenticatedUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetPackageVersionForOrganizationPackageType) SetFake() {
-	*s = PackagesGetPackageVersionForOrganizationPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesGetPackageVersionForUserPackageType) SetFake() {
-	*s = PackagesGetPackageVersionForUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesListPackagesForAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesListPackagesForAuthenticatedUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesListPackagesForAuthenticatedUserVisibility) SetFake() {
-	*s = PackagesListPackagesForAuthenticatedUserVisibilityPublic
 }
 
 // SetFake set fake values.
@@ -23494,20 +25708,18 @@ func (s *PackagesListPackagesForOrganizationApplicationJSONUnauthorized) SetFake
 func (s *PackagesListPackagesForOrganizationOKApplicationJSON) SetFake() {
 	var unwrapped []Package
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Package
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PackagesListPackagesForOrganizationOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesListPackagesForOrganizationPackageType) SetFake() {
-	*s = PackagesListPackagesForOrganizationPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesListPackagesForOrganizationVisibility) SetFake() {
-	*s = PackagesListPackagesForOrganizationVisibilityPublic
 }
 
 // SetFake set fake values.
@@ -23534,20 +25746,18 @@ func (s *PackagesListPackagesForUserApplicationJSONUnauthorized) SetFake() {
 func (s *PackagesListPackagesForUserOKApplicationJSON) SetFake() {
 	var unwrapped []Package
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Package
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PackagesListPackagesForUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesListPackagesForUserPackageType) SetFake() {
-	*s = PackagesListPackagesForUserPackageTypeNpm
-}
-
-// SetFake set fake values.
-func (s *PackagesListPackagesForUserVisibility) SetFake() {
-	*s = PackagesListPackagesForUserVisibilityPublic
 }
 
 // SetFake set fake values.
@@ -23581,15 +25791,6 @@ func (s *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized) 
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageForAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesRestorePackageForAuthenticatedUserPackageTypeNpm
-}
-
-// SetFake set fake values.
 func (s *PackagesRestorePackageForOrgApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -23617,15 +25818,6 @@ func (s *PackagesRestorePackageForOrgApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = PackagesRestorePackageForOrgApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageForOrgPackageType) SetFake() {
-	*s = PackagesRestorePackageForOrgPackageTypeNpm
 }
 
 // SetFake set fake values.
@@ -23659,15 +25851,6 @@ func (s *PackagesRestorePackageForUserApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageForUserPackageType) SetFake() {
-	*s = PackagesRestorePackageForUserPackageTypeNpm
-}
-
-// SetFake set fake values.
 func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -23695,15 +25878,6 @@ func (s *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnautho
 		unwrapped.SetFake()
 	}
 	*s = PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageVersionForAuthenticatedUserPackageType) SetFake() {
-	*s = PackagesRestorePackageVersionForAuthenticatedUserPackageTypeNpm
 }
 
 // SetFake set fake values.
@@ -23737,15 +25911,6 @@ func (s *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized) SetFake
 }
 
 // SetFake set fake values.
-func (s *PackagesRestorePackageVersionForOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageVersionForOrgPackageType) SetFake() {
-	*s = PackagesRestorePackageVersionForOrgPackageTypeNpm
-}
-
-// SetFake set fake values.
 func (s *PackagesRestorePackageVersionForUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -23773,15 +25938,6 @@ func (s *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized) SetFak
 		unwrapped.SetFake()
 	}
 	*s = PackagesRestorePackageVersionForUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageVersionForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PackagesRestorePackageVersionForUserPackageType) SetFake() {
-	*s = PackagesRestorePackageVersionForUserPackageTypeNpm
 }
 
 // SetFake set fake values.
@@ -23865,7 +26021,7 @@ func (s *PageBuild) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -23883,13 +26039,13 @@ func (s *PageBuild) SetFake() {
 	{
 
 		{
-			s.Commit = "string"
+			s.Commit = ""
 		}
 	}
 	{
 
 		{
-			s.Duration = int(0)
+			s.Duration = int(1)
 		}
 	}
 	{
@@ -23927,7 +26083,7 @@ func (s *PageBuildStatus) SetFake() {
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 }
@@ -23953,13 +26109,21 @@ func (s *PagesHTTPSCertificate) SetFake() {
 	{
 
 		{
-			s.Description = "string"
+			s.Description = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Domains = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.Domains = append(s.Domains, elem)
+			}
 		}
 	}
 	{
@@ -24340,13 +26504,13 @@ func (s *PagesSourceHash) SetFake() {
 	{
 
 		{
-			s.Branch = "string"
+			s.Branch = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 }
@@ -24355,14 +26519,30 @@ func (s *PagesSourceHash) SetFake() {
 func (s *ParticipationStats) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.All = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.All = append(s.All, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Owner = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Owner = append(s.Owner, elem)
+			}
 		}
 	}
 }
@@ -24372,31 +26552,31 @@ func (s *PorterAuthor) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.RemoteID = "string"
+			s.RemoteID = ""
 		}
 	}
 	{
 
 		{
-			s.RemoteName = "string"
+			s.RemoteName = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -24418,25 +26598,25 @@ func (s *PorterLargeFile) SetFake() {
 	{
 
 		{
-			s.RefName = "string"
+			s.RefName = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
 
 		{
-			s.Oid = "string"
+			s.Oid = ""
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 }
@@ -24446,13 +26626,13 @@ func (s *PreviewHeaderMissing) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.DocumentationURL = "string"
+			s.DocumentationURL = ""
 		}
 	}
 }
@@ -24462,19 +26642,19 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -24510,19 +26690,19 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -24546,7 +26726,7 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -24558,7 +26738,7 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -24618,25 +26798,25 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.PublicRepos = int(0)
+			s.PublicRepos = int(1)
 		}
 	}
 	{
 
 		{
-			s.PublicGists = int(0)
+			s.PublicGists = int(1)
 		}
 	}
 	{
 
 		{
-			s.Followers = int(0)
+			s.Followers = int(1)
 		}
 	}
 	{
 
 		{
-			s.Following = int(0)
+			s.Following = int(1)
 		}
 	}
 	{
@@ -24654,31 +26834,31 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.PrivateGists = int(0)
+			s.PrivateGists = int(1)
 		}
 	}
 	{
 
 		{
-			s.TotalPrivateRepos = int(0)
+			s.TotalPrivateRepos = int(1)
 		}
 	}
 	{
 
 		{
-			s.OwnedPrivateRepos = int(0)
+			s.OwnedPrivateRepos = int(1)
 		}
 	}
 	{
 
 		{
-			s.DiskUsage = int(0)
+			s.DiskUsage = int(1)
 		}
 	}
 	{
 
 		{
-			s.Collaborators = int(0)
+			s.Collaborators = int(1)
 		}
 	}
 	{
@@ -24718,25 +26898,25 @@ func (s *PrivateUserPlan) SetFake() {
 	{
 
 		{
-			s.Collaborators = int(0)
+			s.Collaborators = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Space = int(0)
+			s.Space = int(1)
 		}
 	}
 	{
 
 		{
-			s.PrivateRepos = int(0)
+			s.PrivateRepos = int(1)
 		}
 	}
 }
@@ -24770,19 +26950,19 @@ func (s *Project) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -24794,13 +26974,13 @@ func (s *Project) SetFake() {
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
@@ -24846,13 +27026,13 @@ func (s *ProjectCard) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -24940,19 +27120,19 @@ func (s *ProjectColumn) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -25005,10 +27185,6 @@ func (s *ProjectsAddCollaboratorApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsAddCollaboratorNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ProjectsAddCollaboratorReq) SetFake() {
 	{
 
@@ -25048,7 +27224,7 @@ func (s *ProjectsCreateColumnReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -25078,7 +27254,7 @@ func (s *ProjectsCreateForAuthenticatedUserReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -25134,7 +27310,7 @@ func (s *ProjectsCreateForOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -25190,7 +27366,7 @@ func (s *ProjectsCreateForRepoReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -25267,14 +27443,18 @@ func (s *ProjectsDeleteCardForbidden) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Errors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Errors = append(s.Errors, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ProjectsDeleteCardNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -25298,10 +27478,6 @@ func (s *ProjectsDeleteColumnApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsDeleteColumnNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ProjectsDeleteForbidden) SetFake() {
 	{
 
@@ -25317,14 +27493,18 @@ func (s *ProjectsDeleteForbidden) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Errors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Errors = append(s.Errors, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ProjectsDeleteNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -25458,23 +27638,21 @@ func (s *ProjectsListCardsApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCardsArchivedState) SetFake() {
-	*s = ProjectsListCardsArchivedStateAll
-}
-
-// SetFake set fake values.
 func (s *ProjectsListCardsOKApplicationJSON) SetFake() {
 	var unwrapped []ProjectCard
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ProjectCard
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ProjectsListCardsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsListCollaboratorsAffiliation) SetFake() {
-	*s = ProjectsListCollaboratorsAffiliationOutside
 }
 
 // SetFake set fake values.
@@ -25511,8 +27689,16 @@ func (s *ProjectsListCollaboratorsApplicationJSONUnauthorized) SetFake() {
 func (s *ProjectsListCollaboratorsOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ProjectsListCollaboratorsOKApplicationJSON(unwrapped)
 }
@@ -25541,8 +27727,16 @@ func (s *ProjectsListColumnsApplicationJSONUnauthorized) SetFake() {
 func (s *ProjectsListColumnsOKApplicationJSON) SetFake() {
 	var unwrapped []ProjectColumn
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ProjectColumn
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ProjectsListColumnsOKApplicationJSON(unwrapped)
 }
@@ -25551,15 +27745,18 @@ func (s *ProjectsListColumnsOKApplicationJSON) SetFake() {
 func (s *ProjectsListForOrgOKApplicationJSON) SetFake() {
 	var unwrapped []Project
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Project
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ProjectsListForOrgOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsListForOrgState) SetFake() {
-	*s = ProjectsListForOrgStateOpen
 }
 
 // SetFake set fake values.
@@ -25606,40 +27803,48 @@ func (s *ProjectsListForRepoApplicationJSONUnauthorized) SetFake() {
 func (s *ProjectsListForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []Project
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Project
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ProjectsListForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsListForRepoState) SetFake() {
-	*s = ProjectsListForRepoStateOpen
 }
 
 // SetFake set fake values.
 func (s *ProjectsListForUserOKApplicationJSON) SetFake() {
 	var unwrapped []Project
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Project
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ProjectsListForUserOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
-func (s *ProjectsListForUserState) SetFake() {
-	*s = ProjectsListForUserStateOpen
-}
-
-// SetFake set fake values.
 func (s ProjectsMoveCardCreated) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -25658,8 +27863,16 @@ func (s *ProjectsMoveCardForbidden) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Errors = nil
+			for i := 0; i < 0; i++ {
+				var elem ProjectsMoveCardForbiddenErrorsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Errors = append(s.Errors, elem)
+			}
 		}
 	}
 }
@@ -25697,7 +27910,7 @@ func (s *ProjectsMoveCardReq) SetFake() {
 	{
 
 		{
-			s.Position = "string"
+			s.Position = ""
 		}
 	}
 	{
@@ -25730,8 +27943,16 @@ func (s *ProjectsMoveCardServiceUnavailable) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Errors = nil
+			for i := 0; i < 0; i++ {
+				var elem ProjectsMoveCardServiceUnavailableErrorsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Errors = append(s.Errors, elem)
+			}
 		}
 	}
 }
@@ -25774,12 +27995,14 @@ func (s *ProjectsMoveColumnApplicationJSONUnauthorized) SetFake() {
 
 // SetFake set fake values.
 func (s ProjectsMoveColumnCreated) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -25787,7 +28010,7 @@ func (s *ProjectsMoveColumnReq) SetFake() {
 	{
 
 		{
-			s.Position = "string"
+			s.Position = ""
 		}
 	}
 }
@@ -25820,10 +28043,6 @@ func (s *ProjectsRemoveCollaboratorApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = ProjectsRemoveCollaboratorApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsRemoveCollaboratorNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -25917,7 +28136,7 @@ func (s *ProjectsUpdateColumnReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -25938,14 +28157,18 @@ func (s *ProjectsUpdateForbidden) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Errors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Errors = append(s.Errors, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ProjectsUpdateNotFound) SetFake() {
 }
 
 // SetFake set fake values.
@@ -26075,13 +28298,15 @@ func (s *ProtectedBranchAllowDeletions) SetFake() {
 			s.Enabled = true
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -26092,13 +28317,15 @@ func (s *ProtectedBranchAllowForcePushes) SetFake() {
 			s.Enabled = true
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -26115,13 +28342,15 @@ func (s *ProtectedBranchEnforceAdmins) SetFake() {
 			s.Enabled = true
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -26162,14 +28391,30 @@ func (s *ProtectedBranchPullRequestReview) SetFake() {
 func (s *ProtectedBranchPullRequestReviewDismissalRestrictions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem SimpleUser
+
+				{
+					elem.SetFake()
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem Team
+
+				{
+					elem.SetFake()
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 	{
@@ -26200,13 +28445,15 @@ func (s *ProtectedBranchRequiredConversationResolution) SetFake() {
 			s.Enabled.SetFake()
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -26217,13 +28464,15 @@ func (s *ProtectedBranchRequiredLinearHistory) SetFake() {
 			s.Enabled = true
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -26282,14 +28531,30 @@ func (s *ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) SetFake
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem SimpleUser
+
+				{
+					elem.SetFake()
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem Team
+
+				{
+					elem.SetFake()
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 }
@@ -26315,19 +28580,19 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -26363,19 +28628,19 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -26399,7 +28664,7 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -26411,7 +28676,7 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -26471,25 +28736,25 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.PublicRepos = int(0)
+			s.PublicRepos = int(1)
 		}
 	}
 	{
 
 		{
-			s.PublicGists = int(0)
+			s.PublicGists = int(1)
 		}
 	}
 	{
 
 		{
-			s.Followers = int(0)
+			s.Followers = int(1)
 		}
 	}
 	{
 
 		{
-			s.Following = int(0)
+			s.Following = int(1)
 		}
 	}
 	{
@@ -26546,13 +28811,15 @@ func (s *PublicUser) SetFake() {
 			s.Collaborators.SetFake()
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -26560,25 +28827,25 @@ func (s *PublicUserPlan) SetFake() {
 	{
 
 		{
-			s.Collaborators = int(0)
+			s.Collaborators = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Space = int(0)
+			s.Space = int(1)
 		}
 	}
 	{
 
 		{
-			s.PrivateRepos = int(0)
+			s.PrivateRepos = int(1)
 		}
 	}
 }
@@ -26594,13 +28861,13 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -26642,7 +28909,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.ReviewCommentURL = "string"
+			s.ReviewCommentURL = ""
 		}
 	}
 	{
@@ -26660,7 +28927,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
@@ -26678,7 +28945,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -26695,8 +28962,16 @@ func (s *PullRequest) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem PullRequestLabelsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 	{
@@ -26822,7 +29097,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.MergeableState = "string"
+			s.MergeableState = ""
 		}
 	}
 	{
@@ -26834,13 +29109,13 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Comments = int(0)
+			s.Comments = int(1)
 		}
 	}
 	{
 
 		{
-			s.ReviewComments = int(0)
+			s.ReviewComments = int(1)
 		}
 	}
 	{
@@ -26852,25 +29127,25 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Commits = int(0)
+			s.Commits = int(1)
 		}
 	}
 	{
 
 		{
-			s.Additions = int(0)
+			s.Additions = int(1)
 		}
 	}
 	{
 
 		{
-			s.Deletions = int(0)
+			s.Deletions = int(1)
 		}
 	}
 	{
 
 		{
-			s.ChangedFiles = int(0)
+			s.ChangedFiles = int(1)
 		}
 	}
 }
@@ -26880,13 +29155,13 @@ func (s *PullRequestBase) SetFake() {
 	{
 
 		{
-			s.Label = "string"
+			s.Label = ""
 		}
 	}
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
@@ -26898,7 +29173,7 @@ func (s *PullRequestBase) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -26914,55 +29189,55 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -27010,25 +29285,25 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
@@ -27046,43 +29321,43 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -27100,19 +29375,19 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
@@ -27130,13 +29405,13 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
@@ -27148,7 +29423,7 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -27178,7 +29453,7 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
@@ -27190,31 +29465,31 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.CloneURL = "string"
+			s.CloneURL = ""
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = "string"
+			s.DefaultBranch = ""
 		}
 	}
 	{
 
 		{
-			s.Forks = int(0)
+			s.Forks = int(1)
 		}
 	}
 	{
 
 		{
-			s.ForksCount = int(0)
+			s.ForksCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.GitURL = "string"
+			s.GitURL = ""
 		}
 	}
 	{
@@ -27286,13 +29561,13 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(0)
+			s.OpenIssuesCount = int(1)
 		}
 	}
 	{
@@ -27340,19 +29615,19 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.SSHURL = "string"
+			s.SSHURL = ""
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(0)
+			s.StargazersCount = int(1)
 		}
 	}
 	{
@@ -27363,20 +29638,28 @@ func (s *PullRequestBaseRepo) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(0)
+			s.Watchers = int(1)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(0)
+			s.WatchersCount = int(1)
 		}
 	}
 	{
@@ -27410,7 +29693,7 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -27422,13 +29705,13 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
@@ -27446,19 +29729,19 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
@@ -27488,7 +29771,7 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -27500,7 +29783,7 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -27556,7 +29839,7 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -27568,13 +29851,13 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
@@ -27592,19 +29875,19 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
@@ -27634,7 +29917,7 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -27646,7 +29929,7 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -27662,13 +29945,13 @@ func (s *PullRequestHead) SetFake() {
 	{
 
 		{
-			s.Label = "string"
+			s.Label = ""
 		}
 	}
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
@@ -27680,7 +29963,7 @@ func (s *PullRequestHead) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -27696,55 +29979,55 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -27792,25 +30075,25 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
@@ -27828,43 +30111,43 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -27882,19 +30165,19 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
@@ -27912,13 +30195,13 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
@@ -27930,7 +30213,7 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -27960,7 +30243,7 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
@@ -27972,31 +30255,31 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.CloneURL = "string"
+			s.CloneURL = ""
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = "string"
+			s.DefaultBranch = ""
 		}
 	}
 	{
 
 		{
-			s.Forks = int(0)
+			s.Forks = int(1)
 		}
 	}
 	{
 
 		{
-			s.ForksCount = int(0)
+			s.ForksCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.GitURL = "string"
+			s.GitURL = ""
 		}
 	}
 	{
@@ -28068,13 +30351,13 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(0)
+			s.OpenIssuesCount = int(1)
 		}
 	}
 	{
@@ -28122,19 +30405,19 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.SSHURL = "string"
+			s.SSHURL = ""
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(0)
+			s.StargazersCount = int(1)
 		}
 	}
 	{
@@ -28145,20 +30428,28 @@ func (s *PullRequestHeadRepo) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(0)
+			s.Watchers = int(1)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(0)
+			s.WatchersCount = int(1)
 		}
 	}
 	{
@@ -28186,13 +30477,13 @@ func (s *PullRequestHeadRepoLicense) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -28210,7 +30501,7 @@ func (s *PullRequestHeadRepoLicense) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 }
@@ -28226,7 +30517,7 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -28238,13 +30529,13 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
@@ -28262,19 +30553,19 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
@@ -28304,7 +30595,7 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -28316,7 +30607,7 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -28372,7 +30663,7 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -28384,13 +30675,13 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
@@ -28408,19 +30699,19 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
@@ -28450,7 +30741,7 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -28462,7 +30753,7 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -28576,7 +30867,7 @@ func (s *PullRequestMergeResult) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -28588,7 +30879,7 @@ func (s *PullRequestMergeResult) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 }
@@ -28598,19 +30889,19 @@ func (s *PullRequestMinimal) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
@@ -28632,13 +30923,13 @@ func (s *PullRequestMinimalBase) SetFake() {
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -28654,19 +30945,19 @@ func (s *PullRequestMinimalBaseRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -28676,13 +30967,13 @@ func (s *PullRequestMinimalHead) SetFake() {
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -28698,19 +30989,19 @@ func (s *PullRequestMinimalHeadRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 }
@@ -28720,13 +31011,13 @@ func (s *PullRequestReview) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -28738,13 +31029,13 @@ func (s *PullRequestReview) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
@@ -28774,7 +31065,7 @@ func (s *PullRequestReview) SetFake() {
 	{
 
 		{
-			s.CommitID = "string"
+			s.CommitID = ""
 		}
 	}
 	{
@@ -28802,7 +31093,7 @@ func (s *PullRequestReviewComment) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
@@ -28814,49 +31105,49 @@ func (s *PullRequestReviewComment) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.DiffHunk = "string"
+			s.DiffHunk = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
 
 		{
-			s.Position = int(0)
+			s.Position = int(1)
 		}
 	}
 	{
 
 		{
-			s.OriginalPosition = int(0)
+			s.OriginalPosition = int(1)
 		}
 	}
 	{
 
 		{
-			s.CommitID = "string"
+			s.CommitID = ""
 		}
 	}
 	{
 
 		{
-			s.OriginalCommitID = "string"
+			s.OriginalCommitID = ""
 		}
 	}
 	{
@@ -28874,7 +31165,7 @@ func (s *PullRequestReviewComment) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -29052,7 +31343,7 @@ func (s *PullRequestReviewLinksHTML) SetFake() {
 	{
 
 		{
-			s.Href = "string"
+			s.Href = ""
 		}
 	}
 }
@@ -29062,7 +31353,7 @@ func (s *PullRequestReviewLinksPullRequest) SetFake() {
 	{
 
 		{
-			s.Href = "string"
+			s.Href = ""
 		}
 	}
 }
@@ -29071,14 +31362,30 @@ func (s *PullRequestReviewLinksPullRequest) SetFake() {
 func (s *PullRequestReviewRequest) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem SimpleUser
+
+				{
+					elem.SetFake()
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem Team
+
+				{
+					elem.SetFake()
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 }
@@ -29094,13 +31401,13 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -29142,7 +31449,7 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.ReviewCommentURL = "string"
+			s.ReviewCommentURL = ""
 		}
 	}
 	{
@@ -29160,13 +31467,13 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
@@ -29178,7 +31485,7 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -29195,8 +31502,16 @@ func (s *PullRequestSimple) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem PullRequestSimpleLabelsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 	{
@@ -29308,13 +31623,13 @@ func (s *PullRequestSimpleBase) SetFake() {
 	{
 
 		{
-			s.Label = "string"
+			s.Label = ""
 		}
 	}
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
@@ -29326,7 +31641,7 @@ func (s *PullRequestSimpleBase) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -29342,13 +31657,13 @@ func (s *PullRequestSimpleHead) SetFake() {
 	{
 
 		{
-			s.Label = "string"
+			s.Label = ""
 		}
 	}
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
@@ -29360,7 +31675,7 @@ func (s *PullRequestSimpleHead) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -29475,19 +31790,11 @@ func (s *PullRequestState) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PullsCheckIfMergedNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *PullsCheckIfMergedNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *PullsCreateReplyForReviewCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -29503,13 +31810,13 @@ func (s *PullsCreateReq) SetFake() {
 	{
 
 		{
-			s.Head = "string"
+			s.Head = ""
 		}
 	}
 	{
 
 		{
-			s.Base = "string"
+			s.Base = ""
 		}
 	}
 	{
@@ -29543,7 +31850,7 @@ func (s *PullsCreateReviewCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -29628,8 +31935,16 @@ func (s *PullsCreateReviewReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Comments = nil
+			for i := 0; i < 0; i++ {
+				var elem PullsCreateReviewReqCommentsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Comments = append(s.Comments, elem)
+			}
 		}
 	}
 }
@@ -29639,7 +31954,7 @@ func (s *PullsCreateReviewReqCommentsItem) SetFake() {
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -29651,7 +31966,7 @@ func (s *PullsCreateReviewReqCommentsItem) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -29686,15 +32001,11 @@ func (s *PullsCreateReviewReqEvent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PullsDeleteReviewCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *PullsDismissReviewReq) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
@@ -29729,23 +32040,34 @@ func (s *PullsGetApplicationJSONNotFound) SetFake() {
 func (s *PullsListCommentsForReviewOKApplicationJSON) SetFake() {
 	var unwrapped []ReviewComment
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ReviewComment
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PullsListCommentsForReviewOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PullsListDirection) SetFake() {
-	*s = PullsListDirectionAsc
 }
 
 // SetFake set fake values.
 func (s *PullsListFilesOKApplicationJSON) SetFake() {
 	var unwrapped []DiffEntry
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem DiffEntry
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PullsListFilesOKApplicationJSON(unwrapped)
 }
@@ -29754,40 +32076,18 @@ func (s *PullsListFilesOKApplicationJSON) SetFake() {
 func (s *PullsListOKApplicationJSON) SetFake() {
 	var unwrapped []PullRequestSimple
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem PullRequestSimple
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = PullsListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PullsListReviewCommentsDirection) SetFake() {
-	*s = PullsListReviewCommentsDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *PullsListReviewCommentsForRepoDirection) SetFake() {
-	*s = PullsListReviewCommentsForRepoDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *PullsListReviewCommentsForRepoSort) SetFake() {
-	*s = PullsListReviewCommentsForRepoSortCreated
-}
-
-// SetFake set fake values.
-func (s *PullsListReviewCommentsSort) SetFake() {
-	*s = PullsListReviewCommentsSortCreated
-}
-
-// SetFake set fake values.
-func (s *PullsListSort) SetFake() {
-	*s = PullsListSortCreated
-}
-
-// SetFake set fake values.
-func (s *PullsListState) SetFake() {
-	*s = PullsListStateOpen
 }
 
 // SetFake set fake values.
@@ -29879,14 +32179,30 @@ func (s *PullsMergeReqMergeMethod) SetFake() {
 func (s *PullsRemoveRequestedReviewersReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Reviewers = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Reviewers = append(s.Reviewers, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TeamReviewers = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.TeamReviewers = append(s.TeamReviewers, elem)
+			}
 		}
 	}
 }
@@ -30002,7 +32318,7 @@ func (s *PullsUpdateReviewCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -30012,7 +32328,7 @@ func (s *PullsUpdateReviewReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -30022,25 +32338,25 @@ func (s *RateLimit) SetFake() {
 	{
 
 		{
-			s.Limit = int(0)
+			s.Limit = int(1)
 		}
 	}
 	{
 
 		{
-			s.Remaining = int(0)
+			s.Remaining = int(1)
 		}
 	}
 	{
 
 		{
-			s.Reset = int(0)
+			s.Reset = int(1)
 		}
 	}
 	{
 
 		{
-			s.Used = int(0)
+			s.Used = int(1)
 		}
 	}
 }
@@ -30112,13 +32428,13 @@ func (s *Reaction) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -30157,55 +32473,55 @@ func (s *ReactionRollup) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.Plus1 = int(0)
+			s.Plus1 = int(1)
 		}
 	}
 	{
 
 		{
-			s.Minus1 = int(0)
+			s.Minus1 = int(1)
 		}
 	}
 	{
 
 		{
-			s.Laugh = int(0)
+			s.Laugh = int(1)
 		}
 	}
 	{
 
 		{
-			s.Confused = int(0)
+			s.Confused = int(1)
 		}
 	}
 	{
 
 		{
-			s.Heart = int(0)
+			s.Heart = int(1)
 		}
 	}
 	{
 
 		{
-			s.Hooray = int(0)
+			s.Hooray = int(1)
 		}
 	}
 	{
 
 		{
-			s.Eyes = int(0)
+			s.Eyes = int(1)
 		}
 	}
 	{
 
 		{
-			s.Rocket = int(0)
+			s.Rocket = int(1)
 		}
 	}
 }
@@ -30486,30 +32802,6 @@ func (s *ReactionsCreateForTeamDiscussionLegacyReqContent) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsDeleteForCommitCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReactionsDeleteForIssueCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReactionsDeleteForIssueNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReactionsDeleteForPullRequestCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReactionsDeleteForTeamDiscussionCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReactionsDeleteForTeamDiscussionNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReactionsDeleteLegacyApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -30540,20 +32832,19 @@ func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsDeleteLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForCommitCommentContent) SetFake() {
-	*s = ReactionsListForCommitCommentContentPlus1
-}
-
-// SetFake set fake values.
 func (s *ReactionsListForCommitCommentOKApplicationJSON) SetFake() {
 	var unwrapped []Reaction
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Reaction
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReactionsListForCommitCommentOKApplicationJSON(unwrapped)
 }
@@ -30579,68 +32870,57 @@ func (s *ReactionsListForIssueApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsListForIssueCommentContent) SetFake() {
-	*s = ReactionsListForIssueCommentContentPlus1
-}
-
-// SetFake set fake values.
 func (s *ReactionsListForIssueCommentOKApplicationJSON) SetFake() {
 	var unwrapped []Reaction
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Reaction
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReactionsListForIssueCommentOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForIssueContent) SetFake() {
-	*s = ReactionsListForIssueContentPlus1
 }
 
 // SetFake set fake values.
 func (s *ReactionsListForIssueOKApplicationJSON) SetFake() {
 	var unwrapped []Reaction
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Reaction
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReactionsListForIssueOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForPullRequestReviewCommentContent) SetFake() {
-	*s = ReactionsListForPullRequestReviewCommentContentPlus1
 }
 
 // SetFake set fake values.
 func (s *ReactionsListForPullRequestReviewCommentOKApplicationJSON) SetFake() {
 	var unwrapped []Reaction
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Reaction
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReactionsListForPullRequestReviewCommentOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForTeamDiscussionCommentInOrgContent) SetFake() {
-	*s = ReactionsListForTeamDiscussionCommentInOrgContentPlus1
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForTeamDiscussionCommentLegacyContent) SetFake() {
-	*s = ReactionsListForTeamDiscussionCommentLegacyContentPlus1
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForTeamDiscussionInOrgContent) SetFake() {
-	*s = ReactionsListForTeamDiscussionInOrgContentPlus1
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForTeamDiscussionLegacyContent) SetFake() {
-	*s = ReactionsListForTeamDiscussionLegacyContentPlus1
 }
 
 // SetFake set fake values.
@@ -30648,19 +32928,19 @@ func (s *ReferrerTraffic) SetFake() {
 	{
 
 		{
-			s.Referrer = "string"
+			s.Referrer = ""
 		}
 	}
 	{
 
 		{
-			s.Count = int(0)
+			s.Count = int(1)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(0)
+			s.Uniques = int(1)
 		}
 	}
 }
@@ -30688,7 +32968,7 @@ func (s *Release) SetFake() {
 	{
 
 		{
-			s.UploadURL = "string"
+			s.UploadURL = ""
 		}
 	}
 	{
@@ -30706,25 +32986,25 @@ func (s *Release) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.TagName = "string"
+			s.TagName = ""
 		}
 	}
 	{
 
 		{
-			s.TargetCommitish = "string"
+			s.TargetCommitish = ""
 		}
 	}
 	{
@@ -30771,8 +33051,16 @@ func (s *Release) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Assets = nil
+			for i := 0; i < 0; i++ {
+				var elem ReleaseAsset
+
+				{
+					elem.SetFake()
+				}
+				s.Assets = append(s.Assets, elem)
+			}
 		}
 	}
 	{
@@ -30824,19 +33112,19 @@ func (s *ReleaseAsset) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -30854,19 +33142,19 @@ func (s *ReleaseAsset) SetFake() {
 	{
 
 		{
-			s.ContentType = "string"
+			s.ContentType = ""
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.DownloadCount = int(0)
+			s.DownloadCount = int(1)
 		}
 	}
 	{
@@ -30899,25 +33187,25 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
@@ -30983,19 +33271,19 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(0)
+			s.StargazersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(0)
+			s.WatchersCount = int(1)
 		}
 	}
 	{
@@ -31007,13 +33295,13 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(0)
+			s.ForksCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(0)
+			s.OpenIssuesCount = int(1)
 		}
 	}
 	{
@@ -31025,7 +33313,7 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.DefaultBranch = "string"
+			s.DefaultBranch = ""
 		}
 	}
 	{
@@ -31043,13 +33331,13 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
@@ -31067,7 +33355,7 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
@@ -31079,13 +33367,13 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
@@ -31097,31 +33385,31 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -31157,37 +33445,37 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
@@ -31199,7 +33487,7 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
@@ -31211,37 +33499,37 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
@@ -31253,19 +33541,19 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.GitURL = "string"
+			s.GitURL = ""
 		}
 	}
 	{
 
 		{
-			s.SSHURL = "string"
+			s.SSHURL = ""
 		}
 	}
 	{
 
 		{
-			s.CloneURL = "string"
+			s.CloneURL = ""
 		}
 	}
 	{
@@ -31277,25 +33565,33 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Forks = int(0)
+			s.Forks = int(1)
 		}
 	}
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(0)
+			s.Watchers = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -31473,15 +33769,19 @@ func (s *ReposAcceptInvitationApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposAcceptInvitationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReposAddAppAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []Integration
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Integration
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposAddAppAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -31500,14 +33800,18 @@ func (s *ReposAddAppAccessRestrictionsReq) SetFake() {
 func (s *ReposAddAppAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Apps = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Apps = append(s.Apps, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ReposAddCollaboratorNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -31555,8 +33859,16 @@ func (s *ReposAddStatusCheckContextsApplicationJSONNotFound) SetFake() {
 func (s *ReposAddStatusCheckContextsOKApplicationJSON) SetFake() {
 	var unwrapped []string
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem string
+
+			{
+				elem = ""
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposAddStatusCheckContextsOKApplicationJSON(unwrapped)
 }
@@ -31575,8 +33887,16 @@ func (s *ReposAddStatusCheckContextsReq) SetFake() {
 func (s *ReposAddStatusCheckContextsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
 }
@@ -31585,8 +33905,16 @@ func (s *ReposAddStatusCheckContextsReq0) SetFake() {
 func (s *ReposAddTeamAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []Team
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Team
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposAddTeamAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -31605,8 +33933,16 @@ func (s *ReposAddTeamAccessRestrictionsReq) SetFake() {
 func (s *ReposAddTeamAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 }
@@ -31615,8 +33951,16 @@ func (s *ReposAddTeamAccessRestrictionsReq0) SetFake() {
 func (s *ReposAddUserAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposAddUserAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -31635,26 +33979,18 @@ func (s *ReposAddUserAccessRestrictionsReq) SetFake() {
 func (s *ReposAddUserAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ReposCheckCollaboratorNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposCheckCollaboratorNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposCheckVulnerabilityAlertsNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposCheckVulnerabilityAlertsNotFound) SetFake() {
 }
 
 // SetFake set fake values.
@@ -31682,13 +34018,13 @@ func (s *ReposCreateAutolinkReq) SetFake() {
 	{
 
 		{
-			s.KeyPrefix = "string"
+			s.KeyPrefix = ""
 		}
 	}
 	{
 
 		{
-			s.URLTemplate = "string"
+			s.URLTemplate = ""
 		}
 	}
 }
@@ -31698,7 +34034,7 @@ func (s *ReposCreateCommitCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -31765,7 +34101,7 @@ func (s *ReposCreateDeployKeyReq) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 	{
@@ -31787,15 +34123,11 @@ func (s *ReposCreateDeploymentAccepted) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateDeploymentConflict) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReposCreateDeploymentReq) SetFake() {
 	{
 
 		{
-			s.Ref = "string"
+			s.Ref = ""
 		}
 	}
 	{
@@ -31812,8 +34144,16 @@ func (s *ReposCreateDeploymentReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredContexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredContexts = append(s.RequiredContexts, elem)
+			}
 		}
 	}
 	{
@@ -31861,12 +34201,14 @@ func (s *ReposCreateDeploymentReqPayload) SetFake() {
 
 // SetFake set fake values.
 func (s ReposCreateDeploymentReqPayload0) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -31926,15 +34268,11 @@ func (s *ReposCreateDeploymentStatusReqState) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposCreateDispatchEventNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReposCreateDispatchEventReq) SetFake() {
 	{
 
 		{
-			s.EventType = "string"
+			s.EventType = "a"
 		}
 	}
 	{
@@ -31947,12 +34285,14 @@ func (s *ReposCreateDispatchEventReq) SetFake() {
 
 // SetFake set fake values.
 func (s ReposCreateDispatchEventReqClientPayload) SetFake() {
-	var elem jx.Raw
-
-	{
-		elem = []byte("null")
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
+	m = s
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -32000,7 +34340,7 @@ func (s *ReposCreateForAuthenticatedUserReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -32152,7 +34492,7 @@ func (s *ReposCreateInOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -32309,13 +34649,13 @@ func (s *ReposCreateOrUpdateFileContentsReq) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.Content = "string"
+			s.Content = ""
 		}
 	}
 	{
@@ -32349,13 +34689,13 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
@@ -32371,13 +34711,13 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 	{
@@ -32403,7 +34743,7 @@ func (s *ReposCreatePagesSiteReqSource) SetFake() {
 	{
 
 		{
-			s.Branch = "string"
+			s.Branch = ""
 		}
 	}
 	{
@@ -32424,7 +34764,7 @@ func (s *ReposCreateReleaseReq) SetFake() {
 	{
 
 		{
-			s.TagName = "string"
+			s.TagName = ""
 		}
 	}
 	{
@@ -32476,7 +34816,7 @@ func (s *ReposCreateUsingTemplateReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -32535,8 +34875,16 @@ func (s *ReposCreateWebhookReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
@@ -32545,13 +34893,15 @@ func (s *ReposCreateWebhookReq) SetFake() {
 			s.Active.SetFake()
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -32625,22 +34975,6 @@ func (s *ReposDeclineInvitationApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposDeclineInvitationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteAccessRestrictionsNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteAdminBranchProtectionNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteAnEnvironmentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReposDeleteApplicationJSONNotFound) SetFake() {
 	var unwrapped BasicError
 
@@ -32658,30 +34992,6 @@ func (s *ReposDeleteApplicationJSONTemporaryRedirect) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = ReposDeleteApplicationJSONTemporaryRedirect(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteAutolinkNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteBranchProtectionNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteCommitCommentNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteCommitSignatureProtectionNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteDeployKeyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteDeploymentNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -32709,13 +35019,13 @@ func (s *ReposDeleteFileReq) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -32787,71 +35097,19 @@ func (s *ReposDeleteForbidden) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposDeleteInvitationNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeletePagesSiteNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeletePullRequestReviewProtectionNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteReleaseAssetNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteReleaseNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDeleteWebhookNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDisableAutomatedSecurityFixesNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDisableLfsForRepoNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDisableVulnerabilityAlertsNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDownloadTarballArchiveFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposDownloadZipballArchiveFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposEnableAutomatedSecurityFixesNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposEnableLfsForRepoForbidden) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposEnableVulnerabilityAlertsNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReposGetAllStatusCheckContextsOKApplicationJSON) SetFake() {
 	var unwrapped []string
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem string
+
+			{
+				elem = ""
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetAllStatusCheckContextsOKApplicationJSON(unwrapped)
 }
@@ -32890,8 +35148,16 @@ func (s *ReposGetApplicationJSONNotFound) SetFake() {
 func (s *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON) SetFake() {
 	var unwrapped []Integration
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Integration
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
 }
@@ -32917,16 +35183,19 @@ func (s *ReposGetBranchApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposGetClonesPer) SetFake() {
-	*s = ReposGetClonesPerEmpty
-}
-
-// SetFake set fake values.
 func (s *ReposGetCodeFrequencyStatsOKApplicationJSON) SetFake() {
 	var unwrapped []CodeFrequencyStat
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem CodeFrequencyStat
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetCodeFrequencyStatsOKApplicationJSON(unwrapped)
 }
@@ -32935,8 +35204,16 @@ func (s *ReposGetCodeFrequencyStatsOKApplicationJSON) SetFake() {
 func (s *ReposGetCommitActivityStatsOKApplicationJSON) SetFake() {
 	var unwrapped []CommitActivity
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem CommitActivity
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetCommitActivityStatsOKApplicationJSON(unwrapped)
 }
@@ -32965,26 +35242,34 @@ func (s *ReposGetCommitApplicationJSONNotFound) SetFake() {
 func (s *ReposGetContributorsStatsOKApplicationJSON) SetFake() {
 	var unwrapped []ContributorActivity
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ContributorActivity
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetContributorsStatsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposGetPagesHealthCheckBadRequest) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposGetPagesHealthCheckUnprocessableEntity) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ReposGetPunchCardStatsOKApplicationJSON) SetFake() {
 	var unwrapped []CodeFrequencyStat
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem CodeFrequencyStat
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetPunchCardStatsOKApplicationJSON(unwrapped)
 }
@@ -32993,8 +35278,16 @@ func (s *ReposGetPunchCardStatsOKApplicationJSON) SetFake() {
 func (s *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) SetFake() {
 	var unwrapped []Team
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Team
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
 }
@@ -33003,8 +35296,16 @@ func (s *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON) SetFake() {
 func (s *ReposGetTopPathsOKApplicationJSON) SetFake() {
 	var unwrapped []ContentTraffic
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ContentTraffic
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetTopPathsOKApplicationJSON(unwrapped)
 }
@@ -33013,8 +35314,16 @@ func (s *ReposGetTopPathsOKApplicationJSON) SetFake() {
 func (s *ReposGetTopReferrersOKApplicationJSON) SetFake() {
 	var unwrapped []ReferrerTraffic
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ReferrerTraffic
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetTopReferrersOKApplicationJSON(unwrapped)
 }
@@ -33023,23 +35332,34 @@ func (s *ReposGetTopReferrersOKApplicationJSON) SetFake() {
 func (s *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposGetViewsPer) SetFake() {
-	*s = ReposGetViewsPerEmpty
 }
 
 // SetFake set fake values.
 func (s *ReposListBranchesForHeadCommitOKApplicationJSON) SetFake() {
 	var unwrapped []BranchShort
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem BranchShort
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListBranchesForHeadCommitOKApplicationJSON(unwrapped)
 }
@@ -33048,23 +35368,34 @@ func (s *ReposListBranchesForHeadCommitOKApplicationJSON) SetFake() {
 func (s *ReposListBranchesOKApplicationJSON) SetFake() {
 	var unwrapped []ShortBranch
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem ShortBranch
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListBranchesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListCollaboratorsAffiliation) SetFake() {
-	*s = ReposListCollaboratorsAffiliationOutside
 }
 
 // SetFake set fake values.
 func (s *ReposListCollaboratorsOKApplicationJSON) SetFake() {
 	var unwrapped []Collaborator
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Collaborator
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListCollaboratorsOKApplicationJSON(unwrapped)
 }
@@ -33073,8 +35404,16 @@ func (s *ReposListCollaboratorsOKApplicationJSON) SetFake() {
 func (s *ReposListCommitStatusesForRefOKApplicationJSON) SetFake() {
 	var unwrapped []Status
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Status
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListCommitStatusesForRefOKApplicationJSON(unwrapped)
 }
@@ -33123,8 +35462,16 @@ func (s *ReposListCommitsApplicationJSONNotFound) SetFake() {
 func (s *ReposListCommitsOKApplicationJSON) SetFake() {
 	var unwrapped []Commit
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Commit
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListCommitsOKApplicationJSON(unwrapped)
 }
@@ -33150,15 +35497,19 @@ func (s *ReposListContributorsApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListContributorsNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReposListContributorsOKApplicationJSON) SetFake() {
 	var unwrapped []Contributor
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Contributor
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListContributorsOKApplicationJSON(unwrapped)
 }
@@ -33167,8 +35518,16 @@ func (s *ReposListContributorsOKApplicationJSON) SetFake() {
 func (s *ReposListDeploymentStatusesOKApplicationJSON) SetFake() {
 	var unwrapped []DeploymentStatus
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem DeploymentStatus
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListDeploymentStatusesOKApplicationJSON(unwrapped)
 }
@@ -33194,78 +35553,39 @@ func (s *ReposListForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListForAuthenticatedUserDirection) SetFake() {
-	*s = ReposListForAuthenticatedUserDirectionAsc
-}
-
-// SetFake set fake values.
 func (s *ReposListForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []Repository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Repository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListForAuthenticatedUserSort) SetFake() {
-	*s = ReposListForAuthenticatedUserSortCreated
-}
-
-// SetFake set fake values.
-func (s *ReposListForAuthenticatedUserType) SetFake() {
-	*s = ReposListForAuthenticatedUserTypeAll
-}
-
-// SetFake set fake values.
-func (s *ReposListForAuthenticatedUserVisibility) SetFake() {
-	*s = ReposListForAuthenticatedUserVisibilityAll
-}
-
-// SetFake set fake values.
-func (s *ReposListForOrgDirection) SetFake() {
-	*s = ReposListForOrgDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *ReposListForOrgSort) SetFake() {
-	*s = ReposListForOrgSortCreated
-}
-
-// SetFake set fake values.
-func (s *ReposListForOrgType) SetFake() {
-	*s = ReposListForOrgTypeAll
-}
-
-// SetFake set fake values.
-func (s *ReposListForUserDirection) SetFake() {
-	*s = ReposListForUserDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *ReposListForUserSort) SetFake() {
-	*s = ReposListForUserSortCreated
-}
-
-// SetFake set fake values.
-func (s *ReposListForUserType) SetFake() {
-	*s = ReposListForUserTypeAll
 }
 
 // SetFake set fake values.
 func (s *ReposListForksOKApplicationJSON) SetFake() {
 	var unwrapped []MinimalRepository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MinimalRepository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListForksOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListForksSort) SetFake() {
-	*s = ReposListForksSortNewest
 }
 
 // SetFake set fake values.
@@ -33302,8 +35622,16 @@ func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Se
 func (s *ReposListInvitationsForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []RepositoryInvitation
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem RepositoryInvitation
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListInvitationsForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
@@ -33312,8 +35640,16 @@ func (s *ReposListInvitationsForAuthenticatedUserOKApplicationJSON) SetFake() {
 func (s *ReposListPublicOKApplicationJSON) SetFake() {
 	var unwrapped []MinimalRepository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MinimalRepository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListPublicOKApplicationJSON(unwrapped)
 }
@@ -33322,8 +35658,16 @@ func (s *ReposListPublicOKApplicationJSON) SetFake() {
 func (s *ReposListReleasesOKApplicationJSON) SetFake() {
 	var unwrapped []Release
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Release
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListReleasesOKApplicationJSON(unwrapped)
 }
@@ -33332,8 +35676,16 @@ func (s *ReposListReleasesOKApplicationJSON) SetFake() {
 func (s *ReposListWebhookDeliveriesOKApplicationJSON) SetFake() {
 	var unwrapped []HookDeliveryItem
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem HookDeliveryItem
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListWebhookDeliveriesOKApplicationJSON(unwrapped)
 }
@@ -33342,22 +35694,18 @@ func (s *ReposListWebhookDeliveriesOKApplicationJSON) SetFake() {
 func (s *ReposListWebhooksOKApplicationJSON) SetFake() {
 	var unwrapped []Hook
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Hook
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposListWebhooksOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposMergeConflict) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposMergeNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposMergeNotFound) SetFake() {
 }
 
 // SetFake set fake values.
@@ -33365,13 +35713,13 @@ func (s *ReposMergeReq) SetFake() {
 	{
 
 		{
-			s.Base = "string"
+			s.Base = ""
 		}
 	}
 	{
 
 		{
-			s.Head = "string"
+			s.Head = ""
 		}
 	}
 	{
@@ -33383,33 +35731,29 @@ func (s *ReposMergeReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposMergeUpstreamConflict) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ReposMergeUpstreamReq) SetFake() {
 	{
 
 		{
-			s.Branch = "string"
+			s.Branch = ""
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ReposMergeUpstreamUnprocessableEntity) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *ReposPingWebhookNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ReposRemoveAppAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []Integration
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Integration
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposRemoveAppAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -33428,22 +35772,34 @@ func (s *ReposRemoveAppAccessRestrictionsReq) SetFake() {
 func (s *ReposRemoveAppAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Apps = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Apps = append(s.Apps, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ReposRemoveCollaboratorNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ReposRemoveStatusCheckContextsOKApplicationJSON) SetFake() {
 	var unwrapped []string
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem string
+
+			{
+				elem = ""
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposRemoveStatusCheckContextsOKApplicationJSON(unwrapped)
 }
@@ -33462,22 +35818,34 @@ func (s *ReposRemoveStatusCheckContextsReq) SetFake() {
 func (s *ReposRemoveStatusCheckContextsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ReposRemoveStatusCheckProtectionNoContent) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *ReposRemoveTeamAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []Team
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Team
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposRemoveTeamAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -33496,8 +35864,16 @@ func (s *ReposRemoveTeamAccessRestrictionsReq) SetFake() {
 func (s *ReposRemoveTeamAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 }
@@ -33506,8 +35882,16 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) SetFake() {
 func (s *ReposRemoveUserAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposRemoveUserAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -33526,8 +35910,16 @@ func (s *ReposRemoveUserAccessRestrictionsReq) SetFake() {
 func (s *ReposRemoveUserAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 }
@@ -33557,7 +35949,7 @@ func (s *ReposRenameBranchReq) SetFake() {
 	{
 
 		{
-			s.NewName = "string"
+			s.NewName = ""
 		}
 	}
 }
@@ -33566,8 +35958,16 @@ func (s *ReposRenameBranchReq) SetFake() {
 func (s *ReposReplaceAllTopicsReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Names = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Names = append(s.Names, elem)
+			}
 		}
 	}
 }
@@ -33576,8 +35976,16 @@ func (s *ReposReplaceAllTopicsReq) SetFake() {
 func (s *ReposSetAppAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []Integration
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Integration
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposSetAppAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -33596,8 +36004,16 @@ func (s *ReposSetAppAccessRestrictionsReq) SetFake() {
 func (s *ReposSetAppAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Apps = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Apps = append(s.Apps, elem)
+			}
 		}
 	}
 }
@@ -33606,8 +36022,16 @@ func (s *ReposSetAppAccessRestrictionsReq0) SetFake() {
 func (s *ReposSetStatusCheckContextsOKApplicationJSON) SetFake() {
 	var unwrapped []string
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem string
+
+			{
+				elem = ""
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposSetStatusCheckContextsOKApplicationJSON(unwrapped)
 }
@@ -33626,8 +36050,16 @@ func (s *ReposSetStatusCheckContextsReq) SetFake() {
 func (s *ReposSetStatusCheckContextsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
 }
@@ -33636,8 +36068,16 @@ func (s *ReposSetStatusCheckContextsReq0) SetFake() {
 func (s *ReposSetTeamAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []Team
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Team
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposSetTeamAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -33656,8 +36096,16 @@ func (s *ReposSetTeamAccessRestrictionsReq) SetFake() {
 func (s *ReposSetTeamAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 }
@@ -33666,8 +36114,16 @@ func (s *ReposSetTeamAccessRestrictionsReq0) SetFake() {
 func (s *ReposSetUserAccessRestrictionsOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = ReposSetUserAccessRestrictionsOKApplicationJSON(unwrapped)
 }
@@ -33686,14 +36142,18 @@ func (s *ReposSetUserAccessRestrictionsReq) SetFake() {
 func (s *ReposSetUserAccessRestrictionsReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *ReposTestPushWebhookNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -33701,13 +36161,21 @@ func (s *ReposTransferReq) SetFake() {
 	{
 
 		{
-			s.NewOwner = "string"
+			s.NewOwner = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.TeamIds = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.TeamIds = append(s.TeamIds, elem)
+			}
 		}
 	}
 }
@@ -33846,14 +36314,30 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviews) SetFake() {
 func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestrictions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 }
@@ -33868,8 +36352,16 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
 }
@@ -33878,20 +36370,44 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) SetFake() {
 func (s *ReposUpdateBranchProtectionReqRestrictions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Apps = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Apps = append(s.Apps, elem)
+			}
 		}
 	}
 }
@@ -33901,7 +36417,7 @@ func (s *ReposUpdateCommitCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -33953,14 +36469,30 @@ func (s *ReposUpdatePullRequestReviewProtectionReq) SetFake() {
 func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Users = append(s.Users, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Teams = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Teams = append(s.Teams, elem)
+			}
 		}
 	}
 }
@@ -34196,8 +36728,16 @@ func (s *ReposUpdateStatusCheckProtectionReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
 }
@@ -34228,13 +36768,15 @@ func (s *ReposUpdateWebhookConfigForRepoReq) SetFake() {
 			s.InsecureSsl.SetFake()
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -34247,20 +36789,44 @@ func (s *ReposUpdateWebhookReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Events = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Events = append(s.Events, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.AddEvents = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.AddEvents = append(s.AddEvents, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RemoveEvents = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RemoveEvents = append(s.RemoveEvents, elem)
+			}
 		}
 	}
 	{
@@ -34316,25 +36882,25 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
@@ -34352,7 +36918,7 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.Forks = int(0)
+			s.Forks = int(1)
 		}
 	}
 	{
@@ -34400,55 +36966,55 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -34484,55 +37050,55 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitURL = "string"
+			s.GitURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -34550,31 +37116,31 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
 
 		{
-			s.SSHURL = "string"
+			s.SSHURL = ""
 		}
 	}
 	{
@@ -34586,7 +37152,7 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -34616,13 +37182,13 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CloneURL = "string"
+			s.CloneURL = ""
 		}
 	}
 	{
@@ -34658,37 +37224,37 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(0)
+			s.ForksCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(0)
+			s.StargazersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(0)
+			s.WatchersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = "string"
+			s.DefaultBranch = ""
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(0)
+			s.OpenIssuesCount = int(1)
 		}
 	}
 	{
@@ -34699,8 +37265,16 @@ func (s *Repository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -34832,13 +37406,13 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(0)
+			s.Watchers = int(1)
 		}
 	}
 	{
@@ -34860,7 +37434,7 @@ func (s *RepositoryCollaboratorPermission) SetFake() {
 	{
 
 		{
-			s.Permission = "string"
+			s.Permission = ""
 		}
 	}
 	{
@@ -34876,7 +37450,7 @@ func (s *RepositoryInvitation) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -34918,19 +37492,19 @@ func (s *RepositoryInvitation) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = "string"
+			s.HTMLURL = ""
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 }
@@ -35378,8 +37952,16 @@ func (s *RepositoryTemplateRepository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -35667,25 +38249,25 @@ func (s *ReviewComment) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.DiffHunk = "string"
+			s.DiffHunk = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -35697,19 +38279,19 @@ func (s *ReviewComment) SetFake() {
 	{
 
 		{
-			s.OriginalPosition = int(0)
+			s.OriginalPosition = int(1)
 		}
 	}
 	{
 
 		{
-			s.CommitID = "string"
+			s.CommitID = ""
 		}
 	}
 	{
 
 		{
-			s.OriginalCommitID = "string"
+			s.OriginalCommitID = ""
 		}
 	}
 	{
@@ -35727,7 +38309,7 @@ func (s *ReviewComment) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -35859,25 +38441,25 @@ func (s *Runner) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Os = "string"
+			s.Os = ""
 		}
 	}
 	{
 
 		{
-			s.Status = "string"
+			s.Status = ""
 		}
 	}
 	{
@@ -35888,8 +38470,16 @@ func (s *Runner) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Labels = nil
+			for i := 0; i < 0; i++ {
+				var elem RunnerLabelsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Labels = append(s.Labels, elem)
+			}
 		}
 	}
 }
@@ -35899,25 +38489,25 @@ func (s *RunnerApplication) SetFake() {
 	{
 
 		{
-			s.Os = "string"
+			s.Os = ""
 		}
 	}
 	{
 
 		{
-			s.Architecture = "string"
+			s.Architecture = ""
 		}
 	}
 	{
 
 		{
-			s.DownloadURL = "string"
+			s.DownloadURL = ""
 		}
 	}
 	{
 
 		{
-			s.Filename = "string"
+			s.Filename = ""
 		}
 	}
 	{
@@ -35945,13 +38535,13 @@ func (s *RunnerGroupsEnterprise) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Visibility = "string"
+			s.Visibility = ""
 		}
 	}
 	{
@@ -35969,7 +38559,7 @@ func (s *RunnerGroupsEnterprise) SetFake() {
 	{
 
 		{
-			s.RunnersURL = "string"
+			s.RunnersURL = ""
 		}
 	}
 	{
@@ -35991,13 +38581,13 @@ func (s *RunnerGroupsOrg) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Visibility = "string"
+			s.Visibility = ""
 		}
 	}
 	{
@@ -36015,7 +38605,7 @@ func (s *RunnerGroupsOrg) SetFake() {
 	{
 
 		{
-			s.RunnersURL = "string"
+			s.RunnersURL = ""
 		}
 	}
 	{
@@ -36086,21 +38676,25 @@ func (s *ScimDeleteUserFromOrgApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ScimDeleteUserFromOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *ScimEnterpriseGroup) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
@@ -36117,8 +38711,16 @@ func (s *ScimEnterpriseGroup) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Members = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimEnterpriseGroupMembersItem
+
+				{
+					elem.SetFake()
+				}
+				s.Members = append(s.Members, elem)
+			}
 		}
 	}
 	{
@@ -36183,14 +38785,22 @@ func (s *ScimEnterpriseGroupMeta) SetFake() {
 func (s *ScimEnterpriseUser) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
@@ -36213,14 +38823,30 @@ func (s *ScimEnterpriseUser) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimEnterpriseUserEmailsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimEnterpriseUserGroupsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 	{
@@ -36347,8 +38973,16 @@ func (s *ScimError) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 }
@@ -36357,8 +38991,16 @@ func (s *ScimError) SetFake() {
 func (s *ScimGroupListEnterprise) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
@@ -36381,8 +39023,16 @@ func (s *ScimGroupListEnterprise) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimGroupListEnterpriseResourcesItem
+
+				{
+					elem.SetFake()
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 }
@@ -36391,14 +39041,22 @@ func (s *ScimGroupListEnterprise) SetFake() {
 func (s *ScimGroupListEnterpriseResourcesItem) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
@@ -36415,8 +39073,16 @@ func (s *ScimGroupListEnterpriseResourcesItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Members = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimGroupListEnterpriseResourcesItemMembersItem
+
+				{
+					elem.SetFake()
+				}
+				s.Members = append(s.Members, elem)
+			}
 		}
 	}
 	{
@@ -36481,8 +39147,16 @@ func (s *ScimGroupListEnterpriseResourcesItemMeta) SetFake() {
 func (s *ScimUserListEnterprise) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
@@ -36505,8 +39179,16 @@ func (s *ScimUserListEnterprise) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Resources = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimUserListEnterpriseResourcesItem
+
+				{
+					elem.SetFake()
+				}
+				s.Resources = append(s.Resources, elem)
+			}
 		}
 	}
 }
@@ -36515,14 +39197,22 @@ func (s *ScimUserListEnterprise) SetFake() {
 func (s *ScimUserListEnterpriseResourcesItem) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Schemas = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Schemas = append(s.Schemas, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
@@ -36545,14 +39235,30 @@ func (s *ScimUserListEnterpriseResourcesItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimUserListEnterpriseResourcesItemEmailsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem ScimUserListEnterpriseResourcesItemGroupsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 	{
@@ -36650,7 +39356,7 @@ func (s *SearchCodeOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -36661,20 +39367,18 @@ func (s *SearchCodeOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem CodeSearchResultItem
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *SearchCodeOrder) SetFake() {
-	*s = SearchCodeOrderDesc
-}
-
-// SetFake set fake values.
-func (s *SearchCodeSort) SetFake() {
-	*s = SearchCodeSortIndexed
 }
 
 // SetFake set fake values.
@@ -36682,7 +39386,7 @@ func (s *SearchCommitsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -36693,20 +39397,18 @@ func (s *SearchCommitsOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem CommitSearchResultItem
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *SearchCommitsOrder) SetFake() {
-	*s = SearchCommitsOrderDesc
-}
-
-// SetFake set fake values.
-func (s *SearchCommitsSort) SetFake() {
-	*s = SearchCommitsSortAuthorMinusDate
 }
 
 // SetFake set fake values.
@@ -36714,7 +39416,7 @@ func (s *SearchIssuesAndPullRequestsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -36725,20 +39427,18 @@ func (s *SearchIssuesAndPullRequestsOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem IssueSearchResultItem
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *SearchIssuesAndPullRequestsOrder) SetFake() {
-	*s = SearchIssuesAndPullRequestsOrderDesc
-}
-
-// SetFake set fake values.
-func (s *SearchIssuesAndPullRequestsSort) SetFake() {
-	*s = SearchIssuesAndPullRequestsSortComments
 }
 
 // SetFake set fake values.
@@ -36766,7 +39466,7 @@ func (s *SearchLabelsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -36777,20 +39477,18 @@ func (s *SearchLabelsOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem LabelSearchResultItem
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *SearchLabelsOrder) SetFake() {
-	*s = SearchLabelsOrderDesc
-}
-
-// SetFake set fake values.
-func (s *SearchLabelsSort) SetFake() {
-	*s = SearchLabelsSortCreated
 }
 
 // SetFake set fake values.
@@ -36798,7 +39496,7 @@ func (s *SearchReposOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -36809,28 +39507,34 @@ func (s *SearchReposOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem RepoSearchResultItem
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *SearchReposOrder) SetFake() {
-	*s = SearchReposOrderDesc
-}
-
-// SetFake set fake values.
-func (s *SearchReposSort) SetFake() {
-	*s = SearchReposSortStars
 }
 
 // SetFake set fake values.
 func (s *SearchResultTextMatches) SetFake() {
 	var unwrapped []SearchResultTextMatchesItem
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SearchResultTextMatchesItem
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = SearchResultTextMatches(unwrapped)
 }
@@ -36863,8 +39567,16 @@ func (s *SearchResultTextMatchesItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Matches = nil
+			for i := 0; i < 0; i++ {
+				var elem SearchResultTextMatchesItemMatchesItem
+
+				{
+					elem.SetFake()
+				}
+				s.Matches = append(s.Matches, elem)
+			}
 		}
 	}
 }
@@ -36879,8 +39591,16 @@ func (s *SearchResultTextMatchesItemMatchesItem) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Indices = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.Indices = append(s.Indices, elem)
+			}
 		}
 	}
 }
@@ -36890,7 +39610,7 @@ func (s *SearchTopicsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -36901,8 +39621,16 @@ func (s *SearchTopicsOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem TopicSearchResultItem
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
 }
@@ -36912,7 +39640,7 @@ func (s *SearchUsersOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(0)
+			s.TotalCount = int(1)
 		}
 	}
 	{
@@ -36923,20 +39651,18 @@ func (s *SearchUsersOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Items = nil
+			for i := 0; i < 0; i++ {
+				var elem UserSearchResultItem
+
+				{
+					elem.SetFake()
+				}
+				s.Items = append(s.Items, elem)
+			}
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *SearchUsersOrder) SetFake() {
-	*s = SearchUsersOrderDesc
-}
-
-// SetFake set fake values.
-func (s *SearchUsersSort) SetFake() {
-	*s = SearchUsersSortFollowers
 }
 
 // SetFake set fake values.
@@ -37020,45 +39746,39 @@ func (s *SecretScanningAlertState) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *SecretScanningGetAlertNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *SecretScanningListAlertsForOrgOKApplicationJSON) SetFake() {
 	var unwrapped []OrganizationSecretScanningAlert
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem OrganizationSecretScanningAlert
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = SecretScanningListAlertsForOrgOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *SecretScanningListAlertsForOrgState) SetFake() {
-	*s = SecretScanningListAlertsForOrgStateOpen
-}
-
-// SetFake set fake values.
-func (s *SecretScanningListAlertsForRepoNotFound) SetFake() {
 }
 
 // SetFake set fake values.
 func (s *SecretScanningListAlertsForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []SecretScanningAlert
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SecretScanningAlert
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = SecretScanningListAlertsForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *SecretScanningListAlertsForRepoState) SetFake() {
-	*s = SecretScanningListAlertsForRepoStateOpen
-}
-
-// SetFake set fake values.
-func (s *SecretScanningUpdateAlertNotFound) SetFake() {
 }
 
 // SetFake set fake values.
@@ -37078,10 +39798,6 @@ func (s *SecretScanningUpdateAlertReq) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *SecretScanningUpdateAlertUnprocessableEntity) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *SelectedActions) SetFake() {
 	{
 
@@ -37097,8 +39813,16 @@ func (s *SelectedActions) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PatternsAllowed = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.PatternsAllowed = append(s.PatternsAllowed, elem)
+			}
 		}
 	}
 }
@@ -37108,7 +39832,7 @@ func (s *SelectedActionsURL) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = SelectedActionsURL(unwrapped)
 }
@@ -37140,13 +39864,13 @@ func (s *ShortBlob) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 }
@@ -37156,7 +39880,7 @@ func (s *ShortBranch) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -37190,7 +39914,7 @@ func (s *ShortBranchCommit) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -37206,19 +39930,19 @@ func (s *SimpleCommit) SetFake() {
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
 
 		{
-			s.TreeID = "string"
+			s.TreeID = ""
 		}
 	}
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
@@ -37246,13 +39970,13 @@ func (s *SimpleCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 }
@@ -37262,13 +39986,13 @@ func (s *SimpleCommitCommitter) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Email = "string"
+			s.Email = ""
 		}
 	}
 }
@@ -37284,25 +40008,25 @@ func (s *SimpleCommitStatus) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
 
 		{
-			s.Context = "string"
+			s.Context = ""
 		}
 	}
 	{
@@ -37360,19 +40084,19 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -37408,19 +40132,19 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
@@ -37444,7 +40168,7 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -37456,7 +40180,7 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -37478,7 +40202,7 @@ func (s *Status) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
@@ -37490,49 +40214,49 @@ func (s *Status) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
 
 		{
-			s.Description = "string"
+			s.Description = ""
 		}
 	}
 	{
 
 		{
-			s.TargetURL = "string"
+			s.TargetURL = ""
 		}
 	}
 	{
 
 		{
-			s.Context = "string"
+			s.Context = ""
 		}
 	}
 	{
 
 		{
-			s.CreatedAt = "string"
+			s.CreatedAt = ""
 		}
 	}
 	{
 
 		{
-			s.UpdatedAt = "string"
+			s.UpdatedAt = ""
 		}
 	}
 	{
@@ -37559,8 +40283,16 @@ func (s *StatusCheckPolicy) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Contexts = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Contexts = append(s.Contexts, elem)
+			}
 		}
 	}
 	{
@@ -37576,7 +40308,7 @@ func (s *Tag) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -37600,7 +40332,7 @@ func (s *Tag) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 }
@@ -37610,7 +40342,7 @@ func (s *TagCommit) SetFake() {
 	{
 
 		{
-			s.Sha = "string"
+			s.Sha = ""
 		}
 	}
 	{
@@ -37626,25 +40358,25 @@ func (s *Team) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Slug = "string"
+			s.Slug = ""
 		}
 	}
 	{
@@ -37662,7 +40394,7 @@ func (s *Team) SetFake() {
 	{
 
 		{
-			s.Permission = "string"
+			s.Permission = ""
 		}
 	}
 	{
@@ -37686,7 +40418,7 @@ func (s *Team) SetFake() {
 	{
 
 		{
-			s.MembersURL = "string"
+			s.MembersURL = ""
 		}
 	}
 	{
@@ -37714,25 +40446,25 @@ func (s *TeamDiscussion) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
 
 		{
-			s.BodyHTML = "string"
+			s.BodyHTML = ""
 		}
 	}
 	{
 
 		{
-			s.BodyVersion = "string"
+			s.BodyVersion = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsCount = int(0)
+			s.CommentsCount = int(1)
 		}
 	}
 	{
@@ -37762,13 +40494,13 @@ func (s *TeamDiscussion) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
@@ -37792,7 +40524,7 @@ func (s *TeamDiscussion) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
@@ -37826,19 +40558,19 @@ func (s *TeamDiscussionComment) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
 
 		{
-			s.BodyHTML = "string"
+			s.BodyHTML = ""
 		}
 	}
 	{
 
 		{
-			s.BodyVersion = "string"
+			s.BodyVersion = ""
 		}
 	}
 	{
@@ -37868,13 +40600,13 @@ func (s *TeamDiscussionComment) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
@@ -37902,13 +40634,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -37926,13 +40658,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Slug = "string"
+			s.Slug = ""
 		}
 	}
 	{
@@ -37950,13 +40682,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.Permission = "string"
+			s.Permission = ""
 		}
 	}
 	{
 
 		{
-			s.MembersURL = "string"
+			s.MembersURL = ""
 		}
 	}
 	{
@@ -37974,13 +40706,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.MembersCount = int(0)
+			s.MembersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.ReposCount = int(0)
+			s.ReposCount = int(1)
 		}
 	}
 	{
@@ -38085,43 +40817,43 @@ func (s *TeamProject) SetFake() {
 	{
 
 		{
-			s.OwnerURL = "string"
+			s.OwnerURL = ""
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = "string"
+			s.HTMLURL = ""
 		}
 	}
 	{
 
 		{
-			s.ColumnsURL = "string"
+			s.ColumnsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -38133,13 +40865,13 @@ func (s *TeamProject) SetFake() {
 	{
 
 		{
-			s.Number = int(0)
+			s.Number = int(1)
 		}
 	}
 	{
 
 		{
-			s.State = "string"
+			s.State = ""
 		}
 	}
 	{
@@ -38151,13 +40883,13 @@ func (s *TeamProject) SetFake() {
 	{
 
 		{
-			s.CreatedAt = "string"
+			s.CreatedAt = ""
 		}
 	}
 	{
 
 		{
-			s.UpdatedAt = "string"
+			s.UpdatedAt = ""
 		}
 	}
 	{
@@ -38207,25 +40939,25 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.FullName = "string"
+			s.FullName = ""
 		}
 	}
 	{
@@ -38237,7 +40969,7 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.Forks = int(0)
+			s.Forks = int(1)
 		}
 	}
 	{
@@ -38285,55 +41017,55 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = "string"
+			s.ArchiveURL = ""
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = "string"
+			s.AssigneesURL = ""
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = "string"
+			s.BlobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = "string"
+			s.BranchesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = "string"
+			s.CollaboratorsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = "string"
+			s.CommentsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = "string"
+			s.CommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CompareURL = "string"
+			s.CompareURL = ""
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = "string"
+			s.ContentsURL = ""
 		}
 	}
 	{
@@ -38369,55 +41101,55 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = "string"
+			s.GitCommitsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = "string"
+			s.GitRefsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = "string"
+			s.GitTagsURL = ""
 		}
 	}
 	{
 
 		{
-			s.GitURL = "string"
+			s.GitURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = "string"
+			s.IssueCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = "string"
+			s.IssueEventsURL = ""
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = "string"
+			s.IssuesURL = ""
 		}
 	}
 	{
 
 		{
-			s.KeysURL = "string"
+			s.KeysURL = ""
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = "string"
+			s.LabelsURL = ""
 		}
 	}
 	{
@@ -38435,31 +41167,31 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = "string"
+			s.MilestonesURL = ""
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = "string"
+			s.NotificationsURL = ""
 		}
 	}
 	{
 
 		{
-			s.PullsURL = "string"
+			s.PullsURL = ""
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = "string"
+			s.ReleasesURL = ""
 		}
 	}
 	{
 
 		{
-			s.SSHURL = "string"
+			s.SSHURL = ""
 		}
 	}
 	{
@@ -38471,7 +41203,7 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = "string"
+			s.StatusesURL = ""
 		}
 	}
 	{
@@ -38501,13 +41233,13 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = "string"
+			s.TreesURL = ""
 		}
 	}
 	{
 
 		{
-			s.CloneURL = "string"
+			s.CloneURL = ""
 		}
 	}
 	{
@@ -38543,37 +41275,37 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(0)
+			s.ForksCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(0)
+			s.StargazersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(0)
+			s.WatchersCount = int(1)
 		}
 	}
 	{
 
 		{
-			s.Size = int(0)
+			s.Size = int(1)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = "string"
+			s.DefaultBranch = ""
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(0)
+			s.OpenIssuesCount = int(1)
 		}
 	}
 	{
@@ -38584,8 +41316,16 @@ func (s *TeamRepository) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Topics = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Topics = append(s.Topics, elem)
+			}
 		}
 	}
 	{
@@ -38717,13 +41457,13 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(0)
+			s.OpenIssues = int(1)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(0)
+			s.Watchers = int(1)
 		}
 	}
 	{
@@ -38773,13 +41513,13 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -38791,13 +41531,13 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.MembersURL = "string"
+			s.MembersURL = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -38809,7 +41549,7 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.Permission = "string"
+			s.Permission = ""
 		}
 	}
 	{
@@ -38833,7 +41573,7 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.Slug = "string"
+			s.Slug = ""
 		}
 	}
 	{
@@ -38842,22 +41582,6 @@ func (s *TeamSimple) SetFake() {
 			s.LdapDn.SetFake()
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *TeamsAddMemberLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsAddMemberLegacyNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsAddMemberLegacyUnprocessableEntity) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsAddOrUpdateMembershipForUserInOrgForbidden) SetFake() {
 }
 
 // SetFake set fake values.
@@ -38876,14 +41600,6 @@ func (s *TeamsAddOrUpdateMembershipForUserInOrgReqRole) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsAddOrUpdateMembershipForUserLegacyForbidden) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) SetFake() {
 	{
 
@@ -38896,10 +41612,6 @@ func (s *TeamsAddOrUpdateMembershipForUserLegacyReq) SetFake() {
 // SetFake set fake values.
 func (s *TeamsAddOrUpdateMembershipForUserLegacyReqRole) SetFake() {
 	*s = TeamsAddOrUpdateMembershipForUserLegacyReqRoleMember
-}
-
-// SetFake set fake values.
-func (s *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity) SetFake() {
 }
 
 // SetFake set fake values.
@@ -38916,10 +41628,6 @@ func (s *TeamsAddOrUpdateProjectPermissionsInOrgForbidden) SetFake() {
 			s.DocumentationURL.SetFake()
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *TeamsAddOrUpdateProjectPermissionsInOrgNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -38954,10 +41662,6 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyForbidden) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsAddOrUpdateProjectPermissionsLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) SetFake() {
 	{
 
@@ -38970,10 +41674,6 @@ func (s *TeamsAddOrUpdateProjectPermissionsLegacyReq) SetFake() {
 // SetFake set fake values.
 func (s *TeamsAddOrUpdateProjectPermissionsLegacyReqPermission) SetFake() {
 	*s = TeamsAddOrUpdateProjectPermissionsLegacyReqPermissionRead
-}
-
-// SetFake set fake values.
-func (s *TeamsAddOrUpdateRepoPermissionsInOrgNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -38992,10 +41692,6 @@ func (s *TeamsAddOrUpdateRepoPermissionsInOrgReqPermission) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsAddOrUpdateRepoPermissionsLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *TeamsAddOrUpdateRepoPermissionsLegacyReq) SetFake() {
 	{
 
@@ -39011,35 +41707,11 @@ func (s *TeamsAddOrUpdateRepoPermissionsLegacyReqPermission) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsCheckPermissionsForProjectInOrgNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsCheckPermissionsForProjectLegacyNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsCheckPermissionsForRepoInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsCheckPermissionsForRepoInOrgNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsCheckPermissionsForRepoLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsCheckPermissionsForRepoLegacyNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *TeamsCreateDiscussionCommentInOrgReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -39049,7 +41721,7 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -39059,13 +41731,13 @@ func (s *TeamsCreateDiscussionInOrgReq) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -39081,13 +41753,13 @@ func (s *TeamsCreateDiscussionLegacyReq) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 	{
@@ -39102,17 +41774,27 @@ func (s *TeamsCreateDiscussionLegacyReq) SetFake() {
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
-	var elem jx.Raw
+	var (
+		elem jx.Raw
+		m    map[string]jx.Raw
+	)
 	s.AdditionalProps = map[string]jx.Raw{}
-
-	{
-		elem = []byte("null")
+	m = s.AdditionalProps
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
-	s.AdditionalProps["fake"] = elem
 }
 
 // SetFake set fake values.
@@ -39120,19 +41802,19 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) SetFake() {
 	{
 
 		{
-			s.GroupID = "string"
+			s.GroupID = ""
 		}
 	}
 	{
 
 		{
-			s.GroupName = "string"
+			s.GroupName = ""
 		}
 	}
 	{
 
 		{
-			s.GroupDescription = "string"
+			s.GroupDescription = ""
 		}
 	}
 }
@@ -39141,8 +41823,16 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) SetFake() {
 func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Groups = nil
+			for i := 0; i < 0; i++ {
+				var elem TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Groups = append(s.Groups, elem)
+			}
 		}
 	}
 	{
@@ -39158,19 +41848,19 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) SetFake() {
 	{
 
 		{
-			s.GroupID = "string"
+			s.GroupID = ""
 		}
 	}
 	{
 
 		{
-			s.GroupName = "string"
+			s.GroupName = ""
 		}
 	}
 	{
 
 		{
-			s.GroupDescription = "string"
+			s.GroupDescription = ""
 		}
 	}
 	{
@@ -39198,7 +41888,7 @@ func (s *TeamsCreateReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -39209,14 +41899,30 @@ func (s *TeamsCreateReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Maintainers = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Maintainers = append(s.Maintainers, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RepoNames = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RepoNames = append(s.RepoNames, elem)
+			}
 		}
 	}
 	{
@@ -39250,42 +41956,6 @@ func (s *TeamsCreateReqPrivacy) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsDeleteDiscussionCommentInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsDeleteDiscussionCommentLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsDeleteDiscussionInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsDeleteDiscussionLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsDeleteInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsDeleteLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsGetMemberLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsGetMemberLegacyNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsGetMembershipForUserInOrgNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *TeamsListChildLegacyApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -39309,30 +41979,18 @@ func (s *TeamsListChildLegacyApplicationJSONNotFound) SetFake() {
 func (s *TeamsListChildLegacyOKApplicationJSON) SetFake() {
 	var unwrapped []Team
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Team
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = TeamsListChildLegacyOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TeamsListDiscussionCommentsInOrgDirection) SetFake() {
-	*s = TeamsListDiscussionCommentsInOrgDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *TeamsListDiscussionCommentsLegacyDirection) SetFake() {
-	*s = TeamsListDiscussionCommentsLegacyDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *TeamsListDiscussionsInOrgDirection) SetFake() {
-	*s = TeamsListDiscussionsInOrgDirectionAsc
-}
-
-// SetFake set fake values.
-func (s *TeamsListDiscussionsLegacyDirection) SetFake() {
-	*s = TeamsListDiscussionsLegacyDirectionAsc
 }
 
 // SetFake set fake values.
@@ -39359,8 +42017,16 @@ func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) SetFake() {
 func (s *TeamsListForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []TeamFull
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem TeamFull
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = TeamsListForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
@@ -39386,31 +42052,37 @@ func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsListMembersInOrgRole) SetFake() {
-	*s = TeamsListMembersInOrgRoleMember
-}
-
-// SetFake set fake values.
 func (s *TeamsListMembersLegacyOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = TeamsListMembersLegacyOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TeamsListMembersLegacyRole) SetFake() {
-	*s = TeamsListMembersLegacyRoleMember
 }
 
 // SetFake set fake values.
 func (s *TeamsListOKApplicationJSON) SetFake() {
 	var unwrapped []Team
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Team
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = TeamsListOKApplicationJSON(unwrapped)
 }
@@ -39419,8 +42091,16 @@ func (s *TeamsListOKApplicationJSON) SetFake() {
 func (s *TeamsListProjectsLegacyOKApplicationJSON) SetFake() {
 	var unwrapped []TeamProject
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem TeamProject
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = TeamsListProjectsLegacyOKApplicationJSON(unwrapped)
 }
@@ -39429,50 +42109,18 @@ func (s *TeamsListProjectsLegacyOKApplicationJSON) SetFake() {
 func (s *TeamsListReposLegacyOKApplicationJSON) SetFake() {
 	var unwrapped []MinimalRepository
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem MinimalRepository
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = TeamsListReposLegacyOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveMemberLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveMemberLegacyNotFound) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveMembershipForUserInOrgForbidden) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveMembershipForUserInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveMembershipForUserLegacyForbidden) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveMembershipForUserLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveProjectInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveProjectLegacyNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveRepoInOrgNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *TeamsRemoveRepoLegacyNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -39480,7 +42128,7 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -39490,7 +42138,7 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) SetFake() {
 	{
 
 		{
-			s.Body = "string"
+			s.Body = ""
 		}
 	}
 }
@@ -39616,7 +42264,7 @@ func (s *TeamsUpdateLegacyReq) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -39660,7 +42308,7 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.ID = "string"
+			s.ID = ""
 		}
 	}
 	{
@@ -39678,7 +42326,7 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.Reason = "string"
+			s.Reason = ""
 		}
 	}
 	{
@@ -39690,7 +42338,7 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.UpdatedAt = "string"
+			s.UpdatedAt = ""
 		}
 	}
 	{
@@ -39702,13 +42350,13 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.SubscriptionURL = "string"
+			s.SubscriptionURL = ""
 		}
 	}
 }
@@ -39718,25 +42366,25 @@ func (s *ThreadSubject) SetFake() {
 	{
 
 		{
-			s.Title = "string"
+			s.Title = ""
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.LatestCommentURL = "string"
+			s.LatestCommentURL = ""
 		}
 	}
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 }
@@ -39791,8 +42439,16 @@ func (s *ThreadSubscription) SetFake() {
 func (s *Topic) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Names = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Names = append(s.Names, elem)
+			}
 		}
 	}
 }
@@ -39802,7 +42458,7 @@ func (s *TopicSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
@@ -39984,13 +42640,13 @@ func (s *Traffic) SetFake() {
 	{
 
 		{
-			s.Uniques = int(0)
+			s.Uniques = int(1)
 		}
 	}
 	{
 
 		{
-			s.Count = int(0)
+			s.Count = int(1)
 		}
 	}
 }
@@ -40000,7 +42656,7 @@ func (s *UserMarketplacePurchase) SetFake() {
 	{
 
 		{
-			s.BillingCycle = "string"
+			s.BillingCycle = ""
 		}
 	}
 	{
@@ -40052,19 +42708,19 @@ func (s *UserSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Login = "string"
+			s.Login = ""
 		}
 	}
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -40124,7 +42780,7 @@ func (s *UserSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Type = "string"
+			s.Type = ""
 		}
 	}
 	{
@@ -40136,25 +42792,25 @@ func (s *UserSearchResultItem) SetFake() {
 	{
 
 		{
-			s.FollowingURL = "string"
+			s.FollowingURL = ""
 		}
 	}
 	{
 
 		{
-			s.GistsURL = "string"
+			s.GistsURL = ""
 		}
 	}
 	{
 
 		{
-			s.StarredURL = "string"
+			s.StarredURL = ""
 		}
 	}
 	{
 
 		{
-			s.EventsURL = "string"
+			s.EventsURL = ""
 		}
 	}
 	{
@@ -40289,8 +42945,16 @@ func (s *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized) SetFake() {
 func (s *UsersAddEmailForAuthenticatedCreatedApplicationJSON) SetFake() {
 	var unwrapped []Email
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Email
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersAddEmailForAuthenticatedCreatedApplicationJSON(unwrapped)
 }
@@ -40309,8 +42973,16 @@ func (s *UsersAddEmailForAuthenticatedReq) SetFake() {
 func (s *UsersAddEmailForAuthenticatedReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 }
@@ -40346,10 +43018,6 @@ func (s *UsersBlockApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersBlockNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *UsersCheckBlockedApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -40380,18 +43048,6 @@ func (s *UsersCheckBlockedApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersCheckBlockedNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *UsersCheckFollowingForUserNoContent) SetFake() {
-}
-
-// SetFake set fake values.
-func (s *UsersCheckFollowingForUserNotFound) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -40419,10 +43075,6 @@ func (s *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized) S
 		unwrapped.SetFake()
 	}
 	*s = UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersCheckPersonIsFollowedByAuthenticatedNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -40460,7 +43112,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) SetFake() {
 	{
 
 		{
-			s.ArmoredPublicKey = "string"
+			s.ArmoredPublicKey = ""
 		}
 	}
 }
@@ -40506,7 +43158,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) SetFake() {
 	{
 
 		{
-			s.Key = "string"
+			s.Key = ""
 		}
 	}
 }
@@ -40542,10 +43194,6 @@ func (s *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized) SetFake() 
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteEmailForAuthenticatedNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *UsersDeleteEmailForAuthenticatedReq) SetFake() {
 	var elem UsersDeleteEmailForAuthenticatedReq0
 
@@ -40559,8 +43207,16 @@ func (s *UsersDeleteEmailForAuthenticatedReq) SetFake() {
 func (s *UsersDeleteEmailForAuthenticatedReq0) SetFake() {
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Emails = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Emails = append(s.Emails, elem)
+			}
 		}
 	}
 }
@@ -40596,10 +43252,6 @@ func (s *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized) SetFake()
 }
 
 // SetFake set fake values.
-func (s *UsersDeleteGpgKeyForAuthenticatedNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -40630,10 +43282,6 @@ func (s *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized) Set
 }
 
 // SetFake set fake values.
-func (s *UsersDeletePublicSSHKeyForAuthenticatedNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *UsersFollowApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -40661,10 +43309,6 @@ func (s *UsersFollowApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = UsersFollowApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersFollowNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -40705,11 +43349,6 @@ func (s *UsersGetByUsernameOK) SetFake() {
 		elem.SetFake()
 	}
 	s.SetPrivateUser(elem)
-}
-
-// SetFake set fake values.
-func (s *UsersGetContextForUserSubjectType) SetFake() {
-	*s = UsersGetContextForUserSubjectTypeOrganization
 }
 
 // SetFake set fake values.
@@ -40806,8 +43445,16 @@ func (s *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized) SetFake() {
 func (s *UsersListBlockedByAuthenticatedOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListBlockedByAuthenticatedOKApplicationJSON(unwrapped)
 }
@@ -40846,8 +43493,16 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) SetFake() {
 func (s *UsersListEmailsForAuthenticatedOKApplicationJSON) SetFake() {
 	var unwrapped []Email
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Email
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListEmailsForAuthenticatedOKApplicationJSON(unwrapped)
 }
@@ -40876,8 +43531,16 @@ func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) SetFake() 
 func (s *UsersListFollowedByAuthenticatedOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListFollowedByAuthenticatedOKApplicationJSON(unwrapped)
 }
@@ -40906,8 +43569,16 @@ func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) SetF
 func (s *UsersListFollowersForAuthenticatedUserOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListFollowersForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
@@ -40946,8 +43617,16 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) SetFake() 
 func (s *UsersListGpgKeysForAuthenticatedOKApplicationJSON) SetFake() {
 	var unwrapped []GpgKey
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem GpgKey
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListGpgKeysForAuthenticatedOKApplicationJSON(unwrapped)
 }
@@ -40956,8 +43635,16 @@ func (s *UsersListGpgKeysForAuthenticatedOKApplicationJSON) SetFake() {
 func (s *UsersListOKApplicationJSON) SetFake() {
 	var unwrapped []SimpleUser
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem SimpleUser
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListOKApplicationJSON(unwrapped)
 }
@@ -40996,8 +43683,16 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) SetFa
 func (s *UsersListPublicEmailsForAuthenticatedOKApplicationJSON) SetFake() {
 	var unwrapped []Email
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Email
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListPublicEmailsForAuthenticatedOKApplicationJSON(unwrapped)
 }
@@ -41036,8 +43731,16 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) SetF
 func (s *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) SetFake() {
 	var unwrapped []Key
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Key
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON(unwrapped)
 }
@@ -41076,8 +43779,16 @@ func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthoriz
 func (s *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON) SetFake() {
 	var unwrapped []Email
 
-	{ // Keep slice nil to prevent infinite recursion.
+	{
 		unwrapped = nil
+		for i := 0; i < 0; i++ {
+			var elem Email
+
+			{
+				elem.SetFake()
+			}
+			unwrapped = append(unwrapped, elem)
+		}
 	}
 	*s = UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON(unwrapped)
 }
@@ -41128,10 +43839,6 @@ func (s *UsersUnblockApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersUnblockNoContent) SetFake() {
-}
-
-// SetFake set fake values.
 func (s *UsersUnfollowApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 
@@ -41159,10 +43866,6 @@ func (s *UsersUnfollowApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = UsersUnfollowApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersUnfollowNoContent) SetFake() {
 }
 
 // SetFake set fake values.
@@ -41252,19 +43955,27 @@ func (s *ValidationError) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.DocumentationURL = "string"
+			s.DocumentationURL = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Errors = nil
+			for i := 0; i < 0; i++ {
+				var elem ValidationErrorErrorsItem
+
+				{
+					elem.SetFake()
+				}
+				s.Errors = append(s.Errors, elem)
+			}
 		}
 	}
 }
@@ -41292,7 +44003,7 @@ func (s *ValidationErrorErrorsItem) SetFake() {
 	{
 
 		{
-			s.Code = "string"
+			s.Code = ""
 		}
 	}
 	{
@@ -41314,7 +44025,7 @@ func (s *ValidationErrorErrorsItemValue) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -41324,19 +44035,27 @@ func (s *ValidationErrorSimple) SetFake() {
 	{
 
 		{
-			s.Message = "string"
+			s.Message = ""
 		}
 	}
 	{
 
 		{
-			s.DocumentationURL = "string"
+			s.DocumentationURL = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Errors = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.Errors = append(s.Errors, elem)
+			}
 		}
 	}
 }
@@ -41352,7 +44071,7 @@ func (s *Verification) SetFake() {
 	{
 
 		{
-			s.Reason = "string"
+			s.Reason = ""
 		}
 	}
 	{
@@ -41374,19 +44093,27 @@ func (s *ViewTraffic) SetFake() {
 	{
 
 		{
-			s.Count = int(0)
+			s.Count = int(1)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(0)
+			s.Uniques = int(1)
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.Views = nil
+			for i := 0; i < 0; i++ {
+				var elem Traffic
+
+				{
+					elem.SetFake()
+				}
+				s.Views = append(s.Views, elem)
+			}
 		}
 	}
 }
@@ -41424,7 +44151,7 @@ func (s *WebhookConfigContentType) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = WebhookConfigContentType(unwrapped)
 }
@@ -41434,7 +44161,7 @@ func (s *WebhookConfigInsecureSsl) SetFake() {
 	var elem string
 
 	{
-		elem = "string"
+		elem = ""
 	}
 	s.SetString(elem)
 }
@@ -41444,7 +44171,7 @@ func (s *WebhookConfigSecret) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "string"
+		unwrapped = ""
 	}
 	*s = WebhookConfigSecret(unwrapped)
 }
@@ -41464,25 +44191,25 @@ func (s *Workflow) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
 
 		{
-			s.Name = "string"
+			s.Name = ""
 		}
 	}
 	{
 
 		{
-			s.Path = "string"
+			s.Path = ""
 		}
 	}
 	{
@@ -41506,19 +44233,19 @@ func (s *Workflow) SetFake() {
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = "string"
+			s.HTMLURL = ""
 		}
 	}
 	{
 
 		{
-			s.BadgeURL = "string"
+			s.BadgeURL = ""
 		}
 	}
 	{
@@ -41534,7 +44261,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.ID = int(0)
+			s.ID = int(1)
 		}
 	}
 	{
@@ -41546,7 +44273,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.NodeID = "string"
+			s.NodeID = ""
 		}
 	}
 	{
@@ -41570,13 +44297,13 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.HeadSha = "string"
+			s.HeadSha = ""
 		}
 	}
 	{
 
 		{
-			s.RunNumber = int(0)
+			s.RunNumber = int(1)
 		}
 	}
 	{
@@ -41588,7 +44315,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.Event = "string"
+			s.Event = ""
 		}
 	}
 	{
@@ -41606,25 +44333,33 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.WorkflowID = int(0)
+			s.WorkflowID = int(1)
 		}
 	}
 	{
 
 		{
-			s.URL = "string"
+			s.URL = ""
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = "string"
+			s.HTMLURL = ""
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.PullRequests = nil
+			for i := 0; i < 0; i++ {
+				var elem PullRequestMinimal
+
+				{
+					elem.SetFake()
+				}
+				s.PullRequests = append(s.PullRequests, elem)
+			}
 		}
 	}
 	{
@@ -41642,37 +44377,37 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.JobsURL = "string"
+			s.JobsURL = ""
 		}
 	}
 	{
 
 		{
-			s.LogsURL = "string"
+			s.LogsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CheckSuiteURL = "string"
+			s.CheckSuiteURL = ""
 		}
 	}
 	{
 
 		{
-			s.ArtifactsURL = "string"
+			s.ArtifactsURL = ""
 		}
 	}
 	{
 
 		{
-			s.CancelURL = "string"
+			s.CancelURL = ""
 		}
 	}
 	{
 
 		{
-			s.RerunURL = "string"
+			s.RerunURL = ""
 		}
 	}
 	{
@@ -41684,7 +44419,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.WorkflowURL = "string"
+			s.WorkflowURL = ""
 		}
 	}
 	{
@@ -41756,13 +44491,13 @@ func (s *WorkflowRunUsageBillableMACOS) SetFake() {
 	{
 
 		{
-			s.TotalMs = int(0)
+			s.TotalMs = int(1)
 		}
 	}
 	{
 
 		{
-			s.Jobs = int(0)
+			s.Jobs = int(1)
 		}
 	}
 }
@@ -41772,13 +44507,13 @@ func (s *WorkflowRunUsageBillableUBUNTU) SetFake() {
 	{
 
 		{
-			s.TotalMs = int(0)
+			s.TotalMs = int(1)
 		}
 	}
 	{
 
 		{
-			s.Jobs = int(0)
+			s.Jobs = int(1)
 		}
 	}
 }
@@ -41788,13 +44523,13 @@ func (s *WorkflowRunUsageBillableWINDOWS) SetFake() {
 	{
 
 		{
-			s.TotalMs = int(0)
+			s.TotalMs = int(1)
 		}
 	}
 	{
 
 		{
-			s.Jobs = int(0)
+			s.Jobs = int(1)
 		}
 	}
 }

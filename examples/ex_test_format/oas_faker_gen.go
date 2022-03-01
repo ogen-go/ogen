@@ -168,50 +168,122 @@ func (s *NilUUID) SetFake() {
 
 // SetFake set fake values.
 func (s *OptBool) SetFake() {
+	var elem bool
+
+	{
+		elem = true
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptDate) SetFake() {
+	var elem time.Time
+
+	{
+		elem = time.Now()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptDateTime) SetFake() {
+	var elem time.Time
+
+	{
+		elem = time.Now()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptDuration) SetFake() {
+	var elem time.Duration
+
+	{
+		elem = time.Duration(5 * time.Second)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFloat32) SetFake() {
+	var elem float32
+
+	{
+		elem = float32(0)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptFloat64) SetFake() {
+	var elem float64
+
+	{
+		elem = float64(0)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIP) SetFake() {
+	var elem net.IP
+
+	{
+		elem = net.ParseIP("127.0.0.1")
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIPv4) SetFake() {
+	var elem net.IP
+
+	{
+		elem = net.ParseIP("127.0.0.1")
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIPv6) SetFake() {
+	var elem net.IP
+
+	{
+		elem = net.ParseIP("127.0.0.1")
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt) SetFake() {
+	var elem int
+
+	{
+		elem = int(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt32) SetFake() {
+	var elem int32
+
+	{
+		elem = int32(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptInt64) SetFake() {
+	var elem int64
+
+	{
+		elem = int64(1)
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -318,22 +390,52 @@ func (s *OptNilUUID) SetFake() {
 
 // SetFake set fake values.
 func (s *OptString) SetFake() {
+	var elem string
+
+	{
+		elem = ""
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTestRequestFormatTestReq) SetFake() {
+	var elem TestRequestFormatTestReq
+
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptTime) SetFake() {
+	var elem time.Time
+
+	{
+		elem = time.Now()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptURI) SetFake() {
+	var elem url.URL
+
+	{
+		elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptUUID) SetFake() {
+	var elem uuid.UUID
+
+	{
+		elem = uuid.New()
+	}
+	s.SetTo(elem)
 }
 
 // SetFake set fake values.
@@ -350,152 +452,352 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+
+				{
+					elem = true
+				}
+				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayString = append(s.RequiredArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+
+				{
+					elem = uuid.New()
+				}
+				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -506,170 +808,570 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+
+						{
+							elemElem = int(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.RequiredInteger = int(0)
+			s.RequiredInteger = int(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt32 = int32(0)
+			s.RequiredIntegerInt32 = int32(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt64 = int64(0)
+			s.RequiredIntegerInt64 = int64(1)
 		}
 	}
 	{
@@ -693,25 +1395,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredNumberInt32 = int32(0)
+			s.RequiredNumberInt32 = int32(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredNumberInt64 = int64(0)
+			s.RequiredNumberInt64 = int64(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredString = "string"
+			s.RequiredString = ""
 		}
 	}
 	{
 
 		{
-			s.RequiredStringBinary = "string"
+			s.RequiredStringBinary = ""
 		}
 	}
 	{
@@ -741,13 +1443,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringEmail = "string"
+			s.RequiredStringEmail = ""
 		}
 	}
 	{
 
 		{
-			s.RequiredStringHostname = "string"
+			s.RequiredStringHostname = ""
 		}
 	}
 	{
@@ -771,7 +1473,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringPassword = "string"
+			s.RequiredStringPassword = ""
 		}
 	}
 	{
@@ -800,152 +1502,352 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+
+				{
+					elem = true
+				}
+				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+
+				{
+					elem = uuid.New()
+				}
+				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -956,152 +1858,552 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+
+						{
+							elemElem = int(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -1258,152 +2560,352 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+
+				{
+					elem = true
+				}
+				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayString = append(s.RequiredArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+
+				{
+					elem = uuid.New()
+				}
+				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -1414,170 +2916,570 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+
+						{
+							elemElem = int(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.RequiredInteger = int(0)
+			s.RequiredInteger = int(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt32 = int32(0)
+			s.RequiredIntegerInt32 = int32(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt64 = int64(0)
+			s.RequiredIntegerInt64 = int64(1)
 		}
 	}
 	{
@@ -1601,25 +3503,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredNumberInt32 = int32(0)
+			s.RequiredNumberInt32 = int32(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredNumberInt64 = int64(0)
+			s.RequiredNumberInt64 = int64(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredString = "string"
+			s.RequiredString = ""
 		}
 	}
 	{
 
 		{
-			s.RequiredStringBinary = "string"
+			s.RequiredStringBinary = ""
 		}
 	}
 	{
@@ -1649,13 +3551,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringEmail = "string"
+			s.RequiredStringEmail = ""
 		}
 	}
 	{
 
 		{
-			s.RequiredStringHostname = "string"
+			s.RequiredStringHostname = ""
 		}
 	}
 	{
@@ -1679,7 +3581,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringPassword = "string"
+			s.RequiredStringPassword = ""
 		}
 	}
 	{
@@ -1708,152 +3610,352 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+
+				{
+					elem = true
+				}
+				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+
+				{
+					elem = uuid.New()
+				}
+				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -1864,152 +3966,552 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+
+						{
+							elemElem = int(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -2166,152 +4668,352 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.RequiredArrayAny = append(s.RequiredArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+
+				{
+					elem = true
+				}
+				s.RequiredArrayBoolean = append(s.RequiredArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumber = append(s.RequiredArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.RequiredArrayNumberDouble = append(s.RequiredArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+
+				{
+					elem = float32(0)
+				}
+				s.RequiredArrayNumberFloat = append(s.RequiredArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayString = append(s.RequiredArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+
+				{
+					elem = []byte("[]byte")
+				}
+				s.RequiredArrayStringByte = append(s.RequiredArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDate = append(s.RequiredArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringDateMinusTime = append(s.RequiredArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.RequiredArrayStringDuration = append(s.RequiredArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.RequiredArrayStringTime = append(s.RequiredArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.RequiredArrayStringURI = append(s.RequiredArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+
+				{
+					elem = uuid.New()
+				}
+				s.RequiredArrayStringUUID = append(s.RequiredArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -2322,170 +5024,570 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayAny = append(s.RequiredDoubleArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayBoolean = append(s.RequiredDoubleArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+
+						{
+							elemElem = int(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayInteger = append(s.RequiredDoubleArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt32 = append(s.RequiredDoubleArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumber = append(s.RequiredDoubleArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberDouble = append(s.RequiredDoubleArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberFloat = append(s.RequiredDoubleArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt32 = append(s.RequiredDoubleArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNumberInt64 = append(s.RequiredDoubleArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayString = append(s.RequiredDoubleArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringBinary = append(s.RequiredDoubleArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringByte = append(s.RequiredDoubleArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDate = append(s.RequiredDoubleArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDateMinusTime = append(s.RequiredDoubleArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringDuration = append(s.RequiredDoubleArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringEmail = append(s.RequiredDoubleArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringHostname = append(s.RequiredDoubleArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIP = append(s.RequiredDoubleArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv4 = append(s.RequiredDoubleArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringIpv6 = append(s.RequiredDoubleArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringPassword = append(s.RequiredDoubleArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringTime = append(s.RequiredDoubleArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringURI = append(s.RequiredDoubleArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.RequiredDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringUUID = append(s.RequiredDoubleArrayStringUUID, elem)
+			}
 		}
 	}
 	{
 
 		{
-			s.RequiredInteger = int(0)
+			s.RequiredInteger = int(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt32 = int32(0)
+			s.RequiredIntegerInt32 = int32(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt64 = int64(0)
+			s.RequiredIntegerInt64 = int64(1)
 		}
 	}
 	{
@@ -2509,25 +5611,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 
 		{
-			s.RequiredNumberInt32 = int32(0)
+			s.RequiredNumberInt32 = int32(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredNumberInt64 = int64(0)
+			s.RequiredNumberInt64 = int64(1)
 		}
 	}
 	{
 
 		{
-			s.RequiredString = "string"
+			s.RequiredString = ""
 		}
 	}
 	{
 
 		{
-			s.RequiredStringBinary = "string"
+			s.RequiredStringBinary = ""
 		}
 	}
 	{
@@ -2557,13 +5659,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 
 		{
-			s.RequiredStringEmail = "string"
+			s.RequiredStringEmail = ""
 		}
 	}
 	{
 
 		{
-			s.RequiredStringHostname = "string"
+			s.RequiredStringHostname = ""
 		}
 	}
 	{
@@ -2587,7 +5689,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 
 		{
-			s.RequiredStringPassword = "string"
+			s.RequiredStringPassword = ""
 		}
 	}
 	{
@@ -2616,152 +5718,352 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem jx.Raw
+
+				{
+					elem = []byte("null")
+				}
+				s.OptionalArrayAny = append(s.OptionalArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem bool
+
+				{
+					elem = true
+				}
+				s.OptionalArrayBoolean = append(s.OptionalArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem int
+
+				{
+					elem = int(1)
+				}
+				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumber = append(s.OptionalArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem float64
+
+				{
+					elem = float64(0)
+				}
+				s.OptionalArrayNumberDouble = append(s.OptionalArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem float32
+
+				{
+					elem = float32(0)
+				}
+				s.OptionalArrayNumberFloat = append(s.OptionalArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+
+				{
+					elem = int32(1)
+				}
+				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+
+				{
+					elem = int64(1)
+				}
+				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayString = append(s.OptionalArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem []byte
+
+				{
+					elem = []byte("[]byte")
+				}
+				s.OptionalArrayStringByte = append(s.OptionalArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDate = append(s.OptionalArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringDateMinusTime = append(s.OptionalArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Duration
+
+				{
+					elem = time.Duration(5 * time.Second)
+				}
+				s.OptionalArrayStringDuration = append(s.OptionalArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem net.IP
+
+				{
+					elem = net.ParseIP("127.0.0.1")
+				}
+				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem string
+
+				{
+					elem = ""
+				}
+				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem time.Time
+
+				{
+					elem = time.Now()
+				}
+				s.OptionalArrayStringTime = append(s.OptionalArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem url.URL
+
+				{
+					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+				}
+				s.OptionalArrayStringURI = append(s.OptionalArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem uuid.UUID
+
+				{
+					elem = uuid.New()
+				}
+				s.OptionalArrayStringUUID = append(s.OptionalArrayStringUUID, elem)
+			}
 		}
 	}
 	{
@@ -2772,152 +6074,552 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayAny = nil
+			for i := 0; i < 0; i++ {
+				var elem []jx.Raw
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem jx.Raw
+
+						{
+							elemElem = []byte("null")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayAny = append(s.OptionalDoubleArrayAny, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayBoolean = nil
+			for i := 0; i < 0; i++ {
+				var elem []bool
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem bool
+
+						{
+							elemElem = true
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayBoolean = append(s.OptionalDoubleArrayBoolean, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayInteger = nil
+			for i := 0; i < 0; i++ {
+				var elem []int
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int
+
+						{
+							elemElem = int(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayInteger = append(s.OptionalDoubleArrayInteger, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt32 = append(s.OptionalDoubleArrayIntegerInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayIntegerInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumber = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumber = append(s.OptionalDoubleArrayNumber, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberDouble = nil
+			for i := 0; i < 0; i++ {
+				var elem []float64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float64
+
+						{
+							elemElem = float64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberDouble = append(s.OptionalDoubleArrayNumberDouble, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberFloat = nil
+			for i := 0; i < 0; i++ {
+				var elem []float32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem float32
+
+						{
+							elemElem = float32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberFloat = append(s.OptionalDoubleArrayNumberFloat, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+
+						{
+							elemElem = int32(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt32 = append(s.OptionalDoubleArrayNumberInt32, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayNumberInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+
+						{
+							elemElem = int64(1)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNumberInt64 = append(s.OptionalDoubleArrayNumberInt64, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayString = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayString = append(s.OptionalDoubleArrayString, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringBinary = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringBinary = append(s.OptionalDoubleArrayStringBinary, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringByte = nil
+			for i := 0; i < 0; i++ {
+				var elem [][]byte
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem []byte
+
+						{
+							elemElem = []byte("[]byte")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringByte = append(s.OptionalDoubleArrayStringByte, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDate = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDate = append(s.OptionalDoubleArrayStringDate, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDateMinusTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDateMinusTime = append(s.OptionalDoubleArrayStringDateMinusTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringDuration = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Duration
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Duration
+
+						{
+							elemElem = time.Duration(5 * time.Second)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringDuration = append(s.OptionalDoubleArrayStringDuration, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringEmail = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringEmail = append(s.OptionalDoubleArrayStringEmail, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringHostname = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringHostname = append(s.OptionalDoubleArrayStringHostname, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIP = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIP = append(s.OptionalDoubleArrayStringIP, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIpv4 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv4 = append(s.OptionalDoubleArrayStringIpv4, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringIpv6 = nil
+			for i := 0; i < 0; i++ {
+				var elem []net.IP
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem net.IP
+
+						{
+							elemElem = net.ParseIP("127.0.0.1")
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringIpv6 = append(s.OptionalDoubleArrayStringIpv6, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringPassword = nil
+			for i := 0; i < 0; i++ {
+				var elem []string
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem string
+
+						{
+							elemElem = ""
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringPassword = append(s.OptionalDoubleArrayStringPassword, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringTime = nil
+			for i := 0; i < 0; i++ {
+				var elem []time.Time
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem time.Time
+
+						{
+							elemElem = time.Now()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringTime = append(s.OptionalDoubleArrayStringTime, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringURI = nil
+			for i := 0; i < 0; i++ {
+				var elem []url.URL
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem url.URL
+
+						{
+							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringURI = append(s.OptionalDoubleArrayStringURI, elem)
+			}
 		}
 	}
 	{
 
-		{ // Keep slice nil to prevent infinite recursion.
+		{
 			s.OptionalDoubleArrayStringUUID = nil
+			for i := 0; i < 0; i++ {
+				var elem []uuid.UUID
+
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem uuid.UUID
+
+						{
+							elemElem = uuid.New()
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringUUID = append(s.OptionalDoubleArrayStringUUID, elem)
+			}
 		}
 	}
 	{

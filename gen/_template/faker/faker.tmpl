@@ -13,12 +13,16 @@
     // Keep pointer nil to prevent infinite recursion.
     {{ $.Var }} = nil
 {{- else if $t.IsArray -}}
-	// Keep slice nil to prevent infinite recursion.
     {{ $.Var }} = nil
+	for i := 0; i < {{ $t.Validators.Array.MinLength }}; i++ {
+		var {{ $.NextVar }} {{ $t.Item.Go }}
+		{{ template "faker/faker" sub_array_elem $ $t.Item }}
+    	{{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
+	}
 {{- else if $t.IsAny }}
     {{ $.Var }} = []byte("null")
 {{- else if $t.IsPrimitive -}}
-    {{ $.Var }} = {{ $t.Primitive.FakeValue }}
+    {{ $.Var }} = {{ $t.FakeValue }}
 {{- else -}}
     {{ errorf "unsupported: %s" $t }}
 {{- end }}

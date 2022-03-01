@@ -7,6 +7,10 @@ func (s *{{ $.Name }}) SetFake() {
 		s.Set = true
 	{{- else if $.GenericVariant.Nullable }}
 		s.Null = true
+	{{- else }}
+		var elem {{ $.GenericOf.Go }}
+        {{ template "faker/faker" elem $.GenericOf "elem" }}
+		s.SetTo(elem)
 	{{- end }}
 }
 {{- end }}

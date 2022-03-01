@@ -2,7 +2,7 @@
 {{- define "faker/faker_struct" }}
 // SetFake set fake values.
 func (s *{{ $.Name }}) SetFake() {
-{{- range $f := $.Fields }}
+{{- range $f := $.FakeFields }}
 	{
     {{ template "faker/faker" field_elem $f }}
 	}
