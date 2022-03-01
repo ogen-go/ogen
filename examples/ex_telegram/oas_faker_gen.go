@@ -75,13 +75,13 @@ func (s *AddStickerToSet) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -99,7 +99,7 @@ func (s *AddStickerToSet) SetFake() {
 	{
 
 		{
-			s.Emojis = ""
+			s.Emojis = "string"
 		}
 	}
 	{
@@ -115,13 +115,13 @@ func (s *Animation) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -173,7 +173,7 @@ func (s *AnswerCallbackQuery) SetFake() {
 	{
 
 		{
-			s.CallbackQueryID = ""
+			s.CallbackQueryID = "string"
 		}
 	}
 	{
@@ -207,7 +207,7 @@ func (s *AnswerInlineQuery) SetFake() {
 	{
 
 		{
-			s.InlineQueryID = ""
+			s.InlineQueryID = "string"
 		}
 	}
 	{
@@ -261,7 +261,7 @@ func (s *AnswerPreCheckoutQuery) SetFake() {
 	{
 
 		{
-			s.PreCheckoutQueryID = ""
+			s.PreCheckoutQueryID = "string"
 		}
 	}
 	{
@@ -283,7 +283,7 @@ func (s *AnswerShippingQuery) SetFake() {
 	{
 
 		{
-			s.ShippingQueryID = ""
+			s.ShippingQueryID = "string"
 		}
 	}
 	{
@@ -325,7 +325,7 @@ func (s *ApproveChatJoinRequest) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 }
@@ -335,13 +335,13 @@ func (s *Audio) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -399,7 +399,7 @@ func (s *BanChatMember) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -427,7 +427,7 @@ func (s *BanChatSenderChat) SetFake() {
 	{
 
 		{
-			s.SenderChatID = int64(1)
+			s.SenderChatID = int64(0)
 		}
 	}
 }
@@ -437,13 +437,13 @@ func (s *BotCommand) SetFake() {
 	{
 
 		{
-			s.Command = "a"
+			s.Command = "string"
 		}
 	}
 	{
 
 		{
-			s.Description = "aaa"
+			s.Description = "string"
 		}
 	}
 }
@@ -501,7 +501,7 @@ func (s *BotCommandScopeChatMember) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 }
@@ -519,7 +519,7 @@ func (s *CallbackQuery) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -543,7 +543,7 @@ func (s *CallbackQuery) SetFake() {
 	{
 
 		{
-			s.ChatInstance = ""
+			s.ChatInstance = "string"
 		}
 	}
 	{
@@ -565,7 +565,7 @@ func (s *Chat) SetFake() {
 	{
 
 		{
-			s.ID = int64(1)
+			s.ID = int64(0)
 		}
 	}
 	{
@@ -689,7 +689,7 @@ func (s *ChatInviteLink) SetFake() {
 	{
 
 		{
-			s.InviteLink = ""
+			s.InviteLink = "string"
 		}
 	}
 	{
@@ -759,7 +759,7 @@ func (s *ChatJoinRequest) SetFake() {
 	{
 
 		{
-			s.Date = int(1)
+			s.Date = int(0)
 		}
 	}
 	{
@@ -787,7 +787,7 @@ func (s *ChatLocation) SetFake() {
 	{
 
 		{
-			s.Address = "a"
+			s.Address = "string"
 		}
 	}
 }
@@ -807,7 +807,7 @@ func (s *ChatMemberAdministrator) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -901,7 +901,7 @@ func (s *ChatMemberBanned) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -913,7 +913,7 @@ func (s *ChatMemberBanned) SetFake() {
 	{
 
 		{
-			s.UntilDate = int(1)
+			s.UntilDate = int(0)
 		}
 	}
 }
@@ -923,7 +923,7 @@ func (s *ChatMemberLeft) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -939,7 +939,7 @@ func (s *ChatMemberMember) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -955,7 +955,7 @@ func (s *ChatMemberOwner) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -983,7 +983,7 @@ func (s *ChatMemberRestricted) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -1049,7 +1049,7 @@ func (s *ChatMemberRestricted) SetFake() {
 	{
 
 		{
-			s.UntilDate = int(1)
+			s.UntilDate = int(0)
 		}
 	}
 }
@@ -1071,7 +1071,7 @@ func (s *ChatMemberUpdated) SetFake() {
 	{
 
 		{
-			s.Date = int(1)
+			s.Date = int(0)
 		}
 	}
 	{
@@ -1151,25 +1151,25 @@ func (s *ChatPhoto) SetFake() {
 	{
 
 		{
-			s.SmallFileID = ""
+			s.SmallFileID = "string"
 		}
 	}
 	{
 
 		{
-			s.SmallFileUniqueID = ""
+			s.SmallFileUniqueID = "string"
 		}
 	}
 	{
 
 		{
-			s.BigFileID = ""
+			s.BigFileID = "string"
 		}
 	}
 	{
 
 		{
-			s.BigFileUniqueID = ""
+			s.BigFileUniqueID = "string"
 		}
 	}
 }
@@ -1184,7 +1184,7 @@ func (s *ChosenInlineResult) SetFake() {
 	{
 
 		{
-			s.ResultID = ""
+			s.ResultID = "string"
 		}
 	}
 	{
@@ -1208,7 +1208,7 @@ func (s *ChosenInlineResult) SetFake() {
 	{
 
 		{
-			s.Query = ""
+			s.Query = "string"
 		}
 	}
 }
@@ -1218,13 +1218,13 @@ func (s *Contact) SetFake() {
 	{
 
 		{
-			s.PhoneNumber = ""
+			s.PhoneNumber = "string"
 		}
 	}
 	{
 
 		{
-			s.FirstName = ""
+			s.FirstName = "string"
 		}
 	}
 	{
@@ -1264,7 +1264,7 @@ func (s *CopyMessage) SetFake() {
 	{
 
 		{
-			s.MessageID = int(1)
+			s.MessageID = int(0)
 		}
 	}
 	{
@@ -1368,19 +1368,19 @@ func (s *CreateNewStickerSet) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.Name = "a"
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = "a"
+			s.Title = "string"
 		}
 	}
 	{
@@ -1398,7 +1398,7 @@ func (s *CreateNewStickerSet) SetFake() {
 	{
 
 		{
-			s.Emojis = ""
+			s.Emojis = "string"
 		}
 	}
 	{
@@ -1426,7 +1426,7 @@ func (s *DeclineChatJoinRequest) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 }
@@ -1462,7 +1462,7 @@ func (s *DeleteMessage) SetFake() {
 	{
 
 		{
-			s.MessageID = int(1)
+			s.MessageID = int(0)
 		}
 	}
 }
@@ -1488,7 +1488,7 @@ func (s *DeleteStickerFromSet) SetFake() {
 	{
 
 		{
-			s.Sticker = ""
+			s.Sticker = "string"
 		}
 	}
 }
@@ -1508,13 +1508,13 @@ func (s *Dice) SetFake() {
 	{
 
 		{
-			s.Emoji = ""
+			s.Emoji = "string"
 		}
 	}
 	{
 
 		{
-			s.Value = int(1)
+			s.Value = int(0)
 		}
 	}
 }
@@ -1524,13 +1524,13 @@ func (s *Document) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -1570,7 +1570,7 @@ func (s *EditChatInviteLink) SetFake() {
 	{
 
 		{
-			s.InviteLink = ""
+			s.InviteLink = "string"
 		}
 	}
 	{
@@ -1796,7 +1796,7 @@ func (s *EditMessageText) SetFake() {
 	{
 
 		{
-			s.Text = "a"
+			s.Text = "string"
 		}
 	}
 	{
@@ -1838,19 +1838,19 @@ func (s *EncryptedCredentials) SetFake() {
 	{
 
 		{
-			s.Data = ""
+			s.Data = "string"
 		}
 	}
 	{
 
 		{
-			s.Hash = ""
+			s.Hash = "string"
 		}
 	}
 	{
 
 		{
-			s.Secret = ""
+			s.Secret = "string"
 		}
 	}
 }
@@ -1930,7 +1930,7 @@ func (s *EncryptedPassportElement) SetFake() {
 	{
 
 		{
-			s.Hash = ""
+			s.Hash = "string"
 		}
 	}
 }
@@ -1951,13 +1951,13 @@ func (s *Error) SetFake() {
 	{
 
 		{
-			s.ErrorCode = int(1)
+			s.ErrorCode = int(0)
 		}
 	}
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
@@ -1983,13 +1983,13 @@ func (s *File) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -2051,7 +2051,7 @@ func (s *ForwardMessage) SetFake() {
 	{
 
 		{
-			s.MessageID = int(1)
+			s.MessageID = int(0)
 		}
 	}
 }
@@ -2061,13 +2061,13 @@ func (s *Game) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
@@ -2117,7 +2117,7 @@ func (s *GameHighScore) SetFake() {
 	{
 
 		{
-			s.Position = int(1)
+			s.Position = int(0)
 		}
 	}
 	{
@@ -2129,7 +2129,7 @@ func (s *GameHighScore) SetFake() {
 	{
 
 		{
-			s.Score = int(1)
+			s.Score = int(0)
 		}
 	}
 }
@@ -2165,7 +2165,7 @@ func (s *GetChatMember) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 }
@@ -2185,7 +2185,7 @@ func (s *GetFile) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 }
@@ -2195,7 +2195,7 @@ func (s *GetGameHighScores) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -2239,7 +2239,7 @@ func (s *GetStickerSet) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -2272,7 +2272,7 @@ func (s *GetUpdates) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AllowedUpdates = append(s.AllowedUpdates, elem)
 			}
@@ -2285,7 +2285,7 @@ func (s *GetUserProfilePhotos) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -2307,7 +2307,7 @@ func (s *ID) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -2317,7 +2317,7 @@ func (s *InlineKeyboardButton) SetFake() {
 	{
 
 		{
-			s.Text = ""
+			s.Text = "string"
 		}
 	}
 	{
@@ -2395,7 +2395,7 @@ func (s *InlineQuery) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -2407,13 +2407,13 @@ func (s *InlineQuery) SetFake() {
 	{
 
 		{
-			s.Query = ""
+			s.Query = "string"
 		}
 	}
 	{
 
 		{
-			s.Offset = ""
+			s.Offset = "string"
 		}
 	}
 	{
@@ -2450,13 +2450,13 @@ func (s *InlineQueryResultArticle) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -2514,7 +2514,7 @@ func (s *InlineQueryResultAudio) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
@@ -2526,7 +2526,7 @@ func (s *InlineQueryResultAudio) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -2586,19 +2586,19 @@ func (s *InlineQueryResultCachedAudio) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.AudioFileID = ""
+			s.AudioFileID = "string"
 		}
 	}
 	{
@@ -2646,25 +2646,25 @@ func (s *InlineQueryResultCachedDocument) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.DocumentFileID = ""
+			s.DocumentFileID = "string"
 		}
 	}
 	{
@@ -2718,19 +2718,19 @@ func (s *InlineQueryResultCachedGif) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.GIFFileID = ""
+			s.GIFFileID = "string"
 		}
 	}
 	{
@@ -2784,19 +2784,19 @@ func (s *InlineQueryResultCachedMpeg4Gif) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.Mpeg4FileID = ""
+			s.Mpeg4FileID = "string"
 		}
 	}
 	{
@@ -2850,19 +2850,19 @@ func (s *InlineQueryResultCachedPhoto) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.PhotoFileID = ""
+			s.PhotoFileID = "string"
 		}
 	}
 	{
@@ -2922,13 +2922,13 @@ func (s *InlineQueryResultCachedSticker) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.StickerFileID = ""
+			s.StickerFileID = "string"
 		}
 	}
 	{
@@ -2950,25 +2950,25 @@ func (s *InlineQueryResultCachedVideo) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.VideoFileID = ""
+			s.VideoFileID = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -3022,25 +3022,25 @@ func (s *InlineQueryResultCachedVoice) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.VoiceFileID = ""
+			s.VoiceFileID = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -3088,19 +3088,19 @@ func (s *InlineQueryResultContact) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.PhoneNumber = ""
+			s.PhoneNumber = "string"
 		}
 	}
 	{
 
 		{
-			s.FirstName = ""
+			s.FirstName = "string"
 		}
 	}
 	{
@@ -3152,13 +3152,13 @@ func (s *InlineQueryResultDocument) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -3196,7 +3196,7 @@ func (s *InlineQueryResultDocument) SetFake() {
 	{
 
 		{
-			s.MimeType = ""
+			s.MimeType = "string"
 		}
 	}
 	{
@@ -3242,13 +3242,13 @@ func (s *InlineQueryResultGame) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.GameShortName = ""
+			s.GameShortName = "string"
 		}
 	}
 	{
@@ -3264,7 +3264,7 @@ func (s *InlineQueryResultGif) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
@@ -3354,7 +3354,7 @@ func (s *InlineQueryResultLocation) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -3372,7 +3372,7 @@ func (s *InlineQueryResultLocation) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -3436,7 +3436,7 @@ func (s *InlineQueryResultMpeg4Gif) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
@@ -3526,7 +3526,7 @@ func (s *InlineQueryResultPhoto) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
@@ -3610,7 +3610,7 @@ func (s *InlineQueryResultVenue) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -3628,13 +3628,13 @@ func (s *InlineQueryResultVenue) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Address = ""
+			s.Address = "string"
 		}
 	}
 	{
@@ -3698,7 +3698,7 @@ func (s *InlineQueryResultVideo) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
@@ -3710,7 +3710,7 @@ func (s *InlineQueryResultVideo) SetFake() {
 	{
 
 		{
-			s.MimeType = ""
+			s.MimeType = "string"
 		}
 	}
 	{
@@ -3722,7 +3722,7 @@ func (s *InlineQueryResultVideo) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -3794,7 +3794,7 @@ func (s *InlineQueryResultVoice) SetFake() {
 	{
 
 		{
-			s.ID = "a"
+			s.ID = "string"
 		}
 	}
 	{
@@ -3806,7 +3806,7 @@ func (s *InlineQueryResultVoice) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -3860,13 +3860,13 @@ func (s *InputContactMessageContent) SetFake() {
 	{
 
 		{
-			s.PhoneNumber = ""
+			s.PhoneNumber = "string"
 		}
 	}
 	{
 
 		{
-			s.FirstName = ""
+			s.FirstName = "string"
 		}
 	}
 	{
@@ -3888,31 +3888,31 @@ func (s *InputInvoiceMessageContent) SetFake() {
 	{
 
 		{
-			s.Title = "a"
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Description = "a"
+			s.Description = "string"
 		}
 	}
 	{
 
 		{
-			s.Payload = "a"
+			s.Payload = "string"
 		}
 	}
 	{
 
 		{
-			s.ProviderToken = ""
+			s.ProviderToken = "string"
 		}
 	}
 	{
 
 		{
-			s.Currency = ""
+			s.Currency = "string"
 		}
 	}
 	{
@@ -3943,7 +3943,7 @@ func (s *InputInvoiceMessageContent) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SuggestedTipAmounts = append(s.SuggestedTipAmounts, elem)
 			}
@@ -4078,7 +4078,7 @@ func (s *InputMediaAnimation) SetFake() {
 	{
 
 		{
-			s.Media = ""
+			s.Media = "string"
 		}
 	}
 	{
@@ -4138,7 +4138,7 @@ func (s *InputMediaAudio) SetFake() {
 	{
 
 		{
-			s.Media = ""
+			s.Media = "string"
 		}
 	}
 	{
@@ -4198,7 +4198,7 @@ func (s *InputMediaDocument) SetFake() {
 	{
 
 		{
-			s.Media = ""
+			s.Media = "string"
 		}
 	}
 	{
@@ -4246,7 +4246,7 @@ func (s *InputMediaPhoto) SetFake() {
 	{
 
 		{
-			s.Media = ""
+			s.Media = "string"
 		}
 	}
 	{
@@ -4282,7 +4282,7 @@ func (s *InputMediaVideo) SetFake() {
 	{
 
 		{
-			s.Media = ""
+			s.Media = "string"
 		}
 	}
 	{
@@ -4358,7 +4358,7 @@ func (s *InputTextMessageContent) SetFake() {
 	{
 
 		{
-			s.MessageText = "a"
+			s.MessageText = "string"
 		}
 	}
 	{
@@ -4406,13 +4406,13 @@ func (s *InputVenueMessageContent) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Address = ""
+			s.Address = "string"
 		}
 	}
 	{
@@ -4446,31 +4446,31 @@ func (s *Invoice) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
 
 		{
-			s.StartParameter = ""
+			s.StartParameter = "string"
 		}
 	}
 	{
 
 		{
-			s.Currency = ""
+			s.Currency = "string"
 		}
 	}
 	{
 
 		{
-			s.TotalAmount = int(1)
+			s.TotalAmount = int(0)
 		}
 	}
 }
@@ -4480,7 +4480,7 @@ func (s *KeyboardButton) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -4490,7 +4490,7 @@ func (s *KeyboardButtonObject) SetFake() {
 	{
 
 		{
-			s.Text = ""
+			s.Text = "string"
 		}
 	}
 	{
@@ -4528,13 +4528,13 @@ func (s *LabeledPrice) SetFake() {
 	{
 
 		{
-			s.Label = ""
+			s.Label = "string"
 		}
 	}
 	{
 
 		{
-			s.Amount = int(1)
+			s.Amount = int(0)
 		}
 	}
 }
@@ -4622,7 +4622,7 @@ func (s *MaskPosition) SetFake() {
 	{
 
 		{
-			s.Point = ""
+			s.Point = "string"
 		}
 	}
 	{
@@ -4650,7 +4650,7 @@ func (s *Message) SetFake() {
 	{
 
 		{
-			s.MessageID = int(1)
+			s.MessageID = int(0)
 		}
 	}
 	{
@@ -4668,7 +4668,7 @@ func (s *Message) SetFake() {
 	{
 
 		{
-			s.Date = int(1)
+			s.Date = int(0)
 		}
 	}
 	{
@@ -5042,7 +5042,7 @@ func (s *MessageAutoDeleteTimerChanged) SetFake() {
 	{
 
 		{
-			s.MessageAutoDeleteTime = int(1)
+			s.MessageAutoDeleteTime = int(0)
 		}
 	}
 }
@@ -5058,13 +5058,13 @@ func (s *MessageEntity) SetFake() {
 	{
 
 		{
-			s.Offset = int(1)
+			s.Offset = int(0)
 		}
 	}
 	{
 
 		{
-			s.Length = int(1)
+			s.Length = int(0)
 		}
 	}
 	{
@@ -5097,7 +5097,7 @@ func (s *MessageId) SetFake() {
 	{
 
 		{
-			s.MessageID = int(1)
+			s.MessageID = int(0)
 		}
 	}
 }
@@ -5407,7 +5407,7 @@ func (s *OptInt) SetFake() {
 	var elem int
 
 	{
-		elem = int(1)
+		elem = int(0)
 	}
 	s.SetTo(elem)
 }
@@ -5417,7 +5417,7 @@ func (s *OptInt64) SetFake() {
 	var elem int64
 
 	{
-		elem = int64(1)
+		elem = int64(0)
 	}
 	s.SetTo(elem)
 }
@@ -5767,7 +5767,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -5959,25 +5959,25 @@ func (s *PassportElementErrorDataField) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
 
 		{
-			s.FieldName = ""
+			s.FieldName = "string"
 		}
 	}
 	{
 
 		{
-			s.DataHash = ""
+			s.DataHash = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -5987,19 +5987,19 @@ func (s *PassportElementErrorFile) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
 
 		{
-			s.FileHash = ""
+			s.FileHash = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6009,7 +6009,7 @@ func (s *PassportElementErrorFiles) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
@@ -6020,7 +6020,7 @@ func (s *PassportElementErrorFiles) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.FileHashes = append(s.FileHashes, elem)
 			}
@@ -6029,7 +6029,7 @@ func (s *PassportElementErrorFiles) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6039,19 +6039,19 @@ func (s *PassportElementErrorFrontSide) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
 
 		{
-			s.FileHash = ""
+			s.FileHash = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6061,19 +6061,19 @@ func (s *PassportElementErrorReverseSide) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
 
 		{
-			s.FileHash = ""
+			s.FileHash = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6083,19 +6083,19 @@ func (s *PassportElementErrorSelfie) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
 
 		{
-			s.FileHash = ""
+			s.FileHash = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6105,19 +6105,19 @@ func (s *PassportElementErrorTranslationFile) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
 
 		{
-			s.FileHash = ""
+			s.FileHash = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6127,7 +6127,7 @@ func (s *PassportElementErrorTranslationFiles) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
@@ -6138,7 +6138,7 @@ func (s *PassportElementErrorTranslationFiles) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.FileHashes = append(s.FileHashes, elem)
 			}
@@ -6147,7 +6147,7 @@ func (s *PassportElementErrorTranslationFiles) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6157,19 +6157,19 @@ func (s *PassportElementErrorUnspecified) SetFake() {
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 	{
 
 		{
-			s.ElementHash = ""
+			s.ElementHash = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -6179,25 +6179,25 @@ func (s *PassportFile) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileSize = int(1)
+			s.FileSize = int(0)
 		}
 	}
 	{
 
 		{
-			s.FileDate = int(1)
+			s.FileDate = int(0)
 		}
 	}
 }
@@ -6207,13 +6207,13 @@ func (s *PhotoSize) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -6247,7 +6247,7 @@ func (s *PinChatMessage) SetFake() {
 	{
 
 		{
-			s.MessageID = int(1)
+			s.MessageID = int(0)
 		}
 	}
 	{
@@ -6263,13 +6263,13 @@ func (s *Poll) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.Question = "a"
+			s.Question = "string"
 		}
 	}
 	{
@@ -6289,7 +6289,7 @@ func (s *Poll) SetFake() {
 	{
 
 		{
-			s.TotalVoterCount = int(1)
+			s.TotalVoterCount = int(0)
 		}
 	}
 	{
@@ -6361,7 +6361,7 @@ func (s *PollAnswer) SetFake() {
 	{
 
 		{
-			s.PollID = ""
+			s.PollID = "string"
 		}
 	}
 	{
@@ -6378,7 +6378,7 @@ func (s *PollAnswer) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.OptionIds = append(s.OptionIds, elem)
 			}
@@ -6391,13 +6391,13 @@ func (s *PollOption) SetFake() {
 	{
 
 		{
-			s.Text = "a"
+			s.Text = "string"
 		}
 	}
 	{
 
 		{
-			s.VoterCount = int(1)
+			s.VoterCount = int(0)
 		}
 	}
 }
@@ -6412,7 +6412,7 @@ func (s *PreCheckoutQuery) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -6424,19 +6424,19 @@ func (s *PreCheckoutQuery) SetFake() {
 	{
 
 		{
-			s.Currency = ""
+			s.Currency = "string"
 		}
 	}
 	{
 
 		{
-			s.TotalAmount = int(1)
+			s.TotalAmount = int(0)
 		}
 	}
 	{
 
 		{
-			s.InvoicePayload = ""
+			s.InvoicePayload = "string"
 		}
 	}
 	{
@@ -6464,7 +6464,7 @@ func (s *PromoteChatMember) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -6552,7 +6552,7 @@ func (s *ProximityAlertTriggered) SetFake() {
 	{
 
 		{
-			s.Distance = int(1)
+			s.Distance = int(0)
 		}
 	}
 }
@@ -6650,7 +6650,7 @@ func (s *RestrictChatMember) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -7006,7 +7006,7 @@ func (s *RevokeChatInviteLink) SetFake() {
 	{
 
 		{
-			s.InviteLink = ""
+			s.InviteLink = "string"
 		}
 	}
 }
@@ -7022,7 +7022,7 @@ func (s *SendAnimation) SetFake() {
 	{
 
 		{
-			s.Animation = ""
+			s.Animation = "string"
 		}
 	}
 	{
@@ -7122,7 +7122,7 @@ func (s *SendAudio) SetFake() {
 	{
 
 		{
-			s.Audio = ""
+			s.Audio = "string"
 		}
 	}
 	{
@@ -7222,7 +7222,7 @@ func (s *SendChatAction) SetFake() {
 	{
 
 		{
-			s.Action = ""
+			s.Action = "string"
 		}
 	}
 }
@@ -7238,13 +7238,13 @@ func (s *SendContact) SetFake() {
 	{
 
 		{
-			s.PhoneNumber = ""
+			s.PhoneNumber = "string"
 		}
 	}
 	{
 
 		{
-			s.FirstName = ""
+			s.FirstName = "string"
 		}
 	}
 	{
@@ -7356,7 +7356,7 @@ func (s *SendDocument) SetFake() {
 	{
 
 		{
-			s.Document = ""
+			s.Document = "string"
 		}
 	}
 	{
@@ -7438,13 +7438,13 @@ func (s *SendGame) SetFake() {
 	{
 
 		{
-			s.ChatID = int64(1)
+			s.ChatID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.GameShortName = ""
+			s.GameShortName = "string"
 		}
 	}
 	{
@@ -7484,31 +7484,31 @@ func (s *SendInvoice) SetFake() {
 	{
 
 		{
-			s.Title = "a"
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Description = "a"
+			s.Description = "string"
 		}
 	}
 	{
 
 		{
-			s.Payload = "a"
+			s.Payload = "string"
 		}
 	}
 	{
 
 		{
-			s.ProviderToken = ""
+			s.ProviderToken = "string"
 		}
 	}
 	{
 
 		{
-			s.Currency = ""
+			s.Currency = "string"
 		}
 	}
 	{
@@ -7539,7 +7539,7 @@ func (s *SendInvoice) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SuggestedTipAmounts = append(s.SuggestedTipAmounts, elem)
 			}
@@ -7792,7 +7792,7 @@ func (s *SendMessage) SetFake() {
 	{
 
 		{
-			s.Text = "a"
+			s.Text = "string"
 		}
 	}
 	{
@@ -7868,7 +7868,7 @@ func (s *SendPhoto) SetFake() {
 	{
 
 		{
-			s.Photo = ""
+			s.Photo = "string"
 		}
 	}
 	{
@@ -7944,7 +7944,7 @@ func (s *SendPoll) SetFake() {
 	{
 
 		{
-			s.Question = "a"
+			s.Question = "string"
 		}
 	}
 	{
@@ -7955,7 +7955,7 @@ func (s *SendPoll) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Options = append(s.Options, elem)
 			}
@@ -8076,7 +8076,7 @@ func (s *SendSticker) SetFake() {
 	{
 
 		{
-			s.Sticker = ""
+			s.Sticker = "string"
 		}
 	}
 	{
@@ -8138,13 +8138,13 @@ func (s *SendVenue) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Address = ""
+			s.Address = "string"
 		}
 	}
 	{
@@ -8218,7 +8218,7 @@ func (s *SendVideo) SetFake() {
 	{
 
 		{
-			s.Video = ""
+			s.Video = "string"
 		}
 	}
 	{
@@ -8314,7 +8314,7 @@ func (s *SendVideoNote) SetFake() {
 	{
 
 		{
-			s.VideoNote = ""
+			s.VideoNote = "string"
 		}
 	}
 	{
@@ -8392,7 +8392,7 @@ func (s *SendVoice) SetFake() {
 	{
 
 		{
-			s.Voice = ""
+			s.Voice = "string"
 		}
 	}
 	{
@@ -8474,13 +8474,13 @@ func (s *SetChatAdministratorCustomTitle) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.CustomTitle = ""
+			s.CustomTitle = "string"
 		}
 	}
 }
@@ -8528,7 +8528,7 @@ func (s *SetChatPhoto) SetFake() {
 	{
 
 		{
-			s.Photo = ""
+			s.Photo = "string"
 		}
 	}
 }
@@ -8544,7 +8544,7 @@ func (s *SetChatStickerSet) SetFake() {
 	{
 
 		{
-			s.StickerSetName = ""
+			s.StickerSetName = "string"
 		}
 	}
 }
@@ -8560,7 +8560,7 @@ func (s *SetChatTitle) SetFake() {
 	{
 
 		{
-			s.Title = "a"
+			s.Title = "string"
 		}
 	}
 }
@@ -8570,13 +8570,13 @@ func (s *SetGameScore) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.Score = int(1)
+			s.Score = int(0)
 		}
 	}
 	{
@@ -8646,7 +8646,7 @@ func (s *SetPassportDataErrors) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -8670,13 +8670,13 @@ func (s *SetStickerPositionInSet) SetFake() {
 	{
 
 		{
-			s.Sticker = ""
+			s.Sticker = "string"
 		}
 	}
 	{
 
 		{
-			s.Position = int(1)
+			s.Position = int(0)
 		}
 	}
 }
@@ -8686,13 +8686,13 @@ func (s *SetStickerSetThumb) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -8737,7 +8737,7 @@ func (s *SetWebhook) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AllowedUpdates = append(s.AllowedUpdates, elem)
 			}
@@ -8756,37 +8756,37 @@ func (s *ShippingAddress) SetFake() {
 	{
 
 		{
-			s.CountryCode = ""
+			s.CountryCode = "string"
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
 
 		{
-			s.City = ""
+			s.City = "string"
 		}
 	}
 	{
 
 		{
-			s.StreetLine1 = ""
+			s.StreetLine1 = "string"
 		}
 	}
 	{
 
 		{
-			s.StreetLine2 = ""
+			s.StreetLine2 = "string"
 		}
 	}
 	{
 
 		{
-			s.PostCode = ""
+			s.PostCode = "string"
 		}
 	}
 }
@@ -8796,13 +8796,13 @@ func (s *ShippingOption) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -8826,7 +8826,7 @@ func (s *ShippingQuery) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -8838,7 +8838,7 @@ func (s *ShippingQuery) SetFake() {
 	{
 
 		{
-			s.InvoicePayload = ""
+			s.InvoicePayload = "string"
 		}
 	}
 	{
@@ -8854,13 +8854,13 @@ func (s *Sticker) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -8952,7 +8952,7 @@ func (s *StopPoll) SetFake() {
 	{
 
 		{
-			s.MessageID = int(1)
+			s.MessageID = int(0)
 		}
 	}
 	{
@@ -8968,19 +8968,19 @@ func (s *SuccessfulPayment) SetFake() {
 	{
 
 		{
-			s.Currency = ""
+			s.Currency = "string"
 		}
 	}
 	{
 
 		{
-			s.TotalAmount = int(1)
+			s.TotalAmount = int(0)
 		}
 	}
 	{
 
 		{
-			s.InvoicePayload = ""
+			s.InvoicePayload = "string"
 		}
 	}
 	{
@@ -8998,13 +8998,13 @@ func (s *SuccessfulPayment) SetFake() {
 	{
 
 		{
-			s.TelegramPaymentChargeID = ""
+			s.TelegramPaymentChargeID = "string"
 		}
 	}
 	{
 
 		{
-			s.ProviderPaymentChargeID = ""
+			s.ProviderPaymentChargeID = "string"
 		}
 	}
 }
@@ -9020,7 +9020,7 @@ func (s *UnbanChatMember) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
@@ -9042,7 +9042,7 @@ func (s *UnbanChatSenderChat) SetFake() {
 	{
 
 		{
-			s.SenderChatID = int64(1)
+			s.SenderChatID = int64(0)
 		}
 	}
 }
@@ -9078,7 +9078,7 @@ func (s *Update) SetFake() {
 	{
 
 		{
-			s.UpdateID = int(1)
+			s.UpdateID = int(0)
 		}
 	}
 	{
@@ -9172,13 +9172,13 @@ func (s *UploadStickerFile) SetFake() {
 	{
 
 		{
-			s.UserID = int64(1)
+			s.UserID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.PNGSticker = ""
+			s.PNGSticker = "string"
 		}
 	}
 }
@@ -9188,7 +9188,7 @@ func (s *User) SetFake() {
 	{
 
 		{
-			s.ID = int64(1)
+			s.ID = int64(0)
 		}
 	}
 	{
@@ -9200,7 +9200,7 @@ func (s *User) SetFake() {
 	{
 
 		{
-			s.FirstName = ""
+			s.FirstName = "string"
 		}
 	}
 	{
@@ -9246,7 +9246,7 @@ func (s *UserProfilePhotos) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -9284,13 +9284,13 @@ func (s *Venue) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Address = ""
+			s.Address = "string"
 		}
 	}
 	{
@@ -9324,13 +9324,13 @@ func (s *Video) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -9382,19 +9382,19 @@ func (s *VideoNote) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
 
 		{
-			s.Length = int(1)
+			s.Length = int(0)
 		}
 	}
 	{
@@ -9422,13 +9422,13 @@ func (s *Voice) SetFake() {
 	{
 
 		{
-			s.FileID = ""
+			s.FileID = "string"
 		}
 	}
 	{
 
 		{
-			s.FileUniqueID = ""
+			s.FileUniqueID = "string"
 		}
 	}
 	{
@@ -9484,7 +9484,7 @@ func (s *VoiceChatScheduled) SetFake() {
 	{
 
 		{
-			s.StartDate = int(1)
+			s.StartDate = int(0)
 		}
 	}
 }
@@ -9510,7 +9510,7 @@ func (s *WebhookInfo) SetFake() {
 	{
 
 		{
-			s.PendingUpdateCount = int(1)
+			s.PendingUpdateCount = int(0)
 		}
 	}
 	{
@@ -9545,7 +9545,7 @@ func (s *WebhookInfo) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AllowedUpdates = append(s.AllowedUpdates, elem)
 			}

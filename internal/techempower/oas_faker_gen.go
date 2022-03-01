@@ -75,7 +75,7 @@ func (s *HelloWorld) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -85,13 +85,13 @@ func (s *WorldObject) SetFake() {
 	{
 
 		{
-			s.ID = int64(1)
+			s.ID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.RandomNumber = int64(1)
+			s.RandomNumber = int64(0)
 		}
 	}
 }

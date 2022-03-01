@@ -261,7 +261,7 @@ func (s *OptInt) SetFake() {
 	var elem int
 
 	{
-		elem = int(1)
+		elem = int(0)
 	}
 	s.SetTo(elem)
 }
@@ -271,7 +271,7 @@ func (s *OptInt32) SetFake() {
 	var elem int32
 
 	{
-		elem = int32(1)
+		elem = int32(0)
 	}
 	s.SetTo(elem)
 }
@@ -281,7 +281,7 @@ func (s *OptInt64) SetFake() {
 	var elem int64
 
 	{
-		elem = int64(1)
+		elem = int64(0)
 	}
 	s.SetTo(elem)
 }
@@ -393,7 +393,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -486,7 +486,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
 			}
@@ -500,7 +500,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
 			}
@@ -514,7 +514,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
 			}
@@ -570,7 +570,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
 			}
@@ -584,7 +584,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
 			}
@@ -598,7 +598,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayString = append(s.RequiredArrayString, elem)
 			}
@@ -612,7 +612,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
 			}
@@ -682,7 +682,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
 			}
@@ -696,7 +696,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
 			}
@@ -752,7 +752,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
 			}
@@ -863,7 +863,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int
 
 						{
-							elemElem = int(1)
+							elemElem = int(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -885,7 +885,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -907,7 +907,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -995,7 +995,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1017,7 +1017,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1039,7 +1039,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1061,7 +1061,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1171,7 +1171,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1193,7 +1193,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1281,7 +1281,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1359,19 +1359,19 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredInteger = int(1)
+			s.RequiredInteger = int(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt32 = int32(1)
+			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt64 = int64(1)
+			s.RequiredIntegerInt64 = int64(0)
 		}
 	}
 	{
@@ -1395,25 +1395,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredNumberInt32 = int32(1)
+			s.RequiredNumberInt32 = int32(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredNumberInt64 = int64(1)
+			s.RequiredNumberInt64 = int64(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredString = ""
+			s.RequiredString = "string"
 		}
 	}
 	{
 
 		{
-			s.RequiredStringBinary = ""
+			s.RequiredStringBinary = "string"
 		}
 	}
 	{
@@ -1443,13 +1443,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringEmail = ""
+			s.RequiredStringEmail = "string"
 		}
 	}
 	{
 
 		{
-			s.RequiredStringHostname = ""
+			s.RequiredStringHostname = "string"
 		}
 	}
 	{
@@ -1473,7 +1473,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringPassword = ""
+			s.RequiredStringPassword = "string"
 		}
 	}
 	{
@@ -1536,7 +1536,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
 			}
@@ -1550,7 +1550,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
 			}
@@ -1564,7 +1564,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
 			}
@@ -1620,7 +1620,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
 			}
@@ -1634,7 +1634,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
 			}
@@ -1648,7 +1648,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayString = append(s.OptionalArrayString, elem)
 			}
@@ -1662,7 +1662,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
 			}
@@ -1732,7 +1732,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
 			}
@@ -1746,7 +1746,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
 			}
@@ -1802,7 +1802,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
 			}
@@ -1913,7 +1913,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int
 
 						{
-							elemElem = int(1)
+							elemElem = int(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1935,7 +1935,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1957,7 +1957,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2045,7 +2045,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2067,7 +2067,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2089,7 +2089,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2111,7 +2111,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2221,7 +2221,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2243,7 +2243,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2331,7 +2331,7 @@ func (s *TestRequestFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2594,7 +2594,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
 			}
@@ -2608,7 +2608,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
 			}
@@ -2622,7 +2622,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
 			}
@@ -2678,7 +2678,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
 			}
@@ -2692,7 +2692,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
 			}
@@ -2706,7 +2706,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayString = append(s.RequiredArrayString, elem)
 			}
@@ -2720,7 +2720,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
 			}
@@ -2790,7 +2790,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
 			}
@@ -2804,7 +2804,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
 			}
@@ -2860,7 +2860,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
 			}
@@ -2971,7 +2971,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int
 
 						{
-							elemElem = int(1)
+							elemElem = int(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2993,7 +2993,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3015,7 +3015,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3103,7 +3103,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3125,7 +3125,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3147,7 +3147,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3169,7 +3169,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3279,7 +3279,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3301,7 +3301,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3389,7 +3389,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3467,19 +3467,19 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredInteger = int(1)
+			s.RequiredInteger = int(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt32 = int32(1)
+			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt64 = int64(1)
+			s.RequiredIntegerInt64 = int64(0)
 		}
 	}
 	{
@@ -3503,25 +3503,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredNumberInt32 = int32(1)
+			s.RequiredNumberInt32 = int32(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredNumberInt64 = int64(1)
+			s.RequiredNumberInt64 = int64(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredString = ""
+			s.RequiredString = "string"
 		}
 	}
 	{
 
 		{
-			s.RequiredStringBinary = ""
+			s.RequiredStringBinary = "string"
 		}
 	}
 	{
@@ -3551,13 +3551,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringEmail = ""
+			s.RequiredStringEmail = "string"
 		}
 	}
 	{
 
 		{
-			s.RequiredStringHostname = ""
+			s.RequiredStringHostname = "string"
 		}
 	}
 	{
@@ -3581,7 +3581,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 
 		{
-			s.RequiredStringPassword = ""
+			s.RequiredStringPassword = "string"
 		}
 	}
 	{
@@ -3644,7 +3644,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
 			}
@@ -3658,7 +3658,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
 			}
@@ -3672,7 +3672,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
 			}
@@ -3728,7 +3728,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
 			}
@@ -3742,7 +3742,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
 			}
@@ -3756,7 +3756,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayString = append(s.OptionalArrayString, elem)
 			}
@@ -3770,7 +3770,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
 			}
@@ -3840,7 +3840,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
 			}
@@ -3854,7 +3854,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
 			}
@@ -3910,7 +3910,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
 			}
@@ -4021,7 +4021,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int
 
 						{
-							elemElem = int(1)
+							elemElem = int(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4043,7 +4043,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4065,7 +4065,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4153,7 +4153,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4175,7 +4175,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4197,7 +4197,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4219,7 +4219,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4329,7 +4329,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4351,7 +4351,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4439,7 +4439,7 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4702,7 +4702,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.RequiredArrayInteger = append(s.RequiredArrayInteger, elem)
 			}
@@ -4716,7 +4716,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.RequiredArrayIntegerInt32 = append(s.RequiredArrayIntegerInt32, elem)
 			}
@@ -4730,7 +4730,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
 			}
@@ -4786,7 +4786,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.RequiredArrayNumberInt32 = append(s.RequiredArrayNumberInt32, elem)
 			}
@@ -4800,7 +4800,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.RequiredArrayNumberInt64 = append(s.RequiredArrayNumberInt64, elem)
 			}
@@ -4814,7 +4814,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayString = append(s.RequiredArrayString, elem)
 			}
@@ -4828,7 +4828,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringBinary = append(s.RequiredArrayStringBinary, elem)
 			}
@@ -4898,7 +4898,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringEmail = append(s.RequiredArrayStringEmail, elem)
 			}
@@ -4912,7 +4912,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringHostname = append(s.RequiredArrayStringHostname, elem)
 			}
@@ -4968,7 +4968,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredArrayStringPassword = append(s.RequiredArrayStringPassword, elem)
 			}
@@ -5079,7 +5079,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int
 
 						{
-							elemElem = int(1)
+							elemElem = int(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5101,7 +5101,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5123,7 +5123,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5211,7 +5211,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5233,7 +5233,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5255,7 +5255,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5277,7 +5277,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5387,7 +5387,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5409,7 +5409,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5497,7 +5497,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5575,19 +5575,19 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 
 		{
-			s.RequiredInteger = int(1)
+			s.RequiredInteger = int(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt32 = int32(1)
+			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredIntegerInt64 = int64(1)
+			s.RequiredIntegerInt64 = int64(0)
 		}
 	}
 	{
@@ -5611,25 +5611,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 
 		{
-			s.RequiredNumberInt32 = int32(1)
+			s.RequiredNumberInt32 = int32(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredNumberInt64 = int64(1)
+			s.RequiredNumberInt64 = int64(0)
 		}
 	}
 	{
 
 		{
-			s.RequiredString = ""
+			s.RequiredString = "string"
 		}
 	}
 	{
 
 		{
-			s.RequiredStringBinary = ""
+			s.RequiredStringBinary = "string"
 		}
 	}
 	{
@@ -5659,13 +5659,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 
 		{
-			s.RequiredStringEmail = ""
+			s.RequiredStringEmail = "string"
 		}
 	}
 	{
 
 		{
-			s.RequiredStringHostname = ""
+			s.RequiredStringHostname = "string"
 		}
 	}
 	{
@@ -5689,7 +5689,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 
 		{
-			s.RequiredStringPassword = ""
+			s.RequiredStringPassword = "string"
 		}
 	}
 	{
@@ -5752,7 +5752,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.OptionalArrayInteger = append(s.OptionalArrayInteger, elem)
 			}
@@ -5766,7 +5766,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.OptionalArrayIntegerInt32 = append(s.OptionalArrayIntegerInt32, elem)
 			}
@@ -5780,7 +5780,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
 			}
@@ -5836,7 +5836,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int32
 
 				{
-					elem = int32(1)
+					elem = int32(0)
 				}
 				s.OptionalArrayNumberInt32 = append(s.OptionalArrayNumberInt32, elem)
 			}
@@ -5850,7 +5850,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.OptionalArrayNumberInt64 = append(s.OptionalArrayNumberInt64, elem)
 			}
@@ -5864,7 +5864,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayString = append(s.OptionalArrayString, elem)
 			}
@@ -5878,7 +5878,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringBinary = append(s.OptionalArrayStringBinary, elem)
 			}
@@ -5948,7 +5948,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringEmail = append(s.OptionalArrayStringEmail, elem)
 			}
@@ -5962,7 +5962,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
 			}
@@ -6018,7 +6018,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.OptionalArrayStringPassword = append(s.OptionalArrayStringPassword, elem)
 			}
@@ -6129,7 +6129,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int
 
 						{
-							elemElem = int(1)
+							elemElem = int(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6151,7 +6151,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6173,7 +6173,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6261,7 +6261,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int32
 
 						{
-							elemElem = int32(1)
+							elemElem = int32(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6283,7 +6283,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem int64
 
 						{
-							elemElem = int64(1)
+							elemElem = int64(0)
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6305,7 +6305,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6327,7 +6327,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6437,7 +6437,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6459,7 +6459,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -6547,7 +6547,7 @@ func (s *TestResponseFormatTestOK) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}

@@ -75,13 +75,13 @@ func (s *Error) SetFake() {
 	{
 
 		{
-			s.Code = int32(1)
+			s.Code = int32(0)
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }

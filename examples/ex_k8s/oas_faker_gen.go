@@ -75,7 +75,7 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) SetFake() 
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON(unwrapped)
 }
@@ -90,7 +90,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AdmissionReviewVersions = append(s.AdmissionReviewVersions, elem)
 			}
@@ -117,7 +117,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -155,7 +155,7 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFake() {
 	{
 
 		{
-			s.SideEffects = ""
+			s.SideEffects = "string"
 		}
 	}
 	{
@@ -248,7 +248,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ApiGroups = append(s.ApiGroups, elem)
 			}
@@ -262,7 +262,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ApiVersions = append(s.ApiVersions, elem)
 			}
@@ -276,7 +276,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Operations = append(s.Operations, elem)
 			}
@@ -290,7 +290,7 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Resources = append(s.Resources, elem)
 			}
@@ -309,13 +309,13 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Namespace = ""
+			s.Namespace = "string"
 		}
 	}
 	{
@@ -342,7 +342,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AdmissionReviewVersions = append(s.AdmissionReviewVersions, elem)
 			}
@@ -369,7 +369,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -401,7 +401,7 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetFake() {
 	{
 
 		{
-			s.SideEffects = ""
+			s.SideEffects = "string"
 		}
 	}
 	{
@@ -522,7 +522,7 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.DecodableVersions = append(s.DecodableVersions, elem)
 			}
@@ -593,19 +593,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetFake() {
 	{
 
 		{
-			s.Reason = ""
+			s.Reason = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -717,7 +717,7 @@ func (s *IoK8sAPIAppsV1ControllerRevision) SetFake() {
 	{
 
 		{
-			s.Revision = int64(1)
+			s.Revision = int64(0)
 		}
 	}
 }
@@ -815,13 +815,13 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -921,13 +921,13 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) SetFake() {
 	{
 
 		{
-			s.CurrentNumberScheduled = int32(1)
+			s.CurrentNumberScheduled = int32(0)
 		}
 	}
 	{
 
 		{
-			s.DesiredNumberScheduled = int32(1)
+			s.DesiredNumberScheduled = int32(0)
 		}
 	}
 	{
@@ -939,13 +939,13 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) SetFake() {
 	{
 
 		{
-			s.NumberMisscheduled = int32(1)
+			s.NumberMisscheduled = int32(0)
 		}
 	}
 	{
 
 		{
-			s.NumberReady = int32(1)
+			s.NumberReady = int32(0)
 		}
 	}
 	{
@@ -1047,13 +1047,13 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -1279,13 +1279,13 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -1397,7 +1397,7 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(1)
+			s.Replicas = int32(0)
 		}
 	}
 }
@@ -1501,13 +1501,13 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -1583,7 +1583,7 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) SetFake() {
 	{
 
 		{
-			s.ServiceName = ""
+			s.ServiceName = "string"
 		}
 	}
 	{
@@ -1619,7 +1619,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) SetFake() {
 	{
 
 		{
-			s.AvailableReplicas = int32(1)
+			s.AvailableReplicas = int32(0)
 		}
 	}
 	{
@@ -1669,7 +1669,7 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(1)
+			s.Replicas = int32(0)
 		}
 	}
 	{
@@ -1713,13 +1713,13 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -1799,7 +1799,7 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetFake() {
 	{
 
 		{
-			s.MaxReplicas = int32(1)
+			s.MaxReplicas = int32(0)
 		}
 	}
 	{
@@ -1833,13 +1833,13 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetFake() {
 	{
 
 		{
-			s.CurrentReplicas = int32(1)
+			s.CurrentReplicas = int32(0)
 		}
 	}
 	{
 
 		{
-			s.DesiredReplicas = int32(1)
+			s.DesiredReplicas = int32(0)
 		}
 	}
 	{
@@ -1905,7 +1905,7 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(1)
+			s.Replicas = int32(0)
 		}
 	}
 	{
@@ -1921,13 +1921,13 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Container = ""
+			s.Container = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -1949,7 +1949,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Container = ""
+			s.Container = "string"
 		}
 	}
 	{
@@ -1967,7 +1967,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -1983,13 +1983,13 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -1999,7 +1999,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetFake() {
 	{
 
 		{
-			s.MetricName = ""
+			s.MetricName = "string"
 		}
 	}
 	{
@@ -2039,7 +2039,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetFake() {
 	{
 
 		{
-			s.MetricName = ""
+			s.MetricName = "string"
 		}
 	}
 	{
@@ -2107,13 +2107,13 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -2159,7 +2159,7 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetFake() {
 	{
 
 		{
-			s.MaxReplicas = int32(1)
+			s.MaxReplicas = int32(0)
 		}
 	}
 	{
@@ -2223,13 +2223,13 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetFake() {
 	{
 
 		{
-			s.CurrentReplicas = int32(1)
+			s.CurrentReplicas = int32(0)
 		}
 	}
 	{
 
 		{
-			s.DesiredReplicas = int32(1)
+			s.DesiredReplicas = int32(0)
 		}
 	}
 	{
@@ -2281,7 +2281,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -2321,7 +2321,7 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -2337,7 +2337,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetFake() {
 	{
 
 		{
-			s.MetricName = ""
+			s.MetricName = "string"
 		}
 	}
 	{
@@ -2377,7 +2377,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetFake() {
 	{
 
 		{
-			s.MetricName = ""
+			s.MetricName = "string"
 		}
 	}
 	{
@@ -2399,7 +2399,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) SetFake() {
 	{
 
 		{
-			s.MetricName = ""
+			s.MetricName = "string"
 		}
 	}
 	{
@@ -2427,7 +2427,7 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetFake() {
 	{
 
 		{
-			s.MetricName = ""
+			s.MetricName = "string"
 		}
 	}
 	{
@@ -2443,7 +2443,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -2477,7 +2477,7 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -2487,13 +2487,13 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Container = ""
+			s.Container = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -2509,7 +2509,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Container = ""
+			s.Container = "string"
 		}
 	}
 	{
@@ -2521,7 +2521,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -2537,13 +2537,13 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -2585,19 +2585,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) SetFake() {
 	{
 
 		{
-			s.PeriodSeconds = int32(1)
+			s.PeriodSeconds = int32(0)
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.Value = int32(1)
+			s.Value = int32(0)
 		}
 	}
 }
@@ -2705,13 +2705,13 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -2763,7 +2763,7 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetFake() {
 	{
 
 		{
-			s.MaxReplicas = int32(1)
+			s.MaxReplicas = int32(0)
 		}
 	}
 	{
@@ -2827,13 +2827,13 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetFake() {
 	{
 
 		{
-			s.CurrentReplicas = int32(1)
+			s.CurrentReplicas = int32(0)
 		}
 	}
 	{
 
 		{
-			s.DesiredReplicas = int32(1)
+			s.DesiredReplicas = int32(0)
 		}
 	}
 	{
@@ -2855,7 +2855,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -2901,7 +2901,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -2941,7 +2941,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -2963,7 +2963,7 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -3077,7 +3077,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -3099,7 +3099,7 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -3197,7 +3197,7 @@ func (s *IoK8sAPIBatchV1CronJobSpec) SetFake() {
 	{
 
 		{
-			s.Schedule = ""
+			s.Schedule = "string"
 		}
 	}
 	{
@@ -3313,13 +3313,13 @@ func (s *IoK8sAPIBatchV1JobCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -3510,7 +3510,7 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Failed = append(s.Failed, elem)
 			}
@@ -3524,7 +3524,7 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Succeeded = append(s.Succeeded, elem)
 			}
@@ -3625,7 +3625,7 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetFake() {
 	{
 
 		{
-			s.Schedule = ""
+			s.Schedule = "string"
 		}
 	}
 	{
@@ -3757,13 +3757,13 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -3826,7 +3826,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Groups = append(s.Groups, elem)
 			}
@@ -3841,7 +3841,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 	{
 
 		{
-			s.SignerName = ""
+			s.SignerName = "string"
 		}
 	}
 	{
@@ -3858,7 +3858,7 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Usages = append(s.Usages, elem)
 			}
@@ -4029,7 +4029,7 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = ""
+			s.VolumeID = "string"
 		}
 	}
 }
@@ -4061,13 +4061,13 @@ func (s *IoK8sAPICoreV1AttachedVolume) SetFake() {
 	{
 
 		{
-			s.DevicePath = ""
+			s.DevicePath = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -4083,13 +4083,13 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.DiskName = ""
+			s.DiskName = "string"
 		}
 	}
 	{
 
 		{
-			s.DiskURI = ""
+			s.DiskURI = "string"
 		}
 	}
 	{
@@ -4123,7 +4123,7 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.SecretName = ""
+			s.SecretName = "string"
 		}
 	}
 	{
@@ -4135,7 +4135,7 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.ShareName = ""
+			s.ShareName = "string"
 		}
 	}
 }
@@ -4151,13 +4151,13 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) SetFake() {
 	{
 
 		{
-			s.SecretName = ""
+			s.SecretName = "string"
 		}
 	}
 	{
 
 		{
-			s.ShareName = ""
+			s.ShareName = "string"
 		}
 	}
 }
@@ -4179,7 +4179,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = ""
+			s.Driver = "string"
 		}
 	}
 	{
@@ -4215,7 +4215,7 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeHandle = ""
+			s.VolumeHandle = "string"
 		}
 	}
 }
@@ -4237,7 +4237,7 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = ""
+			s.Driver = "string"
 		}
 	}
 	{
@@ -4288,7 +4288,7 @@ func (s *IoK8sAPICoreV1Capabilities) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Add = append(s.Add, elem)
 			}
@@ -4302,7 +4302,7 @@ func (s *IoK8sAPICoreV1Capabilities) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Drop = append(s.Drop, elem)
 			}
@@ -4320,7 +4320,7 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Monitors = append(s.Monitors, elem)
 			}
@@ -4368,7 +4368,7 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Monitors = append(s.Monitors, elem)
 			}
@@ -4429,7 +4429,7 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = ""
+			s.VolumeID = "string"
 		}
 	}
 }
@@ -4457,7 +4457,7 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = ""
+			s.VolumeID = "string"
 		}
 	}
 }
@@ -4489,13 +4489,13 @@ func (s *IoK8sAPICoreV1ComponentCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -4657,7 +4657,7 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
@@ -4715,19 +4715,19 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetFake() {
 	{
 
 		{
-			s.KubeletConfigKey = ""
+			s.KubeletConfigKey = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Namespace = ""
+			s.Namespace = "string"
 		}
 	}
 	{
@@ -4820,7 +4820,7 @@ func (s *IoK8sAPICoreV1Container) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Args = append(s.Args, elem)
 			}
@@ -4834,7 +4834,7 @@ func (s *IoK8sAPICoreV1Container) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Command = append(s.Command, elem)
 			}
@@ -4895,7 +4895,7 @@ func (s *IoK8sAPICoreV1Container) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -5012,7 +5012,7 @@ func (s *IoK8sAPICoreV1ContainerImage) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Names = append(s.Names, elem)
 			}
@@ -5031,7 +5031,7 @@ func (s *IoK8sAPICoreV1ContainerPort) SetFake() {
 	{
 
 		{
-			s.ContainerPort = int32(1)
+			s.ContainerPort = int32(0)
 		}
 	}
 	{
@@ -5103,7 +5103,7 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) SetFake() {
 	{
 
 		{
-			s.ExitCode = int32(1)
+			s.ExitCode = int32(0)
 		}
 	}
 	{
@@ -5165,13 +5165,13 @@ func (s *IoK8sAPICoreV1ContainerStatus) SetFake() {
 	{
 
 		{
-			s.Image = ""
+			s.Image = "string"
 		}
 	}
 	{
 
 		{
-			s.ImageID = ""
+			s.ImageID = "string"
 		}
 	}
 	{
@@ -5183,7 +5183,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -5195,7 +5195,7 @@ func (s *IoK8sAPICoreV1ContainerStatus) SetFake() {
 	{
 
 		{
-			s.RestartCount = int32(1)
+			s.RestartCount = int32(0)
 		}
 	}
 	{
@@ -5217,7 +5217,7 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) SetFake() {
 	{
 
 		{
-			s.Port = int32(1)
+			s.Port = int32(0)
 		}
 	}
 }
@@ -5257,7 +5257,7 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -5319,7 +5319,7 @@ func (s *IoK8sAPICoreV1EndpointAddress) SetFake() {
 	{
 
 		{
-			s.IP = ""
+			s.IP = "string"
 		}
 	}
 	{
@@ -5353,7 +5353,7 @@ func (s *IoK8sAPICoreV1EndpointPort) SetFake() {
 	{
 
 		{
-			s.Port = int32(1)
+			s.Port = int32(0)
 		}
 	}
 	{
@@ -5509,7 +5509,7 @@ func (s *IoK8sAPICoreV1EnvVar) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -5564,7 +5564,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Args = append(s.Args, elem)
 			}
@@ -5578,7 +5578,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Command = append(s.Command, elem)
 			}
@@ -5639,7 +5639,7 @@ func (s *IoK8sAPICoreV1EphemeralContainer) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -5946,7 +5946,7 @@ func (s *IoK8sAPICoreV1ExecAction) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Command = append(s.Command, elem)
 			}
@@ -5982,7 +5982,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.TargetWWNs = append(s.TargetWWNs, elem)
 			}
@@ -5996,7 +5996,7 @@ func (s *IoK8sAPICoreV1FCVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Wwids = append(s.Wwids, elem)
 			}
@@ -6009,7 +6009,7 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = ""
+			s.Driver = "string"
 		}
 	}
 	{
@@ -6055,7 +6055,7 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) SetFake() {
 	{
 
 		{
-			s.Driver = ""
+			s.Driver = "string"
 		}
 	}
 	{
@@ -6129,7 +6129,7 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.PdName = ""
+			s.PdName = "string"
 		}
 	}
 	{
@@ -6151,7 +6151,7 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) SetFake() {
 	{
 
 		{
-			s.Repository = ""
+			s.Repository = "string"
 		}
 	}
 	{
@@ -6167,7 +6167,7 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Endpoints = ""
+			s.Endpoints = "string"
 		}
 	}
 	{
@@ -6179,7 +6179,7 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -6195,13 +6195,13 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) SetFake() {
 	{
 
 		{
-			s.Endpoints = ""
+			s.Endpoints = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -6259,13 +6259,13 @@ func (s *IoK8sAPICoreV1HTTPHeader) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Value = ""
+			s.Value = "string"
 		}
 	}
 }
@@ -6302,7 +6302,7 @@ func (s *IoK8sAPICoreV1HostAlias) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Hostnames = append(s.Hostnames, elem)
 			}
@@ -6321,7 +6321,7 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -6361,7 +6361,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Iqn = ""
+			s.Iqn = "string"
 		}
 	}
 	{
@@ -6373,7 +6373,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Lun = int32(1)
+			s.Lun = int32(0)
 		}
 	}
 	{
@@ -6384,7 +6384,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Portals = append(s.Portals, elem)
 			}
@@ -6405,7 +6405,7 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.TargetPortal = ""
+			s.TargetPortal = "string"
 		}
 	}
 }
@@ -6439,7 +6439,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.Iqn = ""
+			s.Iqn = "string"
 		}
 	}
 	{
@@ -6451,7 +6451,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.Lun = int32(1)
+			s.Lun = int32(0)
 		}
 	}
 	{
@@ -6462,7 +6462,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Portals = append(s.Portals, elem)
 			}
@@ -6483,7 +6483,7 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFake() {
 	{
 
 		{
-			s.TargetPortal = ""
+			s.TargetPortal = "string"
 		}
 	}
 }
@@ -6493,7 +6493,7 @@ func (s *IoK8sAPICoreV1KeyToPath) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
@@ -6505,7 +6505,7 @@ func (s *IoK8sAPICoreV1KeyToPath) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 }
@@ -6589,7 +6589,7 @@ func (s *IoK8sAPICoreV1LimitRangeItem) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -6777,7 +6777,7 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 }
@@ -6787,7 +6787,7 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -6799,7 +6799,7 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) SetFake() {
 	{
 
 		{
-			s.Server = ""
+			s.Server = "string"
 		}
 	}
 }
@@ -6861,13 +6861,13 @@ func (s *IoK8sAPICoreV1NamespaceCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -6918,7 +6918,7 @@ func (s *IoK8sAPICoreV1NamespaceSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Finalizers = append(s.Finalizers, elem)
 			}
@@ -6989,13 +6989,13 @@ func (s *IoK8sAPICoreV1NodeAddress) SetFake() {
 	{
 
 		{
-			s.Address = ""
+			s.Address = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -7053,13 +7053,13 @@ func (s *IoK8sAPICoreV1NodeCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -7171,13 +7171,13 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Operator = ""
+			s.Operator = "string"
 		}
 	}
 	{
@@ -7188,7 +7188,7 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Values = append(s.Values, elem)
 			}
@@ -7256,7 +7256,7 @@ func (s *IoK8sAPICoreV1NodeSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.PodCIDRs = append(s.PodCIDRs, elem)
 			}
@@ -7392,7 +7392,7 @@ func (s *IoK8sAPICoreV1NodeStatus) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.VolumesInUse = append(s.VolumesInUse, elem)
 			}
@@ -7429,61 +7429,61 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) SetFake() {
 	{
 
 		{
-			s.Architecture = ""
+			s.Architecture = "string"
 		}
 	}
 	{
 
 		{
-			s.BootID = ""
+			s.BootID = "string"
 		}
 	}
 	{
 
 		{
-			s.ContainerRuntimeVersion = ""
+			s.ContainerRuntimeVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.KernelVersion = ""
+			s.KernelVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.KubeProxyVersion = ""
+			s.KubeProxyVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.KubeletVersion = ""
+			s.KubeletVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.MachineID = ""
+			s.MachineID = "string"
 		}
 	}
 	{
 
 		{
-			s.OperatingSystem = ""
+			s.OperatingSystem = "string"
 		}
 	}
 	{
 
 		{
-			s.OsImage = ""
+			s.OsImage = "string"
 		}
 	}
 	{
 
 		{
-			s.SystemUUID = ""
+			s.SystemUUID = "string"
 		}
 	}
 }
@@ -7499,7 +7499,7 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) SetFake() {
 	{
 
 		{
-			s.FieldPath = ""
+			s.FieldPath = "string"
 		}
 	}
 }
@@ -7647,13 +7647,13 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -7704,7 +7704,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AccessModes = append(s.AccessModes, elem)
 			}
@@ -7764,7 +7764,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AccessModes = append(s.AccessModes, elem)
 			}
@@ -7831,7 +7831,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetFake() {
 	{
 
 		{
-			s.ClaimName = ""
+			s.ClaimName = "string"
 		}
 	}
 	{
@@ -7888,7 +7888,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AccessModes = append(s.AccessModes, elem)
 			}
@@ -7998,7 +7998,7 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.MountOptions = append(s.MountOptions, elem)
 			}
@@ -8123,7 +8123,7 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.PdID = ""
+			s.PdID = "string"
 		}
 	}
 }
@@ -8216,7 +8216,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Namespaces = append(s.Namespaces, elem)
 			}
@@ -8225,7 +8225,7 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) SetFake() {
 	{
 
 		{
-			s.TopologyKey = ""
+			s.TopologyKey = "string"
 		}
 	}
 }
@@ -8291,13 +8291,13 @@ func (s *IoK8sAPICoreV1PodCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -8312,7 +8312,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Nameservers = append(s.Nameservers, elem)
 			}
@@ -8340,7 +8340,7 @@ func (s *IoK8sAPICoreV1PodDNSConfig) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Searches = append(s.Searches, elem)
 			}
@@ -8415,7 +8415,7 @@ func (s *IoK8sAPICoreV1PodReadinessGate) SetFake() {
 	{
 
 		{
-			s.ConditionType = ""
+			s.ConditionType = "string"
 		}
 	}
 }
@@ -8472,7 +8472,7 @@ func (s *IoK8sAPICoreV1PodSecurityContext) SetFake() {
 				var elem int64
 
 				{
-					elem = int64(1)
+					elem = int64(0)
 				}
 				s.SupplementalGroups = append(s.SupplementalGroups, elem)
 			}
@@ -9023,13 +9023,13 @@ func (s *IoK8sAPICoreV1PortStatus) SetFake() {
 	{
 
 		{
-			s.Port = int32(1)
+			s.Port = int32(0)
 		}
 	}
 	{
 
 		{
-			s.Protocol = ""
+			s.Protocol = "string"
 		}
 	}
 }
@@ -9051,7 +9051,7 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumeID = ""
+			s.VolumeID = "string"
 		}
 	}
 }
@@ -9067,7 +9067,7 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) SetFake() {
 	{
 
 		{
-			s.Weight = int32(1)
+			s.Weight = int32(0)
 		}
 	}
 }
@@ -9171,7 +9171,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetFake() {
 	{
 
 		{
-			s.Registry = ""
+			s.Registry = "string"
 		}
 	}
 	{
@@ -9189,7 +9189,7 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetFake() {
 	{
 
 		{
-			s.Volume = ""
+			s.Volume = "string"
 		}
 	}
 }
@@ -9205,7 +9205,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Image = ""
+			s.Image = "string"
 		}
 	}
 	{
@@ -9222,7 +9222,7 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Monitors = append(s.Monitors, elem)
 			}
@@ -9265,7 +9265,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) SetFake() {
 	{
 
 		{
-			s.Image = ""
+			s.Image = "string"
 		}
 	}
 	{
@@ -9282,7 +9282,7 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Monitors = append(s.Monitors, elem)
 			}
@@ -9371,13 +9371,13 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -9501,7 +9501,7 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetFake() {
 	{
 
 		{
-			s.Replicas = int32(1)
+			s.Replicas = int32(0)
 		}
 	}
 }
@@ -9523,7 +9523,7 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) SetFake() {
 	{
 
 		{
-			s.Resource = ""
+			s.Resource = "string"
 		}
 	}
 }
@@ -9620,7 +9620,7 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Scopes = append(s.Scopes, elem)
 			}
@@ -9759,7 +9759,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.Gateway = ""
+			s.Gateway = "string"
 		}
 	}
 	{
@@ -9801,7 +9801,7 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetFake() {
 	{
 
 		{
-			s.System = ""
+			s.System = "string"
 		}
 	}
 	{
@@ -9823,7 +9823,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetFake() {
 	{
 
 		{
-			s.Gateway = ""
+			s.Gateway = "string"
 		}
 	}
 	{
@@ -9865,7 +9865,7 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetFake() {
 	{
 
 		{
-			s.System = ""
+			s.System = "string"
 		}
 	}
 	{
@@ -9899,13 +9899,13 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) SetFake() {
 	{
 
 		{
-			s.Operator = ""
+			s.Operator = "string"
 		}
 	}
 	{
 
 		{
-			s.ScopeName = ""
+			s.ScopeName = "string"
 		}
 	}
 	{
@@ -9916,7 +9916,7 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Values = append(s.Values, elem)
 			}
@@ -9935,7 +9935,7 @@ func (s *IoK8sAPICoreV1SeccompProfile) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -10019,7 +10019,7 @@ func (s *IoK8sAPICoreV1SecretKeySelector) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
@@ -10379,7 +10379,7 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 }
@@ -10443,7 +10443,7 @@ func (s *IoK8sAPICoreV1ServicePort) SetFake() {
 	{
 
 		{
-			s.Port = int32(1)
+			s.Port = int32(0)
 		}
 	}
 	{
@@ -10482,7 +10482,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ClusterIPs = append(s.ClusterIPs, elem)
 			}
@@ -10496,7 +10496,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ExternalIPs = append(s.ExternalIPs, elem)
 			}
@@ -10534,7 +10534,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.IpFamilies = append(s.IpFamilies, elem)
 			}
@@ -10566,7 +10566,7 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.LoadBalancerSourceRanges = append(s.LoadBalancerSourceRanges, elem)
 			}
@@ -10737,13 +10737,13 @@ func (s *IoK8sAPICoreV1Sysctl) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Value = ""
+			s.Value = "string"
 		}
 	}
 }
@@ -10769,13 +10769,13 @@ func (s *IoK8sAPICoreV1Taint) SetFake() {
 	{
 
 		{
-			s.Effect = ""
+			s.Effect = "string"
 		}
 	}
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
@@ -10831,7 +10831,7 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
@@ -10842,7 +10842,7 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Values = append(s.Values, elem)
 			}
@@ -10879,19 +10879,19 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) SetFake() {
 	{
 
 		{
-			s.MaxSkew = int32(1)
+			s.MaxSkew = int32(0)
 		}
 	}
 	{
 
 		{
-			s.TopologyKey = ""
+			s.TopologyKey = "string"
 		}
 	}
 	{
 
 		{
-			s.WhenUnsatisfiable = ""
+			s.WhenUnsatisfiable = "string"
 		}
 	}
 }
@@ -10907,13 +10907,13 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -11031,7 +11031,7 @@ func (s *IoK8sAPICoreV1Volume) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -11107,13 +11107,13 @@ func (s *IoK8sAPICoreV1VolumeDevice) SetFake() {
 	{
 
 		{
-			s.DevicePath = ""
+			s.DevicePath = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -11123,7 +11123,7 @@ func (s *IoK8sAPICoreV1VolumeMount) SetFake() {
 	{
 
 		{
-			s.MountPath = ""
+			s.MountPath = "string"
 		}
 	}
 	{
@@ -11135,7 +11135,7 @@ func (s *IoK8sAPICoreV1VolumeMount) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -11219,7 +11219,7 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetFake() {
 	{
 
 		{
-			s.VolumePath = ""
+			s.VolumePath = "string"
 		}
 	}
 }
@@ -11235,7 +11235,7 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) SetFake() {
 	{
 
 		{
-			s.Weight = int32(1)
+			s.Weight = int32(0)
 		}
 	}
 }
@@ -11278,7 +11278,7 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Addresses = append(s.Addresses, elem)
 			}
@@ -11413,7 +11413,7 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetFake() {
 	{
 
 		{
-			s.AddressType = ""
+			s.AddressType = "string"
 		}
 	}
 	{
@@ -11505,7 +11505,7 @@ func (s *IoK8sAPIDiscoveryV1ForZone) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -11520,7 +11520,7 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Addresses = append(s.Addresses, elem)
 			}
@@ -11637,7 +11637,7 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetFake() {
 	{
 
 		{
-			s.AddressType = ""
+			s.AddressType = "string"
 		}
 	}
 	{
@@ -11741,7 +11741,7 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -11893,7 +11893,7 @@ func (s *IoK8sAPIEventsV1EventSeries) SetFake() {
 	{
 
 		{
-			s.Count = int32(1)
+			s.Count = int32(0)
 		}
 	}
 	{
@@ -12051,7 +12051,7 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) SetFake() {
 	{
 
 		{
-			s.Count = int32(1)
+			s.Count = int32(0)
 		}
 	}
 	{
@@ -12067,7 +12067,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -12235,7 +12235,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -12251,7 +12251,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -12282,7 +12282,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.NonResourceURLs = append(s.NonResourceURLs, elem)
 			}
@@ -12296,7 +12296,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Verbs = append(s.Verbs, elem)
 			}
@@ -12459,7 +12459,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) SetFake(
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -12475,7 +12475,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -12530,7 +12530,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ApiGroups = append(s.ApiGroups, elem)
 			}
@@ -12550,7 +12550,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Namespaces = append(s.Namespaces, elem)
 			}
@@ -12564,7 +12564,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Resources = append(s.Resources, elem)
 			}
@@ -12578,7 +12578,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Verbs = append(s.Verbs, elem)
 			}
@@ -12591,13 +12591,13 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Namespace = ""
+			s.Namespace = "string"
 		}
 	}
 }
@@ -12613,7 +12613,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
@@ -12635,7 +12635,7 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -12645,7 +12645,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -12813,7 +12813,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -12829,7 +12829,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -12860,7 +12860,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.NonResourceURLs = append(s.NonResourceURLs, elem)
 			}
@@ -12874,7 +12874,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Verbs = append(s.Verbs, elem)
 			}
@@ -13037,7 +13037,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) SetFake(
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -13053,7 +13053,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -13108,7 +13108,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ApiGroups = append(s.ApiGroups, elem)
 			}
@@ -13128,7 +13128,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Namespaces = append(s.Namespaces, elem)
 			}
@@ -13142,7 +13142,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Resources = append(s.Resources, elem)
 			}
@@ -13156,7 +13156,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Verbs = append(s.Verbs, elem)
 			}
@@ -13169,13 +13169,13 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Namespace = ""
+			s.Namespace = "string"
 		}
 	}
 }
@@ -13191,7 +13191,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
@@ -13213,7 +13213,7 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -13235,7 +13235,7 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) SetFake() {
 	{
 
 		{
-			s.PathType = ""
+			s.PathType = "string"
 		}
 	}
 }
@@ -13263,7 +13263,7 @@ func (s *IoK8sAPINetworkingV1IPBlock) SetFake() {
 	{
 
 		{
-			s.Cidr = ""
+			s.Cidr = "string"
 		}
 	}
 	{
@@ -13274,7 +13274,7 @@ func (s *IoK8sAPINetworkingV1IPBlock) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Except = append(s.Except, elem)
 			}
@@ -13407,13 +13407,13 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -13503,7 +13503,7 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -13578,7 +13578,7 @@ func (s *IoK8sAPINetworkingV1IngressTLS) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Hosts = append(s.Hosts, elem)
 			}
@@ -13808,7 +13808,7 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.PolicyTypes = append(s.PolicyTypes, elem)
 			}
@@ -13865,7 +13865,7 @@ func (s *IoK8sAPINodeV1RuntimeClass) SetFake() {
 	{
 
 		{
-			s.Handler = ""
+			s.Handler = "string"
 		}
 	}
 	{
@@ -14063,7 +14063,7 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) SetFake() {
 	{
 
 		{
-			s.RuntimeHandler = ""
+			s.RuntimeHandler = "string"
 		}
 	}
 	{
@@ -14143,7 +14143,7 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) SetFake() {
 	{
 
 		{
-			s.Handler = ""
+			s.Handler = "string"
 		}
 	}
 	{
@@ -14355,13 +14355,13 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetFake() {
 	{
 
 		{
-			s.CurrentHealthy = int32(1)
+			s.CurrentHealthy = int32(0)
 		}
 	}
 	{
 
 		{
-			s.DesiredHealthy = int32(1)
+			s.DesiredHealthy = int32(0)
 		}
 	}
 	{
@@ -14373,13 +14373,13 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetFake() {
 	{
 
 		{
-			s.DisruptionsAllowed = int32(1)
+			s.DisruptionsAllowed = int32(0)
 		}
 	}
 	{
 
 		{
-			s.ExpectedPods = int32(1)
+			s.ExpectedPods = int32(0)
 		}
 	}
 	{
@@ -14407,7 +14407,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -14417,7 +14417,7 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) SetFake() {
 	{
 
 		{
-			s.Driver = ""
+			s.Driver = "string"
 		}
 	}
 }
@@ -14467,13 +14467,13 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) SetFake() {
 	{
 
 		{
-			s.Max = int32(1)
+			s.Max = int32(0)
 		}
 	}
 	{
 
 		{
-			s.Min = int32(1)
+			s.Min = int32(0)
 		}
 	}
 }
@@ -14483,13 +14483,13 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) SetFake() {
 	{
 
 		{
-			s.Max = int64(1)
+			s.Max = int64(0)
 		}
 	}
 	{
 
 		{
-			s.Min = int64(1)
+			s.Min = int64(0)
 		}
 	}
 }
@@ -14605,13 +14605,13 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetFake() {
 	{
 
 		{
-			s.CurrentHealthy = int32(1)
+			s.CurrentHealthy = int32(0)
 		}
 	}
 	{
 
 		{
-			s.DesiredHealthy = int32(1)
+			s.DesiredHealthy = int32(0)
 		}
 	}
 	{
@@ -14623,13 +14623,13 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetFake() {
 	{
 
 		{
-			s.DisruptionsAllowed = int32(1)
+			s.DisruptionsAllowed = int32(0)
 		}
 	}
 	{
 
 		{
-			s.ExpectedPods = int32(1)
+			s.ExpectedPods = int32(0)
 		}
 	}
 	{
@@ -14746,7 +14746,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AllowedCapabilities = append(s.AllowedCapabilities, elem)
 			}
@@ -14788,7 +14788,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AllowedProcMountTypes = append(s.AllowedProcMountTypes, elem)
 			}
@@ -14802,7 +14802,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AllowedUnsafeSysctls = append(s.AllowedUnsafeSysctls, elem)
 			}
@@ -14816,7 +14816,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.DefaultAddCapabilities = append(s.DefaultAddCapabilities, elem)
 			}
@@ -14836,7 +14836,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ForbiddenSysctls = append(s.ForbiddenSysctls, elem)
 			}
@@ -14900,7 +14900,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredDropCapabilities = append(s.RequiredDropCapabilities, elem)
 			}
@@ -14944,7 +14944,7 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Volumes = append(s.Volumes, elem)
 			}
@@ -14971,7 +14971,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetFake() {
 	{
 
 		{
-			s.Rule = ""
+			s.Rule = "string"
 		}
 	}
 }
@@ -14995,7 +14995,7 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) SetFake() {
 	{
 
 		{
-			s.Rule = ""
+			s.Rule = "string"
 		}
 	}
 }
@@ -15010,7 +15010,7 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AllowedRuntimeClassNames = append(s.AllowedRuntimeClassNames, elem)
 			}
@@ -15029,7 +15029,7 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) SetFake() {
 	{
 
 		{
-			s.Rule = ""
+			s.Rule = "string"
 		}
 	}
 	{
@@ -15248,7 +15248,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ApiGroups = append(s.ApiGroups, elem)
 			}
@@ -15262,7 +15262,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.NonResourceURLs = append(s.NonResourceURLs, elem)
 			}
@@ -15276,7 +15276,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ResourceNames = append(s.ResourceNames, elem)
 			}
@@ -15290,7 +15290,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Resources = append(s.Resources, elem)
 			}
@@ -15304,7 +15304,7 @@ func (s *IoK8sAPIRbacV1PolicyRule) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Verbs = append(s.Verbs, elem)
 			}
@@ -15467,19 +15467,19 @@ func (s *IoK8sAPIRbacV1RoleRef) SetFake() {
 	{
 
 		{
-			s.ApiGroup = ""
+			s.ApiGroup = "string"
 		}
 	}
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -15495,13 +15495,13 @@ func (s *IoK8sAPIRbacV1Subject) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -15553,7 +15553,7 @@ func (s *IoK8sAPISchedulingV1PriorityClass) SetFake() {
 	{
 
 		{
-			s.Value = int32(1)
+			s.Value = int32(0)
 		}
 	}
 }
@@ -15712,7 +15712,7 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.VolumeLifecycleModes = append(s.VolumeLifecycleModes, elem)
 			}
@@ -15759,13 +15759,13 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -15776,7 +15776,7 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.TopologyKeys = append(s.TopologyKeys, elem)
 			}
@@ -15886,7 +15886,7 @@ func (s *IoK8sAPIStorageV1StorageClass) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.MountOptions = append(s.MountOptions, elem)
 			}
@@ -15901,7 +15901,7 @@ func (s *IoK8sAPIStorageV1StorageClass) SetFake() {
 	{
 
 		{
-			s.Provisioner = ""
+			s.Provisioner = "string"
 		}
 	}
 	{
@@ -15971,7 +15971,7 @@ func (s *IoK8sAPIStorageV1TokenRequest) SetFake() {
 	{
 
 		{
-			s.Audience = ""
+			s.Audience = "string"
 		}
 	}
 	{
@@ -16073,13 +16073,13 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) SetFake() {
 	{
 
 		{
-			s.Attacher = ""
+			s.Attacher = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeName = ""
+			s.NodeName = "string"
 		}
 	}
 	{
@@ -16197,7 +16197,7 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetFake() {
 	{
 
 		{
-			s.StorageClassName = ""
+			s.StorageClassName = "string"
 		}
 	}
 }
@@ -16279,7 +16279,7 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetFake() {
 	{
 
 		{
-			s.StorageClassName = ""
+			s.StorageClassName = "string"
 		}
 	}
 }
@@ -16337,13 +16337,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 	{
 
 		{
-			s.JsonPath = ""
+			s.JsonPath = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -16355,7 +16355,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -16365,7 +16365,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 	{
 
 		{
-			s.Strategy = ""
+			s.Strategy = "string"
 		}
 	}
 	{
@@ -16433,13 +16433,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -16490,7 +16490,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Categories = append(s.Categories, elem)
 			}
@@ -16499,7 +16499,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
@@ -16511,7 +16511,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Plural = ""
+			s.Plural = "string"
 		}
 	}
 	{
@@ -16522,7 +16522,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ShortNames = append(s.ShortNames, elem)
 			}
@@ -16547,7 +16547,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Group = ""
+			s.Group = "string"
 		}
 	}
 	{
@@ -16565,7 +16565,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Scope = ""
+			s.Scope = "string"
 		}
 	}
 	{
@@ -16614,7 +16614,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.StoredVersions = append(s.StoredVersions, elem)
 			}
@@ -16653,7 +16653,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -16693,13 +16693,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	{
 
 		{
-			s.SpecReplicasPath = ""
+			s.SpecReplicasPath = "string"
 		}
 	}
 	{
 
 		{
-			s.StatusReplicasPath = ""
+			s.StatusReplicasPath = "string"
 		}
 	}
 }
@@ -16994,7 +16994,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Required = append(s.Required, elem)
 			}
@@ -17038,7 +17038,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.XMinusKubernetesMinusListMinusMapMinusKeys = append(s.XMinusKubernetesMinusListMinusMapMinusKeys, elem)
 			}
@@ -17129,13 +17129,13 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetF
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Namespace = ""
+			s.Namespace = "string"
 		}
 	}
 	{
@@ -17190,7 +17190,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Set
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ConversionReviewVersions = append(s.ConversionReviewVersions, elem)
 			}
@@ -17203,7 +17203,7 @@ func (s *IoK8sApimachineryPkgAPIResourceQuantity) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = IoK8sApimachineryPkgAPIResourceQuantity(unwrapped)
 }
@@ -17225,7 +17225,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -17304,7 +17304,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Categories = append(s.Categories, elem)
 			}
@@ -17319,13 +17319,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -17342,7 +17342,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.ShortNames = append(s.ShortNames, elem)
 			}
@@ -17351,7 +17351,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 	{
 
 		{
-			s.SingularName = ""
+			s.SingularName = "string"
 		}
 	}
 	{
@@ -17368,7 +17368,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Verbs = append(s.Verbs, elem)
 			}
@@ -17393,7 +17393,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetFake() {
 	{
 
 		{
-			s.GroupVersion = ""
+			s.GroupVersion = "string"
 		}
 	}
 	{
@@ -17454,7 +17454,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Versions = append(s.Versions, elem)
 			}
@@ -17473,7 +17473,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
@@ -17485,19 +17485,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetFake() {
 	{
 
 		{
-			s.Reason = ""
+			s.Reason = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -17511,13 +17511,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetFake() {
 	{
 
 		{
-			s.GroupVersion = ""
+			s.GroupVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.Version = ""
+			s.Version = "string"
 		}
 	}
 }
@@ -17563,13 +17563,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Operator = ""
+			s.Operator = "string"
 		}
 	}
 	{
@@ -17580,7 +17580,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Values = append(s.Values, elem)
 			}
@@ -17712,7 +17712,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Finalizers = append(s.Finalizers, elem)
 			}
@@ -17825,7 +17825,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetFake() {
 	{
 
 		{
-			s.ApiVersion = ""
+			s.ApiVersion = "string"
 		}
 	}
 	{
@@ -17843,19 +17843,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetFake() {
 	{
 
 		{
-			s.Kind = ""
+			s.Kind = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.UID = ""
+			s.UID = "string"
 		}
 	}
 }
@@ -17865,13 +17865,13 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) SetFake() {
 	{
 
 		{
-			s.ClientCIDR = ""
+			s.ClientCIDR = "string"
 		}
 	}
 	{
 
 		{
-			s.ServerAddress = ""
+			s.ServerAddress = "string"
 		}
 	}
 }
@@ -17897,7 +17897,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -17911,7 +17911,7 @@ func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = IoK8sApimachineryPkgUtilIntstrIntOrString(unwrapped)
 }
@@ -17921,55 +17921,55 @@ func (s *IoK8sApimachineryPkgVersionInfo) SetFake() {
 	{
 
 		{
-			s.BuildDate = ""
+			s.BuildDate = "string"
 		}
 	}
 	{
 
 		{
-			s.Compiler = ""
+			s.Compiler = "string"
 		}
 	}
 	{
 
 		{
-			s.GitCommit = ""
+			s.GitCommit = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTreeState = ""
+			s.GitTreeState = "string"
 		}
 	}
 	{
 
 		{
-			s.GitVersion = ""
+			s.GitVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.GoVersion = ""
+			s.GoVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.Major = ""
+			s.Major = "string"
 		}
 	}
 	{
 
 		{
-			s.Minor = ""
+			s.Minor = "string"
 		}
 	}
 	{
 
 		{
-			s.Platform = ""
+			s.Platform = "string"
 		}
 	}
 }
@@ -18031,13 +18031,13 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetFake
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -18095,7 +18095,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetFake() {
 	{
 
 		{
-			s.GroupPriorityMinimum = int32(1)
+			s.GroupPriorityMinimum = int32(0)
 		}
 	}
 	{
@@ -18119,7 +18119,7 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetFake() {
 	{
 
 		{
-			s.VersionPriority = int32(1)
+			s.VersionPriority = int32(0)
 		}
 	}
 }
@@ -18189,7 +18189,7 @@ func (s *OptInt32) SetFake() {
 	var elem int32
 
 	{
-		elem = int32(1)
+		elem = int32(0)
 	}
 	s.SetTo(elem)
 }
@@ -18199,7 +18199,7 @@ func (s *OptInt64) SetFake() {
 	var elem int64
 
 	{
-		elem = int64(1)
+		elem = int64(0)
 	}
 	s.SetTo(elem)
 }
@@ -21125,7 +21125,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -21135,7 +21135,7 @@ func (s *ReadCoreV1NamespacedPodLogOKApplicationJSON) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = ReadCoreV1NamespacedPodLogOKApplicationJSON(unwrapped)
 }
