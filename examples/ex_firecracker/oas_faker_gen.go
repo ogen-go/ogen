@@ -599,7 +599,7 @@ func (s *OptInt64) SetFake() {
 	var elem int64
 
 	{
-		elem = int64(0)
+		elem = int64(1)
 	}
 	s.SetTo(elem)
 }
