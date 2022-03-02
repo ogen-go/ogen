@@ -75,13 +75,13 @@ func (s *Error) SetFake() {
 	{
 
 		{
-			s.Code = int32(1)
+			s.Code = int32(0)
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -91,7 +91,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -101,13 +101,13 @@ func (s *Pet) SetFake() {
 	{
 
 		{
-			s.ID = int64(1)
+			s.ID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{

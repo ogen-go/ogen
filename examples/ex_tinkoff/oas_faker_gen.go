@@ -80,7 +80,7 @@ func (s *Candle) SetFake() {
 	{
 
 		{
-			s.Figi = ""
+			s.Figi = "string"
 		}
 	}
 	{
@@ -116,7 +116,7 @@ func (s *Candle) SetFake() {
 	{
 
 		{
-			s.V = int32(1)
+			s.V = int32(0)
 		}
 	}
 	{
@@ -137,7 +137,7 @@ func (s *Candles) SetFake() {
 	{
 
 		{
-			s.Figi = ""
+			s.Figi = "string"
 		}
 	}
 	{
@@ -167,13 +167,13 @@ func (s *CandlesResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -234,7 +234,7 @@ func (s *Empty) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
@@ -246,7 +246,7 @@ func (s *Empty) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 }
@@ -260,13 +260,13 @@ func (s *Error) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -303,7 +303,7 @@ func (s *LimitOrderRequest) SetFake() {
 	{
 
 		{
-			s.Lots = int32(1)
+			s.Lots = int32(0)
 		}
 	}
 	{
@@ -325,13 +325,13 @@ func (s *LimitOrderResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -347,13 +347,13 @@ func (s *MarketInstrument) SetFake() {
 	{
 
 		{
-			s.Figi = ""
+			s.Figi = "string"
 		}
 	}
 	{
 
 		{
-			s.Ticker = ""
+			s.Ticker = "string"
 		}
 	}
 	{
@@ -371,7 +371,7 @@ func (s *MarketInstrument) SetFake() {
 	{
 
 		{
-			s.Lot = int32(1)
+			s.Lot = int32(0)
 		}
 	}
 	{
@@ -389,7 +389,7 @@ func (s *MarketInstrument) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -405,7 +405,7 @@ func (s *MarketInstrumentList) SetFake() {
 	{
 
 		{
-			s.Total = int32(1)
+			s.Total = int32(0)
 		}
 	}
 	{
@@ -429,13 +429,13 @@ func (s *MarketInstrumentListResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -451,7 +451,7 @@ func (s *MarketOrderRequest) SetFake() {
 	{
 
 		{
-			s.Lots = int32(1)
+			s.Lots = int32(0)
 		}
 	}
 	{
@@ -467,13 +467,13 @@ func (s *MarketOrderResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -505,7 +505,7 @@ func (s *Operation) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -606,7 +606,7 @@ func (s *OperationTrade) SetFake() {
 	{
 
 		{
-			s.TradeId = ""
+			s.TradeId = "string"
 		}
 	}
 	{
@@ -624,7 +624,7 @@ func (s *OperationTrade) SetFake() {
 	{
 
 		{
-			s.Quantity = int32(1)
+			s.Quantity = int32(0)
 		}
 	}
 }
@@ -662,13 +662,13 @@ func (s *OperationsResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -724,7 +724,7 @@ func (s *OptInt32) SetFake() {
 	var elem int32
 
 	{
-		elem = int32(1)
+		elem = int32(0)
 	}
 	s.SetTo(elem)
 }
@@ -764,7 +764,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -774,13 +774,13 @@ func (s *Order) SetFake() {
 	{
 
 		{
-			s.OrderId = ""
+			s.OrderId = "string"
 		}
 	}
 	{
 
 		{
-			s.Figi = ""
+			s.Figi = "string"
 		}
 	}
 	{
@@ -798,13 +798,13 @@ func (s *Order) SetFake() {
 	{
 
 		{
-			s.RequestedLots = int32(1)
+			s.RequestedLots = int32(0)
 		}
 	}
 	{
 
 		{
-			s.ExecutedLots = int32(1)
+			s.ExecutedLots = int32(0)
 		}
 	}
 	{
@@ -832,7 +832,7 @@ func (s *OrderResponse) SetFake() {
 	{
 
 		{
-			s.Quantity = int32(1)
+			s.Quantity = int32(0)
 		}
 	}
 }
@@ -852,13 +852,13 @@ func (s *Orderbook) SetFake() {
 	{
 
 		{
-			s.Figi = ""
+			s.Figi = "string"
 		}
 	}
 	{
 
 		{
-			s.Depth = int32(1)
+			s.Depth = int32(0)
 		}
 	}
 	{
@@ -938,13 +938,13 @@ func (s *OrderbookResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -960,13 +960,13 @@ func (s *OrdersResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -990,7 +990,7 @@ func (s *PlacedLimitOrder) SetFake() {
 	{
 
 		{
-			s.OrderId = ""
+			s.OrderId = "string"
 		}
 	}
 	{
@@ -1020,13 +1020,13 @@ func (s *PlacedLimitOrder) SetFake() {
 	{
 
 		{
-			s.RequestedLots = int(1)
+			s.RequestedLots = int(0)
 		}
 	}
 	{
 
 		{
-			s.ExecutedLots = int(1)
+			s.ExecutedLots = int(0)
 		}
 	}
 	{
@@ -1042,7 +1042,7 @@ func (s *PlacedMarketOrder) SetFake() {
 	{
 
 		{
-			s.OrderId = ""
+			s.OrderId = "string"
 		}
 	}
 	{
@@ -1072,13 +1072,13 @@ func (s *PlacedMarketOrder) SetFake() {
 	{
 
 		{
-			s.RequestedLots = int(1)
+			s.RequestedLots = int(0)
 		}
 	}
 	{
 
 		{
-			s.ExecutedLots = int(1)
+			s.ExecutedLots = int(0)
 		}
 	}
 	{
@@ -1112,13 +1112,13 @@ func (s *PortfolioCurrenciesResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -1134,7 +1134,7 @@ func (s *PortfolioPosition) SetFake() {
 	{
 
 		{
-			s.Figi = ""
+			s.Figi = "string"
 		}
 	}
 	{
@@ -1176,7 +1176,7 @@ func (s *PortfolioPosition) SetFake() {
 	{
 
 		{
-			s.Lots = int32(1)
+			s.Lots = int32(0)
 		}
 	}
 	{
@@ -1194,7 +1194,7 @@ func (s *PortfolioPosition) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -1204,13 +1204,13 @@ func (s *PortfolioResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -1232,7 +1232,7 @@ func (s *SandboxAccount) SetFake() {
 	{
 
 		{
-			s.BrokerAccountId = ""
+			s.BrokerAccountId = "string"
 		}
 	}
 }
@@ -1257,13 +1257,13 @@ func (s *SandboxRegisterResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -1311,13 +1311,13 @@ func (s *SearchMarketInstrument) SetFake() {
 	{
 
 		{
-			s.Figi = ""
+			s.Figi = "string"
 		}
 	}
 	{
 
 		{
-			s.Ticker = ""
+			s.Ticker = "string"
 		}
 	}
 	{
@@ -1335,7 +1335,7 @@ func (s *SearchMarketInstrument) SetFake() {
 	{
 
 		{
-			s.Lot = int32(1)
+			s.Lot = int32(0)
 		}
 	}
 	{
@@ -1347,7 +1347,7 @@ func (s *SearchMarketInstrument) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -1363,13 +1363,13 @@ func (s *SearchMarketInstrumentResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -1396,7 +1396,7 @@ func (s *UserAccount) SetFake() {
 	{
 
 		{
-			s.BrokerAccountId = ""
+			s.BrokerAccountId = "string"
 		}
 	}
 }
@@ -1424,13 +1424,13 @@ func (s *UserAccountsResponse) SetFake() {
 	{
 
 		{
-			s.TrackingId = ""
+			s.TrackingId = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{

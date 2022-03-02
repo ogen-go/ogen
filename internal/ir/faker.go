@@ -2,49 +2,12 @@ package ir
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
-
-	"github.com/ogen-go/ogen/validate"
 )
 
-func generateInt(p PrimitiveType, va validate.Int) string {
-	mul := va.MultipleOf
-	if mul <= 0 {
-		mul = 1
-	}
-	switch {
-	case !va.MinSet && !va.MaxSet:
-		return fmt.Sprintf("%s(%d)", p, mul)
-	case va.MinSet && va.MaxSet:
-		max := va.Max
-		if va.MaxExclusive {
-			max--
-		}
-		min := va.Min
-		if va.MinExclusive {
-			min++
-		}
-		for i := min; i <= max; i++ {
-			if i%int64(mul) == 0 {
-				return fmt.Sprintf("%s(%d)", p, i)
-			}
-		}
-		panic(fmt.Sprintf("unable to generate valid value %+v", va))
-	default:
-		val := va.Min
-		if va.MaxSet {
-			val = va.Max
-		}
-		return fmt.Sprintf("%s(%d)", p, val)
-	}
-}
-
 func (t *Type) FakeValue() string {
-	va := t.Validators
 	switch p := t.Primitive; p {
 	case String:
-		return strconv.Quote(strings.Repeat("a", va.String.MinLength))
+		return `"string"`
 	case ByteSlice:
 		return `[]byte("[]byte")`
 	case Int,
@@ -57,7 +20,7 @@ func (t *Type) FakeValue() string {
 		Uint16,
 		Uint32,
 		Uint64:
-		return generateInt(p, va.Int)
+		return fmt.Sprintf("%s(0)", p)
 	case Float32:
 		return "float32(0)"
 	case Float64:

@@ -75,7 +75,7 @@ func (s *Balloon) SetFake() {
 	{
 
 		{
-			s.AmountMib = int(1)
+			s.AmountMib = int(0)
 		}
 	}
 	{
@@ -97,25 +97,25 @@ func (s *BalloonStats) SetFake() {
 	{
 
 		{
-			s.TargetPages = int(1)
+			s.TargetPages = int(0)
 		}
 	}
 	{
 
 		{
-			s.ActualPages = int(1)
+			s.ActualPages = int(0)
 		}
 	}
 	{
 
 		{
-			s.TargetMib = int(1)
+			s.TargetMib = int(0)
 		}
 	}
 	{
 
 		{
-			s.ActualMib = int(1)
+			s.ActualMib = int(0)
 		}
 	}
 	{
@@ -185,7 +185,7 @@ func (s *BalloonStatsUpdate) SetFake() {
 	{
 
 		{
-			s.StatsPollingIntervalS = int(1)
+			s.StatsPollingIntervalS = int(0)
 		}
 	}
 }
@@ -195,7 +195,7 @@ func (s *BalloonUpdate) SetFake() {
 	{
 
 		{
-			s.AmountMib = int(1)
+			s.AmountMib = int(0)
 		}
 	}
 }
@@ -217,7 +217,7 @@ func (s *BootSource) SetFake() {
 	{
 
 		{
-			s.KernelImagePath = ""
+			s.KernelImagePath = "string"
 		}
 	}
 }
@@ -232,7 +232,7 @@ func (s *Drive) SetFake() {
 	{
 
 		{
-			s.DriveID = ""
+			s.DriveID = "string"
 		}
 	}
 	{
@@ -262,7 +262,7 @@ func (s *Drive) SetFake() {
 	{
 
 		{
-			s.PathOnHost = ""
+			s.PathOnHost = "string"
 		}
 	}
 	{
@@ -377,13 +377,13 @@ func (s *InstanceInfo) SetFake() {
 	{
 
 		{
-			s.AppName = ""
+			s.AppName = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -395,7 +395,7 @@ func (s *InstanceInfo) SetFake() {
 	{
 
 		{
-			s.VmmVersion = ""
+			s.VmmVersion = "string"
 		}
 	}
 }
@@ -416,7 +416,7 @@ func (s *Logger) SetFake() {
 	{
 
 		{
-			s.LogPath = ""
+			s.LogPath = "string"
 		}
 	}
 	{
@@ -455,7 +455,7 @@ func (s *MachineConfiguration) SetFake() {
 	{
 
 		{
-			s.MemSizeMib = int(1)
+			s.MemSizeMib = int(0)
 		}
 	}
 	{
@@ -467,7 +467,7 @@ func (s *MachineConfiguration) SetFake() {
 	{
 
 		{
-			s.VcpuCount = int(1)
+			s.VcpuCount = int(0)
 		}
 	}
 }
@@ -477,7 +477,7 @@ func (s *Metrics) SetFake() {
 	{
 
 		{
-			s.MetricsPath = ""
+			s.MetricsPath = "string"
 		}
 	}
 }
@@ -521,13 +521,13 @@ func (s *NetworkInterface) SetFake() {
 	{
 
 		{
-			s.HostDevName = ""
+			s.HostDevName = "string"
 		}
 	}
 	{
 
 		{
-			s.IfaceID = ""
+			s.IfaceID = "string"
 		}
 	}
 	{
@@ -589,7 +589,7 @@ func (s *OptInt) SetFake() {
 	var elem int
 
 	{
-		elem = int(1)
+		elem = int(0)
 	}
 	s.SetTo(elem)
 }
@@ -599,7 +599,7 @@ func (s *OptInt64) SetFake() {
 	var elem int64
 
 	{
-		elem = int64(1)
+		elem = int64(0)
 	}
 	s.SetTo(elem)
 }
@@ -679,7 +679,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -709,7 +709,7 @@ func (s *PartialDrive) SetFake() {
 	{
 
 		{
-			s.DriveID = ""
+			s.DriveID = "string"
 		}
 	}
 	{
@@ -731,7 +731,7 @@ func (s *PartialNetworkInterface) SetFake() {
 	{
 
 		{
-			s.IfaceID = ""
+			s.IfaceID = "string"
 		}
 	}
 	{
@@ -769,13 +769,13 @@ func (s *SnapshotCreateParams) SetFake() {
 	{
 
 		{
-			s.MemFilePath = ""
+			s.MemFilePath = "string"
 		}
 	}
 	{
 
 		{
-			s.SnapshotPath = ""
+			s.SnapshotPath = "string"
 		}
 	}
 	{
@@ -808,13 +808,13 @@ func (s *SnapshotLoadParams) SetFake() {
 	{
 
 		{
-			s.MemFilePath = ""
+			s.MemFilePath = "string"
 		}
 	}
 	{
 
 		{
-			s.SnapshotPath = ""
+			s.SnapshotPath = "string"
 		}
 	}
 	{
@@ -867,19 +867,19 @@ func (s *Vsock) SetFake() {
 	{
 
 		{
-			s.GuestCid = int(3)
+			s.GuestCid = int(0)
 		}
 	}
 	{
 
 		{
-			s.UdsPath = ""
+			s.UdsPath = "string"
 		}
 	}
 	{
 
 		{
-			s.VsockID = ""
+			s.VsockID = "string"
 		}
 	}
 }

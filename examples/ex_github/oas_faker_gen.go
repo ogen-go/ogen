@@ -92,7 +92,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Hooks = append(s.Hooks, elem)
 			}
@@ -106,7 +106,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Web = append(s.Web, elem)
 			}
@@ -120,7 +120,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.API = append(s.API, elem)
 			}
@@ -134,7 +134,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Git = append(s.Git, elem)
 			}
@@ -148,7 +148,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Packages = append(s.Packages, elem)
 			}
@@ -162,7 +162,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Pages = append(s.Pages, elem)
 			}
@@ -176,7 +176,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Importer = append(s.Importer, elem)
 			}
@@ -190,7 +190,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Actions = append(s.Actions, elem)
 			}
@@ -204,7 +204,7 @@ func (s *APIOverview) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Dependabot = append(s.Dependabot, elem)
 			}
@@ -269,19 +269,19 @@ func (s *ActionsBillingUsage) SetFake() {
 	{
 
 		{
-			s.TotalMinutesUsed = int(1)
+			s.TotalMinutesUsed = int(0)
 		}
 	}
 	{
 
 		{
-			s.TotalPaidMinutesUsed = int(1)
+			s.TotalPaidMinutesUsed = int(0)
 		}
 	}
 	{
 
 		{
-			s.IncludedMinutes = int(1)
+			s.IncludedMinutes = int(0)
 		}
 	}
 	{
@@ -331,13 +331,13 @@ func (s *ActionsCreateOrUpdateEnvironmentSecretReq) SetFake() {
 	{
 
 		{
-			s.EncryptedValue = ""
+			s.EncryptedValue = "string"
 		}
 	}
 	{
 
 		{
-			s.KeyID = ""
+			s.KeyID = "string"
 		}
 	}
 }
@@ -370,7 +370,7 @@ func (s *ActionsCreateOrUpdateOrgSecretReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
 			}
@@ -416,7 +416,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -433,7 +433,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
 			}
@@ -447,7 +447,7 @@ func (s *ActionsCreateSelfHostedRunnerGroupForOrgReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Runners = append(s.Runners, elem)
 			}
@@ -503,7 +503,7 @@ func (s *ActionsListArtifactsForRepoOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -527,7 +527,7 @@ func (s *ActionsListEnvironmentSecretsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -551,7 +551,7 @@ func (s *ActionsListJobsForWorkflowRunOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -575,7 +575,7 @@ func (s *ActionsListOrgSecretsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -623,7 +623,7 @@ func (s *ActionsListRepoSecretsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -647,7 +647,7 @@ func (s *ActionsListRepoWorkflowsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -671,7 +671,7 @@ func (s *ActionsListSelectedReposForOrgSecretOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -743,7 +743,7 @@ func (s *ActionsListSelfHostedRunnersForOrgOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -767,7 +767,7 @@ func (s *ActionsListSelfHostedRunnersForRepoOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -815,7 +815,7 @@ func (s *ActionsListWorkflowRunArtifactsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -839,7 +839,7 @@ func (s *ActionsListWorkflowRunsForRepoOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -891,13 +891,13 @@ func (s *ActionsPublicKey) SetFake() {
 	{
 
 		{
-			s.KeyID = ""
+			s.KeyID = "string"
 		}
 	}
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
@@ -982,7 +982,7 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.EnvironmentIds = append(s.EnvironmentIds, elem)
 			}
@@ -997,7 +997,7 @@ func (s *ActionsReviewPendingDeploymentsForRunReq) SetFake() {
 	{
 
 		{
-			s.Comment = ""
+			s.Comment = "string"
 		}
 	}
 }
@@ -1012,7 +1012,7 @@ func (s *ActionsSecret) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -1071,7 +1071,7 @@ func (s *ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
 			}
@@ -1089,7 +1089,7 @@ func (s *ActionsSetSelectedReposForOrgSecretReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
 			}
@@ -1107,7 +1107,7 @@ func (s *ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq) SetF
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SelectedRepositoryIds = append(s.SelectedRepositoryIds, elem)
 			}
@@ -1125,7 +1125,7 @@ func (s *ActionsSetSelfHostedRunnersInGroupForOrgReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Runners = append(s.Runners, elem)
 			}
@@ -1138,7 +1138,7 @@ func (s *ActionsUpdateSelfHostedRunnerGroupForOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -1607,13 +1607,13 @@ func (s *Actor) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
@@ -1677,7 +1677,7 @@ func (s *AlertNumber) SetFake() {
 	var unwrapped int
 
 	{
-		unwrapped = int(1)
+		unwrapped = int(0)
 	}
 	*s = AlertNumber(unwrapped)
 }
@@ -2047,7 +2047,7 @@ func (s *ApplicationGrant) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -2082,7 +2082,7 @@ func (s *ApplicationGrant) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Scopes = append(s.Scopes, elem)
 			}
@@ -2101,13 +2101,13 @@ func (s *ApplicationGrantApp) SetFake() {
 	{
 
 		{
-			s.ClientID = ""
+			s.ClientID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -2143,7 +2143,7 @@ func (s *AppsCheckTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = ""
+			s.AccessToken = "string"
 		}
 	}
 }
@@ -2183,13 +2183,13 @@ func (s *AppsCreateContentAttachmentReq) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -2234,7 +2234,7 @@ func (s *AppsCreateInstallationAccessTokenReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Repositories = append(s.Repositories, elem)
 			}
@@ -2248,7 +2248,7 @@ func (s *AppsCreateInstallationAccessTokenReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.RepositoryIds = append(s.RepositoryIds, elem)
 			}
@@ -2267,7 +2267,7 @@ func (s *AppsDeleteAuthorizationReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = ""
+			s.AccessToken = "string"
 		}
 	}
 }
@@ -2277,7 +2277,7 @@ func (s *AppsDeleteTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = ""
+			s.AccessToken = "string"
 		}
 	}
 }
@@ -2403,7 +2403,7 @@ func (s *AppsListInstallationReposForAuthenticatedUserOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -2509,7 +2509,7 @@ func (s *AppsListReposAccessibleToInstallationOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -2633,7 +2633,7 @@ func (s *AppsResetTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = ""
+			s.AccessToken = "string"
 		}
 	}
 }
@@ -2673,7 +2673,7 @@ func (s *AppsScopeTokenReq) SetFake() {
 	{
 
 		{
-			s.AccessToken = ""
+			s.AccessToken = "string"
 		}
 	}
 	{
@@ -2696,7 +2696,7 @@ func (s *AppsScopeTokenReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Repositories = append(s.Repositories, elem)
 			}
@@ -2710,7 +2710,7 @@ func (s *AppsScopeTokenReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.RepositoryIds = append(s.RepositoryIds, elem)
 			}
@@ -2757,37 +2757,37 @@ func (s *Artifact) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.SizeInBytes = int(1)
+			s.SizeInBytes = int(0)
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.ArchiveDownloadURL = ""
+			s.ArchiveDownloadURL = "string"
 		}
 	}
 	{
@@ -3119,7 +3119,7 @@ func (s *AuthenticationToken) SetFake() {
 	{
 
 		{
-			s.Token = ""
+			s.Token = "string"
 		}
 	}
 	{
@@ -3181,7 +3181,7 @@ func (s *Authorization) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -3198,7 +3198,7 @@ func (s *Authorization) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Scopes = append(s.Scopes, elem)
 			}
@@ -3207,7 +3207,7 @@ func (s *Authorization) SetFake() {
 	{
 
 		{
-			s.Token = ""
+			s.Token = "string"
 		}
 	}
 	{
@@ -3283,13 +3283,13 @@ func (s *AuthorizationApp) SetFake() {
 	{
 
 		{
-			s.ClientID = ""
+			s.ClientID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -3317,13 +3317,13 @@ func (s *AutoMerge) SetFake() {
 	{
 
 		{
-			s.CommitTitle = ""
+			s.CommitTitle = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitMessage = ""
+			s.CommitMessage = "string"
 		}
 	}
 }
@@ -3338,19 +3338,19 @@ func (s *Autolink) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.KeyPrefix = ""
+			s.KeyPrefix = "string"
 		}
 	}
 	{
 
 		{
-			s.URLTemplate = ""
+			s.URLTemplate = "string"
 		}
 	}
 }
@@ -3378,13 +3378,13 @@ func (s *BaseGist) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -3439,7 +3439,7 @@ func (s *BaseGist) SetFake() {
 	{
 
 		{
-			s.Comments = int(1)
+			s.Comments = int(0)
 		}
 	}
 	{
@@ -3575,13 +3575,13 @@ func (s *Blob) SetFake() {
 	{
 
 		{
-			s.Content = ""
+			s.Content = "string"
 		}
 	}
 	{
 
 		{
-			s.Encoding = ""
+			s.Encoding = "string"
 		}
 	}
 	{
@@ -3593,7 +3593,7 @@ func (s *Blob) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -3605,7 +3605,7 @@ func (s *Blob) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -3776,7 +3776,7 @@ func (s *BranchProtectionRequiredStatusChecks) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Contexts = append(s.Contexts, elem)
 			}
@@ -3942,7 +3942,7 @@ func (s *BranchRestrictionPolicyAppsItem) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -4313,7 +4313,7 @@ func (s *BranchShort) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -4335,13 +4335,13 @@ func (s *BranchShortCommit) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 }
@@ -4351,7 +4351,7 @@ func (s *BranchWithProtection) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -4403,7 +4403,7 @@ func (s *BranchWithProtectionLinks) SetFake() {
 	{
 
 		{
-			s.HTML = ""
+			s.HTML = "string"
 		}
 	}
 	{
@@ -4419,19 +4419,19 @@ func (s *CheckAnnotation) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
 
 		{
-			s.StartLine = int(1)
+			s.StartLine = int(0)
 		}
 	}
 	{
 
 		{
-			s.EndLine = int(1)
+			s.EndLine = int(0)
 		}
 	}
 	{
@@ -4473,7 +4473,7 @@ func (s *CheckAnnotation) SetFake() {
 	{
 
 		{
-			s.BlobHref = ""
+			s.BlobHref = "string"
 		}
 	}
 }
@@ -4483,19 +4483,19 @@ func (s *CheckRun) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.HeadSha = ""
+			s.HeadSha = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -4507,7 +4507,7 @@ func (s *CheckRun) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
@@ -4555,7 +4555,7 @@ func (s *CheckRun) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -4597,7 +4597,7 @@ func (s *CheckRunCheckSuite) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 }
@@ -4630,7 +4630,7 @@ func (s *CheckRunOutput) SetFake() {
 	{
 
 		{
-			s.AnnotationsCount = int(1)
+			s.AnnotationsCount = int(0)
 		}
 	}
 	{
@@ -4651,13 +4651,13 @@ func (s *CheckSuite) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -4669,7 +4669,7 @@ func (s *CheckSuite) SetFake() {
 	{
 
 		{
-			s.HeadSha = ""
+			s.HeadSha = "string"
 		}
 	}
 	{
@@ -4749,13 +4749,13 @@ func (s *CheckSuite) SetFake() {
 	{
 
 		{
-			s.LatestCheckRunsCount = int(1)
+			s.LatestCheckRunsCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.CheckRunsURL = ""
+			s.CheckRunsURL = "string"
 		}
 	}
 }
@@ -4804,7 +4804,7 @@ func (s *CheckSuitePreferencePreferencesAutoTriggerChecksItem) SetFake() {
 	{
 
 		{
-			s.AppID = int(1)
+			s.AppID = int(0)
 		}
 	}
 	{
@@ -4845,7 +4845,7 @@ func (s *ChecksCreateSuiteReq) SetFake() {
 	{
 
 		{
-			s.HeadSha = ""
+			s.HeadSha = "string"
 		}
 	}
 }
@@ -4855,7 +4855,7 @@ func (s *ChecksListForRefOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -4879,7 +4879,7 @@ func (s *ChecksListForSuiteOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -4903,7 +4903,7 @@ func (s *ChecksListSuitesForRefOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -4957,7 +4957,7 @@ func (s *ChecksSetSuitesPreferencesReqAutoTriggerChecksItem) SetFake() {
 	{
 
 		{
-			s.AppID = int(1)
+			s.AppID = int(0)
 		}
 	}
 	{
@@ -4973,13 +4973,13 @@ func (s *CloneTraffic) SetFake() {
 	{
 
 		{
-			s.Count = int(1)
+			s.Count = int(0)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(1)
+			s.Uniques = int(0)
 		}
 	}
 	{
@@ -5008,7 +5008,7 @@ func (s *CodeFrequencyStat) SetFake() {
 			var elem int
 
 			{
-				elem = int(1)
+				elem = int(0)
 			}
 			unwrapped = append(unwrapped, elem)
 		}
@@ -5021,13 +5021,13 @@ func (s *CodeOfConduct) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -5061,13 +5061,13 @@ func (s *CodeOfConductSimple) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -5185,7 +5185,7 @@ func (s *CodeScanningAlertEnvironment) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAlertEnvironment(unwrapped)
 }
@@ -5522,7 +5522,7 @@ func (s *CodeScanningAnalysis) SetFake() {
 	{
 
 		{
-			s.Error = ""
+			s.Error = "string"
 		}
 	}
 	{
@@ -5534,19 +5534,19 @@ func (s *CodeScanningAnalysis) SetFake() {
 	{
 
 		{
-			s.ResultsCount = int(1)
+			s.ResultsCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.RulesCount = int(1)
+			s.RulesCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -5576,7 +5576,7 @@ func (s *CodeScanningAnalysis) SetFake() {
 	{
 
 		{
-			s.Warning = ""
+			s.Warning = "string"
 		}
 	}
 	{
@@ -5592,7 +5592,7 @@ func (s *CodeScanningAnalysisAnalysisKey) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisAnalysisKey(unwrapped)
 }
@@ -5602,7 +5602,7 @@ func (s *CodeScanningAnalysisCategory) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisCategory(unwrapped)
 }
@@ -5612,7 +5612,7 @@ func (s *CodeScanningAnalysisCommitSha) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisCommitSha(unwrapped)
 }
@@ -5648,7 +5648,7 @@ func (s *CodeScanningAnalysisEnvironment) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisEnvironment(unwrapped)
 }
@@ -5658,7 +5658,7 @@ func (s *CodeScanningAnalysisSarifFile) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisSarifFile(unwrapped)
 }
@@ -5668,7 +5668,7 @@ func (s *CodeScanningAnalysisSarifID) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisSarifID(unwrapped)
 }
@@ -5700,7 +5700,7 @@ func (s *CodeScanningAnalysisToolGUID) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisToolGUID(unwrapped)
 }
@@ -5710,7 +5710,7 @@ func (s *CodeScanningAnalysisToolName) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisToolName(unwrapped)
 }
@@ -5720,7 +5720,7 @@ func (s *CodeScanningAnalysisToolVersion) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningAnalysisToolVersion(unwrapped)
 }
@@ -5924,7 +5924,7 @@ func (s *CodeScanningRef) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = CodeScanningRef(unwrapped)
 }
@@ -6067,19 +6067,19 @@ func (s *CodeSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -6138,7 +6138,7 @@ func (s *CodeSearchResultItem) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.LineNumbers = append(s.LineNumbers, elem)
 			}
@@ -6175,13 +6175,13 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -6199,7 +6199,7 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -6235,19 +6235,19 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -6271,7 +6271,7 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -6283,7 +6283,7 @@ func (s *Collaborator) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -6339,19 +6339,19 @@ func (s *CombinedBillingUsage) SetFake() {
 	{
 
 		{
-			s.DaysLeftInBillingCycle = int(1)
+			s.DaysLeftInBillingCycle = int(0)
 		}
 	}
 	{
 
 		{
-			s.EstimatedPaidStorageForMonth = int(1)
+			s.EstimatedPaidStorageForMonth = int(0)
 		}
 	}
 	{
 
 		{
-			s.EstimatedStorageForMonth = int(1)
+			s.EstimatedStorageForMonth = int(0)
 		}
 	}
 }
@@ -6361,7 +6361,7 @@ func (s *CombinedCommitStatus) SetFake() {
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -6381,13 +6381,13 @@ func (s *CombinedCommitStatus) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -6421,13 +6421,13 @@ func (s *Commit) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -6506,7 +6506,7 @@ func (s *CommitActivity) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Days = append(s.Days, elem)
 			}
@@ -6515,13 +6515,13 @@ func (s *CommitActivity) SetFake() {
 	{
 
 		{
-			s.Total = int(1)
+			s.Total = int(0)
 		}
 	}
 	{
 
 		{
-			s.Week = int(1)
+			s.Week = int(0)
 		}
 	}
 }
@@ -6543,19 +6543,19 @@ func (s *CommitComment) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -6579,7 +6579,7 @@ func (s *CommitComment) SetFake() {
 	{
 
 		{
-			s.CommitID = ""
+			s.CommitID = "string"
 		}
 	}
 	{
@@ -6637,13 +6637,13 @@ func (s *CommitCommit) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentCount = int(1)
+			s.CommentCount = int(0)
 		}
 	}
 	{
@@ -6665,7 +6665,7 @@ func (s *CommitCommitTree) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -6729,19 +6729,19 @@ func (s *CommitComparison) SetFake() {
 	{
 
 		{
-			s.AheadBy = int(1)
+			s.AheadBy = int(0)
 		}
 	}
 	{
 
 		{
-			s.BehindBy = int(1)
+			s.BehindBy = int(0)
 		}
 	}
 	{
 
 		{
-			s.TotalCommits = int(1)
+			s.TotalCommits = int(0)
 		}
 	}
 	{
@@ -6854,7 +6854,7 @@ func (s *CommitParentsItem) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -6882,7 +6882,7 @@ func (s *CommitSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -6944,7 +6944,7 @@ func (s *CommitSearchResultItem) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -6972,13 +6972,13 @@ func (s *CommitSearchResultItemCommit) SetFake() {
 	{
 
 		{
-			s.CommentCount = int(1)
+			s.CommentCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
@@ -7006,13 +7006,13 @@ func (s *CommitSearchResultItemCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
@@ -7028,7 +7028,7 @@ func (s *CommitSearchResultItemCommitTree) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -7088,7 +7088,7 @@ func (s *CommunityProfile) SetFake() {
 	{
 
 		{
-			s.HealthPercentage = int(1)
+			s.HealthPercentage = int(0)
 		}
 	}
 	{
@@ -7174,43 +7174,43 @@ func (s *ContentFile) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.Encoding = ""
+			s.Encoding = "string"
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
 
 		{
-			s.Content = ""
+			s.Content = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -7284,19 +7284,19 @@ func (s *ContentReferenceAttachment) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -7312,25 +7312,25 @@ func (s *ContentTraffic) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Count = int(1)
+			s.Count = int(0)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(1)
+			s.Uniques = int(0)
 		}
 	}
 }
@@ -7436,7 +7436,7 @@ func (s *Contributor) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -7448,7 +7448,7 @@ func (s *Contributor) SetFake() {
 	{
 
 		{
-			s.Contributions = int(1)
+			s.Contributions = int(0)
 		}
 	}
 	{
@@ -7476,7 +7476,7 @@ func (s *ContributorActivity) SetFake() {
 	{
 
 		{
-			s.Total = int(1)
+			s.Total = int(0)
 		}
 	}
 	{
@@ -7528,19 +7528,19 @@ func (s *CredentialAuthorization) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.CredentialID = int(1)
+			s.CredentialID = int(0)
 		}
 	}
 	{
 
 		{
-			s.CredentialType = ""
+			s.CredentialType = "string"
 		}
 	}
 	{
@@ -7563,7 +7563,7 @@ func (s *CredentialAuthorization) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Scopes = append(s.Scopes, elem)
 			}
@@ -7606,25 +7606,25 @@ func (s *DeployKey) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -7636,7 +7636,7 @@ func (s *DeployKey) SetFake() {
 	{
 
 		{
-			s.CreatedAt = ""
+			s.CreatedAt = "string"
 		}
 	}
 	{
@@ -7658,31 +7658,31 @@ func (s *Deployment) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
 
 		{
-			s.Task = ""
+			s.Task = "string"
 		}
 	}
 	{
@@ -7700,7 +7700,7 @@ func (s *Deployment) SetFake() {
 	{
 
 		{
-			s.Environment = ""
+			s.Environment = "string"
 		}
 	}
 	{
@@ -7793,19 +7793,19 @@ func (s *DeploymentSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Task = ""
+			s.Task = "string"
 		}
 	}
 	{
@@ -7817,7 +7817,7 @@ func (s *DeploymentSimple) SetFake() {
 	{
 
 		{
-			s.Environment = ""
+			s.Environment = "string"
 		}
 	}
 	{
@@ -7881,13 +7881,13 @@ func (s *DeploymentStatus) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -7905,7 +7905,7 @@ func (s *DeploymentStatus) SetFake() {
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
@@ -7974,13 +7974,13 @@ func (s *DiffEntry) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.Filename = ""
+			s.Filename = "string"
 		}
 	}
 	{
@@ -7992,19 +7992,19 @@ func (s *DiffEntry) SetFake() {
 	{
 
 		{
-			s.Additions = int(1)
+			s.Additions = int(0)
 		}
 	}
 	{
 
 		{
-			s.Deletions = int(1)
+			s.Deletions = int(0)
 		}
 	}
 	{
 
 		{
-			s.Changes = int(1)
+			s.Changes = int(0)
 		}
 	}
 	{
@@ -8049,7 +8049,7 @@ func (s *Email) SetFake() {
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
@@ -8111,7 +8111,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -8128,7 +8128,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SelectedOrganizationIds = append(s.SelectedOrganizationIds, elem)
 			}
@@ -8142,7 +8142,7 @@ func (s *EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Runners = append(s.Runners, elem)
 			}
@@ -8285,7 +8285,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -8294,7 +8294,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReq) SetFake() {
 	{
 
 		{
-			s.DisplayName = ""
+			s.DisplayName = "string"
 		}
 	}
 	{
@@ -8318,7 +8318,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem) SetFake
 	{
 
 		{
-			s.Value = ""
+			s.Value = "string"
 		}
 	}
 }
@@ -8333,7 +8333,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -8342,7 +8342,7 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReq) SetFake() {
 	{
 
 		{
-			s.UserName = ""
+			s.UserName = "string"
 		}
 	}
 	{
@@ -8386,13 +8386,13 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem) SetFake()
 	{
 
 		{
-			s.Value = ""
+			s.Value = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -8418,13 +8418,13 @@ func (s *EnterpriseAdminProvisionAndInviteEnterpriseUserReqName) SetFake() {
 	{
 
 		{
-			s.GivenName = ""
+			s.GivenName = "string"
 		}
 	}
 	{
 
 		{
-			s.FamilyName = ""
+			s.FamilyName = "string"
 		}
 	}
 }
@@ -8455,7 +8455,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) SetFake(
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -8464,7 +8464,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq) SetFake(
 	{
 
 		{
-			s.DisplayName = ""
+			s.DisplayName = "string"
 		}
 	}
 	{
@@ -8488,7 +8488,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersIte
 	{
 
 		{
-			s.Value = ""
+			s.Value = "string"
 		}
 	}
 }
@@ -8503,7 +8503,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) SetFake()
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -8512,7 +8512,7 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq) SetFake()
 	{
 
 		{
-			s.UserName = ""
+			s.UserName = "string"
 		}
 	}
 	{
@@ -8556,13 +8556,13 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem)
 	{
 
 		{
-			s.Value = ""
+			s.Value = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -8588,13 +8588,13 @@ func (s *EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqName) SetFa
 	{
 
 		{
-			s.GivenName = ""
+			s.GivenName = "string"
 		}
 	}
 	{
 
 		{
-			s.FamilyName = ""
+			s.FamilyName = "string"
 		}
 	}
 }
@@ -8609,7 +8609,7 @@ func (s *EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq) SetF
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SelectedOrganizationIds = append(s.SelectedOrganizationIds, elem)
 			}
@@ -8627,7 +8627,7 @@ func (s *EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.SelectedOrganizationIds = append(s.SelectedOrganizationIds, elem)
 			}
@@ -8645,7 +8645,7 @@ func (s *EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Runners = append(s.Runners, elem)
 			}
@@ -8663,7 +8663,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -8717,7 +8717,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItemValue)
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -8736,7 +8736,7 @@ func (s *EnterpriseAdminUpdateAttributeForEnterpriseUserReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -8814,7 +8814,7 @@ func (s *EnvironmentApprovals) SetFake() {
 	{
 
 		{
-			s.Comment = ""
+			s.Comment = "string"
 		}
 	}
 }
@@ -8875,7 +8875,7 @@ func (s *Event) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -9003,13 +9003,13 @@ func (s *EventRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -9025,13 +9025,13 @@ func (s *Feed) SetFake() {
 	{
 
 		{
-			s.TimelineURL = ""
+			s.TimelineURL = "string"
 		}
 	}
 	{
 
 		{
-			s.UserURL = ""
+			s.UserURL = "string"
 		}
 	}
 	{
@@ -9479,25 +9479,25 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
@@ -9539,55 +9539,55 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -9623,55 +9623,55 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitURL = ""
+			s.GitURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -9689,31 +9689,31 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.SSHURL = ""
+			s.SSHURL = "string"
 		}
 	}
 	{
@@ -9725,7 +9725,7 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -9755,13 +9755,13 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CloneURL = ""
+			s.CloneURL = "string"
 		}
 	}
 	{
@@ -9797,37 +9797,37 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(1)
+			s.ForksCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(1)
+			s.StargazersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(1)
+			s.WatchersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = ""
+			s.DefaultBranch = "string"
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(1)
+			s.OpenIssuesCount = int(0)
 		}
 	}
 	{
@@ -9844,7 +9844,7 @@ func (s *FullRepository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -9973,13 +9973,13 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.SubscribersCount = int(1)
+			s.SubscribersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.NetworkCount = int(1)
+			s.NetworkCount = int(0)
 		}
 	}
 	{
@@ -10009,7 +10009,7 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.Forks = int(1)
+			s.Forks = int(0)
 		}
 	}
 	{
@@ -10021,13 +10021,13 @@ func (s *FullRepository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(1)
+			s.Watchers = int(0)
 		}
 	}
 	{
@@ -10135,13 +10135,13 @@ func (s *GistComment) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -10153,7 +10153,7 @@ func (s *GistComment) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -10193,7 +10193,7 @@ func (s *GistCommit) SetFake() {
 	{
 
 		{
-			s.Version = ""
+			s.Version = "string"
 		}
 	}
 	{
@@ -10505,13 +10505,13 @@ func (s *GistSimpleForkOf) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -10566,7 +10566,7 @@ func (s *GistSimpleForkOf) SetFake() {
 	{
 
 		{
-			s.Comments = int(1)
+			s.Comments = int(0)
 		}
 	}
 	{
@@ -10760,7 +10760,7 @@ func (s *GistsCreateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -10805,7 +10805,7 @@ func (s *GistsCreateReqFilesItem) SetFake() {
 	{
 
 		{
-			s.Content = ""
+			s.Content = "string"
 		}
 	}
 }
@@ -11156,7 +11156,7 @@ func (s *GistsUpdateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -11166,13 +11166,13 @@ func (s *GitCommit) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -11196,7 +11196,7 @@ func (s *GitCommit) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
@@ -11244,13 +11244,13 @@ func (s *GitCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -11266,13 +11266,13 @@ func (s *GitCommitCommitter) SetFake() {
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -11282,7 +11282,7 @@ func (s *GitCommitParentsItem) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -11304,7 +11304,7 @@ func (s *GitCommitTree) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -11326,7 +11326,7 @@ func (s *GitCommitVerification) SetFake() {
 	{
 
 		{
-			s.Reason = ""
+			s.Reason = "string"
 		}
 	}
 	{
@@ -11378,7 +11378,7 @@ func (s *GitCreateBlobReq) SetFake() {
 	{
 
 		{
-			s.Content = ""
+			s.Content = "string"
 		}
 	}
 	{
@@ -11394,13 +11394,13 @@ func (s *GitCreateCommitReq) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.Tree = ""
+			s.Tree = "string"
 		}
 	}
 	{
@@ -11411,7 +11411,7 @@ func (s *GitCreateCommitReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Parents = append(s.Parents, elem)
 			}
@@ -11442,13 +11442,13 @@ func (s *GitCreateCommitReqAuthor) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
@@ -11486,13 +11486,13 @@ func (s *GitCreateRefReq) SetFake() {
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -11508,19 +11508,19 @@ func (s *GitCreateTagReq) SetFake() {
 	{
 
 		{
-			s.Tag = ""
+			s.Tag = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.Object = ""
+			s.Object = "string"
 		}
 	}
 	{
@@ -11542,13 +11542,13 @@ func (s *GitCreateTagReqTagger) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
@@ -11677,13 +11677,13 @@ func (s *GitRef) SetFake() {
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -11705,13 +11705,13 @@ func (s *GitRefObject) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+			s.Sha = "string"
 		}
 	}
 	{
@@ -11727,19 +11727,19 @@ func (s *GitTag) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Tag = ""
+			s.Tag = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -11751,7 +11751,7 @@ func (s *GitTag) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
@@ -11779,13 +11779,13 @@ func (s *GitTagObject) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -11801,19 +11801,19 @@ func (s *GitTagTagger) SetFake() {
 	{
 
 		{
-			s.Date = ""
+			s.Date = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -11823,7 +11823,7 @@ func (s *GitTree) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -11899,7 +11899,7 @@ func (s *GitUpdateRefReq) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -11920,7 +11920,7 @@ func (s *GitignoreGetAllTemplatesOKApplicationJSON) SetFake() {
 			var elem string
 
 			{
-				elem = ""
+				elem = "string"
 			}
 			unwrapped = append(unwrapped, elem)
 		}
@@ -11933,13 +11933,13 @@ func (s *GitignoreTemplate) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Source = ""
+			s.Source = "string"
 		}
 	}
 }
@@ -11949,7 +11949,7 @@ func (s *GpgKey) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -11961,13 +11961,13 @@ func (s *GpgKey) SetFake() {
 	{
 
 		{
-			s.KeyID = ""
+			s.KeyID = "string"
 		}
 	}
 	{
 
 		{
-			s.PublicKey = ""
+			s.PublicKey = "string"
 		}
 	}
 	{
@@ -12179,19 +12179,19 @@ func (s *GroupMappingGroupsItem) SetFake() {
 	{
 
 		{
-			s.GroupID = ""
+			s.GroupID = "string"
 		}
 	}
 	{
 
 		{
-			s.GroupName = ""
+			s.GroupName = "string"
 		}
 	}
 	{
 
 		{
-			s.GroupDescription = ""
+			s.GroupDescription = "string"
 		}
 	}
 	{
@@ -12213,19 +12213,19 @@ func (s *Hook) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -12242,7 +12242,7 @@ func (s *Hook) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -12367,13 +12367,13 @@ func (s *HookDelivery) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.GUID = ""
+			s.GUID = "string"
 		}
 	}
 	{
@@ -12397,19 +12397,19 @@ func (s *HookDelivery) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.StatusCode = int(1)
+			s.StatusCode = int(0)
 		}
 	}
 	{
 
 		{
-			s.Event = ""
+			s.Event = "string"
 		}
 	}
 	{
@@ -12455,13 +12455,13 @@ func (s *HookDeliveryItem) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.GUID = ""
+			s.GUID = "string"
 		}
 	}
 	{
@@ -12485,19 +12485,19 @@ func (s *HookDeliveryItem) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
 
 		{
-			s.StatusCode = int(1)
+			s.StatusCode = int(0)
 		}
 	}
 	{
 
 		{
-			s.Event = ""
+			s.Event = "string"
 		}
 	}
 	{
@@ -12633,13 +12633,13 @@ func (s *HovercardContextsItem) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.Octicon = ""
+			s.Octicon = "string"
 		}
 	}
 }
@@ -12661,7 +12661,7 @@ func (s *Import) SetFake() {
 	{
 
 		{
-			s.VcsURL = ""
+			s.VcsURL = "string"
 		}
 	}
 	{
@@ -12826,13 +12826,13 @@ func (s *InstallationToken) SetFake() {
 	{
 
 		{
-			s.Token = ""
+			s.Token = "string"
 		}
 	}
 	{
 
 		{
-			s.ExpiresAt = ""
+			s.ExpiresAt = "string"
 		}
 	}
 	{
@@ -12881,7 +12881,7 @@ func (s *InstallationToken) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.SingleFilePaths = append(s.SingleFilePaths, elem)
 			}
@@ -12899,7 +12899,7 @@ func (s *Integration) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -12911,7 +12911,7 @@ func (s *Integration) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -12923,7 +12923,7 @@ func (s *Integration) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -12970,7 +12970,7 @@ func (s *Integration) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -13088,7 +13088,7 @@ func (s *InteractionLimitResponse) SetFake() {
 	{
 
 		{
-			s.Origin = ""
+			s.Origin = "string"
 		}
 	}
 	{
@@ -13104,13 +13104,13 @@ func (s *Issue) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -13128,7 +13128,7 @@ func (s *Issue) SetFake() {
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -13152,19 +13152,19 @@ func (s *Issue) SetFake() {
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -13226,7 +13226,7 @@ func (s *Issue) SetFake() {
 	{
 
 		{
-			s.Comments = int(1)
+			s.Comments = int(0)
 		}
 	}
 	{
@@ -13308,13 +13308,13 @@ func (s *IssueComment) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -13396,13 +13396,13 @@ func (s *IssueEvent) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -13420,7 +13420,7 @@ func (s *IssueEvent) SetFake() {
 	{
 
 		{
-			s.Event = ""
+			s.Event = "string"
 		}
 	}
 	{
@@ -13532,13 +13532,13 @@ func (s *IssueEventDismissedReview) SetFake() {
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
 
 		{
-			s.ReviewID = int(1)
+			s.ReviewID = int(0)
 		}
 	}
 	{
@@ -13576,7 +13576,7 @@ func (s *IssueEventMilestone) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 }
@@ -13592,7 +13592,7 @@ func (s *IssueEventProjectCard) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -13604,13 +13604,13 @@ func (s *IssueEventProjectCard) SetFake() {
 	{
 
 		{
-			s.ProjectID = int(1)
+			s.ProjectID = int(0)
 		}
 	}
 	{
 
 		{
-			s.ColumnName = ""
+			s.ColumnName = "string"
 		}
 	}
 	{
@@ -13626,13 +13626,13 @@ func (s *IssueEventRename) SetFake() {
 	{
 
 		{
-			s.From = ""
+			s.From = "string"
 		}
 	}
 	{
 
 		{
-			s.To = ""
+			s.To = "string"
 		}
 	}
 }
@@ -13642,7 +13642,7 @@ func (s *IssueLabelsItem) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -13744,7 +13744,7 @@ func (s *IssueSearchResultItem) SetFake() {
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -13768,25 +13768,25 @@ func (s *IssueSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -13830,7 +13830,7 @@ func (s *IssueSearchResultItem) SetFake() {
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -13848,7 +13848,7 @@ func (s *IssueSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Comments = int(1)
+			s.Comments = int(0)
 		}
 	}
 	{
@@ -14022,13 +14022,13 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -14046,7 +14046,7 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -14070,19 +14070,19 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -14144,7 +14144,7 @@ func (s *IssueSimple) SetFake() {
 	{
 
 		{
-			s.Comments = int(1)
+			s.Comments = int(0)
 		}
 	}
 	{
@@ -14253,7 +14253,7 @@ func (s *IssuesAddAssigneesReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Assignees = append(s.Assignees, elem)
 			}
@@ -14326,7 +14326,7 @@ func (s *IssuesCreateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -14336,7 +14336,7 @@ func (s *IssuesCreateLabelReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -14358,7 +14358,7 @@ func (s *IssuesCreateMilestoneReq) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -14434,7 +14434,7 @@ func (s *IssuesCreateReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Assignees = append(s.Assignees, elem)
 			}
@@ -14447,7 +14447,7 @@ func (s *IssuesCreateReqLabelsItem) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -14485,7 +14485,7 @@ func (s *IssuesCreateReqMilestone) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -14495,7 +14495,7 @@ func (s *IssuesCreateReqTitle) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -14853,7 +14853,7 @@ func (s *IssuesRemoveAssigneesReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Assignees = append(s.Assignees, elem)
 			}
@@ -14964,7 +14964,7 @@ func (s *IssuesUpdateCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -15078,7 +15078,7 @@ func (s *IssuesUpdateReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Assignees = append(s.Assignees, elem)
 			}
@@ -15091,7 +15091,7 @@ func (s *IssuesUpdateReqLabelsItem) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -15129,7 +15129,7 @@ func (s *IssuesUpdateReqMilestone) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -15144,7 +15144,7 @@ func (s *IssuesUpdateReqTitle) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -15154,37 +15154,37 @@ func (s *Job) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.RunID = int(1)
+			s.RunID = int(0)
 		}
 	}
 	{
 
 		{
-			s.RunURL = ""
+			s.RunURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.HeadSha = ""
+			s.HeadSha = "string"
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
@@ -15220,7 +15220,7 @@ func (s *Job) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -15240,7 +15240,7 @@ func (s *Job) SetFake() {
 	{
 
 		{
-			s.CheckRunURL = ""
+			s.CheckRunURL = "string"
 		}
 	}
 }
@@ -15267,13 +15267,13 @@ func (s *JobStepsItem) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
@@ -15300,25 +15300,25 @@ func (s *Key) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -15346,13 +15346,13 @@ func (s *KeySimple) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 }
@@ -15362,13 +15362,13 @@ func (s *Label) SetFake() {
 	{
 
 		{
-			s.ID = int64(1)
+			s.ID = int64(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -15380,7 +15380,7 @@ func (s *Label) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -15392,7 +15392,7 @@ func (s *Label) SetFake() {
 	{
 
 		{
-			s.Color = ""
+			s.Color = "string"
 		}
 	}
 	{
@@ -15408,13 +15408,13 @@ func (s *LabelSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -15426,13 +15426,13 @@ func (s *LabelSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Color = ""
+			s.Color = "string"
 		}
 	}
 	{
@@ -15478,13 +15478,13 @@ func (s *License) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -15502,7 +15502,7 @@ func (s *License) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -15514,13 +15514,13 @@ func (s *License) SetFake() {
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
 
 		{
-			s.Implementation = ""
+			s.Implementation = "string"
 		}
 	}
 	{
@@ -15531,7 +15531,7 @@ func (s *License) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Permissions = append(s.Permissions, elem)
 			}
@@ -15545,7 +15545,7 @@ func (s *License) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Conditions = append(s.Conditions, elem)
 			}
@@ -15559,7 +15559,7 @@ func (s *License) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Limitations = append(s.Limitations, elem)
 			}
@@ -15568,7 +15568,7 @@ func (s *License) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -15584,25 +15584,25 @@ func (s *LicenseContent) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
@@ -15632,19 +15632,19 @@ func (s *LicenseContent) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.Content = ""
+			s.Content = "string"
 		}
 	}
 	{
 
 		{
-			s.Encoding = ""
+			s.Encoding = "string"
 		}
 	}
 	{
@@ -15688,13 +15688,13 @@ func (s *LicenseSimple) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -15712,7 +15712,7 @@ func (s *LicenseSimple) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -15766,7 +15766,7 @@ func (s *Link) SetFake() {
 	{
 
 		{
-			s.Href = ""
+			s.Href = "string"
 		}
 	}
 }
@@ -15776,13 +15776,13 @@ func (s *LinkWithType) SetFake() {
 	{
 
 		{
-			s.Href = ""
+			s.Href = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -15798,13 +15798,13 @@ func (s *MarketplaceAccount) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -15816,7 +15816,7 @@ func (s *MarketplaceAccount) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
@@ -15850,43 +15850,43 @@ func (s *MarketplaceListingPlan) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
 
 		{
-			s.MonthlyPriceInCents = int(1)
+			s.MonthlyPriceInCents = int(0)
 		}
 	}
 	{
 
 		{
-			s.YearlyPriceInCents = int(1)
+			s.YearlyPriceInCents = int(0)
 		}
 	}
 	{
 
 		{
-			s.PriceModel = ""
+			s.PriceModel = "string"
 		}
 	}
 	{
@@ -15904,7 +15904,7 @@ func (s *MarketplaceListingPlan) SetFake() {
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -15915,7 +15915,7 @@ func (s *MarketplaceListingPlan) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Bullets = append(s.Bullets, elem)
 			}
@@ -15928,25 +15928,25 @@ func (s *MarketplacePurchase) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
@@ -16093,169 +16093,169 @@ func (s *MetaRootOK) SetFake() {
 	{
 
 		{
-			s.CurrentUserURL = ""
+			s.CurrentUserURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CurrentUserAuthorizationsHTMLURL = ""
+			s.CurrentUserAuthorizationsHTMLURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AuthorizationsURL = ""
+			s.AuthorizationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CodeSearchURL = ""
+			s.CodeSearchURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitSearchURL = ""
+			s.CommitSearchURL = "string"
 		}
 	}
 	{
 
 		{
-			s.EmailsURL = ""
+			s.EmailsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.EmojisURL = ""
+			s.EmojisURL = "string"
 		}
 	}
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.FeedsURL = ""
+			s.FeedsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.FollowersURL = ""
+			s.FollowersURL = "string"
 		}
 	}
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.HubURL = ""
+			s.HubURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueSearchURL = ""
+			s.IssueSearchURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelSearchURL = ""
+			s.LabelSearchURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.OrganizationURL = ""
+			s.OrganizationURL = "string"
 		}
 	}
 	{
 
 		{
-			s.OrganizationRepositoriesURL = ""
+			s.OrganizationRepositoriesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.OrganizationTeamsURL = ""
+			s.OrganizationTeamsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PublicGistsURL = ""
+			s.PublicGistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.RateLimitURL = ""
+			s.RateLimitURL = "string"
 		}
 	}
 	{
 
 		{
-			s.RepositoryURL = ""
+			s.RepositoryURL = "string"
 		}
 	}
 	{
 
 		{
-			s.RepositorySearchURL = ""
+			s.RepositorySearchURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CurrentUserRepositoriesURL = ""
+			s.CurrentUserRepositoriesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredGistsURL = ""
+			s.StarredGistsURL = "string"
 		}
 	}
 	{
@@ -16267,25 +16267,25 @@ func (s *MetaRootOK) SetFake() {
 	{
 
 		{
-			s.UserURL = ""
+			s.UserURL = "string"
 		}
 	}
 	{
 
 		{
-			s.UserOrganizationsURL = ""
+			s.UserOrganizationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.UserRepositoriesURL = ""
+			s.UserRepositoriesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.UserSearchURL = ""
+			s.UserSearchURL = "string"
 		}
 	}
 }
@@ -16295,7 +16295,7 @@ func (s *Migration) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -16307,13 +16307,13 @@ func (s *Migration) SetFake() {
 	{
 
 		{
-			s.GUID = ""
+			s.GUID = "string"
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -16387,7 +16387,7 @@ func (s *Migration) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -16692,7 +16692,7 @@ func (s *MigrationsStartForAuthenticatedUserReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Repositories = append(s.Repositories, elem)
 			}
@@ -16715,7 +16715,7 @@ func (s *MigrationsStartForOrgReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Repositories = append(s.Repositories, elem)
 			}
@@ -16771,7 +16771,7 @@ func (s *MigrationsStartImportReq) SetFake() {
 	{
 
 		{
-			s.VcsURL = ""
+			s.VcsURL = "string"
 		}
 	}
 	{
@@ -16886,19 +16886,19 @@ func (s *Milestone) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
@@ -16910,7 +16910,7 @@ func (s *Milestone) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -16928,13 +16928,13 @@ func (s *Milestone) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.ClosedIssues = int(1)
+			s.ClosedIssues = int(0)
 		}
 	}
 	{
@@ -16973,25 +16973,25 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
@@ -17033,55 +17033,55 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -17117,19 +17117,19 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
@@ -17141,31 +17141,31 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -17183,25 +17183,25 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
@@ -17219,7 +17219,7 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -17249,7 +17249,7 @@ func (s *MinimalRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
@@ -17338,7 +17338,7 @@ func (s *MinimalRepository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -17743,13 +17743,13 @@ func (s *NullableCodeOfConductSimple) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -17803,7 +17803,7 @@ func (s *NullableIntegration) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -17815,7 +17815,7 @@ func (s *NullableIntegration) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -17827,7 +17827,7 @@ func (s *NullableIntegration) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -17874,7 +17874,7 @@ func (s *NullableIntegration) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -17960,13 +17960,13 @@ func (s *NullableLicenseSimple) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -17984,7 +17984,7 @@ func (s *NullableLicenseSimple) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -18018,19 +18018,19 @@ func (s *NullableMilestone) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
@@ -18042,7 +18042,7 @@ func (s *NullableMilestone) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -18060,13 +18060,13 @@ func (s *NullableMilestone) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.ClosedIssues = int(1)
+			s.ClosedIssues = int(0)
 		}
 	}
 	{
@@ -18105,25 +18105,25 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
@@ -18165,55 +18165,55 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -18249,19 +18249,19 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
@@ -18273,31 +18273,31 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -18315,25 +18315,25 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
@@ -18351,7 +18351,7 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -18381,7 +18381,7 @@ func (s *NullableMinimalRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
@@ -18470,7 +18470,7 @@ func (s *NullableMinimalRepository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -18689,25 +18689,25 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
@@ -18725,7 +18725,7 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.Forks = int(1)
+			s.Forks = int(0)
 		}
 	}
 	{
@@ -18773,55 +18773,55 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -18857,55 +18857,55 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitURL = ""
+			s.GitURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -18923,31 +18923,31 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.SSHURL = ""
+			s.SSHURL = "string"
 		}
 	}
 	{
@@ -18959,7 +18959,7 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -18989,13 +18989,13 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CloneURL = ""
+			s.CloneURL = "string"
 		}
 	}
 	{
@@ -19031,37 +19031,37 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(1)
+			s.ForksCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(1)
+			s.StargazersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(1)
+			s.WatchersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = ""
+			s.DefaultBranch = "string"
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(1)
+			s.OpenIssuesCount = int(0)
 		}
 	}
 	{
@@ -19078,7 +19078,7 @@ func (s *NullableRepository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -19213,13 +19213,13 @@ func (s *NullableRepository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(1)
+			s.Watchers = int(0)
 		}
 	}
 	{
@@ -19640,7 +19640,7 @@ func (s *NullableRepositoryTemplateRepository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -19948,7 +19948,7 @@ func (s *NullableScopedInstallation) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.SingleFilePaths = append(s.SingleFilePaths, elem)
 			}
@@ -19978,19 +19978,19 @@ func (s *NullableSimpleCommit) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.TreeID = ""
+			s.TreeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
@@ -20018,13 +20018,13 @@ func (s *NullableSimpleCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 }
@@ -20034,13 +20034,13 @@ func (s *NullableSimpleCommitCommitter) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 }
@@ -20062,19 +20062,19 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -20110,19 +20110,19 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -20146,7 +20146,7 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -20158,7 +20158,7 @@ func (s *NullableSimpleUser) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -20180,13 +20180,13 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -20198,13 +20198,13 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.MembersURL = ""
+			s.MembersURL = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -20216,7 +20216,7 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.Permission = ""
+			s.Permission = "string"
 		}
 	}
 	{
@@ -20240,7 +20240,7 @@ func (s *NullableTeamSimple) SetFake() {
 	{
 
 		{
-			s.Slug = ""
+			s.Slug = "string"
 		}
 	}
 	{
@@ -20426,7 +20426,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Set
 	{
 
 		{
-			s.ClientSecret = ""
+			s.ClientSecret = "string"
 		}
 	}
 	{
@@ -20494,7 +20494,7 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppReq) SetFake() {
 	{
 
 		{
-			s.ClientSecret = ""
+			s.ClientSecret = "string"
 		}
 	}
 	{
@@ -20635,7 +20635,7 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AddScopes = append(s.AddScopes, elem)
 			}
@@ -20649,7 +20649,7 @@ func (s *OAuthAuthorizationsUpdateAuthorizationReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RemoveScopes = append(s.RemoveScopes, elem)
 			}
@@ -21722,7 +21722,7 @@ func (s *OptInt) SetFake() {
 	var elem int
 
 	{
-		elem = int(1)
+		elem = int(0)
 	}
 	s.SetTo(elem)
 }
@@ -21732,7 +21732,7 @@ func (s *OptInt64) SetFake() {
 	var elem int64
 
 	{
-		elem = int64(1)
+		elem = int64(0)
 	}
 	s.SetTo(elem)
 }
@@ -23407,7 +23407,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -23807,7 +23807,7 @@ func (s *OrgHook) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -23831,7 +23831,7 @@ func (s *OrgHook) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -23842,7 +23842,7 @@ func (s *OrgHook) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -23875,7 +23875,7 @@ func (s *OrgHook) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -23979,7 +23979,7 @@ func (s *OrganizationActionsSecret) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -24018,19 +24018,19 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -24054,31 +24054,31 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.HooksURL = ""
+			s.HooksURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.MembersURL = ""
+			s.MembersURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PublicMembersURL = ""
+			s.PublicMembersURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AvatarURL = ""
+			s.AvatarURL = "string"
 		}
 	}
 	{
@@ -24144,25 +24144,25 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.PublicRepos = int(1)
+			s.PublicRepos = int(0)
 		}
 	}
 	{
 
 		{
-			s.PublicGists = int(1)
+			s.PublicGists = int(0)
 		}
 	}
 	{
 
 		{
-			s.Followers = int(1)
+			s.Followers = int(0)
 		}
 	}
 	{
 
 		{
-			s.Following = int(1)
+			s.Following = int(0)
 		}
 	}
 	{
@@ -24180,7 +24180,7 @@ func (s *OrganizationFull) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -24298,19 +24298,19 @@ func (s *OrganizationFullPlan) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Space = int(1)
+			s.Space = int(0)
 		}
 	}
 	{
 
 		{
-			s.PrivateRepos = int(1)
+			s.PrivateRepos = int(0)
 		}
 	}
 	{
@@ -24332,7 +24332,7 @@ func (s *OrganizationInvitation) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -24350,13 +24350,13 @@ func (s *OrganizationInvitation) SetFake() {
 	{
 
 		{
-			s.Role = ""
+			s.Role = "string"
 		}
 	}
 	{
 
 		{
-			s.CreatedAt = ""
+			s.CreatedAt = "string"
 		}
 	}
 	{
@@ -24380,19 +24380,19 @@ func (s *OrganizationInvitation) SetFake() {
 	{
 
 		{
-			s.TeamCount = int(1)
+			s.TeamCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.InvitationTeamsURL = ""
+			s.InvitationTeamsURL = "string"
 		}
 	}
 }
@@ -24478,19 +24478,19 @@ func (s *OrganizationSimple) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -24514,31 +24514,31 @@ func (s *OrganizationSimple) SetFake() {
 	{
 
 		{
-			s.HooksURL = ""
+			s.HooksURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.MembersURL = ""
+			s.MembersURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PublicMembersURL = ""
+			s.PublicMembersURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AvatarURL = ""
+			s.AvatarURL = "string"
 		}
 	}
 	{
@@ -24589,7 +24589,7 @@ func (s *OrgsCreateInvitationReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.TeamIds = append(s.TeamIds, elem)
 			}
@@ -24607,7 +24607,7 @@ func (s *OrgsCreateWebhookReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -24624,7 +24624,7 @@ func (s *OrgsCreateWebhookReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -25077,7 +25077,7 @@ func (s *OrgsUpdateWebhookReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -25130,13 +25130,13 @@ func (s *Package) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -25148,19 +25148,19 @@ func (s *Package) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = ""
+			s.HTMLURL = "string"
 		}
 	}
 	{
 
 		{
-			s.VersionCount = int(1)
+			s.VersionCount = int(0)
 		}
 	}
 	{
@@ -25205,25 +25205,25 @@ func (s *PackageVersion) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.PackageHTMLURL = ""
+			s.PackageHTMLURL = "string"
 		}
 	}
 	{
@@ -25343,19 +25343,19 @@ func (s *PackagesBillingUsage) SetFake() {
 	{
 
 		{
-			s.TotalGigabytesBandwidthUsed = int(1)
+			s.TotalGigabytesBandwidthUsed = int(0)
 		}
 	}
 	{
 
 		{
-			s.TotalPaidGigabytesBandwidthUsed = int(1)
+			s.TotalPaidGigabytesBandwidthUsed = int(0)
 		}
 	}
 	{
 
 		{
-			s.IncludedGigabytesBandwidth = int(1)
+			s.IncludedGigabytesBandwidth = int(0)
 		}
 	}
 }
@@ -26021,7 +26021,7 @@ func (s *PageBuild) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -26039,13 +26039,13 @@ func (s *PageBuild) SetFake() {
 	{
 
 		{
-			s.Commit = ""
+			s.Commit = "string"
 		}
 	}
 	{
 
 		{
-			s.Duration = int(1)
+			s.Duration = int(0)
 		}
 	}
 	{
@@ -26083,7 +26083,7 @@ func (s *PageBuildStatus) SetFake() {
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 }
@@ -26109,7 +26109,7 @@ func (s *PagesHTTPSCertificate) SetFake() {
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
@@ -26504,13 +26504,13 @@ func (s *PagesSourceHash) SetFake() {
 	{
 
 		{
-			s.Branch = ""
+			s.Branch = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 }
@@ -26525,7 +26525,7 @@ func (s *ParticipationStats) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.All = append(s.All, elem)
 			}
@@ -26539,7 +26539,7 @@ func (s *ParticipationStats) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Owner = append(s.Owner, elem)
 			}
@@ -26552,31 +26552,31 @@ func (s *PorterAuthor) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.RemoteID = ""
+			s.RemoteID = "string"
 		}
 	}
 	{
 
 		{
-			s.RemoteName = ""
+			s.RemoteName = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -26598,25 +26598,25 @@ func (s *PorterLargeFile) SetFake() {
 	{
 
 		{
-			s.RefName = ""
+			s.RefName = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
 
 		{
-			s.Oid = ""
+			s.Oid = "string"
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 }
@@ -26626,13 +26626,13 @@ func (s *PreviewHeaderMissing) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.DocumentationURL = ""
+			s.DocumentationURL = "string"
 		}
 	}
 }
@@ -26642,19 +26642,19 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -26690,19 +26690,19 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -26726,7 +26726,7 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -26738,7 +26738,7 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -26798,25 +26798,25 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.PublicRepos = int(1)
+			s.PublicRepos = int(0)
 		}
 	}
 	{
 
 		{
-			s.PublicGists = int(1)
+			s.PublicGists = int(0)
 		}
 	}
 	{
 
 		{
-			s.Followers = int(1)
+			s.Followers = int(0)
 		}
 	}
 	{
 
 		{
-			s.Following = int(1)
+			s.Following = int(0)
 		}
 	}
 	{
@@ -26834,31 +26834,31 @@ func (s *PrivateUser) SetFake() {
 	{
 
 		{
-			s.PrivateGists = int(1)
+			s.PrivateGists = int(0)
 		}
 	}
 	{
 
 		{
-			s.TotalPrivateRepos = int(1)
+			s.TotalPrivateRepos = int(0)
 		}
 	}
 	{
 
 		{
-			s.OwnedPrivateRepos = int(1)
+			s.OwnedPrivateRepos = int(0)
 		}
 	}
 	{
 
 		{
-			s.DiskUsage = int(1)
+			s.DiskUsage = int(0)
 		}
 	}
 	{
 
 		{
-			s.Collaborators = int(1)
+			s.Collaborators = int(0)
 		}
 	}
 	{
@@ -26898,25 +26898,25 @@ func (s *PrivateUserPlan) SetFake() {
 	{
 
 		{
-			s.Collaborators = int(1)
+			s.Collaborators = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Space = int(1)
+			s.Space = int(0)
 		}
 	}
 	{
 
 		{
-			s.PrivateRepos = int(1)
+			s.PrivateRepos = int(0)
 		}
 	}
 }
@@ -26950,19 +26950,19 @@ func (s *Project) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -26974,13 +26974,13 @@ func (s *Project) SetFake() {
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -27026,13 +27026,13 @@ func (s *ProjectCard) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -27120,19 +27120,19 @@ func (s *ProjectColumn) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -27224,7 +27224,7 @@ func (s *ProjectsCreateColumnReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -27254,7 +27254,7 @@ func (s *ProjectsCreateForAuthenticatedUserReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -27310,7 +27310,7 @@ func (s *ProjectsCreateForOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -27366,7 +27366,7 @@ func (s *ProjectsCreateForRepoReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -27449,7 +27449,7 @@ func (s *ProjectsDeleteCardForbidden) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Errors = append(s.Errors, elem)
 			}
@@ -27499,7 +27499,7 @@ func (s *ProjectsDeleteForbidden) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Errors = append(s.Errors, elem)
 			}
@@ -27910,7 +27910,7 @@ func (s *ProjectsMoveCardReq) SetFake() {
 	{
 
 		{
-			s.Position = ""
+			s.Position = "string"
 		}
 	}
 	{
@@ -28010,7 +28010,7 @@ func (s *ProjectsMoveColumnReq) SetFake() {
 	{
 
 		{
-			s.Position = ""
+			s.Position = "string"
 		}
 	}
 }
@@ -28136,7 +28136,7 @@ func (s *ProjectsUpdateColumnReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -28163,7 +28163,7 @@ func (s *ProjectsUpdateForbidden) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Errors = append(s.Errors, elem)
 			}
@@ -28580,19 +28580,19 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -28628,19 +28628,19 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -28664,7 +28664,7 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -28676,7 +28676,7 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -28736,25 +28736,25 @@ func (s *PublicUser) SetFake() {
 	{
 
 		{
-			s.PublicRepos = int(1)
+			s.PublicRepos = int(0)
 		}
 	}
 	{
 
 		{
-			s.PublicGists = int(1)
+			s.PublicGists = int(0)
 		}
 	}
 	{
 
 		{
-			s.Followers = int(1)
+			s.Followers = int(0)
 		}
 	}
 	{
 
 		{
-			s.Following = int(1)
+			s.Following = int(0)
 		}
 	}
 	{
@@ -28827,25 +28827,25 @@ func (s *PublicUserPlan) SetFake() {
 	{
 
 		{
-			s.Collaborators = int(1)
+			s.Collaborators = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Space = int(1)
+			s.Space = int(0)
 		}
 	}
 	{
 
 		{
-			s.PrivateRepos = int(1)
+			s.PrivateRepos = int(0)
 		}
 	}
 }
@@ -28861,13 +28861,13 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -28909,7 +28909,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.ReviewCommentURL = ""
+			s.ReviewCommentURL = "string"
 		}
 	}
 	{
@@ -28927,7 +28927,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
@@ -28945,7 +28945,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -29097,7 +29097,7 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.MergeableState = ""
+			s.MergeableState = "string"
 		}
 	}
 	{
@@ -29109,13 +29109,13 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Comments = int(1)
+			s.Comments = int(0)
 		}
 	}
 	{
 
 		{
-			s.ReviewComments = int(1)
+			s.ReviewComments = int(0)
 		}
 	}
 	{
@@ -29127,25 +29127,25 @@ func (s *PullRequest) SetFake() {
 	{
 
 		{
-			s.Commits = int(1)
+			s.Commits = int(0)
 		}
 	}
 	{
 
 		{
-			s.Additions = int(1)
+			s.Additions = int(0)
 		}
 	}
 	{
 
 		{
-			s.Deletions = int(1)
+			s.Deletions = int(0)
 		}
 	}
 	{
 
 		{
-			s.ChangedFiles = int(1)
+			s.ChangedFiles = int(0)
 		}
 	}
 }
@@ -29155,13 +29155,13 @@ func (s *PullRequestBase) SetFake() {
 	{
 
 		{
-			s.Label = ""
+			s.Label = "string"
 		}
 	}
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
@@ -29173,7 +29173,7 @@ func (s *PullRequestBase) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -29189,55 +29189,55 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -29285,25 +29285,25 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
@@ -29321,43 +29321,43 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -29375,19 +29375,19 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
@@ -29405,13 +29405,13 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
@@ -29423,7 +29423,7 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -29453,7 +29453,7 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
@@ -29465,31 +29465,31 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.CloneURL = ""
+			s.CloneURL = "string"
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = ""
+			s.DefaultBranch = "string"
 		}
 	}
 	{
 
 		{
-			s.Forks = int(1)
+			s.Forks = int(0)
 		}
 	}
 	{
 
 		{
-			s.ForksCount = int(1)
+			s.ForksCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.GitURL = ""
+			s.GitURL = "string"
 		}
 	}
 	{
@@ -29561,13 +29561,13 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(1)
+			s.OpenIssuesCount = int(0)
 		}
 	}
 	{
@@ -29615,19 +29615,19 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.SSHURL = ""
+			s.SSHURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(1)
+			s.StargazersCount = int(0)
 		}
 	}
 	{
@@ -29644,7 +29644,7 @@ func (s *PullRequestBaseRepo) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -29653,13 +29653,13 @@ func (s *PullRequestBaseRepo) SetFake() {
 	{
 
 		{
-			s.Watchers = int(1)
+			s.Watchers = int(0)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(1)
+			s.WatchersCount = int(0)
 		}
 	}
 	{
@@ -29693,7 +29693,7 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -29705,13 +29705,13 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
@@ -29729,19 +29729,19 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
@@ -29771,7 +29771,7 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -29783,7 +29783,7 @@ func (s *PullRequestBaseRepoOwner) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -29839,7 +29839,7 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -29851,13 +29851,13 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
@@ -29875,19 +29875,19 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
@@ -29917,7 +29917,7 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -29929,7 +29929,7 @@ func (s *PullRequestBaseUser) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -29945,13 +29945,13 @@ func (s *PullRequestHead) SetFake() {
 	{
 
 		{
-			s.Label = ""
+			s.Label = "string"
 		}
 	}
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
@@ -29963,7 +29963,7 @@ func (s *PullRequestHead) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -29979,55 +29979,55 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -30075,25 +30075,25 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
@@ -30111,43 +30111,43 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -30165,19 +30165,19 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
@@ -30195,13 +30195,13 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
@@ -30213,7 +30213,7 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -30243,7 +30243,7 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
@@ -30255,31 +30255,31 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.CloneURL = ""
+			s.CloneURL = "string"
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = ""
+			s.DefaultBranch = "string"
 		}
 	}
 	{
 
 		{
-			s.Forks = int(1)
+			s.Forks = int(0)
 		}
 	}
 	{
 
 		{
-			s.ForksCount = int(1)
+			s.ForksCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.GitURL = ""
+			s.GitURL = "string"
 		}
 	}
 	{
@@ -30351,13 +30351,13 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(1)
+			s.OpenIssuesCount = int(0)
 		}
 	}
 	{
@@ -30405,19 +30405,19 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.SSHURL = ""
+			s.SSHURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(1)
+			s.StargazersCount = int(0)
 		}
 	}
 	{
@@ -30434,7 +30434,7 @@ func (s *PullRequestHeadRepo) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -30443,13 +30443,13 @@ func (s *PullRequestHeadRepo) SetFake() {
 	{
 
 		{
-			s.Watchers = int(1)
+			s.Watchers = int(0)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(1)
+			s.WatchersCount = int(0)
 		}
 	}
 	{
@@ -30477,13 +30477,13 @@ func (s *PullRequestHeadRepoLicense) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -30501,7 +30501,7 @@ func (s *PullRequestHeadRepoLicense) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 }
@@ -30517,7 +30517,7 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -30529,13 +30529,13 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
@@ -30553,19 +30553,19 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
@@ -30595,7 +30595,7 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -30607,7 +30607,7 @@ func (s *PullRequestHeadRepoOwner) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -30663,7 +30663,7 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -30675,13 +30675,13 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
@@ -30699,19 +30699,19 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
@@ -30741,7 +30741,7 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -30753,7 +30753,7 @@ func (s *PullRequestHeadUser) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -30867,7 +30867,7 @@ func (s *PullRequestMergeResult) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -30879,7 +30879,7 @@ func (s *PullRequestMergeResult) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -30889,19 +30889,19 @@ func (s *PullRequestMinimal) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
@@ -30923,13 +30923,13 @@ func (s *PullRequestMinimalBase) SetFake() {
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -30945,19 +30945,19 @@ func (s *PullRequestMinimalBaseRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -30967,13 +30967,13 @@ func (s *PullRequestMinimalHead) SetFake() {
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -30989,19 +30989,19 @@ func (s *PullRequestMinimalHeadRepo) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -31011,13 +31011,13 @@ func (s *PullRequestReview) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -31029,13 +31029,13 @@ func (s *PullRequestReview) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -31065,7 +31065,7 @@ func (s *PullRequestReview) SetFake() {
 	{
 
 		{
-			s.CommitID = ""
+			s.CommitID = "string"
 		}
 	}
 	{
@@ -31093,7 +31093,7 @@ func (s *PullRequestReviewComment) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
@@ -31105,49 +31105,49 @@ func (s *PullRequestReviewComment) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.DiffHunk = ""
+			s.DiffHunk = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
 
 		{
-			s.Position = int(1)
+			s.Position = int(0)
 		}
 	}
 	{
 
 		{
-			s.OriginalPosition = int(1)
+			s.OriginalPosition = int(0)
 		}
 	}
 	{
 
 		{
-			s.CommitID = ""
+			s.CommitID = "string"
 		}
 	}
 	{
 
 		{
-			s.OriginalCommitID = ""
+			s.OriginalCommitID = "string"
 		}
 	}
 	{
@@ -31165,7 +31165,7 @@ func (s *PullRequestReviewComment) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -31343,7 +31343,7 @@ func (s *PullRequestReviewLinksHTML) SetFake() {
 	{
 
 		{
-			s.Href = ""
+			s.Href = "string"
 		}
 	}
 }
@@ -31353,7 +31353,7 @@ func (s *PullRequestReviewLinksPullRequest) SetFake() {
 	{
 
 		{
-			s.Href = ""
+			s.Href = "string"
 		}
 	}
 }
@@ -31401,13 +31401,13 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -31449,7 +31449,7 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.ReviewCommentURL = ""
+			s.ReviewCommentURL = "string"
 		}
 	}
 	{
@@ -31467,13 +31467,13 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -31485,7 +31485,7 @@ func (s *PullRequestSimple) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -31623,13 +31623,13 @@ func (s *PullRequestSimpleBase) SetFake() {
 	{
 
 		{
-			s.Label = ""
+			s.Label = "string"
 		}
 	}
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
@@ -31641,7 +31641,7 @@ func (s *PullRequestSimpleBase) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -31657,13 +31657,13 @@ func (s *PullRequestSimpleHead) SetFake() {
 	{
 
 		{
-			s.Label = ""
+			s.Label = "string"
 		}
 	}
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
@@ -31675,7 +31675,7 @@ func (s *PullRequestSimpleHead) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -31794,7 +31794,7 @@ func (s *PullsCreateReplyForReviewCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -31810,13 +31810,13 @@ func (s *PullsCreateReq) SetFake() {
 	{
 
 		{
-			s.Head = ""
+			s.Head = "string"
 		}
 	}
 	{
 
 		{
-			s.Base = ""
+			s.Base = "string"
 		}
 	}
 	{
@@ -31850,7 +31850,7 @@ func (s *PullsCreateReviewCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -31954,7 +31954,7 @@ func (s *PullsCreateReviewReqCommentsItem) SetFake() {
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -31966,7 +31966,7 @@ func (s *PullsCreateReviewReqCommentsItem) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -32005,7 +32005,7 @@ func (s *PullsDismissReviewReq) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
@@ -32185,7 +32185,7 @@ func (s *PullsRemoveRequestedReviewersReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Reviewers = append(s.Reviewers, elem)
 			}
@@ -32199,7 +32199,7 @@ func (s *PullsRemoveRequestedReviewersReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.TeamReviewers = append(s.TeamReviewers, elem)
 			}
@@ -32318,7 +32318,7 @@ func (s *PullsUpdateReviewCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -32328,7 +32328,7 @@ func (s *PullsUpdateReviewReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -32338,25 +32338,25 @@ func (s *RateLimit) SetFake() {
 	{
 
 		{
-			s.Limit = int(1)
+			s.Limit = int(0)
 		}
 	}
 	{
 
 		{
-			s.Remaining = int(1)
+			s.Remaining = int(0)
 		}
 	}
 	{
 
 		{
-			s.Reset = int(1)
+			s.Reset = int(0)
 		}
 	}
 	{
 
 		{
-			s.Used = int(1)
+			s.Used = int(0)
 		}
 	}
 }
@@ -32428,13 +32428,13 @@ func (s *Reaction) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -32473,55 +32473,55 @@ func (s *ReactionRollup) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.Plus1 = int(1)
+			s.Plus1 = int(0)
 		}
 	}
 	{
 
 		{
-			s.Minus1 = int(1)
+			s.Minus1 = int(0)
 		}
 	}
 	{
 
 		{
-			s.Laugh = int(1)
+			s.Laugh = int(0)
 		}
 	}
 	{
 
 		{
-			s.Confused = int(1)
+			s.Confused = int(0)
 		}
 	}
 	{
 
 		{
-			s.Heart = int(1)
+			s.Heart = int(0)
 		}
 	}
 	{
 
 		{
-			s.Hooray = int(1)
+			s.Hooray = int(0)
 		}
 	}
 	{
 
 		{
-			s.Eyes = int(1)
+			s.Eyes = int(0)
 		}
 	}
 	{
 
 		{
-			s.Rocket = int(1)
+			s.Rocket = int(0)
 		}
 	}
 }
@@ -32928,19 +32928,19 @@ func (s *ReferrerTraffic) SetFake() {
 	{
 
 		{
-			s.Referrer = ""
+			s.Referrer = "string"
 		}
 	}
 	{
 
 		{
-			s.Count = int(1)
+			s.Count = int(0)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(1)
+			s.Uniques = int(0)
 		}
 	}
 }
@@ -32968,7 +32968,7 @@ func (s *Release) SetFake() {
 	{
 
 		{
-			s.UploadURL = ""
+			s.UploadURL = "string"
 		}
 	}
 	{
@@ -32986,25 +32986,25 @@ func (s *Release) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.TagName = ""
+			s.TagName = "string"
 		}
 	}
 	{
 
 		{
-			s.TargetCommitish = ""
+			s.TargetCommitish = "string"
 		}
 	}
 	{
@@ -33112,19 +33112,19 @@ func (s *ReleaseAsset) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -33142,19 +33142,19 @@ func (s *ReleaseAsset) SetFake() {
 	{
 
 		{
-			s.ContentType = ""
+			s.ContentType = "string"
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.DownloadCount = int(1)
+			s.DownloadCount = int(0)
 		}
 	}
 	{
@@ -33187,25 +33187,25 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
@@ -33271,19 +33271,19 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(1)
+			s.StargazersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(1)
+			s.WatchersCount = int(0)
 		}
 	}
 	{
@@ -33295,13 +33295,13 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(1)
+			s.ForksCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(1)
+			s.OpenIssuesCount = int(0)
 		}
 	}
 	{
@@ -33313,7 +33313,7 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.DefaultBranch = ""
+			s.DefaultBranch = "string"
 		}
 	}
 	{
@@ -33331,13 +33331,13 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
@@ -33355,7 +33355,7 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
@@ -33367,13 +33367,13 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
@@ -33385,31 +33385,31 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -33445,37 +33445,37 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
@@ -33487,7 +33487,7 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
@@ -33499,37 +33499,37 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
@@ -33541,19 +33541,19 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.GitURL = ""
+			s.GitURL = "string"
 		}
 	}
 	{
 
 		{
-			s.SSHURL = ""
+			s.SSHURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CloneURL = ""
+			s.CloneURL = "string"
 		}
 	}
 	{
@@ -33565,19 +33565,19 @@ func (s *RepoSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Forks = int(1)
+			s.Forks = int(0)
 		}
 	}
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(1)
+			s.Watchers = int(0)
 		}
 	}
 	{
@@ -33588,7 +33588,7 @@ func (s *RepoSearchResultItem) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -33806,7 +33806,7 @@ func (s *ReposAddAppAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Apps = append(s.Apps, elem)
 			}
@@ -33865,7 +33865,7 @@ func (s *ReposAddStatusCheckContextsOKApplicationJSON) SetFake() {
 			var elem string
 
 			{
-				elem = ""
+				elem = "string"
 			}
 			unwrapped = append(unwrapped, elem)
 		}
@@ -33893,7 +33893,7 @@ func (s *ReposAddStatusCheckContextsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Contexts = append(s.Contexts, elem)
 			}
@@ -33939,7 +33939,7 @@ func (s *ReposAddTeamAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Teams = append(s.Teams, elem)
 			}
@@ -33985,7 +33985,7 @@ func (s *ReposAddUserAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Users = append(s.Users, elem)
 			}
@@ -34018,13 +34018,13 @@ func (s *ReposCreateAutolinkReq) SetFake() {
 	{
 
 		{
-			s.KeyPrefix = ""
+			s.KeyPrefix = "string"
 		}
 	}
 	{
 
 		{
-			s.URLTemplate = ""
+			s.URLTemplate = "string"
 		}
 	}
 }
@@ -34034,7 +34034,7 @@ func (s *ReposCreateCommitCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -34101,7 +34101,7 @@ func (s *ReposCreateDeployKeyReq) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 	{
@@ -34127,7 +34127,7 @@ func (s *ReposCreateDeploymentReq) SetFake() {
 	{
 
 		{
-			s.Ref = ""
+			s.Ref = "string"
 		}
 	}
 	{
@@ -34150,7 +34150,7 @@ func (s *ReposCreateDeploymentReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RequiredContexts = append(s.RequiredContexts, elem)
 			}
@@ -34272,7 +34272,7 @@ func (s *ReposCreateDispatchEventReq) SetFake() {
 	{
 
 		{
-			s.EventType = "a"
+			s.EventType = "string"
 		}
 	}
 	{
@@ -34340,7 +34340,7 @@ func (s *ReposCreateForAuthenticatedUserReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -34492,7 +34492,7 @@ func (s *ReposCreateInOrgReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -34649,13 +34649,13 @@ func (s *ReposCreateOrUpdateFileContentsReq) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.Content = ""
+			s.Content = "string"
 		}
 	}
 	{
@@ -34689,13 +34689,13 @@ func (s *ReposCreateOrUpdateFileContentsReqAuthor) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
@@ -34711,13 +34711,13 @@ func (s *ReposCreateOrUpdateFileContentsReqCommitter) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
@@ -34743,7 +34743,7 @@ func (s *ReposCreatePagesSiteReqSource) SetFake() {
 	{
 
 		{
-			s.Branch = ""
+			s.Branch = "string"
 		}
 	}
 	{
@@ -34764,7 +34764,7 @@ func (s *ReposCreateReleaseReq) SetFake() {
 	{
 
 		{
-			s.TagName = ""
+			s.TagName = "string"
 		}
 	}
 	{
@@ -34816,7 +34816,7 @@ func (s *ReposCreateUsingTemplateReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -34881,7 +34881,7 @@ func (s *ReposCreateWebhookReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -35019,13 +35019,13 @@ func (s *ReposDeleteFileReq) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -35106,7 +35106,7 @@ func (s *ReposGetAllStatusCheckContextsOKApplicationJSON) SetFake() {
 			var elem string
 
 			{
-				elem = ""
+				elem = "string"
 			}
 			unwrapped = append(unwrapped, elem)
 		}
@@ -35713,13 +35713,13 @@ func (s *ReposMergeReq) SetFake() {
 	{
 
 		{
-			s.Base = ""
+			s.Base = "string"
 		}
 	}
 	{
 
 		{
-			s.Head = ""
+			s.Head = "string"
 		}
 	}
 	{
@@ -35735,7 +35735,7 @@ func (s *ReposMergeUpstreamReq) SetFake() {
 	{
 
 		{
-			s.Branch = ""
+			s.Branch = "string"
 		}
 	}
 }
@@ -35778,7 +35778,7 @@ func (s *ReposRemoveAppAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Apps = append(s.Apps, elem)
 			}
@@ -35796,7 +35796,7 @@ func (s *ReposRemoveStatusCheckContextsOKApplicationJSON) SetFake() {
 			var elem string
 
 			{
-				elem = ""
+				elem = "string"
 			}
 			unwrapped = append(unwrapped, elem)
 		}
@@ -35824,7 +35824,7 @@ func (s *ReposRemoveStatusCheckContextsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Contexts = append(s.Contexts, elem)
 			}
@@ -35870,7 +35870,7 @@ func (s *ReposRemoveTeamAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Teams = append(s.Teams, elem)
 			}
@@ -35916,7 +35916,7 @@ func (s *ReposRemoveUserAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Users = append(s.Users, elem)
 			}
@@ -35949,7 +35949,7 @@ func (s *ReposRenameBranchReq) SetFake() {
 	{
 
 		{
-			s.NewName = ""
+			s.NewName = "string"
 		}
 	}
 }
@@ -35964,7 +35964,7 @@ func (s *ReposReplaceAllTopicsReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Names = append(s.Names, elem)
 			}
@@ -36010,7 +36010,7 @@ func (s *ReposSetAppAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Apps = append(s.Apps, elem)
 			}
@@ -36028,7 +36028,7 @@ func (s *ReposSetStatusCheckContextsOKApplicationJSON) SetFake() {
 			var elem string
 
 			{
-				elem = ""
+				elem = "string"
 			}
 			unwrapped = append(unwrapped, elem)
 		}
@@ -36056,7 +36056,7 @@ func (s *ReposSetStatusCheckContextsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Contexts = append(s.Contexts, elem)
 			}
@@ -36102,7 +36102,7 @@ func (s *ReposSetTeamAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Teams = append(s.Teams, elem)
 			}
@@ -36148,7 +36148,7 @@ func (s *ReposSetUserAccessRestrictionsReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Users = append(s.Users, elem)
 			}
@@ -36161,7 +36161,7 @@ func (s *ReposTransferReq) SetFake() {
 	{
 
 		{
-			s.NewOwner = ""
+			s.NewOwner = "string"
 		}
 	}
 	{
@@ -36172,7 +36172,7 @@ func (s *ReposTransferReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.TeamIds = append(s.TeamIds, elem)
 			}
@@ -36320,7 +36320,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Users = append(s.Users, elem)
 			}
@@ -36334,7 +36334,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredPullRequestReviewsDismissalRestri
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Teams = append(s.Teams, elem)
 			}
@@ -36358,7 +36358,7 @@ func (s *ReposUpdateBranchProtectionReqRequiredStatusChecks) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Contexts = append(s.Contexts, elem)
 			}
@@ -36376,7 +36376,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Users = append(s.Users, elem)
 			}
@@ -36390,7 +36390,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Teams = append(s.Teams, elem)
 			}
@@ -36404,7 +36404,7 @@ func (s *ReposUpdateBranchProtectionReqRestrictions) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Apps = append(s.Apps, elem)
 			}
@@ -36417,7 +36417,7 @@ func (s *ReposUpdateCommitCommentReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -36475,7 +36475,7 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) SetFake
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Users = append(s.Users, elem)
 			}
@@ -36489,7 +36489,7 @@ func (s *ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions) SetFake
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Teams = append(s.Teams, elem)
 			}
@@ -36734,7 +36734,7 @@ func (s *ReposUpdateStatusCheckProtectionReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Contexts = append(s.Contexts, elem)
 			}
@@ -36795,7 +36795,7 @@ func (s *ReposUpdateWebhookReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Events = append(s.Events, elem)
 			}
@@ -36809,7 +36809,7 @@ func (s *ReposUpdateWebhookReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.AddEvents = append(s.AddEvents, elem)
 			}
@@ -36823,7 +36823,7 @@ func (s *ReposUpdateWebhookReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RemoveEvents = append(s.RemoveEvents, elem)
 			}
@@ -36882,25 +36882,25 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
@@ -36918,7 +36918,7 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.Forks = int(1)
+			s.Forks = int(0)
 		}
 	}
 	{
@@ -36966,55 +36966,55 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -37050,55 +37050,55 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitURL = ""
+			s.GitURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -37116,31 +37116,31 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.SSHURL = ""
+			s.SSHURL = "string"
 		}
 	}
 	{
@@ -37152,7 +37152,7 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -37182,13 +37182,13 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CloneURL = ""
+			s.CloneURL = "string"
 		}
 	}
 	{
@@ -37224,37 +37224,37 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(1)
+			s.ForksCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(1)
+			s.StargazersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(1)
+			s.WatchersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = ""
+			s.DefaultBranch = "string"
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(1)
+			s.OpenIssuesCount = int(0)
 		}
 	}
 	{
@@ -37271,7 +37271,7 @@ func (s *Repository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -37406,13 +37406,13 @@ func (s *Repository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(1)
+			s.Watchers = int(0)
 		}
 	}
 	{
@@ -37434,7 +37434,7 @@ func (s *RepositoryCollaboratorPermission) SetFake() {
 	{
 
 		{
-			s.Permission = ""
+			s.Permission = "string"
 		}
 	}
 	{
@@ -37450,7 +37450,7 @@ func (s *RepositoryInvitation) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -37492,19 +37492,19 @@ func (s *RepositoryInvitation) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = ""
+			s.HTMLURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 }
@@ -37958,7 +37958,7 @@ func (s *RepositoryTemplateRepository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -38249,25 +38249,25 @@ func (s *ReviewComment) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.DiffHunk = ""
+			s.DiffHunk = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -38279,19 +38279,19 @@ func (s *ReviewComment) SetFake() {
 	{
 
 		{
-			s.OriginalPosition = int(1)
+			s.OriginalPosition = int(0)
 		}
 	}
 	{
 
 		{
-			s.CommitID = ""
+			s.CommitID = "string"
 		}
 	}
 	{
 
 		{
-			s.OriginalCommitID = ""
+			s.OriginalCommitID = "string"
 		}
 	}
 	{
@@ -38309,7 +38309,7 @@ func (s *ReviewComment) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -38441,25 +38441,25 @@ func (s *Runner) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Os = ""
+			s.Os = "string"
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 	{
@@ -38489,25 +38489,25 @@ func (s *RunnerApplication) SetFake() {
 	{
 
 		{
-			s.Os = ""
+			s.Os = "string"
 		}
 	}
 	{
 
 		{
-			s.Architecture = ""
+			s.Architecture = "string"
 		}
 	}
 	{
 
 		{
-			s.DownloadURL = ""
+			s.DownloadURL = "string"
 		}
 	}
 	{
 
 		{
-			s.Filename = ""
+			s.Filename = "string"
 		}
 	}
 	{
@@ -38535,13 +38535,13 @@ func (s *RunnerGroupsEnterprise) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Visibility = ""
+			s.Visibility = "string"
 		}
 	}
 	{
@@ -38559,7 +38559,7 @@ func (s *RunnerGroupsEnterprise) SetFake() {
 	{
 
 		{
-			s.RunnersURL = ""
+			s.RunnersURL = "string"
 		}
 	}
 	{
@@ -38581,13 +38581,13 @@ func (s *RunnerGroupsOrg) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Visibility = ""
+			s.Visibility = "string"
 		}
 	}
 	{
@@ -38605,7 +38605,7 @@ func (s *RunnerGroupsOrg) SetFake() {
 	{
 
 		{
-			s.RunnersURL = ""
+			s.RunnersURL = "string"
 		}
 	}
 	{
@@ -38685,7 +38685,7 @@ func (s *ScimEnterpriseGroup) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -38694,7 +38694,7 @@ func (s *ScimEnterpriseGroup) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -38791,7 +38791,7 @@ func (s *ScimEnterpriseUser) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -38800,7 +38800,7 @@ func (s *ScimEnterpriseUser) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -38979,7 +38979,7 @@ func (s *ScimError) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -38997,7 +38997,7 @@ func (s *ScimGroupListEnterprise) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -39047,7 +39047,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -39056,7 +39056,7 @@ func (s *ScimGroupListEnterpriseResourcesItem) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -39153,7 +39153,7 @@ func (s *ScimUserListEnterprise) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -39203,7 +39203,7 @@ func (s *ScimUserListEnterpriseResourcesItem) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Schemas = append(s.Schemas, elem)
 			}
@@ -39212,7 +39212,7 @@ func (s *ScimUserListEnterpriseResourcesItem) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -39356,7 +39356,7 @@ func (s *SearchCodeOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -39386,7 +39386,7 @@ func (s *SearchCommitsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -39416,7 +39416,7 @@ func (s *SearchIssuesAndPullRequestsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -39466,7 +39466,7 @@ func (s *SearchLabelsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -39496,7 +39496,7 @@ func (s *SearchReposOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -39597,7 +39597,7 @@ func (s *SearchResultTextMatchesItemMatchesItem) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Indices = append(s.Indices, elem)
 			}
@@ -39610,7 +39610,7 @@ func (s *SearchTopicsOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -39640,7 +39640,7 @@ func (s *SearchUsersOK) SetFake() {
 	{
 
 		{
-			s.TotalCount = int(1)
+			s.TotalCount = int(0)
 		}
 	}
 	{
@@ -39819,7 +39819,7 @@ func (s *SelectedActions) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.PatternsAllowed = append(s.PatternsAllowed, elem)
 			}
@@ -39832,7 +39832,7 @@ func (s *SelectedActionsURL) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = SelectedActionsURL(unwrapped)
 }
@@ -39864,13 +39864,13 @@ func (s *ShortBlob) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 }
@@ -39880,7 +39880,7 @@ func (s *ShortBranch) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -39914,7 +39914,7 @@ func (s *ShortBranchCommit) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -39930,19 +39930,19 @@ func (s *SimpleCommit) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
 
 		{
-			s.TreeID = ""
+			s.TreeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
@@ -39970,13 +39970,13 @@ func (s *SimpleCommitAuthor) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 }
@@ -39986,13 +39986,13 @@ func (s *SimpleCommitCommitter) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 }
@@ -40008,25 +40008,25 @@ func (s *SimpleCommitStatus) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
 
 		{
-			s.Context = ""
+			s.Context = "string"
 		}
 	}
 	{
@@ -40084,19 +40084,19 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -40132,19 +40132,19 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
@@ -40168,7 +40168,7 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -40180,7 +40180,7 @@ func (s *SimpleUser) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -40202,7 +40202,7 @@ func (s *Status) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
@@ -40214,49 +40214,49 @@ func (s *Status) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 	{
 
 		{
-			s.TargetURL = ""
+			s.TargetURL = "string"
 		}
 	}
 	{
 
 		{
-			s.Context = ""
+			s.Context = "string"
 		}
 	}
 	{
 
 		{
-			s.CreatedAt = ""
+			s.CreatedAt = "string"
 		}
 	}
 	{
 
 		{
-			s.UpdatedAt = ""
+			s.UpdatedAt = "string"
 		}
 	}
 	{
@@ -40289,7 +40289,7 @@ func (s *StatusCheckPolicy) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Contexts = append(s.Contexts, elem)
 			}
@@ -40308,7 +40308,7 @@ func (s *Tag) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -40332,7 +40332,7 @@ func (s *Tag) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 }
@@ -40342,7 +40342,7 @@ func (s *TagCommit) SetFake() {
 	{
 
 		{
-			s.Sha = ""
+			s.Sha = "string"
 		}
 	}
 	{
@@ -40358,25 +40358,25 @@ func (s *Team) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Slug = ""
+			s.Slug = "string"
 		}
 	}
 	{
@@ -40394,7 +40394,7 @@ func (s *Team) SetFake() {
 	{
 
 		{
-			s.Permission = ""
+			s.Permission = "string"
 		}
 	}
 	{
@@ -40418,7 +40418,7 @@ func (s *Team) SetFake() {
 	{
 
 		{
-			s.MembersURL = ""
+			s.MembersURL = "string"
 		}
 	}
 	{
@@ -40446,25 +40446,25 @@ func (s *TeamDiscussion) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
 
 		{
-			s.BodyHTML = ""
+			s.BodyHTML = "string"
 		}
 	}
 	{
 
 		{
-			s.BodyVersion = ""
+			s.BodyVersion = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsCount = int(1)
+			s.CommentsCount = int(0)
 		}
 	}
 	{
@@ -40494,13 +40494,13 @@ func (s *TeamDiscussion) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
@@ -40524,7 +40524,7 @@ func (s *TeamDiscussion) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
@@ -40558,19 +40558,19 @@ func (s *TeamDiscussionComment) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
 
 		{
-			s.BodyHTML = ""
+			s.BodyHTML = "string"
 		}
 	}
 	{
 
 		{
-			s.BodyVersion = ""
+			s.BodyVersion = "string"
 		}
 	}
 	{
@@ -40600,13 +40600,13 @@ func (s *TeamDiscussionComment) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
@@ -40634,13 +40634,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -40658,13 +40658,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Slug = ""
+			s.Slug = "string"
 		}
 	}
 	{
@@ -40682,13 +40682,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.Permission = ""
+			s.Permission = "string"
 		}
 	}
 	{
 
 		{
-			s.MembersURL = ""
+			s.MembersURL = "string"
 		}
 	}
 	{
@@ -40706,13 +40706,13 @@ func (s *TeamFull) SetFake() {
 	{
 
 		{
-			s.MembersCount = int(1)
+			s.MembersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.ReposCount = int(1)
+			s.ReposCount = int(0)
 		}
 	}
 	{
@@ -40817,43 +40817,43 @@ func (s *TeamProject) SetFake() {
 	{
 
 		{
-			s.OwnerURL = ""
+			s.OwnerURL = "string"
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = ""
+			s.HTMLURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ColumnsURL = ""
+			s.ColumnsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -40865,13 +40865,13 @@ func (s *TeamProject) SetFake() {
 	{
 
 		{
-			s.Number = int(1)
+			s.Number = int(0)
 		}
 	}
 	{
 
 		{
-			s.State = ""
+			s.State = "string"
 		}
 	}
 	{
@@ -40883,13 +40883,13 @@ func (s *TeamProject) SetFake() {
 	{
 
 		{
-			s.CreatedAt = ""
+			s.CreatedAt = "string"
 		}
 	}
 	{
 
 		{
-			s.UpdatedAt = ""
+			s.UpdatedAt = "string"
 		}
 	}
 	{
@@ -40939,25 +40939,25 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.FullName = ""
+			s.FullName = "string"
 		}
 	}
 	{
@@ -40969,7 +40969,7 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.Forks = int(1)
+			s.Forks = int(0)
 		}
 	}
 	{
@@ -41017,55 +41017,55 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.ArchiveURL = ""
+			s.ArchiveURL = "string"
 		}
 	}
 	{
 
 		{
-			s.AssigneesURL = ""
+			s.AssigneesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BlobsURL = ""
+			s.BlobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BranchesURL = ""
+			s.BranchesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CollaboratorsURL = ""
+			s.CollaboratorsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommentsURL = ""
+			s.CommentsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CommitsURL = ""
+			s.CommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CompareURL = ""
+			s.CompareURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ContentsURL = ""
+			s.ContentsURL = "string"
 		}
 	}
 	{
@@ -41101,55 +41101,55 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.GitCommitsURL = ""
+			s.GitCommitsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitRefsURL = ""
+			s.GitRefsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitTagsURL = ""
+			s.GitTagsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GitURL = ""
+			s.GitURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueCommentURL = ""
+			s.IssueCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssueEventsURL = ""
+			s.IssueEventsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.IssuesURL = ""
+			s.IssuesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.KeysURL = ""
+			s.KeysURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LabelsURL = ""
+			s.LabelsURL = "string"
 		}
 	}
 	{
@@ -41167,31 +41167,31 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.MilestonesURL = ""
+			s.MilestonesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.NotificationsURL = ""
+			s.NotificationsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.PullsURL = ""
+			s.PullsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ReleasesURL = ""
+			s.ReleasesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.SSHURL = ""
+			s.SSHURL = "string"
 		}
 	}
 	{
@@ -41203,7 +41203,7 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.StatusesURL = ""
+			s.StatusesURL = "string"
 		}
 	}
 	{
@@ -41233,13 +41233,13 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.TreesURL = ""
+			s.TreesURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CloneURL = ""
+			s.CloneURL = "string"
 		}
 	}
 	{
@@ -41275,37 +41275,37 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.ForksCount = int(1)
+			s.ForksCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.StargazersCount = int(1)
+			s.StargazersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.WatchersCount = int(1)
+			s.WatchersCount = int(0)
 		}
 	}
 	{
 
 		{
-			s.Size = int(1)
+			s.Size = int(0)
 		}
 	}
 	{
 
 		{
-			s.DefaultBranch = ""
+			s.DefaultBranch = "string"
 		}
 	}
 	{
 
 		{
-			s.OpenIssuesCount = int(1)
+			s.OpenIssuesCount = int(0)
 		}
 	}
 	{
@@ -41322,7 +41322,7 @@ func (s *TeamRepository) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Topics = append(s.Topics, elem)
 			}
@@ -41457,13 +41457,13 @@ func (s *TeamRepository) SetFake() {
 	{
 
 		{
-			s.OpenIssues = int(1)
+			s.OpenIssues = int(0)
 		}
 	}
 	{
 
 		{
-			s.Watchers = int(1)
+			s.Watchers = int(0)
 		}
 	}
 	{
@@ -41513,13 +41513,13 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -41531,13 +41531,13 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.MembersURL = ""
+			s.MembersURL = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -41549,7 +41549,7 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.Permission = ""
+			s.Permission = "string"
 		}
 	}
 	{
@@ -41573,7 +41573,7 @@ func (s *TeamSimple) SetFake() {
 	{
 
 		{
-			s.Slug = ""
+			s.Slug = "string"
 		}
 	}
 	{
@@ -41711,7 +41711,7 @@ func (s *TeamsCreateDiscussionCommentInOrgReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -41721,7 +41721,7 @@ func (s *TeamsCreateDiscussionCommentLegacyReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -41731,13 +41731,13 @@ func (s *TeamsCreateDiscussionInOrgReq) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -41753,13 +41753,13 @@ func (s *TeamsCreateDiscussionLegacyReq) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 	{
@@ -41802,19 +41802,19 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem) SetFake() {
 	{
 
 		{
-			s.GroupID = ""
+			s.GroupID = "string"
 		}
 	}
 	{
 
 		{
-			s.GroupName = ""
+			s.GroupName = "string"
 		}
 	}
 	{
 
 		{
-			s.GroupDescription = ""
+			s.GroupDescription = "string"
 		}
 	}
 }
@@ -41848,19 +41848,19 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem) SetFake() {
 	{
 
 		{
-			s.GroupID = ""
+			s.GroupID = "string"
 		}
 	}
 	{
 
 		{
-			s.GroupName = ""
+			s.GroupName = "string"
 		}
 	}
 	{
 
 		{
-			s.GroupDescription = ""
+			s.GroupDescription = "string"
 		}
 	}
 	{
@@ -41888,7 +41888,7 @@ func (s *TeamsCreateReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -41905,7 +41905,7 @@ func (s *TeamsCreateReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Maintainers = append(s.Maintainers, elem)
 			}
@@ -41919,7 +41919,7 @@ func (s *TeamsCreateReq) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.RepoNames = append(s.RepoNames, elem)
 			}
@@ -42128,7 +42128,7 @@ func (s *TeamsUpdateDiscussionCommentInOrgReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -42138,7 +42138,7 @@ func (s *TeamsUpdateDiscussionCommentLegacyReq) SetFake() {
 	{
 
 		{
-			s.Body = ""
+			s.Body = "string"
 		}
 	}
 }
@@ -42264,7 +42264,7 @@ func (s *TeamsUpdateLegacyReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -42308,7 +42308,7 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.ID = ""
+			s.ID = "string"
 		}
 	}
 	{
@@ -42326,7 +42326,7 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.Reason = ""
+			s.Reason = "string"
 		}
 	}
 	{
@@ -42338,7 +42338,7 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.UpdatedAt = ""
+			s.UpdatedAt = "string"
 		}
 	}
 	{
@@ -42350,13 +42350,13 @@ func (s *Thread) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.SubscriptionURL = ""
+			s.SubscriptionURL = "string"
 		}
 	}
 }
@@ -42366,25 +42366,25 @@ func (s *ThreadSubject) SetFake() {
 	{
 
 		{
-			s.Title = ""
+			s.Title = "string"
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.LatestCommentURL = ""
+			s.LatestCommentURL = "string"
 		}
 	}
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 }
@@ -42445,7 +42445,7 @@ func (s *Topic) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Names = append(s.Names, elem)
 			}
@@ -42458,7 +42458,7 @@ func (s *TopicSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -42640,13 +42640,13 @@ func (s *Traffic) SetFake() {
 	{
 
 		{
-			s.Uniques = int(1)
+			s.Uniques = int(0)
 		}
 	}
 	{
 
 		{
-			s.Count = int(1)
+			s.Count = int(0)
 		}
 	}
 }
@@ -42656,7 +42656,7 @@ func (s *UserMarketplacePurchase) SetFake() {
 	{
 
 		{
-			s.BillingCycle = ""
+			s.BillingCycle = "string"
 		}
 	}
 	{
@@ -42708,19 +42708,19 @@ func (s *UserSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Login = ""
+			s.Login = "string"
 		}
 	}
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -42780,7 +42780,7 @@ func (s *UserSearchResultItem) SetFake() {
 	{
 
 		{
-			s.Type = ""
+			s.Type = "string"
 		}
 	}
 	{
@@ -42792,25 +42792,25 @@ func (s *UserSearchResultItem) SetFake() {
 	{
 
 		{
-			s.FollowingURL = ""
+			s.FollowingURL = "string"
 		}
 	}
 	{
 
 		{
-			s.GistsURL = ""
+			s.GistsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.StarredURL = ""
+			s.StarredURL = "string"
 		}
 	}
 	{
 
 		{
-			s.EventsURL = ""
+			s.EventsURL = "string"
 		}
 	}
 	{
@@ -42979,7 +42979,7 @@ func (s *UsersAddEmailForAuthenticatedReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Emails = append(s.Emails, elem)
 			}
@@ -43112,7 +43112,7 @@ func (s *UsersCreateGpgKeyForAuthenticatedReq) SetFake() {
 	{
 
 		{
-			s.ArmoredPublicKey = ""
+			s.ArmoredPublicKey = "string"
 		}
 	}
 }
@@ -43158,7 +43158,7 @@ func (s *UsersCreatePublicSSHKeyForAuthenticatedReq) SetFake() {
 	{
 
 		{
-			s.Key = ""
+			s.Key = "string"
 		}
 	}
 }
@@ -43213,7 +43213,7 @@ func (s *UsersDeleteEmailForAuthenticatedReq0) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Emails = append(s.Emails, elem)
 			}
@@ -43955,13 +43955,13 @@ func (s *ValidationError) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.DocumentationURL = ""
+			s.DocumentationURL = "string"
 		}
 	}
 	{
@@ -44003,7 +44003,7 @@ func (s *ValidationErrorErrorsItem) SetFake() {
 	{
 
 		{
-			s.Code = ""
+			s.Code = "string"
 		}
 	}
 	{
@@ -44025,7 +44025,7 @@ func (s *ValidationErrorErrorsItemValue) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -44035,13 +44035,13 @@ func (s *ValidationErrorSimple) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 	{
 
 		{
-			s.DocumentationURL = ""
+			s.DocumentationURL = "string"
 		}
 	}
 	{
@@ -44052,7 +44052,7 @@ func (s *ValidationErrorSimple) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Errors = append(s.Errors, elem)
 			}
@@ -44071,7 +44071,7 @@ func (s *Verification) SetFake() {
 	{
 
 		{
-			s.Reason = ""
+			s.Reason = "string"
 		}
 	}
 	{
@@ -44093,13 +44093,13 @@ func (s *ViewTraffic) SetFake() {
 	{
 
 		{
-			s.Count = int(1)
+			s.Count = int(0)
 		}
 	}
 	{
 
 		{
-			s.Uniques = int(1)
+			s.Uniques = int(0)
 		}
 	}
 	{
@@ -44151,7 +44151,7 @@ func (s *WebhookConfigContentType) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = WebhookConfigContentType(unwrapped)
 }
@@ -44161,7 +44161,7 @@ func (s *WebhookConfigInsecureSsl) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -44171,7 +44171,7 @@ func (s *WebhookConfigSecret) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = ""
+		unwrapped = "string"
 	}
 	*s = WebhookConfigSecret(unwrapped)
 }
@@ -44191,25 +44191,25 @@ func (s *Workflow) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Path = ""
+			s.Path = "string"
 		}
 	}
 	{
@@ -44233,19 +44233,19 @@ func (s *Workflow) SetFake() {
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = ""
+			s.HTMLURL = "string"
 		}
 	}
 	{
 
 		{
-			s.BadgeURL = ""
+			s.BadgeURL = "string"
 		}
 	}
 	{
@@ -44261,7 +44261,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
@@ -44273,7 +44273,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.NodeID = ""
+			s.NodeID = "string"
 		}
 	}
 	{
@@ -44297,13 +44297,13 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.HeadSha = ""
+			s.HeadSha = "string"
 		}
 	}
 	{
 
 		{
-			s.RunNumber = int(1)
+			s.RunNumber = int(0)
 		}
 	}
 	{
@@ -44315,7 +44315,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.Event = ""
+			s.Event = "string"
 		}
 	}
 	{
@@ -44333,19 +44333,19 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.WorkflowID = int(1)
+			s.WorkflowID = int(0)
 		}
 	}
 	{
 
 		{
-			s.URL = ""
+			s.URL = "string"
 		}
 	}
 	{
 
 		{
-			s.HTMLURL = ""
+			s.HTMLURL = "string"
 		}
 	}
 	{
@@ -44377,37 +44377,37 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.JobsURL = ""
+			s.JobsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.LogsURL = ""
+			s.LogsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CheckSuiteURL = ""
+			s.CheckSuiteURL = "string"
 		}
 	}
 	{
 
 		{
-			s.ArtifactsURL = ""
+			s.ArtifactsURL = "string"
 		}
 	}
 	{
 
 		{
-			s.CancelURL = ""
+			s.CancelURL = "string"
 		}
 	}
 	{
 
 		{
-			s.RerunURL = ""
+			s.RerunURL = "string"
 		}
 	}
 	{
@@ -44419,7 +44419,7 @@ func (s *WorkflowRun) SetFake() {
 	{
 
 		{
-			s.WorkflowURL = ""
+			s.WorkflowURL = "string"
 		}
 	}
 	{
@@ -44491,13 +44491,13 @@ func (s *WorkflowRunUsageBillableMACOS) SetFake() {
 	{
 
 		{
-			s.TotalMs = int(1)
+			s.TotalMs = int(0)
 		}
 	}
 	{
 
 		{
-			s.Jobs = int(1)
+			s.Jobs = int(0)
 		}
 	}
 }
@@ -44507,13 +44507,13 @@ func (s *WorkflowRunUsageBillableUBUNTU) SetFake() {
 	{
 
 		{
-			s.TotalMs = int(1)
+			s.TotalMs = int(0)
 		}
 	}
 	{
 
 		{
-			s.Jobs = int(1)
+			s.Jobs = int(0)
 		}
 	}
 }
@@ -44523,13 +44523,13 @@ func (s *WorkflowRunUsageBillableWINDOWS) SetFake() {
 	{
 
 		{
-			s.TotalMs = int(1)
+			s.TotalMs = int(0)
 		}
 	}
 	{
 
 		{
-			s.Jobs = int(1)
+			s.Jobs = int(0)
 		}
 	}
 }

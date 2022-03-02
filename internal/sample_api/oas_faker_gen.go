@@ -75,7 +75,7 @@ func (s *AnyOfTest) SetFake() {
 	{
 
 		{
-			s.Medium = ""
+			s.Medium = "string"
 		}
 	}
 	{
@@ -91,7 +91,7 @@ func (s *AnyOfTestSizeLimit) SetFake() {
 	var elem int
 
 	{
-		elem = int(1)
+		elem = int(0)
 	}
 	s.SetInt(elem)
 }
@@ -148,7 +148,7 @@ func (s *ArrayTest) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Required = append(s.Required, elem)
 			}
@@ -162,7 +162,7 @@ func (s *ArrayTest) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.Optional = append(s.Optional, elem)
 			}
@@ -176,7 +176,7 @@ func (s *ArrayTest) SetFake() {
 				var elem string
 
 				{
-					elem = ""
+					elem = "string"
 				}
 				s.NullableRequired = append(s.NullableRequired, elem)
 			}
@@ -207,19 +207,19 @@ func (s *Data) SetFake() {
 	{
 
 		{
-			s.Email = ""
+			s.Email = "string"
 		}
 	}
 	{
 
 		{
-			s.Hostname = ""
+			s.Hostname = "string"
 		}
 	}
 	{
 
 		{
-			s.Format = ""
+			s.Format = "string"
 		}
 	}
 	{
@@ -251,7 +251,7 @@ func (s *DefaultTest) SetFake() {
 	{
 
 		{
-			s.Required = ""
+			s.Required = "string"
 		}
 	}
 	{
@@ -350,13 +350,13 @@ func (s *DescriptionDetailed) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Count = int(1)
+			s.Count = int(0)
 		}
 	}
 	{
@@ -372,7 +372,7 @@ func (s *DescriptionSimple) SetFake() {
 	{
 
 		{
-			s.Description = ""
+			s.Description = "string"
 		}
 	}
 }
@@ -382,13 +382,13 @@ func (s *Error) SetFake() {
 	{
 
 		{
-			s.Code = int64(1)
+			s.Code = int64(0)
 		}
 	}
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -404,7 +404,7 @@ func (s *Hash) SetFake() {
 	{
 
 		{
-			s.Hex = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+			s.Hex = "string"
 		}
 	}
 }
@@ -414,7 +414,7 @@ func (s *ID) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetString(elem)
 }
@@ -434,19 +434,19 @@ func (s *Issue1430) SetFake() {
 	{
 
 		{
-			s.CommonMinus1 = ""
+			s.CommonMinus1 = "string"
 		}
 	}
 	{
 
 		{
-			s.CommonMinus2 = int(1)
+			s.CommonMinus2 = int(0)
 		}
 	}
 	{
 
 		{
-			s.UniqueMinus1 = ""
+			s.UniqueMinus1 = "string"
 		}
 	}
 }
@@ -456,19 +456,19 @@ func (s *Issue1431) SetFake() {
 	{
 
 		{
-			s.CommonMinus1 = ""
+			s.CommonMinus1 = "string"
 		}
 	}
 	{
 
 		{
-			s.CommonMinus2 = int(1)
+			s.CommonMinus2 = int(0)
 		}
 	}
 	{
 
 		{
-			s.UniqueMinus2 = ""
+			s.UniqueMinus2 = "string"
 		}
 	}
 }
@@ -478,13 +478,13 @@ func (s *Issue1432) SetFake() {
 	{
 
 		{
-			s.CommonMinus1 = ""
+			s.CommonMinus1 = "string"
 		}
 	}
 	{
 
 		{
-			s.CommonMinus2 = int(1)
+			s.CommonMinus2 = int(0)
 		}
 	}
 	{
@@ -496,7 +496,7 @@ func (s *Issue1432) SetFake() {
 	{
 
 		{
-			s.UniqueMinus3 = ""
+			s.UniqueMinus3 = "string"
 		}
 	}
 }
@@ -512,7 +512,7 @@ func (s *Issue1433) SetFake() {
 	{
 
 		{
-			s.UniqueMinus4 = ""
+			s.UniqueMinus4 = "string"
 		}
 	}
 }
@@ -522,7 +522,7 @@ func (s *MapWithProperties) SetFake() {
 	{
 
 		{
-			s.Required = int(1)
+			s.Required = int(0)
 		}
 	}
 	{
@@ -577,7 +577,7 @@ func (s *MaxPropertiesTest) SetFake() {
 	{
 
 		{
-			s.Required = int(1)
+			s.Required = int(0)
 		}
 	}
 	{
@@ -754,7 +754,7 @@ func (s *OneVariantHasNoUniqueFields0) SetFake() {
 	{
 
 		{
-			s.A = ""
+			s.A = "string"
 		}
 	}
 	{
@@ -766,7 +766,7 @@ func (s *OneVariantHasNoUniqueFields0) SetFake() {
 	{
 
 		{
-			s.C = ""
+			s.C = "string"
 		}
 	}
 }
@@ -776,7 +776,7 @@ func (s *OneVariantHasNoUniqueFields1) SetFake() {
 	{
 
 		{
-			s.A = ""
+			s.A = "string"
 		}
 	}
 	{
@@ -788,7 +788,7 @@ func (s *OneVariantHasNoUniqueFields1) SetFake() {
 	{
 
 		{
-			s.C = ""
+			s.C = "string"
 		}
 	}
 	{
@@ -945,7 +945,7 @@ func (s *OptInt) SetFake() {
 	var elem int
 
 	{
-		elem = int(10)
+		elem = int(0)
 	}
 	s.SetTo(elem)
 }
@@ -955,7 +955,7 @@ func (s *OptInt32) SetFake() {
 	var elem int32
 
 	{
-		elem = int32(1)
+		elem = int32(0)
 	}
 	s.SetTo(elem)
 }
@@ -1068,7 +1068,7 @@ func (s *OptString) SetFake() {
 	var elem string
 
 	{
-		elem = ""
+		elem = "string"
 	}
 	s.SetTo(elem)
 }
@@ -1159,7 +1159,7 @@ func (s *Pet) SetFake() {
 	{
 
 		{
-			s.Name = "aaaa"
+			s.Name = "string"
 		}
 	}
 	{
@@ -1273,7 +1273,7 @@ func (s *Pet) SetFake() {
 						var elemElem string
 
 						{
-							elemElem = ""
+							elemElem = "string"
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1349,7 +1349,7 @@ func (s *PetGetDef) SetFake() {
 	{
 
 		{
-			s.Message = ""
+			s.Message = "string"
 		}
 	}
 }
@@ -1364,7 +1364,7 @@ func (s *PetName) SetFake() {
 	var unwrapped string
 
 	{
-		unwrapped = "aaaaaa"
+		unwrapped = "string"
 	}
 	*s = PetName(unwrapped)
 }
@@ -1456,25 +1456,25 @@ func (s *TestObjectQueryParameterOK) SetFake() {
 	{
 
 		{
-			s.Style = ""
+			s.Style = "string"
 		}
 	}
 	{
 
 		{
-			s.Min = int(1)
+			s.Min = int(0)
 		}
 	}
 	{
 
 		{
-			s.Max = int(1)
+			s.Max = int(0)
 		}
 	}
 	{
 
 		{
-			s.Filter = ""
+			s.Filter = "string"
 		}
 	}
 }

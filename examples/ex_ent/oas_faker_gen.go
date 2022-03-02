@@ -75,7 +75,7 @@ func (s *CreatePetCategoriesReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -86,7 +86,7 @@ func (s *CreatePetCategoriesReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Pets = append(s.Pets, elem)
 			}
@@ -99,7 +99,7 @@ func (s *CreatePetFriendsReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -122,7 +122,7 @@ func (s *CreatePetFriendsReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Categories = append(s.Categories, elem)
 			}
@@ -131,7 +131,7 @@ func (s *CreatePetFriendsReq) SetFake() {
 	{
 
 		{
-			s.Owner = int(1)
+			s.Owner = int(0)
 		}
 	}
 	{
@@ -142,7 +142,7 @@ func (s *CreatePetFriendsReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Friends = append(s.Friends, elem)
 			}
@@ -155,13 +155,13 @@ func (s *CreatePetOwnerReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Age = int(1)
+			s.Age = int(0)
 		}
 	}
 	{
@@ -172,7 +172,7 @@ func (s *CreatePetOwnerReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Pets = append(s.Pets, elem)
 			}
@@ -185,7 +185,7 @@ func (s *CreatePetReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -208,7 +208,7 @@ func (s *CreatePetReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Categories = append(s.Categories, elem)
 			}
@@ -217,7 +217,7 @@ func (s *CreatePetReq) SetFake() {
 	{
 
 		{
-			s.Owner = int(1)
+			s.Owner = int(0)
 		}
 	}
 	{
@@ -228,7 +228,7 @@ func (s *CreatePetReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Friends = append(s.Friends, elem)
 			}
@@ -305,7 +305,7 @@ func (s *OptInt) SetFake() {
 	var elem int
 
 	{
-		elem = int(1)
+		elem = int(0)
 	}
 	s.SetTo(elem)
 }
@@ -315,13 +315,13 @@ func (s *PetCategoriesCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -331,13 +331,13 @@ func (s *PetCategoriesList) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -347,13 +347,13 @@ func (s *PetCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -395,13 +395,13 @@ func (s *PetCreateCategories) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 }
@@ -411,19 +411,19 @@ func (s *PetCreateOwner) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Age = int(1)
+			s.Age = int(0)
 		}
 	}
 }
@@ -433,13 +433,13 @@ func (s *PetFriendsCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -461,13 +461,13 @@ func (s *PetFriendsList) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -489,13 +489,13 @@ func (s *PetList) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -517,19 +517,19 @@ func (s *PetOwnerCreate) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Age = int(1)
+			s.Age = int(0)
 		}
 	}
 }
@@ -539,19 +539,19 @@ func (s *PetOwnerRead) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
 
 		{
-			s.Age = int(1)
+			s.Age = int(0)
 		}
 	}
 }
@@ -561,13 +561,13 @@ func (s *PetRead) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -589,13 +589,13 @@ func (s *PetUpdate) SetFake() {
 	{
 
 		{
-			s.ID = int(1)
+			s.ID = int(0)
 		}
 	}
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -617,13 +617,13 @@ func (s *R400) SetFake() {
 	{
 
 		{
-			s.Code = int(1)
+			s.Code = int(0)
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 }
@@ -633,13 +633,13 @@ func (s *R404) SetFake() {
 	{
 
 		{
-			s.Code = int(1)
+			s.Code = int(0)
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 }
@@ -649,13 +649,13 @@ func (s *R409) SetFake() {
 	{
 
 		{
-			s.Code = int(1)
+			s.Code = int(0)
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 }
@@ -665,13 +665,13 @@ func (s *R500) SetFake() {
 	{
 
 		{
-			s.Code = int(1)
+			s.Code = int(0)
 		}
 	}
 	{
 
 		{
-			s.Status = ""
+			s.Status = "string"
 		}
 	}
 }
@@ -681,7 +681,7 @@ func (s *UpdatePetReq) SetFake() {
 	{
 
 		{
-			s.Name = ""
+			s.Name = "string"
 		}
 	}
 	{
@@ -704,7 +704,7 @@ func (s *UpdatePetReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Categories = append(s.Categories, elem)
 			}
@@ -713,7 +713,7 @@ func (s *UpdatePetReq) SetFake() {
 	{
 
 		{
-			s.Owner = int(1)
+			s.Owner = int(0)
 		}
 	}
 	{
@@ -724,7 +724,7 @@ func (s *UpdatePetReq) SetFake() {
 				var elem int
 
 				{
-					elem = int(1)
+					elem = int(0)
 				}
 				s.Friends = append(s.Friends, elem)
 			}
