@@ -16,11 +16,12 @@ type Num = jsonschema.Num
 type Spec struct {
 	// This string MUST be the semantic version number
 	// of the OpenAPI Specification version that the OpenAPI document uses.
-	OpenAPI    string      `json:"openapi"`
-	Info       Info        `json:"info"`
-	Servers    []Server    `json:"servers,omitempty"`
-	Paths      Paths       `json:"paths,omitempty"`
-	Components *Components `json:"components,omitempty"`
+	OpenAPI    string               `json:"openapi"`
+	Info       Info                 `json:"info"`
+	Servers    []Server             `json:"servers,omitempty"`
+	Paths      Paths                `json:"paths,omitempty"`
+	Components *Components          `json:"components,omitempty"`
+	Security   SecurityRequirements `json:"security,omitempty"`
 
 	// A list of tags used by the specification with additional metadata.
 	// The order of the tags can be used to reflect on their order by the parsing
@@ -116,14 +117,14 @@ type Server struct {
 // All objects defined within the components object will have no effect on the API
 // unless they are explicitly referenced from properties outside the components object.
 type Components struct {
-	Schemas       map[string]*Schema      `json:"schemas,omitempty"`
-	Responses     map[string]*Response    `json:"responses,omitempty"`
-	Parameters    map[string]*Parameter   `json:"parameters,omitempty"`
-	Examples      map[string]*Example     `json:"examples,omitempty"`
-	RequestBodies map[string]*RequestBody `json:"requestBodies,omitempty"`
+	Schemas         map[string]*Schema         `json:"schemas,omitempty"`
+	Responses       map[string]*Response       `json:"responses,omitempty"`
+	Parameters      map[string]*Parameter      `json:"parameters,omitempty"`
+	Examples        map[string]*Example        `json:"examples,omitempty"`
+	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitempty"`
+	SecuritySchemes map[string]*SecuritySchema `json:"securitySchemes,omitempty"`
 
 	// Headers         map[string]Header          `json:"headers"`
-	// SecuritySchemes map[string]SecuritySchema  `json:"securitySchemes"`
 	// Links           map[string]Link            `json:"links"`
 	// Callbacks       map[string]Callback        `json:"callback"`
 }
@@ -160,14 +161,16 @@ type PathItem struct {
 type Operation struct {
 	// A list of tags for API documentation control.
 	// Tags can be used for logical grouping of operations by resources or any other qualifier.
-	Tags        []string     `json:"tags,omitempty"`
-	Summary     string       `json:"summary,omitempty"`
-	Description string       `json:"description,omitempty"`
-	OperationID string       `json:"operationId,omitempty"`
-	Parameters  []*Parameter `json:"parameters,omitempty"`
-	RequestBody *RequestBody `json:"requestBody,omitempty"`
-	Responses   Responses    `json:"responses,omitempty"`
-	Deprecated  bool         `json:"deprecated,omitempty"`
+	Tags []string `json:"tags,omitempty"`
+
+	Summary     string               `json:"summary,omitempty"`
+	Description string               `json:"description,omitempty"`
+	OperationID string               `json:"operationId,omitempty"`
+	Parameters  []*Parameter         `json:"parameters,omitempty"`
+	RequestBody *RequestBody         `json:"requestBody,omitempty"`
+	Responses   Responses            `json:"responses,omitempty"`
+	Security    SecurityRequirements `json:"security,omitempty"`
+	Deprecated  bool                 `json:"deprecated,omitempty"`
 }
 
 // Parameter describes a single operation parameter.

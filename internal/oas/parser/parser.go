@@ -17,10 +17,11 @@ type parser struct {
 	operations []*oas.Operation
 	// refs contains lazy-initialized referenced components.
 	refs struct {
-		requestBodies map[string]*oas.RequestBody
-		responses     map[string]*oas.Response
-		parameters    map[string]*oas.Parameter
-		examples      map[string]*oas.Example
+		requestBodies   map[string]*oas.RequestBody
+		responses       map[string]*oas.Response
+		parameters      map[string]*oas.Parameter
+		examples        map[string]*oas.Example
+		securitySchemes map[string]*ogen.SecuritySchema
 	}
 
 	schemaParser *jsonschema.Parser
@@ -32,20 +33,25 @@ func Parse(spec *ogen.Spec, inferTypes bool) ([]*oas.Operation, error) {
 		spec:       spec,
 		operations: nil,
 		refs: struct {
-			requestBodies map[string]*oas.RequestBody
-			responses     map[string]*oas.Response
-			parameters    map[string]*oas.Parameter
-			examples      map[string]*oas.Example
+			requestBodies   map[string]*oas.RequestBody
+			responses       map[string]*oas.Response
+			parameters      map[string]*oas.Parameter
+			examples        map[string]*oas.Example
+			securitySchemes map[string]*ogen.SecuritySchema
 		}{
-			requestBodies: map[string]*oas.RequestBody{},
-			responses:     map[string]*oas.Response{},
-			parameters:    map[string]*oas.Parameter{},
-			examples:      map[string]*oas.Example{},
+			requestBodies:   map[string]*oas.RequestBody{},
+			responses:       map[string]*oas.Response{},
+			parameters:      map[string]*oas.Parameter{},
+			examples:        map[string]*oas.Example{},
+			securitySchemes: map[string]*ogen.SecuritySchema{},
 		},
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
 			Resolver:   componentsResolver(spec.Components.Schemas),
 			InferTypes: inferTypes,
 		}),
+	}
+	for name, s := range spec.Components.SecuritySchemes {
+		p.refs.securitySchemes[name] = s
 	}
 
 	err := p.parse()
@@ -120,6 +126,11 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 	op.Responses, err = p.parseResponses(spec.Responses)
 	if err != nil {
 		return nil, errors.Wrap(err, "responses")
+	}
+
+	op.Security, err = p.parseSecurityRequirements(spec.Security)
+	if err != nil {
+		return nil, errors.Wrap(err, "security")
 	}
 
 	return op, nil
