@@ -25,9 +25,6 @@ jobs:
           - arch: amd64
             runner: ubuntu-latest
             flags: "-race"
-          - arch: arm64
-            runner: self-hosted
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
