@@ -36,7 +36,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationID str
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
-	return s.Handle{{ $s.Type.Name }}(ctx, operationID, t)
+	return s.sec.Handle{{ $s.Type.Name }}(ctx, operationID, t)
 }
 {{- end }}
 
