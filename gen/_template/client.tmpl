@@ -7,6 +7,9 @@
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
+	{{- if $.Securities }}
+	sec 	  SecuritySource
+	{{- end }}
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
@@ -14,13 +17,16 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- end }} opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
 	c := &Client{
-		cfg:	   newConfig(opts...),
+		cfg: newConfig(opts...),
+		{{- if $.Securities }}
+		sec: sec,
+		{{- end }}
 		serverURL: u,
 	}
 	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
@@ -145,6 +151,11 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 
 	{{- template "encode_header_params" $op }}
 	{{- template "encode_cookie_params" $op }}
+	{{- range $s := $op.Security }}
+	if err := c.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+	{{- end }}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
