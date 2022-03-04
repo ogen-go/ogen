@@ -69,3 +69,15 @@ var (
 	_ = sync.Pool{}
 	_ = codes.Unset
 )
+
+// SecurityHandler is handler for security parameters.
+type SecurityHandler interface {
+	// HandleSSOAuth handles sso_auth security.
+	HandleSSOAuth(ctx context.Context, operationID string, t SSOAuth) (context.Context, error)
+}
+
+func (s *Server) securitySSOAuth(ctx context.Context, operationID string, req *http.Request) (context.Context, error) {
+	var t SSOAuth
+	t.Token = req.Header.Get("Authorization")
+	return s.sec.HandleSSOAuth(ctx, operationID, t)
+}

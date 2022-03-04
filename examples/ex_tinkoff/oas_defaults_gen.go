@@ -69,3 +69,129 @@ var (
 	_ = sync.Pool{}
 	_ = codes.Unset
 )
+
+// setDefaults set default value of fields.
+func (s *CandlesResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *Empty) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *Error) setDefaults() {
+	{
+		val := string("Error")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *LimitOrderResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *MarketInstrumentListResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *MarketOrderResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *OperationsResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *OrderbookResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *OrdersResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *PortfolioCurrenciesResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *PortfolioResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *SandboxRegisterResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *SearchMarketInstrumentResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}
+
+// setDefaults set default value of fields.
+func (s *UserAccountsResponse) setDefaults() {
+	{
+		val := string("Ok")
+
+		s.Status = val
+	}
+}

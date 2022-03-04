@@ -73,7 +73,6 @@ var (
 // SecurityHandler is handler for security parameters.
 type SecurityHandler interface {
 	// HandleBearerToken handles BearerToken security.
-	//
 	// Bearer Token authentication.
 	HandleBearerToken(ctx context.Context, operationID string, t BearerToken) (context.Context, error)
 }
