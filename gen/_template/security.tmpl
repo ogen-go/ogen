@@ -1,0 +1,44 @@
+{{ define "security" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+{{- if $.Securities }}
+
+// SecurityHandler is handler for security parameters.
+type SecurityHandler interface {
+{{- range $name, $s := $.Securities }}
+	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
+	//
+	// {{- template "godoc_def" $s.GoDoc }}
+	Handle{{ $s.Type.Name }}(ctx context.Context, operationID string, t {{ $s.Type.Name }}) (context.Context, error)
+{{- end }}
+}
+
+{{- range $s := $.Securities }}
+func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationID string, req *http.Request) (context.Context, error) {
+	var t {{ $s.Type.Name }}
+	{{- if $s.Format.IsAPIKeySecurity }}
+		{{- if $s.Kind.IsHeader }}
+		value := req.Header.Get({{ quote $s.ParameterName }})
+		{{- else if $s.Kind.IsQuery }}
+		value := req.URL.Query().Get({{ quote $s.ParameterName }})
+		{{- else }}
+            {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
+		{{- end }}
+		t.APIKey = value
+    {{- else if $s.Format.IsBasicHTTPSecurity }}
+		username, password, ok := req.BasicAuth()
+		if !ok {
+			return nil, errors.New("invalid basic auth")
+		}
+		t.Username = username
+		t.Password = password
+	{{- else }}
+        {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
+	{{- end }}
+	return s.Handle{{ $s.Type.Name }}(ctx, operationID, t)
+}
+{{- end }}
+
+{{- end }}
+{{ end }}

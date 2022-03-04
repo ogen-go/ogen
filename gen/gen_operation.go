@@ -19,7 +19,7 @@ func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.O
 	if err != nil {
 		return nil, errors.Wrap(err, "operation name")
 	}
-	
+
 	op := &ir.Operation{
 		Name:        opName,
 		Description: spec.Description,
@@ -45,6 +45,11 @@ func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.O
 	op.Response, err = g.generateResponses(ctx.appendPath("responses"), op.Name, spec.Responses)
 	if err != nil {
 		return nil, errors.Wrap(err, "responses")
+	}
+
+	op.Security, err = g.generateSecurities(ctx.appendPath("security"), spec.Security)
+	if err != nil {
+		return nil, errors.Wrap(err, "security")
 	}
 
 	return op, nil

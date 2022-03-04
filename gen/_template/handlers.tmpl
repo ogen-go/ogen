@@ -22,6 +22,19 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+	{{- range $s := $op.Security }}
+	ctx, err = s.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r)
+	if err != nil {
+		err = errors.Wrap(err, {{ printf "security %q" $s.Security.Type.Name | quote }})
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "BadRequest")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		respondError(w, http.StatusBadRequest, err)
+		return
+	}
+	{{- end }}
+
 	{{- if $op.Params }}
 	params, err := decode{{ $op.Name }}Params(args, r)
 	if err != nil {

@@ -61,15 +61,18 @@ func (p *parser) parseSecurityRequirements(security ogen.SecurityRequirements) (
 				}
 
 				r = append(r, oas.SecurityRequirements{
-					Scopes:           scopes,
-					Type:             spec.Type,
-					Description:      spec.Description,
-					Name:             spec.Name,
-					In:               spec.In,
-					Scheme:           spec.Scheme,
-					BearerFormat:     spec.BearerFormat,
-					Flows:            cloneOAuthFlows(spec.Flows),
-					OpenIDConnectURL: spec.OpenIDConnectURL,
+					Scopes: scopes,
+					Name:   requirementName,
+					Security: oas.Security{
+						Type:             spec.Type,
+						Description:      spec.Description,
+						Name:             spec.Name,
+						In:               spec.In,
+						Scheme:           spec.Scheme,
+						BearerFormat:     spec.BearerFormat,
+						Flows:            cloneOAuthFlows(spec.Flows),
+						OpenIDConnectURL: spec.OpenIDConnectURL,
+					},
 				})
 			}
 		}

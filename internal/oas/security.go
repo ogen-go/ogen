@@ -1,7 +1,12 @@
 package oas
 
 type SecurityRequirements struct {
-	Scopes           []string
+	Scopes   []string
+	Name     string
+	Security Security
+}
+
+type Security struct {
 	Type             string
 	Description      string
 	Name             string
