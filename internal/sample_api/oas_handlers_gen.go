@@ -84,6 +84,8 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDataGetFormatParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -127,6 +129,8 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDefaultTestParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -179,6 +183,8 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.ErrorGet(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -213,6 +219,8 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeFoobarGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -256,6 +264,8 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeFoobarPostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -298,6 +308,8 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.FoobarPut(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -332,6 +344,8 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeGetHeaderParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -376,6 +390,8 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.NullableDefaultResponse(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -410,6 +426,8 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeOneofBugRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -453,6 +471,8 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePetCreateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -496,6 +516,8 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePetFriendsNamesByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -539,6 +561,8 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePetGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -582,6 +606,8 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePetGetAvatarByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -625,6 +651,8 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePetGetAvatarByNameParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -668,6 +696,8 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePetGetByNameParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -711,6 +741,8 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePetNameByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -752,6 +784,8 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePetUpdateNameAliasPostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -793,6 +827,8 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePetUpdateNamePostRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -836,6 +872,8 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePetUploadAvatarByIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -886,6 +924,8 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.RecursiveArrayGet(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -918,6 +958,8 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 
 	response, err := s.h.RecursiveMapGet(ctx)
 	if err != nil {
@@ -953,6 +995,8 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestFloatValidationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -996,6 +1040,8 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeTestObjectQueryParameterParams(args, r)
 	if err != nil {
 		span.RecordError(err)

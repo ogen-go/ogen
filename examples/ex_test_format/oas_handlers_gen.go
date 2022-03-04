@@ -84,6 +84,8 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestAnyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -127,6 +129,8 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestBooleanRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -170,6 +174,8 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestBooleanArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -213,6 +219,8 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -256,6 +264,8 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestBooleanNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -299,6 +309,8 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -342,6 +354,8 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -385,6 +399,8 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestEmptyStructRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -428,6 +444,8 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestFormatTestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -471,6 +489,8 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -514,6 +534,8 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -557,6 +579,8 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -600,6 +624,8 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -643,6 +669,8 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -686,6 +714,8 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -729,6 +759,8 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -772,6 +804,8 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -815,6 +849,8 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -858,6 +894,8 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -901,6 +939,8 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -944,6 +984,8 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -987,6 +1029,8 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1030,6 +1074,8 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1073,6 +1119,8 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1116,6 +1164,8 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1159,6 +1209,8 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1202,6 +1254,8 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1245,6 +1299,8 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1288,6 +1344,8 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1331,6 +1389,8 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1374,6 +1434,8 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberDoubleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1417,6 +1479,8 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1460,6 +1524,8 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1503,6 +1569,8 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1546,6 +1614,8 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1589,6 +1659,8 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1632,6 +1704,8 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberFloatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1675,6 +1749,8 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberFloatArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1718,6 +1794,8 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1761,6 +1839,8 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberFloatNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1804,6 +1884,8 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1847,6 +1929,8 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1890,6 +1974,8 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1933,6 +2019,8 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -1976,6 +2064,8 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2019,6 +2109,8 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2062,6 +2154,8 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2105,6 +2199,8 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2148,6 +2244,8 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2191,6 +2289,8 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2234,6 +2334,8 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2277,6 +2379,8 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2320,6 +2424,8 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2363,6 +2469,8 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2406,6 +2514,8 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2449,6 +2559,8 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2492,6 +2604,8 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2535,6 +2649,8 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredAnyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2578,6 +2694,8 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredBooleanRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2621,6 +2739,8 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredBooleanArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2664,6 +2784,8 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2707,6 +2829,8 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredBooleanNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2750,6 +2874,8 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2793,6 +2919,8 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2836,6 +2964,8 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredEmptyStructRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2879,6 +3009,8 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredFormatTestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2922,6 +3054,8 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -2965,6 +3099,8 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3008,6 +3144,8 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3051,6 +3189,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3094,6 +3234,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3137,6 +3279,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3180,6 +3324,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3223,6 +3369,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3266,6 +3414,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3309,6 +3459,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3352,6 +3504,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3395,6 +3549,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3438,6 +3594,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3481,6 +3639,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3524,6 +3684,8 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3567,6 +3729,8 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3610,6 +3774,8 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3653,6 +3819,8 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3696,6 +3864,8 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3739,6 +3909,8 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3782,6 +3954,8 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3825,6 +3999,8 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3868,6 +4044,8 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3911,6 +4089,8 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3954,6 +4134,8 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -3997,6 +4179,8 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4040,6 +4224,8 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4083,6 +4269,8 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberFloatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4126,6 +4314,8 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberFloatArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4169,6 +4359,8 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4212,6 +4404,8 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberFloatNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4255,6 +4449,8 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4298,6 +4494,8 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4341,6 +4539,8 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4384,6 +4584,8 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4427,6 +4629,8 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4470,6 +4674,8 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4513,6 +4719,8 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4556,6 +4764,8 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4599,6 +4809,8 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4642,6 +4854,8 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4685,6 +4899,8 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4728,6 +4944,8 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4771,6 +4989,8 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4814,6 +5034,8 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4857,6 +5079,8 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4900,6 +5124,8 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4943,6 +5169,8 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -4986,6 +5214,8 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5029,6 +5259,8 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5072,6 +5304,8 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5115,6 +5349,8 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringBinaryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5158,6 +5394,8 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringBinaryArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5201,6 +5439,8 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5244,6 +5484,8 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringBinaryNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5287,6 +5529,8 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5330,6 +5574,8 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5373,6 +5619,8 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringByteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5416,6 +5664,8 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringByteArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5459,6 +5709,8 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5502,6 +5754,8 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringByteNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5545,6 +5799,8 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5588,6 +5844,8 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5631,6 +5889,8 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5674,6 +5934,8 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5717,6 +5979,8 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5760,6 +6024,8 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5803,6 +6069,8 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5846,6 +6114,8 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5889,6 +6159,8 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5932,6 +6204,8 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -5975,6 +6249,8 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6018,6 +6294,8 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6061,6 +6339,8 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6104,6 +6384,8 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6147,6 +6429,8 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6190,6 +6474,8 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDurationArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6233,6 +6519,8 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6276,6 +6564,8 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDurationNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6319,6 +6609,8 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6362,6 +6654,8 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6405,6 +6699,8 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringEmailRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6448,6 +6744,8 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringEmailArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6491,6 +6789,8 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6534,6 +6834,8 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringEmailNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6577,6 +6879,8 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6620,6 +6924,8 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6663,6 +6969,8 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringHostnameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6706,6 +7014,8 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringHostnameArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6749,6 +7059,8 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6792,6 +7104,8 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringHostnameNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6835,6 +7149,8 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6878,6 +7194,8 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6921,6 +7239,8 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIPRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -6964,6 +7284,8 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIPArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7007,6 +7329,8 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7050,6 +7374,8 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIPNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7093,6 +7419,8 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7136,6 +7464,8 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7179,6 +7509,8 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv4Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7222,6 +7554,8 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7265,6 +7599,8 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7308,6 +7644,8 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv4NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7351,6 +7689,8 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7394,6 +7734,8 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7437,6 +7779,8 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv6Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7480,6 +7824,8 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7523,6 +7869,8 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7566,6 +7914,8 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv6NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7609,6 +7959,8 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7652,6 +8004,8 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7695,6 +8049,8 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7738,6 +8094,8 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7781,6 +8139,8 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7824,6 +8184,8 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringPasswordRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7867,6 +8229,8 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringPasswordArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7910,6 +8274,8 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7953,6 +8319,8 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringPasswordNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -7996,6 +8364,8 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8039,6 +8409,8 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8082,6 +8454,8 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8125,6 +8499,8 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8168,6 +8544,8 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8211,6 +8589,8 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8254,6 +8634,8 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8297,6 +8679,8 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8340,6 +8724,8 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringURIRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8383,6 +8769,8 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringURIArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8426,6 +8814,8 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8469,6 +8859,8 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringURINullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8512,6 +8904,8 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringURINullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8555,6 +8949,8 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8598,6 +8994,8 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringUUIDRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8641,6 +9039,8 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringUUIDArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8684,6 +9084,8 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8727,6 +9129,8 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringUUIDNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8770,6 +9174,8 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8813,6 +9219,8 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8856,6 +9264,8 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8899,6 +9309,8 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8942,6 +9354,8 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -8985,6 +9399,8 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringBinaryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9028,6 +9444,8 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringBinaryArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9071,6 +9489,8 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9114,6 +9534,8 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringBinaryNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9157,6 +9579,8 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9200,6 +9624,8 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9243,6 +9669,8 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringByteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9286,6 +9714,8 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringByteArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9329,6 +9759,8 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9372,6 +9804,8 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringByteNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9415,6 +9849,8 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9458,6 +9894,8 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9501,6 +9939,8 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9544,6 +9984,8 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9587,6 +10029,8 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9630,6 +10074,8 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9673,6 +10119,8 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9716,6 +10164,8 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9759,6 +10209,8 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9802,6 +10254,8 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9845,6 +10299,8 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9888,6 +10344,8 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9931,6 +10389,8 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -9974,6 +10434,8 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10017,6 +10479,8 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10060,6 +10524,8 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDurationArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10103,6 +10569,8 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10146,6 +10614,8 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDurationNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10189,6 +10659,8 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10232,6 +10704,8 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10275,6 +10749,8 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringEmailRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10318,6 +10794,8 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringEmailArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10361,6 +10839,8 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10404,6 +10884,8 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringEmailNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10447,6 +10929,8 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10490,6 +10974,8 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10533,6 +11019,8 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringHostnameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10576,6 +11064,8 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringHostnameArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10619,6 +11109,8 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10662,6 +11154,8 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringHostnameNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10705,6 +11199,8 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10748,6 +11244,8 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10791,6 +11289,8 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIPRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10834,6 +11334,8 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIPArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10877,6 +11379,8 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10920,6 +11424,8 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIPNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -10963,6 +11469,8 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11006,6 +11514,8 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11049,6 +11559,8 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv4Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11092,6 +11604,8 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11135,6 +11649,8 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11178,6 +11694,8 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv4NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11221,6 +11739,8 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11264,6 +11784,8 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11307,6 +11829,8 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv6Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11350,6 +11874,8 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11393,6 +11919,8 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11436,6 +11964,8 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv6NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11479,6 +12009,8 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11522,6 +12054,8 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11565,6 +12099,8 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11608,6 +12144,8 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11651,6 +12189,8 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11694,6 +12234,8 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringPasswordRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11737,6 +12279,8 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringPasswordArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11780,6 +12324,8 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11823,6 +12369,8 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringPasswordNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11866,6 +12414,8 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11909,6 +12459,8 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11952,6 +12504,8 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -11995,6 +12549,8 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12038,6 +12594,8 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12081,6 +12639,8 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12124,6 +12684,8 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12167,6 +12729,8 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12210,6 +12774,8 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringURIRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12253,6 +12819,8 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringURIArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12296,6 +12864,8 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12339,6 +12909,8 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringURINullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12382,6 +12954,8 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringURINullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12425,6 +12999,8 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12468,6 +13044,8 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringUUIDRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12511,6 +13089,8 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringUUIDArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12554,6 +13134,8 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12597,6 +13179,8 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringUUIDNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12640,6 +13224,8 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12683,6 +13269,8 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestRequestStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12726,6 +13314,8 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseAnyRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12769,6 +13359,8 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseBooleanRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12812,6 +13404,8 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseBooleanArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12855,6 +13449,8 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12898,6 +13494,8 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseBooleanNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12941,6 +13539,8 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -12984,6 +13584,8 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13027,6 +13629,8 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseEmptyStructRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13070,6 +13674,8 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseFormatTestRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13113,6 +13719,8 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13156,6 +13764,8 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13199,6 +13809,8 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13242,6 +13854,8 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13285,6 +13899,8 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13328,6 +13944,8 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13371,6 +13989,8 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13414,6 +14034,8 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13457,6 +14079,8 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13500,6 +14124,8 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13543,6 +14169,8 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13586,6 +14214,8 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13629,6 +14259,8 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13672,6 +14304,8 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13715,6 +14349,8 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13758,6 +14394,8 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13801,6 +14439,8 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13844,6 +14484,8 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13887,6 +14529,8 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13930,6 +14574,8 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -13973,6 +14619,8 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14016,6 +14664,8 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberDoubleRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14059,6 +14709,8 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14102,6 +14754,8 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14145,6 +14799,8 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14188,6 +14844,8 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14231,6 +14889,8 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14274,6 +14934,8 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberFloatRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14317,6 +14979,8 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberFloatArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14360,6 +15024,8 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14403,6 +15069,8 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberFloatNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14446,6 +15114,8 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14489,6 +15159,8 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14532,6 +15204,8 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt32Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14575,6 +15249,8 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14618,6 +15294,8 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14661,6 +15339,8 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt32NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14704,6 +15384,8 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14747,6 +15429,8 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14790,6 +15474,8 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt64Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14833,6 +15519,8 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14876,6 +15564,8 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14919,6 +15609,8 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt64NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -14962,6 +15654,8 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15005,6 +15699,8 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15048,6 +15744,8 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15091,6 +15789,8 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15134,6 +15834,8 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15177,6 +15879,8 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15220,6 +15924,8 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15263,6 +15969,8 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15306,6 +16014,8 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringBinaryRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15349,6 +16059,8 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringBinaryArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15392,6 +16104,8 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15435,6 +16149,8 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringBinaryNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15478,6 +16194,8 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15521,6 +16239,8 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15564,6 +16284,8 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringByteRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15607,6 +16329,8 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringByteArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15650,6 +16374,8 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15693,6 +16419,8 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringByteNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15736,6 +16464,8 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15779,6 +16509,8 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15822,6 +16554,8 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15865,6 +16599,8 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15908,6 +16644,8 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15951,6 +16689,8 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -15994,6 +16734,8 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16037,6 +16779,8 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16080,6 +16824,8 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16123,6 +16869,8 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16166,6 +16914,8 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16209,6 +16959,8 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16252,6 +17004,8 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16295,6 +17049,8 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16338,6 +17094,8 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDurationRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16381,6 +17139,8 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDurationArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16424,6 +17184,8 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16467,6 +17229,8 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDurationNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16510,6 +17274,8 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16553,6 +17319,8 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16596,6 +17364,8 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringEmailRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16639,6 +17409,8 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringEmailArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16682,6 +17454,8 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16725,6 +17499,8 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringEmailNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16768,6 +17544,8 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16811,6 +17589,8 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16854,6 +17634,8 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringHostnameRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16897,6 +17679,8 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringHostnameArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16940,6 +17724,8 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -16983,6 +17769,8 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringHostnameNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17026,6 +17814,8 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17069,6 +17859,8 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17112,6 +17904,8 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIPRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17155,6 +17949,8 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIPArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17198,6 +17994,8 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17241,6 +18039,8 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIPNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17284,6 +18084,8 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17327,6 +18129,8 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17370,6 +18174,8 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv4Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17413,6 +18219,8 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17456,6 +18264,8 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17499,6 +18309,8 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv4NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17542,6 +18354,8 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17585,6 +18399,8 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17628,6 +18444,8 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv6Request(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17671,6 +18489,8 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17714,6 +18534,8 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17757,6 +18579,8 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv6NullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17800,6 +18624,8 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17843,6 +18669,8 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17886,6 +18714,8 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17929,6 +18759,8 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -17972,6 +18804,8 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18015,6 +18849,8 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringPasswordRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18058,6 +18894,8 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringPasswordArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18101,6 +18939,8 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18144,6 +18984,8 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringPasswordNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18187,6 +19029,8 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18230,6 +19074,8 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18273,6 +19119,8 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringTimeRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18316,6 +19164,8 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringTimeArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18359,6 +19209,8 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18402,6 +19254,8 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringTimeNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18445,6 +19299,8 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18488,6 +19344,8 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18531,6 +19389,8 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringURIRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18574,6 +19434,8 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringURIArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18617,6 +19479,8 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18660,6 +19524,8 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringURINullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18703,6 +19569,8 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringURINullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18746,6 +19614,8 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18789,6 +19659,8 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringUUIDRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18832,6 +19704,8 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringUUIDArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18875,6 +19749,8 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18918,6 +19794,8 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringUUIDNullableRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -18961,6 +19839,8 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -19004,6 +19884,8 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeTestResponseStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		span.RecordError(err)

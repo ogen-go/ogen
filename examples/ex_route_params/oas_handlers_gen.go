@@ -84,6 +84,8 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDataGetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -128,6 +130,8 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.DataGetAny(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -162,6 +166,8 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDataGetIDParams(args, r)
 	if err != nil {
 		span.RecordError(err)

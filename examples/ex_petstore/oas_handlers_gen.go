@@ -85,6 +85,8 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.CreatePets(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -119,6 +121,8 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeListPetsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -162,6 +166,8 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeShowPetByIdParams(args, r)
 	if err != nil {
 		span.RecordError(err)

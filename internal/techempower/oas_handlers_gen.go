@@ -84,6 +84,8 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeCachingParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -128,6 +130,8 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.DB(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -163,6 +167,8 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.JSON(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -197,6 +203,8 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeQueriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -240,6 +248,8 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeUpdatesParams(args, r)
 	if err != nil {
 		span.RecordError(err)

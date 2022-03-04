@@ -131,6 +131,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 		elem = path
 	)
 	r.args = args
+	if elem == "" {
+		return r, false
+	}
 
 	// Static code generated router with unwrapped path search.
 	switch method {

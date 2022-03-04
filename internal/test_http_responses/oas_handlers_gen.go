@@ -85,6 +85,8 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.AnyContentTypeBinaryStringSchema(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -119,6 +121,8 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 
 	response, err := s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
 	if err != nil {
@@ -155,6 +159,8 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.MultipleGenericResponses(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -190,6 +196,8 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.OctetStreamBinaryStringSchema(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -224,6 +232,8 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 
 	response, err := s.h.OctetStreamEmptySchema(ctx)
 	if err != nil {

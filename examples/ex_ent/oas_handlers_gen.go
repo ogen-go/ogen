@@ -84,6 +84,8 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeCreatePetRequest(r, span)
 	if err != nil {
 		span.RecordError(err)
@@ -127,6 +129,8 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeCreatePetCategoriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -178,6 +182,8 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeCreatePetFriendsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -229,6 +235,8 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeCreatePetOwnerParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -280,6 +288,8 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -323,6 +333,8 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDeletePetOwnerParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -366,6 +378,8 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeListPetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -409,6 +423,8 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeListPetCategoriesParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -452,6 +468,8 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeListPetFriendsParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -495,6 +513,8 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeReadPetParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -538,6 +558,8 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeReadPetOwnerParams(args, r)
 	if err != nil {
 		span.RecordError(err)
@@ -581,6 +603,8 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeUpdatePetParams(args, r)
 	if err != nil {
 		span.RecordError(err)

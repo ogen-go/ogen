@@ -8,8 +8,7 @@
 type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
 	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
-	//
-	// {{- template "godoc_def" $s.GoDoc }}
+	// {{- template "godoc" $s.GoDoc }}
 	Handle{{ $s.Type.Name }}(ctx context.Context, operationID string, t {{ $s.Type.Name }}) (context.Context, error)
 {{- end }}
 }

@@ -69,3 +69,18 @@ var (
 	_ = sync.Pool{}
 	_ = codes.Unset
 )
+
+// SecurityHandler is handler for security parameters.
+type SecurityHandler interface {
+	// HandleBearerToken handles BearerToken security.
+	//
+	// Bearer Token authentication.
+	HandleBearerToken(ctx context.Context, operationID string, t BearerToken) (context.Context, error)
+}
+
+func (s *Server) securityBearerToken(ctx context.Context, operationID string, req *http.Request) (context.Context, error) {
+	var t BearerToken
+	value := req.Header.Get("authorization")
+	t.APIKey = value
+	return s.sec.HandleBearerToken(ctx, operationID, t)
+}

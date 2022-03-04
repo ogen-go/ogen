@@ -85,6 +85,8 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.ProbeLiveness(ctx)
 	if err != nil {
 		span.RecordError(err)
