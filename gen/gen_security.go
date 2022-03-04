@@ -37,20 +37,27 @@ func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec oas.SecurityRequ
 func (g *Generator) generateSecurityHTTP(s *ir.Security, spec oas.SecurityRequirements) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
-	s.Type.Fields = append(s.Type.Fields,
-		&ir.Field{
-			Name: "Username",
-			Type: ir.Primitive(ir.String, nil),
-		},
-		&ir.Field{
-			Name: "Password",
-			Type: ir.Primitive(ir.String, nil),
-		},
-	)
-
 	switch scheme := security.Scheme; scheme {
 	case "basic":
 		s.Format = ir.BasicHTTPSecurityFormat
+		s.Type.Fields = append(s.Type.Fields,
+			&ir.Field{
+				Name: "Username",
+				Type: ir.Primitive(ir.String, nil),
+			},
+			&ir.Field{
+				Name: "Password",
+				Type: ir.Primitive(ir.String, nil),
+			},
+		)
+	case "bearer":
+		s.Format = ir.BearerSecurityFormat
+		s.Type.Fields = append(s.Type.Fields,
+			&ir.Field{
+				Name: "Token",
+				Type: ir.Primitive(ir.String, nil),
+			},
+		)
 	default:
 		return nil, errors.Wrapf(&ErrNotImplemented{Name: "http security scheme"}, "unsupported scheme %q", scheme)
 	}
