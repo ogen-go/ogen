@@ -8,7 +8,7 @@
 type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
 	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
-	// {{- template "godoc" $s.GoDoc }}
+	{{- template "godoc" $s.GoDoc }}
 	Handle{{ $s.Type.Name }}(ctx context.Context, operationID string, t {{ $s.Type.Name }}) (context.Context, error)
 {{- end }}
 }
@@ -32,6 +32,8 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationID str
 		}
 		t.Username = username
 		t.Password = password
+	{{- else if $s.Format.IsBearerSecurity }}
+		t.Token = req.Header.Get("Authorization")
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
