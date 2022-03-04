@@ -87,10 +87,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 	ctx, err = s.securitySSOAuth(ctx, "MarketBondsGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -131,18 +128,12 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 	ctx, err = s.securitySSOAuth(ctx, "MarketCandlesGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketCandlesGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -183,10 +174,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 	ctx, err = s.securitySSOAuth(ctx, "MarketCurrenciesGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -227,10 +215,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 	ctx, err = s.securitySSOAuth(ctx, "MarketEtfsGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -271,18 +256,12 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 	ctx, err = s.securitySSOAuth(ctx, "MarketOrderbookGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketOrderbookGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -323,18 +302,12 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 	ctx, err = s.securitySSOAuth(ctx, "MarketSearchByFigiGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketSearchByFigiGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -375,18 +348,12 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 	ctx, err = s.securitySSOAuth(ctx, "MarketSearchByTickerGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketSearchByTickerGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -427,10 +394,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 	ctx, err = s.securitySSOAuth(ctx, "MarketStocksGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -471,18 +435,12 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 	ctx, err = s.securitySSOAuth(ctx, "OperationsGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOperationsGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -523,18 +481,12 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 	ctx, err = s.securitySSOAuth(ctx, "OrdersCancelPost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersCancelPostParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -575,18 +527,12 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 	ctx, err = s.securitySSOAuth(ctx, "OrdersGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -627,26 +573,17 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	ctx, err = s.securitySSOAuth(ctx, "OrdersLimitOrderPost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersLimitOrderPostParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrdersLimitOrderPostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -687,26 +624,17 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	ctx, err = s.securitySSOAuth(ctx, "OrdersMarketOrderPost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersMarketOrderPostParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrdersMarketOrderPostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -747,18 +675,12 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 	ctx, err = s.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodePortfolioCurrenciesGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -799,18 +721,12 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 	ctx, err = s.securitySSOAuth(ctx, "PortfolioGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodePortfolioGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -851,18 +767,12 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 	ctx, err = s.securitySSOAuth(ctx, "SandboxClearPost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxClearPostParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -903,26 +813,17 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	ctx, err = s.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxCurrenciesBalancePostParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeSandboxCurrenciesBalancePostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -963,26 +864,17 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	ctx, err = s.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxPositionsBalancePostParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeSandboxPositionsBalancePostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1023,18 +915,12 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	ctx, err = s.securitySSOAuth(ctx, "SandboxRegisterPost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeSandboxRegisterPostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1075,18 +961,12 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 	ctx, err = s.securitySSOAuth(ctx, "SandboxRemovePost", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxRemovePostParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1127,10 +1007,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 	ctx, err = s.securitySSOAuth(ctx, "UserAccountsGet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"SSOAuth\"")
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1152,6 +1029,13 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+	span.RecordError(err)
+	span.SetStatus(codes.Error, "BadRequest")
+	s.errors.Add(ctx, 1, otelAttrs...)
+	respondError(w, http.StatusBadRequest, err)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

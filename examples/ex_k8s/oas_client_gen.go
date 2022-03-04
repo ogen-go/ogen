@@ -73,6 +73,7 @@ var (
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
+	sec       SecuritySource
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
@@ -80,13 +81,14 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
 	c := &Client{
 		cfg:       newConfig(opts...),
+		sec:       sec,
 		serverURL: u,
 	}
 	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
@@ -131,6 +133,10 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetAPIVersions", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -177,6 +183,10 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -221,6 +231,10 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -267,6 +281,10 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -311,6 +329,10 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -357,6 +379,10 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -401,6 +427,10 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -447,6 +477,10 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetAppsAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -491,6 +525,10 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetAppsV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -537,6 +575,10 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -581,6 +623,10 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -627,6 +673,10 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -671,6 +721,10 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -717,6 +771,10 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -761,6 +819,10 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -807,6 +869,10 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -851,6 +917,10 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -897,6 +967,10 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetBatchAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -941,6 +1015,10 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetBatchV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -987,6 +1065,10 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1031,6 +1113,10 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetCertificatesAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1077,6 +1163,10 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetCertificatesV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1121,6 +1211,10 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetCodeVersion", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1167,6 +1261,10 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetCoordinationAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1211,6 +1309,10 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetCoordinationV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1257,6 +1359,10 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetCoreAPIVersions", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1301,6 +1407,10 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetCoreV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1347,6 +1457,10 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1391,6 +1505,10 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1437,6 +1555,10 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1481,6 +1603,10 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetEventsAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1527,6 +1653,10 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetEventsV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1571,6 +1701,10 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1617,6 +1751,10 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1661,6 +1799,10 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1707,6 +1849,10 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1751,6 +1897,10 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1797,6 +1947,10 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1841,6 +1995,10 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetNetworkingAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1887,6 +2045,10 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetNetworkingV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -1931,6 +2093,10 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetNodeAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -1977,6 +2143,10 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetNodeV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2021,6 +2191,10 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2067,6 +2241,10 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2111,6 +2289,10 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetPolicyAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2157,6 +2339,10 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetPolicyV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2201,6 +2387,10 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2247,6 +2437,10 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2291,6 +2485,10 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2337,6 +2535,10 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetSchedulingAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2381,6 +2583,10 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetSchedulingV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2427,6 +2633,10 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2471,6 +2681,10 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetStorageAPIGroup", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2517,6 +2731,10 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetStorageV1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2562,6 +2780,10 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -2606,6 +2828,10 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -2815,6 +3041,10 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -3022,6 +3252,10 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3231,6 +3465,10 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -3438,6 +3676,10 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListApiregistrationV1APIService", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -3647,6 +3889,10 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -3855,6 +4101,10 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -4062,6 +4312,10 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4286,6 +4540,10 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -4508,6 +4766,10 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -4732,6 +4994,10 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -4954,6 +5220,10 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5178,6 +5448,10 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -5385,6 +5659,10 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -5594,6 +5872,10 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -5801,6 +6083,10 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6025,6 +6311,10 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -6232,6 +6522,10 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6456,6 +6750,10 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -6663,6 +6961,10 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -6887,6 +7189,10 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -7095,6 +7401,10 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -7302,6 +7612,10 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -7526,6 +7840,10 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -7749,6 +8067,10 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -7956,6 +8278,10 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8180,6 +8506,10 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -8388,6 +8718,10 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -8595,6 +8929,10 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -8819,6 +9157,10 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -9026,6 +9368,10 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9235,6 +9581,10 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -9442,6 +9792,10 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -9651,6 +10005,10 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -9859,6 +10217,10 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -10066,6 +10428,10 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1Namespace", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10290,6 +10656,10 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -10512,6 +10882,10 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -10736,6 +11110,10 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -10958,6 +11336,10 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11182,6 +11564,10 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -11404,6 +11790,10 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -11628,6 +12018,10 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -11850,6 +12244,10 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12074,6 +12472,10 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -12296,6 +12698,10 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -12520,6 +12926,10 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedService", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -12743,6 +13153,10 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -12950,6 +13364,10 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1Node", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13159,6 +13577,10 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -13366,6 +13788,10 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13575,6 +14001,10 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -13782,6 +14212,10 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -13991,6 +14425,10 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -14198,6 +14636,10 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14407,6 +14849,10 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -14614,6 +15060,10 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -14823,6 +15273,10 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -15030,6 +15484,10 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15254,6 +15712,10 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -15461,6 +15923,10 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -15685,6 +16151,10 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -15892,6 +16362,10 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16116,6 +16590,10 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -16323,6 +16801,10 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16547,6 +17029,10 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -16754,6 +17240,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -16963,6 +17453,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -17170,6 +17664,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17379,6 +17877,10 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -17586,6 +18088,10 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -17795,6 +18301,10 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -18002,6 +18512,10 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -18226,6 +18740,10 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -18449,6 +18967,10 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -18656,6 +19178,10 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -18865,6 +19391,10 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -19073,6 +19603,10 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -19280,6 +19814,10 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -19504,6 +20042,10 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -19711,6 +20253,10 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -19935,6 +20481,10 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -20142,6 +20692,10 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20351,6 +20905,10 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -20559,6 +21117,10 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -20766,6 +21328,10 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -20990,6 +21556,10 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -21213,6 +21783,10 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -21420,6 +21994,10 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -21629,6 +22207,10 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -21836,6 +22418,10 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22045,6 +22631,10 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListStorageV1CSIDriver", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -22252,6 +22842,10 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListStorageV1CSINode", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -22461,6 +23055,10 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListStorageV1StorageClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -22669,6 +23267,10 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -22876,6 +23478,10 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -23100,6 +23706,10 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -23307,6 +23917,10 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -23531,6 +24145,10 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -23588,6 +24206,10 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "LogFileHandler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -23630,6 +24252,10 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "LogFileListHandler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -23709,6 +24335,10 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -23787,6 +24417,10 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -23864,6 +24498,10 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -23944,6 +24582,10 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -24021,6 +24663,10 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24100,6 +24746,10 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24194,6 +24844,10 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -24286,6 +24940,10 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24381,6 +25039,10 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -24473,6 +25135,10 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24568,6 +25234,10 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -24662,6 +25332,10 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -24754,6 +25428,10 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -24849,6 +25527,10 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -24943,6 +25625,10 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -25035,6 +25721,10 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25130,6 +25820,10 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -25224,6 +25918,10 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -25316,6 +26014,10 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25411,6 +26113,10 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -25503,6 +26209,10 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25598,6 +26308,10 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -25690,6 +26404,10 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25785,6 +26503,10 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -25877,6 +26599,10 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -25972,6 +26698,10 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -26064,6 +26794,10 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26159,6 +26893,10 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -26251,6 +26989,10 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26346,6 +27088,10 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -26423,6 +27169,10 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26503,6 +27253,10 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -26581,6 +27335,10 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26675,6 +27433,10 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -26752,6 +27514,10 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -26831,6 +27597,10 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1Namespace", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -26909,6 +27679,10 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27003,6 +27777,10 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -27095,6 +27873,10 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27189,6 +27971,10 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -27282,6 +28068,10 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -27374,6 +28164,10 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27469,6 +28263,10 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -27561,6 +28359,10 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27655,6 +28457,10 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -27878,6 +28684,10 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -27972,6 +28782,10 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -28065,6 +28879,10 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -28157,6 +28975,10 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28252,6 +29074,10 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -28346,6 +29172,10 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -28438,6 +29268,10 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28533,6 +29367,10 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -28625,6 +29463,10 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28719,6 +29561,10 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -28811,6 +29657,10 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -28906,6 +29756,10 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -28983,6 +29837,10 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1Node", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29063,6 +29921,10 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -29140,6 +30002,10 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29219,6 +30085,10 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29313,6 +30183,10 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -29405,6 +30279,10 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29499,6 +30377,10 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -29592,6 +30474,10 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -29669,6 +30555,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29749,6 +30639,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -29826,6 +30720,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -29906,6 +30804,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -29983,6 +30885,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30063,6 +30969,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -30140,6 +31050,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30220,6 +31134,10 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -30297,6 +31215,10 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30377,6 +31299,10 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -30454,6 +31380,10 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30547,6 +31477,10 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30642,6 +31576,10 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -30735,6 +31673,10 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -30812,6 +31754,10 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -30891,6 +31837,10 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -30968,6 +31918,10 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31061,6 +32015,10 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31156,6 +32114,10 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -31248,6 +32210,10 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31343,6 +32309,10 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -31420,6 +32390,10 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31499,6 +32473,10 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -31576,6 +32554,10 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31670,6 +32652,10 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -31763,6 +32749,10 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -31840,6 +32830,10 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -31919,6 +32913,10 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -31996,6 +32994,10 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadStorageV1CSINode", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32075,6 +33077,10 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadStorageV1StorageClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -32152,6 +33158,10 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32231,6 +33241,10 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32325,6 +33339,10 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -32417,6 +33435,10 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -32642,6 +33664,10 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -32850,6 +33876,10 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33075,6 +34105,10 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -33283,6 +34317,10 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33507,6 +34545,10 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -33715,6 +34757,10 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -33939,6 +34985,10 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -34147,6 +35197,10 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -34357,6 +35411,10 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -34566,6 +35624,10 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -34774,6 +35836,10 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35013,6 +36079,10 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -35236,6 +36306,10 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35475,6 +36549,10 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -35698,6 +36776,10 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -35937,6 +37019,10 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -36160,6 +37246,10 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36399,6 +37489,10 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -36622,6 +37716,10 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -36861,6 +37959,10 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -37085,6 +38187,10 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -37293,6 +38399,10 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37503,6 +38613,10 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -37711,6 +38825,10 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -37950,6 +39068,10 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -38174,6 +39296,10 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -38382,6 +39508,10 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -38621,6 +39751,10 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -38845,6 +39979,10 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -39053,6 +40191,10 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -39292,6 +40434,10 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -39516,6 +40662,10 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -39725,6 +40875,10 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -39933,6 +41087,10 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40172,6 +41330,10 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -40395,6 +41557,10 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -40634,6 +41800,10 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -40858,6 +42028,10 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -41066,6 +42240,10 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -41305,6 +42483,10 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -41528,6 +42710,10 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -41753,6 +42939,10 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -41962,6 +43152,10 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -42170,6 +43364,10 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -42409,6 +43607,10 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -42633,6 +43835,10 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -42841,6 +44047,10 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -43051,6 +44261,10 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -43260,6 +44474,10 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -43468,6 +44686,10 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -43692,6 +44914,10 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1Namespace", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -43900,6 +45126,10 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44139,6 +45369,10 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -44362,6 +45596,10 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -44601,6 +45839,10 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -44824,6 +46066,10 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -45063,6 +46309,10 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -45286,6 +46536,10 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -45525,6 +46779,10 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -45748,6 +47006,10 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -45987,6 +47249,10 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -46210,6 +47476,10 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -46449,6 +47719,10 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -46672,6 +47946,10 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -46911,6 +48189,10 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -47134,6 +48416,10 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -47373,6 +48659,10 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -47596,6 +48886,10 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -47835,6 +49129,10 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -48058,6 +49356,10 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48297,6 +49599,10 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -48520,6 +49826,10 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -48759,6 +50069,10 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -48997,6 +50311,10 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -49220,6 +50538,10 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -49445,6 +50767,10 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -49668,6 +50994,10 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1Node", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -49876,6 +51206,10 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1NodeList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50100,6 +51434,10 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -50308,6 +51646,10 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50518,6 +51860,10 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -50726,6 +52072,10 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -50936,6 +52286,10 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -51144,6 +52498,10 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51354,6 +52712,10 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -51562,6 +52924,10 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -51772,6 +53138,10 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -51981,6 +53351,10 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -52189,6 +53563,10 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -52428,6 +53806,10 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -52652,6 +54034,10 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -52860,6 +54246,10 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53099,6 +54489,10 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -53323,6 +54717,10 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -53531,6 +54929,10 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -53770,6 +55172,10 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -53994,6 +55400,10 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -54202,6 +55612,10 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -54441,6 +55855,10 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -54665,6 +56083,10 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -54888,6 +56310,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -55096,6 +56522,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55321,6 +56751,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -55529,6 +56963,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -55753,6 +57191,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -55961,6 +57403,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56186,6 +57632,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -56394,6 +57844,10 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -56618,6 +58072,10 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -56826,6 +58284,10 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57050,6 +58512,10 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -57259,6 +58725,10 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -57467,6 +58937,10 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -57706,6 +59180,10 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -57929,6 +59407,10 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -58168,6 +59650,10 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -58392,6 +59878,10 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -58600,6 +60090,10 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -58824,6 +60318,10 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -59032,6 +60530,10 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -59256,6 +60758,10 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -59464,6 +60970,10 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -59688,6 +61198,10 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -59896,6 +61410,10 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -60135,6 +61653,10 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -60359,6 +61881,10 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -60567,6 +62093,10 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -60806,6 +62336,10 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -61030,6 +62564,10 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -61238,6 +62776,10 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -61462,6 +63004,10 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -61670,6 +63216,10 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -61894,6 +63444,10 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -62117,6 +63671,10 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -62326,6 +63884,10 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -62534,6 +64096,10 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -62773,6 +64339,10 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -63011,6 +64581,10 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -63234,6 +64808,10 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -63459,6 +65037,10 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -63668,6 +65250,10 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -63876,6 +65462,10 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -64100,6 +65690,10 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -64308,6 +65902,10 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -64532,6 +66130,10 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -64740,6 +66342,10 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -64964,6 +66570,10 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1CSINode", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -65172,6 +66782,10 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65396,6 +67010,10 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1StorageClass", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -65604,6 +67222,10 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -65828,6 +67450,10 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -66037,6 +67663,10 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -66245,6 +67875,10 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -66484,6 +68118,10 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -66708,6 +68346,10 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -66916,6 +68558,10 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
@@ -67155,6 +68801,10 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	if err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
@@ -67378,6 +69028,10 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
+
+	if err := c.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
 
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {

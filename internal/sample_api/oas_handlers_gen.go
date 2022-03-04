@@ -88,10 +88,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	var err error
 	params, err := decodeDataGetFormatParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -133,18 +130,12 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeDefaultTestParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeDefaultTestRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -223,10 +214,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeFoobarGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -268,10 +256,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	var err error
 	request, err := decodeFoobarPostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -348,10 +333,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeGetHeaderParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -430,10 +412,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	var err error
 	request, err := decodeOneofBugRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -475,10 +454,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	request, err := decodePetCreateRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -520,10 +496,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	var err error
 	params, err := decodePetFriendsNamesByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -565,10 +538,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	var err error
 	params, err := decodePetGetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -610,10 +580,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	var err error
 	params, err := decodePetGetAvatarByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -655,10 +622,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodePetGetAvatarByNameParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -700,10 +664,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	var err error
 	params, err := decodePetGetByNameParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -745,10 +706,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodePetNameByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -788,10 +746,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodePetUpdateNameAliasPostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -831,10 +786,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	var err error
 	request, err := decodePetUpdateNamePostRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -876,18 +828,12 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	var err error
 	params, err := decodePetUploadAvatarByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePetUploadAvatarByIDRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -999,10 +945,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	var err error
 	request, err := decodeTestFloatValidationRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1044,10 +987,7 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 	var err error
 	params, err := decodeTestObjectQueryParameterParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1069,6 +1009,13 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+	span.RecordError(err)
+	span.SetStatus(codes.Error, "BadRequest")
+	s.errors.Add(ctx, 1, otelAttrs...)
+	respondError(w, http.StatusBadRequest, err)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

@@ -81,3 +81,18 @@ func (s *Server) securitySSOAuth(ctx context.Context, operationID string, req *h
 	t.Token = req.Header.Get("Authorization")
 	return s.sec.HandleSSOAuth(ctx, operationID, t)
 }
+
+// SecuritySource is provider of security values (tokens, passwords, etc.).
+type SecuritySource interface {
+	// SSOAuth provides sso_auth security value.
+	SSOAuth(ctx context.Context, operationID string) (SSOAuth, error)
+}
+
+func (s *Client) securitySSOAuth(ctx context.Context, operationID string, req *http.Request) error {
+	t, err := s.sec.SSOAuth(ctx, operationID)
+	if err != nil {
+		return errors.Wrap(err, "security source \"SSOAuth\"")
+	}
+	req.Header.Set("Authorization", t.Token)
+	return nil
+}
