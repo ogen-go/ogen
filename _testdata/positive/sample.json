@@ -721,6 +721,28 @@
           }
         }
       }
+    },
+    "/securityTest": {
+      "get":{
+        "operationId": "securityTest",
+        "security": [
+          {
+            "api_key": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
