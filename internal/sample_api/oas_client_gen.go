@@ -73,6 +73,7 @@ var (
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
+	sec       SecuritySource
 	cfg       config
 	requests  metric.Int64Counter
 	errors    metric.Int64Counter
@@ -80,13 +81,14 @@ type Client struct {
 }
 
 // NewClient initializes new Client defined by OAS.
-func NewClient(serverURL string, opts ...Option) (*Client, error) {
+func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, error) {
 	u, err := url.Parse(serverURL)
 	if err != nil {
 		return nil, err
 	}
 	c := &Client{
 		cfg:       newConfig(opts...),
+		sec:       sec,
 		serverURL: u,
 	}
 	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
@@ -1497,6 +1499,53 @@ func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err err
 	defer resp.Body.Close()
 
 	result, err := decodeRecursiveMapGetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SecurityTest invokes securityTest operation.
+//
+// GET /securityTest
+func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("securityTest"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "SecurityTest",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/securityTest"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	if err := c.securityAPIKey(ctx, "SecurityTest", r); err != nil {
+		return res, errors.Wrap(err, "security")
+	}
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSecurityTestResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

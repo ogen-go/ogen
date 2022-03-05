@@ -927,6 +927,49 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleSecurityTestRequest handles securityTest operation.
+//
+// GET /securityTest
+func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("securityTest"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SecurityTest",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	ctx, err = s.securityAPIKey(ctx, "SecurityTest", r)
+	if err != nil {
+		err = errors.Wrap(err, "security \"APIKey\"")
+		s.badRequest(ctx, w, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.SecurityTest(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeSecurityTestResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	span.SetStatus(codes.Ok, "Ok")
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleTestFloatValidationRequest handles testFloatValidation operation.
 //
 // POST /testFloatValidation

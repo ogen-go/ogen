@@ -69,3 +69,31 @@ var (
 	_ = sync.Pool{}
 	_ = codes.Unset
 )
+
+// SecurityHandler is handler for security parameters.
+type SecurityHandler interface {
+	// HandleAPIKey handles api_key security.
+	HandleAPIKey(ctx context.Context, operationID string, t APIKey) (context.Context, error)
+}
+
+func (s *Server) securityAPIKey(ctx context.Context, operationID string, req *http.Request) (context.Context, error) {
+	var t APIKey
+	value := req.Header.Get("api_key")
+	t.APIKey = value
+	return s.sec.HandleAPIKey(ctx, operationID, t)
+}
+
+// SecuritySource is provider of security values (tokens, passwords, etc.).
+type SecuritySource interface {
+	// APIKey provides api_key security value.
+	APIKey(ctx context.Context, operationID string) (APIKey, error)
+}
+
+func (s *Client) securityAPIKey(ctx context.Context, operationID string, req *http.Request) error {
+	t, err := s.sec.APIKey(ctx, operationID)
+	if err != nil {
+		return errors.Wrap(err, "security source \"APIKey\"")
+	}
+	req.Header.Set("api_key", t.APIKey)
+	return nil
+}
