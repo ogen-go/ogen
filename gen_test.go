@@ -96,7 +96,9 @@ func TestGenerate(t *testing.T) {
 			"unsupported content types",
 			"empty schema",
 		},
-		"tinkoff.json": {},
+		"tinkoff.json": {
+			"http security scheme",
+		},
 	}
 
 	if err := fs.WalkDir(testdata, "_testdata/positive", func(path string, d fs.DirEntry, err error) error {

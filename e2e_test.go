@@ -267,13 +267,14 @@ func TestIntegration(t *testing.T) {
 			require.Equal(t, "invalid: id (int: value -1 less than 0), name (string: len 1 less than minimum 4)", validateErr.Error())
 		})
 
-		h, err := api.NewServer(&sampleAPIServer{})
+		handler := &sampleAPIServer{}
+		h, err := api.NewServer(handler, handler)
 		require.NoError(t, err)
 		s := httptest.NewServer(h)
 		defer s.Close()
 
 		httpClient := s.Client()
-		client, err := api.NewClient(s.URL, api.WithClient(httpClient))
+		client, err := api.NewClient(s.URL, handler, api.WithClient(httpClient))
 		require.NoError(t, err)
 		ctx := context.Background()
 
@@ -541,7 +542,7 @@ func TestIntegration(t *testing.T) {
 				require.Equal(t, resp.Filter, filter)
 			})
 		})
-		t.Run("defaultParameters", func(t *testing.T) {
+		t.Run("DefaultParameters", func(t *testing.T) {
 			a := require.New(t)
 
 			resp, err := client.DefaultTest(ctx, api.DefaultTest{}, api.DefaultTestParams{})
@@ -553,6 +554,13 @@ func TestIntegration(t *testing.T) {
 			})
 			a.NoError(err)
 			a.Equal(int32(42), resp)
+		})
+		t.Run("HeaderSecurity", func(t *testing.T) {
+			a := require.New(t)
+
+			resp, err := client.SecurityTest(ctx)
+			a.NoError(err)
+			a.Equal("десять", resp)
 		})
 	})
 

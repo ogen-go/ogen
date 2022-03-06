@@ -941,6 +941,10 @@ type PortfolioResponse struct {
 
 func (*PortfolioResponse) portfolioGetRes() {}
 
+type SSOAuth struct {
+	Token string
+}
+
 // Ref: #/components/schemas/SandboxAccount
 type SandboxAccount struct {
 	BrokerAccountType BrokerAccountType "json:\"brokerAccountType\""

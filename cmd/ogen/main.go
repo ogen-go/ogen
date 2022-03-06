@@ -78,7 +78,7 @@ func main() {
 				continue
 			}
 			name := f.Name()
-			if !strings.HasSuffix(name, "_gen.go") {
+			if !strings.HasSuffix(name, "_gen.go") || !strings.HasSuffix(name, "_gen_test.go") {
 				continue
 			}
 			if !(strings.HasPrefix(name, "openapi") || strings.HasPrefix(name, "oas")) {

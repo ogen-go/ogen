@@ -16,6 +16,7 @@ type Operation struct {
 	Params      []*Parameter
 	Request     *Request
 	Response    *Response
+	Security    []*SecurityRequirement
 	Spec        *oas.Operation
 }
 

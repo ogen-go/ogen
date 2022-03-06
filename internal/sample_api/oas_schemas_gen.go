@@ -70,6 +70,10 @@ var (
 	_ = codes.Unset
 )
 
+type APIKey struct {
+	APIKey string
+}
+
 // Type for testing some anyOf cases from Jaeger operator API schema.
 // Ref: #/components/schemas/AnyOfTest
 type AnyOfTest struct {

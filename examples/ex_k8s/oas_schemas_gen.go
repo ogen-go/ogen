@@ -70,6 +70,10 @@ var (
 	_ = codes.Unset
 )
 
+type BearerToken struct {
+	APIKey string
+}
+
 // GetAPIVersionsUnauthorized is response for GetAPIVersions operation.
 type GetAPIVersionsUnauthorized struct{}
 

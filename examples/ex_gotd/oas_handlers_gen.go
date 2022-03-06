@@ -84,12 +84,11 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeAddStickerToSetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -136,12 +135,11 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeAnswerCallbackQueryRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -188,12 +186,11 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeAnswerInlineQueryRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -240,12 +237,11 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeAnswerPreCheckoutQueryRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -292,12 +288,11 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeAnswerShippingQueryRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -344,12 +339,11 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeApproveChatJoinRequestRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -396,12 +390,11 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeBanChatMemberRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -448,12 +441,11 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeBanChatSenderChatRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -501,6 +493,8 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.Close(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -544,12 +538,11 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeCopyMessageRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -596,12 +589,11 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeCreateChatInviteLinkRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -648,12 +640,11 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeCreateNewStickerSetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -700,12 +691,11 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeDeclineChatJoinRequestRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -752,12 +742,11 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeDeleteChatPhotoRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -804,12 +793,11 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeDeleteChatStickerSetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -856,12 +844,11 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeDeleteMessageRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -908,12 +895,11 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeDeleteMyCommandsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -960,12 +946,11 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeDeleteStickerFromSetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1012,12 +997,11 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeDeleteWebhookRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1064,12 +1048,11 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeEditChatInviteLinkRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1116,12 +1099,11 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeEditMessageCaptionRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1168,12 +1150,11 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeEditMessageLiveLocationRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1220,12 +1201,11 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeEditMessageMediaRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1272,12 +1252,11 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeEditMessageReplyMarkupRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1324,12 +1303,11 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeEditMessageTextRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1376,12 +1354,11 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeExportChatInviteLinkRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1428,12 +1405,11 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeForwardMessageRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1480,12 +1456,11 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetChatRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1532,12 +1507,11 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetChatAdministratorsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1584,12 +1558,11 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetChatMemberRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1636,12 +1609,11 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetChatMemberCountRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1688,12 +1660,11 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetFileRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1740,12 +1711,11 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetGameHighScoresRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1793,6 +1763,8 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.GetMe(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -1836,12 +1808,11 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetMyCommandsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1888,12 +1859,11 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetStickerSetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1940,12 +1910,11 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetUpdatesRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1992,12 +1961,11 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeGetUserProfilePhotosRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2045,6 +2013,8 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.GetWebhookInfo(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -2088,12 +2058,11 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeLeaveChatRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2141,6 +2110,8 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.LogOut(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -2184,12 +2155,11 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePinChatMessageRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2236,12 +2206,11 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePromoteChatMemberRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2288,12 +2257,11 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeRestrictChatMemberRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2340,12 +2308,11 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeRevokeChatInviteLinkRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2392,12 +2359,11 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendAnimationRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2444,12 +2410,11 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendAudioRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2496,12 +2461,11 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendChatActionRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2548,12 +2512,11 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendContactRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2600,12 +2563,11 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendDiceRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2652,12 +2614,11 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendDocumentRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2704,12 +2665,11 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendGameRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2756,12 +2716,11 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendInvoiceRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2808,12 +2767,11 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendLocationRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2860,12 +2818,11 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendMediaGroupRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2912,12 +2869,11 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendMessageRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -2964,12 +2920,11 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendPhotoRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3016,12 +2971,11 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendPollRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3068,12 +3022,11 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendStickerRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3120,12 +3073,11 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendVenueRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3172,12 +3124,11 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendVideoRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3224,12 +3175,11 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendVideoNoteRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3276,12 +3226,11 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSendVoiceRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3328,12 +3277,11 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetChatAdministratorCustomTitleRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3380,12 +3328,11 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetChatDescriptionRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3432,12 +3379,11 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetChatPermissionsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3484,12 +3430,11 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetChatPhotoRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3536,12 +3481,11 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetChatStickerSetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3588,12 +3532,11 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetChatTitleRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3640,12 +3583,11 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetGameScoreRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3692,12 +3634,11 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetMyCommandsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3744,12 +3685,11 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetPassportDataErrorsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3796,12 +3736,11 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetStickerPositionInSetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3848,12 +3787,11 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetStickerSetThumbRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3900,12 +3838,11 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeSetWebhookRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -3952,12 +3889,11 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeStopMessageLiveLocationRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -4004,12 +3940,11 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeStopPollRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -4056,12 +3991,11 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeUnbanChatMemberRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -4108,12 +4042,11 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeUnbanChatSenderChatRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -4160,12 +4093,11 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeUnpinAllChatMessagesRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -4212,12 +4144,11 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeUnpinChatMessageRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -4264,12 +4195,11 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeUploadStickerFileRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -4300,6 +4230,13 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+	span.RecordError(err)
+	span.SetStatus(codes.Error, "BadRequest")
+	s.errors.Add(ctx, 1, otelAttrs...)
+	respondError(w, http.StatusBadRequest, err)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

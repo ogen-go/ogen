@@ -418,6 +418,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 's': // Prefix: "securityTest"
+				if l := len("securityTest"); len(elem) >= l && elem[0:l] == "securityTest" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: SecurityTest
+					s.handleSecurityTestRequest([0]string{}, w, r)
+
+					return
+				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
@@ -647,6 +660,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 		elem = path
 	)
 	r.args = args
+	if elem == "" {
+		return r, false
+	}
 
 	// Static code generated router with unwrapped path search.
 	switch method {
@@ -984,6 +1000,20 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						r.count = 0
 						return r, true
 					}
+				}
+			case 's': // Prefix: "securityTest"
+				if l := len("securityTest"); len(elem) >= l && elem[0:l] == "securityTest" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					// Leaf: SecurityTest
+					r.name = "SecurityTest"
+					r.args = args
+					r.count = 0
+					return r, true
 				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {

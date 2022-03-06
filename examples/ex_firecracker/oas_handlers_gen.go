@@ -84,12 +84,11 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeCreateSnapshotRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -127,12 +126,11 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeCreateSyncActionRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -171,6 +169,8 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.DescribeBalloonConfig(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -205,6 +205,8 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 
 	response, err := s.h.DescribeBalloonStats(ctx)
 	if err != nil {
@@ -241,6 +243,8 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.DescribeInstance(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -275,6 +279,8 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 
 	response, err := s.h.GetExportVmConfig(ctx)
 	if err != nil {
@@ -311,6 +317,8 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.GetMachineConfiguration(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -345,12 +353,11 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeLoadSnapshotRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -386,12 +393,11 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeMmdsConfigPutRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -428,6 +434,8 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	var err error
+
 	response, err := s.h.MmdsGet(ctx)
 	if err != nil {
 		span.RecordError(err)
@@ -460,12 +468,11 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeMmdsPatchRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -501,12 +508,11 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeMmdsPutRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -544,12 +550,11 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePatchBalloonRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -587,12 +592,11 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePatchBalloonStatsIntervalRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -630,20 +634,16 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePatchGuestDriveByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePatchGuestDriveByIDRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -681,20 +681,16 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePatchGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -732,12 +728,11 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePatchMachineConfigurationRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -775,12 +770,11 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePatchVmRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -818,12 +812,11 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePutBalloonRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -861,12 +854,11 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePutGuestBootSourceRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -904,20 +896,16 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePutGuestDriveByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePutGuestDriveByIDRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -955,20 +943,16 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodePutGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePutGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1006,12 +990,11 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePutGuestVsockRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1049,12 +1032,11 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePutLoggerRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1092,12 +1074,11 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePutMachineConfigurationRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1135,12 +1116,11 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodePutMetricsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -1162,6 +1142,13 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+	span.RecordError(err)
+	span.SetStatus(codes.Error, "BadRequest")
+	s.errors.Add(ctx, 1, otelAttrs...)
+	respondError(w, http.StatusBadRequest, err)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

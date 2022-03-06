@@ -445,7 +445,8 @@ func BenchmarkJSON(b *testing.B) {
 func BenchmarkFindRoute(b *testing.B) {
 	bench := func(method, path string) func(b *testing.B) {
 		return func(b *testing.B) {
-			s, err := api.NewServer(&sampleAPIServer{})
+			handler := &sampleAPIServer{}
+			s, err := api.NewServer(handler, handler)
 			require.NoError(b, err)
 
 			b.ReportAllocs()

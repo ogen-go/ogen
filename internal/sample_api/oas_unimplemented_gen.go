@@ -248,6 +248,13 @@ func (UnimplementedHandler) RecursiveMapGet(ctx context.Context) (r RecursiveMap
 	return r, ht.ErrNotImplemented
 }
 
+// SecurityTest implements securityTest operation.
+//
+// GET /securityTest
+func (UnimplementedHandler) SecurityTest(ctx context.Context) (r string, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestFloatValidation implements testFloatValidation operation.
 //
 // POST /testFloatValidation

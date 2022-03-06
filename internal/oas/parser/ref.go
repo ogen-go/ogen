@@ -123,7 +123,7 @@ func (p *parser) resolveParameter(ref string, ctx resolveCtx) (*oas.Parameter, e
 func (p *parser) resolveExample(ref string) (*oas.Example, error) {
 	const prefix = "#/components/examples/"
 	if !strings.HasPrefix(ref, prefix) {
-		return nil, errors.Errorf("invalid parameter reference: %q", ref)
+		return nil, errors.Errorf("invalid example reference: %q", ref)
 	}
 
 	if param, ok := p.refs.examples[ref]; ok {
@@ -145,4 +145,29 @@ func (p *parser) resolveExample(ref string) (*oas.Example, error) {
 
 	p.refs.examples[ref] = example
 	return example, nil
+}
+
+func (p *parser) resolveSecuritySchema(ref string, ctx resolveCtx) (*ogen.SecuritySchema, error) {
+	const prefix = "#/components/securitySchemes/"
+	if !strings.HasPrefix(ref, prefix) {
+		return nil, errors.Errorf("invalid securitySchema reference: %q", ref)
+	}
+
+	if param, ok := p.refs.securitySchemes[ref]; ok {
+		return param, nil
+	}
+
+	if _, ok := ctx[ref]; ok {
+		return nil, errors.Errorf("infinite recursion: %q", ref)
+	}
+	ctx[ref] = struct{}{}
+
+	name := strings.TrimPrefix(ref, prefix)
+	component, found := p.spec.Components.SecuritySchemes[name]
+	if !found {
+		return nil, errors.Errorf("component by reference %q not found", ref)
+	}
+
+	p.refs.securitySchemes[ref] = component
+	return component, nil
 }

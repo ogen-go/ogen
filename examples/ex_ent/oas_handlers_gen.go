@@ -84,12 +84,11 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	request, err := decodeCreatePetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -127,20 +126,16 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeCreatePetCategoriesParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeCreatePetCategoriesRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -178,20 +173,16 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeCreatePetFriendsParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeCreatePetFriendsRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -229,20 +220,16 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeCreatePetOwnerParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeCreatePetOwnerRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -280,12 +267,11 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -323,12 +309,11 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeDeletePetOwnerParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -366,12 +351,11 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeListPetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -409,12 +393,11 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeListPetCategoriesParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -452,12 +435,11 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeListPetFriendsParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -495,12 +477,11 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeReadPetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -538,12 +519,11 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeReadPetOwnerParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -581,20 +561,16 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 	)
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
+
+	var err error
 	params, err := decodeUpdatePetParams(args, r)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeUpdatePetRequest(r, span)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "BadRequest")
-		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusBadRequest, err)
+		s.badRequest(ctx, w, span, otelAttrs, err)
 		return
 	}
 
@@ -616,6 +592,13 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+	span.RecordError(err)
+	span.SetStatus(codes.Error, "BadRequest")
+	s.errors.Add(ctx, 1, otelAttrs...)
+	respondError(w, http.StatusBadRequest, err)
 }
 
 func respondError(w http.ResponseWriter, code int, err error) {

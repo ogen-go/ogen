@@ -168,6 +168,7 @@ type Handler interface {
 // calls Handler to handle requests.
 type Server struct {
 	h   Handler
+	sec SecurityHandler
 	cfg config
 
 	requests metric.Int64Counter
@@ -175,9 +176,10 @@ type Server struct {
 	duration metric.Int64Histogram
 }
 
-func NewServer(h Handler, opts ...Option) (*Server, error) {
+func NewServer(h Handler, sec SecurityHandler, opts ...Option) (*Server, error) {
 	s := &Server{
 		h:   h,
+		sec: sec,
 		cfg: newConfig(opts...),
 	}
 	var err error

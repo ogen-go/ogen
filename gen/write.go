@@ -20,6 +20,7 @@ type TemplateConfig struct {
 	Interfaces map[string]*ir.Type
 	Error      *ir.StatusResponse
 	ErrorType  *ir.Type
+	Securities map[string]*ir.Security
 	Router     Router
 
 	skipTestRegex *regexp.Regexp
@@ -156,6 +157,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Interfaces:    interfaces,
 		Error:         g.errType,
 		ErrorType:     nil,
+		Securities:    g.securities,
 		Router:        g.router,
 		skipTestRegex: g.opt.SkipTestRegex,
 	}
@@ -180,6 +182,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		"cfg",
 		"router",
 		"defaults",
+		"security",
 	} {
 		// Skip uri encode/decode if no types for that.
 		if name == "uri" && !g.hasURIObjectParams() {
