@@ -61,7 +61,7 @@ func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationID str
 		req.Header.Set({{ quote $s.ParameterName }}, t.APIKey)
 		{{- else if $s.Kind.IsQuery }}
 		q := req.URL.Query()
-		q.Set({{ quote $s.ParameterName }}), t.APIKey)
+		q.Set({{ quote $s.ParameterName }}, t.APIKey)
 		req.URL.RawQuery = q.Encode()
 		{{- else }}
             {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
