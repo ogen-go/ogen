@@ -128,7 +128,7 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 		return nil, errors.Wrap(err, "responses")
 	}
 
-	if len(spec.Security) > 0 {
+	if spec.Security != nil {
 		// Use operation level security.
 		op.Security, err = p.parseSecurityRequirements(spec.Security)
 		if err != nil {
