@@ -2,7 +2,7 @@ package gen
 
 import (
 	"mime"
-	"strings"
+	"path"
 
 	"github.com/go-faster/errors"
 
@@ -11,24 +11,29 @@ import (
 )
 
 func filterMostSpecific(contents map[string]*jsonschema.Schema) error {
+	initialLength := len(contents)
 	keep := func(current, mask string) bool {
-		for {
-			star := strings.IndexByte(mask, '*')
-			if star < 0 {
-				return true
+		// Special case for "*", "**", etc.
+		var nonStar bool
+		for _, c := range mask {
+			if c != '*' {
+				nonStar = true
+				break
 			}
-
-			prefix := mask[:star]
-			for contentType := range contents {
-				if contentType == current {
-					continue
-				}
-				if strings.HasPrefix(contentType, prefix) {
-					return false
-				}
-			}
-			mask = mask[star+1:]
 		}
+		if !nonStar {
+			return initialLength < 2
+		}
+
+		for contentType := range contents {
+			if contentType == current {
+				continue
+			}
+			if matched, _ := path.Match(mask, contentType); matched {
+				return false
+			}
+		}
+		return true
 	}
 
 	for k := range contents {
