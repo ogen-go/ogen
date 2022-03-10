@@ -128,9 +128,18 @@ func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParam
 		return nil, errors.Wrap(err, "responses")
 	}
 
-	op.Security, err = p.parseSecurityRequirements(spec.Security)
-	if err != nil {
-		return nil, errors.Wrap(err, "security")
+	if len(spec.Security) > 0 {
+		// Use operation level security.
+		op.Security, err = p.parseSecurityRequirements(spec.Security)
+		if err != nil {
+			return nil, errors.Wrap(err, "security")
+		}
+	} else {
+		// Use root level security.
+		op.Security, err = p.parseSecurityRequirements(p.spec.Security)
+		if err != nil {
+			return nil, errors.Wrap(err, "security")
+		}
 	}
 
 	return op, nil

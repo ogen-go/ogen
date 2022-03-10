@@ -46,46 +46,36 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r oas.OAuthFlows) {
 	}
 }
 
-func (p *parser) parseSecurityRequirements(security ogen.SecurityRequirements) (r []oas.SecurityRequirements, _ error) {
-	collect := func(requirements ogen.SecurityRequirements) error {
-		for _, req := range requirements {
-			for requirementName, scopes := range req {
-				v, ok := p.refs.securitySchemes[requirementName]
-				if !ok {
-					return errors.Errorf("unknown security schema %q", requirementName)
-				}
-
-				spec, err := p.parseSecuritySchema(v, resolveCtx{})
-				if err != nil {
-					return errors.Wrapf(err, "resolve %q", requirementName)
-				}
-
-				r = append(r, oas.SecurityRequirements{
-					Scopes: scopes,
-					Name:   requirementName,
-					Security: oas.Security{
-						Type:             spec.Type,
-						Description:      spec.Description,
-						Name:             spec.Name,
-						In:               spec.In,
-						Scheme:           spec.Scheme,
-						BearerFormat:     spec.BearerFormat,
-						Flows:            cloneOAuthFlows(spec.Flows),
-						OpenIDConnectURL: spec.OpenIDConnectURL,
-					},
-				})
+func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirements) ([]oas.SecurityRequirements, error) {
+	result := make([]oas.SecurityRequirements, 0, len(requirements))
+	for _, req := range requirements {
+		for requirementName, scopes := range req {
+			v, ok := p.refs.securitySchemes[requirementName]
+			if !ok {
+				return nil, errors.Errorf("unknown security schema %q", requirementName)
 			}
+
+			spec, err := p.parseSecuritySchema(v, resolveCtx{})
+			if err != nil {
+				return nil, errors.Wrapf(err, "resolve %q", requirementName)
+			}
+
+			result = append(result, oas.SecurityRequirements{
+				Scopes: scopes,
+				Name:   requirementName,
+				Security: oas.Security{
+					Type:             spec.Type,
+					Description:      spec.Description,
+					Name:             spec.Name,
+					In:               spec.In,
+					Scheme:           spec.Scheme,
+					BearerFormat:     spec.BearerFormat,
+					Flows:            cloneOAuthFlows(spec.Flows),
+					OpenIDConnectURL: spec.OpenIDConnectURL,
+				},
+			})
 		}
-		return nil
 	}
 
-	if err := collect(p.spec.Security); err != nil {
-		return nil, errors.Wrap(err, "parse global security")
-	}
-
-	if err := collect(security); err != nil {
-		return nil, errors.Wrap(err, "parse operation security")
-	}
-
-	return r, nil
+	return result, nil
 }
