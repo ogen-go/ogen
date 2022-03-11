@@ -96,6 +96,7 @@ func TestGenerate(t *testing.T) {
 			"unsupported content types",
 			"empty schema",
 		},
+		"test_empty_property_name.yaml": {},
 		"tinkoff.json": {
 			"http security scheme",
 		},
