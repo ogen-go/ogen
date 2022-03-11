@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -108,13 +109,18 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 				return nil, errors.Wrapf(err, "field %s", prop.Name)
 			}
 
-			propName, err := pascalSpecial(prop.Name)
+			propertyName := strings.TrimSpace(prop.Name)
+			if propertyName == "" {
+				propertyName = fmt.Sprintf("Field%d", i)
+			}
+
+			fieldName, err := pascalSpecial(propertyName)
 			if err != nil {
-				return nil, errors.Wrapf(err, "property name: %q", prop.Name)
+				return nil, errors.Wrapf(err, "property name: %q", propertyName)
 			}
 
 			s.Fields = append(s.Fields, &ir.Field{
-				Name: propName,
+				Name: fieldName,
 				Type: t,
 				Tag: ir.Tag{
 					JSON: prop.Name,
