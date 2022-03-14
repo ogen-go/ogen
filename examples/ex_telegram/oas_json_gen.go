@@ -77,7 +77,7 @@ func (s AddStickerToSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s AddStickerToSet) encodeFields(e *jx.Encoder) {
 	{
 
@@ -241,6 +241,19 @@ func (s *AddStickerToSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s AddStickerToSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AddStickerToSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Animation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -248,7 +261,7 @@ func (s Animation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Animation) encodeFields(e *jx.Encoder) {
 	{
 
@@ -466,6 +479,19 @@ func (s *Animation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Animation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Animation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s AnswerCallbackQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -473,7 +499,7 @@ func (s AnswerCallbackQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s AnswerCallbackQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -618,6 +644,19 @@ func (s *AnswerCallbackQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s AnswerCallbackQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AnswerCallbackQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -625,7 +664,7 @@ func (s AnswerInlineQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s AnswerInlineQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -815,6 +854,19 @@ func (s *AnswerInlineQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s AnswerInlineQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AnswerInlineQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -822,7 +874,7 @@ func (s AnswerPreCheckoutQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s AnswerPreCheckoutQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -934,6 +986,19 @@ func (s *AnswerPreCheckoutQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s AnswerPreCheckoutQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AnswerPreCheckoutQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -941,7 +1006,7 @@ func (s AnswerShippingQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s AnswerShippingQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1081,6 +1146,19 @@ func (s *AnswerShippingQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s AnswerShippingQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *AnswerShippingQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ApproveChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1088,7 +1166,7 @@ func (s ApproveChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ApproveChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1181,6 +1259,19 @@ func (s *ApproveChatJoinRequest) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ApproveChatJoinRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ApproveChatJoinRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Audio) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1188,7 +1279,7 @@ func (s Audio) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Audio) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1404,6 +1495,19 @@ func (s *Audio) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Audio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Audio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BanChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1411,7 +1515,7 @@ func (s BanChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BanChatMember) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1538,6 +1642,19 @@ func (s *BanChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BanChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BanChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BanChatSenderChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1545,7 +1662,7 @@ func (s BanChatSenderChat) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BanChatSenderChat) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1638,6 +1755,19 @@ func (s *BanChatSenderChat) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BanChatSenderChat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BanChatSenderChat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommand) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1645,7 +1775,7 @@ func (s BotCommand) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommand) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1738,6 +1868,19 @@ func (s *BotCommand) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommand) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommand) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes BotCommandScope as json.
@@ -1880,6 +2023,19 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScope) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScope) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommandScopeAllChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1887,7 +2043,7 @@ func (s BotCommandScopeAllChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommandScopeAllChatAdministrators) encodeFields(e *jx.Encoder) {
 }
 
@@ -1912,6 +2068,19 @@ func (s *BotCommandScopeAllChatAdministrators) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScopeAllChatAdministrators) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScopeAllChatAdministrators) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommandScopeAllGroupChats) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1919,7 +2088,7 @@ func (s BotCommandScopeAllGroupChats) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommandScopeAllGroupChats) encodeFields(e *jx.Encoder) {
 }
 
@@ -1944,6 +2113,19 @@ func (s *BotCommandScopeAllGroupChats) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScopeAllGroupChats) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScopeAllGroupChats) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommandScopeAllPrivateChats) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1951,7 +2133,7 @@ func (s BotCommandScopeAllPrivateChats) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommandScopeAllPrivateChats) encodeFields(e *jx.Encoder) {
 }
 
@@ -1976,6 +2158,19 @@ func (s *BotCommandScopeAllPrivateChats) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScopeAllPrivateChats) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScopeAllPrivateChats) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommandScopeChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1983,7 +2178,7 @@ func (s BotCommandScopeChat) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommandScopeChat) encodeFields(e *jx.Encoder) {
 	{
 
@@ -2058,6 +2253,19 @@ func (s *BotCommandScopeChat) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScopeChat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScopeChat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2065,7 +2273,7 @@ func (s BotCommandScopeChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommandScopeChatAdministrators) encodeFields(e *jx.Encoder) {
 	{
 
@@ -2140,6 +2348,19 @@ func (s *BotCommandScopeChatAdministrators) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScopeChatAdministrators) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScopeChatAdministrators) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommandScopeChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2147,7 +2368,7 @@ func (s BotCommandScopeChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommandScopeChatMember) encodeFields(e *jx.Encoder) {
 	{
 
@@ -2240,6 +2461,19 @@ func (s *BotCommandScopeChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScopeChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScopeChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s BotCommandScopeDefault) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2247,7 +2481,7 @@ func (s BotCommandScopeDefault) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s BotCommandScopeDefault) encodeFields(e *jx.Encoder) {
 }
 
@@ -2272,6 +2506,19 @@ func (s *BotCommandScopeDefault) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s BotCommandScopeDefault) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *BotCommandScopeDefault) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s CallbackGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2279,7 +2526,7 @@ func (s CallbackGame) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s CallbackGame) encodeFields(e *jx.Encoder) {
 }
 
@@ -2304,6 +2551,19 @@ func (s *CallbackGame) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s CallbackGame) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CallbackGame) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s CallbackQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2311,7 +2571,7 @@ func (s CallbackQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s CallbackQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -2490,6 +2750,19 @@ func (s *CallbackQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s CallbackQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CallbackQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Chat) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2497,7 +2770,7 @@ func (s Chat) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Chat) encodeFields(e *jx.Encoder) {
 	{
 
@@ -2900,6 +3173,19 @@ func (s *Chat) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Chat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Chat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2907,7 +3193,7 @@ func (s ChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
@@ -3123,6 +3409,19 @@ func (s *ChatInviteLink) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatInviteLink) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatInviteLink) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3130,7 +3429,7 @@ func (s ChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
 
@@ -3273,6 +3572,19 @@ func (s *ChatJoinRequest) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatJoinRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatJoinRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3280,7 +3592,7 @@ func (s ChatLocation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatLocation) encodeFields(e *jx.Encoder) {
 	{
 
@@ -3371,6 +3683,19 @@ func (s *ChatLocation) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatLocation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatLocation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ChatMember as json.
@@ -3500,6 +3825,19 @@ func (s *ChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatMemberAdministrator) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3507,7 +3845,7 @@ func (s ChatMemberAdministrator) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatMemberAdministrator) encodeFields(e *jx.Encoder) {
 	{
 
@@ -3831,6 +4169,19 @@ func (s *ChatMemberAdministrator) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMemberAdministrator) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMemberAdministrator) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatMemberBanned) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3838,7 +4189,7 @@ func (s ChatMemberBanned) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatMemberBanned) encodeFields(e *jx.Encoder) {
 	{
 
@@ -3949,6 +4300,19 @@ func (s *ChatMemberBanned) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMemberBanned) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMemberBanned) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatMemberLeft) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3956,7 +4320,7 @@ func (s ChatMemberLeft) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatMemberLeft) encodeFields(e *jx.Encoder) {
 	{
 
@@ -4049,6 +4413,19 @@ func (s *ChatMemberLeft) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMemberLeft) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMemberLeft) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatMemberMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4056,7 +4433,7 @@ func (s ChatMemberMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatMemberMember) encodeFields(e *jx.Encoder) {
 	{
 
@@ -4149,6 +4526,19 @@ func (s *ChatMemberMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMemberMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMemberMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatMemberOwner) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4156,7 +4546,7 @@ func (s ChatMemberOwner) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatMemberOwner) encodeFields(e *jx.Encoder) {
 	{
 
@@ -4284,6 +4674,19 @@ func (s *ChatMemberOwner) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMemberOwner) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMemberOwner) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatMemberRestricted) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4291,7 +4694,7 @@ func (s ChatMemberRestricted) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatMemberRestricted) encodeFields(e *jx.Encoder) {
 	{
 
@@ -4565,6 +4968,19 @@ func (s *ChatMemberRestricted) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMemberRestricted) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMemberRestricted) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatMemberUpdated) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4572,7 +4988,7 @@ func (s ChatMemberUpdated) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatMemberUpdated) encodeFields(e *jx.Encoder) {
 	{
 
@@ -4730,6 +5146,19 @@ func (s *ChatMemberUpdated) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatMemberUpdated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatMemberUpdated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4737,7 +5166,7 @@ func (s ChatPermissions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatPermissions) encodeFields(e *jx.Encoder) {
 	{
 		if s.CanSendMessages.Set {
@@ -4899,6 +5328,19 @@ func (s *ChatPermissions) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatPermissions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatPermissions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4906,7 +5348,7 @@ func (s ChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChatPhoto) encodeFields(e *jx.Encoder) {
 	{
 
@@ -5037,6 +5479,19 @@ func (s *ChatPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ChatType as json.
 func (s ChatType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
@@ -5068,6 +5523,19 @@ func (s *ChatType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChatType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChatType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ChosenInlineResult) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5075,7 +5543,7 @@ func (s ChosenInlineResult) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ChosenInlineResult) encodeFields(e *jx.Encoder) {
 	{
 
@@ -5220,6 +5688,19 @@ func (s *ChosenInlineResult) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ChosenInlineResult) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ChosenInlineResult) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Contact) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5227,7 +5708,7 @@ func (s Contact) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Contact) encodeFields(e *jx.Encoder) {
 	{
 
@@ -5373,6 +5854,19 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Contact) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Contact) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s CopyMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5380,7 +5874,7 @@ func (s CopyMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s CopyMessage) encodeFields(e *jx.Encoder) {
 	{
 
@@ -5620,6 +6114,19 @@ func (s *CopyMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s CopyMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CopyMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes CopyMessageReplyMarkup as json.
 func (s CopyMessageReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -5701,6 +6208,19 @@ func (s *CopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s CopyMessageReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CopyMessageReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5708,7 +6228,7 @@ func (s CreateChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s CreateChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
@@ -5851,6 +6371,19 @@ func (s *CreateChatInviteLink) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s CreateChatInviteLink) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CreateChatInviteLink) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5858,7 +6391,7 @@ func (s CreateNewStickerSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s CreateNewStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6057,6 +6590,19 @@ func (s *CreateNewStickerSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s CreateNewStickerSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *CreateNewStickerSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s DeclineChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6064,7 +6610,7 @@ func (s DeclineChatJoinRequest) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s DeclineChatJoinRequest) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6157,6 +6703,19 @@ func (s *DeclineChatJoinRequest) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s DeclineChatJoinRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DeclineChatJoinRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s DeleteChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6164,7 +6723,7 @@ func (s DeleteChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s DeleteChatPhoto) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6239,6 +6798,19 @@ func (s *DeleteChatPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s DeleteChatPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DeleteChatPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s DeleteChatStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6246,7 +6818,7 @@ func (s DeleteChatStickerSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s DeleteChatStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6321,6 +6893,19 @@ func (s *DeleteChatStickerSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s DeleteChatStickerSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DeleteChatStickerSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s DeleteMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6328,7 +6913,7 @@ func (s DeleteMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s DeleteMessage) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6421,6 +7006,19 @@ func (s *DeleteMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s DeleteMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DeleteMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s DeleteMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6428,7 +7026,7 @@ func (s DeleteMyCommands) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s DeleteMyCommands) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scope.Set {
@@ -6488,6 +7086,19 @@ func (s *DeleteMyCommands) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s DeleteMyCommands) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DeleteMyCommands) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s DeleteStickerFromSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6495,7 +7106,7 @@ func (s DeleteStickerFromSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s DeleteStickerFromSet) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6572,6 +7183,19 @@ func (s *DeleteStickerFromSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s DeleteStickerFromSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DeleteStickerFromSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s DeleteWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6579,7 +7203,7 @@ func (s DeleteWebhook) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s DeleteWebhook) encodeFields(e *jx.Encoder) {
 	{
 		if s.DropPendingUpdates.Set {
@@ -6622,6 +7246,19 @@ func (s *DeleteWebhook) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s DeleteWebhook) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DeleteWebhook) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Dice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6629,7 +7266,7 @@ func (s Dice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Dice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6724,6 +7361,19 @@ func (s *Dice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Dice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Dice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Document) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6731,7 +7381,7 @@ func (s Document) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Document) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6894,6 +7544,19 @@ func (s *Document) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Document) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Document) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EditChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6901,7 +7564,7 @@ func (s EditChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EditChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
@@ -7062,6 +7725,19 @@ func (s *EditChatInviteLink) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EditChatInviteLink) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EditChatInviteLink) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EditMessageCaption) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7069,7 +7745,7 @@ func (s EditMessageCaption) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EditMessageCaption) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
@@ -7225,6 +7901,19 @@ func (s *EditMessageCaption) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EditMessageCaption) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EditMessageCaption) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7232,7 +7921,7 @@ func (s EditMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EditMessageLiveLocation) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
@@ -7447,6 +8136,19 @@ func (s *EditMessageLiveLocation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EditMessageLiveLocation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EditMessageLiveLocation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EditMessageMedia) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7454,7 +8156,7 @@ func (s EditMessageMedia) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EditMessageMedia) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
@@ -7597,6 +8299,19 @@ func (s *EditMessageMedia) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EditMessageMedia) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EditMessageMedia) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7604,7 +8319,7 @@ func (s EditMessageReplyMarkup) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EditMessageReplyMarkup) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
@@ -7698,6 +8413,19 @@ func (s *EditMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EditMessageReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EditMessageReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EditMessageText) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7705,7 +8433,7 @@ func (s EditMessageText) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EditMessageText) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
@@ -7912,6 +8640,19 @@ func (s *EditMessageText) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EditMessageText) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EditMessageText) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EncryptedCredentials) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7919,7 +8660,7 @@ func (s EncryptedCredentials) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EncryptedCredentials) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8032,6 +8773,19 @@ func (s *EncryptedCredentials) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EncryptedCredentials) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EncryptedCredentials) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8039,7 +8793,7 @@ func (s EncryptedPassportElement) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s EncryptedPassportElement) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8291,6 +9045,19 @@ func (s *EncryptedPassportElement) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EncryptedPassportElement) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EncryptedPassportElement) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes EncryptedPassportElementType as json.
 func (s EncryptedPassportElementType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
@@ -8340,6 +9107,19 @@ func (s *EncryptedPassportElementType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s EncryptedPassportElementType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *EncryptedPassportElementType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Error) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8347,7 +9127,7 @@ func (s Error) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Error) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8478,6 +9258,19 @@ func (s *Error) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Error) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Error) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ExportChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8485,7 +9278,7 @@ func (s ExportChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ExportChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8560,6 +9353,19 @@ func (s *ExportChatInviteLink) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ExportChatInviteLink) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ExportChatInviteLink) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s File) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8567,7 +9373,7 @@ func (s File) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s File) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8696,6 +9502,19 @@ func (s *File) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s File) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *File) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ForceReply) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8703,7 +9522,7 @@ func (s ForceReply) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ForceReply) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8814,6 +9633,19 @@ func (s *ForceReply) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ForceReply) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ForceReply) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ForwardMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8821,7 +9653,7 @@ func (s ForwardMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ForwardMessage) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8947,6 +9779,19 @@ func (s *ForwardMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ForwardMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ForwardMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Game) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8954,7 +9799,7 @@ func (s Game) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Game) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9139,6 +9984,19 @@ func (s *Game) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Game) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Game) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GameHighScore) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9146,7 +10004,7 @@ func (s GameHighScore) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GameHighScore) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9257,6 +10115,19 @@ func (s *GameHighScore) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GameHighScore) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GameHighScore) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9264,7 +10135,7 @@ func (s GetChat) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetChat) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9339,6 +10210,19 @@ func (s *GetChat) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetChat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetChat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9346,7 +10230,7 @@ func (s GetChatAdministrators) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetChatAdministrators) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9421,6 +10305,19 @@ func (s *GetChatAdministrators) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetChatAdministrators) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetChatAdministrators) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9428,7 +10325,7 @@ func (s GetChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetChatMember) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9521,6 +10418,19 @@ func (s *GetChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetChatMemberCount) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9528,7 +10438,7 @@ func (s GetChatMemberCount) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetChatMemberCount) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9603,6 +10513,19 @@ func (s *GetChatMemberCount) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetChatMemberCount) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetChatMemberCount) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9610,7 +10533,7 @@ func (s GetFile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetFile) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9687,6 +10610,19 @@ func (s *GetFile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetGameHighScores) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9694,7 +10630,7 @@ func (s GetGameHighScores) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetGameHighScores) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9822,6 +10758,19 @@ func (s *GetGameHighScores) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetGameHighScores) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetGameHighScores) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9829,7 +10778,7 @@ func (s GetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetMyCommands) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scope.Set {
@@ -9889,6 +10838,19 @@ func (s *GetMyCommands) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetMyCommands) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetMyCommands) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9896,7 +10858,7 @@ func (s GetStickerSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9973,6 +10935,19 @@ func (s *GetStickerSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetStickerSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetStickerSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetUpdates) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9980,7 +10955,7 @@ func (s GetUpdates) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetUpdates) encodeFields(e *jx.Encoder) {
 	{
 		if s.Offset.Set {
@@ -10088,6 +11063,19 @@ func (s *GetUpdates) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetUpdates) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetUpdates) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s GetUserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10095,7 +11083,7 @@ func (s GetUserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s GetUserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
 
@@ -10207,6 +11195,19 @@ func (s *GetUserProfilePhotos) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetUserProfilePhotos) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetUserProfilePhotos) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ID as json.
 func (s ID) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -10244,6 +11245,19 @@ func (s *ID) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ID) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ID) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10251,7 +11265,7 @@ func (s InlineKeyboardButton) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineKeyboardButton) encodeFields(e *jx.Encoder) {
 	{
 
@@ -10449,6 +11463,19 @@ func (s *InlineKeyboardButton) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineKeyboardButton) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineKeyboardButton) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineKeyboardMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10456,7 +11483,7 @@ func (s InlineKeyboardMarkup) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineKeyboardMarkup) encodeFields(e *jx.Encoder) {
 	{
 
@@ -10555,6 +11582,19 @@ func (s *InlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineKeyboardMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineKeyboardMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10562,7 +11602,7 @@ func (s InlineQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -10725,6 +11765,19 @@ func (s *InlineQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes InlineQueryChatType as json.
 func (s InlineQueryChatType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
@@ -10756,6 +11809,19 @@ func (s *InlineQueryChatType) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryChatType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryChatType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes InlineQueryResult as json.
@@ -11004,6 +12070,19 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResult) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResult) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultArticle) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11011,7 +12090,7 @@ func (s InlineQueryResultArticle) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultArticle) encodeFields(e *jx.Encoder) {
 	{
 
@@ -11242,6 +12321,19 @@ func (s *InlineQueryResultArticle) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultArticle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultArticle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11249,7 +12341,7 @@ func (s InlineQueryResultAudio) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultAudio) encodeFields(e *jx.Encoder) {
 	{
 
@@ -11493,6 +12585,19 @@ func (s *InlineQueryResultAudio) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultAudio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultAudio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11500,7 +12605,7 @@ func (s InlineQueryResultCachedAudio) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedAudio) encodeFields(e *jx.Encoder) {
 	{
 
@@ -11710,6 +12815,19 @@ func (s *InlineQueryResultCachedAudio) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedAudio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedAudio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11717,7 +12835,7 @@ func (s InlineQueryResultCachedDocument) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedDocument) encodeFields(e *jx.Encoder) {
 	{
 
@@ -11963,6 +13081,19 @@ func (s *InlineQueryResultCachedDocument) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedDocument) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedDocument) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedGif) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11970,7 +13101,7 @@ func (s InlineQueryResultCachedGif) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedGif) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12198,6 +13329,19 @@ func (s *InlineQueryResultCachedGif) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedGif) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedGif) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedMpeg4Gif) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12205,7 +13349,7 @@ func (s InlineQueryResultCachedMpeg4Gif) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedMpeg4Gif) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12433,6 +13577,19 @@ func (s *InlineQueryResultCachedMpeg4Gif) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedMpeg4Gif) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedMpeg4Gif) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12440,7 +13597,7 @@ func (s InlineQueryResultCachedPhoto) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedPhoto) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12685,6 +13842,19 @@ func (s *InlineQueryResultCachedPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedSticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12692,7 +13862,7 @@ func (s InlineQueryResultCachedSticker) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedSticker) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12821,6 +13991,19 @@ func (s *InlineQueryResultCachedSticker) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedSticker) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedSticker) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12828,7 +14011,7 @@ func (s InlineQueryResultCachedVideo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedVideo) encodeFields(e *jx.Encoder) {
 	{
 
@@ -13074,6 +14257,19 @@ func (s *InlineQueryResultCachedVideo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedVideo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedVideo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultCachedVoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13081,7 +14277,7 @@ func (s InlineQueryResultCachedVoice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultCachedVoice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -13310,6 +14506,19 @@ func (s *InlineQueryResultCachedVoice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultCachedVoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultCachedVoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultContact) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13317,7 +14526,7 @@ func (s InlineQueryResultContact) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultContact) encodeFields(e *jx.Encoder) {
 	{
 
@@ -13550,6 +14759,19 @@ func (s *InlineQueryResultContact) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultContact) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultContact) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13557,7 +14779,7 @@ func (s InlineQueryResultDocument) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultDocument) encodeFields(e *jx.Encoder) {
 	{
 
@@ -13853,6 +15075,19 @@ func (s *InlineQueryResultDocument) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultDocument) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultDocument) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13860,7 +15095,7 @@ func (s InlineQueryResultGame) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultGame) encodeFields(e *jx.Encoder) {
 	{
 
@@ -13972,6 +15207,19 @@ func (s *InlineQueryResultGame) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultGame) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultGame) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultGif) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13979,7 +15227,7 @@ func (s InlineQueryResultGif) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultGif) encodeFields(e *jx.Encoder) {
 	{
 
@@ -14274,6 +15522,19 @@ func (s *InlineQueryResultGif) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultGif) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultGif) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14281,7 +15542,7 @@ func (s InlineQueryResultLocation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultLocation) encodeFields(e *jx.Encoder) {
 	{
 
@@ -14566,6 +15827,19 @@ func (s *InlineQueryResultLocation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultLocation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultLocation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultMpeg4Gif) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14573,7 +15847,7 @@ func (s InlineQueryResultMpeg4Gif) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultMpeg4Gif) encodeFields(e *jx.Encoder) {
 	{
 
@@ -14868,6 +16142,19 @@ func (s *InlineQueryResultMpeg4Gif) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultMpeg4Gif) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultMpeg4Gif) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14875,7 +16162,7 @@ func (s InlineQueryResultPhoto) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultPhoto) encodeFields(e *jx.Encoder) {
 	{
 
@@ -15153,6 +16440,19 @@ func (s *InlineQueryResultPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultVenue) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15160,7 +16460,7 @@ func (s InlineQueryResultVenue) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultVenue) encodeFields(e *jx.Encoder) {
 	{
 
@@ -15463,6 +16763,19 @@ func (s *InlineQueryResultVenue) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultVenue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultVenue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15470,7 +16783,7 @@ func (s InlineQueryResultVideo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultVideo) encodeFields(e *jx.Encoder) {
 	{
 
@@ -15784,6 +17097,19 @@ func (s *InlineQueryResultVideo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultVideo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultVideo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InlineQueryResultVoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15791,7 +17117,7 @@ func (s InlineQueryResultVoice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InlineQueryResultVoice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -16018,6 +17344,19 @@ func (s *InlineQueryResultVoice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InlineQueryResultVoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InlineQueryResultVoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputContactMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16025,7 +17364,7 @@ func (s InputContactMessageContent) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputContactMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
@@ -16154,6 +17493,19 @@ func (s *InputContactMessageContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputContactMessageContent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputContactMessageContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputInvoiceMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16161,7 +17513,7 @@ func (s InputInvoiceMessageContent) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputInvoiceMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
@@ -16591,6 +17943,19 @@ func (s *InputInvoiceMessageContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputInvoiceMessageContent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputInvoiceMessageContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputLocationMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16598,7 +17963,7 @@ func (s InputLocationMessageContent) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputLocationMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
@@ -16761,6 +18126,19 @@ func (s *InputLocationMessageContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputLocationMessageContent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputLocationMessageContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes InputMedia as json.
 func (s InputMedia) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -16875,6 +18253,19 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputMedia) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputMedia) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputMediaAnimation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16882,7 +18273,7 @@ func (s InputMediaAnimation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputMediaAnimation) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17089,6 +18480,19 @@ func (s *InputMediaAnimation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputMediaAnimation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputMediaAnimation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputMediaAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17096,7 +18500,7 @@ func (s InputMediaAudio) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputMediaAudio) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17303,6 +18707,19 @@ func (s *InputMediaAudio) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputMediaAudio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputMediaAudio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputMediaDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17310,7 +18727,7 @@ func (s InputMediaDocument) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputMediaDocument) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17483,6 +18900,19 @@ func (s *InputMediaDocument) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputMediaDocument) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputMediaDocument) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputMediaPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17490,7 +18920,7 @@ func (s InputMediaPhoto) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputMediaPhoto) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17629,6 +19059,19 @@ func (s *InputMediaPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputMediaPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputMediaPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputMediaVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17636,7 +19079,7 @@ func (s InputMediaVideo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputMediaVideo) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17861,6 +19304,19 @@ func (s *InputMediaVideo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputMediaVideo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputMediaVideo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes InputMessageContent as json.
 func (s InputMessageContent) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -18038,6 +19494,19 @@ func (s *InputMessageContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputMessageContent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputMessageContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputTextMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18045,7 +19514,7 @@ func (s InputTextMessageContent) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputTextMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18184,6 +19653,19 @@ func (s *InputTextMessageContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputTextMessageContent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputTextMessageContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s InputVenueMessageContent) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18191,7 +19673,7 @@ func (s InputVenueMessageContent) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s InputVenueMessageContent) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18390,6 +19872,19 @@ func (s *InputVenueMessageContent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s InputVenueMessageContent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *InputVenueMessageContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Invoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18397,7 +19892,7 @@ func (s Invoice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Invoice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18546,6 +20041,19 @@ func (s *Invoice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Invoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Invoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes KeyboardButton as json.
 func (s KeyboardButton) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -18581,6 +20089,19 @@ func (s *KeyboardButton) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s KeyboardButton) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *KeyboardButton) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s KeyboardButtonObject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18588,7 +20109,7 @@ func (s KeyboardButtonObject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s KeyboardButtonObject) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18716,6 +20237,19 @@ func (s *KeyboardButtonObject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s KeyboardButtonObject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *KeyboardButtonObject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s KeyboardButtonPollType) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18723,7 +20257,7 @@ func (s KeyboardButtonPollType) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s KeyboardButtonPollType) encodeFields(e *jx.Encoder) {
 	{
 		if s.Type.Set {
@@ -18766,6 +20300,19 @@ func (s *KeyboardButtonPollType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s KeyboardButtonPollType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *KeyboardButtonPollType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s LabeledPrice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18773,7 +20320,7 @@ func (s LabeledPrice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s LabeledPrice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18868,6 +20415,19 @@ func (s *LabeledPrice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s LabeledPrice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *LabeledPrice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s LeaveChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18875,7 +20435,7 @@ func (s LeaveChat) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s LeaveChat) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18950,6 +20510,19 @@ func (s *LeaveChat) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s LeaveChat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *LeaveChat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Location) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18957,7 +20530,7 @@ func (s Location) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Location) encodeFields(e *jx.Encoder) {
 	{
 
@@ -19120,6 +20693,19 @@ func (s *Location) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Location) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Location) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s LoginUrl) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19127,7 +20713,7 @@ func (s LoginUrl) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s LoginUrl) encodeFields(e *jx.Encoder) {
 	{
 
@@ -19255,6 +20841,19 @@ func (s *LoginUrl) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s LoginUrl) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *LoginUrl) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s MaskPosition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19262,7 +20861,7 @@ func (s MaskPosition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s MaskPosition) encodeFields(e *jx.Encoder) {
 	{
 
@@ -19393,6 +20992,19 @@ func (s *MaskPosition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s MaskPosition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MaskPosition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Message) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19400,7 +21012,7 @@ func (s Message) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Message) encodeFields(e *jx.Encoder) {
 	{
 
@@ -20514,6 +22126,19 @@ func (s *Message) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Message) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Message) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s MessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20521,7 +22146,7 @@ func (s MessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s MessageAutoDeleteTimerChanged) encodeFields(e *jx.Encoder) {
 	{
 
@@ -20598,6 +22223,19 @@ func (s *MessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s MessageAutoDeleteTimerChanged) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MessageAutoDeleteTimerChanged) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s MessageEntity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20605,7 +22243,7 @@ func (s MessageEntity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s MessageEntity) encodeFields(e *jx.Encoder) {
 	{
 
@@ -20768,6 +22406,19 @@ func (s *MessageEntity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s MessageEntity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MessageEntity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes MessageEntityType as json.
 func (s MessageEntityType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
@@ -20821,6 +22472,19 @@ func (s *MessageEntityType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s MessageEntityType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MessageEntityType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s MessageId) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20828,7 +22492,7 @@ func (s MessageId) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s MessageId) encodeFields(e *jx.Encoder) {
 	{
 
@@ -20905,6 +22569,19 @@ func (s *MessageId) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s MessageId) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MessageId) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Animation as json.
 func (o OptAnimation) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -20925,6 +22602,19 @@ func (o *OptAnimation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptAnimation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptAnimation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Audio as json.
 func (o OptAudio) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -20943,6 +22633,19 @@ func (o *OptAudio) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptAudio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptAudio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes bool as json.
@@ -20967,6 +22670,19 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptBool) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptBool) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes BotCommandScope as json.
 func (o OptBotCommandScope) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -20985,6 +22701,19 @@ func (o *OptBotCommandScope) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptBotCommandScope) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptBotCommandScope) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes CallbackQuery as json.
@@ -21007,6 +22736,19 @@ func (o *OptCallbackQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptCallbackQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptCallbackQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Chat as json.
 func (o OptChat) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21025,6 +22767,19 @@ func (o *OptChat) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ChatInviteLink as json.
@@ -21047,6 +22802,19 @@ func (o *OptChatInviteLink) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChatInviteLink) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChatInviteLink) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ChatJoinRequest as json.
 func (o OptChatJoinRequest) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21065,6 +22833,19 @@ func (o *OptChatJoinRequest) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChatJoinRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChatJoinRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ChatLocation as json.
@@ -21087,6 +22868,19 @@ func (o *OptChatLocation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChatLocation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChatLocation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ChatMember as json.
 func (o OptChatMember) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21105,6 +22899,19 @@ func (o *OptChatMember) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ChatMemberUpdated as json.
@@ -21127,6 +22934,19 @@ func (o *OptChatMemberUpdated) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChatMemberUpdated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChatMemberUpdated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ChatPermissions as json.
 func (o OptChatPermissions) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21145,6 +22965,19 @@ func (o *OptChatPermissions) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChatPermissions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChatPermissions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ChatPhoto as json.
@@ -21167,6 +23000,19 @@ func (o *OptChatPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChatPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChatPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ChosenInlineResult as json.
 func (o OptChosenInlineResult) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21185,6 +23031,19 @@ func (o *OptChosenInlineResult) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptChosenInlineResult) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptChosenInlineResult) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes Contact as json.
@@ -21207,6 +23066,19 @@ func (o *OptContact) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptContact) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptContact) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes CopyMessageReplyMarkup as json.
 func (o OptCopyMessageReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21225,6 +23097,19 @@ func (o *OptCopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptCopyMessageReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptCopyMessageReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes DeleteMyCommands as json.
@@ -21247,6 +23132,19 @@ func (o *OptDeleteMyCommands) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptDeleteMyCommands) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptDeleteMyCommands) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes DeleteWebhook as json.
 func (o OptDeleteWebhook) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21265,6 +23163,19 @@ func (o *OptDeleteWebhook) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptDeleteWebhook) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptDeleteWebhook) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes Dice as json.
@@ -21287,6 +23198,19 @@ func (o *OptDice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptDice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptDice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Document as json.
 func (o OptDocument) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21307,6 +23231,19 @@ func (o *OptDocument) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptDocument) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptDocument) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes File as json.
 func (o OptFile) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21325,6 +23262,19 @@ func (o *OptFile) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes float64 as json.
@@ -21349,6 +23299,19 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptFloat64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptFloat64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Game as json.
 func (o OptGame) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21367,6 +23330,19 @@ func (o *OptGame) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptGame) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptGame) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes GetMyCommands as json.
@@ -21389,6 +23365,19 @@ func (o *OptGetMyCommands) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptGetMyCommands) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptGetMyCommands) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes GetUpdates as json.
 func (o OptGetUpdates) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21407,6 +23396,19 @@ func (o *OptGetUpdates) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptGetUpdates) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptGetUpdates) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ID as json.
@@ -21429,6 +23431,19 @@ func (o *OptID) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptID) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptID) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes InlineKeyboardMarkup as json.
 func (o OptInlineKeyboardMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21447,6 +23462,19 @@ func (o *OptInlineKeyboardMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInlineKeyboardMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInlineKeyboardMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes InlineQuery as json.
@@ -21469,6 +23497,19 @@ func (o *OptInlineQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInlineQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInlineQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes InlineQueryChatType as json.
 func (o OptInlineQueryChatType) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21489,6 +23530,19 @@ func (o *OptInlineQueryChatType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInlineQueryChatType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInlineQueryChatType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes InputMessageContent as json.
 func (o OptInputMessageContent) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21507,6 +23561,19 @@ func (o *OptInputMessageContent) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInputMessageContent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInputMessageContent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes int as json.
@@ -21531,6 +23598,19 @@ func (o *OptInt) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInt) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInt) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes int64 as json.
 func (o OptInt64) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21553,6 +23633,19 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInt64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInt64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Invoice as json.
 func (o OptInvoice) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21571,6 +23664,19 @@ func (o *OptInvoice) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInvoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInvoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes KeyboardButtonPollType as json.
@@ -21593,6 +23699,19 @@ func (o *OptKeyboardButtonPollType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptKeyboardButtonPollType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptKeyboardButtonPollType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Location as json.
 func (o OptLocation) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21611,6 +23730,19 @@ func (o *OptLocation) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptLocation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptLocation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes LoginUrl as json.
@@ -21633,6 +23765,19 @@ func (o *OptLoginUrl) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptLoginUrl) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptLoginUrl) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes MaskPosition as json.
 func (o OptMaskPosition) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21651,6 +23796,19 @@ func (o *OptMaskPosition) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMaskPosition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMaskPosition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes Message as json.
@@ -21673,6 +23831,19 @@ func (o *OptMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes MessageAutoDeleteTimerChanged as json.
 func (o OptMessageAutoDeleteTimerChanged) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21691,6 +23862,19 @@ func (o *OptMessageAutoDeleteTimerChanged) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMessageAutoDeleteTimerChanged) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMessageAutoDeleteTimerChanged) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes MessageId as json.
@@ -21713,6 +23897,19 @@ func (o *OptMessageId) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMessageId) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMessageId) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes OrderInfo as json.
 func (o OptOrderInfo) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21731,6 +23928,19 @@ func (o *OptOrderInfo) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptOrderInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptOrderInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes PassportData as json.
@@ -21753,6 +23963,19 @@ func (o *OptPassportData) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPassportData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPassportData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes PassportFile as json.
 func (o OptPassportFile) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21771,6 +23994,19 @@ func (o *OptPassportFile) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPassportFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPassportFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes PhotoSize as json.
@@ -21793,6 +24029,19 @@ func (o *OptPhotoSize) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPhotoSize) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPhotoSize) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Poll as json.
 func (o OptPoll) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21811,6 +24060,19 @@ func (o *OptPoll) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPoll) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPoll) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes PollAnswer as json.
@@ -21833,6 +24095,19 @@ func (o *OptPollAnswer) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPollAnswer) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPollAnswer) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes PreCheckoutQuery as json.
 func (o OptPreCheckoutQuery) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21851,6 +24126,19 @@ func (o *OptPreCheckoutQuery) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPreCheckoutQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPreCheckoutQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ProximityAlertTriggered as json.
@@ -21873,6 +24161,19 @@ func (o *OptProximityAlertTriggered) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptProximityAlertTriggered) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptProximityAlertTriggered) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Response as json.
 func (o OptResponse) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21891,6 +24192,19 @@ func (o *OptResponse) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptResponse) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptResponse) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendAnimationReplyMarkup as json.
@@ -21913,6 +24227,19 @@ func (o *OptSendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendAnimationReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendAnimationReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendAudioReplyMarkup as json.
 func (o OptSendAudioReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21931,6 +24258,19 @@ func (o *OptSendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendAudioReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendAudioReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendContactReplyMarkup as json.
@@ -21953,6 +24293,19 @@ func (o *OptSendContactReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendContactReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendContactReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendDiceReplyMarkup as json.
 func (o OptSendDiceReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -21971,6 +24324,19 @@ func (o *OptSendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendDiceReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendDiceReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendDocumentReplyMarkup as json.
@@ -21993,6 +24359,19 @@ func (o *OptSendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendDocumentReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendDocumentReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendLocationReplyMarkup as json.
 func (o OptSendLocationReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22011,6 +24390,19 @@ func (o *OptSendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendLocationReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendLocationReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendMessageReplyMarkup as json.
@@ -22033,6 +24425,19 @@ func (o *OptSendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendMessageReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendMessageReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendPhotoReplyMarkup as json.
 func (o OptSendPhotoReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22051,6 +24456,19 @@ func (o *OptSendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendPhotoReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendPhotoReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendPollReplyMarkup as json.
@@ -22073,6 +24491,19 @@ func (o *OptSendPollReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendPollReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendPollReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendStickerReplyMarkup as json.
 func (o OptSendStickerReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22091,6 +24522,19 @@ func (o *OptSendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendStickerReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendStickerReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendVenueReplyMarkup as json.
@@ -22113,6 +24557,19 @@ func (o *OptSendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendVenueReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendVenueReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendVideoNoteReplyMarkup as json.
 func (o OptSendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22131,6 +24588,19 @@ func (o *OptSendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendVideoNoteReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendVideoNoteReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendVideoReplyMarkup as json.
@@ -22153,6 +24623,19 @@ func (o *OptSendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendVideoReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendVideoReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendVoiceReplyMarkup as json.
 func (o OptSendVoiceReplyMarkup) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22171,6 +24654,19 @@ func (o *OptSendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSendVoiceReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSendVoiceReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ShippingAddress as json.
@@ -22193,6 +24689,19 @@ func (o *OptShippingAddress) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptShippingAddress) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptShippingAddress) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ShippingQuery as json.
 func (o OptShippingQuery) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22213,6 +24722,19 @@ func (o *OptShippingQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptShippingQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptShippingQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Sticker as json.
 func (o OptSticker) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22231,6 +24753,19 @@ func (o *OptSticker) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSticker) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSticker) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes string as json.
@@ -22255,6 +24790,19 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptString) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SuccessfulPayment as json.
 func (o OptSuccessfulPayment) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22273,6 +24821,19 @@ func (o *OptSuccessfulPayment) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSuccessfulPayment) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSuccessfulPayment) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes url.URL as json.
@@ -22297,6 +24858,19 @@ func (o *OptURI) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptURI) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptURI) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes User as json.
 func (o OptUser) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22315,6 +24889,19 @@ func (o *OptUser) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptUser) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptUser) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes UserProfilePhotos as json.
@@ -22337,6 +24924,19 @@ func (o *OptUserProfilePhotos) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptUserProfilePhotos) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptUserProfilePhotos) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes Venue as json.
 func (o OptVenue) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22355,6 +24955,19 @@ func (o *OptVenue) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptVenue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptVenue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes Video as json.
@@ -22377,6 +24990,19 @@ func (o *OptVideo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptVideo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptVideo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes VideoNote as json.
 func (o OptVideoNote) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22395,6 +25021,19 @@ func (o *OptVideoNote) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptVideoNote) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptVideoNote) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes Voice as json.
@@ -22417,6 +25056,19 @@ func (o *OptVoice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptVoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptVoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes VoiceChatEnded as json.
 func (o OptVoiceChatEnded) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22435,6 +25087,19 @@ func (o *OptVoiceChatEnded) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptVoiceChatEnded) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptVoiceChatEnded) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes VoiceChatParticipantsInvited as json.
@@ -22457,6 +25122,19 @@ func (o *OptVoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptVoiceChatParticipantsInvited) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptVoiceChatParticipantsInvited) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes VoiceChatScheduled as json.
 func (o OptVoiceChatScheduled) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -22475,6 +25153,19 @@ func (o *OptVoiceChatScheduled) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptVoiceChatScheduled) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptVoiceChatScheduled) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes WebhookInfo as json.
@@ -22497,6 +25188,19 @@ func (o *OptWebhookInfo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptWebhookInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptWebhookInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s OrderInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -22504,7 +25208,7 @@ func (s OrderInfo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s OrderInfo) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -22598,6 +25302,19 @@ func (s *OrderInfo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OrderInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OrderInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportData) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -22605,7 +25322,7 @@ func (s PassportData) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportData) encodeFields(e *jx.Encoder) {
 	{
 
@@ -22706,6 +25423,19 @@ func (s *PassportData) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes PassportElementError as json.
@@ -22874,6 +25604,19 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementError) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementError) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorDataField) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -22881,7 +25624,7 @@ func (s PassportElementErrorDataField) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorDataField) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23013,6 +25756,19 @@ func (s *PassportElementErrorDataField) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorDataField) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorDataField) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23020,7 +25776,7 @@ func (s PassportElementErrorFile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorFile) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23134,6 +25890,19 @@ func (s *PassportElementErrorFile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23141,7 +25910,7 @@ func (s PassportElementErrorFiles) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorFiles) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23267,6 +26036,19 @@ func (s *PassportElementErrorFiles) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorFiles) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorFiles) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23274,7 +26056,7 @@ func (s PassportElementErrorFrontSide) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorFrontSide) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23388,6 +26170,19 @@ func (s *PassportElementErrorFrontSide) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorFrontSide) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorFrontSide) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23395,7 +26190,7 @@ func (s PassportElementErrorReverseSide) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorReverseSide) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23509,6 +26304,19 @@ func (s *PassportElementErrorReverseSide) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorReverseSide) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorReverseSide) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorSelfie) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23516,7 +26324,7 @@ func (s PassportElementErrorSelfie) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorSelfie) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23630,6 +26438,19 @@ func (s *PassportElementErrorSelfie) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorSelfie) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorSelfie) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23637,7 +26458,7 @@ func (s PassportElementErrorTranslationFile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorTranslationFile) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23751,6 +26572,19 @@ func (s *PassportElementErrorTranslationFile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorTranslationFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorTranslationFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23758,7 +26592,7 @@ func (s PassportElementErrorTranslationFiles) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorTranslationFiles) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23884,6 +26718,19 @@ func (s *PassportElementErrorTranslationFiles) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorTranslationFiles) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorTranslationFiles) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23891,7 +26738,7 @@ func (s PassportElementErrorUnspecified) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportElementErrorUnspecified) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24005,6 +26852,19 @@ func (s *PassportElementErrorUnspecified) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportElementErrorUnspecified) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportElementErrorUnspecified) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PassportFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24012,7 +26872,7 @@ func (s PassportFile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PassportFile) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24143,6 +27003,19 @@ func (s *PassportFile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PassportFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PassportFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PhotoSize) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24150,7 +27023,7 @@ func (s PhotoSize) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PhotoSize) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24298,6 +27171,19 @@ func (s *PhotoSize) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PhotoSize) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PhotoSize) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PinChatMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24305,7 +27191,7 @@ func (s PinChatMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PinChatMessage) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24415,6 +27301,19 @@ func (s *PinChatMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PinChatMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PinChatMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Poll) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24422,7 +27321,7 @@ func (s Poll) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Poll) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24730,6 +27629,19 @@ func (s *Poll) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Poll) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Poll) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PollAnswer) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24737,7 +27649,7 @@ func (s PollAnswer) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PollAnswer) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24860,6 +27772,19 @@ func (s *PollAnswer) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PollAnswer) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PollAnswer) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PollOption) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24867,7 +27792,7 @@ func (s PollOption) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PollOption) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24962,6 +27887,19 @@ func (s *PollOption) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PollOption) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PollOption) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes PollType as json.
 func (s PollType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
@@ -24989,6 +27927,19 @@ func (s *PollType) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PollType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PollType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PreCheckoutQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24996,7 +27947,7 @@ func (s PreCheckoutQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PreCheckoutQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -25177,6 +28128,19 @@ func (s *PreCheckoutQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PreCheckoutQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PreCheckoutQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s PromoteChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25184,7 +28148,7 @@ func (s PromoteChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s PromoteChatMember) encodeFields(e *jx.Encoder) {
 	{
 
@@ -25465,6 +28429,19 @@ func (s *PromoteChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s PromoteChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PromoteChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ProximityAlertTriggered) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25472,7 +28449,7 @@ func (s ProximityAlertTriggered) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ProximityAlertTriggered) encodeFields(e *jx.Encoder) {
 	{
 
@@ -25581,6 +28558,19 @@ func (s *ProximityAlertTriggered) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ProximityAlertTriggered) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ProximityAlertTriggered) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25588,7 +28578,7 @@ func (s ReplyKeyboardMarkup) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ReplyKeyboardMarkup) encodeFields(e *jx.Encoder) {
 	{
 
@@ -25755,6 +28745,19 @@ func (s *ReplyKeyboardMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ReplyKeyboardMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ReplyKeyboardMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ReplyKeyboardRemove) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25762,7 +28765,7 @@ func (s ReplyKeyboardRemove) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ReplyKeyboardRemove) encodeFields(e *jx.Encoder) {
 	{
 
@@ -25856,6 +28859,19 @@ func (s *ReplyKeyboardRemove) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ReplyKeyboardRemove) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ReplyKeyboardRemove) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Response) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25863,7 +28879,7 @@ func (s Response) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Response) encodeFields(e *jx.Encoder) {
 	{
 		if s.MigrateToChatID.Set {
@@ -25923,6 +28939,19 @@ func (s *Response) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Response) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Response) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s RestrictChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25930,7 +28959,7 @@ func (s RestrictChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s RestrictChatMember) encodeFields(e *jx.Encoder) {
 	{
 
@@ -26056,6 +29085,19 @@ func (s *RestrictChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s RestrictChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *RestrictChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Result) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26063,7 +29105,7 @@ func (s Result) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Result) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -26158,6 +29200,19 @@ func (s *Result) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Result) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Result) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultArrayOfBotCommand) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26165,7 +29220,7 @@ func (s ResultArrayOfBotCommand) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultArrayOfBotCommand) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
@@ -26271,6 +29326,19 @@ func (s *ResultArrayOfBotCommand) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultArrayOfBotCommand) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultArrayOfBotCommand) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultArrayOfChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26278,7 +29346,7 @@ func (s ResultArrayOfChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultArrayOfChatMember) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
@@ -26384,6 +29452,19 @@ func (s *ResultArrayOfChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultArrayOfChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultArrayOfChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultArrayOfGameHighScore) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26391,7 +29472,7 @@ func (s ResultArrayOfGameHighScore) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultArrayOfGameHighScore) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
@@ -26497,6 +29578,19 @@ func (s *ResultArrayOfGameHighScore) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultArrayOfGameHighScore) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultArrayOfGameHighScore) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultArrayOfMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26504,7 +29598,7 @@ func (s ResultArrayOfMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultArrayOfMessage) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
@@ -26610,6 +29704,19 @@ func (s *ResultArrayOfMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultArrayOfMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultArrayOfMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultArrayOfUpdate) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26617,7 +29724,7 @@ func (s ResultArrayOfUpdate) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultArrayOfUpdate) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result != nil {
@@ -26723,6 +29830,19 @@ func (s *ResultArrayOfUpdate) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultArrayOfUpdate) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultArrayOfUpdate) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26730,7 +29850,7 @@ func (s ResultChat) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultChat) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -26825,6 +29945,19 @@ func (s *ResultChat) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultChat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultChat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26832,7 +29965,7 @@ func (s ResultChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -26927,6 +30060,19 @@ func (s *ResultChatInviteLink) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultChatInviteLink) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultChatInviteLink) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26934,7 +30080,7 @@ func (s ResultChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultChatMember) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27029,6 +30175,19 @@ func (s *ResultChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27036,7 +30195,7 @@ func (s ResultFile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultFile) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27131,6 +30290,19 @@ func (s *ResultFile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultInt) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27138,7 +30310,7 @@ func (s ResultInt) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultInt) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27233,6 +30405,19 @@ func (s *ResultInt) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultInt) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultInt) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27240,7 +30425,7 @@ func (s ResultMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultMessage) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27335,6 +30520,19 @@ func (s *ResultMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultMessageId) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27342,7 +30540,7 @@ func (s ResultMessageId) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultMessageId) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27437,6 +30635,19 @@ func (s *ResultMessageId) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultMessageId) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultMessageId) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultPoll) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27444,7 +30655,7 @@ func (s ResultPoll) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultPoll) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27539,6 +30750,19 @@ func (s *ResultPoll) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultPoll) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultPoll) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultString) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27546,7 +30770,7 @@ func (s ResultString) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultString) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27641,6 +30865,19 @@ func (s *ResultString) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultString) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultUser) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27648,7 +30885,7 @@ func (s ResultUser) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultUser) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27743,6 +30980,19 @@ func (s *ResultUser) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultUser) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultUser) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultUserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27750,7 +31000,7 @@ func (s ResultUserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultUserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27845,6 +31095,19 @@ func (s *ResultUserProfilePhotos) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultUserProfilePhotos) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultUserProfilePhotos) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ResultWebhookInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27852,7 +31115,7 @@ func (s ResultWebhookInfo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ResultWebhookInfo) encodeFields(e *jx.Encoder) {
 	{
 		if s.Result.Set {
@@ -27947,6 +31210,19 @@ func (s *ResultWebhookInfo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ResultWebhookInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ResultWebhookInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s RevokeChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27954,7 +31230,7 @@ func (s RevokeChatInviteLink) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s RevokeChatInviteLink) encodeFields(e *jx.Encoder) {
 	{
 
@@ -28047,6 +31323,19 @@ func (s *RevokeChatInviteLink) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s RevokeChatInviteLink) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *RevokeChatInviteLink) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendAnimation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28054,7 +31343,7 @@ func (s SendAnimation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendAnimation) encodeFields(e *jx.Encoder) {
 	{
 
@@ -28346,6 +31635,19 @@ func (s *SendAnimation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendAnimation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendAnimation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendAnimationReplyMarkup as json.
 func (s SendAnimationReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -28427,6 +31729,19 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendAnimationReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendAnimationReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendAudio) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28434,7 +31749,7 @@ func (s SendAudio) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendAudio) encodeFields(e *jx.Encoder) {
 	{
 
@@ -28726,6 +32041,19 @@ func (s *SendAudio) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendAudio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendAudio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendAudioReplyMarkup as json.
 func (s SendAudioReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -28807,6 +32135,19 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendAudioReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendAudioReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendChatAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28814,7 +32155,7 @@ func (s SendChatAction) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendChatAction) encodeFields(e *jx.Encoder) {
 	{
 
@@ -28907,6 +32248,19 @@ func (s *SendChatAction) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendChatAction) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendChatAction) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendContact) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28914,7 +32268,7 @@ func (s SendContact) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendContact) encodeFields(e *jx.Encoder) {
 	{
 
@@ -29128,6 +32482,19 @@ func (s *SendContact) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendContact) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendContact) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendContactReplyMarkup as json.
 func (s SendContactReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -29209,6 +32576,19 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendContactReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendContactReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendDice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29216,7 +32596,7 @@ func (s SendDice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendDice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -29376,6 +32756,19 @@ func (s *SendDice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendDice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendDice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendDiceReplyMarkup as json.
 func (s SendDiceReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -29457,6 +32850,19 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendDiceReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendDiceReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendDocument) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29464,7 +32870,7 @@ func (s SendDocument) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendDocument) encodeFields(e *jx.Encoder) {
 	{
 
@@ -29722,6 +33128,19 @@ func (s *SendDocument) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendDocument) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendDocument) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendDocumentReplyMarkup as json.
 func (s SendDocumentReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -29803,6 +33222,19 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendDocumentReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendDocumentReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendGame) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29810,7 +33242,7 @@ func (s SendGame) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendGame) encodeFields(e *jx.Encoder) {
 	{
 
@@ -29973,6 +33405,19 @@ func (s *SendGame) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendGame) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendGame) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendInvoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29980,7 +33425,7 @@ func (s SendInvoice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendInvoice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -30512,6 +33957,19 @@ func (s *SendInvoice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendInvoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendInvoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30519,7 +33977,7 @@ func (s SendLocation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendLocation) encodeFields(e *jx.Encoder) {
 	{
 
@@ -30767,6 +34225,19 @@ func (s *SendLocation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendLocation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendLocation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendLocationReplyMarkup as json.
 func (s SendLocationReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -30848,6 +34319,19 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendLocationReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendLocationReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendMediaGroup) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30855,7 +34339,7 @@ func (s SendMediaGroup) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendMediaGroup) encodeFields(e *jx.Encoder) {
 	{
 
@@ -31009,6 +34493,19 @@ func (s *SendMediaGroup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendMediaGroup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendMediaGroup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendMediaGroupMediaItem as json.
 func (s SendMediaGroupMediaItem) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -31110,6 +34607,19 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendMediaGroupMediaItem) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendMediaGroupMediaItem) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31117,7 +34627,7 @@ func (s SendMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendMessage) encodeFields(e *jx.Encoder) {
 	{
 
@@ -31341,6 +34851,19 @@ func (s *SendMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendMessageReplyMarkup as json.
 func (s SendMessageReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -31422,6 +34945,19 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendMessageReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendMessageReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31429,7 +34965,7 @@ func (s SendPhoto) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendPhoto) encodeFields(e *jx.Encoder) {
 	{
 
@@ -31653,6 +35189,19 @@ func (s *SendPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendPhotoReplyMarkup as json.
 func (s SendPhotoReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -31734,6 +35283,19 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendPhotoReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendPhotoReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendPoll) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31741,7 +35303,7 @@ func (s SendPoll) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendPoll) encodeFields(e *jx.Encoder) {
 	{
 
@@ -32115,6 +35677,19 @@ func (s *SendPoll) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendPoll) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendPoll) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendPollReplyMarkup as json.
 func (s SendPollReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -32196,6 +35771,19 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendPollReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendPollReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendSticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32203,7 +35791,7 @@ func (s SendSticker) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendSticker) encodeFields(e *jx.Encoder) {
 	{
 
@@ -32364,6 +35952,19 @@ func (s *SendSticker) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendSticker) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendSticker) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendStickerReplyMarkup as json.
 func (s SendStickerReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -32445,6 +36046,19 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendStickerReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendStickerReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendVenue) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32452,7 +36066,7 @@ func (s SendVenue) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendVenue) encodeFields(e *jx.Encoder) {
 	{
 
@@ -32736,6 +36350,19 @@ func (s *SendVenue) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVenue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVenue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendVenueReplyMarkup as json.
 func (s SendVenueReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -32817,6 +36444,19 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVenueReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVenueReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendVideo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32824,7 +36464,7 @@ func (s SendVideo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendVideo) encodeFields(e *jx.Encoder) {
 	{
 
@@ -33133,6 +36773,19 @@ func (s *SendVideo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVideo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVideo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendVideoNote) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -33140,7 +36793,7 @@ func (s SendVideoNote) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendVideoNote) encodeFields(e *jx.Encoder) {
 	{
 
@@ -33353,6 +37006,19 @@ func (s *SendVideoNote) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVideoNote) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVideoNote) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendVideoNoteReplyMarkup as json.
 func (s SendVideoNoteReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -33432,6 +37098,19 @@ func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.Errorf("inferred invalid type: %s", s.Type)
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVideoNoteReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVideoNoteReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes SendVideoReplyMarkup as json.
@@ -33515,6 +37194,19 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVideoReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVideoReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SendVoice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -33522,7 +37214,7 @@ func (s SendVoice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SendVoice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -33763,6 +37455,19 @@ func (s *SendVoice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVoice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVoice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes SendVoiceReplyMarkup as json.
 func (s SendVoiceReplyMarkup) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -33844,6 +37549,19 @@ func (s *SendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SendVoiceReplyMarkup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SendVoiceReplyMarkup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -33851,7 +37569,7 @@ func (s SetChatAdministratorCustomTitle) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetChatAdministratorCustomTitle) encodeFields(e *jx.Encoder) {
 	{
 
@@ -33962,6 +37680,19 @@ func (s *SetChatAdministratorCustomTitle) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetChatAdministratorCustomTitle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetChatAdministratorCustomTitle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetChatDescription) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -33969,7 +37700,7 @@ func (s SetChatDescription) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetChatDescription) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34061,6 +37792,19 @@ func (s *SetChatDescription) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetChatDescription) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetChatDescription) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetChatPermissions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34068,7 +37812,7 @@ func (s SetChatPermissions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetChatPermissions) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34159,6 +37903,19 @@ func (s *SetChatPermissions) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetChatPermissions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetChatPermissions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34166,7 +37923,7 @@ func (s SetChatPhoto) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetChatPhoto) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34259,6 +38016,19 @@ func (s *SetChatPhoto) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetChatPhoto) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetChatPhoto) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetChatStickerSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34266,7 +38036,7 @@ func (s SetChatStickerSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetChatStickerSet) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34359,6 +38129,19 @@ func (s *SetChatStickerSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetChatStickerSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetChatStickerSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetChatTitle) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34366,7 +38149,7 @@ func (s SetChatTitle) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetChatTitle) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34459,6 +38242,19 @@ func (s *SetChatTitle) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetChatTitle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetChatTitle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetGameScore) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34466,7 +38262,7 @@ func (s SetGameScore) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetGameScore) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34646,6 +38442,19 @@ func (s *SetGameScore) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetGameScore) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetGameScore) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34653,7 +38462,7 @@ func (s SetMyCommands) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetMyCommands) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34774,6 +38583,19 @@ func (s *SetMyCommands) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetMyCommands) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetMyCommands) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetPassportDataErrors) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34781,7 +38603,7 @@ func (s SetPassportDataErrors) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetPassportDataErrors) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34886,6 +38708,19 @@ func (s *SetPassportDataErrors) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetPassportDataErrors) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetPassportDataErrors) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetStickerPositionInSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34893,7 +38728,7 @@ func (s SetStickerPositionInSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetStickerPositionInSet) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34988,6 +38823,19 @@ func (s *SetStickerPositionInSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetStickerPositionInSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetStickerPositionInSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetStickerSetThumb) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34995,7 +38843,7 @@ func (s SetStickerSetThumb) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetStickerSetThumb) encodeFields(e *jx.Encoder) {
 	{
 
@@ -35107,6 +38955,19 @@ func (s *SetStickerSetThumb) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetStickerSetThumb) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetStickerSetThumb) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SetWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35114,7 +38975,7 @@ func (s SetWebhook) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SetWebhook) encodeFields(e *jx.Encoder) {
 	{
 
@@ -35289,6 +39150,19 @@ func (s *SetWebhook) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SetWebhook) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SetWebhook) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ShippingAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35296,7 +39170,7 @@ func (s ShippingAddress) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ShippingAddress) encodeFields(e *jx.Encoder) {
 	{
 
@@ -35463,6 +39337,19 @@ func (s *ShippingAddress) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ShippingAddress) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ShippingAddress) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ShippingOption) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35470,7 +39357,7 @@ func (s ShippingOption) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ShippingOption) encodeFields(e *jx.Encoder) {
 	{
 
@@ -35593,6 +39480,19 @@ func (s *ShippingOption) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ShippingOption) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ShippingOption) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s ShippingQuery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35600,7 +39500,7 @@ func (s ShippingQuery) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s ShippingQuery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -35727,6 +39627,19 @@ func (s *ShippingQuery) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s ShippingQuery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ShippingQuery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Sticker) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35734,7 +39647,7 @@ func (s Sticker) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Sticker) encodeFields(e *jx.Encoder) {
 	{
 
@@ -35969,6 +39882,19 @@ func (s *Sticker) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Sticker) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Sticker) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35976,7 +39902,7 @@ func (s StopMessageLiveLocation) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s StopMessageLiveLocation) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChatID.Set {
@@ -36070,6 +39996,19 @@ func (s *StopMessageLiveLocation) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s StopMessageLiveLocation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *StopMessageLiveLocation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s StopPoll) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36077,7 +40016,7 @@ func (s StopPoll) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s StopPoll) encodeFields(e *jx.Encoder) {
 	{
 
@@ -36187,6 +40126,19 @@ func (s *StopPoll) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s StopPoll) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *StopPoll) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s SuccessfulPayment) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36194,7 +40146,7 @@ func (s SuccessfulPayment) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s SuccessfulPayment) encodeFields(e *jx.Encoder) {
 	{
 
@@ -36377,6 +40329,19 @@ func (s *SuccessfulPayment) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s SuccessfulPayment) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SuccessfulPayment) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s UnbanChatMember) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36384,7 +40349,7 @@ func (s UnbanChatMember) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s UnbanChatMember) encodeFields(e *jx.Encoder) {
 	{
 
@@ -36494,6 +40459,19 @@ func (s *UnbanChatMember) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s UnbanChatMember) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UnbanChatMember) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s UnbanChatSenderChat) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36501,7 +40479,7 @@ func (s UnbanChatSenderChat) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s UnbanChatSenderChat) encodeFields(e *jx.Encoder) {
 	{
 
@@ -36594,6 +40572,19 @@ func (s *UnbanChatSenderChat) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s UnbanChatSenderChat) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UnbanChatSenderChat) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s UnpinAllChatMessages) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36601,7 +40592,7 @@ func (s UnpinAllChatMessages) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s UnpinAllChatMessages) encodeFields(e *jx.Encoder) {
 	{
 
@@ -36676,6 +40667,19 @@ func (s *UnpinAllChatMessages) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s UnpinAllChatMessages) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UnpinAllChatMessages) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s UnpinChatMessage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36683,7 +40687,7 @@ func (s UnpinChatMessage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s UnpinChatMessage) encodeFields(e *jx.Encoder) {
 	{
 
@@ -36775,6 +40779,19 @@ func (s *UnpinChatMessage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s UnpinChatMessage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UnpinChatMessage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Update) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36782,7 +40799,7 @@ func (s Update) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Update) encodeFields(e *jx.Encoder) {
 	{
 
@@ -37098,6 +41115,19 @@ func (s *Update) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Update) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Update) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s UploadStickerFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37105,7 +41135,7 @@ func (s UploadStickerFile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s UploadStickerFile) encodeFields(e *jx.Encoder) {
 	{
 
@@ -37201,6 +41231,19 @@ func (s *UploadStickerFile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s UploadStickerFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UploadStickerFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s User) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37208,7 +41251,7 @@ func (s User) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s User) encodeFields(e *jx.Encoder) {
 	{
 
@@ -37424,6 +41467,19 @@ func (s *User) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s User) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *User) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s UserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37431,7 +41487,7 @@ func (s UserProfilePhotos) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s UserProfilePhotos) encodeFields(e *jx.Encoder) {
 	{
 
@@ -37548,6 +41604,19 @@ func (s *UserProfilePhotos) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s UserProfilePhotos) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UserProfilePhotos) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Venue) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37555,7 +41624,7 @@ func (s Venue) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Venue) encodeFields(e *jx.Encoder) {
 	{
 
@@ -37734,6 +41803,19 @@ func (s *Venue) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Venue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Venue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Video) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37741,7 +41823,7 @@ func (s Video) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Video) encodeFields(e *jx.Encoder) {
 	{
 
@@ -37959,6 +42041,19 @@ func (s *Video) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Video) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Video) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s VideoNote) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37966,7 +42061,7 @@ func (s VideoNote) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s VideoNote) encodeFields(e *jx.Encoder) {
 	{
 
@@ -38131,6 +42226,19 @@ func (s *VideoNote) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s VideoNote) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *VideoNote) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Voice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38138,7 +42246,7 @@ func (s Voice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s Voice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -38285,6 +42393,19 @@ func (s *Voice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s Voice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Voice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s VoiceChatEnded) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38292,7 +42413,7 @@ func (s VoiceChatEnded) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s VoiceChatEnded) encodeFields(e *jx.Encoder) {
 	{
 
@@ -38369,6 +42490,19 @@ func (s *VoiceChatEnded) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s VoiceChatEnded) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *VoiceChatEnded) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s VoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38376,7 +42510,7 @@ func (s VoiceChatParticipantsInvited) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s VoiceChatParticipantsInvited) encodeFields(e *jx.Encoder) {
 	{
 		if s.Users != nil {
@@ -38430,6 +42564,19 @@ func (s *VoiceChatParticipantsInvited) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s VoiceChatParticipantsInvited) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *VoiceChatParticipantsInvited) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s VoiceChatScheduled) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38437,7 +42584,7 @@ func (s VoiceChatScheduled) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s VoiceChatScheduled) encodeFields(e *jx.Encoder) {
 	{
 
@@ -38514,6 +42661,19 @@ func (s *VoiceChatScheduled) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s VoiceChatScheduled) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *VoiceChatScheduled) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s VoiceChatStarted) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38521,7 +42681,7 @@ func (s VoiceChatStarted) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s VoiceChatStarted) encodeFields(e *jx.Encoder) {
 }
 
@@ -38546,6 +42706,19 @@ func (s *VoiceChatStarted) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s VoiceChatStarted) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *VoiceChatStarted) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s WebhookInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38553,7 +42726,7 @@ func (s WebhookInfo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s WebhookInfo) encodeFields(e *jx.Encoder) {
 	{
 
@@ -38762,4 +42935,17 @@ func (s *WebhookInfo) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s WebhookInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *WebhookInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }

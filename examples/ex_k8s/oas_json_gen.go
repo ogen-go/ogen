@@ -96,6 +96,19 @@ func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -103,7 +116,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) encodeFields(e *jx.Encoder) {
 	{
 
@@ -375,6 +388,19 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -382,7 +408,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Encode(e *j
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -487,6 +513,19 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -494,7 +533,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Encode(
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -632,6 +671,19 @@ func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Decode
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -639,7 +691,7 @@ func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) Encode(e *jx.Encoder)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroups != nil {
@@ -802,6 +854,19 @@ func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -809,7 +874,7 @@ func (s IoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
 
@@ -938,6 +1003,19 @@ func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ServiceReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -945,7 +1023,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Encode(e *jx.Encoder) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1200,6 +1278,19 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1207,7 +1298,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Encode(e 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -1312,6 +1403,19 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Decode(d
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1319,7 +1423,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Encod
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -1457,6 +1561,19 @@ func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Deco
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1464,7 +1581,7 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Encode(e *jx.Encoder
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) encodeFields(e *jx.Encoder) {
 	{
 
@@ -1541,6 +1658,19 @@ func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Decode(d *jx.Decode
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1548,7 +1678,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiServerID.Set {
@@ -1638,6 +1768,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1645,7 +1788,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -1787,6 +1930,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1794,7 +1950,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Encode(e *jx.E
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -1958,6 +2114,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -1965,7 +2134,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Encode(e *jx.Encode
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -2103,6 +2272,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Decode(d *jx.Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2110,7 +2292,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Encode(e *jx.Encode
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) encodeFields(e *jx.Encoder) {
 }
 
@@ -2135,6 +2317,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) Decode(d *jx.Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2142,7 +2337,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CommonEncodingVersion.Set {
@@ -2241,6 +2436,19 @@ func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevision) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2248,7 +2456,7 @@ func (s IoK8sAPIAppsV1ControllerRevision) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1ControllerRevision) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -2395,6 +2603,19 @@ func (s *IoK8sAPIAppsV1ControllerRevision) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1ControllerRevision) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1ControllerRevision) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2402,7 +2623,7 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1ControllerRevisionList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -2540,6 +2761,19 @@ func (s *IoK8sAPIAppsV1ControllerRevisionList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1ControllerRevisionList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1ControllerRevisionList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2547,7 +2781,7 @@ func (s IoK8sAPIAppsV1DaemonSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DaemonSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -2658,6 +2892,19 @@ func (s *IoK8sAPIAppsV1DaemonSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DaemonSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2665,7 +2912,7 @@ func (s IoK8sAPIAppsV1DaemonSetCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DaemonSetCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -2811,6 +3058,19 @@ func (s *IoK8sAPIAppsV1DaemonSetCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DaemonSetCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2818,7 +3078,7 @@ func (s IoK8sAPIAppsV1DaemonSetList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DaemonSetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -2956,6 +3216,19 @@ func (s *IoK8sAPIAppsV1DaemonSetList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DaemonSetList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -2963,7 +3236,7 @@ func (s IoK8sAPIAppsV1DaemonSetSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DaemonSetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
@@ -3105,6 +3378,19 @@ func (s *IoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DaemonSetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3112,7 +3398,7 @@ func (s IoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DaemonSetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CollisionCount.Set {
@@ -3357,6 +3643,19 @@ func (s *IoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3364,7 +3663,7 @@ func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.RollingUpdate.Set {
@@ -3424,6 +3723,19 @@ func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1Deployment) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3431,7 +3743,7 @@ func (s IoK8sAPIAppsV1Deployment) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1Deployment) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -3542,6 +3854,19 @@ func (s *IoK8sAPIAppsV1Deployment) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1Deployment) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1Deployment) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3549,7 +3874,7 @@ func (s IoK8sAPIAppsV1DeploymentCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DeploymentCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -3712,6 +4037,19 @@ func (s *IoK8sAPIAppsV1DeploymentCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DeploymentCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3719,7 +4057,7 @@ func (s IoK8sAPIAppsV1DeploymentList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DeploymentList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -3857,6 +4195,19 @@ func (s *IoK8sAPIAppsV1DeploymentList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DeploymentList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3864,7 +4215,7 @@ func (s IoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DeploymentSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
@@ -4057,6 +4408,19 @@ func (s *IoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DeploymentSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4064,7 +4428,7 @@ func (s IoK8sAPIAppsV1DeploymentStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DeploymentStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AvailableReplicas.Set {
@@ -4237,6 +4601,19 @@ func (s *IoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DeploymentStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4244,7 +4621,7 @@ func (s IoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1DeploymentStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.RollingUpdate.Set {
@@ -4304,6 +4681,19 @@ func (s *IoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1DeploymentStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1DeploymentStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4311,7 +4701,7 @@ func (s IoK8sAPIAppsV1ReplicaSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1ReplicaSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -4422,6 +4812,19 @@ func (s *IoK8sAPIAppsV1ReplicaSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1ReplicaSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4429,7 +4832,7 @@ func (s IoK8sAPIAppsV1ReplicaSetCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1ReplicaSetCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -4575,6 +4978,19 @@ func (s *IoK8sAPIAppsV1ReplicaSetCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4582,7 +4998,7 @@ func (s IoK8sAPIAppsV1ReplicaSetList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1ReplicaSetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -4720,6 +5136,19 @@ func (s *IoK8sAPIAppsV1ReplicaSetList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1ReplicaSetList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4727,7 +5156,7 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1ReplicaSetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
@@ -4853,6 +5282,19 @@ func (s *IoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4860,7 +5302,7 @@ func (s IoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1ReplicaSetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AvailableReplicas.Set {
@@ -5033,6 +5475,19 @@ func (s *IoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5040,7 +5495,7 @@ func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxSurge.Set {
@@ -5100,6 +5555,19 @@ func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5107,7 +5575,7 @@ func (s IoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1RollingUpdateDeployment) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxSurge.Set {
@@ -5167,6 +5635,19 @@ func (s *IoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1RollingUpdateDeployment) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1RollingUpdateDeployment) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5174,7 +5655,7 @@ func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.Partition.Set {
@@ -5217,6 +5698,19 @@ func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSet) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5224,7 +5718,7 @@ func (s IoK8sAPIAppsV1StatefulSet) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1StatefulSet) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -5335,6 +5829,19 @@ func (s *IoK8sAPIAppsV1StatefulSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1StatefulSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5342,7 +5849,7 @@ func (s IoK8sAPIAppsV1StatefulSetCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1StatefulSetCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -5488,6 +5995,19 @@ func (s *IoK8sAPIAppsV1StatefulSetCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1StatefulSetCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5495,7 +6015,7 @@ func (s IoK8sAPIAppsV1StatefulSetList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1StatefulSetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -5633,6 +6153,19 @@ func (s *IoK8sAPIAppsV1StatefulSetList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1StatefulSetList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5640,7 +6173,7 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1StatefulSetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
@@ -5863,6 +6396,19 @@ func (s *IoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5870,7 +6416,7 @@ func (s IoK8sAPIAppsV1StatefulSetStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1StatefulSetStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6113,6 +6659,19 @@ func (s *IoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6120,7 +6679,7 @@ func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) encodeFields(e *jx.Encoder) {
 	{
 		if s.RollingUpdate.Set {
@@ -6180,6 +6739,19 @@ func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6187,7 +6759,7 @@ func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) Encode(e *jx.Encoder) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -6299,6 +6871,19 @@ func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6306,7 +6891,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -6417,6 +7002,19 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6424,7 +7022,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -6562,6 +7160,19 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6569,7 +7180,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
 
@@ -6696,6 +7307,19 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6703,7 +7327,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CurrentCPUUtilizationPercentage.Set {
@@ -6849,6 +7473,19 @@ func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Decode
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1Scale) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6856,7 +7493,7 @@ func (s IoK8sAPIAutoscalingV1Scale) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1Scale) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -6967,6 +7604,19 @@ func (s *IoK8sAPIAutoscalingV1Scale) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1Scale) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1Scale) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -6974,7 +7624,7 @@ func (s IoK8sAPIAutoscalingV1ScaleSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1ScaleSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Replicas.Set {
@@ -7017,6 +7667,19 @@ func (s *IoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1ScaleSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1ScaleSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7024,7 +7687,7 @@ func (s IoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV1ScaleStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -7118,6 +7781,19 @@ func (s *IoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV1ScaleStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV1ScaleStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7125,7 +7801,7 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Encode(e *jx.En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -7254,6 +7930,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7261,7 +7950,7 @@ func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -7389,6 +8078,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7396,7 +8098,7 @@ func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -7508,6 +8210,19 @@ func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7515,7 +8230,7 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -7643,6 +8358,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7650,7 +8378,7 @@ func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CurrentAverageValue.Set {
@@ -7777,6 +8505,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7784,7 +8525,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Encode(e *jx.Encoder)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -7895,6 +8636,19 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7902,7 +8656,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Encode(e *jx
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -8048,6 +8802,19 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8055,7 +8822,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -8193,6 +8960,19 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8200,7 +8980,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8338,6 +9118,19 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8345,7 +9138,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -8530,6 +9323,19 @@ func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8537,7 +9343,7 @@ func (s IoK8sAPIAutoscalingV2beta1MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1MetricSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
@@ -8699,6 +9505,19 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8706,7 +9525,7 @@ func (s IoK8sAPIAutoscalingV2beta1MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1MetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
@@ -8868,6 +9687,19 @@ func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -8875,7 +9707,7 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageValue.Set {
@@ -9018,6 +9850,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9025,7 +9870,7 @@ func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageValue.Set {
@@ -9168,6 +10013,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9175,7 +10033,7 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9285,6 +10143,19 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9292,7 +10163,7 @@ func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9402,6 +10273,19 @@ func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9409,7 +10293,7 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9520,6 +10404,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9527,7 +10424,7 @@ func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.CurrentAverageUtilization.Set {
@@ -9637,6 +10534,19 @@ func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9644,7 +10554,7 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Encode(e *jx.En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9755,6 +10665,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9762,7 +10685,7 @@ func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -9873,6 +10796,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9880,7 +10816,7 @@ func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -9992,6 +10928,19 @@ func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -9999,7 +10948,7 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -10090,6 +11039,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10097,7 +11059,7 @@ func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -10188,6 +11150,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10195,7 +11170,7 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) encodeFields(e *jx.Encoder) {
 	{
 
@@ -10308,6 +11283,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10315,7 +11303,7 @@ func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) encodeFields(e *jx.Encoder) {
 	{
 		if s.Policies != nil {
@@ -10403,6 +11391,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10410,7 +11411,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Encode(e *jx.Encoder)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -10521,6 +11522,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10528,7 +11542,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) encodeFields(e *jx.Encoder) {
 	{
 		if s.ScaleDown.Set {
@@ -10588,6 +11602,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d *jx
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10595,7 +11622,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Encode(e *jx
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -10741,6 +11768,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10748,7 +11788,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -10886,6 +11926,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -10893,7 +11946,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Behavior.Set {
@@ -11048,6 +12101,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11055,7 +12121,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -11240,6 +12306,19 @@ func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11247,7 +12326,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) encodeFields(e *jx.Encoder) {
 	{
 
@@ -11341,6 +12420,19 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11348,7 +12440,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2MetricSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
@@ -11510,6 +12602,19 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11517,7 +12622,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2MetricStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerResource.Set {
@@ -11679,6 +12784,19 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricTarget) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11686,7 +12804,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricTarget) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2MetricTarget) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageUtilization.Set {
@@ -11814,6 +12932,19 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricTarget) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11821,7 +12952,7 @@ func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AverageUtilization.Set {
@@ -11898,6 +13029,19 @@ func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -11905,7 +13049,7 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12012,6 +13156,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12019,7 +13176,7 @@ func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12126,6 +13283,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12133,7 +13303,7 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12224,6 +13394,19 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12231,7 +13414,7 @@ func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12322,6 +13505,19 @@ func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12329,7 +13525,7 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12422,6 +13618,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12429,7 +13638,7 @@ func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -12522,6 +13731,19 @@ func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJob) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12529,7 +13751,7 @@ func (s IoK8sAPIBatchV1CronJob) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1CronJob) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -12640,6 +13862,19 @@ func (s *IoK8sAPIBatchV1CronJob) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1CronJob) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1CronJob) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12647,7 +13882,7 @@ func (s IoK8sAPIBatchV1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1CronJobList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -12785,6 +14020,19 @@ func (s *IoK8sAPIBatchV1CronJobList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1CronJobList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1CronJobList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12792,7 +14040,7 @@ func (s IoK8sAPIBatchV1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1CronJobSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConcurrencyPolicy.Set {
@@ -12970,6 +14218,19 @@ func (s *IoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1CronJobSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1CronJobSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -12977,7 +14238,7 @@ func (s IoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1CronJobStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active != nil {
@@ -13065,6 +14326,19 @@ func (s *IoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1CronJobStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1CronJobStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1Job) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13072,7 +14346,7 @@ func (s IoK8sAPIBatchV1Job) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1Job) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -13183,6 +14457,19 @@ func (s *IoK8sAPIBatchV1Job) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1Job) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1Job) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13190,7 +14477,7 @@ func (s IoK8sAPIBatchV1JobCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1JobCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastProbeTime.Set {
@@ -13353,6 +14640,19 @@ func (s *IoK8sAPIBatchV1JobCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1JobCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1JobCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13360,7 +14660,7 @@ func (s IoK8sAPIBatchV1JobList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1JobList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -13498,6 +14798,19 @@ func (s *IoK8sAPIBatchV1JobList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1JobList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1JobList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13505,7 +14818,7 @@ func (s IoK8sAPIBatchV1JobSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1JobSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ActiveDeadlineSeconds.Set {
@@ -13734,6 +15047,19 @@ func (s *IoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1JobSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1JobSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13741,7 +15067,7 @@ func (s IoK8sAPIBatchV1JobStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1JobStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active.Set {
@@ -13914,6 +15240,19 @@ func (s *IoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1JobStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1JobStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13921,7 +15260,7 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1JobTemplateSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
@@ -13981,6 +15320,19 @@ func (s *IoK8sAPIBatchV1JobTemplateSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1JobTemplateSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1JobTemplateSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -13988,7 +15340,7 @@ func (s IoK8sAPIBatchV1UncountedTerminatedPods) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1UncountedTerminatedPods) encodeFields(e *jx.Encoder) {
 	{
 		if s.Failed != nil {
@@ -14074,6 +15426,19 @@ func (s *IoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1UncountedTerminatedPods) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1UncountedTerminatedPods) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJob) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14081,7 +15446,7 @@ func (s IoK8sAPIBatchV1beta1CronJob) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1beta1CronJob) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -14192,6 +15557,19 @@ func (s *IoK8sAPIBatchV1beta1CronJob) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJob) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1beta1CronJob) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14199,7 +15577,7 @@ func (s IoK8sAPIBatchV1beta1CronJobList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1beta1CronJobList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -14337,6 +15715,19 @@ func (s *IoK8sAPIBatchV1beta1CronJobList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJobList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1beta1CronJobList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14344,7 +15735,7 @@ func (s IoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1beta1CronJobSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConcurrencyPolicy.Set {
@@ -14522,6 +15913,19 @@ func (s *IoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14529,7 +15933,7 @@ func (s IoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1beta1CronJobStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active != nil {
@@ -14617,6 +16021,19 @@ func (s *IoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1beta1CronJobStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1beta1CronJobStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14624,7 +16041,7 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIBatchV1beta1JobTemplateSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
@@ -14684,6 +16101,19 @@ func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIBatchV1beta1JobTemplateSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14691,7 +16121,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICertificatesV1CertificateSigningRequest) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -14834,6 +16264,19 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequest) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -14841,7 +16284,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) Encode(e *jx.E
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -15004,6 +16447,19 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15011,7 +16467,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Encode(e *jx.Encode
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -15149,6 +16605,19 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) Decode(d *jx.Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15156,7 +16625,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Encode(e *jx.Encode
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ExpirationSeconds.Set {
@@ -15379,6 +16848,19 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) Decode(d *jx.Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15440,6 +16922,19 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15447,7 +16942,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) encodeFields(e *jx.Encoder) {
 	{
 
@@ -15518,6 +17013,19 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1Lease) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15525,7 +17033,7 @@ func (s IoK8sAPICoordinationV1Lease) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoordinationV1Lease) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -15619,6 +17127,19 @@ func (s *IoK8sAPICoordinationV1Lease) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoordinationV1Lease) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoordinationV1Lease) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15626,7 +17147,7 @@ func (s IoK8sAPICoordinationV1LeaseList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoordinationV1LeaseList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -15764,6 +17285,19 @@ func (s *IoK8sAPICoordinationV1LeaseList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoordinationV1LeaseList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoordinationV1LeaseList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15771,7 +17305,7 @@ func (s IoK8sAPICoordinationV1LeaseSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoordinationV1LeaseSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AcquireTime.Set {
@@ -15882,6 +17416,19 @@ func (s *IoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoordinationV1LeaseSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoordinationV1LeaseSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15889,7 +17436,7 @@ func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -16017,6 +17564,19 @@ func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Affinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16024,7 +17584,7 @@ func (s IoK8sAPICoreV1Affinity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Affinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeAffinity.Set {
@@ -16101,6 +17661,19 @@ func (s *IoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Affinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Affinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16108,7 +17681,7 @@ func (s IoK8sAPICoreV1AttachedVolume) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1AttachedVolume) encodeFields(e *jx.Encoder) {
 	{
 
@@ -16203,6 +17776,19 @@ func (s *IoK8sAPICoreV1AttachedVolume) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1AttachedVolume) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1AttachedVolume) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16210,7 +17796,7 @@ func (s IoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1AzureDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.CachingMode.Set {
@@ -16373,6 +17959,19 @@ func (s *IoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16380,7 +17979,7 @@ func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ReadOnly.Set {
@@ -16509,6 +18108,19 @@ func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16516,7 +18128,7 @@ func (s IoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1AzureFileVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ReadOnly.Set {
@@ -16628,6 +18240,19 @@ func (s *IoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1AzureFileVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1AzureFileVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16635,7 +18260,7 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ControllerExpandSecretRef.Set {
@@ -16850,6 +18475,19 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16899,6 +18537,19 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.De
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -16906,7 +18557,7 @@ func (s IoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1CSIVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17051,6 +18702,19 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CSIVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CSIVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17100,6 +18764,19 @@ func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17107,7 +18784,7 @@ func (s IoK8sAPICoreV1Capabilities) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Capabilities) encodeFields(e *jx.Encoder) {
 	{
 		if s.Add != nil {
@@ -17193,6 +18870,19 @@ func (s *IoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Capabilities) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Capabilities) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17200,7 +18890,7 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17374,6 +19064,19 @@ func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17381,7 +19084,7 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1CephFSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -17555,6 +19258,19 @@ func (s *IoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CephFSVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CephFSVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17562,7 +19278,7 @@ func (s IoK8sAPICoreV1CinderPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1CinderPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -17690,6 +19406,19 @@ func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CinderPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17697,7 +19426,7 @@ func (s IoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1CinderVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -17825,6 +19554,19 @@ func (s *IoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1CinderVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1CinderVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17832,7 +19574,7 @@ func (s IoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ClientIPConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.TimeoutSeconds.Set {
@@ -17875,6 +19617,19 @@ func (s *IoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ClientIPConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ClientIPConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -17882,7 +19637,7 @@ func (s IoK8sAPICoreV1ComponentCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ComponentCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.Error.Set {
@@ -18011,6 +19766,19 @@ func (s *IoK8sAPICoreV1ComponentCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ComponentCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ComponentCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18018,7 +19786,7 @@ func (s IoK8sAPICoreV1ComponentStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ComponentStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -18123,6 +19891,19 @@ func (s *IoK8sAPICoreV1ComponentStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ComponentStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ComponentStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18130,7 +19911,7 @@ func (s IoK8sAPICoreV1ComponentStatusList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ComponentStatusList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -18268,6 +20049,19 @@ func (s *IoK8sAPICoreV1ComponentStatusList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ComponentStatusList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ComponentStatusList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18275,7 +20069,7 @@ func (s IoK8sAPICoreV1ConfigMap) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ConfigMap) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -18403,6 +20197,19 @@ func (s *IoK8sAPICoreV1ConfigMap) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMap) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMap) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapBinaryData) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18450,6 +20257,19 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapBinaryData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapBinaryData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -18501,6 +20321,19 @@ func (s IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18508,7 +20341,7 @@ func (s IoK8sAPICoreV1ConfigMapEnvSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ConfigMapEnvSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -18568,6 +20401,19 @@ func (s *IoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapEnvSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapEnvSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18575,7 +20421,7 @@ func (s IoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ConfigMapKeySelector) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18686,6 +20532,19 @@ func (s *IoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapKeySelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapKeySelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18693,7 +20552,7 @@ func (s IoK8sAPICoreV1ConfigMapList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ConfigMapList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -18831,6 +20690,19 @@ func (s *IoK8sAPICoreV1ConfigMapList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18838,7 +20710,7 @@ func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -18985,6 +20857,19 @@ func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -18992,7 +20877,7 @@ func (s IoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ConfigMapProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Items != nil {
@@ -19080,6 +20965,19 @@ func (s *IoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19087,7 +20985,7 @@ func (s IoK8sAPICoreV1ConfigMapVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ConfigMapVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
@@ -19192,6 +21090,19 @@ func (s *IoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ConfigMapVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Container) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19199,7 +21110,7 @@ func (s IoK8sAPICoreV1Container) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Container) encodeFields(e *jx.Encoder) {
 	{
 		if s.Args != nil {
@@ -19716,6 +21627,19 @@ func (s *IoK8sAPICoreV1Container) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Container) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Container) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19723,7 +21647,7 @@ func (s IoK8sAPICoreV1ContainerImage) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ContainerImage) encodeFields(e *jx.Encoder) {
 	{
 		if s.Names != nil {
@@ -19796,6 +21720,19 @@ func (s *IoK8sAPICoreV1ContainerImage) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ContainerImage) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ContainerImage) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19803,7 +21740,7 @@ func (s IoK8sAPICoreV1ContainerPort) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ContainerPort) encodeFields(e *jx.Encoder) {
 	{
 
@@ -19948,6 +21885,19 @@ func (s *IoK8sAPICoreV1ContainerPort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ContainerPort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ContainerPort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerState) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -19955,7 +21905,7 @@ func (s IoK8sAPICoreV1ContainerState) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ContainerState) encodeFields(e *jx.Encoder) {
 	{
 		if s.Running.Set {
@@ -20032,6 +21982,19 @@ func (s *IoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ContainerState) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ContainerState) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20039,7 +22002,7 @@ func (s IoK8sAPICoreV1ContainerStateRunning) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ContainerStateRunning) encodeFields(e *jx.Encoder) {
 	{
 		if s.StartedAt.Set {
@@ -20082,6 +22045,19 @@ func (s *IoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ContainerStateRunning) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ContainerStateRunning) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20089,7 +22065,7 @@ func (s IoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ContainerStateTerminated) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerID.Set {
@@ -20268,6 +22244,19 @@ func (s *IoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ContainerStateTerminated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20275,7 +22264,7 @@ func (s IoK8sAPICoreV1ContainerStateWaiting) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ContainerStateWaiting) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
@@ -20335,6 +22324,19 @@ func (s *IoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ContainerStateWaiting) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ContainerStateWaiting) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ContainerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20342,7 +22344,7 @@ func (s IoK8sAPICoreV1ContainerStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ContainerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerID.Set {
@@ -20560,6 +22562,19 @@ func (s *IoK8sAPICoreV1ContainerStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ContainerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ContainerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20567,7 +22582,7 @@ func (s IoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1DaemonEndpoint) encodeFields(e *jx.Encoder) {
 	{
 
@@ -20644,6 +22659,19 @@ func (s *IoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1DaemonEndpoint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1DaemonEndpoint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20651,7 +22679,7 @@ func (s IoK8sAPICoreV1DownwardAPIProjection) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1DownwardAPIProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Items != nil {
@@ -20705,6 +22733,19 @@ func (s *IoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1DownwardAPIProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1DownwardAPIProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeFile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20712,7 +22753,7 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeFile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1DownwardAPIVolumeFile) encodeFields(e *jx.Encoder) {
 	{
 		if s.FieldRef.Set {
@@ -20840,6 +22881,19 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1DownwardAPIVolumeFile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20847,7 +22901,7 @@ func (s IoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1DownwardAPIVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
@@ -20918,6 +22972,19 @@ func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1DownwardAPIVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20925,7 +22992,7 @@ func (s IoK8sAPICoreV1EmptyDirVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EmptyDirVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Medium.Set {
@@ -20985,6 +23052,19 @@ func (s *IoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EmptyDirVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EmptyDirVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -20992,7 +23072,7 @@ func (s IoK8sAPICoreV1EndpointAddress) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EndpointAddress) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hostname.Set {
@@ -21120,6 +23200,19 @@ func (s *IoK8sAPICoreV1EndpointAddress) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EndpointAddress) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EndpointAddress) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21127,7 +23220,7 @@ func (s IoK8sAPICoreV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EndpointPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
@@ -21255,6 +23348,19 @@ func (s *IoK8sAPICoreV1EndpointPort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EndpointPort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EndpointPort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21262,7 +23368,7 @@ func (s IoK8sAPICoreV1EndpointSubset) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EndpointSubset) encodeFields(e *jx.Encoder) {
 	{
 		if s.Addresses != nil {
@@ -21372,6 +23478,19 @@ func (s *IoK8sAPICoreV1EndpointSubset) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EndpointSubset) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EndpointSubset) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21379,7 +23498,7 @@ func (s IoK8sAPICoreV1Endpoints) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Endpoints) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -21484,6 +23603,19 @@ func (s *IoK8sAPICoreV1Endpoints) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Endpoints) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Endpoints) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21491,7 +23623,7 @@ func (s IoK8sAPICoreV1EndpointsList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EndpointsList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -21629,6 +23761,19 @@ func (s *IoK8sAPICoreV1EndpointsList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EndpointsList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EndpointsList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvFromSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21636,7 +23781,7 @@ func (s IoK8sAPICoreV1EnvFromSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EnvFromSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMapRef.Set {
@@ -21713,6 +23858,19 @@ func (s *IoK8sAPICoreV1EnvFromSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EnvFromSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EnvFromSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVar) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21720,7 +23878,7 @@ func (s IoK8sAPICoreV1EnvVar) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EnvVar) encodeFields(e *jx.Encoder) {
 	{
 
@@ -21831,6 +23989,19 @@ func (s *IoK8sAPICoreV1EnvVar) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EnvVar) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EnvVar) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EnvVarSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21838,7 +24009,7 @@ func (s IoK8sAPICoreV1EnvVarSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EnvVarSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMapKeyRef.Set {
@@ -21932,6 +24103,19 @@ func (s *IoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EnvVarSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EnvVarSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -21939,7 +24123,7 @@ func (s IoK8sAPICoreV1EphemeralContainer) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EphemeralContainer) encodeFields(e *jx.Encoder) {
 	{
 		if s.Args != nil {
@@ -22473,6 +24657,19 @@ func (s *IoK8sAPICoreV1EphemeralContainer) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EphemeralContainer) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EphemeralContainer) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -22480,7 +24677,7 @@ func (s IoK8sAPICoreV1EphemeralVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EphemeralVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.VolumeClaimTemplate.Set {
@@ -22523,6 +24720,19 @@ func (s *IoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EphemeralVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EphemeralVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -22530,7 +24740,7 @@ func (s IoK8sAPICoreV1Event) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Event) encodeFields(e *jx.Encoder) {
 	{
 		if s.Action.Set {
@@ -22878,6 +25088,19 @@ func (s *IoK8sAPICoreV1Event) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Event) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Event) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -22885,7 +25108,7 @@ func (s IoK8sAPICoreV1EventList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EventList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -23023,6 +25246,19 @@ func (s *IoK8sAPICoreV1EventList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EventList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EventList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23030,7 +25266,7 @@ func (s IoK8sAPICoreV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EventSeries) encodeFields(e *jx.Encoder) {
 	{
 		if s.Count.Set {
@@ -23090,6 +25326,19 @@ func (s *IoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EventSeries) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EventSeries) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1EventSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23097,7 +25346,7 @@ func (s IoK8sAPICoreV1EventSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1EventSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Component.Set {
@@ -23157,6 +25406,19 @@ func (s *IoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1EventSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1EventSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23164,7 +25426,7 @@ func (s IoK8sAPICoreV1ExecAction) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ExecAction) encodeFields(e *jx.Encoder) {
 	{
 		if s.Command != nil {
@@ -23220,6 +25482,19 @@ func (s *IoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ExecAction) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ExecAction) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23227,7 +25502,7 @@ func (s IoK8sAPICoreV1FCVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1FCVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -23364,6 +25639,19 @@ func (s *IoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1FCVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1FCVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23371,7 +25659,7 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23516,6 +25804,19 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23565,6 +25866,19 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23572,7 +25886,7 @@ func (s IoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1FlexVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -23717,6 +26031,19 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1FlexVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1FlexVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23766,6 +26093,19 @@ func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1FlexVolumeSourceOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23773,7 +26113,7 @@ func (s IoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1FlockerVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DatasetName.Set {
@@ -23833,6 +26173,19 @@ func (s *IoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1FlockerVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1FlockerVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23840,7 +26193,7 @@ func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -23968,6 +26321,19 @@ func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -23975,7 +26341,7 @@ func (s IoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1GitRepoVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Directory.Set {
@@ -24086,6 +26452,19 @@ func (s *IoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1GitRepoVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1GitRepoVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24093,7 +26472,7 @@ func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24222,6 +26601,19 @@ func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24229,7 +26621,7 @@ func (s IoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1GlusterfsVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24341,6 +26733,19 @@ func (s *IoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1GlusterfsVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1GlusterfsVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24348,7 +26753,7 @@ func (s IoK8sAPICoreV1HTTPGetAction) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1HTTPGetAction) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
@@ -24502,6 +26907,19 @@ func (s *IoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1HTTPGetAction) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1HTTPGetAction) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24509,7 +26927,7 @@ func (s IoK8sAPICoreV1HTTPHeader) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1HTTPHeader) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24604,6 +27022,19 @@ func (s *IoK8sAPICoreV1HTTPHeader) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1HTTPHeader) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1HTTPHeader) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Handler) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24611,7 +27042,7 @@ func (s IoK8sAPICoreV1Handler) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Handler) encodeFields(e *jx.Encoder) {
 	{
 		if s.Exec.Set {
@@ -24688,6 +27119,19 @@ func (s *IoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Handler) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Handler) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24695,7 +27139,7 @@ func (s IoK8sAPICoreV1HostAlias) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1HostAlias) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hostnames != nil {
@@ -24768,6 +27212,19 @@ func (s *IoK8sAPICoreV1HostAlias) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1HostAlias) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1HostAlias) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24775,7 +27232,7 @@ func (s IoK8sAPICoreV1HostPathVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1HostPathVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -24869,6 +27326,19 @@ func (s *IoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1HostPathVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1HostPathVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -24876,7 +27346,7 @@ func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChapAuthDiscovery.Set {
@@ -25139,6 +27609,19 @@ func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25146,7 +27629,7 @@ func (s IoK8sAPICoreV1ISCSIVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ISCSIVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ChapAuthDiscovery.Set {
@@ -25409,6 +27892,19 @@ func (s *IoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1KeyToPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25416,7 +27912,7 @@ func (s IoK8sAPICoreV1KeyToPath) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1KeyToPath) encodeFields(e *jx.Encoder) {
 	{
 
@@ -25528,6 +28024,19 @@ func (s *IoK8sAPICoreV1KeyToPath) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1KeyToPath) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1KeyToPath) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Lifecycle) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25535,7 +28044,7 @@ func (s IoK8sAPICoreV1Lifecycle) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Lifecycle) encodeFields(e *jx.Encoder) {
 	{
 		if s.PostStart.Set {
@@ -25595,6 +28104,19 @@ func (s *IoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Lifecycle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Lifecycle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25602,7 +28124,7 @@ func (s IoK8sAPICoreV1LimitRange) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LimitRange) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -25696,6 +28218,19 @@ func (s *IoK8sAPICoreV1LimitRange) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRange) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRange) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25703,7 +28238,7 @@ func (s IoK8sAPICoreV1LimitRangeItem) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LimitRangeItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Default.Set {
@@ -25865,6 +28400,19 @@ func (s *IoK8sAPICoreV1LimitRangeItem) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItem) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeItem) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemDefault) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -25910,6 +28458,19 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemDefault) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeItemDefault) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -25959,6 +28520,19 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMax) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26004,6 +28578,19 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMax) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeItemMax) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -26053,6 +28640,19 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeItemMin) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26100,6 +28700,19 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeItemMin) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeItemMin) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26107,7 +28720,7 @@ func (s IoK8sAPICoreV1LimitRangeList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LimitRangeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -26245,6 +28858,19 @@ func (s *IoK8sAPICoreV1LimitRangeList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26252,7 +28878,7 @@ func (s IoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LimitRangeSpec) encodeFields(e *jx.Encoder) {
 	{
 
@@ -26339,6 +28965,19 @@ func (s *IoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LimitRangeSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LimitRangeSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26346,7 +28985,7 @@ func (s IoK8sAPICoreV1LoadBalancerIngress) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LoadBalancerIngress) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hostname.Set {
@@ -26434,6 +29073,19 @@ func (s *IoK8sAPICoreV1LoadBalancerIngress) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LoadBalancerIngress) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LoadBalancerIngress) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26441,7 +29093,7 @@ func (s IoK8sAPICoreV1LoadBalancerStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LoadBalancerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ingress != nil {
@@ -26495,6 +29147,19 @@ func (s *IoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LoadBalancerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LoadBalancerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26502,7 +29167,7 @@ func (s IoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LocalObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -26545,6 +29210,19 @@ func (s *IoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LocalObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LocalObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26552,7 +29230,7 @@ func (s IoK8sAPICoreV1LocalVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1LocalVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -26646,6 +29324,19 @@ func (s *IoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1LocalVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1LocalVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26653,7 +29344,7 @@ func (s IoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NFSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -26765,6 +29456,19 @@ func (s *IoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NFSVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NFSVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Namespace) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26772,7 +29476,7 @@ func (s IoK8sAPICoreV1Namespace) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Namespace) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -26883,6 +29587,19 @@ func (s *IoK8sAPICoreV1Namespace) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Namespace) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Namespace) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -26890,7 +29607,7 @@ func (s IoK8sAPICoreV1NamespaceCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NamespaceCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -27036,6 +29753,19 @@ func (s *IoK8sAPICoreV1NamespaceCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NamespaceCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NamespaceCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27043,7 +29773,7 @@ func (s IoK8sAPICoreV1NamespaceList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NamespaceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -27181,6 +29911,19 @@ func (s *IoK8sAPICoreV1NamespaceList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NamespaceList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NamespaceList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27188,7 +29931,7 @@ func (s IoK8sAPICoreV1NamespaceSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NamespaceSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Finalizers != nil {
@@ -27244,6 +29987,19 @@ func (s *IoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NamespaceSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NamespaceSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27251,7 +30007,7 @@ func (s IoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NamespaceStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -27322,6 +30078,19 @@ func (s *IoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NamespaceStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NamespaceStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Node) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27329,7 +30098,7 @@ func (s IoK8sAPICoreV1Node) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Node) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -27440,6 +30209,19 @@ func (s *IoK8sAPICoreV1Node) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Node) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Node) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAddress) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27447,7 +30229,7 @@ func (s IoK8sAPICoreV1NodeAddress) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeAddress) encodeFields(e *jx.Encoder) {
 	{
 
@@ -27542,6 +30324,19 @@ func (s *IoK8sAPICoreV1NodeAddress) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeAddress) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeAddress) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27549,7 +30344,7 @@ func (s IoK8sAPICoreV1NodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
@@ -27620,6 +30415,19 @@ func (s *IoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27627,7 +30435,7 @@ func (s IoK8sAPICoreV1NodeCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastHeartbeatTime.Set {
@@ -27790,6 +30598,19 @@ func (s *IoK8sAPICoreV1NodeCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27797,7 +30618,7 @@ func (s IoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeConfigSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMap.Set {
@@ -27840,6 +30661,19 @@ func (s *IoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeConfigSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeConfigSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27847,7 +30681,7 @@ func (s IoK8sAPICoreV1NodeConfigStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeConfigStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Active.Set {
@@ -27941,6 +30775,19 @@ func (s *IoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeConfigStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeConfigStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27948,7 +30795,7 @@ func (s IoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeDaemonEndpoints) encodeFields(e *jx.Encoder) {
 	{
 		if s.KubeletEndpoint.Set {
@@ -27991,6 +30838,19 @@ func (s *IoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeDaemonEndpoints) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeDaemonEndpoints) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -27998,7 +30858,7 @@ func (s IoK8sAPICoreV1NodeList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -28136,6 +30996,19 @@ func (s *IoK8sAPICoreV1NodeList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28143,7 +31016,7 @@ func (s IoK8sAPICoreV1NodeSelector) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeSelector) encodeFields(e *jx.Encoder) {
 	{
 
@@ -28230,6 +31103,19 @@ func (s *IoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28237,7 +31123,7 @@ func (s IoK8sAPICoreV1NodeSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
 
@@ -28362,6 +31248,19 @@ func (s *IoK8sAPICoreV1NodeSelectorRequirement) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeSelectorRequirement) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeSelectorRequirement) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28369,7 +31268,7 @@ func (s IoK8sAPICoreV1NodeSelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeSelectorTerm) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchExpressions != nil {
@@ -28451,6 +31350,19 @@ func (s *IoK8sAPICoreV1NodeSelectorTerm) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeSelectorTerm) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeSelectorTerm) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28458,7 +31370,7 @@ func (s IoK8sAPICoreV1NodeSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigSource.Set {
@@ -28627,6 +31539,19 @@ func (s *IoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28634,7 +31559,7 @@ func (s IoK8sAPICoreV1NodeStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Addresses != nil {
@@ -28904,6 +31829,19 @@ func (s *IoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeStatusAllocatable) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -28949,6 +31887,19 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeStatusAllocatable) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeStatusAllocatable) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -28998,6 +31949,19 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeStatusCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeStatusCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29005,7 +31969,7 @@ func (s IoK8sAPICoreV1NodeSystemInfo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1NodeSystemInfo) encodeFields(e *jx.Encoder) {
 	{
 
@@ -29245,6 +32209,19 @@ func (s *IoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1NodeSystemInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1NodeSystemInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29252,7 +32229,7 @@ func (s IoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ObjectFieldSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -29346,6 +32323,19 @@ func (s *IoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ObjectFieldSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ObjectFieldSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29353,7 +32343,7 @@ func (s IoK8sAPICoreV1ObjectReference) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -29498,6 +32488,19 @@ func (s *IoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29505,7 +32508,7 @@ func (s IoK8sAPICoreV1PersistentVolume) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolume) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -29616,6 +32619,19 @@ func (s *IoK8sAPICoreV1PersistentVolume) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolume) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolume) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaim) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29623,7 +32639,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaim) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeClaim) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -29734,6 +32750,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaim) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaim) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29741,7 +32770,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastProbeTime.Set {
@@ -29904,6 +32933,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -29911,7 +32953,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeClaimList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -30049,6 +33091,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30056,7 +33111,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AccessModes != nil {
@@ -30231,6 +33286,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30238,7 +33306,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AccessModes != nil {
@@ -30356,6 +33424,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30403,6 +33484,19 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30410,7 +33504,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
@@ -30502,6 +33596,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30509,7 +33616,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 
@@ -30603,6 +33710,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30610,7 +33730,7 @@ func (s IoK8sAPICoreV1PersistentVolumeList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -30748,6 +33868,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -30755,7 +33888,7 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AccessModes != nil {
@@ -31317,6 +34450,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31364,6 +34510,19 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31371,7 +34530,7 @@ func (s IoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PersistentVolumeStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
@@ -31448,6 +34607,19 @@ func (s *IoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PersistentVolumeStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PersistentVolumeStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31455,7 +34627,7 @@ func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -31549,6 +34721,19 @@ func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Pod) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31556,7 +34741,7 @@ func (s IoK8sAPICoreV1Pod) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Pod) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -31667,6 +34852,19 @@ func (s *IoK8sAPICoreV1Pod) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Pod) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Pod) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31674,7 +34872,7 @@ func (s IoK8sAPICoreV1PodAffinity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
@@ -31756,6 +34954,19 @@ func (s *IoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31763,7 +34974,7 @@ func (s IoK8sAPICoreV1PodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodAffinityTerm) encodeFields(e *jx.Encoder) {
 	{
 		if s.LabelSelector.Set {
@@ -31904,6 +35115,19 @@ func (s *IoK8sAPICoreV1PodAffinityTerm) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodAffinityTerm) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodAffinityTerm) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -31911,7 +35135,7 @@ func (s IoK8sAPICoreV1PodAntiAffinity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodAntiAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.PreferredDuringSchedulingIgnoredDuringExecution != nil {
@@ -31993,6 +35217,19 @@ func (s *IoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodAntiAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodAntiAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32000,7 +35237,7 @@ func (s IoK8sAPICoreV1PodCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastProbeTime.Set {
@@ -32163,6 +35400,19 @@ func (s *IoK8sAPICoreV1PodCondition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32170,7 +35420,7 @@ func (s IoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodDNSConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.Nameservers != nil {
@@ -32284,6 +35534,19 @@ func (s *IoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodDNSConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodDNSConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodDNSConfigOption) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32291,7 +35554,7 @@ func (s IoK8sAPICoreV1PodDNSConfigOption) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodDNSConfigOption) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -32351,6 +35614,19 @@ func (s *IoK8sAPICoreV1PodDNSConfigOption) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodDNSConfigOption) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodDNSConfigOption) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodIP) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32358,7 +35634,7 @@ func (s IoK8sAPICoreV1PodIP) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodIP) encodeFields(e *jx.Encoder) {
 	{
 		if s.IP.Set {
@@ -32401,6 +35677,19 @@ func (s *IoK8sAPICoreV1PodIP) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodIP) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodIP) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32408,7 +35697,7 @@ func (s IoK8sAPICoreV1PodList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -32546,6 +35835,19 @@ func (s *IoK8sAPICoreV1PodList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodReadinessGate) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32553,7 +35855,7 @@ func (s IoK8sAPICoreV1PodReadinessGate) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodReadinessGate) encodeFields(e *jx.Encoder) {
 	{
 
@@ -32630,6 +35932,19 @@ func (s *IoK8sAPICoreV1PodReadinessGate) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodReadinessGate) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodReadinessGate) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32637,7 +35952,7 @@ func (s IoK8sAPICoreV1PodSecurityContext) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodSecurityContext) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsGroup.Set {
@@ -32857,6 +36172,19 @@ func (s *IoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodSecurityContext) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodSecurityContext) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -32864,7 +36192,7 @@ func (s IoK8sAPICoreV1PodSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.ActiveDeadlineSeconds.Set {
@@ -33621,6 +36949,19 @@ func (s *IoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -33670,6 +37011,19 @@ func (s IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodSpecNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodSpecNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -33717,6 +37071,19 @@ func (s IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodSpecOverhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodSpecOverhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -33724,7 +37091,7 @@ func (s IoK8sAPICoreV1PodStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -34026,6 +37393,19 @@ func (s *IoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplate) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34033,7 +37413,7 @@ func (s IoK8sAPICoreV1PodTemplate) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodTemplate) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -34127,6 +37507,19 @@ func (s *IoK8sAPICoreV1PodTemplate) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodTemplate) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodTemplate) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34134,7 +37527,7 @@ func (s IoK8sAPICoreV1PodTemplateList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodTemplateList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -34272,6 +37665,19 @@ func (s *IoK8sAPICoreV1PodTemplateList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodTemplateList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodTemplateList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34279,7 +37685,7 @@ func (s IoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PodTemplateSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Metadata.Set {
@@ -34339,6 +37745,19 @@ func (s *IoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PodTemplateSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PodTemplateSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PortStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34346,7 +37765,7 @@ func (s IoK8sAPICoreV1PortStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PortStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Error.Set {
@@ -34458,6 +37877,19 @@ func (s *IoK8sAPICoreV1PortStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PortStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PortStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34465,7 +37897,7 @@ func (s IoK8sAPICoreV1PortworxVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PortworxVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -34576,6 +38008,19 @@ func (s *IoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PortworxVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PortworxVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34583,7 +38028,7 @@ func (s IoK8sAPICoreV1PreferredSchedulingTerm) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1PreferredSchedulingTerm) encodeFields(e *jx.Encoder) {
 	{
 
@@ -34676,6 +38121,19 @@ func (s *IoK8sAPICoreV1PreferredSchedulingTerm) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1PreferredSchedulingTerm) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1PreferredSchedulingTerm) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Probe) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34683,7 +38141,7 @@ func (s IoK8sAPICoreV1Probe) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Probe) encodeFields(e *jx.Encoder) {
 	{
 		if s.Exec.Set {
@@ -34862,6 +38320,19 @@ func (s *IoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Probe) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Probe) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34869,7 +38340,7 @@ func (s IoK8sAPICoreV1ProjectedVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ProjectedVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
@@ -34940,6 +38411,19 @@ func (s *IoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ProjectedVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ProjectedVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -34947,7 +38431,7 @@ func (s IoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1QuobyteVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Group.Set {
@@ -35110,6 +38594,19 @@ func (s *IoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35117,7 +38614,7 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1RBDPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -35326,6 +38823,19 @@ func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35333,7 +38843,7 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1RBDVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -35542,6 +39052,19 @@ func (s *IoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1RBDVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1RBDVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationController) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35549,7 +39072,7 @@ func (s IoK8sAPICoreV1ReplicationController) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ReplicationController) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -35660,6 +39183,19 @@ func (s *IoK8sAPICoreV1ReplicationController) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ReplicationController) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ReplicationController) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35667,7 +39203,7 @@ func (s IoK8sAPICoreV1ReplicationControllerCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ReplicationControllerCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -35813,6 +39349,19 @@ func (s *IoK8sAPICoreV1ReplicationControllerCondition) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35820,7 +39369,7 @@ func (s IoK8sAPICoreV1ReplicationControllerList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ReplicationControllerList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -35958,6 +39507,19 @@ func (s *IoK8sAPICoreV1ReplicationControllerList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ReplicationControllerList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -35965,7 +39527,7 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ReplicationControllerSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MinReadySeconds.Set {
@@ -36059,6 +39621,19 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36108,6 +39683,19 @@ func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36115,7 +39703,7 @@ func (s IoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ReplicationControllerStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AvailableReplicas.Set {
@@ -36288,6 +39876,19 @@ func (s *IoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36295,7 +39896,7 @@ func (s IoK8sAPICoreV1ResourceFieldSelector) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ResourceFieldSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContainerName.Set {
@@ -36406,6 +40007,19 @@ func (s *IoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceFieldSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceFieldSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuota) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36413,7 +40027,7 @@ func (s IoK8sAPICoreV1ResourceQuota) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ResourceQuota) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -36524,6 +40138,19 @@ func (s *IoK8sAPICoreV1ResourceQuota) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuota) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceQuota) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36531,7 +40158,7 @@ func (s IoK8sAPICoreV1ResourceQuotaList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ResourceQuotaList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -36669,6 +40296,19 @@ func (s *IoK8sAPICoreV1ResourceQuotaList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceQuotaList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36676,7 +40316,7 @@ func (s IoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ResourceQuotaSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hard.Set {
@@ -36766,6 +40406,19 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceQuotaSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36813,6 +40466,19 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaSpecHard) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36820,7 +40486,7 @@ func (s IoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ResourceQuotaStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hard.Set {
@@ -36880,6 +40546,19 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceQuotaStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36925,6 +40604,19 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatusHard) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -36974,6 +40666,19 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -36981,7 +40686,7 @@ func (s IoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ResourceRequirements) encodeFields(e *jx.Encoder) {
 	{
 		if s.Limits.Set {
@@ -37041,6 +40746,19 @@ func (s *IoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirements) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceRequirements) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ResourceRequirementsLimits) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37086,6 +40804,19 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirementsLimits) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceRequirementsLimits) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -37135,6 +40866,19 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ResourceRequirementsRequests) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ResourceRequirementsRequests) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37142,7 +40886,7 @@ func (s IoK8sAPICoreV1SELinuxOptions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SELinuxOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Level.Set {
@@ -37236,6 +40980,19 @@ func (s *IoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SELinuxOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SELinuxOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37243,7 +41000,7 @@ func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -37474,6 +41231,19 @@ func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37481,7 +41251,7 @@ func (s IoK8sAPICoreV1ScaleIOVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ScaleIOVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -37712,6 +41482,19 @@ func (s *IoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37719,7 +41502,7 @@ func (s IoK8sAPICoreV1ScopeSelector) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ScopeSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchExpressions != nil {
@@ -37773,6 +41556,19 @@ func (s *IoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ScopeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ScopeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37780,7 +41576,7 @@ func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
 
@@ -37905,6 +41701,19 @@ func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SeccompProfile) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -37912,7 +41721,7 @@ func (s IoK8sAPICoreV1SeccompProfile) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SeccompProfile) encodeFields(e *jx.Encoder) {
 	{
 		if s.LocalhostProfile.Set {
@@ -38006,6 +41815,19 @@ func (s *IoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SeccompProfile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SeccompProfile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Secret) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38013,7 +41835,7 @@ func (s IoK8sAPICoreV1Secret) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Secret) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -38158,6 +41980,19 @@ func (s *IoK8sAPICoreV1Secret) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Secret) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Secret) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretData) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38207,6 +42042,19 @@ func (s IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38214,7 +42062,7 @@ func (s IoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SecretEnvSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -38274,6 +42122,19 @@ func (s *IoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretEnvSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretEnvSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38281,7 +42142,7 @@ func (s IoK8sAPICoreV1SecretKeySelector) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SecretKeySelector) encodeFields(e *jx.Encoder) {
 	{
 
@@ -38392,6 +42253,19 @@ func (s *IoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretKeySelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretKeySelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38399,7 +42273,7 @@ func (s IoK8sAPICoreV1SecretList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SecretList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -38537,6 +42411,19 @@ func (s *IoK8sAPICoreV1SecretList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38544,7 +42431,7 @@ func (s IoK8sAPICoreV1SecretProjection) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SecretProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Items != nil {
@@ -38632,6 +42519,19 @@ func (s *IoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38639,7 +42539,7 @@ func (s IoK8sAPICoreV1SecretReference) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SecretReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -38699,6 +42599,19 @@ func (s *IoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretStringData) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38748,6 +42661,19 @@ func (s IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretStringData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretStringData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38755,7 +42681,7 @@ func (s IoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SecretVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultMode.Set {
@@ -38860,6 +42786,19 @@ func (s *IoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecretVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecretVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SecurityContext) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -38867,7 +42806,7 @@ func (s IoK8sAPICoreV1SecurityContext) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SecurityContext) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllowPrivilegeEscalation.Set {
@@ -39080,6 +43019,19 @@ func (s *IoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SecurityContext) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SecurityContext) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Service) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -39087,7 +43039,7 @@ func (s IoK8sAPICoreV1Service) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Service) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -39198,6 +43150,19 @@ func (s *IoK8sAPICoreV1Service) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Service) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Service) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -39205,7 +43170,7 @@ func (s IoK8sAPICoreV1ServiceAccount) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ServiceAccount) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -39355,6 +43320,19 @@ func (s *IoK8sAPICoreV1ServiceAccount) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServiceAccount) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServiceAccount) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -39362,7 +43340,7 @@ func (s IoK8sAPICoreV1ServiceAccountList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ServiceAccountList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -39500,6 +43478,19 @@ func (s *IoK8sAPICoreV1ServiceAccountList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServiceAccountList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServiceAccountList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -39507,7 +43498,7 @@ func (s IoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ServiceAccountTokenProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.Audience.Set {
@@ -39618,6 +43609,19 @@ func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServiceAccountTokenProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -39625,7 +43629,7 @@ func (s IoK8sAPICoreV1ServiceList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ServiceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -39763,6 +43767,19 @@ func (s *IoK8sAPICoreV1ServiceList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServiceList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServiceList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServicePort) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -39770,7 +43787,7 @@ func (s IoK8sAPICoreV1ServicePort) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ServicePort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
@@ -39932,6 +43949,19 @@ func (s *IoK8sAPICoreV1ServicePort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServicePort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServicePort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -39939,7 +43969,7 @@ func (s IoK8sAPICoreV1ServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ServiceSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllocateLoadBalancerNodePorts.Set {
@@ -40351,6 +44381,19 @@ func (s *IoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServiceSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServiceSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceSpecSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40400,6 +44443,19 @@ func (s IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServiceSpecSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServiceSpecSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40407,7 +44463,7 @@ func (s IoK8sAPICoreV1ServiceStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1ServiceStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -40478,6 +44534,19 @@ func (s *IoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1ServiceStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1ServiceStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40485,7 +44554,7 @@ func (s IoK8sAPICoreV1SessionAffinityConfig) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1SessionAffinityConfig) encodeFields(e *jx.Encoder) {
 	{
 		if s.ClientIP.Set {
@@ -40528,6 +44597,19 @@ func (s *IoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1SessionAffinityConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1SessionAffinityConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40535,7 +44617,7 @@ func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -40646,6 +44728,19 @@ func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40653,7 +44748,7 @@ func (s IoK8sAPICoreV1StorageOSVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1StorageOSVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -40764,6 +44859,19 @@ func (s *IoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1StorageOSVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Sysctl) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40771,7 +44879,7 @@ func (s IoK8sAPICoreV1Sysctl) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Sysctl) encodeFields(e *jx.Encoder) {
 	{
 
@@ -40866,6 +44974,19 @@ func (s *IoK8sAPICoreV1Sysctl) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Sysctl) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Sysctl) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40873,7 +44994,7 @@ func (s IoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1TCPSocketAction) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
@@ -40965,6 +45086,19 @@ func (s *IoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1TCPSocketAction) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1TCPSocketAction) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Taint) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -40972,7 +45106,7 @@ func (s IoK8sAPICoreV1Taint) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Taint) encodeFields(e *jx.Encoder) {
 	{
 
@@ -41101,6 +45235,19 @@ func (s *IoK8sAPICoreV1Taint) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Taint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Taint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Toleration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -41108,7 +45255,7 @@ func (s IoK8sAPICoreV1Toleration) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Toleration) encodeFields(e *jx.Encoder) {
 	{
 		if s.Effect.Set {
@@ -41219,6 +45366,19 @@ func (s *IoK8sAPICoreV1Toleration) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Toleration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Toleration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -41226,7 +45386,7 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) encodeFields(e *jx.Encoder) {
 	{
 
@@ -41333,6 +45493,19 @@ func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -41340,7 +45513,7 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1TopologySelectorTerm) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchLabelExpressions != nil {
@@ -41394,6 +45567,19 @@ func (s *IoK8sAPICoreV1TopologySelectorTerm) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1TopologySelectorTerm) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1TopologySelectorTerm) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TopologySpreadConstraint) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -41401,7 +45587,7 @@ func (s IoK8sAPICoreV1TopologySpreadConstraint) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1TopologySpreadConstraint) encodeFields(e *jx.Encoder) {
 	{
 		if s.LabelSelector.Set {
@@ -41531,6 +45717,19 @@ func (s *IoK8sAPICoreV1TopologySpreadConstraint) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1TopologySpreadConstraint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -41538,7 +45737,7 @@ func (s IoK8sAPICoreV1TypedLocalObjectReference) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1TypedLocalObjectReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroup.Set {
@@ -41650,6 +45849,19 @@ func (s *IoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1TypedLocalObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1TypedLocalObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1Volume) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -41657,7 +45869,7 @@ func (s IoK8sAPICoreV1Volume) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1Volume) encodeFields(e *jx.Encoder) {
 	{
 		if s.AwsElasticBlockStore.Set {
@@ -42230,6 +46442,19 @@ func (s *IoK8sAPICoreV1Volume) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1Volume) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1Volume) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42237,7 +46462,7 @@ func (s IoK8sAPICoreV1VolumeDevice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1VolumeDevice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -42332,6 +46557,19 @@ func (s *IoK8sAPICoreV1VolumeDevice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1VolumeDevice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1VolumeDevice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeMount) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42339,7 +46577,7 @@ func (s IoK8sAPICoreV1VolumeMount) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1VolumeMount) encodeFields(e *jx.Encoder) {
 	{
 
@@ -42502,6 +46740,19 @@ func (s *IoK8sAPICoreV1VolumeMount) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1VolumeMount) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1VolumeMount) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42509,7 +46760,7 @@ func (s IoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1VolumeNodeAffinity) encodeFields(e *jx.Encoder) {
 	{
 		if s.Required.Set {
@@ -42552,6 +46803,19 @@ func (s *IoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1VolumeNodeAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1VolumeNodeAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VolumeProjection) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42559,7 +46823,7 @@ func (s IoK8sAPICoreV1VolumeProjection) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1VolumeProjection) encodeFields(e *jx.Encoder) {
 	{
 		if s.ConfigMap.Set {
@@ -42653,6 +46917,19 @@ func (s *IoK8sAPICoreV1VolumeProjection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1VolumeProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1VolumeProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42660,7 +46937,7 @@ func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.FsType.Set {
@@ -42788,6 +47065,19 @@ func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42795,7 +47085,7 @@ func (s IoK8sAPICoreV1WeightedPodAffinityTerm) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1WeightedPodAffinityTerm) encodeFields(e *jx.Encoder) {
 	{
 
@@ -42888,6 +47178,19 @@ func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1WeightedPodAffinityTerm) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42895,7 +47198,7 @@ func (s IoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPICoreV1WindowsSecurityContextOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.GmsaCredentialSpec.Set {
@@ -42989,6 +47292,19 @@ func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPICoreV1WindowsSecurityContextOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -42996,7 +47312,7 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1Endpoint) encodeFields(e *jx.Encoder) {
 	{
 
@@ -43204,6 +47520,19 @@ func (s *IoK8sAPIDiscoveryV1Endpoint) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1Endpoint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1Endpoint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43211,7 +47540,7 @@ func (s IoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1EndpointConditions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ready.Set {
@@ -43288,6 +47617,19 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointConditions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1EndpointConditions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43337,6 +47679,19 @@ func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43344,7 +47699,7 @@ func (s IoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1EndpointHints) encodeFields(e *jx.Encoder) {
 	{
 		if s.ForZones != nil {
@@ -43398,6 +47753,19 @@ func (s *IoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointHints) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1EndpointHints) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43405,7 +47773,7 @@ func (s IoK8sAPIDiscoveryV1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1EndpointPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
@@ -43499,6 +47867,19 @@ func (s *IoK8sAPIDiscoveryV1EndpointPort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointPort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1EndpointPort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43506,7 +47887,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1EndpointSlice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -43690,6 +48071,19 @@ func (s *IoK8sAPIDiscoveryV1EndpointSlice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43697,7 +48091,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1EndpointSliceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -43835,6 +48229,19 @@ func (s *IoK8sAPIDiscoveryV1EndpointSliceList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1ForZone) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43842,7 +48249,7 @@ func (s IoK8sAPIDiscoveryV1ForZone) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1ForZone) encodeFields(e *jx.Encoder) {
 	{
 
@@ -43919,6 +48326,19 @@ func (s *IoK8sAPIDiscoveryV1ForZone) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1ForZone) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1ForZone) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -43926,7 +48346,7 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1beta1Endpoint) encodeFields(e *jx.Encoder) {
 	{
 
@@ -44117,6 +48537,19 @@ func (s *IoK8sAPIDiscoveryV1beta1Endpoint) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44124,7 +48557,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ready.Set {
@@ -44201,6 +48634,19 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44208,7 +48654,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1beta1EndpointHints) encodeFields(e *jx.Encoder) {
 	{
 		if s.ForZones != nil {
@@ -44262,6 +48708,19 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointHints) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44269,7 +48728,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointPort) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1beta1EndpointPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.AppProtocol.Set {
@@ -44363,6 +48822,19 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointPort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44370,7 +48842,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) encodeFields(e *jx.Encoder) {
 	{
 
@@ -44554,6 +49026,19 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44561,7 +49046,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -44699,6 +49184,19 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44748,6 +49246,19 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIDiscoveryV1beta1ForZone) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44755,7 +49266,7 @@ func (s IoK8sAPIDiscoveryV1beta1ForZone) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIDiscoveryV1beta1ForZone) encodeFields(e *jx.Encoder) {
 	{
 
@@ -44832,6 +49343,19 @@ func (s *IoK8sAPIDiscoveryV1beta1ForZone) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIDiscoveryV1beta1ForZone) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIDiscoveryV1beta1ForZone) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -44839,7 +49363,7 @@ func (s IoK8sAPIEventsV1Event) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIEventsV1Event) encodeFields(e *jx.Encoder) {
 	{
 		if s.Action.Set {
@@ -45188,6 +49712,19 @@ func (s *IoK8sAPIEventsV1Event) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIEventsV1Event) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIEventsV1Event) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -45195,7 +49732,7 @@ func (s IoK8sAPIEventsV1EventList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIEventsV1EventList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -45333,6 +49870,19 @@ func (s *IoK8sAPIEventsV1EventList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIEventsV1EventList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIEventsV1EventList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -45340,7 +49890,7 @@ func (s IoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIEventsV1EventSeries) encodeFields(e *jx.Encoder) {
 	{
 
@@ -45433,6 +49983,19 @@ func (s *IoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIEventsV1EventSeries) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIEventsV1EventSeries) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -45440,7 +50003,7 @@ func (s IoK8sAPIEventsV1beta1Event) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIEventsV1beta1Event) encodeFields(e *jx.Encoder) {
 	{
 		if s.Action.Set {
@@ -45789,6 +50352,19 @@ func (s *IoK8sAPIEventsV1beta1Event) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIEventsV1beta1Event) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIEventsV1beta1Event) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -45796,7 +50372,7 @@ func (s IoK8sAPIEventsV1beta1EventList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIEventsV1beta1EventList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -45934,6 +50510,19 @@ func (s *IoK8sAPIEventsV1beta1EventList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIEventsV1beta1EventList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIEventsV1beta1EventList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -45941,7 +50530,7 @@ func (s IoK8sAPIEventsV1beta1EventSeries) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIEventsV1beta1EventSeries) encodeFields(e *jx.Encoder) {
 	{
 
@@ -46034,6 +50623,19 @@ func (s *IoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIEventsV1beta1EventSeries) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIEventsV1beta1EventSeries) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46041,7 +50643,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Encoder)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) encodeFields(e *jx.Encoder) {
 	{
 
@@ -46118,6 +50720,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46125,7 +50740,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -46236,6 +50851,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46243,7 +50871,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -46354,6 +50982,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46361,7 +51002,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -46499,6 +51140,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46506,7 +51160,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.DistinguisherMethod.Set {
@@ -46643,6 +51297,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46650,7 +51317,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -46704,6 +51371,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46711,7 +51391,7 @@ func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) encodeFields(e *jx.Encoder) {
 	{
 
@@ -46788,6 +51468,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46795,7 +51488,7 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) encodeFields(e *jx.Encoder) {
 	{
 		if s.Queuing.Set {
@@ -46889,6 +51582,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46896,7 +51602,7 @@ func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Encode(e *j
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.AssuredConcurrencyShares.Set {
@@ -46956,6 +51662,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -46963,7 +51682,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
@@ -47082,6 +51801,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47089,7 +51821,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Encode(e *jx.Encoder)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) encodeFields(e *jx.Encoder) {
 	{
 		if s.NonResourceRules != nil {
@@ -47232,6 +51964,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47239,7 +51984,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Encode(e *jx.Encod
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -47350,6 +52095,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) Decode(d *jx.Deco
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47357,7 +52115,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Encode(e 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -47468,6 +52226,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) Decode(d
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47475,7 +52246,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Encode(e *jx.E
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -47613,6 +52384,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47620,7 +52404,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Encode(e 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) encodeFields(e *jx.Encoder) {
 	{
 
@@ -47697,6 +52481,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) Decode(d
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47704,7 +52501,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.E
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Limited.Set {
@@ -47798,6 +52595,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47805,7 +52615,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Encode(e *jx
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -47859,6 +52669,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47866,7 +52689,7 @@ func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.HandSize.Set {
@@ -47943,6 +52766,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -47950,7 +52786,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
@@ -48146,6 +52982,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48153,7 +53002,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) encodeFields(e *jx.Encoder) {
 	{
 
@@ -48248,6 +53097,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48255,7 +53117,7 @@ func (s IoK8sAPIFlowcontrolV1beta1Subject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1Subject) encodeFields(e *jx.Encoder) {
 	{
 		if s.Group.Set {
@@ -48383,6 +53245,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1Subject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1Subject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48390,7 +53265,7 @@ func (s IoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta1UserSubject) encodeFields(e *jx.Encoder) {
 	{
 
@@ -48467,6 +53342,19 @@ func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta1UserSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48474,7 +53362,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Encode(e *jx.Encoder)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) encodeFields(e *jx.Encoder) {
 	{
 
@@ -48551,6 +53439,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48558,7 +53459,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -48669,6 +53570,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48676,7 +53590,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -48787,6 +53701,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48794,7 +53721,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -48932,6 +53859,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -48939,7 +53879,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.DistinguisherMethod.Set {
@@ -49076,6 +54016,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49083,7 +54036,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -49137,6 +54090,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49144,7 +54110,7 @@ func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) encodeFields(e *jx.Encoder) {
 	{
 
@@ -49221,6 +54187,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49228,7 +54207,7 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) encodeFields(e *jx.Encoder) {
 	{
 		if s.Queuing.Set {
@@ -49322,6 +54301,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49329,7 +54321,7 @@ func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *j
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.AssuredConcurrencyShares.Set {
@@ -49389,6 +54381,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49396,7 +54401,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
@@ -49515,6 +54520,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49522,7 +54540,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Encode(e *jx.Encoder)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) encodeFields(e *jx.Encoder) {
 	{
 		if s.NonResourceRules != nil {
@@ -49665,6 +54683,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49672,7 +54703,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Encode(e *jx.Encod
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -49783,6 +54814,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) Decode(d *jx.Deco
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49790,7 +54834,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Encode(e 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -49901,6 +54945,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) Decode(d
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -49908,7 +54965,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Encode(e *jx.E
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -50046,6 +55103,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50053,7 +55123,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Encode(e 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) encodeFields(e *jx.Encoder) {
 	{
 
@@ -50130,6 +55200,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) Decode(d
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50137,7 +55220,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Encode(e *jx.E
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Limited.Set {
@@ -50231,6 +55314,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50238,7 +55334,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -50292,6 +55388,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50299,7 +55408,7 @@ func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) encodeFields(e *jx.Encoder) {
 	{
 		if s.HandSize.Set {
@@ -50376,6 +55485,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50383,7 +55505,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) encodeFields(e *jx.Encoder) {
 	{
 
@@ -50579,6 +55701,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50586,7 +55721,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) encodeFields(e *jx.Encoder) {
 	{
 
@@ -50681,6 +55816,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50688,7 +55836,7 @@ func (s IoK8sAPIFlowcontrolV1beta2Subject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2Subject) encodeFields(e *jx.Encoder) {
 	{
 		if s.Group.Set {
@@ -50816,6 +55964,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2Subject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2Subject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50823,7 +55984,7 @@ func (s IoK8sAPIFlowcontrolV1beta2UserSubject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIFlowcontrolV1beta2UserSubject) encodeFields(e *jx.Encoder) {
 	{
 
@@ -50900,6 +56061,19 @@ func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIFlowcontrolV1beta2UserSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -50907,7 +56081,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressPath) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1HTTPIngressPath) encodeFields(e *jx.Encoder) {
 	{
 
@@ -51017,6 +56191,19 @@ func (s *IoK8sAPINetworkingV1HTTPIngressPath) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1HTTPIngressPath) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1HTTPIngressPath) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51024,7 +56211,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) encodeFields(e *jx.Encoder) {
 	{
 
@@ -51111,6 +56298,19 @@ func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51118,7 +56318,7 @@ func (s IoK8sAPINetworkingV1IPBlock) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IPBlock) encodeFields(e *jx.Encoder) {
 	{
 
@@ -51225,6 +56425,19 @@ func (s *IoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IPBlock) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IPBlock) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1Ingress) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51232,7 +56445,7 @@ func (s IoK8sAPINetworkingV1Ingress) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1Ingress) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -51343,6 +56556,19 @@ func (s *IoK8sAPINetworkingV1Ingress) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1Ingress) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1Ingress) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51350,7 +56576,7 @@ func (s IoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressBackend) encodeFields(e *jx.Encoder) {
 	{
 		if s.Resource.Set {
@@ -51410,6 +56636,19 @@ func (s *IoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressBackend) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressBackend) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51417,7 +56656,7 @@ func (s IoK8sAPINetworkingV1IngressClass) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -51511,6 +56750,19 @@ func (s *IoK8sAPINetworkingV1IngressClass) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClass) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressClass) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51518,7 +56770,7 @@ func (s IoK8sAPINetworkingV1IngressClassList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -51656,6 +56908,19 @@ func (s *IoK8sAPINetworkingV1IngressClassList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClassList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressClassList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51663,7 +56928,7 @@ func (s IoK8sAPINetworkingV1IngressClassParametersReference) Encode(e *jx.Encode
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressClassParametersReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroup.Set {
@@ -51809,6 +57074,19 @@ func (s *IoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51816,7 +57094,7 @@ func (s IoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressClassSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Controller.Set {
@@ -51876,6 +57154,19 @@ func (s *IoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressClassSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressClassSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -51883,7 +57174,7 @@ func (s IoK8sAPINetworkingV1IngressList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -52021,6 +57312,19 @@ func (s *IoK8sAPINetworkingV1IngressList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52028,7 +57332,7 @@ func (s IoK8sAPINetworkingV1IngressRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.Host.Set {
@@ -52088,6 +57392,19 @@ func (s *IoK8sAPINetworkingV1IngressRule) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52095,7 +57412,7 @@ func (s IoK8sAPINetworkingV1IngressServiceBackend) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressServiceBackend) encodeFields(e *jx.Encoder) {
 	{
 
@@ -52189,6 +57506,19 @@ func (s *IoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressServiceBackend) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressServiceBackend) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52196,7 +57526,7 @@ func (s IoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.DefaultBackend.Set {
@@ -52312,6 +57642,19 @@ func (s *IoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52319,7 +57662,7 @@ func (s IoK8sAPINetworkingV1IngressStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.LoadBalancer.Set {
@@ -52362,6 +57705,19 @@ func (s *IoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52369,7 +57725,7 @@ func (s IoK8sAPINetworkingV1IngressTLS) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1IngressTLS) encodeFields(e *jx.Encoder) {
 	{
 		if s.Hosts != nil {
@@ -52442,6 +57798,19 @@ func (s *IoK8sAPINetworkingV1IngressTLS) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1IngressTLS) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1IngressTLS) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52449,7 +57818,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicy) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1NetworkPolicy) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -52543,6 +57912,19 @@ func (s *IoK8sAPINetworkingV1NetworkPolicy) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1NetworkPolicy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52550,7 +57932,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ports != nil {
@@ -52632,6 +58014,19 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52639,7 +58034,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.From != nil {
@@ -52721,6 +58116,19 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52728,7 +58136,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1NetworkPolicyList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -52866,6 +58274,19 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPeer) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52873,7 +58294,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPeer) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1NetworkPolicyPeer) encodeFields(e *jx.Encoder) {
 	{
 		if s.IpBlock.Set {
@@ -52950,6 +58371,19 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyPeer) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicyPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -52957,7 +58391,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyPort) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1NetworkPolicyPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.EndPort.Set {
@@ -53034,6 +58468,19 @@ func (s *IoK8sAPINetworkingV1NetworkPolicyPort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicyPort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53041,7 +58488,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1NetworkPolicySpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Egress != nil {
@@ -53202,6 +58649,19 @@ func (s *IoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1NetworkPolicySpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53209,7 +58669,7 @@ func (s IoK8sAPINetworkingV1ServiceBackendPort) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINetworkingV1ServiceBackendPort) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -53269,6 +58729,19 @@ func (s *IoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINetworkingV1ServiceBackendPort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINetworkingV1ServiceBackendPort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53276,7 +58749,7 @@ func (s IoK8sAPINodeV1Overhead) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1Overhead) encodeFields(e *jx.Encoder) {
 	{
 		if s.PodFixed.Set {
@@ -53317,6 +58790,19 @@ func (s *IoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1Overhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1Overhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -53366,6 +58852,19 @@ func (s IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1OverheadPodFixed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1OverheadPodFixed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53373,7 +58872,7 @@ func (s IoK8sAPINodeV1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1RuntimeClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -53535,6 +59034,19 @@ func (s *IoK8sAPINodeV1RuntimeClass) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1RuntimeClass) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1RuntimeClass) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53542,7 +59054,7 @@ func (s IoK8sAPINodeV1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1RuntimeClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -53680,6 +59192,19 @@ func (s *IoK8sAPINodeV1RuntimeClassList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1RuntimeClassList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1RuntimeClassList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53687,7 +59212,7 @@ func (s IoK8sAPINodeV1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1Scheduling) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeSelector.Set {
@@ -53758,6 +59283,19 @@ func (s *IoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1Scheduling) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1Scheduling) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53807,6 +59345,19 @@ func (s IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1SchedulingNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1SchedulingNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53814,7 +59365,7 @@ func (s IoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1alpha1Overhead) encodeFields(e *jx.Encoder) {
 	{
 		if s.PodFixed.Set {
@@ -53855,6 +59406,19 @@ func (s *IoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1alpha1Overhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1alpha1Overhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -53904,6 +59468,19 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1alpha1OverheadPodFixed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -53911,7 +59488,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1alpha1RuntimeClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -54037,6 +59614,19 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClass) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1alpha1RuntimeClass) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54044,7 +59634,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1alpha1RuntimeClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -54182,6 +59772,19 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54189,7 +59792,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Overhead.Set {
@@ -54300,6 +59903,19 @@ func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54307,7 +59923,7 @@ func (s IoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1alpha1Scheduling) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeSelector.Set {
@@ -54378,6 +59994,19 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1alpha1Scheduling) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1alpha1Scheduling) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54427,6 +60056,19 @@ func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54434,7 +60076,7 @@ func (s IoK8sAPINodeV1beta1Overhead) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1beta1Overhead) encodeFields(e *jx.Encoder) {
 	{
 		if s.PodFixed.Set {
@@ -54475,6 +60117,19 @@ func (s *IoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1beta1Overhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1beta1Overhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -54524,6 +60179,19 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1beta1OverheadPodFixed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1beta1OverheadPodFixed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54531,7 +60199,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClass) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1beta1RuntimeClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -54693,6 +60361,19 @@ func (s *IoK8sAPINodeV1beta1RuntimeClass) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1beta1RuntimeClass) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1beta1RuntimeClass) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54700,7 +60381,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1beta1RuntimeClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -54838,6 +60519,19 @@ func (s *IoK8sAPINodeV1beta1RuntimeClassList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1beta1RuntimeClassList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54845,7 +60539,7 @@ func (s IoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPINodeV1beta1Scheduling) encodeFields(e *jx.Encoder) {
 	{
 		if s.NodeSelector.Set {
@@ -54916,6 +60610,19 @@ func (s *IoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1beta1Scheduling) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1beta1Scheduling) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54965,6 +60672,19 @@ func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -54972,7 +60692,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1PodDisruptionBudget) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -55083,6 +60803,19 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55090,7 +60823,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -55228,6 +60961,19 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55235,7 +60981,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxUnavailable.Set {
@@ -55312,6 +61058,19 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55319,7 +61078,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -55512,6 +61271,19 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55559,6 +61331,19 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55566,7 +61351,7 @@ func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) encodeFields(e *jx.Encoder) {
 	{
 
@@ -55643,6 +61428,19 @@ func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55650,7 +61448,7 @@ func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) encodeFields(e *jx.Encoder) {
 	{
 
@@ -55727,6 +61525,19 @@ func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1AllowedHostPath) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55734,7 +61545,7 @@ func (s IoK8sAPIPolicyV1beta1AllowedHostPath) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1AllowedHostPath) encodeFields(e *jx.Encoder) {
 	{
 		if s.PathPrefix.Set {
@@ -55794,6 +61605,19 @@ func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1AllowedHostPath) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55801,7 +61625,7 @@ func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
@@ -55872,6 +61696,19 @@ func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55879,7 +61716,7 @@ func (s IoK8sAPIPolicyV1beta1HostPortRange) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1HostPortRange) encodeFields(e *jx.Encoder) {
 	{
 
@@ -55974,6 +61811,19 @@ func (s *IoK8sAPIPolicyV1beta1HostPortRange) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1HostPortRange) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1HostPortRange) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -55981,7 +61831,7 @@ func (s IoK8sAPIPolicyV1beta1IDRange) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1IDRange) encodeFields(e *jx.Encoder) {
 	{
 
@@ -56076,6 +61926,19 @@ func (s *IoK8sAPIPolicyV1beta1IDRange) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1IDRange) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1IDRange) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56083,7 +61946,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -56194,6 +62057,19 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56201,7 +62077,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -56339,6 +62215,19 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56346,7 +62235,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.MaxUnavailable.Set {
@@ -56423,6 +62312,19 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56430,7 +62332,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -56623,6 +62525,19 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56670,6 +62585,19 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56677,7 +62605,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -56771,6 +62699,19 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56778,7 +62719,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -56916,6 +62857,19 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -56923,7 +62877,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllowPrivilegeEscalation.Set {
@@ -57523,6 +63477,19 @@ func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -57530,7 +63497,7 @@ func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
@@ -57635,6 +63602,19 @@ func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -57642,7 +63622,7 @@ func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
@@ -57747,6 +63727,19 @@ func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -57754,7 +63747,7 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 
@@ -57860,6 +63853,19 @@ func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -57867,7 +63873,7 @@ func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 
@@ -57961,6 +63967,19 @@ func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -57968,7 +63987,7 @@ func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Encode(e *jx.Enc
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ranges != nil {
@@ -58039,6 +64058,19 @@ func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) Decode(d *jx.De
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -58046,7 +64078,7 @@ func (s IoK8sAPIRbacV1AggregationRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1AggregationRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.ClusterRoleSelectors != nil {
@@ -58100,6 +64132,19 @@ func (s *IoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1AggregationRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1AggregationRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -58107,7 +64152,7 @@ func (s IoK8sAPIRbacV1ClusterRole) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1ClusterRole) encodeFields(e *jx.Encoder) {
 	{
 		if s.AggregationRule.Set {
@@ -58229,6 +64274,19 @@ func (s *IoK8sAPIRbacV1ClusterRole) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRole) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1ClusterRole) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -58236,7 +64294,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBinding) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1ClusterRoleBinding) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -58390,6 +64448,19 @@ func (s *IoK8sAPIRbacV1ClusterRoleBinding) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRoleBinding) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -58397,7 +64468,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1ClusterRoleBindingList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -58535,6 +64606,19 @@ func (s *IoK8sAPIRbacV1ClusterRoleBindingList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -58542,7 +64626,7 @@ func (s IoK8sAPIRbacV1ClusterRoleList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1ClusterRoleList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -58680,6 +64764,19 @@ func (s *IoK8sAPIRbacV1ClusterRoleList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1ClusterRoleList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1ClusterRoleList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -58687,7 +64784,7 @@ func (s IoK8sAPIRbacV1PolicyRule) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1PolicyRule) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroups != nil {
@@ -58896,6 +64993,19 @@ func (s *IoK8sAPIRbacV1PolicyRule) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1PolicyRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1PolicyRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1Role) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -58903,7 +65013,7 @@ func (s IoK8sAPIRbacV1Role) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1Role) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -59008,6 +65118,19 @@ func (s *IoK8sAPIRbacV1Role) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1Role) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1Role) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -59015,7 +65138,7 @@ func (s IoK8sAPIRbacV1RoleBinding) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1RoleBinding) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -59169,6 +65292,19 @@ func (s *IoK8sAPIRbacV1RoleBinding) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1RoleBinding) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1RoleBinding) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -59176,7 +65312,7 @@ func (s IoK8sAPIRbacV1RoleBindingList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1RoleBindingList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -59314,6 +65450,19 @@ func (s *IoK8sAPIRbacV1RoleBindingList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1RoleBindingList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1RoleBindingList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -59321,7 +65470,7 @@ func (s IoK8sAPIRbacV1RoleList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1RoleList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -59459,6 +65608,19 @@ func (s *IoK8sAPIRbacV1RoleList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1RoleList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1RoleList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1RoleRef) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -59466,7 +65628,7 @@ func (s IoK8sAPIRbacV1RoleRef) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1RoleRef) encodeFields(e *jx.Encoder) {
 	{
 
@@ -59579,6 +65741,19 @@ func (s *IoK8sAPIRbacV1RoleRef) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1RoleRef) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1RoleRef) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIRbacV1Subject) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -59586,7 +65761,7 @@ func (s IoK8sAPIRbacV1Subject) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIRbacV1Subject) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiGroup.Set {
@@ -59715,6 +65890,19 @@ func (s *IoK8sAPIRbacV1Subject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIRbacV1Subject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIRbacV1Subject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -59722,7 +65910,7 @@ func (s IoK8sAPISchedulingV1PriorityClass) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPISchedulingV1PriorityClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -59901,6 +66089,19 @@ func (s *IoK8sAPISchedulingV1PriorityClass) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPISchedulingV1PriorityClass) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPISchedulingV1PriorityClass) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -59908,7 +66109,7 @@ func (s IoK8sAPISchedulingV1PriorityClassList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPISchedulingV1PriorityClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -60046,6 +66247,19 @@ func (s *IoK8sAPISchedulingV1PriorityClassList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPISchedulingV1PriorityClassList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPISchedulingV1PriorityClassList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -60053,7 +66267,7 @@ func (s IoK8sAPIStorageV1CSIDriver) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1CSIDriver) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -60179,6 +66393,19 @@ func (s *IoK8sAPIStorageV1CSIDriver) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1CSIDriver) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1CSIDriver) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -60186,7 +66413,7 @@ func (s IoK8sAPIStorageV1CSIDriverList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1CSIDriverList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -60324,6 +66551,19 @@ func (s *IoK8sAPIStorageV1CSIDriverList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1CSIDriverList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1CSIDriverList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -60331,7 +66571,7 @@ func (s IoK8sAPIStorageV1CSIDriverSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1CSIDriverSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.AttachRequired.Set {
@@ -60500,6 +66740,19 @@ func (s *IoK8sAPIStorageV1CSIDriverSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1CSIDriverSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINode) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -60507,7 +66760,7 @@ func (s IoK8sAPIStorageV1CSINode) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1CSINode) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -60633,6 +66886,19 @@ func (s *IoK8sAPIStorageV1CSINode) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1CSINode) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1CSINode) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -60640,7 +66906,7 @@ func (s IoK8sAPIStorageV1CSINodeDriver) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1CSINodeDriver) encodeFields(e *jx.Encoder) {
 	{
 		if s.Allocatable.Set {
@@ -60782,6 +67048,19 @@ func (s *IoK8sAPIStorageV1CSINodeDriver) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1CSINodeDriver) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1CSINodeDriver) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -60789,7 +67068,7 @@ func (s IoK8sAPIStorageV1CSINodeList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1CSINodeList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -60927,6 +67206,19 @@ func (s *IoK8sAPIStorageV1CSINodeList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1CSINodeList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1CSINodeList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -60934,7 +67226,7 @@ func (s IoK8sAPIStorageV1CSINodeSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1CSINodeSpec) encodeFields(e *jx.Encoder) {
 	{
 
@@ -61021,6 +67313,19 @@ func (s *IoK8sAPIStorageV1CSINodeSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1CSINodeSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1CSINodeSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61028,7 +67333,7 @@ func (s IoK8sAPIStorageV1StorageClass) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1StorageClass) encodeFields(e *jx.Encoder) {
 	{
 		if s.AllowVolumeExpansion.Set {
@@ -61283,6 +67588,19 @@ func (s *IoK8sAPIStorageV1StorageClass) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1StorageClass) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1StorageClass) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61290,7 +67608,7 @@ func (s IoK8sAPIStorageV1StorageClassList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1StorageClassList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -61428,6 +67746,19 @@ func (s *IoK8sAPIStorageV1StorageClassList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1StorageClassList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1StorageClassList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1StorageClassParameters) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61477,6 +67808,19 @@ func (s IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1StorageClassParameters) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1StorageClassParameters) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61484,7 +67828,7 @@ func (s IoK8sAPIStorageV1TokenRequest) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1TokenRequest) encodeFields(e *jx.Encoder) {
 	{
 
@@ -61578,6 +67922,19 @@ func (s *IoK8sAPIStorageV1TokenRequest) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1TokenRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1TokenRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachment) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61585,7 +67942,7 @@ func (s IoK8sAPIStorageV1VolumeAttachment) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1VolumeAttachment) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -61728,6 +68085,19 @@ func (s *IoK8sAPIStorageV1VolumeAttachment) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachment) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeAttachment) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61735,7 +68105,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1VolumeAttachmentList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -61873,6 +68243,19 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentList) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61880,7 +68263,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1VolumeAttachmentSource) encodeFields(e *jx.Encoder) {
 	{
 		if s.InlineVolumeSpec.Set {
@@ -61940,6 +68323,19 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeAttachmentSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -61947,7 +68343,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1VolumeAttachmentSpec) encodeFields(e *jx.Encoder) {
 	{
 
@@ -62058,6 +68454,19 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62065,7 +68474,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AttachError.Set {
@@ -62193,6 +68602,19 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62242,6 +68664,19 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeError) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62249,7 +68684,7 @@ func (s IoK8sAPIStorageV1VolumeError) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1VolumeError) encodeFields(e *jx.Encoder) {
 	{
 		if s.Message.Set {
@@ -62309,6 +68744,19 @@ func (s *IoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeError) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeError) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62316,7 +68764,7 @@ func (s IoK8sAPIStorageV1VolumeNodeResources) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1VolumeNodeResources) encodeFields(e *jx.Encoder) {
 	{
 		if s.Count.Set {
@@ -62359,6 +68807,19 @@ func (s *IoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1VolumeNodeResources) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1VolumeNodeResources) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62366,7 +68827,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -62545,6 +69006,19 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62552,7 +69026,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -62690,6 +69164,19 @@ func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62697,7 +69184,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -62876,6 +69363,19 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -62883,7 +69383,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -63021,6 +69521,19 @@ func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -63028,7 +69541,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDef
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
@@ -63192,6 +69705,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDe
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -63199,7 +69725,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) encodeFields(e *jx.Encoder) {
 	{
 
@@ -63293,6 +69819,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversi
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -63300,7 +69839,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -63443,6 +69982,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -63450,7 +70002,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -63596,6 +70148,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -63603,7 +70168,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -63741,6 +70306,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -63748,7 +70326,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) encodeFields(e *jx.Encoder) {
 	{
 		if s.Categories != nil {
@@ -63937,6 +70515,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -63944,7 +70535,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conversion.Set {
@@ -64117,6 +70708,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64124,7 +70728,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.AcceptedNames.Set {
@@ -64225,6 +70829,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64232,7 +70849,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) encodeFields(e *jx.Encoder) {
 	{
 		if s.AdditionalPrinterColumns != nil {
@@ -64441,6 +71058,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefiniti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64448,7 +71078,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) encodeFields(e *jx.Encoder) {
 	{
 		if s.LabelSelectorPath.Set {
@@ -64560,6 +71190,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64567,7 +71210,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) encodeFields(e *jx.Encoder) {
 }
 
@@ -64592,6 +71235,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64599,7 +71255,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresour
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) encodeFields(e *jx.Encoder) {
 	{
 		if s.Scale.Set {
@@ -64661,6 +71317,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresou
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64668,7 +71337,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidatio
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) encodeFields(e *jx.Encoder) {
 	{
 		if s.OpenAPIV3Schema.Set {
@@ -64711,6 +71380,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidati
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64718,7 +71400,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
@@ -64778,6 +71460,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64785,7 +71480,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) encodeFields(e *jx.Encoder) {
 }
 
@@ -64810,6 +71505,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -64817,7 +71525,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ref.Set {
@@ -65656,6 +72364,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -65701,6 +72422,19 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -65750,6 +72484,19 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependen
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -65757,7 +72504,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray)
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) encodeFields(e *jx.Encoder) {
 }
 
@@ -65782,6 +72529,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -65789,7 +72549,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) encodeFields(e *jx.Encoder) {
 }
 
@@ -65814,6 +72574,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -65821,7 +72594,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrString
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) encodeFields(e *jx.Encoder) {
 }
 
@@ -65844,6 +72617,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -65893,6 +72679,19 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -65940,6 +72739,19 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -65947,7 +72759,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Encod
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
 
@@ -66076,6 +72888,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) Deco
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -66083,7 +72908,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) encodeFields(e *jx.Encoder) {
 	{
 
@@ -66160,6 +72985,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -66167,7 +73005,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) encodeFields(e *jx.Encoder) {
 	{
 		if s.ClientConfig.Set {
@@ -66273,6 +73111,19 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
 func (s IoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
@@ -66299,6 +73150,19 @@ func (s *IoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgAPIResourceQuantity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgAPIResourceQuantity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -66306,7 +73170,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroup) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -66490,6 +73354,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -66497,7 +73374,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -66618,6 +73495,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -66625,7 +73515,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1APIResource) encodeFields(e *jx.Encoder) {
 	{
 		if s.Categories != nil {
@@ -66898,6 +73788,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResource) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -66905,7 +73808,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -67044,6 +73947,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67051,7 +73967,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1APIVersions) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -67202,6 +74118,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67209,7 +74138,7 @@ func (s IoK8sApimachineryPkgApisMetaV1Condition) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1Condition) encodeFields(e *jx.Encoder) {
 	{
 
@@ -67373,6 +74302,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1Condition) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67380,7 +74322,7 @@ func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) encodeFields(e *jx.Encoder) {
 }
 
@@ -67405,6 +74347,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1FieldsV1) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1FieldsV1) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67412,7 +74367,7 @@ func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Encode(e *jx.Enc
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) encodeFields(e *jx.Encoder) {
 	{
 
@@ -67507,6 +74462,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx.De
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67514,7 +74482,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) encodeFields(e *jx.Encoder) {
 	{
 		if s.MatchExpressions != nil {
@@ -67585,6 +74553,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67634,6 +74615,19 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67641,7 +74635,7 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Encode(e *jx.Enc
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) encodeFields(e *jx.Encoder) {
 	{
 
@@ -67766,6 +74760,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) Decode(d *jx.De
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67773,7 +74780,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1ListMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.Continue.Set {
@@ -67867,6 +74874,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ListMeta) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -67874,7 +74894,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Encode(e *jx.Encoder) 
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -68021,6 +75041,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
 func (s IoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Encoder) {
 	unwrapped := time.Time(s)
@@ -68047,6 +75080,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1MicroTime) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1MicroTime) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -68054,7 +75100,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) encodeFields(e *jx.Encoder) {
 	{
 		if s.Annotations.Set {
@@ -68387,6 +75433,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -68434,6 +75493,19 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decode
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
@@ -68485,6 +75557,19 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -68492,7 +75577,7 @@ func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) encodeFields(e *jx.Encoder) {
 	{
 
@@ -68657,6 +75742,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -68664,7 +75762,7 @@ func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Encode(e *jx.En
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) encodeFields(e *jx.Encoder) {
 	{
 
@@ -68759,6 +75857,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) Decode(d *jx.D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
 func (s IoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Encoder) {
 	unwrapped := time.Time(s)
@@ -68785,6 +75896,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1Time) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1Time) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -68792,7 +75916,7 @@ func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) encodeFields(e *jx.Encoder) {
 	{
 
@@ -68885,6 +76009,19 @@ func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -68892,7 +76029,7 @@ func (s IoK8sApimachineryPkgRuntimeRawExtension) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgRuntimeRawExtension) encodeFields(e *jx.Encoder) {
 }
 
@@ -68915,6 +76052,19 @@ func (s *IoK8sApimachineryPkgRuntimeRawExtension) Decode(d *jx.Decoder) error {
 	}
 
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgRuntimeRawExtension) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgRuntimeRawExtension) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
@@ -68943,6 +76093,19 @@ func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgUtilIntstrIntOrString) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgUtilIntstrIntOrString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -68950,7 +76113,7 @@ func (s IoK8sApimachineryPkgVersionInfo) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sApimachineryPkgVersionInfo) encodeFields(e *jx.Encoder) {
 	{
 
@@ -69172,6 +76335,19 @@ func (s *IoK8sApimachineryPkgVersionInfo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sApimachineryPkgVersionInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sApimachineryPkgVersionInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -69179,7 +76355,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Encode(e *jx.Enco
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -69290,6 +76466,19 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Decode(d *jx.Dec
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -69297,7 +76486,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Encode(e
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) encodeFields(e *jx.Encoder) {
 	{
 		if s.LastTransitionTime.Set {
@@ -69443,6 +76632,19 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) Decode(
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -69450,7 +76652,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Encode(e *jx.
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) encodeFields(e *jx.Encoder) {
 	{
 		if s.ApiVersion.Set {
@@ -69588,6 +76790,19 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Decode(d *jx
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -69595,7 +76810,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Encode(e *jx.
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) encodeFields(e *jx.Encoder) {
 	{
 
@@ -69775,6 +76990,19 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d *jx
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -69782,7 +77010,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *j
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) encodeFields(e *jx.Encoder) {
 	{
 		if s.Conditions != nil {
@@ -69836,6 +77064,19 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -69843,7 +77084,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Encode(e *j
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
@@ -69920,6 +77161,19 @@ func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes bool as json.
 func (o OptBool) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -69940,6 +77194,19 @@ func (o *OptBool) Decode(d *jx.Decoder) error {
 	}
 	o.Value = bool(v)
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptBool) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptBool) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes float64 as json.
@@ -69964,6 +77231,19 @@ func (o *OptFloat64) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptFloat64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptFloat64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes int32 as json.
 func (o OptInt32) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -69984,6 +77264,19 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 	}
 	o.Value = int32(v)
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInt32) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInt32) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes int64 as json.
@@ -70008,6 +77301,19 @@ func (o *OptInt64) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptInt64) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptInt64) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAdmissionregistrationV1ServiceReference as json.
 func (o OptIoK8sAPIAdmissionregistrationV1ServiceReference) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70026,6 +77332,19 @@ func (o *OptIoK8sAPIAdmissionregistrationV1ServiceReference) Decode(d *jx.Decode
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAdmissionregistrationV1ServiceReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAdmissionregistrationV1ServiceReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetSpec as json.
@@ -70048,6 +77367,19 @@ func (o *OptIoK8sAPIAppsV1DaemonSetSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1DaemonSetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1DaemonSetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAppsV1DaemonSetStatus as json.
 func (o OptIoK8sAPIAppsV1DaemonSetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70066,6 +77398,19 @@ func (o *OptIoK8sAPIAppsV1DaemonSetStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1DaemonSetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1DaemonSetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAppsV1DaemonSetUpdateStrategy as json.
@@ -70088,6 +77433,19 @@ func (o *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAppsV1DeploymentSpec as json.
 func (o OptIoK8sAPIAppsV1DeploymentSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70106,6 +77464,19 @@ func (o *OptIoK8sAPIAppsV1DeploymentSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1DeploymentSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1DeploymentSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAppsV1DeploymentStatus as json.
@@ -70128,6 +77499,19 @@ func (o *OptIoK8sAPIAppsV1DeploymentStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1DeploymentStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1DeploymentStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAppsV1DeploymentStrategy as json.
 func (o OptIoK8sAPIAppsV1DeploymentStrategy) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70146,6 +77530,19 @@ func (o *OptIoK8sAPIAppsV1DeploymentStrategy) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1DeploymentStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1DeploymentStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAppsV1ReplicaSetSpec as json.
@@ -70168,6 +77565,19 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1ReplicaSetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1ReplicaSetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAppsV1ReplicaSetStatus as json.
 func (o OptIoK8sAPIAppsV1ReplicaSetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70186,6 +77596,19 @@ func (o *OptIoK8sAPIAppsV1ReplicaSetStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1ReplicaSetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1ReplicaSetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDaemonSet as json.
@@ -70208,6 +77631,19 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1RollingUpdateDaemonSet) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1RollingUpdateDaemonSet) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAppsV1RollingUpdateDeployment as json.
 func (o OptIoK8sAPIAppsV1RollingUpdateDeployment) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70226,6 +77662,19 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateDeployment) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1RollingUpdateDeployment) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1RollingUpdateDeployment) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy as json.
@@ -70248,6 +77697,19 @@ func (o *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAppsV1StatefulSetSpec as json.
 func (o OptIoK8sAPIAppsV1StatefulSetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70266,6 +77728,19 @@ func (o *OptIoK8sAPIAppsV1StatefulSetSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1StatefulSetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1StatefulSetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAppsV1StatefulSetStatus as json.
@@ -70288,6 +77763,19 @@ func (o *OptIoK8sAPIAppsV1StatefulSetStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1StatefulSetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1StatefulSetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAppsV1StatefulSetUpdateStrategy as json.
 func (o OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70306,6 +77794,19 @@ func (o *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) Decode(d *jx.Decoder) error
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec as json.
@@ -70328,6 +77829,19 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) Decode(d *jx.Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus as json.
 func (o OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70346,6 +77860,19 @@ func (o *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) Decode(d *jx.Dec
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV1ScaleSpec as json.
@@ -70368,6 +77895,19 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV1ScaleSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV1ScaleSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV1ScaleStatus as json.
 func (o OptIoK8sAPIAutoscalingV1ScaleStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70386,6 +77926,19 @@ func (o *OptIoK8sAPIAutoscalingV1ScaleStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV1ScaleStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV1ScaleStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource as json.
@@ -70408,6 +77961,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70426,6 +77992,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) Decode(d *j
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricSource as json.
@@ -70448,6 +78027,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta1ExternalMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70466,6 +78058,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec as json.
@@ -70488,6 +78093,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70506,6 +78124,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Decode(d *j
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricSource as json.
@@ -70528,6 +78159,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta1ObjectMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70546,6 +78190,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) Decode(d *jx.Decoder) 
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricSource as json.
@@ -70568,6 +78225,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta1PodsMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70586,6 +78256,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) Decode(d *jx.Decoder) er
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricSource as json.
@@ -70608,6 +78291,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta1ResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70626,6 +78322,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource as json.
@@ -70648,6 +78357,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70666,6 +78388,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) Decode(d *j
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricSource as json.
@@ -70688,6 +78423,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta2ExternalMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70706,6 +78454,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HPAScalingRules as json.
@@ -70728,6 +78489,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior as json.
 func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70746,6 +78520,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) Decode(d 
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec as json.
@@ -70768,6 +78555,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) Decode(d *jx.
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70786,6 +78586,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Decode(d *j
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricSource as json.
@@ -70808,6 +78621,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta2ObjectMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70826,6 +78652,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) Decode(d *jx.Decoder) 
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricSource as json.
@@ -70848,6 +78687,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta2PodsMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70866,6 +78718,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) Decode(d *jx.Decoder) er
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricSource as json.
@@ -70888,6 +78753,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIAutoscalingV2beta2ResourceMetricStatus as json.
 func (o OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70906,6 +78784,19 @@ func (o *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIBatchV1CronJobSpec as json.
@@ -70928,6 +78819,19 @@ func (o *OptIoK8sAPIBatchV1CronJobSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIBatchV1CronJobSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIBatchV1CronJobSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIBatchV1CronJobStatus as json.
 func (o OptIoK8sAPIBatchV1CronJobStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70946,6 +78850,19 @@ func (o *OptIoK8sAPIBatchV1CronJobStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIBatchV1CronJobStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIBatchV1CronJobStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIBatchV1JobSpec as json.
@@ -70968,6 +78885,19 @@ func (o *OptIoK8sAPIBatchV1JobSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIBatchV1JobSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIBatchV1JobSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIBatchV1JobStatus as json.
 func (o OptIoK8sAPIBatchV1JobStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -70986,6 +78916,19 @@ func (o *OptIoK8sAPIBatchV1JobStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIBatchV1JobStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIBatchV1JobStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIBatchV1UncountedTerminatedPods as json.
@@ -71008,6 +78951,19 @@ func (o *OptIoK8sAPIBatchV1UncountedTerminatedPods) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIBatchV1UncountedTerminatedPods) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIBatchV1UncountedTerminatedPods) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIBatchV1beta1CronJobSpec as json.
 func (o OptIoK8sAPIBatchV1beta1CronJobSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71028,6 +78984,19 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIBatchV1beta1CronJobSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIBatchV1beta1CronJobSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIBatchV1beta1CronJobStatus as json.
 func (o OptIoK8sAPIBatchV1beta1CronJobStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71046,6 +79015,19 @@ func (o *OptIoK8sAPIBatchV1beta1CronJobStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIBatchV1beta1CronJobStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIBatchV1beta1CronJobStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra as json.
@@ -71069,6 +79051,19 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICertificatesV1CertificateSigningRequestStatus as json.
 func (o OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71087,6 +79082,19 @@ func (o *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) Decode(d *jx.
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoordinationV1LeaseSpec as json.
@@ -71109,6 +79117,19 @@ func (o *OptIoK8sAPICoordinationV1LeaseSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoordinationV1LeaseSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoordinationV1LeaseSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource as json.
 func (o OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71127,6 +79148,19 @@ func (o *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1Affinity as json.
@@ -71149,6 +79183,19 @@ func (o *OptIoK8sAPICoreV1Affinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1Affinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1Affinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1AzureDiskVolumeSource as json.
 func (o OptIoK8sAPICoreV1AzureDiskVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71167,6 +79214,19 @@ func (o *OptIoK8sAPICoreV1AzureDiskVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1AzureDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1AzureDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1AzureFilePersistentVolumeSource as json.
@@ -71189,6 +79249,19 @@ func (o *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1AzureFileVolumeSource as json.
 func (o OptIoK8sAPICoreV1AzureFileVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71209,6 +79282,19 @@ func (o *OptIoK8sAPICoreV1AzureFileVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1AzureFileVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1AzureFileVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1CSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71227,6 +79313,19 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSource) Decode(d *jx.Decoder) error
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CSIPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CSIPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes as json.
@@ -71250,6 +79349,19 @@ func (o *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *j
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1CSIVolumeSource as json.
 func (o OptIoK8sAPICoreV1CSIVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71268,6 +79380,19 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CSIVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CSIVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes as json.
@@ -71291,6 +79416,19 @@ func (o *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1Capabilities as json.
 func (o OptIoK8sAPICoreV1Capabilities) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71309,6 +79447,19 @@ func (o *OptIoK8sAPICoreV1Capabilities) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1Capabilities) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1Capabilities) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1CephFSPersistentVolumeSource as json.
@@ -71331,6 +79482,19 @@ func (o *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CephFSPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CephFSPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1CephFSVolumeSource as json.
 func (o OptIoK8sAPICoreV1CephFSVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71349,6 +79513,19 @@ func (o *OptIoK8sAPICoreV1CephFSVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CephFSVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CephFSVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1CinderPersistentVolumeSource as json.
@@ -71371,6 +79548,19 @@ func (o *OptIoK8sAPICoreV1CinderPersistentVolumeSource) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CinderPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CinderPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1CinderVolumeSource as json.
 func (o OptIoK8sAPICoreV1CinderVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71391,6 +79581,19 @@ func (o *OptIoK8sAPICoreV1CinderVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1CinderVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1CinderVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ClientIPConfig as json.
 func (o OptIoK8sAPICoreV1ClientIPConfig) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71409,6 +79612,19 @@ func (o *OptIoK8sAPICoreV1ClientIPConfig) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ClientIPConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ClientIPConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapBinaryData as json.
@@ -71432,6 +79648,19 @@ func (o *OptIoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ConfigMapBinaryData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ConfigMapBinaryData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ConfigMapData as json.
 func (o OptIoK8sAPICoreV1ConfigMapData) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71451,6 +79680,19 @@ func (o *OptIoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ConfigMapData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ConfigMapData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapEnvSource as json.
@@ -71473,6 +79715,19 @@ func (o *OptIoK8sAPICoreV1ConfigMapEnvSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ConfigMapEnvSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ConfigMapEnvSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ConfigMapKeySelector as json.
 func (o OptIoK8sAPICoreV1ConfigMapKeySelector) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71491,6 +79746,19 @@ func (o *OptIoK8sAPICoreV1ConfigMapKeySelector) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ConfigMapKeySelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ConfigMapKeySelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapNodeConfigSource as json.
@@ -71513,6 +79781,19 @@ func (o *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ConfigMapNodeConfigSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ConfigMapNodeConfigSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ConfigMapProjection as json.
 func (o OptIoK8sAPICoreV1ConfigMapProjection) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71531,6 +79812,19 @@ func (o *OptIoK8sAPICoreV1ConfigMapProjection) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ConfigMapProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ConfigMapProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ConfigMapVolumeSource as json.
@@ -71553,6 +79847,19 @@ func (o *OptIoK8sAPICoreV1ConfigMapVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ConfigMapVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ConfigMapVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ContainerState as json.
 func (o OptIoK8sAPICoreV1ContainerState) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71571,6 +79878,19 @@ func (o *OptIoK8sAPICoreV1ContainerState) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ContainerState) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ContainerState) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateRunning as json.
@@ -71593,6 +79913,19 @@ func (o *OptIoK8sAPICoreV1ContainerStateRunning) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ContainerStateRunning) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ContainerStateRunning) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ContainerStateTerminated as json.
 func (o OptIoK8sAPICoreV1ContainerStateTerminated) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71611,6 +79944,19 @@ func (o *OptIoK8sAPICoreV1ContainerStateTerminated) Decode(d *jx.Decoder) error 
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ContainerStateTerminated) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ContainerStateTerminated) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ContainerStateWaiting as json.
@@ -71633,6 +79979,19 @@ func (o *OptIoK8sAPICoreV1ContainerStateWaiting) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ContainerStateWaiting) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ContainerStateWaiting) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1DaemonEndpoint as json.
 func (o OptIoK8sAPICoreV1DaemonEndpoint) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71651,6 +80010,19 @@ func (o *OptIoK8sAPICoreV1DaemonEndpoint) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1DaemonEndpoint) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1DaemonEndpoint) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1DownwardAPIProjection as json.
@@ -71673,6 +80045,19 @@ func (o *OptIoK8sAPICoreV1DownwardAPIProjection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1DownwardAPIProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1DownwardAPIProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1DownwardAPIVolumeSource as json.
 func (o OptIoK8sAPICoreV1DownwardAPIVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71691,6 +80076,19 @@ func (o *OptIoK8sAPICoreV1DownwardAPIVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1DownwardAPIVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1DownwardAPIVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1EmptyDirVolumeSource as json.
@@ -71713,6 +80111,19 @@ func (o *OptIoK8sAPICoreV1EmptyDirVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1EmptyDirVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1EmptyDirVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1EnvVarSource as json.
 func (o OptIoK8sAPICoreV1EnvVarSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71731,6 +80142,19 @@ func (o *OptIoK8sAPICoreV1EnvVarSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1EnvVarSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1EnvVarSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1EphemeralVolumeSource as json.
@@ -71753,6 +80177,19 @@ func (o *OptIoK8sAPICoreV1EphemeralVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1EphemeralVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1EphemeralVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1EventSeries as json.
 func (o OptIoK8sAPICoreV1EventSeries) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71771,6 +80208,19 @@ func (o *OptIoK8sAPICoreV1EventSeries) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1EventSeries) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1EventSeries) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1EventSource as json.
@@ -71793,6 +80243,19 @@ func (o *OptIoK8sAPICoreV1EventSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1EventSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1EventSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ExecAction as json.
 func (o OptIoK8sAPICoreV1ExecAction) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71811,6 +80274,19 @@ func (o *OptIoK8sAPICoreV1ExecAction) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ExecAction) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ExecAction) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1FCVolumeSource as json.
@@ -71833,6 +80309,19 @@ func (o *OptIoK8sAPICoreV1FCVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1FCVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1FCVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1FlexPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71851,6 +80340,19 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSource) Decode(d *jx.Decoder) erro
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1FlexPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1FlexPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions as json.
@@ -71874,6 +80376,19 @@ func (o *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decode
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1FlexVolumeSource as json.
 func (o OptIoK8sAPICoreV1FlexVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71892,6 +80407,19 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1FlexVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1FlexVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1FlexVolumeSourceOptions as json.
@@ -71915,6 +80443,19 @@ func (o *OptIoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1FlexVolumeSourceOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1FlexVolumeSourceOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1FlockerVolumeSource as json.
 func (o OptIoK8sAPICoreV1FlockerVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71933,6 +80474,19 @@ func (o *OptIoK8sAPICoreV1FlockerVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1FlockerVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1FlockerVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1GCEPersistentDiskVolumeSource as json.
@@ -71955,6 +80509,19 @@ func (o *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1GitRepoVolumeSource as json.
 func (o OptIoK8sAPICoreV1GitRepoVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -71973,6 +80540,19 @@ func (o *OptIoK8sAPICoreV1GitRepoVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1GitRepoVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1GitRepoVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1GlusterfsPersistentVolumeSource as json.
@@ -71995,6 +80575,19 @@ func (o *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1GlusterfsVolumeSource as json.
 func (o OptIoK8sAPICoreV1GlusterfsVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72013,6 +80606,19 @@ func (o *OptIoK8sAPICoreV1GlusterfsVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1GlusterfsVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1GlusterfsVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1HTTPGetAction as json.
@@ -72035,6 +80641,19 @@ func (o *OptIoK8sAPICoreV1HTTPGetAction) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1HTTPGetAction) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1HTTPGetAction) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1Handler as json.
 func (o OptIoK8sAPICoreV1Handler) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72053,6 +80672,19 @@ func (o *OptIoK8sAPICoreV1Handler) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1Handler) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1Handler) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1HostPathVolumeSource as json.
@@ -72075,6 +80707,19 @@ func (o *OptIoK8sAPICoreV1HostPathVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1HostPathVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1HostPathVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ISCSIPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72093,6 +80738,19 @@ func (o *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) Decode(d *jx.Decoder) err
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ISCSIVolumeSource as json.
@@ -72115,6 +80773,19 @@ func (o *OptIoK8sAPICoreV1ISCSIVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ISCSIVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ISCSIVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1Lifecycle as json.
 func (o OptIoK8sAPICoreV1Lifecycle) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72133,6 +80804,19 @@ func (o *OptIoK8sAPICoreV1Lifecycle) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1Lifecycle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1Lifecycle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemDefault as json.
@@ -72156,6 +80840,19 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LimitRangeItemDefault) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LimitRangeItemDefault) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1LimitRangeItemDefaultRequest as json.
 func (o OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72175,6 +80872,19 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) er
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMax as json.
@@ -72198,6 +80908,19 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LimitRangeItemMax) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LimitRangeItemMax) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio as json.
 func (o OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72217,6 +80940,19 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decod
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1LimitRangeItemMin as json.
@@ -72240,6 +80976,19 @@ func (o *OptIoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LimitRangeItemMin) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LimitRangeItemMin) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1LimitRangeSpec as json.
 func (o OptIoK8sAPICoreV1LimitRangeSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72258,6 +81007,19 @@ func (o *OptIoK8sAPICoreV1LimitRangeSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LimitRangeSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LimitRangeSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1LoadBalancerStatus as json.
@@ -72280,6 +81042,19 @@ func (o *OptIoK8sAPICoreV1LoadBalancerStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LoadBalancerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LoadBalancerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1LocalObjectReference as json.
 func (o OptIoK8sAPICoreV1LocalObjectReference) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72298,6 +81073,19 @@ func (o *OptIoK8sAPICoreV1LocalObjectReference) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LocalObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LocalObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1LocalVolumeSource as json.
@@ -72320,6 +81108,19 @@ func (o *OptIoK8sAPICoreV1LocalVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1LocalVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1LocalVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1NFSVolumeSource as json.
 func (o OptIoK8sAPICoreV1NFSVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72338,6 +81139,19 @@ func (o *OptIoK8sAPICoreV1NFSVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NFSVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NFSVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1NamespaceSpec as json.
@@ -72360,6 +81174,19 @@ func (o *OptIoK8sAPICoreV1NamespaceSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NamespaceSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NamespaceSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1NamespaceStatus as json.
 func (o OptIoK8sAPICoreV1NamespaceStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72378,6 +81205,19 @@ func (o *OptIoK8sAPICoreV1NamespaceStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NamespaceStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NamespaceStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1NodeAffinity as json.
@@ -72400,6 +81240,19 @@ func (o *OptIoK8sAPICoreV1NodeAffinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1NodeConfigSource as json.
 func (o OptIoK8sAPICoreV1NodeConfigSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72418,6 +81271,19 @@ func (o *OptIoK8sAPICoreV1NodeConfigSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeConfigSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeConfigSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1NodeConfigStatus as json.
@@ -72440,6 +81306,19 @@ func (o *OptIoK8sAPICoreV1NodeConfigStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeConfigStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeConfigStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1NodeDaemonEndpoints as json.
 func (o OptIoK8sAPICoreV1NodeDaemonEndpoints) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72458,6 +81337,19 @@ func (o *OptIoK8sAPICoreV1NodeDaemonEndpoints) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeDaemonEndpoints) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeDaemonEndpoints) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSelector as json.
@@ -72480,6 +81372,19 @@ func (o *OptIoK8sAPICoreV1NodeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1NodeSpec as json.
 func (o OptIoK8sAPICoreV1NodeSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72500,6 +81405,19 @@ func (o *OptIoK8sAPICoreV1NodeSpec) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1NodeStatus as json.
 func (o OptIoK8sAPICoreV1NodeStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72518,6 +81436,19 @@ func (o *OptIoK8sAPICoreV1NodeStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1NodeStatusAllocatable as json.
@@ -72541,6 +81472,19 @@ func (o *OptIoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeStatusAllocatable) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeStatusAllocatable) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1NodeStatusCapacity as json.
 func (o OptIoK8sAPICoreV1NodeStatusCapacity) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72560,6 +81504,19 @@ func (o *OptIoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeStatusCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeStatusCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1NodeSystemInfo as json.
@@ -72582,6 +81539,19 @@ func (o *OptIoK8sAPICoreV1NodeSystemInfo) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1NodeSystemInfo) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1NodeSystemInfo) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ObjectFieldSelector as json.
 func (o OptIoK8sAPICoreV1ObjectFieldSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72600,6 +81570,19 @@ func (o *OptIoK8sAPICoreV1ObjectFieldSelector) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ObjectFieldSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ObjectFieldSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ObjectReference as json.
@@ -72622,6 +81605,19 @@ func (o *OptIoK8sAPICoreV1ObjectReference) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimSpec as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72642,6 +81638,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeClaimSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeClaimSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatus as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72660,6 +81669,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) Decode(d *jx.Decoder) err
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeClaimStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeClaimStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity as json.
@@ -72683,6 +81705,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Deco
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimTemplate as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72701,6 +81736,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) Decode(d *jx.Decoder) e
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeClaimVolumeSource as json.
@@ -72723,6 +81771,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) Decode(d *jx.Decode
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PersistentVolumeSpec as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72741,6 +81802,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PersistentVolumeSpecCapacity as json.
@@ -72764,6 +81838,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PersistentVolumeStatus as json.
 func (o OptIoK8sAPICoreV1PersistentVolumeStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72782,6 +81869,19 @@ func (o *OptIoK8sAPICoreV1PersistentVolumeStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PersistentVolumeStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PersistentVolumeStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PhotonPersistentDiskVolumeSource as json.
@@ -72804,6 +81904,19 @@ func (o *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PodAffinity as json.
 func (o OptIoK8sAPICoreV1PodAffinity) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72822,6 +81935,19 @@ func (o *OptIoK8sAPICoreV1PodAffinity) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PodAntiAffinity as json.
@@ -72844,6 +81970,19 @@ func (o *OptIoK8sAPICoreV1PodAntiAffinity) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodAntiAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodAntiAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PodDNSConfig as json.
 func (o OptIoK8sAPICoreV1PodDNSConfig) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72862,6 +82001,19 @@ func (o *OptIoK8sAPICoreV1PodDNSConfig) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodDNSConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodDNSConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PodSecurityContext as json.
@@ -72884,6 +82036,19 @@ func (o *OptIoK8sAPICoreV1PodSecurityContext) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodSecurityContext) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodSecurityContext) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PodSpec as json.
 func (o OptIoK8sAPICoreV1PodSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72902,6 +82067,19 @@ func (o *OptIoK8sAPICoreV1PodSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PodSpecNodeSelector as json.
@@ -72925,6 +82103,19 @@ func (o *OptIoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodSpecNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodSpecNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PodSpecOverhead as json.
 func (o OptIoK8sAPICoreV1PodSpecOverhead) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72944,6 +82135,19 @@ func (o *OptIoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodSpecOverhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodSpecOverhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PodStatus as json.
@@ -72966,6 +82170,19 @@ func (o *OptIoK8sAPICoreV1PodStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1PodTemplateSpec as json.
 func (o OptIoK8sAPICoreV1PodTemplateSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -72984,6 +82201,19 @@ func (o *OptIoK8sAPICoreV1PodTemplateSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PodTemplateSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PodTemplateSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1PortworxVolumeSource as json.
@@ -73006,6 +82236,19 @@ func (o *OptIoK8sAPICoreV1PortworxVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1PortworxVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1PortworxVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1Probe as json.
 func (o OptIoK8sAPICoreV1Probe) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73024,6 +82267,19 @@ func (o *OptIoK8sAPICoreV1Probe) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1Probe) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1Probe) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ProjectedVolumeSource as json.
@@ -73046,6 +82302,19 @@ func (o *OptIoK8sAPICoreV1ProjectedVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ProjectedVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ProjectedVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1QuobyteVolumeSource as json.
 func (o OptIoK8sAPICoreV1QuobyteVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73064,6 +82333,19 @@ func (o *OptIoK8sAPICoreV1QuobyteVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1QuobyteVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1QuobyteVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1RBDPersistentVolumeSource as json.
@@ -73086,6 +82368,19 @@ func (o *OptIoK8sAPICoreV1RBDPersistentVolumeSource) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1RBDPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1RBDPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1RBDVolumeSource as json.
 func (o OptIoK8sAPICoreV1RBDVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73106,6 +82401,19 @@ func (o *OptIoK8sAPICoreV1RBDVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1RBDVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1RBDVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ReplicationControllerSpec as json.
 func (o OptIoK8sAPICoreV1ReplicationControllerSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73124,6 +82432,19 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpec) Decode(d *jx.Decoder) error
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ReplicationControllerSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ReplicationControllerSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ReplicationControllerSpecSelector as json.
@@ -73147,6 +82468,19 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decode
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ReplicationControllerSpecSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ReplicationControllerStatus as json.
 func (o OptIoK8sAPICoreV1ReplicationControllerStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73165,6 +82499,19 @@ func (o *OptIoK8sAPICoreV1ReplicationControllerStatus) Decode(d *jx.Decoder) err
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ReplicationControllerStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ReplicationControllerStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceFieldSelector as json.
@@ -73187,6 +82534,19 @@ func (o *OptIoK8sAPICoreV1ResourceFieldSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceFieldSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceFieldSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ResourceQuotaSpec as json.
 func (o OptIoK8sAPICoreV1ResourceQuotaSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73205,6 +82565,19 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceQuotaSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceQuotaSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaSpecHard as json.
@@ -73228,6 +82601,19 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceQuotaSpecHard) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceQuotaSpecHard) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatus as json.
 func (o OptIoK8sAPICoreV1ResourceQuotaStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73246,6 +82632,19 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceQuotaStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceQuotaStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatusHard as json.
@@ -73269,6 +82668,19 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceQuotaStatusHard) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceQuotaStatusHard) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ResourceQuotaStatusUsed as json.
 func (o OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73290,6 +82702,19 @@ func (o *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceQuotaStatusUsed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ResourceRequirements as json.
 func (o OptIoK8sAPICoreV1ResourceRequirements) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73308,6 +82733,19 @@ func (o *OptIoK8sAPICoreV1ResourceRequirements) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceRequirements) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceRequirements) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ResourceRequirementsLimits as json.
@@ -73331,6 +82769,19 @@ func (o *OptIoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceRequirementsLimits) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceRequirementsLimits) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ResourceRequirementsRequests as json.
 func (o OptIoK8sAPICoreV1ResourceRequirementsRequests) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73350,6 +82801,19 @@ func (o *OptIoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) er
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ResourceRequirementsRequests) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ResourceRequirementsRequests) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1SELinuxOptions as json.
@@ -73372,6 +82836,19 @@ func (o *OptIoK8sAPICoreV1SELinuxOptions) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SELinuxOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SELinuxOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ScaleIOPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73390,6 +82867,19 @@ func (o *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) Decode(d *jx.Decoder) e
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ScaleIOVolumeSource as json.
@@ -73412,6 +82902,19 @@ func (o *OptIoK8sAPICoreV1ScaleIOVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ScaleIOVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ScaleIOVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ScopeSelector as json.
 func (o OptIoK8sAPICoreV1ScopeSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73432,6 +82935,19 @@ func (o *OptIoK8sAPICoreV1ScopeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ScopeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ScopeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1SeccompProfile as json.
 func (o OptIoK8sAPICoreV1SeccompProfile) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73450,6 +82966,19 @@ func (o *OptIoK8sAPICoreV1SeccompProfile) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SeccompProfile) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SeccompProfile) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1SecretData as json.
@@ -73473,6 +83002,19 @@ func (o *OptIoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecretData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecretData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1SecretEnvSource as json.
 func (o OptIoK8sAPICoreV1SecretEnvSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73491,6 +83033,19 @@ func (o *OptIoK8sAPICoreV1SecretEnvSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecretEnvSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecretEnvSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1SecretKeySelector as json.
@@ -73513,6 +83068,19 @@ func (o *OptIoK8sAPICoreV1SecretKeySelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecretKeySelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecretKeySelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1SecretProjection as json.
 func (o OptIoK8sAPICoreV1SecretProjection) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73533,6 +83101,19 @@ func (o *OptIoK8sAPICoreV1SecretProjection) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecretProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecretProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1SecretReference as json.
 func (o OptIoK8sAPICoreV1SecretReference) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73551,6 +83132,19 @@ func (o *OptIoK8sAPICoreV1SecretReference) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecretReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecretReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1SecretStringData as json.
@@ -73574,6 +83168,19 @@ func (o *OptIoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecretStringData) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecretStringData) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1SecretVolumeSource as json.
 func (o OptIoK8sAPICoreV1SecretVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73592,6 +83199,19 @@ func (o *OptIoK8sAPICoreV1SecretVolumeSource) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecretVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecretVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1SecurityContext as json.
@@ -73614,6 +83234,19 @@ func (o *OptIoK8sAPICoreV1SecurityContext) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SecurityContext) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SecurityContext) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ServiceAccountTokenProjection as json.
 func (o OptIoK8sAPICoreV1ServiceAccountTokenProjection) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73634,6 +83267,19 @@ func (o *OptIoK8sAPICoreV1ServiceAccountTokenProjection) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ServiceAccountTokenProjection) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ServiceAccountTokenProjection) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ServiceSpec as json.
 func (o OptIoK8sAPICoreV1ServiceSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73652,6 +83298,19 @@ func (o *OptIoK8sAPICoreV1ServiceSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ServiceSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ServiceSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1ServiceSpecSelector as json.
@@ -73675,6 +83334,19 @@ func (o *OptIoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ServiceSpecSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ServiceSpecSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1ServiceStatus as json.
 func (o OptIoK8sAPICoreV1ServiceStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73693,6 +83365,19 @@ func (o *OptIoK8sAPICoreV1ServiceStatus) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1ServiceStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1ServiceStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1SessionAffinityConfig as json.
@@ -73715,6 +83400,19 @@ func (o *OptIoK8sAPICoreV1SessionAffinityConfig) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1SessionAffinityConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1SessionAffinityConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1StorageOSPersistentVolumeSource as json.
 func (o OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73733,6 +83431,19 @@ func (o *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) Decode(d *jx.Decoder)
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1StorageOSVolumeSource as json.
@@ -73755,6 +83466,19 @@ func (o *OptIoK8sAPICoreV1StorageOSVolumeSource) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1StorageOSVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1StorageOSVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1TCPSocketAction as json.
 func (o OptIoK8sAPICoreV1TCPSocketAction) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73773,6 +83497,19 @@ func (o *OptIoK8sAPICoreV1TCPSocketAction) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1TCPSocketAction) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1TCPSocketAction) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1TypedLocalObjectReference as json.
@@ -73795,6 +83532,19 @@ func (o *OptIoK8sAPICoreV1TypedLocalObjectReference) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1TypedLocalObjectReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1TypedLocalObjectReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1VolumeNodeAffinity as json.
 func (o OptIoK8sAPICoreV1VolumeNodeAffinity) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73813,6 +83563,19 @@ func (o *OptIoK8sAPICoreV1VolumeNodeAffinity) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1VolumeNodeAffinity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1VolumeNodeAffinity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPICoreV1VsphereVirtualDiskVolumeSource as json.
@@ -73835,6 +83598,19 @@ func (o *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPICoreV1WindowsSecurityContextOptions as json.
 func (o OptIoK8sAPICoreV1WindowsSecurityContextOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73855,6 +83631,19 @@ func (o *OptIoK8sAPICoreV1WindowsSecurityContextOptions) Decode(d *jx.Decoder) e
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPICoreV1WindowsSecurityContextOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPICoreV1WindowsSecurityContextOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIDiscoveryV1EndpointConditions as json.
 func (o OptIoK8sAPIDiscoveryV1EndpointConditions) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73873,6 +83662,19 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointConditions) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIDiscoveryV1EndpointConditions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIDiscoveryV1EndpointConditions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology as json.
@@ -73896,6 +83698,19 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder)
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIDiscoveryV1EndpointHints as json.
 func (o OptIoK8sAPIDiscoveryV1EndpointHints) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73914,6 +83729,19 @@ func (o *OptIoK8sAPIDiscoveryV1EndpointHints) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIDiscoveryV1EndpointHints) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIDiscoveryV1EndpointHints) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointConditions as json.
@@ -73936,6 +83764,19 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIDiscoveryV1beta1EndpointConditions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIDiscoveryV1beta1EndpointConditions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointHints as json.
 func (o OptIoK8sAPIDiscoveryV1beta1EndpointHints) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73954,6 +83795,19 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointHints) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIDiscoveryV1beta1EndpointHints) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIDiscoveryV1beta1EndpointHints) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIDiscoveryV1beta1EndpointTopology as json.
@@ -73977,6 +83831,19 @@ func (o *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIDiscoveryV1beta1EndpointTopology) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIEventsV1EventSeries as json.
 func (o OptIoK8sAPIEventsV1EventSeries) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -73995,6 +83862,19 @@ func (o *OptIoK8sAPIEventsV1EventSeries) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIEventsV1EventSeries) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIEventsV1EventSeries) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIEventsV1beta1EventSeries as json.
@@ -74017,6 +83897,19 @@ func (o *OptIoK8sAPIEventsV1beta1EventSeries) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIEventsV1beta1EventSeries) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIEventsV1beta1EventSeries) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74035,6 +83928,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) Decode(d *jx.Deco
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec as json.
@@ -74057,6 +83963,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Decode(d *jx.Decoder) erro
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74075,6 +83994,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) Decode(d *jx.Decoder) er
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1GroupSubject as json.
@@ -74097,6 +84029,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1GroupSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1GroupSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitResponse as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74115,6 +84060,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) Decode(d *jx.Decoder) error
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1LimitResponse) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1LimitResponse) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration as json.
@@ -74137,6 +84095,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) Decode(
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74155,6 +84126,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) Decode(d *
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus as json.
@@ -74177,6 +84161,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) Decode(d
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta1QueuingConfiguration as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74195,6 +84192,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject as json.
@@ -74217,6 +84227,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) Decode(d *jx.Decode
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta1UserSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta1UserSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74235,6 +84258,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta1UserSubject) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta1UserSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta1UserSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod as json.
@@ -74257,6 +84293,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) Decode(d *jx.Deco
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74275,6 +84324,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Decode(d *jx.Decoder) erro
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus as json.
@@ -74297,6 +84359,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta2GroupSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74315,6 +84390,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) Decode(d *jx.Decoder) error 
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2GroupSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2GroupSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitResponse as json.
@@ -74337,6 +84425,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2LimitResponse) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2LimitResponse) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74355,6 +84456,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) Decode(
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec as json.
@@ -74377,6 +84491,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) Decode(d *
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74395,6 +84522,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) Decode(d
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2QueuingConfiguration as json.
@@ -74417,6 +84557,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject as json.
 func (o OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74435,6 +84588,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) Decode(d *jx.Decode
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIFlowcontrolV1beta2UserSubject as json.
@@ -74457,6 +84623,19 @@ func (o *OptIoK8sAPIFlowcontrolV1beta2UserSubject) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIFlowcontrolV1beta2UserSubject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIFlowcontrolV1beta2UserSubject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINetworkingV1HTTPIngressRuleValue as json.
 func (o OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74475,6 +84654,19 @@ func (o *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) Decode(d *jx.Decoder) erro
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1HTTPIngressRuleValue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1HTTPIngressRuleValue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINetworkingV1IPBlock as json.
@@ -74497,6 +84689,19 @@ func (o *OptIoK8sAPINetworkingV1IPBlock) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1IPBlock) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1IPBlock) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINetworkingV1IngressBackend as json.
 func (o OptIoK8sAPINetworkingV1IngressBackend) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74515,6 +84720,19 @@ func (o *OptIoK8sAPINetworkingV1IngressBackend) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1IngressBackend) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1IngressBackend) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressClassParametersReference as json.
@@ -74537,6 +84755,19 @@ func (o *OptIoK8sAPINetworkingV1IngressClassParametersReference) Decode(d *jx.De
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1IngressClassParametersReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1IngressClassParametersReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINetworkingV1IngressClassSpec as json.
 func (o OptIoK8sAPINetworkingV1IngressClassSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74555,6 +84786,19 @@ func (o *OptIoK8sAPINetworkingV1IngressClassSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1IngressClassSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1IngressClassSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressServiceBackend as json.
@@ -74577,6 +84821,19 @@ func (o *OptIoK8sAPINetworkingV1IngressServiceBackend) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1IngressServiceBackend) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1IngressServiceBackend) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINetworkingV1IngressSpec as json.
 func (o OptIoK8sAPINetworkingV1IngressSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74595,6 +84852,19 @@ func (o *OptIoK8sAPINetworkingV1IngressSpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1IngressSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1IngressSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINetworkingV1IngressStatus as json.
@@ -74617,6 +84887,19 @@ func (o *OptIoK8sAPINetworkingV1IngressStatus) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1IngressStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1IngressStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINetworkingV1NetworkPolicySpec as json.
 func (o OptIoK8sAPINetworkingV1NetworkPolicySpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74635,6 +84918,19 @@ func (o *OptIoK8sAPINetworkingV1NetworkPolicySpec) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1NetworkPolicySpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1NetworkPolicySpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINetworkingV1ServiceBackendPort as json.
@@ -74657,6 +84953,19 @@ func (o *OptIoK8sAPINetworkingV1ServiceBackendPort) Decode(d *jx.Decoder) error 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINetworkingV1ServiceBackendPort) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINetworkingV1ServiceBackendPort) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINodeV1Overhead as json.
 func (o OptIoK8sAPINodeV1Overhead) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74675,6 +84984,19 @@ func (o *OptIoK8sAPINodeV1Overhead) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1Overhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1Overhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINodeV1OverheadPodFixed as json.
@@ -74698,6 +85020,19 @@ func (o *OptIoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1OverheadPodFixed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1OverheadPodFixed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINodeV1Scheduling as json.
 func (o OptIoK8sAPINodeV1Scheduling) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74716,6 +85051,19 @@ func (o *OptIoK8sAPINodeV1Scheduling) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1Scheduling) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1Scheduling) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINodeV1SchedulingNodeSelector as json.
@@ -74739,6 +85087,19 @@ func (o *OptIoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1SchedulingNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1SchedulingNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINodeV1alpha1Overhead as json.
 func (o OptIoK8sAPINodeV1alpha1Overhead) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74757,6 +85118,19 @@ func (o *OptIoK8sAPINodeV1alpha1Overhead) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1alpha1Overhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1alpha1Overhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1OverheadPodFixed as json.
@@ -74780,6 +85154,19 @@ func (o *OptIoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1alpha1OverheadPodFixed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1alpha1OverheadPodFixed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINodeV1alpha1Scheduling as json.
 func (o OptIoK8sAPINodeV1alpha1Scheduling) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74798,6 +85185,19 @@ func (o *OptIoK8sAPINodeV1alpha1Scheduling) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1alpha1Scheduling) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1alpha1Scheduling) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINodeV1alpha1SchedulingNodeSelector as json.
@@ -74821,6 +85221,19 @@ func (o *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) er
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINodeV1beta1Overhead as json.
 func (o OptIoK8sAPINodeV1beta1Overhead) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74839,6 +85252,19 @@ func (o *OptIoK8sAPINodeV1beta1Overhead) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1beta1Overhead) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1beta1Overhead) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINodeV1beta1OverheadPodFixed as json.
@@ -74862,6 +85288,19 @@ func (o *OptIoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1beta1OverheadPodFixed) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1beta1OverheadPodFixed) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPINodeV1beta1Scheduling as json.
 func (o OptIoK8sAPINodeV1beta1Scheduling) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74880,6 +85319,19 @@ func (o *OptIoK8sAPINodeV1beta1Scheduling) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1beta1Scheduling) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1beta1Scheduling) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPINodeV1beta1SchedulingNodeSelector as json.
@@ -74903,6 +85355,19 @@ func (o *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) err
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPINodeV1beta1SchedulingNodeSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetSpec as json.
 func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74923,6 +85388,19 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatus as json.
 func (o OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74941,6 +85419,19 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) Decode(d *jx.Decoder) err
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods as json.
@@ -74964,6 +85455,19 @@ func (o *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec as json.
 func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -74984,6 +85488,19 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) Decode(d *jx.Decoder) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus as json.
 func (o OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75002,6 +85519,19 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods as json.
@@ -75025,6 +85555,19 @@ func (o *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIPolicyV1beta1PodSecurityPolicySpec as json.
 func (o OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75043,6 +85586,19 @@ func (o *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Decode(d *jx.Decoder) er
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions as json.
@@ -75065,6 +85621,19 @@ func (o *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) Decode(d *jx.Decoder
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions as json.
 func (o OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75085,6 +85654,19 @@ func (o *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Decode(d *jx.Decod
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIRbacV1AggregationRule as json.
 func (o OptIoK8sAPIRbacV1AggregationRule) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75103,6 +85685,19 @@ func (o *OptIoK8sAPIRbacV1AggregationRule) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIRbacV1AggregationRule) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIRbacV1AggregationRule) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIStorageV1StorageClassParameters as json.
@@ -75126,6 +85721,19 @@ func (o *OptIoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIStorageV1StorageClassParameters) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIStorageV1StorageClassParameters) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatus as json.
 func (o OptIoK8sAPIStorageV1VolumeAttachmentStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75144,6 +85752,19 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatus) Decode(d *jx.Decoder) error
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIStorageV1VolumeAttachmentStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIStorageV1VolumeAttachmentStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata as json.
@@ -75167,6 +85788,19 @@ func (o *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sAPIStorageV1VolumeError as json.
 func (o OptIoK8sAPIStorageV1VolumeError) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75185,6 +85819,19 @@ func (o *OptIoK8sAPIStorageV1VolumeError) Decode(d *jx.Decoder) error {
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIStorageV1VolumeError) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIStorageV1VolumeError) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sAPIStorageV1VolumeNodeResources as json.
@@ -75207,6 +85854,19 @@ func (o *OptIoK8sAPIStorageV1VolumeNodeResources) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sAPIStorageV1VolumeNodeResources) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sAPIStorageV1VolumeNodeResources) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75225,6 +85885,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConve
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames as json.
@@ -75247,6 +85920,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75265,6 +85951,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefin
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale as json.
@@ -75287,6 +85986,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75305,6 +86017,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubre
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation as json.
@@ -75327,6 +86052,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValid
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75347,6 +86085,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentati
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75365,6 +86116,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) De
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions as json.
@@ -75388,6 +86152,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefi
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75407,6 +86184,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepe
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties as json.
@@ -75430,6 +86220,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatt
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75449,6 +86252,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProp
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference as json.
@@ -75471,6 +86287,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) D
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig as json.
 func (o OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75489,6 +86318,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion as json.
@@ -75511,6 +86353,19 @@ func (o *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
 func (o OptIoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75529,6 +86384,19 @@ func (o *OptIoK8sApimachineryPkgAPIResourceQuantity) Decode(d *jx.Decoder) error
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgAPIResourceQuantity) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgAPIResourceQuantity) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery as json.
@@ -75551,6 +86419,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) Decode(d *jx
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelector as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75569,6 +86450,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) Decode(d *jx.Decoder) e
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1LabelSelector) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1LabelSelector) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels as json.
@@ -75592,6 +86486,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ListMeta as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1ListMeta) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75610,6 +86517,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ListMeta) Decode(d *jx.Decoder) error 
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1ListMeta) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1ListMeta) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
@@ -75632,6 +86552,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1MicroTime) Decode(d *jx.Decoder) error
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1MicroTime) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1MicroTime) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMeta as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75650,6 +86583,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) Decode(d *jx.Decoder) erro
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations as json.
@@ -75673,6 +86619,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.De
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels as json.
 func (o OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75692,6 +86651,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
@@ -75714,6 +86686,19 @@ func (o *OptIoK8sApimachineryPkgApisMetaV1Time) Decode(d *jx.Decoder) error {
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgApisMetaV1Time) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgApisMetaV1Time) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
 func (o OptIoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75732,6 +86717,19 @@ func (o *OptIoK8sApimachineryPkgUtilIntstrIntOrString) Decode(d *jx.Decoder) err
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sApimachineryPkgUtilIntstrIntOrString) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sApimachineryPkgUtilIntstrIntOrString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec as json.
@@ -75754,6 +86752,19 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Decode(d 
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus as json.
 func (o OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75772,6 +86783,19 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) Decode(
 		return err
 	}
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference as json.
@@ -75794,6 +86818,19 @@ func (o *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) Decode(
 	return nil
 }
 
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -75814,6 +86851,19 @@ func (o *OptString) Decode(d *jx.Decoder) error {
 	}
 	o.Value = string(v)
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptString) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
 
 // Encode encodes ReadCoreV1NamespacedPodLogOKApplicationJSON as json.
@@ -75840,4 +86890,17 @@ func (s *ReadCoreV1NamespacedPodLogOKApplicationJSON) Decode(d *jx.Decoder) erro
 	}
 	*s = ReadCoreV1NamespacedPodLogOKApplicationJSON(unwrapped)
 	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ReadCoreV1NamespacedPodLogOKApplicationJSON) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ReadCoreV1NamespacedPodLogOKApplicationJSON) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
 }
