@@ -19,7 +19,7 @@ func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s {{ $.Name }}) encodeFields(e *jx.Encoder) {
 	{{- template "json/encode_struct_fields" $fields }}
 }

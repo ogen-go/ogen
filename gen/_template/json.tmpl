@@ -7,6 +7,7 @@
 {{- range $_, $t := $.Types }}
 	{{- if $t.HasFeature "json" }}
 	{{- template "json/encoders" $t }}
+    {{- template "json/stdmarshaler" $t }}
 	{{- end }}
 {{- end }}
 
