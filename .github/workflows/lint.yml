@@ -23,7 +23,6 @@ jobs:
         with:
           version: latest
           args: --timeout 5m
-          skip-go-installation: true
 
   # Check if there are any dirty changes after go mod tidy
   check-mod:
