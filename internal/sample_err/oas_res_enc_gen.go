@@ -73,6 +73,7 @@ var (
 func encodeDataCreateResponse(response Data, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -87,6 +88,7 @@ func encodeDataCreateResponse(response Data, w http.ResponseWriter, span trace.S
 func encodeDataGetResponse(response Data, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -100,6 +102,12 @@ func encodeDataGetResponse(response Data, w http.ResponseWriter, span trace.Span
 func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 

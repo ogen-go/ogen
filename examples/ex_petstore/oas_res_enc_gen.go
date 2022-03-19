@@ -74,10 +74,17 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *CreatePetsCreated:
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -97,6 +104,7 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 	case *Pets:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -109,6 +117,12 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -128,6 +142,7 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -140,6 +155,12 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 

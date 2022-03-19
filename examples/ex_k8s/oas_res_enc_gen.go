@@ -75,6 +75,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 	case *IoK8sApimachineryPkgApisMetaV1APIGroupList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -86,6 +87,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 		return nil
 	case *GetAPIVersionsUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/"+`: unexpected response type: %T`, response)
@@ -97,6 +99,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -108,6 +111,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 		return nil
 	case *GetAdmissionregistrationAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/"+`: unexpected response type: %T`, response)
@@ -119,6 +123,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -130,6 +135,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 		return nil
 	case *GetAdmissionregistrationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -141,6 +147,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -152,6 +159,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 		return nil
 	case *GetApiextensionsAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiextensions.k8s.io/"+`: unexpected response type: %T`, response)
@@ -163,6 +171,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -174,6 +183,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 		return nil
 	case *GetApiextensionsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiextensions.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -185,6 +195,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -196,6 +207,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 		return nil
 	case *GetApiregistrationAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiregistration.k8s.io/"+`: unexpected response type: %T`, response)
@@ -207,6 +219,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -218,6 +231,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 		return nil
 	case *GetApiregistrationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiregistration.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -229,6 +243,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -240,6 +255,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 		return nil
 	case *GetAppsAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/"+`: unexpected response type: %T`, response)
@@ -251,6 +267,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -262,6 +279,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 		return nil
 	case *GetAppsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/"+`: unexpected response type: %T`, response)
@@ -273,6 +291,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -284,6 +303,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 		return nil
 	case *GetAuthenticationAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/authentication.k8s.io/"+`: unexpected response type: %T`, response)
@@ -295,6 +315,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -306,6 +327,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 		return nil
 	case *GetAuthenticationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/authentication.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -317,6 +339,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -328,6 +351,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 		return nil
 	case *GetAuthorizationAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/authorization.k8s.io/"+`: unexpected response type: %T`, response)
@@ -339,6 +363,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -350,6 +375,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 		return nil
 	case *GetAuthorizationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/authorization.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -361,6 +387,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -372,6 +399,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 		return nil
 	case *GetAutoscalingAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/"+`: unexpected response type: %T`, response)
@@ -383,6 +411,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -394,6 +423,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 		return nil
 	case *GetAutoscalingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/"+`: unexpected response type: %T`, response)
@@ -405,6 +435,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -416,6 +447,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 		return nil
 	case *GetAutoscalingV2beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/"+`: unexpected response type: %T`, response)
@@ -427,6 +459,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -438,6 +471,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 		return nil
 	case *GetAutoscalingV2beta2APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/"+`: unexpected response type: %T`, response)
@@ -449,6 +483,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -460,6 +495,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 		return nil
 	case *GetBatchAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/"+`: unexpected response type: %T`, response)
@@ -471,6 +507,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -482,6 +519,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 		return nil
 	case *GetBatchV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/"+`: unexpected response type: %T`, response)
@@ -493,6 +531,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -504,6 +543,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 		return nil
 	case *GetBatchV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/"+`: unexpected response type: %T`, response)
@@ -515,6 +555,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -526,6 +567,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 		return nil
 	case *GetCertificatesAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/"+`: unexpected response type: %T`, response)
@@ -537,6 +579,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -548,6 +591,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 		return nil
 	case *GetCertificatesV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -559,6 +603,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 	case *IoK8sApimachineryPkgVersionInfo:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -570,6 +615,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 		return nil
 	case *GetCodeVersionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/version/"+`: unexpected response type: %T`, response)
@@ -581,6 +627,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -592,6 +639,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 		return nil
 	case *GetCoordinationAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/"+`: unexpected response type: %T`, response)
@@ -603,6 +651,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -614,6 +663,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 		return nil
 	case *GetCoordinationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -625,6 +675,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 	case *IoK8sApimachineryPkgApisMetaV1APIVersions:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -636,6 +687,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 		return nil
 	case *GetCoreAPIVersionsUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/"+`: unexpected response type: %T`, response)
@@ -647,6 +699,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -658,6 +711,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 		return nil
 	case *GetCoreV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/"+`: unexpected response type: %T`, response)
@@ -669,6 +723,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -680,6 +735,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 		return nil
 	case *GetDiscoveryAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/"+`: unexpected response type: %T`, response)
@@ -691,6 +747,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -702,6 +759,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 		return nil
 	case *GetDiscoveryV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -713,6 +771,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -724,6 +783,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 		return nil
 	case *GetDiscoveryV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
@@ -735,6 +795,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -746,6 +807,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 		return nil
 	case *GetEventsAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/"+`: unexpected response type: %T`, response)
@@ -757,6 +819,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -768,6 +831,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 		return nil
 	case *GetEventsV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -779,6 +843,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -790,6 +855,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 		return nil
 	case *GetEventsV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
@@ -801,6 +867,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -812,6 +879,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 		return nil
 	case *GetFlowcontrolApiserverAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/"+`: unexpected response type: %T`, response)
@@ -823,6 +891,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -834,6 +903,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 		return nil
 	case *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
@@ -845,6 +915,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -856,6 +927,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 		return nil
 	case *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"+`: unexpected response type: %T`, response)
@@ -867,6 +939,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -878,6 +951,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 		return nil
 	case *GetInternalApiserverAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/internal.apiserver.k8s.io/"+`: unexpected response type: %T`, response)
@@ -889,6 +963,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -900,6 +975,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 		return nil
 	case *GetInternalApiserverV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/"+`: unexpected response type: %T`, response)
@@ -911,6 +987,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -922,6 +999,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 		return nil
 	case *GetNetworkingAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/"+`: unexpected response type: %T`, response)
@@ -933,6 +1011,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -944,6 +1023,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 		return nil
 	case *GetNetworkingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -955,6 +1035,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -966,6 +1047,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 		return nil
 	case *GetNodeAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/"+`: unexpected response type: %T`, response)
@@ -977,6 +1059,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -988,6 +1071,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 		return nil
 	case *GetNodeV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -999,6 +1083,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1010,6 +1095,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 		return nil
 	case *GetNodeV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1alpha1/"+`: unexpected response type: %T`, response)
@@ -1021,6 +1107,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1032,6 +1119,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 		return nil
 	case *GetNodeV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
@@ -1043,6 +1131,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1054,6 +1143,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 		return nil
 	case *GetPolicyAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/"+`: unexpected response type: %T`, response)
@@ -1065,6 +1155,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1076,6 +1167,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 		return nil
 	case *GetPolicyV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/"+`: unexpected response type: %T`, response)
@@ -1087,6 +1179,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1098,6 +1191,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 		return nil
 	case *GetPolicyV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/"+`: unexpected response type: %T`, response)
@@ -1109,6 +1203,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1120,6 +1215,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 		return nil
 	case *GetRbacAuthorizationAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/"+`: unexpected response type: %T`, response)
@@ -1131,6 +1227,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1142,6 +1239,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 		return nil
 	case *GetRbacAuthorizationV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -1153,6 +1251,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1164,6 +1263,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 		return nil
 	case *GetSchedulingAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/scheduling.k8s.io/"+`: unexpected response type: %T`, response)
@@ -1175,6 +1275,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1186,6 +1287,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 		return nil
 	case *GetSchedulingV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/scheduling.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -1197,6 +1299,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 	case *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1208,6 +1311,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 		return nil
 	case *GetServiceAccountIssuerOpenIDConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/.well-known/openid-configuration/"+`: unexpected response type: %T`, response)
@@ -1219,6 +1323,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1230,6 +1335,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 		return nil
 	case *GetStorageAPIGroupUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/"+`: unexpected response type: %T`, response)
@@ -1241,6 +1347,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1252,6 +1359,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 		return nil
 	case *GetStorageV1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/"+`: unexpected response type: %T`, response)
@@ -1263,6 +1371,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1274,6 +1383,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 		return nil
 	case *GetStorageV1alpha1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/"+`: unexpected response type: %T`, response)
@@ -1285,6 +1395,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1296,6 +1407,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 		return nil
 	case *GetStorageV1beta1APIResourcesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
@@ -1307,6 +1419,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1318,6 +1431,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		return nil
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"+`: unexpected response type: %T`, response)
@@ -1329,6 +1443,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1340,6 +1455,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		return nil
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"+`: unexpected response type: %T`, response)
@@ -1351,6 +1467,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1362,6 +1479,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 		return nil
 	case *ListApiextensionsV1CustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"+`: unexpected response type: %T`, response)
@@ -1373,6 +1491,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1384,6 +1503,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 		return nil
 	case *ListApiregistrationV1APIServiceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiregistration.k8s.io/v1/apiservices"+`: unexpected response type: %T`, response)
@@ -1395,6 +1515,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 	case *IoK8sAPIAppsV1ControllerRevisionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1406,6 +1527,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 		return nil
 	case *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/controllerrevisions"+`: unexpected response type: %T`, response)
@@ -1417,6 +1539,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 	case *IoK8sAPIAppsV1DaemonSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1428,6 +1551,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 		return nil
 	case *ListAppsV1DaemonSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/daemonsets"+`: unexpected response type: %T`, response)
@@ -1439,6 +1563,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 	case *IoK8sAPIAppsV1DeploymentList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1450,6 +1575,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 		return nil
 	case *ListAppsV1DeploymentForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/deployments"+`: unexpected response type: %T`, response)
@@ -1461,6 +1587,7 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 	case *IoK8sAPIAppsV1ControllerRevisionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1472,6 +1599,7 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 		return nil
 	case *ListAppsV1NamespacedControllerRevisionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"+`: unexpected response type: %T`, response)
@@ -1483,6 +1611,7 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 	case *IoK8sAPIAppsV1DaemonSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1494,6 +1623,7 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 		return nil
 	case *ListAppsV1NamespacedDaemonSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/daemonsets"+`: unexpected response type: %T`, response)
@@ -1505,6 +1635,7 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 	case *IoK8sAPIAppsV1DeploymentList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1516,6 +1647,7 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 		return nil
 	case *ListAppsV1NamespacedDeploymentUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments"+`: unexpected response type: %T`, response)
@@ -1527,6 +1659,7 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 	case *IoK8sAPIAppsV1ReplicaSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1538,6 +1671,7 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 		return nil
 	case *ListAppsV1NamespacedReplicaSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets"+`: unexpected response type: %T`, response)
@@ -1549,6 +1683,7 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 	case *IoK8sAPIAppsV1StatefulSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1560,6 +1695,7 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 		return nil
 	case *ListAppsV1NamespacedStatefulSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets"+`: unexpected response type: %T`, response)
@@ -1571,6 +1707,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 	case *IoK8sAPIAppsV1ReplicaSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1582,6 +1719,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 		return nil
 	case *ListAppsV1ReplicaSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/replicasets"+`: unexpected response type: %T`, response)
@@ -1593,6 +1731,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 	case *IoK8sAPIAppsV1StatefulSetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1604,6 +1743,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 		return nil
 	case *ListAppsV1StatefulSetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/statefulsets"+`: unexpected response type: %T`, response)
@@ -1615,6 +1755,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1626,6 +1767,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 		return nil
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -1637,6 +1779,7 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1648,6 +1791,7 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 		return nil
 	case *ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -1659,6 +1803,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1670,6 +1815,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 		return nil
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -1681,6 +1827,7 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1692,6 +1839,7 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 	case *ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -1703,6 +1851,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1714,6 +1863,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 		return nil
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -1725,6 +1875,7 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1736,6 +1887,7 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 	case *ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -1747,6 +1899,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 	case *IoK8sAPIBatchV1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1758,6 +1911,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 		return nil
 	case *ListBatchV1CronJobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/cronjobs"+`: unexpected response type: %T`, response)
@@ -1769,6 +1923,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 	case *IoK8sAPIBatchV1JobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1780,6 +1935,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 		return nil
 	case *ListBatchV1JobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/jobs"+`: unexpected response type: %T`, response)
@@ -1791,6 +1947,7 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 	case *IoK8sAPIBatchV1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1802,6 +1959,7 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 		return nil
 	case *ListBatchV1NamespacedCronJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
@@ -1813,6 +1971,7 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 	case *IoK8sAPIBatchV1JobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1824,6 +1983,7 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 		return nil
 	case *ListBatchV1NamespacedJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/jobs"+`: unexpected response type: %T`, response)
@@ -1835,6 +1995,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 	case *IoK8sAPIBatchV1beta1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1846,6 +2007,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 		return nil
 	case *ListBatchV1beta1CronJobForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/cronjobs"+`: unexpected response type: %T`, response)
@@ -1857,6 +2019,7 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 	case *IoK8sAPIBatchV1beta1CronJobList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1868,6 +2031,7 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 		return nil
 	case *ListBatchV1beta1NamespacedCronJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
@@ -1879,6 +2043,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1890,6 +2055,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 		return nil
 	case *ListCertificatesV1CertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests"+`: unexpected response type: %T`, response)
@@ -1901,6 +2067,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 	case *IoK8sAPICoordinationV1LeaseList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1912,6 +2079,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 		return nil
 	case *ListCoordinationV1LeaseForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/v1/leases"+`: unexpected response type: %T`, response)
@@ -1923,6 +2091,7 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 	case *IoK8sAPICoordinationV1LeaseList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1934,6 +2103,7 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 		return nil
 	case *ListCoordinationV1NamespacedLeaseUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"+`: unexpected response type: %T`, response)
@@ -1945,6 +2115,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 	case *IoK8sAPICoreV1ComponentStatusList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1956,6 +2127,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 		return nil
 	case *ListCoreV1ComponentStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/componentstatuses"+`: unexpected response type: %T`, response)
@@ -1967,6 +2139,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 	case *IoK8sAPICoreV1ConfigMapList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1978,6 +2151,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 		return nil
 	case *ListCoreV1ConfigMapForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/configmaps"+`: unexpected response type: %T`, response)
@@ -1989,6 +2163,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 	case *IoK8sAPICoreV1EndpointsList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2000,6 +2175,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 		return nil
 	case *ListCoreV1EndpointsForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/endpoints"+`: unexpected response type: %T`, response)
@@ -2011,6 +2187,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 	case *IoK8sAPICoreV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2022,6 +2199,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 		return nil
 	case *ListCoreV1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/events"+`: unexpected response type: %T`, response)
@@ -2033,6 +2211,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 	case *IoK8sAPICoreV1LimitRangeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2044,6 +2223,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 		return nil
 	case *ListCoreV1LimitRangeForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/limitranges"+`: unexpected response type: %T`, response)
@@ -2055,6 +2235,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 	case *IoK8sAPICoreV1NamespaceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2066,6 +2247,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 		return nil
 	case *ListCoreV1NamespaceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces"+`: unexpected response type: %T`, response)
@@ -2077,6 +2259,7 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 	case *IoK8sAPICoreV1ConfigMapList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2088,6 +2271,7 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 		return nil
 	case *ListCoreV1NamespacedConfigMapUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/configmaps"+`: unexpected response type: %T`, response)
@@ -2099,6 +2283,7 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 	case *IoK8sAPICoreV1EndpointsList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2110,6 +2295,7 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 		return nil
 	case *ListCoreV1NamespacedEndpointsUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/endpoints"+`: unexpected response type: %T`, response)
@@ -2121,6 +2307,7 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 	case *IoK8sAPICoreV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2132,6 +2319,7 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 		return nil
 	case *ListCoreV1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
@@ -2143,6 +2331,7 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 	case *IoK8sAPICoreV1LimitRangeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2154,6 +2343,7 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 		return nil
 	case *ListCoreV1NamespacedLimitRangeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/limitranges"+`: unexpected response type: %T`, response)
@@ -2165,6 +2355,7 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2176,6 +2367,7 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 		return nil
 	case *ListCoreV1NamespacedPersistentVolumeClaimUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/persistentvolumeclaims"+`: unexpected response type: %T`, response)
@@ -2187,6 +2379,7 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 	case *IoK8sAPICoreV1PodList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2198,6 +2391,7 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 		return nil
 	case *ListCoreV1NamespacedPodUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/pods"+`: unexpected response type: %T`, response)
@@ -2209,6 +2403,7 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 	case *IoK8sAPICoreV1PodTemplateList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2220,6 +2415,7 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 		return nil
 	case *ListCoreV1NamespacedPodTemplateUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/podtemplates"+`: unexpected response type: %T`, response)
@@ -2231,6 +2427,7 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 	case *IoK8sAPICoreV1ReplicationControllerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2242,6 +2439,7 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 		return nil
 	case *ListCoreV1NamespacedReplicationControllerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers"+`: unexpected response type: %T`, response)
@@ -2253,6 +2451,7 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 	case *IoK8sAPICoreV1ResourceQuotaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2264,6 +2463,7 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 		return nil
 	case *ListCoreV1NamespacedResourceQuotaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/resourcequotas"+`: unexpected response type: %T`, response)
@@ -2275,6 +2475,7 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 	case *IoK8sAPICoreV1SecretList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2286,6 +2487,7 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 		return nil
 	case *ListCoreV1NamespacedSecretUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/secrets"+`: unexpected response type: %T`, response)
@@ -2297,6 +2499,7 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 	case *IoK8sAPICoreV1ServiceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2308,6 +2511,7 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 		return nil
 	case *ListCoreV1NamespacedServiceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/services"+`: unexpected response type: %T`, response)
@@ -2319,6 +2523,7 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 	case *IoK8sAPICoreV1ServiceAccountList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2330,6 +2535,7 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 		return nil
 	case *ListCoreV1NamespacedServiceAccountUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/serviceaccounts"+`: unexpected response type: %T`, response)
@@ -2341,6 +2547,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 	case *IoK8sAPICoreV1NodeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2352,6 +2559,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 		return nil
 	case *ListCoreV1NodeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/nodes"+`: unexpected response type: %T`, response)
@@ -2363,6 +2571,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 	case *IoK8sAPICoreV1PersistentVolumeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2374,6 +2583,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 		return nil
 	case *ListCoreV1PersistentVolumeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/persistentvolumes"+`: unexpected response type: %T`, response)
@@ -2385,6 +2595,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2396,6 +2607,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 		return nil
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/persistentvolumeclaims"+`: unexpected response type: %T`, response)
@@ -2407,6 +2619,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 	case *IoK8sAPICoreV1PodList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2418,6 +2631,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 		return nil
 	case *ListCoreV1PodForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/pods"+`: unexpected response type: %T`, response)
@@ -2429,6 +2643,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 	case *IoK8sAPICoreV1PodTemplateList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2440,6 +2655,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 		return nil
 	case *ListCoreV1PodTemplateForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/podtemplates"+`: unexpected response type: %T`, response)
@@ -2451,6 +2667,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 	case *IoK8sAPICoreV1ReplicationControllerList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2462,6 +2679,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 		return nil
 	case *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/replicationcontrollers"+`: unexpected response type: %T`, response)
@@ -2473,6 +2691,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 	case *IoK8sAPICoreV1ResourceQuotaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2484,6 +2703,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 		return nil
 	case *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/resourcequotas"+`: unexpected response type: %T`, response)
@@ -2495,6 +2715,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 	case *IoK8sAPICoreV1SecretList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2506,6 +2727,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 		return nil
 	case *ListCoreV1SecretForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/secrets"+`: unexpected response type: %T`, response)
@@ -2517,6 +2739,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 	case *IoK8sAPICoreV1ServiceAccountList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2528,6 +2751,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 		return nil
 	case *ListCoreV1ServiceAccountForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/serviceaccounts"+`: unexpected response type: %T`, response)
@@ -2539,6 +2763,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 	case *IoK8sAPICoreV1ServiceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2550,6 +2775,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 		return nil
 	case *ListCoreV1ServiceForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/services"+`: unexpected response type: %T`, response)
@@ -2561,6 +2787,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2572,6 +2799,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 		return nil
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1/endpointslices"+`: unexpected response type: %T`, response)
@@ -2583,6 +2811,7 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2594,6 +2823,7 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 		return nil
 	case *ListDiscoveryV1NamespacedEndpointSliceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
@@ -2605,6 +2835,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2616,6 +2847,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 		return nil
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/endpointslices"+`: unexpected response type: %T`, response)
@@ -2627,6 +2859,7 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2638,6 +2871,7 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 		return nil
 	case *ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
@@ -2649,6 +2883,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 	case *IoK8sAPIEventsV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2660,6 +2895,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 		return nil
 	case *ListEventsV1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1/events"+`: unexpected response type: %T`, response)
@@ -2671,6 +2907,7 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 	case *IoK8sAPIEventsV1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2682,6 +2919,7 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 		return nil
 	case *ListEventsV1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
@@ -2693,6 +2931,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 	case *IoK8sAPIEventsV1beta1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2704,6 +2943,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 		return nil
 	case *ListEventsV1beta1EventForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1beta1/events"+`: unexpected response type: %T`, response)
@@ -2715,6 +2955,7 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 	case *IoK8sAPIEventsV1beta1EventList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2726,6 +2967,7 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 		return nil
 	case *ListEventsV1beta1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
@@ -2737,6 +2979,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2748,6 +2991,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 		return nil
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"+`: unexpected response type: %T`, response)
@@ -2759,6 +3003,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2770,6 +3015,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		return nil
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
@@ -2781,6 +3027,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2792,6 +3039,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 		return nil
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"+`: unexpected response type: %T`, response)
@@ -2803,6 +3051,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2814,6 +3063,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		return nil
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
@@ -2825,6 +3075,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2836,6 +3087,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 		return nil
 	case *ListInternalApiserverV1alpha1StorageVersionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"+`: unexpected response type: %T`, response)
@@ -2847,6 +3099,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 	case *IoK8sAPINetworkingV1IngressClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2858,6 +3111,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 		return nil
 	case *ListNetworkingV1IngressClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/ingressclasses"+`: unexpected response type: %T`, response)
@@ -2869,6 +3123,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 	case *IoK8sAPINetworkingV1IngressList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2880,6 +3135,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 		return nil
 	case *ListNetworkingV1IngressForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/ingresses"+`: unexpected response type: %T`, response)
@@ -2891,6 +3147,7 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 	case *IoK8sAPINetworkingV1IngressList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2902,6 +3159,7 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 		return nil
 	case *ListNetworkingV1NamespacedIngressUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"+`: unexpected response type: %T`, response)
@@ -2913,6 +3171,7 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2924,6 +3183,7 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 		return nil
 	case *ListNetworkingV1NamespacedNetworkPolicyUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"+`: unexpected response type: %T`, response)
@@ -2935,6 +3195,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2946,6 +3207,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 		return nil
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/networkpolicies"+`: unexpected response type: %T`, response)
@@ -2957,6 +3219,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 	case *IoK8sAPINodeV1RuntimeClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2968,6 +3231,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 		return nil
 	case *ListNodeV1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1/runtimeclasses"+`: unexpected response type: %T`, response)
@@ -2979,6 +3243,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 	case *IoK8sAPINodeV1alpha1RuntimeClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2990,6 +3255,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 		return nil
 	case *ListNodeV1alpha1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1alpha1/runtimeclasses"+`: unexpected response type: %T`, response)
@@ -3001,6 +3267,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 	case *IoK8sAPINodeV1beta1RuntimeClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3012,6 +3279,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 		return nil
 	case *ListNodeV1beta1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1beta1/runtimeclasses"+`: unexpected response type: %T`, response)
@@ -3023,6 +3291,7 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3034,6 +3303,7 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 		return nil
 	case *ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -3045,6 +3315,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3056,6 +3327,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 		return nil
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -3067,6 +3339,7 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3078,6 +3351,7 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 		return nil
 	case *ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -3089,6 +3363,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3100,6 +3375,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 		return nil
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -3111,6 +3387,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3122,6 +3399,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 		return nil
 	case *ListPolicyV1beta1PodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/podsecuritypolicies"+`: unexpected response type: %T`, response)
@@ -3133,6 +3411,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 	case *IoK8sAPIRbacV1ClusterRoleList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3144,6 +3423,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 		return nil
 	case *ListRbacAuthorizationV1ClusterRoleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterroles"+`: unexpected response type: %T`, response)
@@ -3155,6 +3435,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 	case *IoK8sAPIRbacV1ClusterRoleBindingList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3166,6 +3447,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 		return nil
 	case *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"+`: unexpected response type: %T`, response)
@@ -3177,6 +3459,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 	case *IoK8sAPIRbacV1RoleList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3188,6 +3471,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 		return nil
 	case *ListRbacAuthorizationV1NamespacedRoleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"+`: unexpected response type: %T`, response)
@@ -3199,6 +3483,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 	case *IoK8sAPIRbacV1RoleBindingList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3210,6 +3495,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 		return nil
 	case *ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"+`: unexpected response type: %T`, response)
@@ -3221,6 +3507,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 	case *IoK8sAPIRbacV1RoleBindingList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3232,6 +3519,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 		return nil
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/rolebindings"+`: unexpected response type: %T`, response)
@@ -3243,6 +3531,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 	case *IoK8sAPIRbacV1RoleList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3254,6 +3543,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 		return nil
 	case *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/roles"+`: unexpected response type: %T`, response)
@@ -3265,6 +3555,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 	case *IoK8sAPISchedulingV1PriorityClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3276,6 +3567,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 		return nil
 	case *ListSchedulingV1PriorityClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/scheduling.k8s.io/v1/priorityclasses"+`: unexpected response type: %T`, response)
@@ -3287,6 +3579,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 	case *IoK8sAPIStorageV1CSIDriverList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3298,6 +3591,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 		return nil
 	case *ListStorageV1CSIDriverUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/csidrivers"+`: unexpected response type: %T`, response)
@@ -3309,6 +3603,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 	case *IoK8sAPIStorageV1CSINodeList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3320,6 +3615,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 		return nil
 	case *ListStorageV1CSINodeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/csinodes"+`: unexpected response type: %T`, response)
@@ -3331,6 +3627,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 	case *IoK8sAPIStorageV1StorageClassList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3342,6 +3639,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 		return nil
 	case *ListStorageV1StorageClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/storageclasses"+`: unexpected response type: %T`, response)
@@ -3353,6 +3651,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 	case *IoK8sAPIStorageV1VolumeAttachmentList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3364,6 +3663,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 		return nil
 	case *ListStorageV1VolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/volumeattachments"+`: unexpected response type: %T`, response)
@@ -3375,6 +3675,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3386,6 +3687,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 		return nil
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"+`: unexpected response type: %T`, response)
@@ -3397,6 +3699,7 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3408,6 +3711,7 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 		return nil
 	case *ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
@@ -3419,6 +3723,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3430,6 +3735,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 		return nil
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/csistoragecapacities"+`: unexpected response type: %T`, response)
@@ -3441,6 +3747,7 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3452,6 +3759,7 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 		return nil
 	case *ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
@@ -3460,11 +3768,13 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 
 func encodeLogFileHandlerResponse(response LogFileHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
+	span.SetStatus(codes.Error, http.StatusText(401))
 	return nil
 }
 
 func encodeLogFileListHandlerResponse(response LogFileListHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
+	span.SetStatus(codes.Error, http.StatusText(401))
 	return nil
 }
 
@@ -3473,6 +3783,7 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3484,6 +3795,7 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		return nil
 	case *ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -3495,6 +3807,7 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3506,6 +3819,7 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		return nil
 	case *ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -3517,6 +3831,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3528,6 +3843,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 		return nil
 	case *ReadApiextensionsV1CustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"+`: unexpected response type: %T`, response)
@@ -3539,6 +3855,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3550,6 +3867,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 		return nil
 	case *ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"+`: unexpected response type: %T`, response)
@@ -3561,6 +3879,7 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3572,6 +3891,7 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 		return nil
 	case *ReadApiregistrationV1APIServiceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiregistration.k8s.io/v1/apiservices/{name}"+`: unexpected response type: %T`, response)
@@ -3583,6 +3903,7 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3594,6 +3915,7 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 		return nil
 	case *ReadApiregistrationV1APIServiceStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"+`: unexpected response type: %T`, response)
@@ -3605,6 +3927,7 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 	case *IoK8sAPIAppsV1ControllerRevision:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3616,6 +3939,7 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 		return nil
 	case *ReadAppsV1NamespacedControllerRevisionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"+`: unexpected response type: %T`, response)
@@ -3627,6 +3951,7 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 	case *IoK8sAPIAppsV1DaemonSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3638,6 +3963,7 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 		return nil
 	case *ReadAppsV1NamespacedDaemonSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"+`: unexpected response type: %T`, response)
@@ -3649,6 +3975,7 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 	case *IoK8sAPIAppsV1DaemonSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3660,6 +3987,7 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 		return nil
 	case *ReadAppsV1NamespacedDaemonSetStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"+`: unexpected response type: %T`, response)
@@ -3671,6 +3999,7 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 	case *IoK8sAPIAppsV1Deployment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3682,6 +4011,7 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 		return nil
 	case *ReadAppsV1NamespacedDeploymentUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"+`: unexpected response type: %T`, response)
@@ -3693,6 +4023,7 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3704,6 +4035,7 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 		return nil
 	case *ReadAppsV1NamespacedDeploymentScaleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"+`: unexpected response type: %T`, response)
@@ -3715,6 +4047,7 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 	case *IoK8sAPIAppsV1Deployment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3726,6 +4059,7 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 		return nil
 	case *ReadAppsV1NamespacedDeploymentStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"+`: unexpected response type: %T`, response)
@@ -3737,6 +4071,7 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 	case *IoK8sAPIAppsV1ReplicaSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3748,6 +4083,7 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 		return nil
 	case *ReadAppsV1NamespacedReplicaSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"+`: unexpected response type: %T`, response)
@@ -3759,6 +4095,7 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3770,6 +4107,7 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 		return nil
 	case *ReadAppsV1NamespacedReplicaSetScaleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"+`: unexpected response type: %T`, response)
@@ -3781,6 +4119,7 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 	case *IoK8sAPIAppsV1ReplicaSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3792,6 +4131,7 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 		return nil
 	case *ReadAppsV1NamespacedReplicaSetStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"+`: unexpected response type: %T`, response)
@@ -3803,6 +4143,7 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 	case *IoK8sAPIAppsV1StatefulSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3814,6 +4155,7 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 		return nil
 	case *ReadAppsV1NamespacedStatefulSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"+`: unexpected response type: %T`, response)
@@ -3825,6 +4167,7 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3836,6 +4179,7 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 		return nil
 	case *ReadAppsV1NamespacedStatefulSetScaleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"+`: unexpected response type: %T`, response)
@@ -3847,6 +4191,7 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 	case *IoK8sAPIAppsV1StatefulSet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3858,6 +4203,7 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 		return nil
 	case *ReadAppsV1NamespacedStatefulSetStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"+`: unexpected response type: %T`, response)
@@ -3869,6 +4215,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3880,6 +4227,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 		return nil
 	case *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
@@ -3891,6 +4239,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3902,6 +4251,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 		return nil
 	case *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"+`: unexpected response type: %T`, response)
@@ -3913,6 +4263,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3924,6 +4275,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 	case *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
@@ -3935,6 +4287,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3946,6 +4299,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 		return nil
 	case *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"+`: unexpected response type: %T`, response)
@@ -3957,6 +4311,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3968,6 +4323,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 	case *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
@@ -3979,6 +4335,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3990,6 +4347,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 		return nil
 	case *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"+`: unexpected response type: %T`, response)
@@ -4001,6 +4359,7 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 	case *IoK8sAPIBatchV1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4012,6 +4371,7 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 		return nil
 	case *ReadBatchV1NamespacedCronJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
@@ -4023,6 +4383,7 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 	case *IoK8sAPIBatchV1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4034,6 +4395,7 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 		return nil
 	case *ReadBatchV1NamespacedCronJobStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"+`: unexpected response type: %T`, response)
@@ -4045,6 +4407,7 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 	case *IoK8sAPIBatchV1Job:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4056,6 +4419,7 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 		return nil
 	case *ReadBatchV1NamespacedJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"+`: unexpected response type: %T`, response)
@@ -4067,6 +4431,7 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 	case *IoK8sAPIBatchV1Job:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4078,6 +4443,7 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 		return nil
 	case *ReadBatchV1NamespacedJobStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"+`: unexpected response type: %T`, response)
@@ -4089,6 +4455,7 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 	case *IoK8sAPIBatchV1beta1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4100,6 +4467,7 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 		return nil
 	case *ReadBatchV1beta1NamespacedCronJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
@@ -4111,6 +4479,7 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 	case *IoK8sAPIBatchV1beta1CronJob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4122,6 +4491,7 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 		return nil
 	case *ReadBatchV1beta1NamespacedCronJobStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"+`: unexpected response type: %T`, response)
@@ -4133,6 +4503,7 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4144,6 +4515,7 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 		return nil
 	case *ReadCertificatesV1CertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"+`: unexpected response type: %T`, response)
@@ -4155,6 +4527,7 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4166,6 +4539,7 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 		return nil
 	case *ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"+`: unexpected response type: %T`, response)
@@ -4177,6 +4551,7 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4188,6 +4563,7 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 		return nil
 	case *ReadCertificatesV1CertificateSigningRequestStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"+`: unexpected response type: %T`, response)
@@ -4199,6 +4575,7 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 	case *IoK8sAPICoordinationV1Lease:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4210,6 +4587,7 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 		return nil
 	case *ReadCoordinationV1NamespacedLeaseUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"+`: unexpected response type: %T`, response)
@@ -4221,6 +4599,7 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 	case *IoK8sAPICoreV1ComponentStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4232,6 +4611,7 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 		return nil
 	case *ReadCoreV1ComponentStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/componentstatuses/{name}"+`: unexpected response type: %T`, response)
@@ -4243,6 +4623,7 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 	case *IoK8sAPICoreV1Namespace:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4254,6 +4635,7 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 		return nil
 	case *ReadCoreV1NamespaceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{name}"+`: unexpected response type: %T`, response)
@@ -4265,6 +4647,7 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 	case *IoK8sAPICoreV1Namespace:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4276,6 +4659,7 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 		return nil
 	case *ReadCoreV1NamespaceStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{name}/status"+`: unexpected response type: %T`, response)
@@ -4287,6 +4671,7 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 	case *IoK8sAPICoreV1ConfigMap:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4298,6 +4683,7 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 		return nil
 	case *ReadCoreV1NamespacedConfigMapUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/configmaps/{name}"+`: unexpected response type: %T`, response)
@@ -4309,6 +4695,7 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 	case *IoK8sAPICoreV1Endpoints:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4320,6 +4707,7 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 		return nil
 	case *ReadCoreV1NamespacedEndpointsUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/endpoints/{name}"+`: unexpected response type: %T`, response)
@@ -4331,6 +4719,7 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 	case *IoK8sAPICoreV1Event:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4342,6 +4731,7 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 		return nil
 	case *ReadCoreV1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
@@ -4353,6 +4743,7 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 	case *IoK8sAPICoreV1LimitRange:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4364,6 +4755,7 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 		return nil
 	case *ReadCoreV1NamespacedLimitRangeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/limitranges/{name}"+`: unexpected response type: %T`, response)
@@ -4375,6 +4767,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4386,6 +4779,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 		return nil
 	case *ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"+`: unexpected response type: %T`, response)
@@ -4397,6 +4791,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4408,6 +4803,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 		return nil
 	case *ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"+`: unexpected response type: %T`, response)
@@ -4419,6 +4815,7 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 	case *IoK8sAPICoreV1Pod:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4430,6 +4827,7 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 		return nil
 	case *ReadCoreV1NamespacedPodUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}"+`: unexpected response type: %T`, response)
@@ -4441,6 +4839,7 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 	case *IoK8sAPICoreV1Pod:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4452,6 +4851,7 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 		return nil
 	case *ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"+`: unexpected response type: %T`, response)
@@ -4463,6 +4863,7 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 	case *ReadCoreV1NamespacedPodLogOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4474,6 +4875,7 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		return nil
 	case *ReadCoreV1NamespacedPodLogUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}/log"+`: unexpected response type: %T`, response)
@@ -4485,6 +4887,7 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 	case *IoK8sAPICoreV1Pod:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4496,6 +4899,7 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 		return nil
 	case *ReadCoreV1NamespacedPodStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}/status"+`: unexpected response type: %T`, response)
@@ -4507,6 +4911,7 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 	case *IoK8sAPICoreV1PodTemplate:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4518,6 +4923,7 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 		return nil
 	case *ReadCoreV1NamespacedPodTemplateUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/podtemplates/{name}"+`: unexpected response type: %T`, response)
@@ -4529,6 +4935,7 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 	case *IoK8sAPICoreV1ReplicationController:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4540,6 +4947,7 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 		return nil
 	case *ReadCoreV1NamespacedReplicationControllerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"+`: unexpected response type: %T`, response)
@@ -4551,6 +4959,7 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 	case *IoK8sAPIAutoscalingV1Scale:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4562,6 +4971,7 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 		return nil
 	case *ReadCoreV1NamespacedReplicationControllerScaleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"+`: unexpected response type: %T`, response)
@@ -4573,6 +4983,7 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 	case *IoK8sAPICoreV1ReplicationController:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4584,6 +4995,7 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 		return nil
 	case *ReadCoreV1NamespacedReplicationControllerStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"+`: unexpected response type: %T`, response)
@@ -4595,6 +5007,7 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 	case *IoK8sAPICoreV1ResourceQuota:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4606,6 +5019,7 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 		return nil
 	case *ReadCoreV1NamespacedResourceQuotaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/resourcequotas/{name}"+`: unexpected response type: %T`, response)
@@ -4617,6 +5031,7 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 	case *IoK8sAPICoreV1ResourceQuota:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4628,6 +5043,7 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 		return nil
 	case *ReadCoreV1NamespacedResourceQuotaStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"+`: unexpected response type: %T`, response)
@@ -4639,6 +5055,7 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 	case *IoK8sAPICoreV1Secret:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4650,6 +5067,7 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 		return nil
 	case *ReadCoreV1NamespacedSecretUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/secrets/{name}"+`: unexpected response type: %T`, response)
@@ -4661,6 +5079,7 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 	case *IoK8sAPICoreV1Service:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4672,6 +5091,7 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 		return nil
 	case *ReadCoreV1NamespacedServiceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/services/{name}"+`: unexpected response type: %T`, response)
@@ -4683,6 +5103,7 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 	case *IoK8sAPICoreV1ServiceAccount:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4694,6 +5115,7 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 		return nil
 	case *ReadCoreV1NamespacedServiceAccountUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"+`: unexpected response type: %T`, response)
@@ -4705,6 +5127,7 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 	case *IoK8sAPICoreV1Service:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4716,6 +5139,7 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 		return nil
 	case *ReadCoreV1NamespacedServiceStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/namespaces/{namespace}/services/{name}/status"+`: unexpected response type: %T`, response)
@@ -4727,6 +5151,7 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 	case *IoK8sAPICoreV1Node:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4738,6 +5163,7 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 		return nil
 	case *ReadCoreV1NodeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/nodes/{name}"+`: unexpected response type: %T`, response)
@@ -4749,6 +5175,7 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 	case *IoK8sAPICoreV1Node:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4760,6 +5187,7 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 		return nil
 	case *ReadCoreV1NodeStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/nodes/{name}/status"+`: unexpected response type: %T`, response)
@@ -4771,6 +5199,7 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 	case *IoK8sAPICoreV1PersistentVolume:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4782,6 +5211,7 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 		return nil
 	case *ReadCoreV1PersistentVolumeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/persistentvolumes/{name}"+`: unexpected response type: %T`, response)
@@ -4793,6 +5223,7 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 	case *IoK8sAPICoreV1PersistentVolume:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4804,6 +5235,7 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 		return nil
 	case *ReadCoreV1PersistentVolumeStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/persistentvolumes/{name}/status"+`: unexpected response type: %T`, response)
@@ -4815,6 +5247,7 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 	case *IoK8sAPIDiscoveryV1EndpointSlice:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4826,6 +5259,7 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 		return nil
 	case *ReadDiscoveryV1NamespacedEndpointSliceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
@@ -4837,6 +5271,7 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 	case *IoK8sAPIDiscoveryV1beta1EndpointSlice:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4848,6 +5283,7 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 		return nil
 	case *ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
@@ -4859,6 +5295,7 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 	case *IoK8sAPIEventsV1Event:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4870,6 +5307,7 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 		return nil
 	case *ReadEventsV1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
@@ -4881,6 +5319,7 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 	case *IoK8sAPIEventsV1beta1Event:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4892,6 +5331,7 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 		return nil
 	case *ReadEventsV1beta1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
@@ -4903,6 +5343,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4914,6 +5355,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 		return nil
 	case *ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"+`: unexpected response type: %T`, response)
@@ -4925,6 +5367,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4936,6 +5379,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 		return nil
 	case *ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"+`: unexpected response type: %T`, response)
@@ -4947,6 +5391,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4958,6 +5403,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		return nil
 	case *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -4969,6 +5415,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4980,6 +5427,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 		return nil
 	case *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"+`: unexpected response type: %T`, response)
@@ -4991,6 +5439,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5002,6 +5451,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 		return nil
 	case *ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"+`: unexpected response type: %T`, response)
@@ -5013,6 +5463,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5024,6 +5475,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 		return nil
 	case *ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"+`: unexpected response type: %T`, response)
@@ -5035,6 +5487,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5046,6 +5499,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		return nil
 	case *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -5057,6 +5511,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5068,6 +5523,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 		return nil
 	case *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"+`: unexpected response type: %T`, response)
@@ -5079,6 +5535,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5090,6 +5547,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 		return nil
 	case *ReadInternalApiserverV1alpha1StorageVersionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"+`: unexpected response type: %T`, response)
@@ -5101,6 +5559,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5112,6 +5571,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 		return nil
 	case *ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"+`: unexpected response type: %T`, response)
@@ -5123,6 +5583,7 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 	case *IoK8sAPINetworkingV1IngressClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5134,6 +5595,7 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 		return nil
 	case *ReadNetworkingV1IngressClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/ingressclasses/{name}"+`: unexpected response type: %T`, response)
@@ -5145,6 +5607,7 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 	case *IoK8sAPINetworkingV1Ingress:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5156,6 +5619,7 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 		return nil
 	case *ReadNetworkingV1NamespacedIngressUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"+`: unexpected response type: %T`, response)
@@ -5167,6 +5631,7 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 	case *IoK8sAPINetworkingV1Ingress:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5178,6 +5643,7 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 		return nil
 	case *ReadNetworkingV1NamespacedIngressStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"+`: unexpected response type: %T`, response)
@@ -5189,6 +5655,7 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 	case *IoK8sAPINetworkingV1NetworkPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5200,6 +5667,7 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 		return nil
 	case *ReadNetworkingV1NamespacedNetworkPolicyUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"+`: unexpected response type: %T`, response)
@@ -5211,6 +5679,7 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 	case *IoK8sAPINodeV1RuntimeClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5222,6 +5691,7 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 		return nil
 	case *ReadNodeV1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
@@ -5233,6 +5703,7 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 	case *IoK8sAPINodeV1alpha1RuntimeClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5244,6 +5715,7 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 		return nil
 	case *ReadNodeV1alpha1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
@@ -5255,6 +5727,7 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 	case *IoK8sAPINodeV1beta1RuntimeClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5266,6 +5739,7 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 		return nil
 	case *ReadNodeV1beta1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
@@ -5277,6 +5751,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5288,6 +5763,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 		return nil
 	case *ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
@@ -5299,6 +5775,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5310,6 +5787,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 		return nil
 	case *ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"+`: unexpected response type: %T`, response)
@@ -5321,6 +5799,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5332,6 +5811,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 		return nil
 	case *ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
@@ -5343,6 +5823,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5354,6 +5835,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 		return nil
 	case *ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"+`: unexpected response type: %T`, response)
@@ -5365,6 +5847,7 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5376,6 +5859,7 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 		return nil
 	case *ReadPolicyV1beta1PodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/podsecuritypolicies/{name}"+`: unexpected response type: %T`, response)
@@ -5387,6 +5871,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 	case *IoK8sAPIRbacV1ClusterRole:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5398,6 +5883,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 		return nil
 	case *ReadRbacAuthorizationV1ClusterRoleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"+`: unexpected response type: %T`, response)
@@ -5409,6 +5895,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 	case *IoK8sAPIRbacV1ClusterRoleBinding:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5420,6 +5907,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 		return nil
 	case *ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"+`: unexpected response type: %T`, response)
@@ -5431,6 +5919,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 	case *IoK8sAPIRbacV1Role:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5442,6 +5931,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 		return nil
 	case *ReadRbacAuthorizationV1NamespacedRoleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"+`: unexpected response type: %T`, response)
@@ -5453,6 +5943,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 	case *IoK8sAPIRbacV1RoleBinding:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5464,6 +5955,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 		return nil
 	case *ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"+`: unexpected response type: %T`, response)
@@ -5475,6 +5967,7 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 	case *IoK8sAPISchedulingV1PriorityClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5486,6 +5979,7 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 		return nil
 	case *ReadSchedulingV1PriorityClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"+`: unexpected response type: %T`, response)
@@ -5497,6 +5991,7 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 	case *IoK8sAPIStorageV1CSIDriver:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5508,6 +6003,7 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 		return nil
 	case *ReadStorageV1CSIDriverUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/csidrivers/{name}"+`: unexpected response type: %T`, response)
@@ -5519,6 +6015,7 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 	case *IoK8sAPIStorageV1CSINode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5530,6 +6027,7 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 		return nil
 	case *ReadStorageV1CSINodeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/csinodes/{name}"+`: unexpected response type: %T`, response)
@@ -5541,6 +6039,7 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 	case *IoK8sAPIStorageV1StorageClass:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5552,6 +6051,7 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 		return nil
 	case *ReadStorageV1StorageClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/storageclasses/{name}"+`: unexpected response type: %T`, response)
@@ -5563,6 +6063,7 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 	case *IoK8sAPIStorageV1VolumeAttachment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5574,6 +6075,7 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 		return nil
 	case *ReadStorageV1VolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/volumeattachments/{name}"+`: unexpected response type: %T`, response)
@@ -5585,6 +6087,7 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 	case *IoK8sAPIStorageV1VolumeAttachment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5596,6 +6099,7 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 		return nil
 	case *ReadStorageV1VolumeAttachmentStatusUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"+`: unexpected response type: %T`, response)
@@ -5607,6 +6111,7 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5618,6 +6123,7 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 		return nil
 	case *ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
@@ -5629,6 +6135,7 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5640,6 +6147,7 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 		return nil
 	case *ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
@@ -5651,6 +6159,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5662,6 +6171,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 		return nil
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -5673,6 +6183,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5684,6 +6195,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 		return nil
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"+`: unexpected response type: %T`, response)
@@ -5695,6 +6207,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5706,6 +6219,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 		return nil
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -5717,6 +6231,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5728,6 +6243,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 		return nil
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"+`: unexpected response type: %T`, response)
@@ -5739,6 +6255,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5750,6 +6267,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 		return nil
 	case *WatchApiextensionsV1CustomResourceDefinitionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"+`: unexpected response type: %T`, response)
@@ -5761,6 +6279,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5772,6 +6291,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 		return nil
 	case *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"+`: unexpected response type: %T`, response)
@@ -5783,6 +6303,7 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5794,6 +6315,7 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 		return nil
 	case *WatchApiregistrationV1APIServiceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"+`: unexpected response type: %T`, response)
@@ -5805,6 +6327,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5816,6 +6339,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 		return nil
 	case *WatchApiregistrationV1APIServiceListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apiregistration.k8s.io/v1/watch/apiservices"+`: unexpected response type: %T`, response)
@@ -5827,6 +6351,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5838,6 +6363,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 		return nil
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/controllerrevisions"+`: unexpected response type: %T`, response)
@@ -5849,6 +6375,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5860,6 +6387,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 		return nil
 	case *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/daemonsets"+`: unexpected response type: %T`, response)
@@ -5871,6 +6399,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5882,6 +6411,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 		return nil
 	case *WatchAppsV1DeploymentListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/deployments"+`: unexpected response type: %T`, response)
@@ -5893,6 +6423,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5904,6 +6435,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 		return nil
 	case *WatchAppsV1NamespacedControllerRevisionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"+`: unexpected response type: %T`, response)
@@ -5915,6 +6447,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5926,6 +6459,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 		return nil
 	case *WatchAppsV1NamespacedControllerRevisionListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"+`: unexpected response type: %T`, response)
@@ -5937,6 +6471,7 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5948,6 +6483,7 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 		return nil
 	case *WatchAppsV1NamespacedDaemonSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"+`: unexpected response type: %T`, response)
@@ -5959,6 +6495,7 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5970,6 +6507,7 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 		return nil
 	case *WatchAppsV1NamespacedDaemonSetListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"+`: unexpected response type: %T`, response)
@@ -5981,6 +6519,7 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5992,6 +6531,7 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 		return nil
 	case *WatchAppsV1NamespacedDeploymentUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"+`: unexpected response type: %T`, response)
@@ -6003,6 +6543,7 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6014,6 +6555,7 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 		return nil
 	case *WatchAppsV1NamespacedDeploymentListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/deployments"+`: unexpected response type: %T`, response)
@@ -6025,6 +6567,7 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6036,6 +6579,7 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 		return nil
 	case *WatchAppsV1NamespacedReplicaSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"+`: unexpected response type: %T`, response)
@@ -6047,6 +6591,7 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6058,6 +6603,7 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 		return nil
 	case *WatchAppsV1NamespacedReplicaSetListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"+`: unexpected response type: %T`, response)
@@ -6069,6 +6615,7 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6080,6 +6627,7 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 		return nil
 	case *WatchAppsV1NamespacedStatefulSetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"+`: unexpected response type: %T`, response)
@@ -6091,6 +6639,7 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6102,6 +6651,7 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 		return nil
 	case *WatchAppsV1NamespacedStatefulSetListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"+`: unexpected response type: %T`, response)
@@ -6113,6 +6663,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6124,6 +6675,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 		return nil
 	case *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/replicasets"+`: unexpected response type: %T`, response)
@@ -6135,6 +6687,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6146,6 +6699,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 		return nil
 	case *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/apps/v1/watch/statefulsets"+`: unexpected response type: %T`, response)
@@ -6157,6 +6711,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6168,6 +6723,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 		return nil
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/watch/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -6179,6 +6735,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6190,6 +6747,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 		return nil
 	case *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
@@ -6201,6 +6759,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6212,6 +6771,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 		return nil
 	case *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -6223,6 +6783,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6234,6 +6795,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		return nil
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -6245,6 +6807,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6256,6 +6819,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 		return nil
 	case *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
@@ -6267,6 +6831,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6278,6 +6843,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 		return nil
 	case *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -6289,6 +6855,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6300,6 +6867,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		return nil
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -6311,6 +6879,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6322,6 +6891,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 		return nil
 	case *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
@@ -6333,6 +6903,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6344,6 +6915,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 		return nil
 	case *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
@@ -6355,6 +6927,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6366,6 +6939,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 		return nil
 	case *WatchBatchV1CronJobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/watch/cronjobs"+`: unexpected response type: %T`, response)
@@ -6377,6 +6951,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6388,6 +6963,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 		return nil
 	case *WatchBatchV1JobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/watch/jobs"+`: unexpected response type: %T`, response)
@@ -6399,6 +6975,7 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6410,6 +6987,7 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 		return nil
 	case *WatchBatchV1NamespacedCronJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
@@ -6421,6 +6999,7 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6432,6 +7011,7 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 		return nil
 	case *WatchBatchV1NamespacedCronJobListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
@@ -6443,6 +7023,7 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6454,6 +7035,7 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 		return nil
 	case *WatchBatchV1NamespacedJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"+`: unexpected response type: %T`, response)
@@ -6465,6 +7047,7 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6476,6 +7059,7 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 		return nil
 	case *WatchBatchV1NamespacedJobListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/jobs"+`: unexpected response type: %T`, response)
@@ -6487,6 +7071,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6498,6 +7083,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 		return nil
 	case *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/watch/cronjobs"+`: unexpected response type: %T`, response)
@@ -6509,6 +7095,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6520,6 +7107,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 		return nil
 	case *WatchBatchV1beta1NamespacedCronJobUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
@@ -6531,6 +7119,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6542,6 +7131,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 		return nil
 	case *WatchBatchV1beta1NamespacedCronJobListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
@@ -6553,6 +7143,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6564,6 +7155,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 		return nil
 	case *WatchCertificatesV1CertificateSigningRequestUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"+`: unexpected response type: %T`, response)
@@ -6575,6 +7167,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6586,6 +7179,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 		return nil
 	case *WatchCertificatesV1CertificateSigningRequestListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"+`: unexpected response type: %T`, response)
@@ -6597,6 +7191,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6608,6 +7203,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 		return nil
 	case *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/v1/watch/leases"+`: unexpected response type: %T`, response)
@@ -6619,6 +7215,7 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6630,6 +7227,7 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 		return nil
 	case *WatchCoordinationV1NamespacedLeaseUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"+`: unexpected response type: %T`, response)
@@ -6641,6 +7239,7 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6652,6 +7251,7 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 		return nil
 	case *WatchCoordinationV1NamespacedLeaseListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"+`: unexpected response type: %T`, response)
@@ -6663,6 +7263,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6674,6 +7275,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 		return nil
 	case *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/configmaps"+`: unexpected response type: %T`, response)
@@ -6685,6 +7287,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6696,6 +7299,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 		return nil
 	case *WatchCoreV1EndpointsListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/endpoints"+`: unexpected response type: %T`, response)
@@ -6707,6 +7311,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6718,6 +7323,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 		return nil
 	case *WatchCoreV1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/events"+`: unexpected response type: %T`, response)
@@ -6729,6 +7335,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6740,6 +7347,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 		return nil
 	case *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/limitranges"+`: unexpected response type: %T`, response)
@@ -6751,6 +7359,7 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6762,6 +7371,7 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 		return nil
 	case *WatchCoreV1NamespaceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{name}"+`: unexpected response type: %T`, response)
@@ -6773,6 +7383,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6784,6 +7395,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 		return nil
 	case *WatchCoreV1NamespaceListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces"+`: unexpected response type: %T`, response)
@@ -6795,6 +7407,7 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6806,6 +7419,7 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 		return nil
 	case *WatchCoreV1NamespacedConfigMapUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"+`: unexpected response type: %T`, response)
@@ -6817,6 +7431,7 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6828,6 +7443,7 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 		return nil
 	case *WatchCoreV1NamespacedConfigMapListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/configmaps"+`: unexpected response type: %T`, response)
@@ -6839,6 +7455,7 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6850,6 +7467,7 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 		return nil
 	case *WatchCoreV1NamespacedEndpointsUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"+`: unexpected response type: %T`, response)
@@ -6861,6 +7479,7 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6872,6 +7491,7 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 		return nil
 	case *WatchCoreV1NamespacedEndpointsListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/endpoints"+`: unexpected response type: %T`, response)
@@ -6883,6 +7503,7 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6894,6 +7515,7 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 		return nil
 	case *WatchCoreV1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
@@ -6905,6 +7527,7 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6916,6 +7539,7 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 		return nil
 	case *WatchCoreV1NamespacedEventListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
@@ -6927,6 +7551,7 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6938,6 +7563,7 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 		return nil
 	case *WatchCoreV1NamespacedLimitRangeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"+`: unexpected response type: %T`, response)
@@ -6949,6 +7575,7 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6960,6 +7587,7 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 		return nil
 	case *WatchCoreV1NamespacedLimitRangeListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/limitranges"+`: unexpected response type: %T`, response)
@@ -6971,6 +7599,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6982,6 +7611,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 		return nil
 	case *WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"+`: unexpected response type: %T`, response)
@@ -6993,6 +7623,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7004,6 +7635,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 		return nil
 	case *WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"+`: unexpected response type: %T`, response)
@@ -7015,6 +7647,7 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7026,6 +7659,7 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 		return nil
 	case *WatchCoreV1NamespacedPodUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/pods/{name}"+`: unexpected response type: %T`, response)
@@ -7037,6 +7671,7 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7048,6 +7683,7 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 		return nil
 	case *WatchCoreV1NamespacedPodListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/pods"+`: unexpected response type: %T`, response)
@@ -7059,6 +7695,7 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7070,6 +7707,7 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 		return nil
 	case *WatchCoreV1NamespacedPodTemplateUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"+`: unexpected response type: %T`, response)
@@ -7081,6 +7719,7 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7092,6 +7731,7 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 		return nil
 	case *WatchCoreV1NamespacedPodTemplateListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/podtemplates"+`: unexpected response type: %T`, response)
@@ -7103,6 +7743,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7114,6 +7755,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 		return nil
 	case *WatchCoreV1NamespacedReplicationControllerUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"+`: unexpected response type: %T`, response)
@@ -7125,6 +7767,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7136,6 +7779,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 		return nil
 	case *WatchCoreV1NamespacedReplicationControllerListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"+`: unexpected response type: %T`, response)
@@ -7147,6 +7791,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7158,6 +7803,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 		return nil
 	case *WatchCoreV1NamespacedResourceQuotaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"+`: unexpected response type: %T`, response)
@@ -7169,6 +7815,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7180,6 +7827,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 		return nil
 	case *WatchCoreV1NamespacedResourceQuotaListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/resourcequotas"+`: unexpected response type: %T`, response)
@@ -7191,6 +7839,7 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7202,6 +7851,7 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 		return nil
 	case *WatchCoreV1NamespacedSecretUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/secrets/{name}"+`: unexpected response type: %T`, response)
@@ -7213,6 +7863,7 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7224,6 +7875,7 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 		return nil
 	case *WatchCoreV1NamespacedSecretListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/secrets"+`: unexpected response type: %T`, response)
@@ -7235,6 +7887,7 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7246,6 +7899,7 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 		return nil
 	case *WatchCoreV1NamespacedServiceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/services/{name}"+`: unexpected response type: %T`, response)
@@ -7257,6 +7911,7 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7268,6 +7923,7 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 		return nil
 	case *WatchCoreV1NamespacedServiceAccountUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"+`: unexpected response type: %T`, response)
@@ -7279,6 +7935,7 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7290,6 +7947,7 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 		return nil
 	case *WatchCoreV1NamespacedServiceAccountListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/serviceaccounts"+`: unexpected response type: %T`, response)
@@ -7301,6 +7959,7 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7312,6 +7971,7 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 		return nil
 	case *WatchCoreV1NamespacedServiceListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/services"+`: unexpected response type: %T`, response)
@@ -7323,6 +7983,7 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7334,6 +7995,7 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 		return nil
 	case *WatchCoreV1NodeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/nodes/{name}"+`: unexpected response type: %T`, response)
@@ -7345,6 +8007,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7356,6 +8019,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 		return nil
 	case *WatchCoreV1NodeListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/nodes"+`: unexpected response type: %T`, response)
@@ -7367,6 +8031,7 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7378,6 +8043,7 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 		return nil
 	case *WatchCoreV1PersistentVolumeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/persistentvolumes/{name}"+`: unexpected response type: %T`, response)
@@ -7389,6 +8055,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7400,6 +8067,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 		return nil
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/persistentvolumeclaims"+`: unexpected response type: %T`, response)
@@ -7411,6 +8079,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7422,6 +8091,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 		return nil
 	case *WatchCoreV1PersistentVolumeListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/persistentvolumes"+`: unexpected response type: %T`, response)
@@ -7433,6 +8103,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7444,6 +8115,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 		return nil
 	case *WatchCoreV1PodListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/pods"+`: unexpected response type: %T`, response)
@@ -7455,6 +8127,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7466,6 +8139,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 		return nil
 	case *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/podtemplates"+`: unexpected response type: %T`, response)
@@ -7477,6 +8151,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7488,6 +8163,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 		return nil
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/replicationcontrollers"+`: unexpected response type: %T`, response)
@@ -7499,6 +8175,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7510,6 +8187,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 		return nil
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/resourcequotas"+`: unexpected response type: %T`, response)
@@ -7521,6 +8199,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7532,6 +8211,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 		return nil
 	case *WatchCoreV1SecretListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/secrets"+`: unexpected response type: %T`, response)
@@ -7543,6 +8223,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7554,6 +8235,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 		return nil
 	case *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/serviceaccounts"+`: unexpected response type: %T`, response)
@@ -7565,6 +8247,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7576,6 +8259,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 		return nil
 	case *WatchCoreV1ServiceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/api/v1/watch/services"+`: unexpected response type: %T`, response)
@@ -7587,6 +8271,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7598,6 +8283,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 		return nil
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1/watch/endpointslices"+`: unexpected response type: %T`, response)
@@ -7609,6 +8295,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7620,6 +8307,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 		return nil
 	case *WatchDiscoveryV1NamespacedEndpointSliceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
@@ -7631,6 +8319,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7642,6 +8331,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 		return nil
 	case *WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
@@ -7653,6 +8343,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7664,6 +8355,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 		return nil
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"+`: unexpected response type: %T`, response)
@@ -7675,6 +8367,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7686,6 +8379,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 		return nil
 	case *WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
@@ -7697,6 +8391,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7708,6 +8403,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 		return nil
 	case *WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
@@ -7719,6 +8415,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7730,6 +8427,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 		return nil
 	case *WatchEventsV1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1/watch/events"+`: unexpected response type: %T`, response)
@@ -7741,6 +8439,7 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7752,6 +8451,7 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 		return nil
 	case *WatchEventsV1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
@@ -7763,6 +8463,7 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7774,6 +8475,7 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 		return nil
 	case *WatchEventsV1NamespacedEventListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
@@ -7785,6 +8487,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7796,6 +8499,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 		return nil
 	case *WatchEventsV1beta1EventListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1beta1/watch/events"+`: unexpected response type: %T`, response)
@@ -7807,6 +8511,7 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7818,6 +8523,7 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 		return nil
 	case *WatchEventsV1beta1NamespacedEventUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
@@ -7829,6 +8535,7 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7840,6 +8547,7 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 		return nil
 	case *WatchEventsV1beta1NamespacedEventListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
@@ -7851,6 +8559,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7862,6 +8571,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 		return nil
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"+`: unexpected response type: %T`, response)
@@ -7873,6 +8583,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7884,6 +8595,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 		return nil
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"+`: unexpected response type: %T`, response)
@@ -7895,6 +8607,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7906,6 +8619,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 		return nil
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -7917,6 +8631,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7928,6 +8643,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 		return nil
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
@@ -7939,6 +8655,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7950,6 +8667,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 		return nil
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"+`: unexpected response type: %T`, response)
@@ -7961,6 +8679,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7972,6 +8691,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 		return nil
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"+`: unexpected response type: %T`, response)
@@ -7983,6 +8703,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7994,6 +8715,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 		return nil
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
@@ -8005,6 +8727,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8016,6 +8739,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 		return nil
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
@@ -8027,6 +8751,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8038,6 +8763,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 		return nil
 	case *WatchInternalApiserverV1alpha1StorageVersionUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"+`: unexpected response type: %T`, response)
@@ -8049,6 +8775,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8060,6 +8787,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 		return nil
 	case *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"+`: unexpected response type: %T`, response)
@@ -8071,6 +8799,7 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8082,6 +8811,7 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 		return nil
 	case *WatchNetworkingV1IngressClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"+`: unexpected response type: %T`, response)
@@ -8093,6 +8823,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8104,6 +8835,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 		return nil
 	case *WatchNetworkingV1IngressClassListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/ingressclasses"+`: unexpected response type: %T`, response)
@@ -8115,6 +8847,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8126,6 +8859,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 		return nil
 	case *WatchNetworkingV1IngressListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/ingresses"+`: unexpected response type: %T`, response)
@@ -8137,6 +8871,7 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8148,6 +8883,7 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 		return nil
 	case *WatchNetworkingV1NamespacedIngressUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"+`: unexpected response type: %T`, response)
@@ -8159,6 +8895,7 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8170,6 +8907,7 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 		return nil
 	case *WatchNetworkingV1NamespacedIngressListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"+`: unexpected response type: %T`, response)
@@ -8181,6 +8919,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8192,6 +8931,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 		return nil
 	case *WatchNetworkingV1NamespacedNetworkPolicyUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"+`: unexpected response type: %T`, response)
@@ -8203,6 +8943,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8214,6 +8955,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 		return nil
 	case *WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"+`: unexpected response type: %T`, response)
@@ -8225,6 +8967,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8236,6 +8979,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 		return nil
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/networking.k8s.io/v1/watch/networkpolicies"+`: unexpected response type: %T`, response)
@@ -8247,6 +8991,7 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8258,6 +9003,7 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 		return nil
 	case *WatchNodeV1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
@@ -8269,6 +9015,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8280,6 +9027,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 		return nil
 	case *WatchNodeV1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1/watch/runtimeclasses"+`: unexpected response type: %T`, response)
@@ -8291,6 +9039,7 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8302,6 +9051,7 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 		return nil
 	case *WatchNodeV1alpha1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
@@ -8313,6 +9063,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8324,6 +9075,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 		return nil
 	case *WatchNodeV1alpha1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"+`: unexpected response type: %T`, response)
@@ -8335,6 +9087,7 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8346,6 +9099,7 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 		return nil
 	case *WatchNodeV1beta1RuntimeClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
@@ -8357,6 +9111,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8368,6 +9123,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 		return nil
 	case *WatchNodeV1beta1RuntimeClassListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"+`: unexpected response type: %T`, response)
@@ -8379,6 +9135,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8390,6 +9147,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 		return nil
 	case *WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
@@ -8401,6 +9159,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8412,6 +9171,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 		return nil
 	case *WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -8423,6 +9183,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8434,6 +9195,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 		return nil
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1/watch/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -8445,6 +9207,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8456,6 +9219,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 		return nil
 	case *WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
@@ -8467,6 +9231,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8478,6 +9243,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 		return nil
 	case *WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -8489,6 +9255,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8500,6 +9267,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 		return nil
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/watch/poddisruptionbudgets"+`: unexpected response type: %T`, response)
@@ -8511,6 +9279,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8522,6 +9291,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 		return nil
 	case *WatchPolicyV1beta1PodSecurityPolicyUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"+`: unexpected response type: %T`, response)
@@ -8533,6 +9303,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8544,6 +9315,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 		return nil
 	case *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/policy/v1beta1/watch/podsecuritypolicies"+`: unexpected response type: %T`, response)
@@ -8555,6 +9327,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8566,6 +9339,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 		return nil
 	case *WatchRbacAuthorizationV1ClusterRoleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"+`: unexpected response type: %T`, response)
@@ -8577,6 +9351,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8588,6 +9363,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 		return nil
 	case *WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"+`: unexpected response type: %T`, response)
@@ -8599,6 +9375,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8610,6 +9387,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 		return nil
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"+`: unexpected response type: %T`, response)
@@ -8621,6 +9399,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8632,6 +9411,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 		return nil
 	case *WatchRbacAuthorizationV1ClusterRoleListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"+`: unexpected response type: %T`, response)
@@ -8643,6 +9423,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8654,6 +9435,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 		return nil
 	case *WatchRbacAuthorizationV1NamespacedRoleUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"+`: unexpected response type: %T`, response)
@@ -8665,6 +9447,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8676,6 +9459,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 		return nil
 	case *WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"+`: unexpected response type: %T`, response)
@@ -8687,6 +9471,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8698,6 +9483,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 		return nil
 	case *WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"+`: unexpected response type: %T`, response)
@@ -8709,6 +9495,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8720,6 +9507,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 		return nil
 	case *WatchRbacAuthorizationV1NamespacedRoleListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"+`: unexpected response type: %T`, response)
@@ -8731,6 +9519,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8742,6 +9531,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 		return nil
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"+`: unexpected response type: %T`, response)
@@ -8753,6 +9543,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8764,6 +9555,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 		return nil
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/roles"+`: unexpected response type: %T`, response)
@@ -8775,6 +9567,7 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8786,6 +9579,7 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 		return nil
 	case *WatchSchedulingV1PriorityClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"+`: unexpected response type: %T`, response)
@@ -8797,6 +9591,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8808,6 +9603,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 		return nil
 	case *WatchSchedulingV1PriorityClassListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/scheduling.k8s.io/v1/watch/priorityclasses"+`: unexpected response type: %T`, response)
@@ -8819,6 +9615,7 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8830,6 +9627,7 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 		return nil
 	case *WatchStorageV1CSIDriverUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"+`: unexpected response type: %T`, response)
@@ -8841,6 +9639,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8852,6 +9651,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 		return nil
 	case *WatchStorageV1CSIDriverListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csidrivers"+`: unexpected response type: %T`, response)
@@ -8863,6 +9663,7 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8874,6 +9675,7 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 		return nil
 	case *WatchStorageV1CSINodeUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csinodes/{name}"+`: unexpected response type: %T`, response)
@@ -8885,6 +9687,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8896,6 +9699,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 		return nil
 	case *WatchStorageV1CSINodeListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csinodes"+`: unexpected response type: %T`, response)
@@ -8907,6 +9711,7 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8918,6 +9723,7 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 		return nil
 	case *WatchStorageV1StorageClassUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"+`: unexpected response type: %T`, response)
@@ -8929,6 +9735,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8940,6 +9747,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 		return nil
 	case *WatchStorageV1StorageClassListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/storageclasses"+`: unexpected response type: %T`, response)
@@ -8951,6 +9759,7 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8962,6 +9771,7 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 		return nil
 	case *WatchStorageV1VolumeAttachmentUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"+`: unexpected response type: %T`, response)
@@ -8973,6 +9783,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8984,6 +9795,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 		return nil
 	case *WatchStorageV1VolumeAttachmentListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1/watch/volumeattachments"+`: unexpected response type: %T`, response)
@@ -8995,6 +9807,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9006,6 +9819,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 		return nil
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"+`: unexpected response type: %T`, response)
@@ -9017,6 +9831,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9028,6 +9843,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 		return nil
 	case *WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
@@ -9039,6 +9855,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9050,6 +9867,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 		return nil
 	case *WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
@@ -9061,6 +9879,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9072,6 +9891,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 		return nil
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"+`: unexpected response type: %T`, response)
@@ -9083,6 +9903,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9094,6 +9915,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 		return nil
 	case *WatchStorageV1beta1NamespacedCSIStorageCapacityUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
@@ -9105,6 +9927,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response 
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9116,6 +9939,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response 
 		return nil
 	case *WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized:
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		return nil
 	default:
 		return errors.Errorf("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
