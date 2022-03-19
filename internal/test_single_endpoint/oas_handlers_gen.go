@@ -111,7 +111,6 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }

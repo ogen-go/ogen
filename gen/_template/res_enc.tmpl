@@ -59,8 +59,19 @@ w.Header().Set("Content-Type", {{ quote $.ContentType }})
 
 {{- if $.Default }}{{- /* Set status code */}}
 w.WriteHeader(response.StatusCode)
+st := http.StatusText(response.StatusCode)
+if response.StatusCode >= http.StatusBadRequest {
+	span.SetStatus(codes.Error, st)
+} else {
+	span.SetStatus(codes.Ok, st)
+}
 {{- else }}
 w.WriteHeader({{ $.StatusCode }})
+{{- if ge .StatusCode 400 }}
+span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
+{{- else }}
+span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
+{{- end }}
 {{- end }}{{- /* Set status code */}}
 
 {{- if $.NoContent }}{{- /* Encode content */}}

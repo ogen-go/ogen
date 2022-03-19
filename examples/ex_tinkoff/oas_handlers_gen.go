@@ -106,7 +106,6 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -152,7 +151,6 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -193,7 +191,6 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -234,7 +231,6 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -280,7 +276,6 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -326,7 +321,6 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -372,7 +366,6 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -413,7 +406,6 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -459,7 +451,6 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -505,7 +496,6 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -551,7 +541,6 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -602,7 +591,6 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -653,7 +641,6 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -699,7 +686,6 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -745,7 +731,6 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -791,7 +776,6 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -842,7 +826,6 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -893,7 +876,6 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -939,7 +921,6 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -985,7 +966,6 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1026,7 +1006,6 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }

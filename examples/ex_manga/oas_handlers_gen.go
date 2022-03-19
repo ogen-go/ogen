@@ -107,7 +107,6 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -149,7 +148,6 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -191,7 +189,6 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }

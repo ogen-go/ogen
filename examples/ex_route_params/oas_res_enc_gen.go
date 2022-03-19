@@ -73,6 +73,7 @@ var (
 func encodeDataGetResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -87,6 +88,7 @@ func encodeDataGetResponse(response string, w http.ResponseWriter, span trace.Sp
 func encodeDataGetAnyResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -101,6 +103,7 @@ func encodeDataGetAnyResponse(response string, w http.ResponseWriter, span trace
 func encodeDataGetIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 

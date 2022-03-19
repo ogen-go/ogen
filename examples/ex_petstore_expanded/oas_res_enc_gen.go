@@ -74,10 +74,17 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *DeletePetNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 

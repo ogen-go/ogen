@@ -73,6 +73,7 @@ var (
 func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -87,6 +88,7 @@ func encodeDataGetFormatResponse(response string, w http.ResponseWriter, span tr
 func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -101,6 +103,12 @@ func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace
 func encodeErrorGetResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -117,6 +125,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -128,6 +137,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		return nil
 	case *NotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/foobar"+`: unexpected response type: %T`, response)
@@ -139,6 +149,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -150,10 +161,17 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		return nil
 	case *NotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -170,12 +188,19 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 
 func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
 	return nil
 }
 
 func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -190,6 +215,12 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -203,12 +234,14 @@ func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.Res
 
 func encodeOneofBugResponse(response OneofBugOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 }
 
 func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -223,6 +256,7 @@ func encodePetCreateResponse(response Pet, w http.ResponseWriter, span trace.Spa
 func encodePetFriendsNamesByIDResponse(response []string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -243,6 +277,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	case *Pet:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -255,6 +290,12 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 	case *PetGetDefStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -274,6 +315,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 	case *PetGetAvatarByIDOK:
 		w.Header().Set("Content-Type", "application/octet-stream")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		if _, err := io.Copy(w, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -281,10 +323,17 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		return nil
 	case *NotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -304,6 +353,7 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 	case *PetGetAvatarByNameOK:
 		w.Header().Set("Content-Type", "application/octet-stream")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		if _, err := io.Copy(w, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -311,10 +361,17 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 		return nil
 	case *NotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -332,6 +389,7 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -346,6 +404,7 @@ func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.
 func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -359,11 +418,23 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 
 func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
 	return nil
 }
 
 func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
 	return nil
 }
 
@@ -371,13 +442,21 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 	switch response := response.(type) {
 	case *PetUploadAvatarByIDOK:
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		return nil
 	case *NotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(response.StatusCode)
+		st := http.StatusText(response.StatusCode)
+		if response.StatusCode >= http.StatusBadRequest {
+			span.SetStatus(codes.Error, st)
+		} else {
+			span.SetStatus(codes.Ok, st)
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -395,6 +474,7 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 func encodeRecursiveArrayGetResponse(response RecursiveArray, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -409,6 +489,7 @@ func encodeRecursiveArrayGetResponse(response RecursiveArray, w http.ResponseWri
 func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -423,6 +504,7 @@ func encodeRecursiveMapGetResponse(response RecursiveMap, w http.ResponseWriter,
 func encodeSecurityTestResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -436,12 +518,14 @@ func encodeSecurityTestResponse(response string, w http.ResponseWriter, span tra
 
 func encodeTestFloatValidationResponse(response TestFloatValidationOK, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	return nil
 }
 
 func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 

@@ -107,7 +107,6 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -149,7 +148,6 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -191,7 +189,6 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -233,7 +230,6 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -275,7 +271,6 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -317,7 +312,6 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -359,7 +353,6 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -401,7 +394,6 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -443,7 +435,6 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -485,7 +476,6 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -527,7 +517,6 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -569,7 +558,6 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -611,7 +599,6 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -653,7 +640,6 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -695,7 +681,6 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -737,7 +722,6 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -779,7 +763,6 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -821,7 +804,6 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -863,7 +845,6 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -905,7 +886,6 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -947,7 +927,6 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -989,7 +968,6 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1031,7 +1009,6 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1073,7 +1050,6 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1115,7 +1091,6 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1157,7 +1132,6 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1199,7 +1173,6 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1241,7 +1214,6 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1283,7 +1255,6 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1325,7 +1296,6 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1367,7 +1337,6 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1409,7 +1378,6 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1451,7 +1419,6 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1493,7 +1460,6 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1535,7 +1501,6 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1577,7 +1542,6 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1619,7 +1583,6 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1661,7 +1624,6 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1703,7 +1665,6 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1745,7 +1706,6 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1787,7 +1747,6 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1829,7 +1788,6 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1871,7 +1829,6 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1913,7 +1870,6 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1955,7 +1911,6 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -1997,7 +1952,6 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2039,7 +1993,6 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2081,7 +2034,6 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2123,7 +2075,6 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2165,7 +2116,6 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2207,7 +2157,6 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2249,7 +2198,6 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2291,7 +2239,6 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2333,7 +2280,6 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2375,7 +2321,6 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2417,7 +2362,6 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2459,7 +2403,6 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2501,7 +2444,6 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2543,7 +2485,6 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2585,7 +2526,6 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2627,7 +2567,6 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2669,7 +2608,6 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2711,7 +2649,6 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2753,7 +2690,6 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2795,7 +2731,6 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2837,7 +2772,6 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2879,7 +2813,6 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2921,7 +2854,6 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -2963,7 +2895,6 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3005,7 +2936,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3047,7 +2977,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3089,7 +3018,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3131,7 +3059,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3173,7 +3100,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3215,7 +3141,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3257,7 +3182,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3299,7 +3223,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3341,7 +3264,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3383,7 +3305,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3425,7 +3346,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3467,7 +3387,6 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3509,7 +3428,6 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3551,7 +3469,6 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3593,7 +3510,6 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3635,7 +3551,6 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3677,7 +3592,6 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3719,7 +3633,6 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3761,7 +3674,6 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3803,7 +3715,6 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3845,7 +3756,6 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3887,7 +3797,6 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3929,7 +3838,6 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -3971,7 +3879,6 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4013,7 +3920,6 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4055,7 +3961,6 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4097,7 +4002,6 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4139,7 +4043,6 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4181,7 +4084,6 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4223,7 +4125,6 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4265,7 +4166,6 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4307,7 +4207,6 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4349,7 +4248,6 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4391,7 +4289,6 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4433,7 +4330,6 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4475,7 +4371,6 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4517,7 +4412,6 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4559,7 +4453,6 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4601,7 +4494,6 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4643,7 +4535,6 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4685,7 +4576,6 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4727,7 +4617,6 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4769,7 +4658,6 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4811,7 +4699,6 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4853,7 +4740,6 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4895,7 +4781,6 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4937,7 +4822,6 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -4979,7 +4863,6 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5021,7 +4904,6 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5063,7 +4945,6 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5105,7 +4986,6 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5147,7 +5027,6 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5189,7 +5068,6 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5231,7 +5109,6 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5273,7 +5150,6 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5315,7 +5191,6 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5357,7 +5232,6 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5399,7 +5273,6 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5441,7 +5314,6 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5483,7 +5355,6 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5525,7 +5396,6 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5567,7 +5437,6 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5609,7 +5478,6 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5651,7 +5519,6 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5693,7 +5560,6 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5735,7 +5601,6 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5777,7 +5642,6 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5819,7 +5683,6 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5861,7 +5724,6 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5903,7 +5765,6 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5945,7 +5806,6 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -5987,7 +5847,6 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6029,7 +5888,6 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6071,7 +5929,6 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6113,7 +5970,6 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6155,7 +6011,6 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6197,7 +6052,6 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6239,7 +6093,6 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6281,7 +6134,6 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6323,7 +6175,6 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6365,7 +6216,6 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6407,7 +6257,6 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6449,7 +6298,6 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6491,7 +6339,6 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6533,7 +6380,6 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6575,7 +6421,6 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6617,7 +6462,6 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6659,7 +6503,6 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6701,7 +6544,6 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6743,7 +6585,6 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6785,7 +6626,6 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6827,7 +6667,6 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6869,7 +6708,6 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6911,7 +6749,6 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6953,7 +6790,6 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -6995,7 +6831,6 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7037,7 +6872,6 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7079,7 +6913,6 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7121,7 +6954,6 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7163,7 +6995,6 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7205,7 +7036,6 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7247,7 +7077,6 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7289,7 +7118,6 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7331,7 +7159,6 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7373,7 +7200,6 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7415,7 +7241,6 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7457,7 +7282,6 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7499,7 +7323,6 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7541,7 +7364,6 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7583,7 +7405,6 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7625,7 +7446,6 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7667,7 +7487,6 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7709,7 +7528,6 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7751,7 +7569,6 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7793,7 +7610,6 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7835,7 +7651,6 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7877,7 +7692,6 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7919,7 +7733,6 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -7961,7 +7774,6 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8003,7 +7815,6 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8045,7 +7856,6 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8087,7 +7897,6 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8129,7 +7938,6 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8171,7 +7979,6 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8213,7 +8020,6 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8255,7 +8061,6 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8297,7 +8102,6 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8339,7 +8143,6 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8381,7 +8184,6 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8423,7 +8225,6 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8465,7 +8266,6 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8507,7 +8307,6 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8549,7 +8348,6 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8591,7 +8389,6 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8633,7 +8430,6 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8675,7 +8471,6 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8717,7 +8512,6 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8759,7 +8553,6 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8801,7 +8594,6 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8843,7 +8635,6 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8885,7 +8676,6 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8927,7 +8717,6 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -8969,7 +8758,6 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9011,7 +8799,6 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9053,7 +8840,6 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9095,7 +8881,6 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9137,7 +8922,6 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9179,7 +8963,6 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9221,7 +9004,6 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9263,7 +9045,6 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9305,7 +9086,6 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9347,7 +9127,6 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9389,7 +9168,6 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9431,7 +9209,6 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9473,7 +9250,6 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9515,7 +9291,6 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9557,7 +9332,6 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9599,7 +9373,6 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9641,7 +9414,6 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9683,7 +9455,6 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9725,7 +9496,6 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9767,7 +9537,6 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9809,7 +9578,6 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9851,7 +9619,6 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9893,7 +9660,6 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9935,7 +9701,6 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -9977,7 +9742,6 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10019,7 +9783,6 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10061,7 +9824,6 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10103,7 +9865,6 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10145,7 +9906,6 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10187,7 +9947,6 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10229,7 +9988,6 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10271,7 +10029,6 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10313,7 +10070,6 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10355,7 +10111,6 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10397,7 +10152,6 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10439,7 +10193,6 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10481,7 +10234,6 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10523,7 +10275,6 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10565,7 +10316,6 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10607,7 +10357,6 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10649,7 +10398,6 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10691,7 +10439,6 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10733,7 +10480,6 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10775,7 +10521,6 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10817,7 +10562,6 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10859,7 +10603,6 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10901,7 +10644,6 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10943,7 +10685,6 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -10985,7 +10726,6 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11027,7 +10767,6 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11069,7 +10808,6 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11111,7 +10849,6 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11153,7 +10890,6 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11195,7 +10931,6 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11237,7 +10972,6 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11279,7 +11013,6 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11321,7 +11054,6 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11363,7 +11095,6 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11405,7 +11136,6 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11447,7 +11177,6 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11489,7 +11218,6 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11531,7 +11259,6 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11573,7 +11300,6 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11615,7 +11341,6 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11657,7 +11382,6 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11699,7 +11423,6 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11741,7 +11464,6 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11783,7 +11505,6 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11825,7 +11546,6 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11867,7 +11587,6 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11909,7 +11628,6 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11951,7 +11669,6 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -11993,7 +11710,6 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12035,7 +11751,6 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12077,7 +11792,6 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12119,7 +11833,6 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12161,7 +11874,6 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12203,7 +11915,6 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12245,7 +11956,6 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12287,7 +11997,6 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12329,7 +12038,6 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12371,7 +12079,6 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12413,7 +12120,6 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12455,7 +12161,6 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12497,7 +12202,6 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12539,7 +12243,6 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12581,7 +12284,6 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12623,7 +12325,6 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12665,7 +12366,6 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12707,7 +12407,6 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12749,7 +12448,6 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12791,7 +12489,6 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12833,7 +12530,6 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12875,7 +12571,6 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12917,7 +12612,6 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -12959,7 +12653,6 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13001,7 +12694,6 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13043,7 +12735,6 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13085,7 +12776,6 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13127,7 +12817,6 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13169,7 +12858,6 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13211,7 +12899,6 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13253,7 +12940,6 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13295,7 +12981,6 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13337,7 +13022,6 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13379,7 +13063,6 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13421,7 +13104,6 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13463,7 +13145,6 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13505,7 +13186,6 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13547,7 +13227,6 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13589,7 +13268,6 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13631,7 +13309,6 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13673,7 +13350,6 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13715,7 +13391,6 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13757,7 +13432,6 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13799,7 +13473,6 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13841,7 +13514,6 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13883,7 +13555,6 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13925,7 +13596,6 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -13967,7 +13637,6 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14009,7 +13678,6 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14051,7 +13719,6 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14093,7 +13760,6 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14135,7 +13801,6 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14177,7 +13842,6 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14219,7 +13883,6 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14261,7 +13924,6 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14303,7 +13965,6 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14345,7 +14006,6 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14387,7 +14047,6 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14429,7 +14088,6 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14471,7 +14129,6 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14513,7 +14170,6 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14555,7 +14211,6 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14597,7 +14252,6 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14639,7 +14293,6 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14681,7 +14334,6 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14723,7 +14375,6 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14765,7 +14416,6 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14807,7 +14457,6 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14849,7 +14498,6 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14891,7 +14539,6 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14933,7 +14580,6 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -14975,7 +14621,6 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15017,7 +14662,6 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15059,7 +14703,6 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15101,7 +14744,6 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15143,7 +14785,6 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15185,7 +14826,6 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15227,7 +14867,6 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15269,7 +14908,6 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15311,7 +14949,6 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15353,7 +14990,6 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15395,7 +15031,6 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15437,7 +15072,6 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15479,7 +15113,6 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15521,7 +15154,6 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15563,7 +15195,6 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15605,7 +15236,6 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15647,7 +15277,6 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15689,7 +15318,6 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15731,7 +15359,6 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15773,7 +15400,6 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15815,7 +15441,6 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15857,7 +15482,6 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15899,7 +15523,6 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15941,7 +15564,6 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -15983,7 +15605,6 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16025,7 +15646,6 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16067,7 +15687,6 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16109,7 +15728,6 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16151,7 +15769,6 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16193,7 +15810,6 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16235,7 +15851,6 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16277,7 +15892,6 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16319,7 +15933,6 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16361,7 +15974,6 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16403,7 +16015,6 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16445,7 +16056,6 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16487,7 +16097,6 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16529,7 +16138,6 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16571,7 +16179,6 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16613,7 +16220,6 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16655,7 +16261,6 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16697,7 +16302,6 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16739,7 +16343,6 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16781,7 +16384,6 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16823,7 +16425,6 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16865,7 +16466,6 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16907,7 +16507,6 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16949,7 +16548,6 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -16991,7 +16589,6 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17033,7 +16630,6 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17075,7 +16671,6 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17117,7 +16712,6 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17159,7 +16753,6 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17201,7 +16794,6 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17243,7 +16835,6 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17285,7 +16876,6 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17327,7 +16917,6 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17369,7 +16958,6 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17411,7 +16999,6 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17453,7 +17040,6 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17495,7 +17081,6 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17537,7 +17122,6 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17579,7 +17163,6 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17621,7 +17204,6 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17663,7 +17245,6 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17705,7 +17286,6 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17747,7 +17327,6 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17789,7 +17368,6 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17831,7 +17409,6 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17873,7 +17450,6 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17915,7 +17491,6 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17957,7 +17532,6 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -17999,7 +17573,6 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18041,7 +17614,6 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18083,7 +17655,6 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18125,7 +17696,6 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18167,7 +17737,6 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18209,7 +17778,6 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18251,7 +17819,6 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18293,7 +17860,6 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18335,7 +17901,6 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18377,7 +17942,6 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18419,7 +17983,6 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18461,7 +18024,6 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18503,7 +18065,6 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18545,7 +18106,6 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -18587,7 +18147,6 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }

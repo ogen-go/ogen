@@ -72,6 +72,7 @@ var (
 
 func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -79,9 +80,11 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 	switch response := response.(type) {
 	case *ActionsAddSelectedRepoToOrgSecretNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ActionsAddSelectedRepoToOrgSecretConflict:
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
@@ -90,6 +93,7 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 
 func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -98,6 +102,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -110,6 +115,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	case *ActionsApproveWorkflowRunApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -122,6 +128,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 	case *ActionsApproveWorkflowRunApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -139,6 +146,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
+	span.SetStatus(codes.Ok, http.StatusText(202))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -155,6 +163,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -166,6 +175,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 		return nil
 	case *ActionsCreateOrUpdateEnvironmentSecretNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	default:
 		return errors.Errorf("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"+`: unexpected response type: %T`, response)
@@ -177,6 +187,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -188,6 +199,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 		return nil
 	case *ActionsCreateOrUpdateOrgSecretNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}"+`: unexpected response type: %T`, response)
@@ -199,6 +211,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 	case *ActionsCreateOrUpdateRepoSecretCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -210,6 +223,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 		return nil
 	case *ActionsCreateOrUpdateRepoSecretNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/actions/secrets/{secret_name}"+`: unexpected response type: %T`, response)
@@ -219,6 +233,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -233,6 +248,7 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationT
 func encodeActionsCreateRegistrationTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -247,6 +263,7 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response Authentication
 func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -261,6 +278,7 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, 
 func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -275,6 +293,7 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken,
 func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -288,77 +307,92 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 
 func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 }
 
 func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 }
 
 func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 }
 
 func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -373,6 +407,7 @@ func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions
 func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -387,6 +422,7 @@ func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, 
 func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -401,6 +437,7 @@ func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, 
 func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -415,6 +452,7 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w h
 func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -429,6 +467,7 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response ActionsOrganizationPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -443,6 +482,7 @@ func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response Actio
 func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response ActionsRepositoryPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -457,6 +497,7 @@ func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response Actions
 func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -471,6 +512,7 @@ func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWrit
 func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -485,6 +527,7 @@ func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.Resp
 func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -499,6 +542,7 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -513,6 +557,7 @@ func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.Res
 func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -527,6 +572,7 @@ func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseW
 func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -545,6 +591,7 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -559,6 +606,7 @@ func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.Resp
 func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -573,6 +621,7 @@ func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.Res
 func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -587,6 +636,7 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOr
 func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -601,6 +651,7 @@ func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWr
 func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -615,6 +666,7 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -629,6 +681,7 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -643,6 +696,7 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -657,6 +711,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -671,6 +726,7 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w htt
 func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -685,6 +741,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -699,6 +756,7 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w h
 func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -713,6 +771,7 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK,
 func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -731,6 +790,7 @@ func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplicat
 func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -749,6 +809,7 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -763,6 +824,7 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSele
 func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -777,6 +839,7 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -791,6 +854,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -805,6 +869,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -819,6 +884,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -833,6 +899,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -847,6 +914,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -861,6 +929,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -874,6 +943,7 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w 
 
 func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -881,9 +951,11 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 	switch response := response.(type) {
 	case *ActionsRemoveSelectedRepoFromOrgSecretNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ActionsRemoveSelectedRepoFromOrgSecretConflict:
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
@@ -892,12 +964,14 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 
 func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -912,6 +986,7 @@ func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w 
 func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -929,47 +1004,56 @@ func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, 
 
 func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -985,13 +1069,16 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	switch response := response.(type) {
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1004,6 +1091,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1016,6 +1104,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1032,6 +1121,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 
 func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -1039,13 +1129,16 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	switch response := response.(type) {
 	case *ActivityDeleteThreadSubscriptionNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityDeleteThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1058,6 +1151,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 	case *ActivityDeleteThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1075,6 +1169,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1091,6 +1186,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 	case *RepositorySubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1103,6 +1199,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1114,6 +1211,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		return nil
 	case *ActivityGetRepoSubscriptionNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/subscription"+`: unexpected response type: %T`, response)
@@ -1125,6 +1223,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	case *Thread:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1136,10 +1235,12 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityGetThreadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1152,6 +1253,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 	case *ActivityGetThreadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1171,6 +1273,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1182,10 +1285,12 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1198,6 +1303,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 	case *ActivityGetThreadSubscriptionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1215,6 +1321,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1235,6 +1342,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 	case *ActivityListNotificationsForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1246,10 +1354,12 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1262,6 +1372,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 	case *ActivityListNotificationsForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1274,6 +1385,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1291,6 +1403,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1311,6 +1424,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 	case *ActivityListPublicEventsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1322,10 +1436,12 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1338,6 +1454,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1357,6 +1474,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	case *ActivityListPublicEventsForRepoNetworkOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1369,6 +1487,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
+		span.SetStatus(codes.Ok, http.StatusText(301))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1380,10 +1499,12 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1396,6 +1517,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 	case *ActivityListPublicEventsForRepoNetworkApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1413,6 +1535,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 func encodeActivityListPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1431,6 +1554,7 @@ func encodeActivityListPublicEventsForUserResponse(response []Event, w http.Resp
 func encodeActivityListPublicOrgEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1449,6 +1573,7 @@ func encodeActivityListPublicOrgEventsResponse(response []Event, w http.Response
 func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1467,6 +1592,7 @@ func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.Re
 func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1485,6 +1611,7 @@ func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w h
 func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1503,6 +1630,7 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []Thread, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1523,6 +1651,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	case *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1534,10 +1663,12 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1550,6 +1681,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 	case *ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1567,6 +1699,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1587,6 +1720,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	case *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1598,10 +1732,12 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1614,6 +1750,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 	case *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1631,6 +1768,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1651,6 +1789,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1662,13 +1801,16 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		return nil
 	case *ActivityMarkNotificationsAsReadResetContent:
 		w.WriteHeader(205)
+		span.SetStatus(codes.Ok, http.StatusText(205))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityMarkNotificationsAsReadApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1681,6 +1823,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 	case *ActivityMarkNotificationsAsReadApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1700,6 +1843,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 	case *ActivityMarkRepoNotificationsAsReadAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1711,6 +1855,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 		return nil
 	case *ActivityMarkRepoNotificationsAsReadResetContent:
 		w.WriteHeader(205)
+		span.SetStatus(codes.Ok, http.StatusText(205))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/notifications"+`: unexpected response type: %T`, response)
@@ -1721,13 +1866,16 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 	switch response := response.(type) {
 	case *ActivityMarkThreadAsReadResetContent:
 		w.WriteHeader(205)
+		span.SetStatus(codes.Ok, http.StatusText(205))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1745,6 +1893,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -1761,6 +1910,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	case *ThreadSubscription:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1772,10 +1922,12 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivitySetThreadSubscriptionApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1788,6 +1940,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 	case *ActivitySetThreadSubscriptionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1806,13 +1959,16 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	switch response := response.(type) {
 	case *ActivityStarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1825,6 +1981,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1837,6 +1994,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 	case *ActivityStarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1855,13 +2013,16 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	switch response := response.(type) {
 	case *ActivityUnstarRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1874,6 +2035,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1886,6 +2048,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 	case *ActivityUnstarRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1904,13 +2067,16 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	switch response := response.(type) {
 	case *AppsAddRepoToInstallationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *AppsAddRepoToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1923,6 +2089,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 	case *AppsAddRepoToInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1942,6 +2109,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1954,6 +2122,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1966,6 +2135,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1985,6 +2155,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 	case *ContentReferenceAttachment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -1996,10 +2167,12 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *AppsCreateContentAttachmentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2012,6 +2185,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 	case *AppsCreateContentAttachmentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2024,6 +2198,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 	case *AppsCreateContentAttachmentApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2036,6 +2211,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2048,6 +2224,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2067,6 +2244,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 	case *InstallationToken:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2079,6 +2257,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 	case *AppsCreateInstallationAccessTokenApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2091,6 +2270,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 	case *AppsCreateInstallationAccessTokenApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2103,6 +2283,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 	case *AppsCreateInstallationAccessTokenApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2115,6 +2296,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2127,6 +2309,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2145,10 +2328,12 @@ func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationRes, 
 	switch response := response.(type) {
 	case *AppsDeleteAuthorizationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2167,10 +2352,12 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 	switch response := response.(type) {
 	case *AppsDeleteInstallationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2189,10 +2376,12 @@ func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseW
 	switch response := response.(type) {
 	case *AppsDeleteTokenNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2210,6 +2399,7 @@ func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseW
 func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -2226,6 +2416,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *Integration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2238,6 +2429,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *AppsGetBySlugApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2250,6 +2442,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *AppsGetBySlugApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2262,6 +2455,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2281,6 +2475,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2293,6 +2488,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2305,6 +2501,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 	case *AppsGetSubscriptionPlanForAccountApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2324,6 +2521,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 	case *MarketplacePurchase:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2336,6 +2534,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2347,6 +2546,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		return nil
 	case *AppsGetSubscriptionPlanForAccountStubbedNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/marketplace_listing/stubbed/accounts/{account_id}"+`: unexpected response type: %T`, response)
@@ -2356,6 +2556,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -2372,6 +2573,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 	case *HookDelivery:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2384,6 +2586,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2396,6 +2599,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2415,6 +2619,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 	case *AppsListAccountsForPlanOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2427,6 +2632,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 	case *AppsListAccountsForPlanApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2439,6 +2645,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 	case *AppsListAccountsForPlanApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2451,6 +2658,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2470,6 +2678,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 	case *AppsListAccountsForPlanStubbedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2482,6 +2691,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2501,6 +2711,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	case *AppsListInstallationReposForAuthenticatedUserOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2512,10 +2723,12 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2528,6 +2741,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 	case *AppsListInstallationReposForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2547,6 +2761,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	case *AppsListPlansOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2559,6 +2774,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	case *AppsListPlansApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2571,6 +2787,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 	case *AppsListPlansApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2590,6 +2807,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	case *AppsListPlansStubbedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2602,6 +2820,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2621,6 +2840,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	case *AppsListReposAccessibleToInstallationOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2632,10 +2852,12 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *AppsListReposAccessibleToInstallationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2648,6 +2870,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 	case *AppsListReposAccessibleToInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2667,6 +2890,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	case *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2678,10 +2902,12 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2694,6 +2920,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 	case *AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2713,6 +2940,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2724,10 +2952,12 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2747,6 +2977,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 	case *AppsListWebhookDeliveriesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2759,6 +2990,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2771,6 +3003,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2790,6 +3023,7 @@ func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDel
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2802,6 +3036,7 @@ func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDel
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2814,6 +3049,7 @@ func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDel
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2832,13 +3068,16 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	switch response := response.(type) {
 	case *AppsRemoveRepoFromInstallationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *AppsRemoveRepoFromInstallationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2851,6 +3090,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 	case *AppsRemoveRepoFromInstallationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2870,6 +3110,7 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2882,6 +3123,7 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2898,6 +3140,7 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 
 func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -2906,6 +3149,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2918,6 +3162,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 	case *AppsScopeTokenApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2930,6 +3175,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 	case *AppsScopeTokenApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2942,6 +3188,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 	case *AppsScopeTokenApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2954,6 +3201,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2972,10 +3220,12 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 	switch response := response.(type) {
 	case *AppsSuspendInstallationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -2994,10 +3244,12 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 	switch response := response.(type) {
 	case *AppsUnsuspendInstallationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3015,6 +3267,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3029,6 +3282,7 @@ func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.
 func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3043,6 +3297,7 @@ func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsag
 func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3057,6 +3312,7 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsag
 func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3071,6 +3327,7 @@ func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsa
 func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3085,6 +3342,7 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUs
 func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3099,6 +3357,7 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUs
 func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3113,6 +3372,7 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingU
 func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3127,6 +3387,7 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3141,6 +3402,7 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsa
 func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3157,6 +3419,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 	case *ChecksCreateSuiteApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3169,6 +3432,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 	case *ChecksCreateSuiteApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3186,6 +3450,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3200,6 +3465,7 @@ func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trac
 func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3214,6 +3480,7 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3232,6 +3499,7 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3246,6 +3514,7 @@ func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.Response
 func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3260,6 +3529,7 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.Resp
 func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3274,6 +3544,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w h
 func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3288,6 +3559,7 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w 
 func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3304,6 +3576,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningAnalysisDeletion:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3316,6 +3589,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningDeleteAnalysisApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3328,6 +3602,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningDeleteAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3340,6 +3615,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *CodeScanningDeleteAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3352,6 +3628,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3371,6 +3648,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *CodeScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3383,6 +3661,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *CodeScanningGetAlertApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3395,6 +3674,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *CodeScanningGetAlertApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3407,6 +3687,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3426,6 +3707,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningAnalysis:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3438,6 +3720,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningGetAnalysisApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3450,6 +3733,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *CodeScanningGetAnalysisApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3462,6 +3746,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3481,6 +3766,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	case *CodeScanningSarifsStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3493,6 +3779,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3504,10 +3791,12 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		return nil
 	case *CodeScanningGetSarifNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3527,6 +3816,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *CodeScanningListAlertInstancesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3539,6 +3829,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *CodeScanningListAlertInstancesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3551,6 +3842,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *CodeScanningListAlertInstancesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3563,6 +3855,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3582,6 +3875,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *CodeScanningListAlertsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3594,6 +3888,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *CodeScanningListAlertsForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3606,6 +3901,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *CodeScanningListAlertsForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3618,6 +3914,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3637,6 +3934,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *CodeScanningListRecentAnalysesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3649,6 +3947,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *CodeScanningListRecentAnalysesApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3661,6 +3960,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *CodeScanningListRecentAnalysesApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3673,6 +3973,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3692,6 +3993,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *CodeScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3704,6 +4006,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *CodeScanningUpdateAlertApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3716,6 +4019,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *CodeScanningUpdateAlertApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3728,6 +4032,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3747,6 +4052,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *CodeScanningSarifsReceipt:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3758,10 +4064,12 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		return nil
 	case *CodeScanningUploadSarifBadRequest:
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		return nil
 	case *CodeScanningUploadSarifApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3774,6 +4082,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 	case *CodeScanningUploadSarifApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3785,10 +4094,12 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		return nil
 	case *CodeScanningUploadSarifRequestEntityTooLarge:
 		w.WriteHeader(413)
+		span.SetStatus(codes.Error, http.StatusText(413))
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3808,6 +4119,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 	case *CodesOfConductGetAllCodesOfConductOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3819,6 +4131,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/codes_of_conduct"+`: unexpected response type: %T`, response)
@@ -3830,6 +4143,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 	case *CodeOfConduct:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3841,10 +4155,12 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3864,6 +4180,7 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 	case *EmojisGetOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -3875,6 +4192,7 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/emojis"+`: unexpected response type: %T`, response)
@@ -3883,17 +4201,20 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 
 func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3908,6 +4229,7 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3922,6 +4244,7 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response Authen
 func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3935,37 +4258,44 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 
 func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3980,6 +4310,7 @@ func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedA
 func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -3998,6 +4329,7 @@ func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.R
 func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response ActionsEnterprisePermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4012,6 +4344,7 @@ func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4026,6 +4359,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4040,6 +4374,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4054,6 +4389,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runn
 func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4068,6 +4404,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4082,6 +4419,7 @@ func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimGroupListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4096,6 +4434,7 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimG
 func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4110,6 +4449,7 @@ func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response S
 func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4128,6 +4468,7 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4142,6 +4483,7 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4156,6 +4498,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4170,6 +4513,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4184,6 +4528,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4198,6 +4543,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response Sci
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4211,27 +4557,32 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 
 func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4246,6 +4597,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4259,22 +4611,26 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 
 func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4289,6 +4645,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response Sci
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4303,6 +4660,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -4318,13 +4676,16 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 	switch response := response.(type) {
 	case *GistsCheckIsStarredNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4337,6 +4698,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 	case *GistsCheckIsStarredNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4356,6 +4718,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 	case *GistSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4367,10 +4730,12 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsCreateApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4383,6 +4748,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 	case *GistsCreateApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4395,6 +4761,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4414,6 +4781,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4425,10 +4793,12 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsCreateCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4441,6 +4811,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 	case *GistsCreateCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4459,13 +4830,16 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *GistsDeleteNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsDeleteApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4478,6 +4852,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 	case *GistsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4496,13 +4871,16 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 	switch response := response.(type) {
 	case *GistsDeleteCommentNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsDeleteCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4515,6 +4893,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 	case *GistsDeleteCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4534,6 +4913,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 	case *BaseGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4545,10 +4925,12 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsForkApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4561,6 +4943,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 	case *GistsForkApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4573,6 +4956,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4592,6 +4976,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 	case *GistSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4603,10 +4988,12 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ForbiddenGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4619,6 +5006,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4638,6 +5026,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4649,10 +5038,12 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ForbiddenGist:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4665,6 +5056,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4684,6 +5076,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 	case *GistSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4696,6 +5089,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 	case *GistsGetRevisionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4708,6 +5102,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 	case *GistsGetRevisionApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4720,6 +5115,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4739,6 +5135,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 	case *GistsListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4750,10 +5147,12 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4773,6 +5172,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	case *GistsListCommentsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4784,10 +5184,12 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsListCommentsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4800,6 +5202,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 	case *GistsListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4819,6 +5222,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	case *GistsListCommitsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4830,10 +5234,12 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsListCommitsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4846,6 +5252,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 	case *GistsListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4865,6 +5272,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 	case *GistsListForUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4877,6 +5285,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4896,6 +5305,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	case *GistsListForksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4907,10 +5317,12 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsListForksApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4923,6 +5335,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 	case *GistsListForksApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4942,6 +5355,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 	case *GistsListPublicOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4953,10 +5367,12 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4969,6 +5385,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4988,6 +5405,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	case *GistsListStarredOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -4999,10 +5417,12 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsListStarredApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5015,6 +5435,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 	case *GistsListStarredApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5033,13 +5454,16 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 	switch response := response.(type) {
 	case *GistsStarNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsStarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5052,6 +5476,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 	case *GistsStarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5070,13 +5495,16 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *GistsUnstarNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *GistsUnstarApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5089,6 +5517,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 	case *GistsUnstarApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5108,6 +5537,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 	case *GistComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5120,6 +5550,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5139,6 +5570,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 	case *ShortBlob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5151,6 +5583,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 	case *GitCreateBlobApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5163,6 +5596,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 	case *GitCreateBlobApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5175,6 +5609,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 	case *GitCreateBlobApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5187,6 +5622,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5206,6 +5642,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 	case *GitCommit:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5218,6 +5655,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5230,6 +5668,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5249,6 +5688,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 	case *GitRef:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5261,6 +5701,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5280,6 +5721,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 	case *GitTag:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5292,6 +5734,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5311,6 +5754,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 	case *GitTree:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5323,6 +5767,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 	case *GitCreateTreeApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5335,6 +5780,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 	case *GitCreateTreeApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5347,6 +5793,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5365,10 +5812,12 @@ func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *GitDeleteRefNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5388,6 +5837,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 	case *Blob:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5400,6 +5850,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 	case *GitGetBlobApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5412,6 +5863,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 	case *GitGetBlobApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5424,6 +5876,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5443,6 +5896,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 	case *GitCommit:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5455,6 +5909,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5474,6 +5929,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 	case *GitRef:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5486,6 +5942,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5505,6 +5962,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 	case *GitTag:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5517,6 +5975,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5536,6 +5995,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 	case *GitTree:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5548,6 +6008,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5560,6 +6021,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5577,6 +6039,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -5597,6 +6060,7 @@ func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter,
 	case *GitRef:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5609,6 +6073,7 @@ func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter,
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5628,6 +6093,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 	case *GitignoreGetAllTemplatesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5639,6 +6105,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/gitignore/templates"+`: unexpected response type: %T`, response)
@@ -5650,6 +6117,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 	case *GitignoreTemplate:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5661,6 +6129,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/gitignore/templates/{name}"+`: unexpected response type: %T`, response)
@@ -5669,11 +6138,13 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 
 func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -5681,9 +6152,11 @@ func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRe
 	switch response := response.(type) {
 	case *InteractionsRemoveRestrictionsForRepoNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *InteractionsRemoveRestrictionsForRepoConflict:
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/interaction-limits"+`: unexpected response type: %T`, response)
@@ -5695,6 +6168,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response Inte
 	case *InteractionLimitResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5707,6 +6181,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response Inte
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5726,6 +6201,7 @@ func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRes
 	case *InteractionLimitResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5738,6 +6214,7 @@ func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5757,6 +6234,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 	case *InteractionLimitResponse:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5768,6 +6246,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 		return nil
 	case *InteractionsSetRestrictionsForRepoConflict:
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/interaction-limits"+`: unexpected response type: %T`, response)
@@ -5777,6 +6256,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -5792,10 +6272,12 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 	switch response := response.(type) {
 	case *IssuesCheckUserCanBeAssignedNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5815,6 +6297,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	case *Issue:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5827,6 +6310,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	case *IssuesCreateApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5839,6 +6323,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	case *IssuesCreateApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5851,6 +6336,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	case *IssuesCreateApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5863,6 +6349,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5875,6 +6362,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5894,6 +6382,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 	case *IssueComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5906,6 +6395,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 	case *IssuesCreateCommentApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5918,6 +6408,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 	case *IssuesCreateCommentApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5930,6 +6421,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 	case *IssuesCreateCommentApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5942,6 +6434,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5961,6 +6454,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 	case *Label:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5973,6 +6467,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -5985,6 +6480,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6004,6 +6500,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 	case *Milestone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6016,6 +6513,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6028,6 +6526,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6044,11 +6543,13 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 
 func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -6056,10 +6557,12 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 	switch response := response.(type) {
 	case *IssuesDeleteMilestoneNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6079,6 +6582,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 	case *Issue:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6091,6 +6595,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 	case *IssuesGetApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
+		span.SetStatus(codes.Ok, http.StatusText(301))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6102,10 +6607,12 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *IssuesGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6118,6 +6625,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 	case *IssuesGetApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6137,6 +6645,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 	case *IssueComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6149,6 +6658,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6168,6 +6678,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssueEvent:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6180,6 +6691,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssuesGetEventApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6192,6 +6704,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssuesGetEventApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6204,6 +6717,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 	case *IssuesGetEventApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6223,6 +6737,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 	case *Label:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6235,6 +6750,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6254,6 +6770,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 	case *Milestone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6266,6 +6783,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6285,6 +6803,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 	case *IssuesListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6296,10 +6815,12 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6312,6 +6833,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6331,6 +6853,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	case *IssuesListAssigneesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6343,6 +6866,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6362,6 +6886,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	case *IssuesListCommentsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6374,6 +6899,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	case *IssuesListCommentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6386,6 +6912,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 	case *IssuesListCommentsApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6405,6 +6932,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 	case *IssuesListCommentsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6417,6 +6945,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6429,6 +6958,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6448,6 +6978,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 	case *IssuesListEventsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6460,6 +6991,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6479,6 +7011,7 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 	case *IssuesListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6490,10 +7023,12 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6513,6 +7048,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 	case *IssuesListForOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6525,6 +7061,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6544,6 +7081,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 	case *IssuesListForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6556,6 +7094,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 	case *IssuesListForRepoApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
+		span.SetStatus(codes.Ok, http.StatusText(301))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6568,6 +7107,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 	case *IssuesListForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6580,6 +7120,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6597,6 +7138,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -6617,6 +7159,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	case *IssuesListLabelsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6629,6 +7172,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6648,6 +7192,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	case *IssuesListLabelsOnIssueOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6660,6 +7205,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6679,6 +7225,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	case *IssuesListMilestonesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6691,6 +7238,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6709,10 +7257,12 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *IssuesLockNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *IssuesLockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6725,6 +7275,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 	case *IssuesLockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6737,6 +7288,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 	case *IssuesLockApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6749,6 +7301,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6767,10 +7320,12 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 	switch response := response.(type) {
 	case *IssuesRemoveAllLabelsNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6788,6 +7343,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -6804,6 +7360,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	case *IssuesRemoveLabelOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6816,6 +7373,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	case *IssuesRemoveLabelApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6828,6 +7386,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 	case *IssuesRemoveLabelApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6846,10 +7405,12 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *IssuesUnlockNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *IssuesUnlockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6862,6 +7423,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 	case *IssuesUnlockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6881,6 +7443,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 	case *Issue:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6893,6 +7456,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 	case *IssuesUpdateApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
+		span.SetStatus(codes.Ok, http.StatusText(301))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6905,6 +7469,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 	case *IssuesUpdateApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6917,6 +7482,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 	case *IssuesUpdateApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6929,6 +7495,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 	case *IssuesUpdateApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6941,6 +7508,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6953,6 +7521,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6972,6 +7541,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 	case *IssueComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -6984,6 +7554,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7001,6 +7572,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7015,6 +7587,7 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span
 func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7031,6 +7604,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 	case *License:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7042,10 +7616,12 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *LicensesGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7058,6 +7634,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 	case *LicensesGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7077,6 +7654,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 	case *LicensesGetAllCommonlyUsedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7088,6 +7666,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/licenses"+`: unexpected response type: %T`, response)
@@ -7097,6 +7676,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7113,6 +7693,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 	case *APIOverview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7124,6 +7705,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/meta"+`: unexpected response type: %T`, response)
@@ -7133,6 +7715,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7146,6 +7729,7 @@ func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span tra
 
 func encodeMigrationsCancelImportResponse(response MigrationsCancelImportNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -7153,13 +7737,16 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7172,6 +7759,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7184,6 +7772,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 	case *MigrationsDeleteArchiveForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7202,10 +7791,12 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7224,10 +7815,12 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 	switch response := response.(type) {
 	case *MigrationsDownloadArchiveForOrgFound:
 		w.WriteHeader(302)
+		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7246,13 +7839,16 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	switch response := response.(type) {
 	case *MigrationsGetArchiveForAuthenticatedUserFound:
 		w.WriteHeader(302)
+		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7265,6 +7861,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 	case *MigrationsGetArchiveForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7284,6 +7881,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 	case *MigrationsGetCommitAuthorsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7296,6 +7894,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7315,6 +7914,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 	case *Import:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7327,6 +7927,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7344,6 +7945,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7364,6 +7966,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7375,10 +7978,12 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7391,6 +7996,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7403,6 +8009,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 	case *MigrationsGetStatusForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7422,6 +8029,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7434,6 +8042,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7453,6 +8062,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	case *MigrationsListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7464,10 +8074,12 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7480,6 +8092,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 	case *MigrationsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7497,6 +8110,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7517,6 +8131,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	case *MigrationsListReposForOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7529,6 +8144,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7548,6 +8164,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	case *MigrationsListReposForUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7560,6 +8177,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7579,6 +8197,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 	case *PorterAuthor:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7591,6 +8210,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7603,6 +8223,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7622,6 +8243,7 @@ func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenc
 	case *Import:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7634,6 +8256,7 @@ func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenc
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7653,6 +8276,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7664,10 +8288,12 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *MigrationsStartForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7680,6 +8306,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 	case *MigrationsStartForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7692,6 +8319,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7711,6 +8339,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 	case *Migration:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7723,6 +8352,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7735,6 +8365,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7754,6 +8385,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 	case *Import:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7766,6 +8398,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7778,6 +8411,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7796,13 +8430,16 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7815,6 +8452,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7827,6 +8465,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 	case *MigrationsUnlockRepoForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7845,10 +8484,12 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7866,6 +8507,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -7882,6 +8524,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7893,10 +8536,12 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7909,6 +8554,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7921,6 +8567,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 	case *OAuthAuthorizationsCreateAuthorizationApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7933,6 +8580,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7951,13 +8599,16 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteAuthorizationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7970,6 +8621,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 	case *OAuthAuthorizationsDeleteAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -7988,13 +8640,16 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteGrantNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8007,6 +8662,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 	case *OAuthAuthorizationsDeleteGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8026,6 +8682,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8037,10 +8694,12 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8053,6 +8712,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 	case *OAuthAuthorizationsGetAuthorizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8072,6 +8732,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	case *ApplicationGrant:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8083,10 +8744,12 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8099,6 +8762,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 	case *OAuthAuthorizationsGetGrantApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8118,6 +8782,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8130,6 +8795,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8141,10 +8807,12 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8157,6 +8825,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8169,6 +8838,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8188,6 +8858,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8200,6 +8871,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8212,6 +8884,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8231,6 +8904,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8242,10 +8916,12 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8258,6 +8934,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8270,6 +8947,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 	case *OAuthAuthorizationsListAuthorizationsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8289,6 +8967,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8300,10 +8979,12 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8316,6 +8997,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8328,6 +9010,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 	case *OAuthAuthorizationsListGrantsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8347,6 +9030,7 @@ func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthoriz
 	case *Authorization:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8359,6 +9043,7 @@ func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthoriz
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8377,10 +9062,12 @@ func encodeOrgsBlockUserResponse(response OrgsBlockUserRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *OrgsBlockUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8399,10 +9086,12 @@ func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http
 	switch response := response.(type) {
 	case *OrgsCancelInvitationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8415,6 +9104,7 @@ func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8433,10 +9123,12 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 	switch response := response.(type) {
 	case *OrgsCheckBlockedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8455,12 +9147,15 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 	switch response := response.(type) {
 	case *OrgsCheckMembershipForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *OrgsCheckMembershipForUserFound:
 		w.WriteHeader(302)
+		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
 	case *OrgsCheckMembershipForUserNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/members/{username}"+`: unexpected response type: %T`, response)
@@ -8471,9 +9166,11 @@ func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMemb
 	switch response := response.(type) {
 	case *OrgsCheckPublicMembershipForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *OrgsCheckPublicMembershipForUserNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/public_members/{username}"+`: unexpected response type: %T`, response)
@@ -8485,6 +9182,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8496,13 +9194,16 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		return nil
 	case *OrgsConvertMemberToOutsideCollaboratorNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *OrgsConvertMemberToOutsideCollaboratorForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8522,6 +9223,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 	case *OrganizationInvitation:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8534,6 +9236,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8546,6 +9249,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8565,6 +9269,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 	case *OrgHook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8577,6 +9282,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8589,6 +9295,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8607,10 +9314,12 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 	switch response := response.(type) {
 	case *OrgsDeleteWebhookNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8630,6 +9339,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 	case *OrganizationFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8642,6 +9352,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8659,6 +9370,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -8679,6 +9391,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8691,6 +9404,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8703,6 +9417,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 	case *OrgsGetMembershipForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8722,6 +9437,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8734,6 +9450,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	case *OrgsGetMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8746,6 +9463,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 	case *OrgsGetMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8765,6 +9483,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 	case *OrgHook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8777,6 +9496,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8794,6 +9514,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -8810,6 +9531,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 	case *HookDelivery:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8822,6 +9544,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8834,6 +9557,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8853,6 +9577,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 	case *OrgsListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8864,6 +9589,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/organizations"+`: unexpected response type: %T`, response)
@@ -8875,6 +9601,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 	case *OrgsListBlockedUsersOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8887,6 +9614,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8906,6 +9634,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	case *OrgsListFailedInvitationsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8918,6 +9647,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8937,6 +9667,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	case *OrgsListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8948,10 +9679,12 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OrgsListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8964,6 +9697,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 	case *OrgsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -8981,6 +9715,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -9001,6 +9736,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	case *OrgsListInvitationTeamsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9013,6 +9749,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9032,6 +9769,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 	case *OrgsListMembersOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9043,10 +9781,12 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		return nil
 	case *OrgsListMembersFound:
 		w.WriteHeader(302)
+		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9066,6 +9806,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 	case *OrgsListMembershipsForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9077,10 +9818,12 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9093,6 +9836,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 	case *OrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9105,6 +9849,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9122,6 +9867,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -9142,6 +9888,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	case *OrgsListPendingInvitationsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9154,6 +9901,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9171,6 +9919,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -9189,6 +9938,7 @@ func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseW
 func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorization, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -9209,6 +9959,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 	case *OrgsListWebhookDeliveriesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9221,6 +9972,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9233,6 +9985,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9252,6 +10005,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	case *OrgsListWebhooksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9264,6 +10018,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9282,10 +10037,12 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 	switch response := response.(type) {
 	case *OrgsPingWebhookNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9305,6 +10062,7 @@ func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDel
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9317,6 +10075,7 @@ func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDel
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9329,6 +10088,7 @@ func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDel
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9347,10 +10107,12 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 	switch response := response.(type) {
 	case *OrgsRemoveMemberNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9369,10 +10131,12 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	switch response := response.(type) {
 	case *OrgsRemoveMembershipForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *OrgsRemoveMembershipForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9385,6 +10149,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 	case *OrgsRemoveMembershipForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9403,10 +10168,12 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 	switch response := response.(type) {
 	case *OrgsRemoveOutsideCollaboratorNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *OrgsRemoveOutsideCollaboratorUnprocessableEntity:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9423,6 +10190,7 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 
 func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -9430,10 +10198,12 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 	switch response := response.(type) {
 	case *OrgsRemoveSamlSSOAuthorizationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9453,6 +10223,7 @@ func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9465,6 +10236,7 @@ func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9477,6 +10249,7 @@ func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9495,10 +10268,12 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 	switch response := response.(type) {
 	case *OrgsSetPublicMembershipForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9515,6 +10290,7 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 
 func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -9523,6 +10299,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 	case *OrgMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9535,6 +10312,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 	case *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9547,6 +10325,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 	case *OrgsUpdateMembershipForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9559,6 +10338,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9578,6 +10358,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 	case *OrgHook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9590,6 +10371,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9602,6 +10384,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9619,6 +10402,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -9634,10 +10418,12 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 	switch response := response.(type) {
 	case *PackagesDeletePackageForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9650,6 +10436,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9662,6 +10449,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 	case *PackagesDeletePackageForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9680,10 +10468,12 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 	switch response := response.(type) {
 	case *PackagesDeletePackageForOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesDeletePackageForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9696,6 +10486,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 	case *PackagesDeletePackageForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9708,6 +10499,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 	case *PackagesDeletePackageForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9726,10 +10518,12 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 	switch response := response.(type) {
 	case *PackagesDeletePackageForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesDeletePackageForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9742,6 +10536,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 	case *PackagesDeletePackageForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9754,6 +10549,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 	case *PackagesDeletePackageForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9772,10 +10568,12 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9788,6 +10586,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9800,6 +10599,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 	case *PackagesDeletePackageVersionForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9818,10 +10618,12 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesDeletePackageVersionForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9834,6 +10636,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 	case *PackagesDeletePackageVersionForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9846,6 +10649,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 	case *PackagesDeletePackageVersionForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9864,10 +10668,12 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesDeletePackageVersionForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9880,6 +10686,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 	case *PackagesDeletePackageVersionForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9892,6 +10699,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 	case *PackagesDeletePackageVersionForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9911,6 +10719,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9923,6 +10732,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9935,6 +10745,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9947,6 +10758,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9966,6 +10778,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9978,6 +10791,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -9990,6 +10804,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10002,6 +10817,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10021,6 +10837,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10033,6 +10850,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10045,6 +10863,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10057,6 +10876,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10074,6 +10894,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -10088,6 +10909,7 @@ func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w ht
 func encodePackagesGetPackageForOrganizationResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -10102,6 +10924,7 @@ func encodePackagesGetPackageForOrganizationResponse(response Package, w http.Re
 func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -10116,6 +10939,7 @@ func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWr
 func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -10130,6 +10954,7 @@ func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response Packag
 func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -10144,6 +10969,7 @@ func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVers
 func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -10158,6 +10984,7 @@ func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w h
 func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -10178,6 +11005,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 	case *PackagesListPackagesForOrganizationOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10190,6 +11018,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 	case *PackagesListPackagesForOrganizationApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10202,6 +11031,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 	case *PackagesListPackagesForOrganizationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10221,6 +11051,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 	case *PackagesListPackagesForUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10233,6 +11064,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 	case *PackagesListPackagesForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10245,6 +11077,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 	case *PackagesListPackagesForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10263,10 +11096,12 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 	switch response := response.(type) {
 	case *PackagesRestorePackageForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10279,6 +11114,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10291,6 +11127,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 	case *PackagesRestorePackageForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10309,10 +11146,12 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 	switch response := response.(type) {
 	case *PackagesRestorePackageForOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesRestorePackageForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10325,6 +11164,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 	case *PackagesRestorePackageForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10337,6 +11177,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 	case *PackagesRestorePackageForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10355,10 +11196,12 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 	switch response := response.(type) {
 	case *PackagesRestorePackageForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesRestorePackageForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10371,6 +11214,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 	case *PackagesRestorePackageForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10383,6 +11227,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 	case *PackagesRestorePackageForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10401,10 +11246,12 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForAuthenticatedUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10417,6 +11264,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10429,6 +11277,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 	case *PackagesRestorePackageVersionForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10447,10 +11296,12 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesRestorePackageVersionForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10463,6 +11314,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 	case *PackagesRestorePackageVersionForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10475,6 +11327,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 	case *PackagesRestorePackageVersionForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10493,10 +11346,12 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PackagesRestorePackageVersionForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10509,6 +11364,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	case *PackagesRestorePackageVersionForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10521,6 +11377,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 	case *PackagesRestorePackageVersionForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10539,13 +11396,16 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 	switch response := response.(type) {
 	case *ProjectsAddCollaboratorNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsAddCollaboratorApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10558,6 +11418,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 	case *ProjectsAddCollaboratorApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10570,6 +11431,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 	case *ProjectsAddCollaboratorApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10582,6 +11444,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10601,6 +11464,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10612,10 +11476,12 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsCreateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10628,6 +11494,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ProjectsCreateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10640,6 +11507,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10659,6 +11527,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10670,10 +11539,12 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10686,6 +11557,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *ProjectsCreateForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10698,6 +11570,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10710,6 +11583,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10729,6 +11603,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10741,6 +11616,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10753,6 +11629,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10765,6 +11642,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10777,6 +11655,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ProjectsCreateForOrgApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10789,6 +11668,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10808,6 +11688,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10820,6 +11701,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10832,6 +11714,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10844,6 +11727,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10856,6 +11740,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ProjectsCreateForRepoApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10868,6 +11753,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10886,13 +11772,16 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	switch response := response.(type) {
 	case *ProjectsDeleteNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsDeleteApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10905,6 +11794,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10917,6 +11807,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10929,6 +11820,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 	case *ProjectsDeleteApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10947,13 +11839,16 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	switch response := response.(type) {
 	case *ProjectsDeleteCardNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsDeleteCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10966,6 +11861,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	case *ProjectsDeleteCardForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10978,6 +11874,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 	case *ProjectsDeleteCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -10996,13 +11893,16 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 	switch response := response.(type) {
 	case *ProjectsDeleteColumnNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsDeleteColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11015,6 +11915,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 	case *ProjectsDeleteColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11034,6 +11935,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11045,10 +11947,12 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsGetApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11061,6 +11965,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 	case *ProjectsGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11080,6 +11985,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11091,10 +11997,12 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsGetCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11107,6 +12015,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectsGetCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11119,6 +12028,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 	case *ProjectsGetCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11138,6 +12048,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11149,10 +12060,12 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsGetColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11165,6 +12078,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectsGetColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11177,6 +12091,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 	case *ProjectsGetColumnApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11196,6 +12111,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 	case *RepositoryCollaboratorPermission:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11207,10 +12123,12 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsGetPermissionForUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11223,6 +12141,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 	case *ProjectsGetPermissionForUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11235,6 +12154,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 	case *ProjectsGetPermissionForUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11247,6 +12167,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11266,6 +12187,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	case *ProjectsListCardsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11277,10 +12199,12 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsListCardsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11293,6 +12217,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 	case *ProjectsListCardsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11312,6 +12237,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 	case *ProjectsListCollaboratorsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11323,10 +12249,12 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsListCollaboratorsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11339,6 +12267,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 	case *ProjectsListCollaboratorsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11351,6 +12280,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 	case *ProjectsListCollaboratorsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11363,6 +12293,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11382,6 +12313,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	case *ProjectsListColumnsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11393,10 +12325,12 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsListColumnsApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11409,6 +12343,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 	case *ProjectsListColumnsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11428,6 +12363,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 	case *ProjectsListForOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11440,6 +12376,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11459,6 +12396,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11471,6 +12409,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11483,6 +12422,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11495,6 +12435,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11507,6 +12448,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ProjectsListForRepoApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11519,6 +12461,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11538,6 +12481,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 	case *ProjectsListForUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11550,6 +12494,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11569,6 +12514,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 	case *ProjectsMoveCardCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11580,10 +12526,12 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11596,6 +12544,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 	case *ProjectsMoveCardForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11608,6 +12557,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11620,6 +12570,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 	case *ProjectsMoveCardServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11639,6 +12590,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ProjectsMoveColumnCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11650,10 +12602,12 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsMoveColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11666,6 +12620,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ProjectsMoveColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11678,6 +12633,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11696,13 +12652,16 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 	switch response := response.(type) {
 	case *ProjectsRemoveCollaboratorNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsRemoveCollaboratorApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11715,6 +12674,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 	case *ProjectsRemoveCollaboratorApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11727,6 +12687,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 	case *ProjectsRemoveCollaboratorApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11739,6 +12700,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11758,6 +12720,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *Project:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11769,10 +12732,12 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsUpdateApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11785,6 +12750,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ProjectsUpdateForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11796,10 +12762,12 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return nil
 	case *ProjectsUpdateNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ProjectsUpdateApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11812,6 +12780,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11831,6 +12800,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectCard:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11842,10 +12812,12 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsUpdateCardApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11858,6 +12830,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectsUpdateCardApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11870,6 +12843,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ProjectsUpdateCardApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11882,6 +12856,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11901,6 +12876,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	case *ProjectColumn:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11912,10 +12888,12 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ProjectsUpdateColumnApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11928,6 +12906,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 	case *ProjectsUpdateColumnApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11946,9 +12925,11 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 	switch response := response.(type) {
 	case *PullsCheckIfMergedNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *PullsCheckIfMergedNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/merge"+`: unexpected response type: %T`, response)
@@ -11960,6 +12941,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 	case *PullRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11972,6 +12954,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -11984,6 +12967,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12003,6 +12987,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12015,6 +13000,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12034,6 +13020,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12046,6 +13033,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12058,6 +13046,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12077,6 +13066,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12089,6 +13079,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12101,6 +13092,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12120,6 +13112,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12132,6 +13125,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12144,6 +13138,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12162,10 +13157,12 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 	switch response := response.(type) {
 	case *PullsDeleteReviewCommentNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12185,6 +13182,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12197,6 +13195,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12209,6 +13208,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12228,6 +13228,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 	case *PullRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12239,10 +13240,12 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *PullsGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12255,6 +13258,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 	case *PullsGetApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
+		span.SetStatus(codes.Error, http.StatusText(500))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12274,6 +13278,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12286,6 +13291,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12305,6 +13311,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 	case *PullRequestReviewComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12317,6 +13324,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12336,6 +13344,7 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 	case *PullsListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12347,10 +13356,12 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12370,6 +13381,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	case *PullsListCommentsForReviewOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12382,6 +13394,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12399,6 +13412,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -12419,6 +13433,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 	case *PullsListFilesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12431,6 +13446,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12443,6 +13459,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
+		span.SetStatus(codes.Error, http.StatusText(500))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12460,6 +13477,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -12474,6 +13492,7 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -12492,6 +13511,7 @@ func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, 
 func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -12510,6 +13530,7 @@ func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewCo
 func encodePullsListReviewsResponse(response []PullRequestReview, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -12530,6 +13551,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 	case *PullRequestMergeResult:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12542,6 +13564,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 	case *PullsMergeApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12554,6 +13577,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 	case *PullsMergeApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12566,6 +13590,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 	case *PullsMergeMethodNotAllowed:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(405)
+		span.SetStatus(codes.Error, http.StatusText(405))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12578,6 +13603,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 	case *PullsMergeConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12590,6 +13616,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12609,6 +13636,7 @@ func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedRe
 	case *PullRequestSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12621,6 +13649,7 @@ func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedRe
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12640,6 +13669,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12652,6 +13682,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *PullsSubmitReviewApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12664,6 +13695,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *PullsSubmitReviewApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12676,6 +13708,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12695,6 +13728,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 	case *PullRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12707,6 +13741,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12719,6 +13754,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12738,6 +13774,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 	case *PullsUpdateBranchAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12750,6 +13787,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12762,6 +13800,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12781,6 +13820,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 	case *PullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12793,6 +13833,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12810,6 +13851,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -12826,6 +13868,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 	case *RateLimitOverview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12837,10 +13880,12 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12860,6 +13905,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 	case *ReactionsCreateForCommitCommentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12872,6 +13918,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 	case *ReactionsCreateForCommitCommentApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12884,6 +13931,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12896,6 +13944,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12915,6 +13964,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 	case *ReactionsCreateForIssueApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12927,6 +13977,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 	case *ReactionsCreateForIssueApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12939,6 +13990,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12951,6 +14003,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12970,6 +14023,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 	case *ReactionsCreateForIssueCommentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12982,6 +14036,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 	case *ReactionsCreateForIssueCommentApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -12994,6 +14049,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13006,6 +14062,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13025,6 +14082,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 	case *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13037,6 +14095,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 	case *ReactionsCreateForPullRequestReviewCommentApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13049,6 +14108,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13061,6 +14121,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13080,6 +14141,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 	case *ReactionsCreateForReleaseApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13092,6 +14154,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 	case *ReactionsCreateForReleaseApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13104,6 +14167,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13116,6 +14180,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13135,6 +14200,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13147,6 +14213,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13164,6 +14231,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -13180,6 +14248,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13192,6 +14261,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13209,6 +14279,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -13222,31 +14293,37 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 
 func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -13254,13 +14331,16 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	switch response := response.(type) {
 	case *ReactionsDeleteLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ReactionsDeleteLegacyApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13273,6 +14353,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *ReactionsDeleteLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13285,6 +14366,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *ReactionsDeleteLegacyApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13297,6 +14379,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13316,6 +14399,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	case *ReactionsListForCommitCommentOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13328,6 +14412,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13340,6 +14425,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13359,6 +14445,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *ReactionsListForIssueOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13371,6 +14458,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *ReactionsListForIssueApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13383,6 +14471,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *ReactionsListForIssueApplicationJSONGone:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(410)
+		span.SetStatus(codes.Error, http.StatusText(410))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13395,6 +14484,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13414,6 +14504,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	case *ReactionsListForIssueCommentOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13426,6 +14517,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13438,6 +14530,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13457,6 +14550,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	case *ReactionsListForPullRequestReviewCommentOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13469,6 +14563,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13481,6 +14576,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13498,6 +14594,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -13516,6 +14613,7 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reactio
 func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -13534,6 +14632,7 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reacti
 func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -13552,6 +14651,7 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w ht
 func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -13571,13 +14671,16 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	switch response := response.(type) {
 	case *ReposAcceptInvitationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ReposAcceptInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13590,6 +14693,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	case *ReposAcceptInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13602,6 +14706,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 	case *ReposAcceptInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13621,6 +14726,7 @@ func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestr
 	case *ReposAddAppAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13633,6 +14739,7 @@ func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestr
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13652,6 +14759,7 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 	case *RepositoryInvitation:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13663,10 +14771,12 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 		return nil
 	case *ReposAddCollaboratorNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13679,6 +14789,7 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13698,6 +14809,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 	case *ReposAddStatusCheckContextsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13710,6 +14822,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 	case *ReposAddStatusCheckContextsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13722,6 +14835,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 	case *ReposAddStatusCheckContextsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13734,6 +14848,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13753,6 +14868,7 @@ func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRes
 	case *ReposAddTeamAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13765,6 +14881,7 @@ func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13784,6 +14901,7 @@ func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRes
 	case *ReposAddUserAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13796,6 +14914,7 @@ func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13814,9 +14933,11 @@ func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w 
 	switch response := response.(type) {
 	case *ReposCheckCollaboratorNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ReposCheckCollaboratorNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/collaborators/{username}"+`: unexpected response type: %T`, response)
@@ -13827,9 +14948,11 @@ func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilit
 	switch response := response.(type) {
 	case *ReposCheckVulnerabilityAlertsNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ReposCheckVulnerabilityAlertsNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/vulnerability-alerts"+`: unexpected response type: %T`, response)
@@ -13841,6 +14964,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	case *CommitComparison:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13853,6 +14977,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	case *ReposCompareCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13865,6 +14990,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 	case *ReposCompareCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
+		span.SetStatus(codes.Error, http.StatusText(500))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13884,6 +15010,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 	case *Autolink:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13896,6 +15023,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13915,6 +15043,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13927,6 +15056,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13939,6 +15069,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13958,6 +15089,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13970,6 +15102,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -13987,6 +15120,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -14003,6 +15137,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 	case *DeployKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14015,6 +15150,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14034,6 +15170,7 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 	case *Deployment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14046,6 +15183,7 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 	case *ReposCreateDeploymentAccepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14057,10 +15195,12 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 		return nil
 	case *ReposCreateDeploymentConflict:
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14080,6 +15220,7 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 	case *DeploymentStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14092,6 +15233,7 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14110,10 +15252,12 @@ func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes
 	switch response := response.(type) {
 	case *ReposCreateDispatchEventNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14133,6 +15277,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 	case *Repository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14144,10 +15289,12 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ReposCreateForAuthenticatedUserApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14160,6 +15307,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 	case *ReposCreateForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14172,6 +15320,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 	case *ReposCreateForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14184,6 +15333,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 	case *ReposCreateForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14196,6 +15346,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14215,6 +15366,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 	case *FullRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14227,6 +15379,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 	case *ReposCreateForkApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14239,6 +15392,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 	case *ReposCreateForkApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14251,6 +15405,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 	case *ReposCreateForkApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14263,6 +15418,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14282,6 +15438,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 	case *Repository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14294,6 +15451,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14306,6 +15464,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14325,6 +15484,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 	case *ReposCreateOrUpdateFileContentsApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14337,6 +15497,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 	case *ReposCreateOrUpdateFileContentsApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14349,6 +15510,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 	case *ReposCreateOrUpdateFileContentsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14361,6 +15523,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 	case *ReposCreateOrUpdateFileContentsApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14373,6 +15536,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14392,6 +15556,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 	case *Page:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14404,6 +15569,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14416,6 +15582,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14428,6 +15595,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14447,6 +15615,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14459,6 +15628,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14471,6 +15641,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14488,6 +15659,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 func encodeReposCreateUsingTemplateResponse(response Repository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -14504,6 +15676,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 	case *Hook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14516,6 +15689,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 	case *ReposCreateWebhookApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14528,6 +15702,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 	case *ReposCreateWebhookApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14540,6 +15715,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14558,13 +15734,16 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	switch response := response.(type) {
 	case *ReposDeclineInvitationNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ReposDeclineInvitationApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14577,6 +15756,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	case *ReposDeclineInvitationApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14589,6 +15769,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 	case *ReposDeclineInvitationApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14607,10 +15788,12 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *ReposDeleteNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ReposDeleteApplicationJSONTemporaryRedirect:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(307)
+		span.SetStatus(codes.Ok, http.StatusText(307))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14623,6 +15806,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	case *ReposDeleteForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14635,6 +15819,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 	case *ReposDeleteApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14651,6 +15836,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 
 func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -14658,10 +15844,12 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 	switch response := response.(type) {
 	case *ReposDeleteAdminBranchProtectionNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14678,6 +15866,7 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 
 func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -14685,10 +15874,12 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 	switch response := response.(type) {
 	case *ReposDeleteAutolinkNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14707,10 +15898,12 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 	switch response := response.(type) {
 	case *ReposDeleteBranchProtectionNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14729,10 +15922,12 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 	switch response := response.(type) {
 	case *ReposDeleteCommitCommentNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14751,10 +15946,12 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 	switch response := response.(type) {
 	case *ReposDeleteCommitSignatureProtectionNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14771,6 +15968,7 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 
 func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -14778,10 +15976,12 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	switch response := response.(type) {
 	case *ReposDeleteDeploymentNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14794,6 +15994,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14813,6 +16014,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 	case *FileCommit:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14825,6 +16027,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 	case *ReposDeleteFileApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14837,6 +16040,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 	case *ReposDeleteFileApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14849,6 +16053,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14861,6 +16066,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14877,6 +16083,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 
 func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -14884,10 +16091,12 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 	switch response := response.(type) {
 	case *ReposDeletePagesSiteNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14900,6 +16109,7 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14912,6 +16122,7 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14930,10 +16141,12 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 	switch response := response.(type) {
 	case *ReposDeletePullRequestReviewProtectionNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14950,11 +16163,13 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 
 func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -14962,10 +16177,12 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 	switch response := response.(type) {
 	case *ReposDeleteWebhookNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -14982,31 +16199,37 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 
 func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 }
 
 func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(302)
+	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 }
 
 func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -15015,6 +16238,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15026,6 +16250,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 		return nil
 	case *ReposEnableLfsForRepoForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/lfs"+`: unexpected response type: %T`, response)
@@ -15034,6 +16259,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 
 func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -15042,6 +16268,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *FullRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15054,6 +16281,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *ReposGetApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
+		span.SetStatus(codes.Ok, http.StatusText(301))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15066,6 +16294,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *ReposGetApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15078,6 +16307,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 	case *ReposGetApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15097,6 +16327,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 	case *BranchRestrictionPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15109,6 +16340,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15126,6 +16358,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15142,6 +16375,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 	case *ReposGetAllStatusCheckContextsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15154,6 +16388,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15173,6 +16408,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15185,6 +16421,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15197,6 +16434,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15216,6 +16454,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	case *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15228,6 +16467,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15247,6 +16487,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 	case *Autolink:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15259,6 +16500,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15278,6 +16520,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *BranchWithProtection:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15290,6 +16533,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *ReposGetBranchApplicationJSONMovedPermanently:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
+		span.SetStatus(codes.Ok, http.StatusText(301))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15302,6 +16546,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *ReposGetBranchApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15314,6 +16559,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15333,6 +16579,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 	case *BranchProtection:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15345,6 +16592,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15364,6 +16612,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 	case *CloneTraffic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15376,6 +16625,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15395,6 +16645,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 	case *ReposGetCodeFrequencyStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15407,6 +16658,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15418,6 +16670,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		return nil
 	case *NoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/stats/code_frequency"+`: unexpected response type: %T`, response)
@@ -15429,6 +16682,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 	case *RepositoryCollaboratorPermission:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15441,6 +16695,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15460,6 +16715,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	case *CombinedCommitStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15472,6 +16728,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15491,6 +16748,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 	case *Commit:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15503,6 +16761,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 	case *ReposGetCommitApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15515,6 +16774,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15527,6 +16787,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 	case *ReposGetCommitApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
+		span.SetStatus(codes.Error, http.StatusText(500))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15546,6 +16807,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 	case *ReposGetCommitActivityStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15558,6 +16820,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15569,6 +16832,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		return nil
 	case *NoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/stats/commit_activity"+`: unexpected response type: %T`, response)
@@ -15580,6 +16844,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15592,6 +16857,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15611,6 +16877,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	case *ProtectedBranchAdminEnforced:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15623,6 +16890,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15640,6 +16908,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15656,6 +16925,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 	case *ReposGetContributorsStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15668,6 +16938,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15679,6 +16950,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		return nil
 	case *NoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/stats/contributors"+`: unexpected response type: %T`, response)
@@ -15690,6 +16962,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 	case *DeployKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15702,6 +16975,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15721,6 +16995,7 @@ func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.Res
 	case *Deployment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15733,6 +17008,7 @@ func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15752,6 +17028,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	case *DeploymentStatus:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15764,6 +17041,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15776,6 +17054,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15793,6 +17072,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15807,6 +17087,7 @@ func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseW
 func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15823,6 +17104,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 	case *Page:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15835,6 +17117,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15852,6 +17135,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15868,6 +17152,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	case *PagesHealthCheck:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15880,6 +17165,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 	case *EmptyObject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15891,10 +17177,12 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		return nil
 	case *ReposGetPagesHealthCheckBadRequest:
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15906,6 +17194,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		return nil
 	case *ReposGetPagesHealthCheckUnprocessableEntity:
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/pages/health"+`: unexpected response type: %T`, response)
@@ -15917,6 +17206,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	case *ParticipationStats:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15929,6 +17219,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15946,6 +17237,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -15962,6 +17254,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 	case *ReposGetPunchCardStatsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15973,6 +17266,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		return nil
 	case *NoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/stats/punch_card"+`: unexpected response type: %T`, response)
@@ -15984,6 +17278,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 	case *ContentFile:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -15996,6 +17291,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16008,6 +17304,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16027,6 +17324,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 	case *ContentFile:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16039,6 +17337,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16051,6 +17350,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16070,6 +17370,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16082,6 +17383,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16101,6 +17403,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	case *ReleaseAsset:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16112,10 +17415,12 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		return nil
 	case *Found:
 		w.WriteHeader(302)
+		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16128,6 +17433,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16147,6 +17453,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16159,6 +17466,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16178,6 +17486,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 	case *StatusCheckPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16190,6 +17499,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16209,6 +17519,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	case *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16221,6 +17532,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16240,6 +17552,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 	case *ReposGetTopPathsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16252,6 +17565,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16271,6 +17585,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 	case *ReposGetTopReferrersOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16283,6 +17598,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16302,6 +17618,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 	case *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16314,6 +17631,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16333,6 +17651,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 	case *ViewTraffic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16345,6 +17664,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16364,6 +17684,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 	case *Hook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16376,6 +17697,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16393,6 +17715,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16409,6 +17732,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 	case *HookDelivery:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16421,6 +17745,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16433,6 +17758,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16450,6 +17776,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16470,6 +17797,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	case *ReposListBranchesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16482,6 +17810,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16501,6 +17830,7 @@ func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForH
 	case *ReposListBranchesForHeadCommitOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16513,6 +17843,7 @@ func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForH
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16532,6 +17863,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	case *ReposListCollaboratorsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16544,6 +17876,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16561,6 +17894,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16579,6 +17913,7 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16599,6 +17934,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	case *ReposListCommitStatusesForRefOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16611,6 +17947,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(301)
+		span.SetStatus(codes.Ok, http.StatusText(301))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16630,6 +17967,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16642,6 +17980,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONBadRequest:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16654,6 +17993,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16666,6 +18006,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONConflict:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16678,6 +18019,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 	case *ReposListCommitsApplicationJSONInternalServerError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(500)
+		span.SetStatus(codes.Error, http.StatusText(500))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16697,6 +18039,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	case *ReposListContributorsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16708,10 +18051,12 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		return nil
 	case *ReposListContributorsNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *ReposListContributorsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16724,6 +18069,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 	case *ReposListContributorsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16741,6 +18087,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16761,6 +18108,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	case *ReposListDeploymentStatusesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16773,6 +18121,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16790,6 +18139,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 func encodeReposListDeploymentsResponse(response []Deployment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16810,6 +18160,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 	case *ReposListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16821,10 +18172,12 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ReposListForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16837,6 +18190,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 	case *ReposListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16849,6 +18203,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16866,6 +18221,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 func encodeReposListForOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16884,6 +18240,7 @@ func encodeReposListForOrgResponse(response []MinimalRepository, w http.Response
 func encodeReposListForUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16904,6 +18261,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 	case *ReposListForksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16916,6 +18274,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16933,6 +18292,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -16953,6 +18313,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16964,10 +18325,12 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16980,6 +18343,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -16992,6 +18356,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 	case *ReposListInvitationsForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17009,6 +18374,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17023,6 +18389,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17043,6 +18410,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 	case *ReposListPublicOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17054,10 +18422,12 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17075,6 +18445,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17093,6 +18464,7 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequ
 func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17113,6 +18485,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	case *ReposListReleasesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17125,6 +18498,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17142,6 +18516,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17160,6 +18535,7 @@ func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span tra
 func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17180,6 +18556,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 	case *ReposListWebhookDeliveriesOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17192,6 +18569,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17204,6 +18582,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17223,6 +18602,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 	case *ReposListWebhooksOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17235,6 +18615,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17254,6 +18635,7 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 	case *Commit:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17265,10 +18647,12 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 		return nil
 	case *ReposMergeNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17280,13 +18664,16 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 		return nil
 	case *ReposMergeNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ReposMergeConflict:
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17306,6 +18693,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 	case *MergedUpstream:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17317,9 +18705,11 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 		return nil
 	case *ReposMergeUpstreamConflict:
 		w.WriteHeader(409)
+		span.SetStatus(codes.Error, http.StatusText(409))
 		return nil
 	case *ReposMergeUpstreamUnprocessableEntity:
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		return nil
 	default:
 		return errors.Errorf("/repos/{owner}/{repo}/merge-upstream"+`: unexpected response type: %T`, response)
@@ -17330,10 +18720,12 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 	switch response := response.(type) {
 	case *ReposPingWebhookNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17353,6 +18745,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17365,6 +18758,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(400)
+		span.SetStatus(codes.Error, http.StatusText(400))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17377,6 +18771,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17396,6 +18791,7 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 	case *ReposRemoveAppAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17408,6 +18804,7 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17424,6 +18821,7 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 
 func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -17432,6 +18830,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 	case *ReposRemoveStatusCheckContextsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17444,6 +18843,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17456,6 +18856,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17472,6 +18873,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 
 func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -17480,6 +18882,7 @@ func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAcc
 	case *ReposRemoveTeamAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17492,6 +18895,7 @@ func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAcc
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17511,6 +18915,7 @@ func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAcc
 	case *ReposRemoveUserAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17523,6 +18928,7 @@ func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAcc
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17542,6 +18948,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 	case *BranchWithProtection:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17554,6 +18961,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 	case *ReposRenameBranchApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17566,6 +18974,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 	case *ReposRenameBranchApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17578,6 +18987,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17597,6 +19007,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *Topic:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17609,6 +19020,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17621,6 +19033,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17633,6 +19046,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17650,6 +19064,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17664,6 +19079,7 @@ func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.Respo
 func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17680,6 +19096,7 @@ func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestr
 	case *ReposSetAppAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17692,6 +19109,7 @@ func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestr
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17711,6 +19129,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 	case *ReposSetStatusCheckContextsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17723,6 +19142,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17735,6 +19155,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17754,6 +19175,7 @@ func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRes
 	case *ReposSetTeamAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17766,6 +19188,7 @@ func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17785,6 +19208,7 @@ func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRes
 	case *ReposSetUserAccessRestrictionsOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17797,6 +19221,7 @@ func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17815,10 +19240,12 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 	switch response := response.(type) {
 	case *ReposTestPushWebhookNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17836,6 +19263,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
+	span.SetStatus(codes.Ok, http.StatusText(202))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -17852,6 +19280,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 	case *FullRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17864,6 +19293,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 	case *ReposUpdateApplicationJSONTemporaryRedirect:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(307)
+		span.SetStatus(codes.Ok, http.StatusText(307))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17876,6 +19306,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 	case *ReposUpdateApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17888,6 +19319,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 	case *ReposUpdateApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17900,6 +19332,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17919,6 +19352,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ProtectedBranch:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17931,6 +19365,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ReposUpdateBranchProtectionApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17943,6 +19378,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ReposUpdateBranchProtectionApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17955,6 +19391,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 	case *ValidationErrorSimple:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17974,6 +19411,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	case *CommitComment:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -17986,6 +19424,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18003,6 +19442,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -18019,6 +19459,7 @@ func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePu
 	case *ProtectedBranchPullRequestReview:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18031,6 +19472,7 @@ func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePu
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18050,6 +19492,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 	case *Release:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18062,6 +19505,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18079,6 +19523,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -18095,6 +19540,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 	case *StatusCheckPolicy:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18107,6 +19553,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18119,6 +19566,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18138,6 +19586,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 	case *Hook:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18150,6 +19599,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18162,6 +19612,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18179,6 +19630,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -18194,13 +19646,16 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 	switch response := response.(type) {
 	case *ScimDeleteUserFromOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ScimDeleteUserFromOrgApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18213,6 +19668,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 	case *ScimDeleteUserFromOrgApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18232,6 +19688,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 	case *SearchCodeOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18243,10 +19700,12 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18259,6 +19718,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18271,6 +19731,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18290,6 +19751,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 	case *SearchCommitsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18301,10 +19763,12 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18324,6 +19788,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 	case *SearchIssuesAndPullRequestsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18335,10 +19800,12 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18351,6 +19818,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18363,6 +19831,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18382,6 +19851,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 	case *SearchLabelsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18393,10 +19863,12 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *SearchLabelsApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18409,6 +19881,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 	case *SearchLabelsApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18421,6 +19894,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18440,6 +19914,7 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 	case *SearchReposOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18451,10 +19926,12 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18467,6 +19944,7 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18486,6 +19964,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 	case *SearchTopicsOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18497,10 +19976,12 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18520,6 +20001,7 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 	case *SearchUsersOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18531,10 +20013,12 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18547,6 +20031,7 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18566,6 +20051,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18577,10 +20063,12 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		return nil
 	case *SecretScanningGetAlertNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18600,6 +20088,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	case *SecretScanningListAlertsForOrgOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18612,6 +20101,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18624,6 +20114,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18643,6 +20134,7 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 	case *SecretScanningListAlertsForRepoOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18654,10 +20146,12 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		return nil
 	case *SecretScanningListAlertsForRepoNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18677,6 +20171,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 	case *SecretScanningAlert:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18688,13 +20183,16 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		return nil
 	case *SecretScanningUpdateAlertNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *SecretScanningUpdateAlertUnprocessableEntity:
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		return nil
 	case *ServiceUnavailable:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(503)
+		span.SetStatus(codes.Error, http.StatusText(503))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18713,10 +20211,12 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 	switch response := response.(type) {
 	case *TeamsAddMemberLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18728,9 +20228,11 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 		return nil
 	case *TeamsAddMemberLegacyNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	case *TeamsAddMemberLegacyUnprocessableEntity:
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		return nil
 	default:
 		return errors.Errorf("/teams/{team_id}/members/{username}"+`: unexpected response type: %T`, response)
@@ -18742,6 +20244,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18753,9 +20256,11 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserInOrgForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserInOrgUnprocessableEntity:
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}"+`: unexpected response type: %T`, response)
@@ -18767,6 +20272,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18778,10 +20284,12 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserLegacyForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18793,6 +20301,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		return nil
 	case *TeamsAddOrUpdateMembershipForUserLegacyUnprocessableEntity:
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		return nil
 	default:
 		return errors.Errorf("/teams/{team_id}/memberships/{username}"+`: unexpected response type: %T`, response)
@@ -18803,10 +20312,12 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateProjectPermissionsInOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsAddOrUpdateProjectPermissionsInOrgForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18825,10 +20336,12 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateProjectPermissionsLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsAddOrUpdateProjectPermissionsLegacyForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18841,6 +20354,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18853,6 +20367,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18869,6 +20384,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 
 func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -18876,10 +20392,12 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpda
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateRepoPermissionsLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18892,6 +20410,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpda
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18911,6 +20430,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18922,6 +20442,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 		return nil
 	case *TeamsCheckPermissionsForProjectInOrgNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/teams/{team_slug}/projects/{project_id}"+`: unexpected response type: %T`, response)
@@ -18933,6 +20454,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 	case *TeamProject:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18944,6 +20466,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 		return nil
 	case *TeamsCheckPermissionsForProjectLegacyNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/teams/{team_id}/projects/{project_id}"+`: unexpected response type: %T`, response)
@@ -18955,6 +20478,7 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18966,9 +20490,11 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 		return nil
 	case *TeamsCheckPermissionsForRepoInOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsCheckPermissionsForRepoInOrgNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
@@ -18980,6 +20506,7 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 	case *TeamRepository:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -18991,9 +20518,11 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 		return nil
 	case *TeamsCheckPermissionsForRepoLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsCheckPermissionsForRepoLegacyNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/teams/{team_id}/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
@@ -19005,6 +20534,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19017,6 +20547,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19029,6 +20560,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19046,6 +20578,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19060,6 +20593,7 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19074,6 +20608,7 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19088,6 +20623,7 @@ func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19102,6 +20638,7 @@ func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19118,6 +20655,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 	case *GroupMapping:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19130,6 +20668,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19142,6 +20681,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19158,26 +20698,31 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 
 func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -19185,10 +20730,12 @@ func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.Respo
 	switch response := response.(type) {
 	case *TeamsDeleteLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19201,6 +20748,7 @@ func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19220,6 +20768,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19232,6 +20781,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19249,6 +20799,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19263,6 +20814,7 @@ func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment
 func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19277,6 +20829,7 @@ func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionCommen
 func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19291,6 +20844,7 @@ func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.Respo
 func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19307,6 +20861,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 	case *TeamFull:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19319,6 +20874,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19337,9 +20893,11 @@ func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http
 	switch response := response.(type) {
 	case *TeamsGetMemberLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsGetMemberLegacyNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/teams/{team_id}/members/{username}"+`: unexpected response type: %T`, response)
@@ -19351,6 +20909,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19362,6 +20921,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 		return nil
 	case *TeamsGetMembershipForUserInOrgNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}"+`: unexpected response type: %T`, response)
@@ -19373,6 +20933,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 	case *TeamMembership:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19385,6 +20946,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19404,6 +20966,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	case *TeamsListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19416,6 +20979,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19433,6 +20997,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19453,6 +21018,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 	case *TeamsListChildLegacyOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19465,6 +21031,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 	case *TeamsListChildLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19477,6 +21044,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 	case *TeamsListChildLegacyApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19489,6 +21057,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19506,6 +21075,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19524,6 +21094,7 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionCom
 func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19542,6 +21113,7 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionCo
 func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19560,6 +21132,7 @@ func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.R
 func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19580,6 +21153,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	case *TeamsListForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19591,10 +21165,12 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *TeamsListForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19607,6 +21183,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 	case *TeamsListForAuthenticatedUserApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19626,6 +21203,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	case *GroupMapping:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19638,6 +21216,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	case *TeamsListIdpGroupsForLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19650,6 +21229,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 	case *TeamsListIdpGroupsForLegacyApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19667,6 +21247,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19681,6 +21262,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.Respon
 func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19695,6 +21277,7 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19715,6 +21298,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	case *TeamsListMembersLegacyOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19727,6 +21311,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19744,6 +21329,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19762,6 +21348,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvit
 func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19780,6 +21367,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvi
 func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19800,6 +21388,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	case *TeamsListProjectsLegacyOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19812,6 +21401,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19829,6 +21419,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19849,6 +21440,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	case *TeamsListReposLegacyOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19861,6 +21453,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19879,9 +21472,11 @@ func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, 
 	switch response := response.(type) {
 	case *TeamsRemoveMemberLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsRemoveMemberLegacyNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/teams/{team_id}/members/{username}"+`: unexpected response type: %T`, response)
@@ -19892,9 +21487,11 @@ func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembers
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserInOrgNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsRemoveMembershipForUserInOrgForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	default:
 		return errors.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}"+`: unexpected response type: %T`, response)
@@ -19905,9 +21502,11 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *TeamsRemoveMembershipForUserLegacyForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	default:
 		return errors.Errorf("/teams/{team_id}/memberships/{username}"+`: unexpected response type: %T`, response)
@@ -19916,6 +21515,7 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 
 func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
@@ -19923,10 +21523,12 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 	switch response := response.(type) {
 	case *TeamsRemoveProjectLegacyNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19939,6 +21541,7 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19951,6 +21554,7 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -19967,17 +21571,20 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 
 func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
+	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 }
 
 func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -19992,6 +21599,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20006,6 +21614,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20020,6 +21629,7 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20034,6 +21644,7 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
+	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -20050,6 +21661,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 	case *TeamsUpdateLegacyApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20062,6 +21674,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 	case *TeamsUpdateLegacyApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20074,6 +21687,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 	case *TeamsUpdateLegacyApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20086,6 +21700,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 	case *TeamsUpdateLegacyApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20098,6 +21713,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20117,6 +21733,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 	case *UsersAddEmailForAuthenticatedCreatedApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20128,10 +21745,12 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersAddEmailForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20144,6 +21763,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 	case *UsersAddEmailForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20156,6 +21776,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 	case *UsersAddEmailForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20168,6 +21789,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20186,13 +21808,16 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 	switch response := response.(type) {
 	case *UsersBlockNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersBlockApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20205,6 +21830,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 	case *UsersBlockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20217,6 +21843,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 	case *UsersBlockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20229,6 +21856,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20247,13 +21875,16 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	switch response := response.(type) {
 	case *UsersCheckBlockedNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersCheckBlockedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20266,6 +21897,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	case *UsersCheckBlockedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20278,6 +21910,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 	case *UsersCheckBlockedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20296,9 +21929,11 @@ func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUse
 	switch response := response.(type) {
 	case *UsersCheckFollowingForUserNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *UsersCheckFollowingForUserNotFound:
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		return nil
 	default:
 		return errors.Errorf("/users/{username}/following/{target_user}"+`: unexpected response type: %T`, response)
@@ -20309,13 +21944,16 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	switch response := response.(type) {
 	case *UsersCheckPersonIsFollowedByAuthenticatedNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20328,6 +21966,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20340,6 +21979,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 	case *UsersCheckPersonIsFollowedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20359,6 +21999,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 	case *GpgKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20370,10 +22011,12 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20386,6 +22029,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20398,6 +22042,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 	case *UsersCreateGpgKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20410,6 +22055,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20429,6 +22075,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 	case *Key:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20440,10 +22087,12 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20456,6 +22105,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20468,6 +22118,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 	case *UsersCreatePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20480,6 +22131,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20498,13 +22150,16 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 	switch response := response.(type) {
 	case *UsersDeleteEmailForAuthenticatedNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersDeleteEmailForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20517,6 +22172,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 	case *UsersDeleteEmailForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20529,6 +22185,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 	case *UsersDeleteEmailForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20541,6 +22198,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20559,13 +22217,16 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 	switch response := response.(type) {
 	case *UsersDeleteGpgKeyForAuthenticatedNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20578,6 +22239,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20590,6 +22252,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 	case *UsersDeleteGpgKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20602,6 +22265,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20620,13 +22284,16 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	switch response := response.(type) {
 	case *UsersDeletePublicSSHKeyForAuthenticatedNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20639,6 +22306,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20651,6 +22319,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 	case *UsersDeletePublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20669,13 +22338,16 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	switch response := response.(type) {
 	case *UsersFollowNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersFollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20688,6 +22360,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	case *UsersFollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20700,6 +22373,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 	case *UsersFollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20719,6 +22393,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 	case *UsersGetAuthenticatedOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20730,10 +22405,12 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersGetAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20746,6 +22423,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 	case *UsersGetAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20765,6 +22443,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 	case *UsersGetByUsernameOK:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20777,6 +22456,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 	case *Accepted:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(202)
+		span.SetStatus(codes.Ok, http.StatusText(202))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20789,6 +22469,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20808,6 +22489,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 	case *Hovercard:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20820,6 +22502,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 	case *BasicError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20832,6 +22515,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20851,6 +22535,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *GpgKey:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20862,10 +22547,12 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20878,6 +22565,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20890,6 +22578,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 	case *UsersGetGpgKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20909,6 +22598,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *Key:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20920,10 +22610,12 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20936,6 +22628,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20948,6 +22641,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 	case *UsersGetPublicSSHKeyForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20967,6 +22661,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 	case *UsersListOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -20978,6 +22673,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	default:
 		return errors.Errorf("/users"+`: unexpected response type: %T`, response)
@@ -20989,6 +22685,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21000,10 +22697,12 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersListBlockedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21016,6 +22715,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21028,6 +22728,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *UsersListBlockedByAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21040,6 +22741,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 	case *PreviewHeaderMissing:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(415)
+		span.SetStatus(codes.Error, http.StatusText(415))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21059,6 +22761,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21070,10 +22773,12 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21086,6 +22791,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21098,6 +22804,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 	case *UsersListEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21117,6 +22824,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	case *UsersListFollowedByAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21128,10 +22836,12 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21144,6 +22854,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 	case *UsersListFollowedByAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21163,6 +22874,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	case *UsersListFollowersForAuthenticatedUserOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21174,10 +22886,12 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21190,6 +22904,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 	case *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21207,6 +22922,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21225,6 +22941,7 @@ func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.Respo
 func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21245,6 +22962,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21256,10 +22974,12 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21272,6 +22992,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21284,6 +23005,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 	case *UsersListGpgKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21301,6 +23023,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21321,6 +23044,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21332,10 +23056,12 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21348,6 +23074,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21360,6 +23087,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 	case *UsersListPublicEmailsForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21377,6 +23105,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
@@ -21397,6 +23126,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21408,10 +23138,12 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21424,6 +23156,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21436,6 +23169,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 	case *UsersListPublicSSHKeysForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21455,6 +23189,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21466,10 +23201,12 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21482,6 +23219,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21494,6 +23232,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21506,6 +23245,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21524,13 +23264,16 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 	switch response := response.(type) {
 	case *UsersUnblockNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersUnblockApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21543,6 +23286,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 	case *UsersUnblockApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21555,6 +23299,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 	case *UsersUnblockApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21573,13 +23318,16 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 	switch response := response.(type) {
 	case *UsersUnfollowNoContent:
 		w.WriteHeader(204)
+		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersUnfollowApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21592,6 +23340,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 	case *UsersUnfollowApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21604,6 +23353,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 	case *UsersUnfollowApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21623,6 +23373,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 	case *PrivateUser:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21634,10 +23385,12 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		return nil
 	case *NotModified:
 		w.WriteHeader(304)
+		span.SetStatus(codes.Ok, http.StatusText(304))
 		return nil
 	case *UsersUpdateAuthenticatedApplicationJSONUnauthorized:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(401)
+		span.SetStatus(codes.Error, http.StatusText(401))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21650,6 +23403,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 	case *UsersUpdateAuthenticatedApplicationJSONForbidden:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21662,6 +23416,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 	case *UsersUpdateAuthenticatedApplicationJSONNotFound:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(404)
+		span.SetStatus(codes.Error, http.StatusText(404))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -21674,6 +23429,7 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 	case *ValidationError:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(422)
+		span.SetStatus(codes.Error, http.StatusText(422))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 

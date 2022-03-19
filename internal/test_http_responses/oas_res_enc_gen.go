@@ -73,6 +73,7 @@ var (
 func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "*/*")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	if _, err := io.Copy(w, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -83,6 +84,12 @@ func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinar
 func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "*/*")
 	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
 	if _, err := io.Copy(w, response.Response); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -95,6 +102,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 	case *NilInt:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -107,6 +115,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 	case *NilString:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
+		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -124,6 +133,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	if _, err := io.Copy(w, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -134,6 +144,7 @@ func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStrin
 func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
 	if _, err := io.Copy(w, response); err != nil {
 		return errors.Wrap(err, "write")
 	}

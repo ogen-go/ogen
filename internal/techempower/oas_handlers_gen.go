@@ -107,7 +107,6 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -144,7 +143,6 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -181,7 +179,6 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -223,7 +220,6 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
@@ -265,7 +261,6 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 		s.errors.Add(ctx, 1, otelAttrs...)
 		return
 	}
-	span.SetStatus(codes.Ok, "Ok")
 	elapsedDuration := time.Since(startTime)
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }

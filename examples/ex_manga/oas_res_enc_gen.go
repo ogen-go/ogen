@@ -75,6 +75,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 	case *Book:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -86,6 +87,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		return nil
 	case *GetBookForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	default:
 		return errors.Errorf("/api/gallery/{book_id}"+`: unexpected response type: %T`, response)
@@ -97,6 +99,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 	case *SearchOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -108,6 +111,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		return nil
 	case *SearchForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	default:
 		return errors.Errorf("/api/galleries/search"+`: unexpected response type: %T`, response)
@@ -119,6 +123,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 	case *SearchByTagIDOKApplicationJSON:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
+		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
@@ -130,6 +135,7 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		return nil
 	case *SearchByTagIDForbidden:
 		w.WriteHeader(403)
+		span.SetStatus(codes.Error, http.StatusText(403))
 		return nil
 	default:
 		return errors.Errorf("/api/galleries/tagged"+`: unexpected response type: %T`, response)
