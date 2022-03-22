@@ -1,5 +1,11 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 
+{{ define "schemas/body" }}
+{{- range $_, $s := $.Types }}
+	{{- template "schema/schema" $s }}
+{{- end }}
+{{- end }}
+
 {{ define "schemas" }}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
@@ -10,8 +16,6 @@ func (s *{{ $.ErrorType.Name }}) Error() string {
 }
 {{- end }}
 
-{{- range $_, $s := $.Types }}
-	{{- template "schema/schema" $s }}
-{{- end }}
+{{ template "schemas/body" $ }}
 
 {{- end }}
