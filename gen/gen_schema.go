@@ -61,14 +61,6 @@ type refResolver struct {
 	parsedRoot *jsonschema.RawSchema
 }
 
-func (r refResolver) parse(input []byte) (*jsonschema.RawSchema, error) {
-	var rawSchema *jsonschema.RawSchema
-	if err := json.Unmarshal(input, &rawSchema); err != nil {
-		return nil, errors.Wrap(err, "unmarshal")
-	}
-	return rawSchema, nil
-}
-
 func (r refResolver) findPath(ref string, buf []byte) ([]byte, error) {
 	for _, part := range strings.Split(ref, "/") {
 		found := false
