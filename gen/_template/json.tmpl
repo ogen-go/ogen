@@ -1,14 +1,19 @@
-{{ define "json" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 
-{{ $pkg := $.Package }}
-{{ template "header" $ }}
-
+{{ define "json/body" }}
 {{- range $_, $t := $.Types }}
 	{{- if $t.HasFeature "json" }}
 	{{- template "json/encoders" $t }}
     {{- template "json/stdmarshaler" $t }}
 	{{- end }}
 {{- end }}
+{{ end }}
+
+{{ define "json" }}
+
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{ template "json/body" $ }}
 
 {{ end }}

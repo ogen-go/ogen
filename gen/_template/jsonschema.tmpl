@@ -1,0 +1,9 @@
+{{ define "jsonschema" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{ template "schemas/body" $ }}
+{{ template "json/body" $ }}
+{{ template "validators/body" $ }}
+
+{{- end }}

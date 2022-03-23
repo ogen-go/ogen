@@ -133,11 +133,8 @@
 	return nil
 {{- end }}
 
-{{ define "validators" }}
+{{ define "validators/body" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-
-{{ $pkg := $.Package }}
-{{ template "header" $ }}
 
 {{- range $t := $.Types }}{{/*Range schemas*/}}
 {{- if $t.NeedValidation }}{{/*Need validation*/}}
@@ -231,4 +228,15 @@ switch s {
 {{- end }}
 {{- end }}
 {{- end }}{{/*Range schemas*/}}
+
+{{ end }}
+
+{{ define "validators" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{ template "validators/body" $ }}
+
 {{ end }}

@@ -1,0 +1,301 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$ref": "#/definitions/Config",
+  "definitions": {
+    "Application": {
+      "required": [
+        "replicas",
+        "description",
+        "image"
+      ],
+      "properties": {
+        "replicas": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "build": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "$ref": "#/definitions/Build"
+        },
+        "image": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "$ref": "#/definitions/Image"
+        },
+        "config": {
+          "items": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "$ref": "#/definitions/ConfigFile"
+          },
+          "type": "array"
+        },
+        "log": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "$ref": "#/definitions/Log"
+        },
+        "env": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "services": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "$ref": "#/definitions/Services"
+        },
+        "secrets": {
+          "items": {
+            "$ref": "#/definitions/Secret"
+          },
+          "type": "array"
+        },
+        "prometheus": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "$ref": "#/definitions/Prometheus"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Build": {
+      "properties": {},
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Config": {
+      "required": [
+        "version",
+        "name",
+        "unit"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "env": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "secrets": {
+          "items": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "$ref": "#/definitions/Secret"
+          },
+          "type": "array"
+        },
+        "applications": {
+          "patternProperties": {
+            ".*": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "$ref": "#/definitions/Application"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "ConfigFile": {
+      "required": [
+        "path"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "object": {
+          "patternProperties": {
+            ".*": {
+              "additionalProperties": true
+            }
+          },
+          "type": "object"
+        },
+        "format": {
+          "enum": [
+            "yaml",
+            "json"
+          ],
+          "type": "string",
+          "default": "yaml"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "EnvoyAssistService": {
+      "required": [
+        "Hosts"
+      ],
+      "properties": {
+        "Hosts": {
+          "patternProperties": {
+            ".*": {
+              "type": "string",
+              "format": "ipv4"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Image": {
+      "properties": {
+        "static": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "artifacts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Log": {
+      "properties": {
+        "transformer": {
+          "type": "string"
+        },
+        "materialize": {
+          "items": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "$ref": "#/definitions/Materialize"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Materialize": {
+      "required": [
+        "name",
+        "mapping"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "condition": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "mapping": {
+          "items": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "$ref": "#/definitions/MaterializeMapping"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "MaterializeMapping": {
+      "required": [
+        "source",
+        "target"
+      ],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "target": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "$ref": "#/definitions/MaterializeTarget"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "MaterializeTarget": {
+      "required": [
+        "type",
+        "name"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Prometheus": {
+      "properties": {
+        "port": {
+          "type": "integer"
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Secret": {
+      "required": [
+        "name",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Services": {
+      "properties": {
+        "envoy_assist": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "$ref": "#/definitions/EnvoyAssistService"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    }
+  }
+}
