@@ -33,6 +33,8 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/instrument/syncint64"
+	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -63,7 +65,9 @@ var (
 	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
-	_ = metric.NewNoopMeterProvider
+	_ = metric.MeterConfig{}
+	_ = syncint64.Counter(nil)
+	_ = nonrecording.NewNoopMeterProvider
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
@@ -100,7 +104,7 @@ type config struct {
 func newConfig(opts ...Option) config {
 	cfg := config{
 		TracerProvider: otel.GetTracerProvider(),
-		MeterProvider:  metric.NewNoopMeterProvider(),
+		MeterProvider:  nonrecording.NewNoopMeterProvider(),
 		Client:         http.DefaultClient,
 		NotFound:       http.NotFound,
 	}

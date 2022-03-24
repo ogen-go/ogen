@@ -33,6 +33,8 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/instrument/syncint64"
+	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -63,7 +65,9 @@ var (
 	_ = attribute.KeyValue{}
 	_ = trace.TraceIDFromHex
 	_ = otel.GetTracerProvider
-	_ = metric.NewNoopMeterProvider
+	_ = metric.MeterConfig{}
+	_ = syncint64.Counter(nil)
+	_ = nonrecording.NewNoopMeterProvider
 	_ = regexp.MustCompile
 	_ = jx.Null
 	_ = sync.Pool{}
@@ -96,9 +100,9 @@ type Server struct {
 	h   Handler
 	cfg config
 
-	requests metric.Int64Counter
-	errors   metric.Int64Counter
-	duration metric.Int64Histogram
+	requests syncint64.Counter
+	errors   syncint64.Counter
+	duration syncint64.Histogram
 }
 
 func NewServer(h Handler, opts ...Option) (*Server, error) {
@@ -107,13 +111,13 @@ func NewServer(h Handler, opts ...Option) (*Server, error) {
 		cfg: newConfig(opts...),
 	}
 	var err error
-	if s.requests, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerRequestCount); err != nil {
+	if s.requests, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerRequestCount); err != nil {
 		return nil, err
 	}
-	if s.errors, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerErrorsCount); err != nil {
+	if s.errors, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerErrorsCount); err != nil {
 		return nil, err
 	}
-	if s.duration, err = s.cfg.Meter.NewInt64Histogram(otelogen.ServerDuration); err != nil {
+	if s.duration, err = s.cfg.Meter.SyncInt64().Histogram(otelogen.ServerDuration); err != nil {
 		return nil, err
 	}
 	return s, nil
