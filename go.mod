@@ -10,7 +10,7 @@ require (
 	github.com/stretchr/testify v1.7.1
 	github.com/valyala/fasthttp v1.34.0
 	go.opentelemetry.io/otel v1.6.0
-	go.opentelemetry.io/otel/metric v0.27.0
+	go.opentelemetry.io/otel/metric v0.28.0
 	go.opentelemetry.io/otel/trace v1.6.0
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 )
