@@ -46,7 +46,10 @@ func Parse(spec *ogen.Spec, inferTypes bool) ([]*oas.Operation, error) {
 			securitySchemes: map[string]*ogen.SecuritySchema{},
 		},
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
-			Resolver:   componentsResolver(spec.Components.Schemas),
+			Resolver: componentsResolver{
+				components: spec.Components.Schemas,
+				root:       jsonschema.NewRootResolver(spec.Raw),
+			},
 			InferTypes: inferTypes,
 		}),
 	}
