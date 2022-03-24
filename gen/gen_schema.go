@@ -3,10 +3,8 @@ package gen
 import (
 	"bytes"
 	"encoding/json"
-	"strings"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -39,10 +37,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 }
 
 func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema) (*ir.Type, error) {
-	gen := &schemaGen{
-		localRefs: map[string]*ir.Type{},
-		lookupRef: ctx.lookupRef,
-	}
+	gen := newSchemaGen(ctx.lookupRef)
 
 	t, err := gen.generate(name, schema)
 	if err != nil {
@@ -76,12 +71,9 @@ func GenerateSchema(input []byte, fs FileSystem, typeName, fileName, pkgName str
 		global: newTStorage(),
 		local:  newTStorage(),
 	}
-	gen := &schemaGen{
-		localRefs: map[string]*ir.Type{},
-		lookupRef: func(ref string) (*ir.Type, bool) {
-			return nil, false
-		},
-	}
+	gen := newSchemaGen(func(ref string) (*ir.Type, bool) {
+		return nil, false
+	})
 
 	t, err := gen.generate(typeName, schema)
 	if err != nil {
