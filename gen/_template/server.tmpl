@@ -30,9 +30,9 @@ type Server struct {
 	{{- end }}
 	cfg config
 
-	requests  metric.Int64Counter
-	errors    metric.Int64Counter
-	duration  metric.Int64Histogram
+	requests  syncint64.Counter
+	errors    syncint64.Counter
+	duration  syncint64.Histogram
 }
 
 func NewServer(h Handler, {{- if $.Securities }}sec SecurityHandler,{{- end }}opts ...Option) (*Server, error) {
@@ -44,13 +44,13 @@ func NewServer(h Handler, {{- if $.Securities }}sec SecurityHandler,{{- end }}op
 		cfg: newConfig(opts...),
 	}
 	var err error
-	if s.requests, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerRequestCount); err != nil {
+	if s.requests, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerRequestCount); err != nil {
 		return nil, err
 	}
-	if s.errors, err = s.cfg.Meter.NewInt64Counter(otelogen.ServerErrorsCount); err != nil {
+	if s.errors, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerErrorsCount); err != nil {
 		return nil, err
 	}
-	if s.duration, err = s.cfg.Meter.NewInt64Histogram(otelogen.ServerDuration); err != nil {
+	if s.duration, err = s.cfg.Meter.SyncInt64().Histogram(otelogen.ServerDuration); err != nil {
 		return nil, err
 	}
 	return s, nil

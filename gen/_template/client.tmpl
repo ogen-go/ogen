@@ -11,9 +11,9 @@ type Client struct {
 	sec 	  SecuritySource
 	{{- end }}
 	cfg       config
-	requests  metric.Int64Counter
-	errors    metric.Int64Counter
-	duration  metric.Int64Histogram
+	requests  syncint64.Counter
+	errors    syncint64.Counter
+	duration  syncint64.Histogram
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -29,13 +29,13 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 		{{- end }}
 		serverURL: u,
 	}
-	if c.requests, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientRequestCount); err != nil {
+	if c.requests, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientRequestCount); err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.NewInt64Counter(otelogen.ClientErrorsCount); err != nil {
+	if c.errors, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientErrorsCount); err != nil {
 		return nil, err
 	}
-	if c.duration, err = c.cfg.Meter.NewInt64Histogram(otelogen.ClientDuration); err != nil {
+	if c.duration, err = c.cfg.Meter.SyncInt64().Histogram(otelogen.ClientDuration); err != nil {
 		return nil, err
 	}
 	return c, nil
