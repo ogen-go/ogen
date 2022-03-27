@@ -15,6 +15,22 @@ type schemaGen struct {
 	side      []*ir.Type
 	localRefs map[string]*ir.Type
 	lookupRef func(ref string) (*ir.Type, bool)
+	nameRef   func(ref string) (string, error)
+}
+
+func newSchemaGen(lookupRef func(ref string) (*ir.Type, bool)) *schemaGen {
+	return &schemaGen{
+		side:      nil,
+		localRefs: map[string]*ir.Type{},
+		lookupRef: lookupRef,
+		nameRef: func(ref string) (string, error) {
+			name, err := pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
+			if err != nil {
+				return "", err
+			}
+			return name, nil
+		},
+	}
 }
 
 func variantFieldName(t *ir.Type) string {
@@ -34,7 +50,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			return t, nil
 		}
 
-		name, err = pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
+		name, err = g.nameRef(ref)
 		if err != nil {
 			return nil, errors.Wrapf(err, "schema name: %q", ref)
 		}

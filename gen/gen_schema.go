@@ -3,10 +3,8 @@ package gen
 import (
 	"bytes"
 	"encoding/json"
-	"strings"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/ir"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -39,10 +37,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 }
 
 func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema) (*ir.Type, error) {
-	gen := &schemaGen{
-		localRefs: map[string]*ir.Type{},
-		lookupRef: ctx.lookupRef,
-	}
+	gen := newSchemaGen(ctx.lookupRef)
 
 	t, err := gen.generate(name, schema)
 	if err != nil {
@@ -56,63 +51,6 @@ func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.
 	return t, nil
 }
 
-type refResolver struct {
-	root       []byte
-	parsedRoot *jsonschema.RawSchema
-}
-
-func (r refResolver) findPath(ref string, buf []byte) ([]byte, error) {
-	for _, part := range strings.Split(ref, "/") {
-		found := false
-		if err := jx.DecodeBytes(buf).ObjBytes(func(d *jx.Decoder, key []byte) error {
-			switch string(key) {
-			case part:
-				found = true
-				raw, err := d.RawAppend(nil)
-				if err != nil {
-					return errors.Wrapf(err, "parse %q", key)
-				}
-				buf = raw
-			default:
-				return d.Skip()
-			}
-			return nil
-		}); err != nil {
-			return nil, err
-		}
-
-		if !found {
-			return nil, errors.Errorf("find %q", part)
-		}
-	}
-	return buf, nil
-}
-
-func (r refResolver) ResolveReference(ref string) (rawSchema *jsonschema.RawSchema, err error) {
-	if !strings.HasPrefix(ref, "#") {
-		return nil, errors.Errorf("unsupported ref %q", ref)
-	}
-	ref = strings.TrimPrefix(ref, "#")
-
-	buf := r.root
-	if !strings.ContainsRune(ref, '/') {
-		if r.parsedRoot != nil {
-			return r.parsedRoot, nil
-		}
-	} else {
-		ref = strings.TrimPrefix(ref, "/")
-		buf, err = r.findPath(ref, buf)
-		if err != nil {
-			return nil, errors.Wrapf(err, "find %q", ref)
-		}
-	}
-
-	if err := json.Unmarshal(buf, &rawSchema); err != nil {
-		return nil, errors.Wrap(err, "unmarshal")
-	}
-	return rawSchema, nil
-}
-
 // GenerateSchema generates type, validation and JSON encoding for given schema.
 func GenerateSchema(input []byte, fs FileSystem, typeName, fileName, pkgName string) error {
 	var rawSchema *jsonschema.RawSchema
@@ -121,7 +59,7 @@ func GenerateSchema(input []byte, fs FileSystem, typeName, fileName, pkgName str
 	}
 
 	p := jsonschema.NewParser(jsonschema.Settings{
-		Resolver: refResolver{root: input},
+		Resolver: jsonschema.NewRootResolver(input),
 	})
 	schema, err := p.Parse(rawSchema)
 	if err != nil {
@@ -133,12 +71,9 @@ func GenerateSchema(input []byte, fs FileSystem, typeName, fileName, pkgName str
 		global: newTStorage(),
 		local:  newTStorage(),
 	}
-	gen := &schemaGen{
-		localRefs: map[string]*ir.Type{},
-		lookupRef: func(ref string) (*ir.Type, bool) {
-			return nil, false
-		},
-	}
+	gen := newSchemaGen(func(ref string) (*ir.Type, bool) {
+		return nil, false
+	})
 
 	t, err := gen.generate(typeName, schema)
 	if err != nil {

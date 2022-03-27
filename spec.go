@@ -29,6 +29,22 @@ type Spec struct {
 	// The tags that are not declared MAY be organized randomly or based on the tools' logic.
 	// Each tag name in the list MUST be unique.
 	Tags []Tag `json:"tags,omitempty"`
+
+	// Raw JSON value. Used by JSON Schema resolver.
+	Raw []byte `json:"-"`
+}
+
+func (s *Spec) UnmarshalJSON(bytes []byte) error {
+	type Alias Spec
+	var a Alias
+
+	if err := json.Unmarshal(bytes, &a); err != nil {
+		return err
+	}
+	a.Raw = append(a.Raw, bytes...)
+	*s = Spec(a)
+
+	return nil
 }
 
 // Init components of schema.
