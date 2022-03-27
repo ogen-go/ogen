@@ -11,8 +11,7 @@ import (
 
 // RootResolver is ReferenceResolver implementation.
 type RootResolver struct {
-	root       []byte
-	parsedRoot *RawSchema
+	root []byte
 }
 
 // NewRootResolver creates new RootResolver.

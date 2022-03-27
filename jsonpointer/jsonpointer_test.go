@@ -86,6 +86,39 @@ func TestSpecification(t *testing.T) {
 	}
 }
 
+func BenchmarkResolve(b *testing.B) {
+	var specExample = []byte(`{
+  "foo": ["bar", "baz"],
+  "": 0,
+  "a/b": 1,
+  "c%d": 2,
+  "e^f": 3,
+  "g|h": 4,
+  "i\\j": 5,
+  "k\"l": 6,
+  " ": 7,
+  "m~n": 8
+}`)
+	var (
+		buf []byte
+		err error
+	)
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		buf, err = Resolve("/foo/0", specExample)
+	}
+
+	if err != nil {
+		b.Fatal(err)
+	}
+	if string(buf) != `"bar"` {
+		b.Fatal("unexpected result", buf)
+	}
+}
+
 func TestResolve(t *testing.T) {
 	tests := []struct {
 		ptr     string
