@@ -2,7 +2,6 @@ package ogen_test
 
 import (
 	"embed"
-	"go/format"
 	"io/fs"
 	"path/filepath"
 	"strings"
@@ -12,18 +11,11 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
+	"github.com/ogen-go/ogen/gen/genfs"
 )
 
 //go:embed _testdata
 var testdata embed.FS
-
-// TODO: Create validationFs.
-type fmtFs struct{}
-
-func (n fmtFs) WriteFile(baseName string, source []byte) error {
-	_, err := format.Source(source)
-	return err
-}
 
 func testGenerate(t *testing.T, name string, ignore ...string) {
 	t.Helper()
@@ -46,7 +38,7 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		g, err := gen.NewGenerator(spec, opt)
 		require.NoError(t, err)
 
-		require.NoError(t, g.WriteSource(fmtFs{}, "api"))
+		require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
 	})
 	if len(opt.IgnoreNotImplemented) > 0 {
 		t.Run("Full", func(t *testing.T) {

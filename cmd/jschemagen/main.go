@@ -2,29 +2,11 @@ package main
 
 import (
 	"flag"
-	"go/format"
 	"os"
-	"path/filepath"
 
 	"github.com/ogen-go/ogen/gen"
+	"github.com/ogen-go/ogen/gen/genfs"
 )
-
-type formattedSource struct {
-	Format bool
-	Root   string
-}
-
-func (t formattedSource) WriteFile(name string, content []byte) error {
-	out := content
-	if t.Format {
-		buf, err := format.Source(content)
-		if err != nil {
-			return err
-		}
-		out = buf
-	}
-	return os.WriteFile(filepath.Join(t.Root, name), out, 0600)
-}
 
 func main() {
 	var (
@@ -44,7 +26,7 @@ func main() {
 		panic(err)
 	}
 
-	fs := formattedSource{
+	fs := genfs.FormattedSource{
 		Root:   "./",
 		Format: *performFormat,
 	}
