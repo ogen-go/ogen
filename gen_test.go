@@ -52,6 +52,10 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		g, err := gen.NewGenerator(spec, opt)
 		require.NoError(t, err)
 
+		if testing.Short() {
+			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
+			return
+		}
 		require.NoError(t, g.WriteSource(genfs.FormattedSource{
 			Format: true,
 			Root:   temp,
