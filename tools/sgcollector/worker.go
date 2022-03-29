@@ -93,6 +93,17 @@ func (p *GenerateError) Error() string {
 	return fmt.Sprintf("%s: %s", p.stage, p.err)
 }
 
+type errFs struct {
+	genfs.CheckFS
+}
+
+func (n errFs) WriteFile(baseName string, source []byte) error {
+	if err := n.CheckFS.WriteFile(baseName, source); err != nil {
+		return &GenerateError{stage: Format, err: err}
+	}
+	return nil
+}
+
 func generate(data []byte, isYAML bool) error {
 	if isYAML {
 		j, err := convertYAMLtoJSON(data)
@@ -135,7 +146,7 @@ func generate(data []byte, isYAML bool) error {
 		return &GenerateError{stage: BuildIR, notImpl: notImpl, err: err}
 	}
 
-	if err := g.WriteSource(genfs.CheckFS{}, "api"); err != nil {
+	if err := g.WriteSource(errFs{}, "api"); err != nil {
 		var pse *GenerateError
 		if errors.As(err, &pse) {
 			return err
