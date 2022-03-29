@@ -50,7 +50,10 @@ jobs:
             test-${{ runner.os }}-go-
 
       - name: Run tests
-        run: make test
+        env:
+          GOARCH: ${{ matrix.arch }}
+          GOFLAGS: ${{ matrix.flags }}
+        run: go test --timeout 15m ./...
 
   test-examples:
     runs-on: ubuntu-latest
