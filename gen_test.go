@@ -3,6 +3,8 @@ package ogen_test
 import (
 	"embed"
 	"io/fs"
+	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -29,6 +31,18 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		InferSchemaType:      true,
 	}
 	t.Run("Gen", func(t *testing.T) {
+		temp := t.TempDir()
+		do := func(args ...string) {
+			e := exec.Command("go", args...)
+			e.Dir = temp
+			e.Stdout = os.Stdout
+			stderr := &strings.Builder{}
+			e.Stderr = stderr
+
+			err := e.Run()
+			require.NoError(t, err, stderr.String())
+		}
+
 		defer func() {
 			if rr := recover(); rr != nil {
 				t.Fatalf("panic: %+v", rr)
@@ -38,7 +52,13 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		g, err := gen.NewGenerator(spec, opt)
 		require.NoError(t, err)
 
-		require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
+		require.NoError(t, g.WriteSource(genfs.FormattedSource{
+			Format: true,
+			Root:   temp,
+		}, "api"))
+		do("mod", "init", "check")
+		do("mod", "tidy", "-v")
+		do("build", "./")
 	})
 	if len(opt.IgnoreNotImplemented) > 0 {
 		t.Run("Full", func(t *testing.T) {
@@ -98,17 +118,18 @@ func TestGenerate(t *testing.T) {
 		if err != nil || d == nil || d.IsDir() {
 			return err
 		}
-		_, file := filepath.Split(path)
 
+		_, file := filepath.Split(path)
 		skip, ok := skipSets[file]
 		if !ok {
 			skip = []string{"all"}
 		}
 
-		file = strings.TrimSuffix(file, ".json")
-		file = strings.TrimSuffix(file, ".yml")
-		file = strings.TrimSuffix(file, ".yaml")
-		t.Run(file, g(path, skip...))
+		testName := strings.TrimPrefix(path, "_testdata/")
+		testName = strings.TrimSuffix(testName, ".json")
+		testName = strings.TrimSuffix(testName, ".yml")
+		testName = strings.TrimSuffix(testName, ".yaml")
+		t.Run(testName, g(path, skip...))
 		return nil
 	}); err != nil {
 		t.Fatal(err)
