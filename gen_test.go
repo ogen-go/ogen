@@ -114,7 +114,8 @@ func TestGenerate(t *testing.T) {
 		},
 	}
 
-	if err := fs.WalkDir(testdata, "_testdata/positive", func(path string, d fs.DirEntry, err error) error {
+	testDataPath := "_testdata/positive"
+	if err := fs.WalkDir(testdata, testDataPath, func(path string, d fs.DirEntry, err error) error {
 		if err != nil || d == nil || d.IsDir() {
 			return err
 		}
@@ -125,7 +126,7 @@ func TestGenerate(t *testing.T) {
 			skip = []string{"all"}
 		}
 
-		testName := strings.TrimPrefix(path, "_testdata/")
+		testName := strings.TrimPrefix(path, testDataPath+"/")
 		testName = strings.TrimSuffix(testName, ".json")
 		testName = strings.TrimSuffix(testName, ".yml")
 		testName = strings.TrimSuffix(testName, ".yaml")

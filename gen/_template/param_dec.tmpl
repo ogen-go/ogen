@@ -56,8 +56,11 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 		} {{- end }}
 	}
 	{{- else if $p.Spec.In.Path }}
+	{{- /* If we cannot find such path parameter, defined path parameter is not used */ -}}
+	{{- $idx := $op.PathParamIndex $p.Spec.Name }}
+	{{- if ge $idx 0 }}
 	{
-		param := args[{{ $op.PathParamIndex $p.Spec.Name }}]
+		param := args[{{ $idx }}]
 		if len(param) > 0 {
 			d := uri.NewPathDecoder(uri.PathDecoderConfig{
 				Param: {{ quote $p.Spec.Name}},
@@ -75,6 +78,9 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 			return params, errors.New({{ quote $errNotSpecified }})
 		} {{ end }}
 	}
+	{{- else }}
+	// Not used.
+	{{- end }}
 	{{- else if $p.Spec.In.Header }}
 	{
 		param := r.Header.Get({{ quote $p.Spec.Name }})
