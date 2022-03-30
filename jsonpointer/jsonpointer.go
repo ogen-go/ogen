@@ -73,7 +73,7 @@ func find(ptr string, buf []byte) ([]byte, error) {
 				return errors.Wrapf(err, "find index %q", part)
 			}
 		default:
-			return errors.Errorf("unexpected %s", tt)
+			return errors.Errorf("unexpected type %q", tt)
 		}
 		if !ok {
 			return &NotFoundError{Pointer: ptr}
