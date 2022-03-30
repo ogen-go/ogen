@@ -32,10 +32,15 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		indexSuffix
 		_lastStrategy
 	)
+	vstrCache := make(map[int]string, len(schema.Enum))
 	nameEnum := func(s namingStrategy, idx int, v interface{}) (string, error) {
-		vstr := fmt.Sprintf("%v", v)
-		if vstr == "" {
-			vstr = "Empty"
+		vstr, ok := vstrCache[idx]
+		if !ok {
+			vstr = fmt.Sprintf("%v", v)
+			if vstr == "" {
+				vstr = "Empty"
+			}
+			vstrCache[idx] = vstr
 		}
 
 		switch s {
@@ -77,14 +82,9 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 
 	var variants []*ir.EnumVariant
 	for idx, v := range schema.Enum {
-		vstr := fmt.Sprintf("%v", v)
-		if vstr == "" {
-			vstr = "Empty"
-		}
-
 		variantName, err := nameEnum(chosenStrategy, idx, v)
 		if err != nil {
-			return nil, errors.Wrapf(err, "variant %q [%d]", vstr, idx)
+			return nil, errors.Wrapf(err, "variant %q [%d]", vstrCache[idx], idx)
 		}
 
 		variants = append(variants, &ir.EnumVariant{
