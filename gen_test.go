@@ -2,8 +2,9 @@ package ogen_test
 
 import (
 	"embed"
-	"go/format"
 	"io/fs"
+	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -12,18 +13,11 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
+	"github.com/ogen-go/ogen/gen/genfs"
 )
 
 //go:embed _testdata
 var testdata embed.FS
-
-// TODO: Create validationFs.
-type fmtFs struct{}
-
-func (n fmtFs) WriteFile(baseName string, source []byte) error {
-	_, err := format.Source(source)
-	return err
-}
 
 func testGenerate(t *testing.T, name string, ignore ...string) {
 	t.Helper()
@@ -37,6 +31,18 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		InferSchemaType:      true,
 	}
 	t.Run("Gen", func(t *testing.T) {
+		temp := t.TempDir()
+		do := func(args ...string) {
+			e := exec.Command("go", args...)
+			e.Dir = temp
+			e.Stdout = os.Stdout
+			stderr := &strings.Builder{}
+			e.Stderr = stderr
+
+			err := e.Run()
+			require.NoError(t, err, stderr.String())
+		}
+
 		defer func() {
 			if rr := recover(); rr != nil {
 				t.Fatalf("panic: %+v", rr)
@@ -46,7 +52,17 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		g, err := gen.NewGenerator(spec, opt)
 		require.NoError(t, err)
 
-		require.NoError(t, g.WriteSource(fmtFs{}, "api"))
+		if testing.Short() {
+			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
+			return
+		}
+		require.NoError(t, g.WriteSource(genfs.FormattedSource{
+			Format: true,
+			Root:   temp,
+		}, "api"))
+		do("mod", "init", "check")
+		do("mod", "tidy", "-v")
+		do("build", "./")
 	})
 	if len(opt.IgnoreNotImplemented) > 0 {
 		t.Run("Full", func(t *testing.T) {
@@ -102,21 +118,23 @@ func TestGenerate(t *testing.T) {
 		},
 	}
 
-	if err := fs.WalkDir(testdata, "_testdata/positive", func(path string, d fs.DirEntry, err error) error {
+	testDataPath := "_testdata/positive"
+	if err := fs.WalkDir(testdata, testDataPath, func(path string, d fs.DirEntry, err error) error {
 		if err != nil || d == nil || d.IsDir() {
 			return err
 		}
-		_, file := filepath.Split(path)
 
+		_, file := filepath.Split(path)
 		skip, ok := skipSets[file]
 		if !ok {
 			skip = []string{"all"}
 		}
 
-		file = strings.TrimSuffix(file, ".json")
-		file = strings.TrimSuffix(file, ".yml")
-		file = strings.TrimSuffix(file, ".yaml")
-		t.Run(file, g(path, skip...))
+		testName := strings.TrimPrefix(path, testDataPath+"/")
+		testName = strings.TrimSuffix(testName, ".json")
+		testName = strings.TrimSuffix(testName, ".yml")
+		testName = strings.TrimSuffix(testName, ".yaml")
+		t.Run(testName, g(path, skip...))
 		return nil
 	}); err != nil {
 		t.Fatal(err)

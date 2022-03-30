@@ -2,21 +2,14 @@ package gen
 
 import (
 	"embed"
-	"go/format"
 	"io/fs"
 	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/gen/genfs"
 )
-
-// TODO: Create validationFs.
-type fmtFs struct{}
-
-func (n fmtFs) WriteFile(baseName string, source []byte) error {
-	_, err := format.Source(source)
-	return err
-}
 
 //go:embed _testdata/jsonschema
 var testdata embed.FS
@@ -35,7 +28,7 @@ func TestGenerateSchema(t *testing.T) {
 		t.Run(file, func(t *testing.T) {
 			require.NoError(t, GenerateSchema(
 				input,
-				fmtFs{},
+				genfs.CheckFS{},
 				"Type",
 				"output.go",
 				"output",

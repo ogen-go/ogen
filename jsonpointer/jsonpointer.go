@@ -73,7 +73,7 @@ func find(ptr string, buf []byte) ([]byte, error) {
 				return errors.Wrapf(err, "find index %q", part)
 			}
 		default:
-			return errors.Errorf("unexpected %s", tt)
+			return errors.Errorf("unexpected type %q", tt)
 		}
 		if !ok {
 			return &NotFoundError{Pointer: ptr}
@@ -130,7 +130,7 @@ func findKey(d *jx.Decoder, part string) (result []byte, ok bool, _ error) {
 	}); err != nil {
 		return nil, false, err
 	}
-	return result, true, nil
+	return result, ok, nil
 }
 
 var (

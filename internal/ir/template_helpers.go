@@ -20,6 +20,8 @@ func (t *Type) EncodeFn() string {
 		return t.Item.EncodeFn() + "Array"
 	}
 	switch t.Primitive {
+	case ByteSlice:
+		return "Bytes"
 	case Int, Int64, Int32, String, Bool, Float32, Float64:
 		return capitalize.Capitalize(t.Primitive.String())
 	case UUID, Time, IP, Duration, URL:
@@ -30,17 +32,19 @@ func (t *Type) EncodeFn() string {
 }
 
 func (t Type) ToString() string {
-	if t.EncodeFn() == "" {
-		return ""
+	encodeFn := t.EncodeFn()
+	if encodeFn == "" {
+		panic(fmt.Sprintf("unexpected %+v", t))
 	}
-	return t.EncodeFn() + "ToString"
+	return encodeFn + "ToString"
 }
 
 func (t Type) FromString() string {
-	if t.EncodeFn() == "" {
-		return ""
+	encodeFn := t.EncodeFn()
+	if encodeFn == "" {
+		panic(fmt.Sprintf("unexpected %+v", t))
 	}
-	return "To" + t.EncodeFn()
+	return "To" + encodeFn
 }
 
 func (t *Type) IsInteger() bool {

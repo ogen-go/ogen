@@ -4,7 +4,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"go/format"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -12,24 +11,8 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
+	"github.com/ogen-go/ogen/gen/genfs"
 )
-
-type formattedSource struct {
-	Format bool
-	Root   string
-}
-
-func (t formattedSource) WriteFile(name string, content []byte) error {
-	out := content
-	if t.Format {
-		buf, err := format.Source(content)
-		if err != nil {
-			return err
-		}
-		out = buf
-	}
-	return os.WriteFile(filepath.Join(t.Root, name), out, 0600)
-}
 
 func main() {
 	var (
@@ -90,7 +73,7 @@ func main() {
 		}
 	}
 
-	fs := formattedSource{
+	fs := genfs.FormattedSource{
 		Root:   *targetDir,
 		Format: *performFormat,
 	}

@@ -76,7 +76,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 	if ref := schema.Ref; ref != "" {
 		s, err := p.resolve(ref, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "reference %q", ref)
+			return nil, errors.Wrapf(err, "resolve %q", ref)
 		}
 		return s, nil
 	}
@@ -316,13 +316,13 @@ func (p *Parser) resolve(ref string, ctx resolveCtx) (*Schema, error) {
 	}
 
 	if _, ok := ctx[ref]; ok {
-		return nil, errors.Errorf("infinite recursion: %q", ref)
+		return nil, errors.New("infinite recursion")
 	}
 	ctx[ref] = struct{}{}
 
 	raw, err := p.resolver.ResolveReference(ref)
 	if err != nil {
-		return nil, errors.Wrapf(err, "resolve reference %q", ref)
+		return nil, errors.Wrap(err, "find schema")
 	}
 
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {

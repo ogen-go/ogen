@@ -5,7 +5,6 @@ import (
 	"context"
 	"crypto/sha256"
 	"fmt"
-	"go/format"
 	"sort"
 	"strings"
 
@@ -15,6 +14,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
+	"github.com/ogen-go/ogen/gen/genfs"
 )
 
 var errPanic = errors.New("panic")
@@ -93,11 +93,12 @@ func (p *GenerateError) Error() string {
 	return fmt.Sprintf("%s: %s", p.stage, p.err)
 }
 
-type fmtFs struct{}
+type errFs struct {
+	genfs.CheckFS
+}
 
-func (n fmtFs) WriteFile(baseName string, source []byte) error {
-	_, err := format.Source(source)
-	if err != nil {
+func (n errFs) WriteFile(baseName string, source []byte) error {
+	if err := n.CheckFS.WriteFile(baseName, source); err != nil {
 		return &GenerateError{stage: Format, err: err}
 	}
 	return nil
@@ -145,7 +146,7 @@ func generate(data []byte, isYAML bool) error {
 		return &GenerateError{stage: BuildIR, notImpl: notImpl, err: err}
 	}
 
-	if err := g.WriteSource(fmtFs{}, "api"); err != nil {
+	if err := g.WriteSource(errFs{}, "api"); err != nil {
 		var pse *GenerateError
 		if errors.As(err, &pse) {
 			return err
