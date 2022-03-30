@@ -19,7 +19,7 @@ import (
 //go:embed _testdata
 var testdata embed.FS
 
-func testGenerate(t *testing.T, name string, ignore ...string) {
+func testGenerate(t *testing.T, build bool, name string, ignore ...string) {
 	t.Helper()
 
 	data, err := testdata.ReadFile(name)
@@ -31,6 +31,21 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 		InferSchemaType:      true,
 	}
 	t.Run("Gen", func(t *testing.T) {
+		defer func() {
+			if rr := recover(); rr != nil {
+				t.Fatalf("panic: %+v", rr)
+			}
+		}()
+
+		g, err := gen.NewGenerator(spec, opt)
+		require.NoError(t, err)
+
+		if !build {
+			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
+			return
+		}
+
+		t.Log("Running build")
 		temp := t.TempDir()
 		do := func(args ...string) {
 			e := exec.Command("go", args...)
@@ -41,20 +56,6 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 
 			err := e.Run()
 			require.NoError(t, err, stderr.String())
-		}
-
-		defer func() {
-			if rr := recover(); rr != nil {
-				t.Fatalf("panic: %+v", rr)
-			}
-		}()
-
-		g, err := gen.NewGenerator(spec, opt)
-		require.NoError(t, err)
-
-		if testing.Short() {
-			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
-			return
 		}
 		require.NoError(t, g.WriteSource(genfs.FormattedSource{
 			Format: true,
@@ -73,11 +74,11 @@ func testGenerate(t *testing.T, name string, ignore ...string) {
 
 func TestGenerate(t *testing.T) {
 	t.Parallel()
-	g := func(name string, ignore ...string) func(t *testing.T) {
+	g := func(name string, build bool, ignore ...string) func(t *testing.T) {
 		return func(t *testing.T) {
 			t.Helper()
 			t.Parallel()
-			testGenerate(t, name, ignore...)
+			testGenerate(t, build, name, ignore...)
 		}
 	}
 
@@ -117,6 +118,21 @@ func TestGenerate(t *testing.T) {
 			"http security scheme",
 		},
 	}
+	// Do not build these schemas because they checked by test examples workflow.
+	doNotBuild := map[string]struct{}{
+		"test_format.json":         {},
+		"petstore.yaml":            {},
+		"firecracker.json":         {},
+		"gotd_bot_api.json":        {},
+		"ent.json":                 {},
+		"ex_route_params.json":     {},
+		"manga.json":               {},
+		"petstore - expanded.yaml": {},
+		"k8s.json":                 {},
+		"api.github.com.json":      {},
+		"telegram_bot_api.json":    {},
+		"tinkoff.json":             {},
+	}
 
 	testDataPath := "_testdata/positive"
 	if err := fs.WalkDir(testdata, testDataPath, func(path string, d fs.DirEntry, err error) error {
@@ -130,11 +146,17 @@ func TestGenerate(t *testing.T) {
 			skip = []string{"all"}
 		}
 
+		build := !testing.Short()
+		if _, ok := doNotBuild[file]; ok {
+			build = false
+		}
+
 		testName := strings.TrimPrefix(path, testDataPath+"/")
 		testName = strings.TrimSuffix(testName, ".json")
 		testName = strings.TrimSuffix(testName, ".yml")
 		testName = strings.TrimSuffix(testName, ".yaml")
-		t.Run(testName, g(path, skip...))
+
+		t.Run(testName, g(path, build, skip...))
 		return nil
 	}); err != nil {
 		t.Fatal(err)
