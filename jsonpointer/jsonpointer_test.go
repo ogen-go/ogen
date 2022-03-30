@@ -88,16 +88,28 @@ func TestSpecification(t *testing.T) {
 
 func BenchmarkResolve(b *testing.B) {
 	var specExample = []byte(`{
-  "foo": ["bar", "baz"],
-  "": 0,
-  "a/b": 1,
-  "c%d": 2,
-  "e^f": 3,
-  "g|h": 4,
-  "i\\j": 5,
-  "k\"l": 6,
-  " ": 7,
-  "m~n": 8
+  "openapi": "3.0.3",
+  "components": {
+    "schemas": {
+      "Error": {
+        "description": "Represents error object",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ]
+      }
+    }
+  }
 }`)
 	var (
 		buf []byte
@@ -108,13 +120,13 @@ func BenchmarkResolve(b *testing.B) {
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		buf, err = Resolve("/foo/0", specExample)
+		buf, err = Resolve("#/components/schemas/Error/properties/code/type", specExample)
 	}
 
 	if err != nil {
 		b.Fatal(err)
 	}
-	if string(buf) != `"bar"` {
+	if string(buf) != `"integer"` {
 		b.Fatal("unexpected result", buf)
 	}
 }
