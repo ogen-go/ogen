@@ -52,6 +52,7 @@ func find(ptr string, buf []byte) ([]byte, error) {
 	if ptr[0] != '/' {
 		return nil, errors.Errorf("invalid pointer %q: pointer must start with '/'", ptr)
 	}
+	// Cut first /.
 	ptr = ptr[1:]
 
 	err := splitFunc(ptr, '/', func(part string) (err error) {
@@ -141,5 +142,9 @@ var (
 )
 
 func unescape(part string) string {
+	// Replacer always creates new string, check that unescape is really necessary.
+	if !strings.Contains(part, "~1") && !strings.Contains(part, "~0") {
+		return part
+	}
 	return unescapeReplacer.Replace(part)
 }
