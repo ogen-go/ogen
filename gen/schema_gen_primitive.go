@@ -2,6 +2,7 @@ package gen
 
 import (
 	"fmt"
+	"strconv"
 
 	"github.com/go-faster/errors"
 
@@ -13,67 +14,92 @@ func (g *schemaGen) primitive(name string, schema *jsonschema.Schema) (*ir.Type,
 	t := parseSimple(schema)
 
 	if len(schema.Enum) > 0 {
-		if !t.Is(ir.KindPrimitive) {
-			return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
-		}
-
-		hasDuplicateNames, err := func() (bool, error) {
-			names := map[string]struct{}{}
-			for _, v := range schema.Enum {
-				vstr := fmt.Sprintf("%v", v)
-				if vstr == "" {
-					vstr = "Empty"
-				}
-
-				k, err := pascalSpecial(name, vstr)
-				if err != nil {
-					return false, errors.Wrapf(err, "variant %q", vstr)
-				}
-				if _, ok := names[k]; ok {
-					return true, nil
-				}
-				names[k] = struct{}{}
-			}
-
-			return false, nil
-		}()
-		if err != nil {
-			return nil, errors.Wrap(err, "enum")
-		}
-
-		var variants []*ir.EnumVariant
-		for _, v := range schema.Enum {
-			vstr := fmt.Sprintf("%v", v)
-			if vstr == "" {
-				vstr = "Empty"
-			}
-
-			var variantName string
-			if hasDuplicateNames {
-				variantName = name + "_" + cleanSpecial(vstr)
-			} else {
-				variantName, err = pascalSpecial(name, vstr)
-				if err != nil {
-					return nil, errors.Wrapf(err, "variant %q", vstr)
-				}
-			}
-
-			variants = append(variants, &ir.EnumVariant{
-				Name:  variantName,
-				Value: v,
-			})
-		}
-
-		return &ir.Type{
-			Kind:         ir.KindEnum,
-			Name:         name,
-			Primitive:    t.Primitive,
-			EnumVariants: variants,
-			Schema:       schema,
-		}, nil
+		return g.enum(name, t, schema)
 	}
 
 	return t, nil
+}
+
+func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*ir.Type, error) {
+	if !t.Is(ir.KindPrimitive) {
+		return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
+	}
+
+	type namingStrategy int
+	const (
+		pascalName namingStrategy = iota
+		cleanSuffix
+		indexSuffix
+		_lastStrategy
+	)
+	nameEnum := func(s namingStrategy, idx int, v interface{}) (string, error) {
+		vstr := fmt.Sprintf("%v", v)
+		if vstr == "" {
+			vstr = "Empty"
+		}
+
+		switch s {
+		case pascalName:
+			return pascalSpecial(name, vstr)
+		case cleanSuffix:
+			return name + "_" + cleanSpecial(vstr), nil
+		case indexSuffix:
+			return name + "_" + strconv.Itoa(idx), nil
+		default:
+			panic(unreachable(s))
+		}
+	}
+
+	chosenStrategy, err := func() (namingStrategy, error) {
+	nextStrategy:
+		for strategy := pascalName; strategy < _lastStrategy; strategy++ {
+			// Treat enum type name as duplicate to prevent collisions.
+			names := map[string]struct{}{
+				name: {},
+			}
+			for idx, v := range schema.Enum {
+				k, err := nameEnum(strategy, idx, v)
+				if err != nil {
+					continue nextStrategy
+				}
+				if _, ok := names[k]; ok {
+					continue nextStrategy
+				}
+				names[k] = struct{}{}
+			}
+			return strategy, nil
+		}
+		return 0, errors.Errorf("unable to generate variant names for enum %q", name)
+	}()
+	if err != nil {
+		return nil, errors.Wrap(err, "choose strategy")
+	}
+
+	var variants []*ir.EnumVariant
+	for idx, v := range schema.Enum {
+		vstr := fmt.Sprintf("%v", v)
+		if vstr == "" {
+			vstr = "Empty"
+		}
+
+		variantName, err := nameEnum(chosenStrategy, idx, v)
+		if err != nil {
+			return nil, errors.Wrapf(err, "variant %q [%d]", vstr, idx)
+		}
+
+		variants = append(variants, &ir.EnumVariant{
+			Name:  variantName,
+			Value: v,
+		})
+	}
+
+	return &ir.Type{
+		Kind:         ir.KindEnum,
+		Name:         name,
+		Primitive:    t.Primitive,
+		EnumVariants: variants,
+		Schema:       schema,
+	}, nil
 }
 
 func parseSimple(schema *jsonschema.Schema) *ir.Type {
