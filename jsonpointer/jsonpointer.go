@@ -130,7 +130,7 @@ func findKey(d *jx.Decoder, part string) (result []byte, ok bool, _ error) {
 	}); err != nil {
 		return nil, false, err
 	}
-	return result, true, nil
+	return result, ok, nil
 }
 
 var (
