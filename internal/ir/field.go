@@ -18,9 +18,15 @@ func (t Tag) EscapedJSON() string {
 
 // Field of structure.
 type Field struct {
+	// Go Name of field.
 	Name string
+	// Type of field.
 	Type *Type
-	Tag  Tag
+	// JSON tag. May be empty.
+	Tag Tag
+	// Whether field is inlined map (i.e. additionalProperties).
+	AdditionalProps bool
+	// Spec is property schema. May be empty.
 	Spec *jsonschema.Property
 }
 

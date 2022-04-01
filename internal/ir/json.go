@@ -86,6 +86,16 @@ func (j JSON) Fields() (fields JSONFields) {
 	return fields
 }
 
+// AdditionalProps return field of Type that should be encoded as inlined map.
+func (j JSON) AdditionalProps() (field *Field) {
+	for _, f := range j.t.Fields {
+		if f.AdditionalProps {
+			return f
+		}
+	}
+	return nil
+}
+
 // Format returns format name for handling json encoding or decoding.
 //
 // Mostly used for encoding or decoding of string formats, like `json.EncodeUUID`,

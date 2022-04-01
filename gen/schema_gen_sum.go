@@ -195,13 +195,13 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 
 	for _, s := range sum.SumOf {
 		uniq[s.Name] = map[string]struct{}{}
-		if !s.Is(ir.KindMap, ir.KindStruct) {
+		if !s.Is(ir.KindStruct) {
 			return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
 				"oneOf %s: variant %s: no unique fields, "+
 					"unable to parse without discriminator", sum.Name, s.Name,
 			)
 		}
-		for _, f := range s.Fields {
+		for _, f := range s.JSON().Fields() {
 			uniq[s.Name][f.Name] = struct{}{}
 		}
 	}
@@ -282,7 +282,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 			if len(s.SumSpec.Unique) > 0 {
 				continue
 			}
-			for _, f := range s.Fields {
+			for _, f := range s.JSON().Fields() {
 				var skip bool
 				for _, n := range v.Unique {
 					if n == f.Name {

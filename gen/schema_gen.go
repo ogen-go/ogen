@@ -102,7 +102,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 	switch schema.Type {
 	case jsonschema.Object:
 		kind := ir.KindStruct
-		if schema.AdditionalProperties {
+		if schema.AdditionalProperties && len(schema.Properties) == 0 {
 			kind = ir.KindMap
 		}
 
@@ -146,13 +146,28 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 		}
 
 		if schema.AdditionalProperties {
-			if schema.Item != nil {
-				s.Item, err = g.generate(name+"Item", schema.Item)
+			mapType := s
+			// Create special field for additionalProperties.
+			if props := schema.Properties; len(props) > 0 {
+				mapType = side(&ir.Type{
+					Kind: ir.KindMap,
+					Name: s.Name + "Additional",
+				})
+				// TODO(tdakkota): check name for collision.
+				s.Fields = append(s.Fields, &ir.Field{
+					Name:            "AdditionalProps",
+					Type:            mapType,
+					AdditionalProps: true,
+				})
+			}
+
+			if schItem := schema.Item; schItem != nil {
+				mapType.Item, err = g.generate(mapType.Name+"Item", schItem)
 				if err != nil {
 					return nil, errors.Wrap(err, "item")
 				}
 			} else {
-				s.Item = ir.Any()
+				mapType.Item = ir.Any()
 			}
 		}
 

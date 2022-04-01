@@ -12,7 +12,7 @@ import (
 
 func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 	for _, t := range gen.side {
-		if t.Is(ir.KindStruct) || (t.Is(ir.KindMap) && len(t.Fields) > 0) {
+		if t.IsStruct() {
 			if err := boxStructFields(ctx, t); err != nil {
 				return errors.Wrap(err, t.Name)
 			}
@@ -24,7 +24,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 	}
 
 	for ref, t := range gen.localRefs {
-		if t.Is(ir.KindStruct) || (t.Is(ir.KindMap) && len(t.Fields) > 0) {
+		if t.IsStruct() {
 			if err := boxStructFields(ctx, t); err != nil {
 				return errors.Wrap(err, ref)
 			}

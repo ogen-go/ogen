@@ -161,21 +161,9 @@ func (s {{ $t.Name }}) Validate() error {
 {{- else if $t.IsMap }}
 func (s {{ $t.Name }}) Validate() error {
 	var failures []validate.FieldError
-	{{- range $f := $t.Fields }}{{/*Range fields*/}}
-	{{- if $f.Type.NeedValidation }}
-		if err := func() error {
-			{{- template "validate" field_elem $f }}
-		}(); err != nil {
-			failures = append(failures, validate.FieldError{
-				Name: {{ quote $f.ValidationName }},
-				Error: err,
-			})
-		}
-	{{- end }}
-	{{- end }}{{/*Range fields*/}}
 
 	{{- if $t.Item.NeedValidation }}
-	for key, elem := range s{{ if $t.Fields }}.{{ $t.AdditionalPropsField }}{{ end }} {
+	for key, elem := range s {
 		if err := func() error {
 			{{- template "validate" map_elem $t.Item }}
 		}(); err != nil {
