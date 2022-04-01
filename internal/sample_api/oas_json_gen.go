@@ -369,31 +369,26 @@ func (s AnyTestAnyMap) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfAnyTestAnyMap = [0]string{}
-
 // Decode decodes AnyTestAnyMap from json.
-func (s AnyTestAnyMap) Decode(d *jx.Decoder) error {
+func (s *AnyTestAnyMap) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode AnyTestAnyMap to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode AnyTestAnyMap")
@@ -2398,37 +2393,35 @@ func (s MapWithProperties) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s MapWithProperties) encodeFields(e *jx.Encoder) {
 	{
-		{
 
-			e.FieldStart("required")
-			e.Int(s.Required)
+		e.FieldStart("required")
+		e.Int(s.Required)
+	}
+	{
+		if s.Optional.Set {
+			e.FieldStart("optional")
+			s.Optional.Encode(e)
 		}
-		{
-			if s.Optional.Set {
-				e.FieldStart("optional")
-				s.Optional.Encode(e)
-			}
+	}
+	{
+		if s.SubMap.Set {
+			e.FieldStart("sub_map")
+			s.SubMap.Encode(e)
 		}
-		{
-			if s.SubMap.Set {
-				e.FieldStart("sub_map")
-				s.SubMap.Encode(e)
-			}
+	}
+	{
+		if s.InlinedSubMap.Set {
+			e.FieldStart("inlined_sub_map")
+			s.InlinedSubMap.Encode(e)
 		}
-		{
-			if s.InlinedSubMap.Set {
-				e.FieldStart("inlined_sub_map")
-				s.InlinedSubMap.Encode(e)
-			}
-		}
-		{
-			if s.MapValidation.Set {
-				e.FieldStart("map_validation")
-				s.MapValidation.Encode(e)
-			}
+	}
+	{
+		if s.MapValidation.Set {
+			e.FieldStart("map_validation")
+			s.MapValidation.Encode(e)
 		}
 	}
 	for k, elem := range s.AdditionalProps {
@@ -2453,12 +2446,8 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 	}
 	var requiredBitSet [1]uint8
 	var propertiesCount int
+	s.AdditionalProps = map[string]string{}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]string{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		propertiesCount++
 		switch string(k) {
@@ -2526,7 +2515,7 @@ func (s *MapWithProperties) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrapf(err, "decode field %q", k)
 			}
-			m[string(k)] = elem
+			s.AdditionalProps[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -2591,6 +2580,63 @@ func (s *MapWithProperties) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s MapWithPropertiesAdditional) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s MapWithPropertiesAdditional) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+// Decode decodes MapWithPropertiesAdditional from json.
+func (s *MapWithPropertiesAdditional) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MapWithPropertiesAdditional to nil")
+	}
+	m := s.init()
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode MapWithPropertiesAdditional")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MapWithPropertiesAdditional) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MapWithPropertiesAdditional) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s MapWithPropertiesInlinedSubMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -2606,31 +2652,26 @@ func (s MapWithPropertiesInlinedSubMap) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfMapWithPropertiesInlinedSubMap = [0]string{}
-
 // Decode decodes MapWithPropertiesInlinedSubMap from json.
-func (s MapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
+func (s *MapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode MapWithPropertiesInlinedSubMap to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode MapWithPropertiesInlinedSubMap")
@@ -6260,14 +6301,12 @@ func (s RecursiveMap) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields implements json.Marshaler.
+// encodeFields encodes fields.
 func (s RecursiveMap) encodeFields(e *jx.Encoder) {
 	{
-		{
-			if s.OptionalRecursiveField != nil {
-				e.FieldStart("optional_recursive_field")
-				s.OptionalRecursiveField.Encode(e)
-			}
+		if s.OptionalRecursiveField != nil {
+			e.FieldStart("optional_recursive_field")
+			s.OptionalRecursiveField.Encode(e)
 		}
 	}
 	for k, elem := range s.AdditionalProps {
@@ -6286,12 +6325,8 @@ func (s *RecursiveMap) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode RecursiveMap to nil")
 	}
+	s.AdditionalProps = map[string]RecursiveMap{}
 
-	m := s.AdditionalProps
-	if m == nil {
-		m = map[string]RecursiveMap{}
-		s.AdditionalProps = m
-	}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "optional_recursive_field":
@@ -6316,7 +6351,7 @@ func (s *RecursiveMap) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrapf(err, "decode field %q", k)
 			}
-			m[string(k)] = elem
+			s.AdditionalProps[string(k)] = elem
 		}
 		return nil
 	}); err != nil {
@@ -6340,6 +6375,61 @@ func (s *RecursiveMap) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s RecursiveMapAdditional) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s RecursiveMapAdditional) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		elem.Encode(e)
+	}
+}
+
+// Decode decodes RecursiveMapAdditional from json.
+func (s *RecursiveMapAdditional) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode RecursiveMapAdditional to nil")
+	}
+	m := s.init()
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem RecursiveMap
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode RecursiveMapAdditional")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s RecursiveMapAdditional) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *RecursiveMapAdditional) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s StringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -6355,31 +6445,26 @@ func (s StringMap) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfStringMap = [0]string{}
-
 // Decode decodes StringMap from json.
-func (s StringMap) Decode(d *jx.Decoder) error {
+func (s *StringMap) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode StringMap to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode StringMap")
@@ -6417,30 +6502,24 @@ func (s StringStringMap) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfStringStringMap = [0]string{}
-
 // Decode decodes StringStringMap from json.
-func (s StringStringMap) Decode(d *jx.Decoder) error {
+func (s *StringStringMap) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode StringStringMap to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem StringMap
-			if err := func() error {
-				elem = make(StringMap)
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem StringMap
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode StringStringMap")
@@ -6744,33 +6823,28 @@ func (s ValidationStringMap) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfValidationStringMap = [0]string{}
-
 // Decode decodes ValidationStringMap from json.
-func (s ValidationStringMap) Decode(d *jx.Decoder) error {
+func (s *ValidationStringMap) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode ValidationStringMap to nil")
 	}
+	m := s.init()
 	var propertiesCount int
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		propertiesCount++
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode ValidationStringMap")

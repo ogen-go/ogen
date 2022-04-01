@@ -3877,12 +3877,11 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) SetFake() {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) SetFake() {
 	var (
 		elem []string
-		m    map[string][]string
+		m    map[string][]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -4225,12 +4224,11 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) SetFake() {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -4271,12 +4269,11 @@ func (s *IoK8sAPICoreV1CSIVolumeSource) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) SetFake() {
+func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -4617,24 +4614,22 @@ func (s *IoK8sAPICoreV1ConfigMap) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ConfigMapBinaryData) SetFake() {
+func (s *IoK8sAPICoreV1ConfigMapBinaryData) SetFake() {
 	var (
 		elem []byte
-		m    map[string][]byte
+		m    map[string][]byte = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ConfigMapData) SetFake() {
+func (s *IoK8sAPICoreV1ConfigMapData) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -6043,12 +6038,11 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) SetFake() {
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -6089,12 +6083,11 @@ func (s *IoK8sAPICoreV1FlexVolumeSource) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1FlexVolumeSourceOptions) SetFake() {
+func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -6599,60 +6592,55 @@ func (s *IoK8sAPICoreV1LimitRangeItem) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1LimitRangeItemDefault) SetFake() {
+func (s *IoK8sAPICoreV1LimitRangeItemDefault) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) SetFake() {
+func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1LimitRangeItemMax) SetFake() {
+func (s *IoK8sAPICoreV1LimitRangeItemMax) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) SetFake() {
+func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1LimitRangeItemMin) SetFake() {
+func (s *IoK8sAPICoreV1LimitRangeItemMin) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -7405,24 +7393,22 @@ func (s *IoK8sAPICoreV1NodeStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1NodeStatusAllocatable) SetFake() {
+func (s *IoK8sAPICoreV1NodeStatusAllocatable) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1NodeStatusCapacity) SetFake() {
+func (s *IoK8sAPICoreV1NodeStatusCapacity) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -7803,12 +7789,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) SetFake() {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -8083,12 +8068,11 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) SetFake() {
+func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -8791,24 +8775,22 @@ func (s *IoK8sAPICoreV1PodSpec) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1PodSpecNodeSelector) SetFake() {
+func (s *IoK8sAPICoreV1PodSpecNodeSelector) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1PodSpecOverhead) SetFake() {
+func (s *IoK8sAPICoreV1PodSpecOverhead) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -9451,12 +9433,11 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpec) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) SetFake() {
+func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -9633,12 +9614,11 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpec) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ResourceQuotaSpecHard) SetFake() {
+func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -9661,24 +9641,22 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ResourceQuotaStatusHard) SetFake() {
+func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) SetFake() {
+func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -9701,24 +9679,22 @@ func (s *IoK8sAPICoreV1ResourceRequirements) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ResourceRequirementsLimits) SetFake() {
+func (s *IoK8sAPICoreV1ResourceRequirementsLimits) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ResourceRequirementsRequests) SetFake() {
+func (s *IoK8sAPICoreV1ResourceRequirementsRequests) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -9991,12 +9967,11 @@ func (s *IoK8sAPICoreV1Secret) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1SecretData) SetFake() {
+func (s *IoK8sAPICoreV1SecretData) SetFake() {
 	var (
 		elem []byte
-		m    map[string][]byte
+		m    map[string][]byte = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -10123,12 +10098,11 @@ func (s *IoK8sAPICoreV1SecretReference) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1SecretStringData) SetFake() {
+func (s *IoK8sAPICoreV1SecretStringData) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -10623,12 +10597,11 @@ func (s *IoK8sAPICoreV1ServiceSpec) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPICoreV1ServiceSpecSelector) SetFake() {
+func (s *IoK8sAPICoreV1ServiceSpecSelector) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -11355,12 +11328,11 @@ func (s *IoK8sAPIDiscoveryV1EndpointConditions) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) SetFake() {
+func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -11729,12 +11701,11 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) SetFake() {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -13847,12 +13818,11 @@ func (s *IoK8sAPINodeV1Overhead) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPINodeV1OverheadPodFixed) SetFake() {
+func (s *IoK8sAPINodeV1OverheadPodFixed) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -13959,12 +13929,11 @@ func (s *IoK8sAPINodeV1Scheduling) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPINodeV1SchedulingNodeSelector) SetFake() {
+func (s *IoK8sAPINodeV1SchedulingNodeSelector) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -13981,12 +13950,11 @@ func (s *IoK8sAPINodeV1alpha1Overhead) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPINodeV1alpha1OverheadPodFixed) SetFake() {
+func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -14103,12 +14071,11 @@ func (s *IoK8sAPINodeV1alpha1Scheduling) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) SetFake() {
+func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -14125,12 +14092,11 @@ func (s *IoK8sAPINodeV1beta1Overhead) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPINodeV1beta1OverheadPodFixed) SetFake() {
+func (s *IoK8sAPINodeV1beta1OverheadPodFixed) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgAPIResourceQuantity
-		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity
+		m    map[string]IoK8sApimachineryPkgAPIResourceQuantity = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -14237,12 +14203,11 @@ func (s *IoK8sAPINodeV1beta1Scheduling) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) SetFake() {
+func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -14395,12 +14360,11 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgApisMetaV1Time
-		m    map[string]IoK8sApimachineryPkgApisMetaV1Time
+		m    map[string]IoK8sApimachineryPkgApisMetaV1Time = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -14645,12 +14609,11 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
 	var (
 		elem IoK8sApimachineryPkgApisMetaV1Time
-		m    map[string]IoK8sApimachineryPkgApisMetaV1Time
+		m    map[string]IoK8sApimachineryPkgApisMetaV1Time = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -15959,12 +15922,11 @@ func (s *IoK8sAPIStorageV1StorageClassList) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPIStorageV1StorageClassParameters) SetFake() {
+func (s *IoK8sAPIStorageV1StorageClassParameters) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -16123,12 +16085,11 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) SetFake() {
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -17069,24 +17030,22 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFa
 }
 
 // SetFake set fake values.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) SetFake() {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) SetFake() {
 	var (
 		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) SetFake() {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) SetFake() {
 	var (
 		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
-		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -17105,24 +17064,22 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStrin
 }
 
 // SetFake set fake values.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) SetFake() {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) SetFake() {
 	var (
 		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) SetFake() {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) SetFake() {
 	var (
 		elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		m    map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -17551,12 +17508,11 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) SetFake() {
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -17801,24 +17757,22 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFake() {
 }
 
 // SetFake set fake values.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) SetFake() {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) SetFake() {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -18733,7 +18687,6 @@ func (s *OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) SetFake() 
 	var elem IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra
 
 	{
-		elem = make(IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -18824,7 +18777,6 @@ func (s *OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) SetFake() {
 	var elem IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes
 
 	{
-		elem = make(IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -18845,7 +18797,6 @@ func (s *OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) SetFake() {
 	var elem IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes
 
 	{
-		elem = make(IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -18916,7 +18867,6 @@ func (s *OptIoK8sAPICoreV1ConfigMapBinaryData) SetFake() {
 	var elem IoK8sAPICoreV1ConfigMapBinaryData
 
 	{
-		elem = make(IoK8sAPICoreV1ConfigMapBinaryData)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -18927,7 +18877,6 @@ func (s *OptIoK8sAPICoreV1ConfigMapData) SetFake() {
 	var elem IoK8sAPICoreV1ConfigMapData
 
 	{
-		elem = make(IoK8sAPICoreV1ConfigMapData)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19138,7 +19087,6 @@ func (s *OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) SetFake() {
 	var elem IoK8sAPICoreV1FlexPersistentVolumeSourceOptions
 
 	{
-		elem = make(IoK8sAPICoreV1FlexPersistentVolumeSourceOptions)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19159,7 +19107,6 @@ func (s *OptIoK8sAPICoreV1FlexVolumeSourceOptions) SetFake() {
 	var elem IoK8sAPICoreV1FlexVolumeSourceOptions
 
 	{
-		elem = make(IoK8sAPICoreV1FlexVolumeSourceOptions)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19280,7 +19227,6 @@ func (s *OptIoK8sAPICoreV1LimitRangeItemDefault) SetFake() {
 	var elem IoK8sAPICoreV1LimitRangeItemDefault
 
 	{
-		elem = make(IoK8sAPICoreV1LimitRangeItemDefault)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19291,7 +19237,6 @@ func (s *OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) SetFake() {
 	var elem IoK8sAPICoreV1LimitRangeItemDefaultRequest
 
 	{
-		elem = make(IoK8sAPICoreV1LimitRangeItemDefaultRequest)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19302,7 +19247,6 @@ func (s *OptIoK8sAPICoreV1LimitRangeItemMax) SetFake() {
 	var elem IoK8sAPICoreV1LimitRangeItemMax
 
 	{
-		elem = make(IoK8sAPICoreV1LimitRangeItemMax)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19313,7 +19257,6 @@ func (s *OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) SetFake() {
 	var elem IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio
 
 	{
-		elem = make(IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19324,7 +19267,6 @@ func (s *OptIoK8sAPICoreV1LimitRangeItemMin) SetFake() {
 	var elem IoK8sAPICoreV1LimitRangeItemMin
 
 	{
-		elem = make(IoK8sAPICoreV1LimitRangeItemMin)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19475,7 +19417,6 @@ func (s *OptIoK8sAPICoreV1NodeStatusAllocatable) SetFake() {
 	var elem IoK8sAPICoreV1NodeStatusAllocatable
 
 	{
-		elem = make(IoK8sAPICoreV1NodeStatusAllocatable)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19486,7 +19427,6 @@ func (s *OptIoK8sAPICoreV1NodeStatusCapacity) SetFake() {
 	var elem IoK8sAPICoreV1NodeStatusCapacity
 
 	{
-		elem = make(IoK8sAPICoreV1NodeStatusCapacity)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19547,7 +19487,6 @@ func (s *OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) SetFake() {
 	var elem IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity
 
 	{
-		elem = make(IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19588,7 +19527,6 @@ func (s *OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) SetFake() {
 	var elem IoK8sAPICoreV1PersistentVolumeSpecCapacity
 
 	{
-		elem = make(IoK8sAPICoreV1PersistentVolumeSpecCapacity)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19669,7 +19607,6 @@ func (s *OptIoK8sAPICoreV1PodSpecNodeSelector) SetFake() {
 	var elem IoK8sAPICoreV1PodSpecNodeSelector
 
 	{
-		elem = make(IoK8sAPICoreV1PodSpecNodeSelector)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19680,7 +19617,6 @@ func (s *OptIoK8sAPICoreV1PodSpecOverhead) SetFake() {
 	var elem IoK8sAPICoreV1PodSpecOverhead
 
 	{
-		elem = make(IoK8sAPICoreV1PodSpecOverhead)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19781,7 +19717,6 @@ func (s *OptIoK8sAPICoreV1ReplicationControllerSpecSelector) SetFake() {
 	var elem IoK8sAPICoreV1ReplicationControllerSpecSelector
 
 	{
-		elem = make(IoK8sAPICoreV1ReplicationControllerSpecSelector)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19822,7 +19757,6 @@ func (s *OptIoK8sAPICoreV1ResourceQuotaSpecHard) SetFake() {
 	var elem IoK8sAPICoreV1ResourceQuotaSpecHard
 
 	{
-		elem = make(IoK8sAPICoreV1ResourceQuotaSpecHard)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19843,7 +19777,6 @@ func (s *OptIoK8sAPICoreV1ResourceQuotaStatusHard) SetFake() {
 	var elem IoK8sAPICoreV1ResourceQuotaStatusHard
 
 	{
-		elem = make(IoK8sAPICoreV1ResourceQuotaStatusHard)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19854,7 +19787,6 @@ func (s *OptIoK8sAPICoreV1ResourceQuotaStatusUsed) SetFake() {
 	var elem IoK8sAPICoreV1ResourceQuotaStatusUsed
 
 	{
-		elem = make(IoK8sAPICoreV1ResourceQuotaStatusUsed)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19875,7 +19807,6 @@ func (s *OptIoK8sAPICoreV1ResourceRequirementsLimits) SetFake() {
 	var elem IoK8sAPICoreV1ResourceRequirementsLimits
 
 	{
-		elem = make(IoK8sAPICoreV1ResourceRequirementsLimits)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19886,7 +19817,6 @@ func (s *OptIoK8sAPICoreV1ResourceRequirementsRequests) SetFake() {
 	var elem IoK8sAPICoreV1ResourceRequirementsRequests
 
 	{
-		elem = make(IoK8sAPICoreV1ResourceRequirementsRequests)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19947,7 +19877,6 @@ func (s *OptIoK8sAPICoreV1SecretData) SetFake() {
 	var elem IoK8sAPICoreV1SecretData
 
 	{
-		elem = make(IoK8sAPICoreV1SecretData)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -19998,7 +19927,6 @@ func (s *OptIoK8sAPICoreV1SecretStringData) SetFake() {
 	var elem IoK8sAPICoreV1SecretStringData
 
 	{
-		elem = make(IoK8sAPICoreV1SecretStringData)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20049,7 +19977,6 @@ func (s *OptIoK8sAPICoreV1ServiceSpecSelector) SetFake() {
 	var elem IoK8sAPICoreV1ServiceSpecSelector
 
 	{
-		elem = make(IoK8sAPICoreV1ServiceSpecSelector)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20160,7 +20087,6 @@ func (s *OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) SetFake() {
 	var elem IoK8sAPIDiscoveryV1EndpointDeprecatedTopology
 
 	{
-		elem = make(IoK8sAPIDiscoveryV1EndpointDeprecatedTopology)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20201,7 +20127,6 @@ func (s *OptIoK8sAPIDiscoveryV1beta1EndpointTopology) SetFake() {
 	var elem IoK8sAPIDiscoveryV1beta1EndpointTopology
 
 	{
-		elem = make(IoK8sAPIDiscoveryV1beta1EndpointTopology)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20562,7 +20487,6 @@ func (s *OptIoK8sAPINodeV1OverheadPodFixed) SetFake() {
 	var elem IoK8sAPINodeV1OverheadPodFixed
 
 	{
-		elem = make(IoK8sAPINodeV1OverheadPodFixed)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20583,7 +20507,6 @@ func (s *OptIoK8sAPINodeV1SchedulingNodeSelector) SetFake() {
 	var elem IoK8sAPINodeV1SchedulingNodeSelector
 
 	{
-		elem = make(IoK8sAPINodeV1SchedulingNodeSelector)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20604,7 +20527,6 @@ func (s *OptIoK8sAPINodeV1alpha1OverheadPodFixed) SetFake() {
 	var elem IoK8sAPINodeV1alpha1OverheadPodFixed
 
 	{
-		elem = make(IoK8sAPINodeV1alpha1OverheadPodFixed)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20625,7 +20547,6 @@ func (s *OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) SetFake() {
 	var elem IoK8sAPINodeV1alpha1SchedulingNodeSelector
 
 	{
-		elem = make(IoK8sAPINodeV1alpha1SchedulingNodeSelector)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20646,7 +20567,6 @@ func (s *OptIoK8sAPINodeV1beta1OverheadPodFixed) SetFake() {
 	var elem IoK8sAPINodeV1beta1OverheadPodFixed
 
 	{
-		elem = make(IoK8sAPINodeV1beta1OverheadPodFixed)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20667,7 +20587,6 @@ func (s *OptIoK8sAPINodeV1beta1SchedulingNodeSelector) SetFake() {
 	var elem IoK8sAPINodeV1beta1SchedulingNodeSelector
 
 	{
-		elem = make(IoK8sAPINodeV1beta1SchedulingNodeSelector)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20698,7 +20617,6 @@ func (s *OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) SetFake() {
 	var elem IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods
 
 	{
-		elem = make(IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20729,7 +20647,6 @@ func (s *OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) SetFake
 	var elem IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods
 
 	{
-		elem = make(IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20780,7 +20697,6 @@ func (s *OptIoK8sAPIStorageV1StorageClassParameters) SetFake() {
 	var elem IoK8sAPIStorageV1StorageClassParameters
 
 	{
-		elem = make(IoK8sAPIStorageV1StorageClassParameters)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20801,7 +20717,6 @@ func (s *OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) SetFake()
 	var elem IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata
 
 	{
-		elem = make(IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20912,7 +20827,6 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefi
 	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions
 
 	{
-		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20923,7 +20837,6 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepe
 	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies
 
 	{
-		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20934,7 +20847,6 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatt
 	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties
 
 	{
-		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -20945,7 +20857,6 @@ func (s *OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProp
 	var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties
 
 	{
-		elem = make(IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -21016,7 +20927,6 @@ func (s *OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) SetFake() {
 	var elem IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels
 
 	{
-		elem = make(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -21057,7 +20967,6 @@ func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) SetFake() {
 	var elem IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations
 
 	{
-		elem = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -21068,7 +20977,6 @@ func (s *OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) SetFake() {
 	var elem IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels
 
 	{
-		elem = make(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels)
 		elem.SetFake()
 	}
 	s.SetTo(elem)

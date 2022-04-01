@@ -2403,6 +2403,15 @@ type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
 // by the API server on creation and immutable.
 type IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra map[string][]string
 
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) init() IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra {
+	m := *s
+	if m == nil {
+		m = map[string][]string{}
+		*s = m
+	}
+	return m
+}
+
 // CertificateSigningRequestStatus contains conditions used to indicate approved/denied/failed status
 // of the request, and the issued certificate.
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestStatus
@@ -2593,6 +2602,15 @@ type IoK8sAPICoreV1CSIPersistentVolumeSource struct {
 // Attributes of the volume to publish.
 type IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes map[string]string
 
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) init() IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // Represents a source location of a volume to mount, managed by an external CSI driver.
 // Ref: #/components/schemas/io.k8s.api.core.v1.CSIVolumeSource
 type IoK8sAPICoreV1CSIVolumeSource struct {
@@ -2613,6 +2631,15 @@ type IoK8sAPICoreV1CSIVolumeSource struct {
 // VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your
 // driver's documentation for supported values.
 type IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes map[string]string
+
+func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) init() IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // Adds and removes POSIX capabilities from running containers.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Capabilities
@@ -2796,11 +2823,29 @@ func (*IoK8sAPICoreV1ConfigMap) readCoreV1NamespacedConfigMapRes() {}
 // process. Using this field will require 1.10+ apiserver and kubelet.
 type IoK8sAPICoreV1ConfigMapBinaryData map[string][]byte
 
+func (s *IoK8sAPICoreV1ConfigMapBinaryData) init() IoK8sAPICoreV1ConfigMapBinaryData {
+	m := *s
+	if m == nil {
+		m = map[string][]byte{}
+		*s = m
+	}
+	return m
+}
+
 // Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_'
 // or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in
 // Data must not overlap with the keys in the BinaryData field, this is enforced during validation
 // process.
 type IoK8sAPICoreV1ConfigMapData map[string]string
+
+func (s *IoK8sAPICoreV1ConfigMapData) init() IoK8sAPICoreV1ConfigMapData {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.
 // The contents of the target ConfigMap's Data field will represent the key-value pairs as
@@ -3508,6 +3553,15 @@ type IoK8sAPICoreV1FlexPersistentVolumeSource struct {
 // Optional: Extra command options if any.
 type IoK8sAPICoreV1FlexPersistentVolumeSourceOptions map[string]string
 
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) init() IoK8sAPICoreV1FlexPersistentVolumeSourceOptions {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // FlexVolume represents a generic volume resource that is provisioned/attached using an exec based
 // plugin.
 // Ref: #/components/schemas/io.k8s.api.core.v1.FlexVolumeSource
@@ -3527,6 +3581,15 @@ type IoK8sAPICoreV1FlexVolumeSource struct {
 
 // Optional: Extra command options if any.
 type IoK8sAPICoreV1FlexVolumeSourceOptions map[string]string
+
+func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) init() IoK8sAPICoreV1FlexVolumeSourceOptions {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and
 // datasetUUID should be set. Flocker volumes do not support ownership management or SELinux
@@ -3799,20 +3862,65 @@ type IoK8sAPICoreV1LimitRangeItem struct {
 // Default resource requirement limit value by resource name if resource limit is omitted.
 type IoK8sAPICoreV1LimitRangeItemDefault map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1LimitRangeItemDefault) init() IoK8sAPICoreV1LimitRangeItemDefault {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // DefaultRequest is the default resource requirement request value by resource name if resource
 // request is omitted.
 type IoK8sAPICoreV1LimitRangeItemDefaultRequest map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) init() IoK8sAPICoreV1LimitRangeItemDefaultRequest {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // Max usage constraints on this kind by resource name.
 type IoK8sAPICoreV1LimitRangeItemMax map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPICoreV1LimitRangeItemMax) init() IoK8sAPICoreV1LimitRangeItemMax {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both
 // non-zero where limit divided by request is less than or equal to the enumerated value; this
 // represents the max burst for the named resource.
 type IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) init() IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // Min usage constraints on this kind by resource name.
 type IoK8sAPICoreV1LimitRangeItemMin map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPICoreV1LimitRangeItemMin) init() IoK8sAPICoreV1LimitRangeItemMin {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // LimitRangeList is a list of LimitRange items.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LimitRangeList
@@ -4169,9 +4277,27 @@ type IoK8sAPICoreV1NodeStatus struct {
 // Capacity.
 type IoK8sAPICoreV1NodeStatusAllocatable map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1NodeStatusAllocatable) init() IoK8sAPICoreV1NodeStatusAllocatable {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // Capacity represents the total resources of a node. More info: https://kubernetes.
 // io/docs/concepts/storage/persistent-volumes#capacity.
 type IoK8sAPICoreV1NodeStatusCapacity map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPICoreV1NodeStatusCapacity) init() IoK8sAPICoreV1NodeStatusCapacity {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // NodeSystemInfo is a set of ids/uuids to uniquely identify the node.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeSystemInfo
@@ -4355,6 +4481,15 @@ type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
 // Represents the actual resources of the underlying volume.
 type IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) init() IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // PersistentVolumeClaimTemplate is used to produce PersistentVolumeClaim objects as part of an
 // EphemeralVolumeSource.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimTemplate
@@ -4448,6 +4583,15 @@ type IoK8sAPICoreV1PersistentVolumeSpec struct {
 // A description of the persistent volume's resources and capacity. More info: https://kubernetes.
 // io/docs/concepts/storage/persistent-volumes#capacity.
 type IoK8sAPICoreV1PersistentVolumeSpecCapacity map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) init() IoK8sAPICoreV1PersistentVolumeSpecCapacity {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // PersistentVolumeStatus is the current status of a persistent volume.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeStatus
@@ -4821,6 +4965,15 @@ type IoK8sAPICoreV1PodSpec struct {
 // io/docs/concepts/configuration/assign-pod-node/.
 type IoK8sAPICoreV1PodSpecNodeSelector map[string]string
 
+func (s *IoK8sAPICoreV1PodSpecNodeSelector) init() IoK8sAPICoreV1PodSpecNodeSelector {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // Overhead represents the resource overhead associated with running a pod for a given RuntimeClass.
 // This field will be autopopulated at admission time by the RuntimeClass admission controller. If
 // the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests.
@@ -4831,6 +4984,15 @@ type IoK8sAPICoreV1PodSpecNodeSelector map[string]string
 // field is beta-level as of Kubernetes v1.18, and is only honored by servers that enable the
 // PodOverhead feature.
 type IoK8sAPICoreV1PodSpecOverhead map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPICoreV1PodSpecOverhead) init() IoK8sAPICoreV1PodSpecOverhead {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // PodStatus represents information about the status of a pod. Status may trail the actual state of a
 // system, especially if the node that hosts the pod cannot contact the control plane.
@@ -5175,6 +5337,15 @@ type IoK8sAPICoreV1ReplicationControllerSpec struct {
 // io/docs/concepts/overview/working-with-objects/labels/#label-selectors.
 type IoK8sAPICoreV1ReplicationControllerSpecSelector map[string]string
 
+func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) init() IoK8sAPICoreV1ReplicationControllerSpecSelector {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // ReplicationControllerStatus represents the current status of a replication controller.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerStatus
 type IoK8sAPICoreV1ReplicationControllerStatus struct {
@@ -5260,6 +5431,15 @@ type IoK8sAPICoreV1ResourceQuotaSpec struct {
 // io/docs/concepts/policy/resource-quotas/.
 type IoK8sAPICoreV1ResourceQuotaSpecHard map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) init() IoK8sAPICoreV1ResourceQuotaSpecHard {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // ResourceQuotaStatus defines the enforced hard limits and observed use.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceQuotaStatus
 type IoK8sAPICoreV1ResourceQuotaStatus struct {
@@ -5274,8 +5454,26 @@ type IoK8sAPICoreV1ResourceQuotaStatus struct {
 // io/docs/concepts/policy/resource-quotas/.
 type IoK8sAPICoreV1ResourceQuotaStatusHard map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) init() IoK8sAPICoreV1ResourceQuotaStatusHard {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // Used is the current observed total usage of the resource in the namespace.
 type IoK8sAPICoreV1ResourceQuotaStatusUsed map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) init() IoK8sAPICoreV1ResourceQuotaStatusUsed {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // ResourceRequirements describes the compute resource requirements.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceRequirements
@@ -5294,11 +5492,29 @@ type IoK8sAPICoreV1ResourceRequirements struct {
 // io/docs/concepts/configuration/manage-resources-containers/.
 type IoK8sAPICoreV1ResourceRequirementsLimits map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPICoreV1ResourceRequirementsLimits) init() IoK8sAPICoreV1ResourceRequirementsLimits {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // Requests describes the minimum amount of compute resources required. If Requests is omitted for a
 // container, it defaults to Limits if that is explicitly specified, otherwise to an
 // implementation-defined value. More info: https://kubernetes.
 // io/docs/concepts/configuration/manage-resources-containers/.
 type IoK8sAPICoreV1ResourceRequirementsRequests map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPICoreV1ResourceRequirementsRequests) init() IoK8sAPICoreV1ResourceRequirementsRequests {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // SELinuxOptions are the labels to be applied to the container.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SELinuxOptions
@@ -5440,6 +5656,15 @@ func (*IoK8sAPICoreV1Secret) readCoreV1NamespacedSecretRes() {}
 // (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4.
 type IoK8sAPICoreV1SecretData map[string][]byte
 
+func (s *IoK8sAPICoreV1SecretData) init() IoK8sAPICoreV1SecretData {
+	m := *s
+	if m == nil {
+		m = map[string][]byte{}
+		*s = m
+	}
+	return m
+}
+
 // SecretEnvSource selects a Secret to populate the environment variables with.
 // The contents of the target Secret's Data field will represent the key-value pairs as environment
 // variables.
@@ -5517,6 +5742,15 @@ type IoK8sAPICoreV1SecretReference struct {
 // input field for convenience. All keys and values are merged into the data field on write,
 // overwriting any existing values. The stringData field is never output when reading from the API.
 type IoK8sAPICoreV1SecretStringData map[string]string
+
+func (s *IoK8sAPICoreV1SecretStringData) init() IoK8sAPICoreV1SecretStringData {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // Adapts a Secret into a volume.
 // The contents of the target Secret's Data field will be presented in a volume as files using the
@@ -5869,6 +6103,15 @@ type IoK8sAPICoreV1ServiceSpec struct {
 // if type is ExternalName. More info: https://kubernetes.
 // io/docs/concepts/services-networking/service/.
 type IoK8sAPICoreV1ServiceSpecSelector map[string]string
+
+func (s *IoK8sAPICoreV1ServiceSpecSelector) init() IoK8sAPICoreV1ServiceSpecSelector {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // ServiceStatus represents the current status of a service.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceStatus
@@ -6228,6 +6471,15 @@ type IoK8sAPIDiscoveryV1EndpointConditions struct {
 // instead.
 type IoK8sAPIDiscoveryV1EndpointDeprecatedTopology map[string]string
 
+func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) init() IoK8sAPIDiscoveryV1EndpointDeprecatedTopology {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // EndpointHints provides hints describing how an endpoint should be consumed.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointHints
 type IoK8sAPIDiscoveryV1EndpointHints struct {
@@ -6460,6 +6712,15 @@ func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1Namespaced
 // endpoint is located. This should match the corresponding node label.
 // This field is deprecated and will be removed in future api versions.
 type IoK8sAPIDiscoveryV1beta1EndpointTopology map[string]string
+
+func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) init() IoK8sAPIDiscoveryV1beta1EndpointTopology {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // ForZone provides information about which zones should consume this endpoint.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.ForZone
@@ -7651,6 +7912,15 @@ type IoK8sAPINodeV1Overhead struct {
 // PodFixed represents the fixed resource overhead associated with running a pod.
 type IoK8sAPINodeV1OverheadPodFixed map[string]IoK8sApimachineryPkgAPIResourceQuantity
 
+func (s *IoK8sAPINodeV1OverheadPodFixed) init() IoK8sAPINodeV1OverheadPodFixed {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
+
 // RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is
 // used to determine which container runtime is used to run all containers in a pod. RuntimeClasses
 // are manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet
@@ -7717,6 +7987,15 @@ type IoK8sAPINodeV1Scheduling struct {
 // rejected in admission.
 type IoK8sAPINodeV1SchedulingNodeSelector map[string]string
 
+func (s *IoK8sAPINodeV1SchedulingNodeSelector) init() IoK8sAPINodeV1SchedulingNodeSelector {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // Overhead structure represents the resource overhead associated with running a pod.
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.Overhead
 type IoK8sAPINodeV1alpha1Overhead struct {
@@ -7726,6 +8005,15 @@ type IoK8sAPINodeV1alpha1Overhead struct {
 
 // PodFixed represents the fixed resource overhead associated with running a pod.
 type IoK8sAPINodeV1alpha1OverheadPodFixed map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) init() IoK8sAPINodeV1alpha1OverheadPodFixed {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is
 // used to determine which container runtime is used to run all containers in a pod. RuntimeClasses
@@ -7803,6 +8091,15 @@ type IoK8sAPINodeV1alpha1Scheduling struct {
 // rejected in admission.
 type IoK8sAPINodeV1alpha1SchedulingNodeSelector map[string]string
 
+func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) init() IoK8sAPINodeV1alpha1SchedulingNodeSelector {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // Overhead structure represents the resource overhead associated with running a pod.
 // Ref: #/components/schemas/io.k8s.api.node.v1beta1.Overhead
 type IoK8sAPINodeV1beta1Overhead struct {
@@ -7812,6 +8109,15 @@ type IoK8sAPINodeV1beta1Overhead struct {
 
 // PodFixed represents the fixed resource overhead associated with running a pod.
 type IoK8sAPINodeV1beta1OverheadPodFixed map[string]IoK8sApimachineryPkgAPIResourceQuantity
+
+func (s *IoK8sAPINodeV1beta1OverheadPodFixed) init() IoK8sAPINodeV1beta1OverheadPodFixed {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgAPIResourceQuantity{}
+		*s = m
+	}
+	return m
+}
 
 // RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is
 // used to determine which container runtime is used to run all containers in a pod. RuntimeClasses
@@ -7878,6 +8184,15 @@ type IoK8sAPINodeV1beta1Scheduling struct {
 // nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be
 // rejected in admission.
 type IoK8sAPINodeV1beta1SchedulingNodeSelector map[string]string
+
+func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) init() IoK8sAPINodeV1beta1SchedulingNodeSelector {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // PodDisruptionBudget is an object to define the max disruption that can be caused to a collection
 // of pods.
@@ -7976,6 +8291,15 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
 // everything goes smooth this map should be empty for the most of the time. Large number of entries
 // in the map may indicate problems with pod deletions.
 type IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods map[string]IoK8sApimachineryPkgApisMetaV1Time
+
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) init() IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgApisMetaV1Time{}
+		*s = m
+	}
+	return m
+}
 
 // AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.AllowedCSIDriver
@@ -8134,6 +8458,15 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
 // everything goes smooth this map should be empty for the most of the time. Large number of entries
 // in the map may indicate problems with pod deletions.
 type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods map[string]IoK8sApimachineryPkgApisMetaV1Time
+
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) init() IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApimachineryPkgApisMetaV1Time{}
+		*s = m
+	}
+	return m
+}
 
 // PodSecurityPolicy governs the ability to make requests that affect the Security Context that will
 // be applied to a pod and container. Deprecated in 1.21.
@@ -8821,6 +9154,15 @@ func (*IoK8sAPIStorageV1StorageClassList) listStorageV1StorageClassRes() {}
 // class.
 type IoK8sAPIStorageV1StorageClassParameters map[string]string
 
+func (s *IoK8sAPIStorageV1StorageClassParameters) init() IoK8sAPIStorageV1StorageClassParameters {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // TokenRequest contains parameters of a service account token.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.TokenRequest
 type IoK8sAPIStorageV1TokenRequest struct {
@@ -8910,6 +9252,15 @@ type IoK8sAPIStorageV1VolumeAttachmentStatus struct {
 // operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only
 // be set by the entity completing the attach operation, i.e. the external-attacher.
 type IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata map[string]string
+
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) init() IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // VolumeError captures an error encountered during a volume operation.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeError
@@ -9405,7 +9756,25 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps{}
+		*s = m
+	}
+	return m
+}
+
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
+
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray{}
+		*s = m
+	}
+	return m
+}
 
 // JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of
 // JSONSchemaProps. Mainly here for serialization purposes.
@@ -9423,7 +9792,25 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArr
 
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps{}
+		*s = m
+	}
+	return m
+}
+
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties {
+	m := *s
+	if m == nil {
+		m = map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps{}
+		*s = m
+	}
+	return m
+}
 
 // ServiceReference holds a reference to Service.legacy.k8s.io.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ServiceReference
@@ -9717,6 +10104,15 @@ type IoK8sApimachineryPkgApisMetaV1LabelSelector struct {
 // the values array contains only "value". The requirements are ANDed.
 type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels map[string]string
 
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) init() IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // A label selector requirement is a selector that contains values, a key, and an operator that
 // relates the key and values.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement
@@ -9887,10 +10283,28 @@ type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 // when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations.
 type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations map[string]string
 
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) init() IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // Map of string keys and values that can be used to organize and categorize (scope and select)
 // objects. May match selectors of replication controllers and services. More info: http://kubernetes.
 // io/docs/user-guide/labels.
 type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels map[string]string
+
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) init() IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // OwnerReference contains enough information to let you identify an owning object. An owning object
 // must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace

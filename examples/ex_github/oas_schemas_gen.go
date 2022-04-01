@@ -156,6 +156,15 @@ type ActionsBillingUsageMinutesUsedBreakdown struct {
 
 type ActionsCancelWorkflowRunAccepted map[string]jx.Raw
 
+func (s *ActionsCancelWorkflowRunAccepted) init() ActionsCancelWorkflowRunAccepted {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 // ActionsCreateOrUpdateEnvironmentSecretNoContent is response for ActionsCreateOrUpdateEnvironmentSecret operation.
 type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
 
@@ -212,6 +221,15 @@ const (
 )
 
 type ActionsCreateOrUpdateRepoSecretCreated map[string]jx.Raw
+
+func (s *ActionsCreateOrUpdateRepoSecretCreated) init() ActionsCreateOrUpdateRepoSecretCreated {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 func (ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
 
@@ -430,6 +448,15 @@ type ActionsPublicKey struct {
 
 type ActionsReRunWorkflowCreated map[string]jx.Raw
 
+func (s *ActionsReRunWorkflowCreated) init() ActionsReRunWorkflowCreated {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 // ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
 
@@ -454,6 +481,15 @@ type ActionsRepositoryPermissions struct {
 }
 
 type ActionsRetryWorkflowCreated map[string]jx.Raw
+
+func (s *ActionsRetryWorkflowCreated) init() ActionsRetryWorkflowCreated {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 type ActionsReviewPendingDeploymentsForRunReq struct {
 	// The list of environment ids to approve or reject.
@@ -1627,6 +1663,15 @@ type AuditLogEventActorLocation struct {
 
 type AuditLogEventData map[string]jx.Raw
 
+func (s *AuditLogEventData) init() AuditLogEventData {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 // Authentication Token.
 // Ref: #/components/schemas/authentication-token
 type AuthenticationToken struct {
@@ -1763,6 +1808,15 @@ type BaseGist struct {
 func (*BaseGist) gistsForkRes() {}
 
 type BaseGistFiles map[string]BaseGistFilesItem
+
+func (s *BaseGistFiles) init() BaseGistFiles {
+	m := *s
+	if m == nil {
+		m = map[string]BaseGistFilesItem{}
+		*s = m
+	}
+	return m
+}
 
 type BaseGistFilesItem struct {
 	Filename OptString "json:\"filename\""
@@ -2346,6 +2400,15 @@ type ChecksListSuitesForRefOK struct {
 }
 
 type ChecksRerequestSuiteCreated map[string]jx.Raw
+
+func (s *ChecksRerequestSuiteCreated) init() ChecksRerequestSuiteCreated {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 type ChecksSetSuitesPreferencesReq struct {
 	// Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled
@@ -3287,6 +3350,15 @@ func NewStringDeploymentPayload(v string) DeploymentPayload {
 
 type DeploymentPayload0 map[string]jx.Raw
 
+func (s *DeploymentPayload0) init() DeploymentPayload0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 // A deployment created as the result of an Actions check run from a workflow that references an
 // environment.
 // Ref: #/components/schemas/deployment-simple
@@ -3394,11 +3466,29 @@ type Email struct {
 
 type EmojisGetOK map[string]string
 
+func (s *EmojisGetOK) init() EmojisGetOK {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 func (EmojisGetOK) emojisGetRes() {}
 
 // An object without any properties.
 // Ref: #/components/schemas/empty-object
 type EmptyObject map[string]jx.Raw
+
+func (s *EmptyObject) init() EmptyObject {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 func (EmptyObject) actionsApproveWorkflowRunRes()              {}
 func (EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
@@ -4200,6 +4290,15 @@ func (*GistSimple) gistsGetRevisionRes() {}
 
 type GistSimpleFiles map[string]GistSimpleFilesItem
 
+func (s *GistSimpleFiles) init() GistSimpleFiles {
+	m := *s
+	if m == nil {
+		m = map[string]GistSimpleFilesItem{}
+		*s = m
+	}
+	return m
+}
+
 type GistSimpleFilesItem struct {
 	Filename  OptString "json:\"filename\""
 	Type      OptString "json:\"type\""
@@ -4236,6 +4335,15 @@ type GistSimpleForkOf struct {
 
 type GistSimpleForkOfFiles map[string]GistSimpleForkOfFilesItem
 
+func (s *GistSimpleForkOfFiles) init() GistSimpleForkOfFiles {
+	m := *s
+	if m == nil {
+		m = map[string]GistSimpleForkOfFilesItem{}
+		*s = m
+	}
+	return m
+}
+
 type GistSimpleForkOfFilesItem struct {
 	Filename OptString "json:\"filename\""
 	Type     OptString "json:\"type\""
@@ -4258,6 +4366,15 @@ type GistsCheckIsStarredNoContent struct{}
 func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredRes() {}
 
 type GistsCheckIsStarredNotFound map[string]jx.Raw
+
+func (s *GistsCheckIsStarredNotFound) init() GistsCheckIsStarredNotFound {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 func (GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
@@ -4292,6 +4409,15 @@ type GistsCreateReq struct {
 
 // Names and content for the files that make up the gist.
 type GistsCreateReqFiles map[string]GistsCreateReqFilesItem
+
+func (s *GistsCreateReqFiles) init() GistsCreateReqFiles {
+	m := *s
+	if m == nil {
+		m = map[string]GistsCreateReqFilesItem{}
+		*s = m
+	}
+	return m
+}
 
 type GistsCreateReqFilesItem struct {
 	// Content of the file.
@@ -5030,8 +5156,26 @@ type HookDeliveryRequest struct {
 // The request headers sent with the webhook delivery.
 type HookDeliveryRequestHeaders map[string]jx.Raw
 
+func (s *HookDeliveryRequestHeaders) init() HookDeliveryRequestHeaders {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 // The webhook payload.
 type HookDeliveryRequestPayload map[string]jx.Raw
+
+func (s *HookDeliveryRequestPayload) init() HookDeliveryRequestPayload {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 type HookDeliveryResponse struct {
 	// The response headers received when the delivery was made.
@@ -5042,6 +5186,15 @@ type HookDeliveryResponse struct {
 
 // The response headers received when the delivery was made.
 type HookDeliveryResponseHeaders map[string]jx.Raw
+
+func (s *HookDeliveryResponseHeaders) init() HookDeliveryResponseHeaders {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 // Ref: #/components/schemas/hook-response
 type HookResponse struct {
@@ -5179,12 +5332,23 @@ func (*Integration) appsGetBySlugRes() {}
 
 // The set of permissions for the GitHub app.
 type IntegrationPermissions struct {
-	Issues          OptString `json:"issues"`
-	Checks          OptString `json:"checks"`
-	Metadata        OptString `json:"metadata"`
-	Contents        OptString `json:"contents"`
-	Deployments     OptString `json:"deployments"`
-	AdditionalProps map[string]string
+	Issues          OptString "json:\"issues\""
+	Checks          OptString "json:\"checks\""
+	Metadata        OptString "json:\"metadata\""
+	Contents        OptString "json:\"contents\""
+	Deployments     OptString "json:\"deployments\""
+	AdditionalProps IntegrationPermissionsAdditional
+}
+
+type IntegrationPermissionsAdditional map[string]string
+
+func (s *IntegrationPermissionsAdditional) init() IntegrationPermissionsAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
 }
 
 // The duration of the interaction restriction. Can be one of: `one_day`, `three_days`, `one_week`,
@@ -6606,6 +6770,15 @@ type LabelSearchResultItem struct {
 // Ref: #/components/schemas/language
 type Language map[string]int
 
+func (s *Language) init() Language {
+	m := *s
+	if m == nil {
+		m = map[string]int{}
+		*s = m
+	}
+	return m
+}
+
 // License.
 // Ref: #/components/schemas/license
 type License struct {
@@ -6936,9 +7109,22 @@ type MigrationsListReposForUserOKApplicationJSON []MinimalRepository
 func (MigrationsListReposForUserOKApplicationJSON) migrationsListReposForUserRes() {}
 
 type MigrationsMapCommitAuthorReq struct {
-	Email           OptString `json:"email"`
-	Name            OptString `json:"name"`
-	AdditionalProps map[string]jx.Raw
+	// The new Git author email.
+	Email OptString "json:\"email\""
+	// The new Git author name.
+	Name            OptString "json:\"name\""
+	AdditionalProps MigrationsMapCommitAuthorReqAdditional
+}
+
+type MigrationsMapCommitAuthorReqAdditional map[string]jx.Raw
+
+func (s *MigrationsMapCommitAuthorReqAdditional) init() MigrationsMapCommitAuthorReqAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type MigrationsSetLfsPreferenceReq struct {
@@ -8775,12 +8961,23 @@ type NullableIntegration struct {
 
 // The set of permissions for the GitHub app.
 type NullableIntegrationPermissions struct {
-	Issues          OptString `json:"issues"`
-	Checks          OptString `json:"checks"`
-	Metadata        OptString `json:"metadata"`
-	Contents        OptString `json:"contents"`
-	Deployments     OptString `json:"deployments"`
-	AdditionalProps map[string]string
+	Issues          OptString "json:\"issues\""
+	Checks          OptString "json:\"checks\""
+	Metadata        OptString "json:\"metadata\""
+	Contents        OptString "json:\"contents\""
+	Deployments     OptString "json:\"deployments\""
+	AdditionalProps NullableIntegrationPermissionsAdditional
+}
+
+type NullableIntegrationPermissionsAdditional map[string]string
+
+func (s *NullableIntegrationPermissionsAdditional) init() NullableIntegrationPermissionsAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
 }
 
 // License Simple.
@@ -30012,6 +30209,15 @@ func (*OrgsCheckPublicMembershipForUserNotFound) orgsCheckPublicMembershipForUse
 
 type OrgsConvertMemberToOutsideCollaboratorAccepted map[string]jx.Raw
 
+func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) init() OrgsConvertMemberToOutsideCollaboratorAccepted {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 func (OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
 
 // OrgsConvertMemberToOutsideCollaboratorForbidden is response for OrgsConvertMemberToOutsideCollaborator operation.
@@ -30305,11 +30511,22 @@ const (
 )
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
-	URL             OptWebhookConfigURL         `json:"url"`
-	ContentType     OptWebhookConfigContentType `json:"content_type"`
-	Secret          OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl     OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
-	AdditionalProps map[string]jx.Raw
+	URL             OptWebhookConfigURL         "json:\"url\""
+	ContentType     OptWebhookConfigContentType "json:\"content_type\""
+	Secret          OptWebhookConfigSecret      "json:\"secret\""
+	InsecureSsl     OptWebhookConfigInsecureSsl "json:\"insecure_ssl\""
+	AdditionalProps OrgsUpdateWebhookConfigForOrgReqAdditional
+}
+
+type OrgsUpdateWebhookConfigForOrgReqAdditional map[string]jx.Raw
+
+func (s *OrgsUpdateWebhookConfigForOrgReqAdditional) init() OrgsUpdateWebhookConfigForOrgReqAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type OrgsUpdateWebhookReq struct {
@@ -31744,6 +31961,15 @@ const (
 
 type ProjectsMoveCardCreated map[string]jx.Raw
 
+func (s *ProjectsMoveCardCreated) init() ProjectsMoveCardCreated {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 func (ProjectsMoveCardCreated) projectsMoveCardRes() {}
 
 type ProjectsMoveCardForbidden struct {
@@ -31792,6 +32018,15 @@ type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
 func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
 
 type ProjectsMoveColumnCreated map[string]jx.Raw
+
+func (s *ProjectsMoveColumnCreated) init() ProjectsMoveColumnCreated {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 func (ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
 
@@ -31922,19 +32157,52 @@ func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionRes() {
 func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionRes()    {}
 
 type ProtectedBranchAllowDeletions struct {
-	Enabled         bool `json:"enabled"`
-	AdditionalProps map[string]jx.Raw
+	Enabled         bool "json:\"enabled\""
+	AdditionalProps ProtectedBranchAllowDeletionsAdditional
+}
+
+type ProtectedBranchAllowDeletionsAdditional map[string]jx.Raw
+
+func (s *ProtectedBranchAllowDeletionsAdditional) init() ProtectedBranchAllowDeletionsAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type ProtectedBranchAllowForcePushes struct {
-	Enabled         bool `json:"enabled"`
-	AdditionalProps map[string]jx.Raw
+	Enabled         bool "json:\"enabled\""
+	AdditionalProps ProtectedBranchAllowForcePushesAdditional
+}
+
+type ProtectedBranchAllowForcePushesAdditional map[string]jx.Raw
+
+func (s *ProtectedBranchAllowForcePushesAdditional) init() ProtectedBranchAllowForcePushesAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type ProtectedBranchEnforceAdmins struct {
-	URL             url.URL `json:"url"`
-	Enabled         bool    `json:"enabled"`
-	AdditionalProps map[string]jx.Raw
+	URL             url.URL "json:\"url\""
+	Enabled         bool    "json:\"enabled\""
+	AdditionalProps ProtectedBranchEnforceAdminsAdditional
+}
+
+type ProtectedBranchEnforceAdminsAdditional map[string]jx.Raw
+
+func (s *ProtectedBranchEnforceAdminsAdditional) init() ProtectedBranchEnforceAdminsAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 // Protected Branch Pull Request Review.
@@ -31960,13 +32228,35 @@ type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
 }
 
 type ProtectedBranchRequiredConversationResolution struct {
-	Enabled         OptBool `json:"enabled"`
-	AdditionalProps map[string]jx.Raw
+	Enabled         OptBool "json:\"enabled\""
+	AdditionalProps ProtectedBranchRequiredConversationResolutionAdditional
+}
+
+type ProtectedBranchRequiredConversationResolutionAdditional map[string]jx.Raw
+
+func (s *ProtectedBranchRequiredConversationResolutionAdditional) init() ProtectedBranchRequiredConversationResolutionAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type ProtectedBranchRequiredLinearHistory struct {
-	Enabled         bool `json:"enabled"`
-	AdditionalProps map[string]jx.Raw
+	Enabled         bool "json:\"enabled\""
+	AdditionalProps ProtectedBranchRequiredLinearHistoryAdditional
+}
+
+type ProtectedBranchRequiredLinearHistoryAdditional map[string]jx.Raw
+
+func (s *ProtectedBranchRequiredLinearHistoryAdditional) init() ProtectedBranchRequiredLinearHistoryAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type ProtectedBranchRequiredPullRequestReviews struct {
@@ -31993,46 +32283,57 @@ type ProtectedBranchRequiredSignatures struct {
 // Public User.
 // Ref: #/components/schemas/public-user
 type PublicUser struct {
-	Login             string            `json:"login"`
-	ID                int               `json:"id"`
-	NodeID            string            `json:"node_id"`
-	AvatarURL         url.URL           `json:"avatar_url"`
-	GravatarID        NilString         `json:"gravatar_id"`
-	URL               url.URL           `json:"url"`
-	HTMLURL           url.URL           `json:"html_url"`
-	FollowersURL      url.URL           `json:"followers_url"`
-	FollowingURL      string            `json:"following_url"`
-	GistsURL          string            `json:"gists_url"`
-	StarredURL        string            `json:"starred_url"`
-	SubscriptionsURL  url.URL           `json:"subscriptions_url"`
-	OrganizationsURL  url.URL           `json:"organizations_url"`
-	ReposURL          url.URL           `json:"repos_url"`
-	EventsURL         string            `json:"events_url"`
-	ReceivedEventsURL url.URL           `json:"received_events_url"`
-	Type              string            `json:"type"`
-	SiteAdmin         bool              `json:"site_admin"`
-	Name              NilString         `json:"name"`
-	Company           NilString         `json:"company"`
-	Blog              NilString         `json:"blog"`
-	Location          NilString         `json:"location"`
-	Email             NilString         `json:"email"`
-	Hireable          NilBool           `json:"hireable"`
-	Bio               NilString         `json:"bio"`
-	TwitterUsername   OptNilString      `json:"twitter_username"`
-	PublicRepos       int               `json:"public_repos"`
-	PublicGists       int               `json:"public_gists"`
-	Followers         int               `json:"followers"`
-	Following         int               `json:"following"`
-	CreatedAt         time.Time         `json:"created_at"`
-	UpdatedAt         time.Time         `json:"updated_at"`
-	Plan              OptPublicUserPlan `json:"plan"`
-	SuspendedAt       OptNilDateTime    `json:"suspended_at"`
-	PrivateGists      OptInt            `json:"private_gists"`
-	TotalPrivateRepos OptInt            `json:"total_private_repos"`
-	OwnedPrivateRepos OptInt            `json:"owned_private_repos"`
-	DiskUsage         OptInt            `json:"disk_usage"`
-	Collaborators     OptInt            `json:"collaborators"`
-	AdditionalProps   map[string]jx.Raw
+	Login             string            "json:\"login\""
+	ID                int               "json:\"id\""
+	NodeID            string            "json:\"node_id\""
+	AvatarURL         url.URL           "json:\"avatar_url\""
+	GravatarID        NilString         "json:\"gravatar_id\""
+	URL               url.URL           "json:\"url\""
+	HTMLURL           url.URL           "json:\"html_url\""
+	FollowersURL      url.URL           "json:\"followers_url\""
+	FollowingURL      string            "json:\"following_url\""
+	GistsURL          string            "json:\"gists_url\""
+	StarredURL        string            "json:\"starred_url\""
+	SubscriptionsURL  url.URL           "json:\"subscriptions_url\""
+	OrganizationsURL  url.URL           "json:\"organizations_url\""
+	ReposURL          url.URL           "json:\"repos_url\""
+	EventsURL         string            "json:\"events_url\""
+	ReceivedEventsURL url.URL           "json:\"received_events_url\""
+	Type              string            "json:\"type\""
+	SiteAdmin         bool              "json:\"site_admin\""
+	Name              NilString         "json:\"name\""
+	Company           NilString         "json:\"company\""
+	Blog              NilString         "json:\"blog\""
+	Location          NilString         "json:\"location\""
+	Email             NilString         "json:\"email\""
+	Hireable          NilBool           "json:\"hireable\""
+	Bio               NilString         "json:\"bio\""
+	TwitterUsername   OptNilString      "json:\"twitter_username\""
+	PublicRepos       int               "json:\"public_repos\""
+	PublicGists       int               "json:\"public_gists\""
+	Followers         int               "json:\"followers\""
+	Following         int               "json:\"following\""
+	CreatedAt         time.Time         "json:\"created_at\""
+	UpdatedAt         time.Time         "json:\"updated_at\""
+	Plan              OptPublicUserPlan "json:\"plan\""
+	SuspendedAt       OptNilDateTime    "json:\"suspended_at\""
+	PrivateGists      OptInt            "json:\"private_gists\""
+	TotalPrivateRepos OptInt            "json:\"total_private_repos\""
+	OwnedPrivateRepos OptInt            "json:\"owned_private_repos\""
+	DiskUsage         OptInt            "json:\"disk_usage\""
+	Collaborators     OptInt            "json:\"collaborators\""
+	AdditionalProps   PublicUserAdditional
+}
+
+type PublicUserAdditional map[string]jx.Raw
+
+func (s *PublicUserAdditional) init() PublicUserAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type PublicUserPlan struct {
@@ -34289,6 +34590,15 @@ func NewStringReposCreateDeploymentReqPayload(v string) ReposCreateDeploymentReq
 
 type ReposCreateDeploymentReqPayload0 map[string]jx.Raw
 
+func (s *ReposCreateDeploymentReqPayload0) init() ReposCreateDeploymentReqPayload0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 type ReposCreateDeploymentStatusReq struct {
 	// The state of the status. Can be one of `error`, `failure`, `inactive`, `in_progress`, `queued`
 	// `pending`, or `success`. **Note:** To use the `inactive` state, you must provide the
@@ -34380,6 +34690,15 @@ type ReposCreateDispatchEventReq struct {
 
 // JSON payload with extra information about the webhook event that your action or worklow may use.
 type ReposCreateDispatchEventReqClientPayload map[string]jx.Raw
+
+func (s *ReposCreateDispatchEventReqClientPayload) init() ReposCreateDispatchEventReqClientPayload {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
 
 type ReposCreateForAuthenticatedUserApplicationJSONBadRequest BasicError
 
@@ -34652,11 +34971,29 @@ type ReposCreateWebhookApplicationJSONNotFound BasicError
 func (*ReposCreateWebhookApplicationJSONNotFound) reposCreateWebhookRes() {}
 
 type ReposCreateWebhookReq struct {
-	Name            OptString                      `json:"name"`
-	Config          OptReposCreateWebhookReqConfig `json:"config"`
-	Events          []string                       `json:"events"`
-	Active          OptBool                        `json:"active"`
-	AdditionalProps map[string]jx.Raw
+	// Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.
+	Name OptString "json:\"name\""
+	// Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
+	// github.com/rest/reference/repos#create-hook-config-params).
+	Config OptReposCreateWebhookReqConfig "json:\"config\""
+	// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered
+	// for.
+	Events []string "json:\"events\""
+	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
+	// notifications.
+	Active          OptBool "json:\"active\""
+	AdditionalProps ReposCreateWebhookReqAdditional
+}
+
+type ReposCreateWebhookReqAdditional map[string]jx.Raw
+
+func (s *ReposCreateWebhookReqAdditional) init() ReposCreateWebhookReqAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 // Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
@@ -36125,11 +36462,22 @@ type ReposUpdateStatusCheckProtectionReq struct {
 }
 
 type ReposUpdateWebhookConfigForRepoReq struct {
-	URL             OptWebhookConfigURL         `json:"url"`
-	ContentType     OptWebhookConfigContentType `json:"content_type"`
-	Secret          OptWebhookConfigSecret      `json:"secret"`
-	InsecureSsl     OptWebhookConfigInsecureSsl `json:"insecure_ssl"`
-	AdditionalProps map[string]jx.Raw
+	URL             OptWebhookConfigURL         "json:\"url\""
+	ContentType     OptWebhookConfigContentType "json:\"content_type\""
+	Secret          OptWebhookConfigSecret      "json:\"secret\""
+	InsecureSsl     OptWebhookConfigInsecureSsl "json:\"insecure_ssl\""
+	AdditionalProps ReposUpdateWebhookConfigForRepoReqAdditional
+}
+
+type ReposUpdateWebhookConfigForRepoReqAdditional map[string]jx.Raw
+
+func (s *ReposUpdateWebhookConfigForRepoReqAdditional) init() ReposUpdateWebhookConfigForRepoReqAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type ReposUpdateWebhookReq struct {
@@ -37797,8 +38145,21 @@ type TeamsCreateDiscussionLegacyReq struct {
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq struct {
-	Groups          []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem `json:"groups"`
-	AdditionalProps map[string]jx.Raw
+	// The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will
+	// replace the original one. You must include any existing groups that you don't want to remove.
+	Groups          []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem "json:\"groups\""
+	AdditionalProps TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional
+}
+
+type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional map[string]jx.Raw
+
+func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional) init() TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem struct {

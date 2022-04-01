@@ -3571,6 +3571,22 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode OrgsUpdateWebhookConfigForOrg:application/json request")
 		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := request.Value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate OrgsUpdateWebhookConfigForOrg request")
+		}
 		return request, nil
 	default:
 		return req, validate.InvalidContentType(ct)
@@ -5734,6 +5750,22 @@ func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptN
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode ReposCreateWebhook:application/json request")
 		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := request.Value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate ReposCreateWebhook request")
+		}
 		return request, nil
 	default:
 		return req, validate.InvalidContentType(ct)
@@ -6806,6 +6838,22 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "decode ReposUpdateWebhookConfigForRepo:application/json request")
+		}
+		if err := func() error {
+			if request.Set {
+				if err := func() error {
+					if err := request.Value.Validate(); err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return err
+				}
+			}
+			return nil
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate ReposUpdateWebhookConfigForRepo request")
 		}
 		return request, nil
 	default:

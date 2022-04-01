@@ -158,6 +158,15 @@ type AnyTest struct {
 
 type AnyTestAnyMap map[string]jx.Raw
 
+func (s *AnyTestAnyMap) init() AnyTestAnyMap {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 // Test array encoder/decoder generation.
 // Ref: #/components/schemas/ArrayTest
 type ArrayTest struct {
@@ -523,15 +532,35 @@ type Issue1433 struct {
 
 // Ref: #/components/schemas/MapWithProperties
 type MapWithProperties struct {
-	Required        int                               `json:"required"`
-	Optional        OptInt                            `json:"optional"`
-	SubMap          OptStringMap                      `json:"sub_map"`
-	InlinedSubMap   OptMapWithPropertiesInlinedSubMap `json:"inlined_sub_map"`
-	MapValidation   OptValidationStringMap            `json:"map_validation"`
-	AdditionalProps map[string]string
+	Required        int                               "json:\"required\""
+	Optional        OptInt                            "json:\"optional\""
+	SubMap          OptStringMap                      "json:\"sub_map\""
+	InlinedSubMap   OptMapWithPropertiesInlinedSubMap "json:\"inlined_sub_map\""
+	MapValidation   OptValidationStringMap            "json:\"map_validation\""
+	AdditionalProps MapWithPropertiesAdditional
+}
+
+type MapWithPropertiesAdditional map[string]string
+
+func (s *MapWithPropertiesAdditional) init() MapWithPropertiesAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
 }
 
 type MapWithPropertiesInlinedSubMap map[string]string
+
+func (s *MapWithPropertiesInlinedSubMap) init() MapWithPropertiesInlinedSubMap {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // Ref: #/components/schemas/MaxPropertiesTest
 type MaxPropertiesTest struct {
@@ -2826,15 +2855,44 @@ type RecursiveArray []RecursiveArray
 
 // Ref: #/components/schemas/RecursiveMap
 type RecursiveMap struct {
-	OptionalRecursiveField *RecursiveMap `json:"optional_recursive_field"`
-	AdditionalProps        map[string]RecursiveMap
+	OptionalRecursiveField *RecursiveMap "json:\"optional_recursive_field\""
+	AdditionalProps        RecursiveMapAdditional
+}
+
+type RecursiveMapAdditional map[string]RecursiveMap
+
+func (s *RecursiveMapAdditional) init() RecursiveMapAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]RecursiveMap{}
+		*s = m
+	}
+	return m
 }
 
 // Ref: #/components/schemas/StringMap
 type StringMap map[string]string
 
+func (s *StringMap) init() StringMap {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
 // Ref: #/components/schemas/StringStringMap
 type StringStringMap map[string]StringMap
+
+func (s *StringStringMap) init() StringStringMap {
+	m := *s
+	if m == nil {
+		m = map[string]StringMap{}
+		*s = m
+	}
+	return m
+}
 
 // Ref: #/components/schemas/TestFloatValidation
 type TestFloatValidation struct {
@@ -2866,3 +2924,12 @@ type TestObjectQueryParameterOK struct {
 
 // Ref: #/components/schemas/ValidationStringMap
 type ValidationStringMap map[string]string
+
+func (s *ValidationStringMap) init() ValidationStringMap {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}

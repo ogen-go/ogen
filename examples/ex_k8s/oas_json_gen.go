@@ -16885,39 +16885,34 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) encodeFields(e
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra = [0]string{}
-
 // Decode decodes IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra from json.
-func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem []string
-			if err := func() error {
-				elem = make([]string, 0)
-				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem string
-					v, err := d.Str()
-					elemElem = string(v)
-					if err != nil {
-						return err
-					}
-					elem = append(elem, elemElem)
-					return nil
-				}); err != nil {
+		var elem []string
+		if err := func() error {
+			elem = make([]string, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elemElem string
+				v, err := d.Str()
+				elemElem = string(v)
+				if err != nil {
 					return err
 				}
+				elem = append(elem, elemElem)
 				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+			}); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra")
@@ -18508,31 +18503,26 @@ func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) encodeFields(e 
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes from json.
-func (s IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes")
@@ -18735,31 +18725,26 @@ func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) encodeFields(e *jx.Encode
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes from json.
-func (s IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes")
@@ -20230,31 +20215,26 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapBinaryData = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ConfigMapBinaryData from json.
-func (s IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ConfigMapBinaryData to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem []byte
-			if err := func() error {
-				v, err := d.Base64()
-				elem = []byte(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem []byte
+		if err := func() error {
+			v, err := d.Base64()
+			elem = []byte(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ConfigMapBinaryData")
@@ -20292,31 +20272,26 @@ func (s IoK8sAPICoreV1ConfigMapData) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ConfigMapData = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ConfigMapData from json.
-func (s IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ConfigMapData to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ConfigMapData")
@@ -25837,31 +25812,26 @@ func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) encodeFields(e *jx.Enco
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1FlexPersistentVolumeSourceOptions = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1FlexPersistentVolumeSourceOptions from json.
-func (s IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1FlexPersistentVolumeSourceOptions to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1FlexPersistentVolumeSourceOptions")
@@ -26064,31 +26034,26 @@ func (s IoK8sAPICoreV1FlexVolumeSourceOptions) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1FlexVolumeSourceOptions = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1FlexVolumeSourceOptions from json.
-func (s IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1FlexVolumeSourceOptions to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1FlexVolumeSourceOptions")
@@ -28433,29 +28398,24 @@ func (s IoK8sAPICoreV1LimitRangeItemDefault) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemDefault = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1LimitRangeItemDefault from json.
-func (s IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefault to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemDefault")
@@ -28493,29 +28453,24 @@ func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) encodeFields(e *jx.Encoder) 
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemDefaultRequest = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1LimitRangeItemDefaultRequest from json.
-func (s IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefaultRequest to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemDefaultRequest")
@@ -28553,29 +28508,24 @@ func (s IoK8sAPICoreV1LimitRangeItemMax) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMax = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1LimitRangeItemMax from json.
-func (s IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMax to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemMax")
@@ -28613,29 +28563,24 @@ func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) encodeFields(e *jx.Enc
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio from json.
-func (s IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio")
@@ -28673,29 +28618,24 @@ func (s IoK8sAPICoreV1LimitRangeItemMin) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1LimitRangeItemMin = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1LimitRangeItemMin from json.
-func (s IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMin to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1LimitRangeItemMin")
@@ -31862,29 +31802,24 @@ func (s IoK8sAPICoreV1NodeStatusAllocatable) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1NodeStatusAllocatable = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1NodeStatusAllocatable from json.
-func (s IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1NodeStatusAllocatable to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeStatusAllocatable")
@@ -31922,29 +31857,24 @@ func (s IoK8sAPICoreV1NodeStatusCapacity) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1NodeStatusCapacity = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1NodeStatusCapacity from json.
-func (s IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1NodeStatusCapacity to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1NodeStatusCapacity")
@@ -33457,29 +33387,24 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) encodeFields(e *jx.En
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity from json.
-func (s IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity")
@@ -34483,29 +34408,24 @@ func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) encodeFields(e *jx.Encoder) 
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1PersistentVolumeSpecCapacity = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1PersistentVolumeSpecCapacity from json.
-func (s IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PersistentVolumeSpecCapacity to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PersistentVolumeSpecCapacity")
@@ -36982,31 +36902,26 @@ func (s IoK8sAPICoreV1PodSpecNodeSelector) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1PodSpecNodeSelector = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1PodSpecNodeSelector from json.
-func (s IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PodSpecNodeSelector to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodSpecNodeSelector")
@@ -37044,29 +36959,24 @@ func (s IoK8sAPICoreV1PodSpecOverhead) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1PodSpecOverhead = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1PodSpecOverhead from json.
-func (s IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PodSpecOverhead to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1PodSpecOverhead")
@@ -39654,31 +39564,26 @@ func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) encodeFields(e *jx.Enco
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ReplicationControllerSpecSelector = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ReplicationControllerSpecSelector from json.
-func (s IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ReplicationControllerSpecSelector to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ReplicationControllerSpecSelector")
@@ -40439,29 +40344,24 @@ func (s IoK8sAPICoreV1ResourceQuotaSpecHard) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaSpecHard = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ResourceQuotaSpecHard from json.
-func (s IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceQuotaSpecHard to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceQuotaSpecHard")
@@ -40579,29 +40479,24 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusHard) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaStatusHard = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ResourceQuotaStatusHard from json.
-func (s IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusHard to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceQuotaStatusHard")
@@ -40639,29 +40534,24 @@ func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceQuotaStatusUsed = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ResourceQuotaStatusUsed from json.
-func (s IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusUsed to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceQuotaStatusUsed")
@@ -40779,29 +40669,24 @@ func (s IoK8sAPICoreV1ResourceRequirementsLimits) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceRequirementsLimits = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ResourceRequirementsLimits from json.
-func (s IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsLimits to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceRequirementsLimits")
@@ -40839,29 +40724,24 @@ func (s IoK8sAPICoreV1ResourceRequirementsRequests) encodeFields(e *jx.Encoder) 
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ResourceRequirementsRequests = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ResourceRequirementsRequests from json.
-func (s IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsRequests to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ResourceRequirementsRequests")
@@ -42013,31 +41893,26 @@ func (s IoK8sAPICoreV1SecretData) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1SecretData = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1SecretData from json.
-func (s IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1SecretData to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem []byte
-			if err := func() error {
-				v, err := d.Base64()
-				elem = []byte(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem []byte
+		if err := func() error {
+			v, err := d.Base64()
+			elem = []byte(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1SecretData")
@@ -42632,31 +42507,26 @@ func (s IoK8sAPICoreV1SecretStringData) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1SecretStringData = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1SecretStringData from json.
-func (s IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1SecretStringData to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1SecretStringData")
@@ -44414,31 +44284,26 @@ func (s IoK8sAPICoreV1ServiceSpecSelector) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPICoreV1ServiceSpecSelector = [0]string{}
-
 // Decode decodes IoK8sAPICoreV1ServiceSpecSelector from json.
-func (s IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ServiceSpecSelector to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPICoreV1ServiceSpecSelector")
@@ -47650,31 +47515,26 @@ func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) encodeFields(e *jx.Encode
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPIDiscoveryV1EndpointDeprecatedTopology = [0]string{}
-
 // Decode decodes IoK8sAPIDiscoveryV1EndpointDeprecatedTopology from json.
-func (s IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPIDiscoveryV1EndpointDeprecatedTopology to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1EndpointDeprecatedTopology")
@@ -49217,31 +49077,26 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPIDiscoveryV1beta1EndpointTopology = [0]string{}
-
 // Decode decodes IoK8sAPIDiscoveryV1beta1EndpointTopology from json.
-func (s IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointTopology to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIDiscoveryV1beta1EndpointTopology")
@@ -58825,29 +58680,24 @@ func (s IoK8sAPINodeV1OverheadPodFixed) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPINodeV1OverheadPodFixed = [0]string{}
-
 // Decode decodes IoK8sAPINodeV1OverheadPodFixed from json.
-func (s IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1OverheadPodFixed to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1OverheadPodFixed")
@@ -59316,31 +59166,26 @@ func (s IoK8sAPINodeV1SchedulingNodeSelector) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPINodeV1SchedulingNodeSelector = [0]string{}
-
 // Decode decodes IoK8sAPINodeV1SchedulingNodeSelector from json.
-func (s IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1SchedulingNodeSelector to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1SchedulingNodeSelector")
@@ -59441,29 +59286,24 @@ func (s IoK8sAPINodeV1alpha1OverheadPodFixed) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPINodeV1alpha1OverheadPodFixed = [0]string{}
-
 // Decode decodes IoK8sAPINodeV1alpha1OverheadPodFixed from json.
-func (s IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1alpha1OverheadPodFixed to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1alpha1OverheadPodFixed")
@@ -60027,31 +59867,26 @@ func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) encodeFields(e *jx.Encoder) 
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPINodeV1alpha1SchedulingNodeSelector = [0]string{}
-
 // Decode decodes IoK8sAPINodeV1alpha1SchedulingNodeSelector from json.
-func (s IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1alpha1SchedulingNodeSelector to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1alpha1SchedulingNodeSelector")
@@ -60152,29 +59987,24 @@ func (s IoK8sAPINodeV1beta1OverheadPodFixed) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPINodeV1beta1OverheadPodFixed = [0]string{}
-
 // Decode decodes IoK8sAPINodeV1beta1OverheadPodFixed from json.
-func (s IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1beta1OverheadPodFixed to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgAPIResourceQuantity
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgAPIResourceQuantity
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1beta1OverheadPodFixed")
@@ -60643,31 +60473,26 @@ func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPINodeV1beta1SchedulingNodeSelector = [0]string{}
-
 // Decode decodes IoK8sAPINodeV1beta1SchedulingNodeSelector from json.
-func (s IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1beta1SchedulingNodeSelector to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPINodeV1beta1SchedulingNodeSelector")
@@ -61304,29 +61129,24 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) encodeFields(e *
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods = [0]string{}
-
 // Decode decodes IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods from json.
-func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgApisMetaV1Time
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgApisMetaV1Time
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods")
@@ -62558,29 +62378,24 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) encodeField
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods = [0]string{}
-
 // Decode decodes IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods from json.
-func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApimachineryPkgApisMetaV1Time
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApimachineryPkgApisMetaV1Time
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods")
@@ -67779,31 +67594,26 @@ func (s IoK8sAPIStorageV1StorageClassParameters) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPIStorageV1StorageClassParameters = [0]string{}
-
 // Decode decodes IoK8sAPIStorageV1StorageClassParameters from json.
-func (s IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPIStorageV1StorageClassParameters to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1StorageClassParameters")
@@ -68635,31 +68445,26 @@ func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) encodeFields(
 	}
 }
 
-var jsonFieldsNameOfIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata = [0]string{}
-
 // Decode decodes IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata from json.
-func (s IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.Decoder) error {
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata")
@@ -72397,29 +72202,24 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 	}
 }
 
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions = [0]string{}
-
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions from json.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Decode(d *jx.Decoder) error {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions")
@@ -72457,29 +72257,24 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependen
 	}
 }
 
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies = [0]string{}
-
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies from json.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Decode(d *jx.Decoder) error {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies")
@@ -72652,29 +72447,24 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 	}
 }
 
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties = [0]string{}
-
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties from json.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Decode(d *jx.Decoder) error {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties")
@@ -72712,29 +72502,24 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 	}
 }
 
-var jsonFieldsNameOfIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties = [0]string{}
-
 // Decode decodes IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties from json.
-func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Decode(d *jx.Decoder) error {
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
-			if err := func() error {
-				if err := elem.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties")
@@ -74586,31 +74371,26 @@ func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) encodeFields(e *
 	}
 }
 
-var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels = [0]string{}
-
 // Decode decodes IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels from json.
-func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Decoder) error {
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels")
@@ -75466,31 +75246,26 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) encodeFields(e *jx.
 	}
 }
 
-var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations = [0]string{}
-
 // Decode decodes IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations from json.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decoder) error {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations")
@@ -75528,31 +75303,26 @@ func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) encodeFields(e *jx.Encod
 	}
 }
 
-var jsonFieldsNameOfIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels = [0]string{}
-
 // Decode decodes IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels from json.
-func (s IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) error {
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels to nil")
 	}
+	m := s.init()
 
-	m := s
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var elem string
-			if err := func() error {
-				v, err := d.Str()
-				elem = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
 			}
-			m[string(k)] = elem
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
 		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, "decode IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels")

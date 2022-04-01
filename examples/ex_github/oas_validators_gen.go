@@ -5025,6 +5025,23 @@ func (s GistSimple) Validate() error {
 				if s.Forks.Value == nil {
 					return errors.New("nil is invalid value")
 				}
+				var failures []validate.FieldError
+				for i, elem := range s.Forks.Value {
+					if err := func() error {
+						if err := elem.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						failures = append(failures, validate.FieldError{
+							Name:  fmt.Sprintf("[%d]", i),
+							Error: err,
+						})
+					}
+				}
+				if len(failures) > 0 {
+					return &validate.Error{Fields: failures}
+				}
 				return nil
 			}(); err != nil {
 				return err
@@ -5054,6 +5071,32 @@ func (s GistSimple) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "history",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s GistSimpleForksItem) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.User.Set {
+			if err := func() error {
+				if err := s.User.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "user",
 			Error: err,
 		})
 	}
@@ -8304,6 +8347,32 @@ func (s OrgsUpdateMembershipForAuthenticatedUserReqState) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s OrgsUpdateWebhookConfigForOrgReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "insecure_ssl",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s OrgsUpdateWebhookReq) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -9774,6 +9843,33 @@ func (s ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions) Validate
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "teams",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s PublicUser) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := (validate.String{
+			MinLength:    0,
+			MinLengthSet: false,
+			MaxLength:    0,
+			MaxLengthSet: false,
+			Email:        true,
+			Hostname:     false,
+			Regex:        nil,
+		}).Validate(string(s.Email.Value)); err != nil {
+			return errors.Wrap(err, "string")
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "email",
 			Error: err,
 		})
 	}
@@ -11839,6 +11935,32 @@ func (s ReposCreatePagesSiteReqSourcePath) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
+func (s ReposCreateWebhookReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Config.Set {
+			if err := func() error {
+				if err := s.Config.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "config",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s ReposCreateWebhookReqConfig) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -12934,6 +13056,32 @@ func (s ReposUpdateReqVisibility) Validate() error {
 	default:
 		return errors.Errorf("invalid value: %v", s)
 	}
+}
+func (s ReposUpdateWebhookConfigForRepoReq) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.InsecureSsl.Set {
+			if err := func() error {
+				if err := s.InsecureSsl.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "insecure_ssl",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
 }
 func (s ReposUpdateWebhookReq) Validate() error {
 	var failures []validate.FieldError
@@ -15032,7 +15180,10 @@ func (s UsersGetAuthenticatedOK) Validate() error {
 		}
 		return nil
 	case PublicUserUsersGetAuthenticatedOK:
-		return nil // no validation needed
+		if err := s.PublicUser.Validate(); err != nil {
+			return err
+		}
+		return nil
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -15046,7 +15197,10 @@ func (s UsersGetByUsernameOK) Validate() error {
 		}
 		return nil
 	case PublicUserUsersGetByUsernameOK:
-		return nil // no validation needed
+		if err := s.PublicUser.Validate(); err != nil {
+			return err
+		}
+		return nil
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}

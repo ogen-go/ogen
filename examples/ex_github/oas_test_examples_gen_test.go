@@ -9074,6 +9074,20 @@ func TestIntegrationPermissions_Examples(t *testing.T) {
 		})
 	}
 }
+func TestIntegrationPermissionsAdditional_EncodeDecode(t *testing.T) {
+	var typ IntegrationPermissionsAdditional
+	typ = make(IntegrationPermissionsAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 IntegrationPermissionsAdditional
+	typ2 = make(IntegrationPermissionsAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestInteractionExpiry_EncodeDecode(t *testing.T) {
 	var typ InteractionExpiry
 	typ.SetFake()
@@ -11112,6 +11126,20 @@ func TestMigrationsMapCommitAuthorReq_EncodeDecode(t *testing.T) {
 	var typ2 MigrationsMapCommitAuthorReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestMigrationsMapCommitAuthorReqAdditional_EncodeDecode(t *testing.T) {
+	var typ MigrationsMapCommitAuthorReqAdditional
+	typ = make(MigrationsMapCommitAuthorReqAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MigrationsMapCommitAuthorReqAdditional
+	typ2 = make(MigrationsMapCommitAuthorReqAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestMigrationsSetLfsPreferenceReq_EncodeDecode(t *testing.T) {
 	var typ MigrationsSetLfsPreferenceReq
 	typ.SetFake()
@@ -11549,6 +11577,20 @@ func TestNullableIntegrationPermissions_Examples(t *testing.T) {
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
+}
+func TestNullableIntegrationPermissionsAdditional_EncodeDecode(t *testing.T) {
+	var typ NullableIntegrationPermissionsAdditional
+	typ = make(NullableIntegrationPermissionsAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullableIntegrationPermissionsAdditional
+	typ2 = make(NullableIntegrationPermissionsAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestNullableLicenseSimple_EncodeDecode(t *testing.T) {
 	var typ NullableLicenseSimple
@@ -12970,6 +13012,20 @@ func TestOrgsUpdateWebhookConfigForOrgReq_Examples(t *testing.T) {
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
+}
+func TestOrgsUpdateWebhookConfigForOrgReqAdditional_EncodeDecode(t *testing.T) {
+	var typ OrgsUpdateWebhookConfigForOrgReqAdditional
+	typ = make(OrgsUpdateWebhookConfigForOrgReqAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OrgsUpdateWebhookConfigForOrgReqAdditional
+	typ2 = make(OrgsUpdateWebhookConfigForOrgReqAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOrgsUpdateWebhookReq_EncodeDecode(t *testing.T) {
 	var typ OrgsUpdateWebhookReq
@@ -15688,6 +15744,20 @@ func TestProtectedBranchAllowDeletions_EncodeDecode(t *testing.T) {
 	var typ2 ProtectedBranchAllowDeletions
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestProtectedBranchAllowDeletionsAdditional_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchAllowDeletionsAdditional
+	typ = make(ProtectedBranchAllowDeletionsAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchAllowDeletionsAdditional
+	typ2 = make(ProtectedBranchAllowDeletionsAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestProtectedBranchAllowForcePushes_EncodeDecode(t *testing.T) {
 	var typ ProtectedBranchAllowForcePushes
 	typ.SetFake()
@@ -15700,6 +15770,20 @@ func TestProtectedBranchAllowForcePushes_EncodeDecode(t *testing.T) {
 	var typ2 ProtectedBranchAllowForcePushes
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestProtectedBranchAllowForcePushesAdditional_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchAllowForcePushesAdditional
+	typ = make(ProtectedBranchAllowForcePushesAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchAllowForcePushesAdditional
+	typ2 = make(ProtectedBranchAllowForcePushesAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestProtectedBranchEnforceAdmins_EncodeDecode(t *testing.T) {
 	var typ ProtectedBranchEnforceAdmins
 	typ.SetFake()
@@ -15710,6 +15794,20 @@ func TestProtectedBranchEnforceAdmins_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProtectedBranchEnforceAdmins
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchEnforceAdminsAdditional_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchEnforceAdminsAdditional
+	typ = make(ProtectedBranchEnforceAdminsAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchEnforceAdminsAdditional
+	typ2 = make(ProtectedBranchEnforceAdminsAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProtectedBranchPullRequestReview_EncodeDecode(t *testing.T) {
@@ -15778,6 +15876,20 @@ func TestProtectedBranchRequiredConversationResolution_EncodeDecode(t *testing.T
 	var typ2 ProtectedBranchRequiredConversationResolution
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestProtectedBranchRequiredConversationResolutionAdditional_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchRequiredConversationResolutionAdditional
+	typ = make(ProtectedBranchRequiredConversationResolutionAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchRequiredConversationResolutionAdditional
+	typ2 = make(ProtectedBranchRequiredConversationResolutionAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestProtectedBranchRequiredLinearHistory_EncodeDecode(t *testing.T) {
 	var typ ProtectedBranchRequiredLinearHistory
 	typ.SetFake()
@@ -15788,6 +15900,20 @@ func TestProtectedBranchRequiredLinearHistory_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProtectedBranchRequiredLinearHistory
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestProtectedBranchRequiredLinearHistoryAdditional_EncodeDecode(t *testing.T) {
+	var typ ProtectedBranchRequiredLinearHistoryAdditional
+	typ = make(ProtectedBranchRequiredLinearHistoryAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ProtectedBranchRequiredLinearHistoryAdditional
+	typ2 = make(ProtectedBranchRequiredLinearHistoryAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProtectedBranchRequiredPullRequestReviews_EncodeDecode(t *testing.T) {
@@ -15836,6 +15962,20 @@ func TestPublicUser_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PublicUser
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestPublicUserAdditional_EncodeDecode(t *testing.T) {
+	var typ PublicUserAdditional
+	typ = make(PublicUserAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PublicUserAdditional
+	typ2 = make(PublicUserAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestPublicUserPlan_EncodeDecode(t *testing.T) {
@@ -18654,6 +18794,20 @@ func TestReposCreateWebhookReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateWebhookReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestReposCreateWebhookReqAdditional_EncodeDecode(t *testing.T) {
+	var typ ReposCreateWebhookReqAdditional
+	typ = make(ReposCreateWebhookReqAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposCreateWebhookReqAdditional
+	typ2 = make(ReposCreateWebhookReqAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestReposCreateWebhookReqConfig_EncodeDecode(t *testing.T) {
 	var typ ReposCreateWebhookReqConfig
 	typ.SetFake()
@@ -20261,6 +20415,20 @@ func TestReposUpdateWebhookConfigForRepoReq_Examples(t *testing.T) {
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
+}
+func TestReposUpdateWebhookConfigForRepoReqAdditional_EncodeDecode(t *testing.T) {
+	var typ ReposUpdateWebhookConfigForRepoReqAdditional
+	typ = make(ReposUpdateWebhookConfigForRepoReqAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ReposUpdateWebhookConfigForRepoReqAdditional
+	typ2 = make(ReposUpdateWebhookConfigForRepoReqAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestReposUpdateWebhookReq_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateWebhookReq
@@ -22586,6 +22754,20 @@ func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq_EncodeDecode(t *testing.
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional_EncodeDecode(t *testing.T) {
+	var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional
+	typ = make(TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional
+	typ2 = make(TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem_EncodeDecode(t *testing.T) {
