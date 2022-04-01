@@ -417,7 +417,6 @@ func (s MapWithProperties) Validate() error {
 			Error: err,
 		})
 	}
-
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}

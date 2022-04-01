@@ -131,12 +131,11 @@ func (s *AnyTest) SetFake() {
 }
 
 // SetFake set fake values.
-func (s AnyTestAnyMap) SetFake() {
+func (s *AnyTestAnyMap) SetFake() {
 	var (
 		elem jx.Raw
-		m    map[string]jx.Raw
+		m    map[string]jx.Raw = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -532,6 +531,12 @@ func (s *MapWithProperties) SetFake() {
 	{
 
 		{
+			s.AdditionalProps.SetFake()
+		}
+	}
+	{
+
+		{
 			s.Optional.SetFake()
 		}
 	}
@@ -553,24 +558,25 @@ func (s *MapWithProperties) SetFake() {
 			s.MapValidation.SetFake()
 		}
 	}
+}
+
+// SetFake set fake values.
+func (s *MapWithPropertiesAdditional) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	s.AdditionalProps = map[string]string{}
-	m = s.AdditionalProps
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s MapWithPropertiesInlinedSubMap) SetFake() {
+func (s *MapWithPropertiesInlinedSubMap) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -828,7 +834,6 @@ func (s *OptAnyTestAnyMap) SetFake() {
 	var elem AnyTestAnyMap
 
 	{
-		elem = make(AnyTestAnyMap)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -979,7 +984,6 @@ func (s *OptMapWithPropertiesInlinedSubMap) SetFake() {
 	var elem MapWithPropertiesInlinedSubMap
 
 	{
-		elem = make(MapWithPropertiesInlinedSubMap)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -1082,7 +1086,6 @@ func (s *OptStringMap) SetFake() {
 	var elem StringMap
 
 	{
-		elem = make(StringMap)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -1093,7 +1096,6 @@ func (s *OptStringStringMap) SetFake() {
 	var elem StringStringMap
 
 	{
-		elem = make(StringStringMap)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -1134,7 +1136,6 @@ func (s *OptValidationStringMap) SetFake() {
 	var elem ValidationStringMap
 
 	{
-		elem = make(ValidationStringMap)
 		elem.SetFake()
 	}
 	s.SetTo(elem)
@@ -1404,36 +1405,42 @@ func (s *RecursiveMap) SetFake() {
 			s.OptionalRecursiveField = nil
 		}
 	}
+	{
+
+		{
+			s.AdditionalProps.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *RecursiveMapAdditional) SetFake() {
 	var (
 		elem RecursiveMap
-		m    map[string]RecursiveMap
+		m    map[string]RecursiveMap = s.init()
 	)
-	s.AdditionalProps = map[string]RecursiveMap{}
-	m = s.AdditionalProps
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s StringMap) SetFake() {
+func (s *StringMap) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
 // SetFake set fake values.
-func (s StringStringMap) SetFake() {
+func (s *StringStringMap) SetFake() {
 	var (
 		elem StringMap
-		m    map[string]StringMap
+		m    map[string]StringMap = s.init()
 	)
-	m = s
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}
@@ -1484,12 +1491,11 @@ func (s *TestObjectQueryParameterOK) SetFake() {
 }
 
 // SetFake set fake values.
-func (s ValidationStringMap) SetFake() {
+func (s *ValidationStringMap) SetFake() {
 	var (
 		elem string
-		m    map[string]string
+		m    map[string]string = s.init()
 	)
-	m = s
 	for i := 0; i < 1; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
 	}

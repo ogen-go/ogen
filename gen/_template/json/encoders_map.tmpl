@@ -1,6 +1,5 @@
 {{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
 {{- define "json/encoders_map" }}
-{{- $fields := $.JSON.Fields }}
 {{- $va := $.Validators }}
 // Encode implements json.Marshaler.
 func (s {{ $.Name }}) Encode(e *jx.Encoder) {
@@ -11,75 +10,35 @@ func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 
 // encodeFields implements json.Marshaler.
 func (s {{ $.Name }}) encodeFields(e *jx.Encoder) {
-	{{- if $fields.NotEmpty }}
-	{
-		{{- template "json/encode_struct_fields" $fields }}
-	}
-	{{- end }}
-	for k, elem := range s{{- if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}{{- end }} {
+	for k, elem := range s {
 		e.FieldStart(k)
 		{{ template "json/enc" map_elem $.Item }}
 	}
 }
 
-var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{
-	{{- range $i, $f := $fields }}
-	{{ $i }}: {{ quote $f.Tag.JSON }},
-	{{- end }}
-}
-
 // Decode decodes {{ $.Name }} from json.
-func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) error {
+func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
+	m := s.init()
 
-	{{- $requiredMask := $fields.RequiredMask }}
-	{{- if $fields.HasRequired }}
-	var requiredBitSet [{{ len $requiredMask }}]uint8
-	{{- end }}
 	{{- if $va.Object.Set }}
 	var propertiesCount int
 	{{- end }}
 
-	{{- if $.HasDefaultFields }}
-	s.setDefaults()
-	{{- end }}
-
-	m := s{{ if $fields.NotEmpty }}.{{ $.AdditionalPropsField }}
-	if m == nil {
-		m = map[string]{{ $.Item.Go }}{}
-		s.{{ $.AdditionalPropsField }} = m
-	}
-	{{- end }}
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		{{- if $va.Object.Set }}
 		propertiesCount++
 		{{- end }}
-		switch string(k) {
-	{{- range $i, $f := $fields }}
-	case {{ quote $f.Tag.JSON }}:
-		{{- if $f.Spec.Required }}
-		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
-        {{ end -}}
-
+		var elem {{ $.Item.Go }}
 		if err := func() error {
-			{{- template "json/dec" field_elem $f }}
+			{{- template "json/dec" map_elem $.Item }}
 			return nil
 		}(); err != nil {
-			return errors.Wrap(err, {{ printf "decode field %q" $f.Spec.Name | quote }})
+			return errors.Wrapf(err, "decode field %q", k)
 		}
-	{{- end }}
-		default:
-			var elem {{ $.Item.Go }}
-			if err := func() error {
-				{{- template "json/dec" map_elem $.Item }}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			m[string(k)] = elem
-		}
+		m[string(k)] = elem
 		return nil
 	}); err != nil {
 		return errors.Wrap(err, {{ printf "decode %s" $.Name | quote }})
@@ -95,43 +54,6 @@ func (s {{ if $fields.NotEmpty }}*{{ end }}{{ $.Name }}) Decode(d *jx.Decoder) e
 		MaxPropertiesSet: {{ $v.MaxPropertiesSet }},
 	}).ValidateProperties(propertiesCount); err != nil {
 		return errors.Wrap(err, "object")
-	}
-	{{- end }}
-
-	{{- if $fields.HasRequired }}
-	// Validate required fields.
-	var failures []validate.FieldError
-	for i, mask := range [{{ len $requiredMask }}]uint8{
-	{{- range $mask := $requiredMask }}
-		{{ printf "%#08b" $mask }},
-	{{- end }}
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i * 8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOf{{ $.Name }}) {
-					name = jsonFieldsNameOf{{ $.Name }}[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
 	}
 	{{- end }}
 

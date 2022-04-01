@@ -5,9 +5,6 @@
 {{- if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) ($t.IsGeneric) ($t.IsAlias) -}}
     {{ $.Var }}.SetFake()
 {{- else if $t.IsMap -}}
-	{{- if not $t.Fields }}
-	{{ $.Var }} = make({{ $t.Go }})
-	{{- end }}
     {{ $.Var }}.SetFake()
 {{- else if $t.IsPointer -}}
     // Keep pointer nil to prevent infinite recursion.

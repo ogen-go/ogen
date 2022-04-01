@@ -65,9 +65,6 @@ if err := d.Arr(func(d *jx.Decoder) error {
 	{{- else if $t.GenericOf }}
 		{{- template "json/dec_generic" $ }}
 	{{- else if $t.IsMap }}
-		{{- if not $t.Fields }}
-		{{ $.Var }} = make({{ $t.Go }})
-		{{- end }}
 		if err := {{ $.Var }}.Decode(d); err != nil {
 			return err
 		}

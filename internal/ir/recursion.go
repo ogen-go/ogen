@@ -18,7 +18,8 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 		// Any       - has no fields.
 		// Pointer   - prevents recursion.
 		// Array     - prevents recursion.
-		whitelist := []Kind{KindPrimitive, KindEnum, KindAny, KindPointer, KindArray}
+		// Map       - prevents recursion.
+		whitelist := []Kind{KindPrimitive, KindEnum, KindAny, KindPointer, KindArray, KindMap}
 		if t.Is(whitelist...) || target.Is(whitelist...) {
 			return false
 		}
@@ -39,9 +40,9 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 		return t.recursive(target.AliasTo, path)
 	case KindGeneric:
 		return t.recursive(target.GenericOf, path)
-	case KindStruct, KindMap:
+	case KindStruct:
 		for _, f := range target.Fields {
-			if !f.Spec.Required {
+			if f.Spec != nil && !f.Spec.Required {
 				continue
 			}
 			if t.recursive(f.Type, path) {

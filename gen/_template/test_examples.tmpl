@@ -22,9 +22,9 @@ func Test{{ $typ.Go }}_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 {{ $typ.Go }}
-	{{- if $typ.IsMap }}{{- if not $typ.Fields }}
+	{{- if $typ.IsMap }}
 	typ2 = make({{ $typ.Go }})
-	{{- end }}{{- end }}
+	{{- end }}
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 {{- end }}

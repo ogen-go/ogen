@@ -329,6 +329,20 @@ func TestMapWithProperties_EncodeDecode(t *testing.T) {
 	var typ2 MapWithProperties
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestMapWithPropertiesAdditional_EncodeDecode(t *testing.T) {
+	var typ MapWithPropertiesAdditional
+	typ = make(MapWithPropertiesAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MapWithPropertiesAdditional
+	typ2 = make(MapWithPropertiesAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestMapWithPropertiesInlinedSubMap_EncodeDecode(t *testing.T) {
 	var typ MapWithPropertiesInlinedSubMap
 	typ = make(MapWithPropertiesInlinedSubMap)
@@ -605,6 +619,20 @@ func TestRecursiveMap_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 RecursiveMap
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestRecursiveMapAdditional_EncodeDecode(t *testing.T) {
+	var typ RecursiveMapAdditional
+	typ = make(RecursiveMapAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 RecursiveMapAdditional
+	typ2 = make(RecursiveMapAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestStringMap_EncodeDecode(t *testing.T) {
