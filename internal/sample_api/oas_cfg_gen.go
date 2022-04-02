@@ -77,6 +77,8 @@ var (
 var regexMap = map[string]*regexp.Regexp{
 	"^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$": regexp.MustCompile("^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"),
 	"^\\d-\\d$": regexp.MustCompile("^\\d-\\d$"),
+	"foo.*":     regexp.MustCompile("foo.*"),
+	"string_.*": regexp.MustCompile("string_.*"),
 }
 var ratMap = map[string]*big.Rat{
 	"10/1": func() *big.Rat {

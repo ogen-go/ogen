@@ -77,13 +77,11 @@ var (
 // SetFake set fake values.
 func (s *Error) SetFake() {
 	{
-
 		{
 			s.Code.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Status.SetFake()
 		}
@@ -173,7 +171,6 @@ func (s *NilUUID) SetFake() {
 // SetFake set fake values.
 func (s *OptBool) SetFake() {
 	var elem bool
-
 	{
 		elem = true
 	}
@@ -183,7 +180,6 @@ func (s *OptBool) SetFake() {
 // SetFake set fake values.
 func (s *OptDate) SetFake() {
 	var elem time.Time
-
 	{
 		elem = time.Now()
 	}
@@ -193,7 +189,6 @@ func (s *OptDate) SetFake() {
 // SetFake set fake values.
 func (s *OptDateTime) SetFake() {
 	var elem time.Time
-
 	{
 		elem = time.Now()
 	}
@@ -203,7 +198,6 @@ func (s *OptDateTime) SetFake() {
 // SetFake set fake values.
 func (s *OptDuration) SetFake() {
 	var elem time.Duration
-
 	{
 		elem = time.Duration(5 * time.Second)
 	}
@@ -213,7 +207,6 @@ func (s *OptDuration) SetFake() {
 // SetFake set fake values.
 func (s *OptFloat32) SetFake() {
 	var elem float32
-
 	{
 		elem = float32(0)
 	}
@@ -223,7 +216,6 @@ func (s *OptFloat32) SetFake() {
 // SetFake set fake values.
 func (s *OptFloat64) SetFake() {
 	var elem float64
-
 	{
 		elem = float64(0)
 	}
@@ -233,7 +225,6 @@ func (s *OptFloat64) SetFake() {
 // SetFake set fake values.
 func (s *OptIP) SetFake() {
 	var elem net.IP
-
 	{
 		elem = net.ParseIP("127.0.0.1")
 	}
@@ -243,7 +234,6 @@ func (s *OptIP) SetFake() {
 // SetFake set fake values.
 func (s *OptIPv4) SetFake() {
 	var elem net.IP
-
 	{
 		elem = net.ParseIP("127.0.0.1")
 	}
@@ -253,7 +243,6 @@ func (s *OptIPv4) SetFake() {
 // SetFake set fake values.
 func (s *OptIPv6) SetFake() {
 	var elem net.IP
-
 	{
 		elem = net.ParseIP("127.0.0.1")
 	}
@@ -263,7 +252,6 @@ func (s *OptIPv6) SetFake() {
 // SetFake set fake values.
 func (s *OptInt) SetFake() {
 	var elem int
-
 	{
 		elem = int(0)
 	}
@@ -273,7 +261,6 @@ func (s *OptInt) SetFake() {
 // SetFake set fake values.
 func (s *OptInt32) SetFake() {
 	var elem int32
-
 	{
 		elem = int32(0)
 	}
@@ -283,7 +270,6 @@ func (s *OptInt32) SetFake() {
 // SetFake set fake values.
 func (s *OptInt64) SetFake() {
 	var elem int64
-
 	{
 		elem = int64(0)
 	}
@@ -395,7 +381,6 @@ func (s *OptNilUUID) SetFake() {
 // SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
-
 	{
 		elem = "string"
 	}
@@ -405,7 +390,6 @@ func (s *OptString) SetFake() {
 // SetFake set fake values.
 func (s *OptTestRequestFormatTestReq) SetFake() {
 	var elem TestRequestFormatTestReq
-
 	{
 		elem.SetFake()
 	}
@@ -415,7 +399,6 @@ func (s *OptTestRequestFormatTestReq) SetFake() {
 // SetFake set fake values.
 func (s *OptTime) SetFake() {
 	var elem time.Time
-
 	{
 		elem = time.Now()
 	}
@@ -425,7 +408,6 @@ func (s *OptTime) SetFake() {
 // SetFake set fake values.
 func (s *OptURI) SetFake() {
 	var elem url.URL
-
 	{
 		elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 	}
@@ -435,7 +417,6 @@ func (s *OptURI) SetFake() {
 // SetFake set fake values.
 func (s *OptUUID) SetFake() {
 	var elem uuid.UUID
-
 	{
 		elem = uuid.New()
 	}
@@ -449,18 +430,15 @@ func (s *TestRequestEmptyStructReq) SetFake() {
 // SetFake set fake values.
 func (s *TestRequestFormatTestReq) SetFake() {
 	{
-
 		{
 			s.RequiredAny = []byte("null")
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem jx.Raw
-
 				{
 					elem = []byte("null")
 				}
@@ -469,12 +447,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem bool
-
 				{
 					elem = true
 				}
@@ -483,12 +459,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -497,12 +471,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -511,12 +483,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -525,12 +495,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -539,12 +507,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -553,12 +519,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem float32
-
 				{
 					elem = float32(0)
 				}
@@ -567,12 +531,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -581,12 +543,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -595,12 +555,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -609,12 +567,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -623,12 +579,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem []byte
-
 				{
 					elem = []byte("[]byte")
 				}
@@ -637,12 +591,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -651,12 +603,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -665,12 +615,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Duration
-
 				{
 					elem = time.Duration(5 * time.Second)
 				}
@@ -679,12 +627,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -693,12 +639,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -707,12 +651,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -721,12 +663,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -735,12 +675,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -749,12 +687,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -763,12 +699,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -777,12 +711,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
-
 				{
 					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 				}
@@ -791,12 +723,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem uuid.UUID
-
 				{
 					elem = uuid.New()
 				}
@@ -805,23 +735,19 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredBoolean = true
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem []jx.Raw
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem jx.Raw
-
 						{
 							elemElem = []byte("null")
 						}
@@ -833,17 +759,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem []bool
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem bool
-
 						{
 							elemElem = true
 						}
@@ -855,17 +778,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int
-
 						{
 							elemElem = int(0)
 						}
@@ -877,17 +797,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -899,17 +816,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -921,17 +835,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -943,17 +854,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -965,17 +873,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem []float32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float32
-
 						{
 							elemElem = float32(0)
 						}
@@ -987,17 +892,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -1009,17 +911,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -1031,17 +930,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -1053,17 +949,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -1075,17 +968,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem [][]byte
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem []byte
-
 						{
 							elemElem = []byte("[]byte")
 						}
@@ -1097,17 +987,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -1119,17 +1006,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -1141,17 +1025,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Duration
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Duration
-
 						{
 							elemElem = time.Duration(5 * time.Second)
 						}
@@ -1163,17 +1044,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -1185,17 +1063,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -1207,17 +1082,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -1229,17 +1101,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -1251,17 +1120,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -1273,17 +1139,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -1295,17 +1158,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -1317,17 +1177,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem url.URL
-
 						{
 							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 						}
@@ -1339,17 +1196,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem []uuid.UUID
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem uuid.UUID
-
 						{
 							elemElem = uuid.New()
 						}
@@ -1361,156 +1215,130 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredInteger = int(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredIntegerInt64 = int64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumber = float64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberDouble = float64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberFloat = float32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberInt32 = int32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberInt64 = int64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredString = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringBinary = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringByte = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDate = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDateMinusTime = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDuration = time.Duration(5 * time.Second)
 		}
 	}
 	{
-
 		{
 			s.RequiredStringEmail = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringHostname = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIP = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIpv4 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIpv6 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringPassword = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringTime = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 		}
 	}
 	{
-
 		{
 			s.RequiredStringUUID = uuid.New()
 		}
 	}
 	{
-
 		{
 			s.OptionalAny = []byte("null")
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem jx.Raw
-
 				{
 					elem = []byte("null")
 				}
@@ -1519,12 +1347,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem bool
-
 				{
 					elem = true
 				}
@@ -1533,12 +1359,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -1547,12 +1371,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -1561,12 +1383,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -1575,12 +1395,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -1589,12 +1407,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -1603,12 +1419,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem float32
-
 				{
 					elem = float32(0)
 				}
@@ -1617,12 +1431,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -1631,12 +1443,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -1645,12 +1455,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -1659,12 +1467,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -1673,12 +1479,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem []byte
-
 				{
 					elem = []byte("[]byte")
 				}
@@ -1687,12 +1491,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -1701,12 +1503,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -1715,12 +1515,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Duration
-
 				{
 					elem = time.Duration(5 * time.Second)
 				}
@@ -1729,12 +1527,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -1743,12 +1539,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -1757,12 +1551,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -1771,12 +1563,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -1785,12 +1575,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -1799,12 +1587,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -1813,12 +1599,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -1827,12 +1611,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
-
 				{
 					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 				}
@@ -1841,12 +1623,10 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem uuid.UUID
-
 				{
 					elem = uuid.New()
 				}
@@ -1855,23 +1635,19 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalBoolean.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem []jx.Raw
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem jx.Raw
-
 						{
 							elemElem = []byte("null")
 						}
@@ -1883,17 +1659,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem []bool
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem bool
-
 						{
 							elemElem = true
 						}
@@ -1905,17 +1678,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int
-
 						{
 							elemElem = int(0)
 						}
@@ -1927,17 +1697,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -1949,17 +1716,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -1971,17 +1735,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -1993,17 +1754,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -2015,17 +1773,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem []float32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float32
-
 						{
 							elemElem = float32(0)
 						}
@@ -2037,17 +1792,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -2059,17 +1811,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -2081,17 +1830,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -2103,17 +1849,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -2125,17 +1868,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem [][]byte
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem []byte
-
 						{
 							elemElem = []byte("[]byte")
 						}
@@ -2147,17 +1887,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -2169,17 +1906,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -2191,17 +1925,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Duration
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Duration
-
 						{
 							elemElem = time.Duration(5 * time.Second)
 						}
@@ -2213,17 +1944,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -2235,17 +1963,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -2257,17 +1982,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -2279,17 +2001,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -2301,17 +2020,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -2323,17 +2039,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -2345,17 +2058,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -2367,17 +2077,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem url.URL
-
 						{
 							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 						}
@@ -2389,17 +2096,14 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem []uuid.UUID
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem uuid.UUID
-
 						{
 							elemElem = uuid.New()
 						}
@@ -2411,139 +2115,116 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalInteger.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalIntegerInt32.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalIntegerInt64.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumber.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberDouble.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberFloat.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberInt32.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberInt64.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalString.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringBinary.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringByte = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDate.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDateMinusTime.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDuration.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringEmail.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringHostname.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIP.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIpv4.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIpv6.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringPassword.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringTime.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringURI.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringUUID.SetFake()
 		}
@@ -2557,18 +2238,15 @@ func (s *TestRequestRequiredEmptyStructReq) SetFake() {
 // SetFake set fake values.
 func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
-
 		{
 			s.RequiredAny = []byte("null")
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem jx.Raw
-
 				{
 					elem = []byte("null")
 				}
@@ -2577,12 +2255,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem bool
-
 				{
 					elem = true
 				}
@@ -2591,12 +2267,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -2605,12 +2279,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -2619,12 +2291,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -2633,12 +2303,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -2647,12 +2315,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -2661,12 +2327,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem float32
-
 				{
 					elem = float32(0)
 				}
@@ -2675,12 +2339,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -2689,12 +2351,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -2703,12 +2363,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -2717,12 +2375,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -2731,12 +2387,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem []byte
-
 				{
 					elem = []byte("[]byte")
 				}
@@ -2745,12 +2399,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -2759,12 +2411,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -2773,12 +2423,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Duration
-
 				{
 					elem = time.Duration(5 * time.Second)
 				}
@@ -2787,12 +2435,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -2801,12 +2447,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -2815,12 +2459,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -2829,12 +2471,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -2843,12 +2483,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -2857,12 +2495,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -2871,12 +2507,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -2885,12 +2519,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
-
 				{
 					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 				}
@@ -2899,12 +2531,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem uuid.UUID
-
 				{
 					elem = uuid.New()
 				}
@@ -2913,23 +2543,19 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredBoolean = true
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem []jx.Raw
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem jx.Raw
-
 						{
 							elemElem = []byte("null")
 						}
@@ -2941,17 +2567,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem []bool
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem bool
-
 						{
 							elemElem = true
 						}
@@ -2963,17 +2586,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int
-
 						{
 							elemElem = int(0)
 						}
@@ -2985,17 +2605,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -3007,17 +2624,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -3029,17 +2643,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -3051,17 +2662,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -3073,17 +2681,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem []float32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float32
-
 						{
 							elemElem = float32(0)
 						}
@@ -3095,17 +2700,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -3117,17 +2719,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -3139,17 +2738,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -3161,17 +2757,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -3183,17 +2776,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem [][]byte
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem []byte
-
 						{
 							elemElem = []byte("[]byte")
 						}
@@ -3205,17 +2795,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -3227,17 +2814,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -3249,17 +2833,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Duration
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Duration
-
 						{
 							elemElem = time.Duration(5 * time.Second)
 						}
@@ -3271,17 +2852,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -3293,17 +2871,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -3315,17 +2890,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -3337,17 +2909,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -3359,17 +2928,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -3381,17 +2947,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -3403,17 +2966,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -3425,17 +2985,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem url.URL
-
 						{
 							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 						}
@@ -3447,17 +3004,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem []uuid.UUID
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem uuid.UUID
-
 						{
 							elemElem = uuid.New()
 						}
@@ -3469,156 +3023,130 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredInteger = int(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredIntegerInt64 = int64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumber = float64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberDouble = float64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberFloat = float32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberInt32 = int32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberInt64 = int64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredString = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringBinary = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringByte = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDate = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDateMinusTime = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDuration = time.Duration(5 * time.Second)
 		}
 	}
 	{
-
 		{
 			s.RequiredStringEmail = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringHostname = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIP = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIpv4 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIpv6 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringPassword = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringTime = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 		}
 	}
 	{
-
 		{
 			s.RequiredStringUUID = uuid.New()
 		}
 	}
 	{
-
 		{
 			s.OptionalAny = []byte("null")
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem jx.Raw
-
 				{
 					elem = []byte("null")
 				}
@@ -3627,12 +3155,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem bool
-
 				{
 					elem = true
 				}
@@ -3641,12 +3167,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -3655,12 +3179,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -3669,12 +3191,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -3683,12 +3203,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -3697,12 +3215,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -3711,12 +3227,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem float32
-
 				{
 					elem = float32(0)
 				}
@@ -3725,12 +3239,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -3739,12 +3251,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -3753,12 +3263,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -3767,12 +3275,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -3781,12 +3287,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem []byte
-
 				{
 					elem = []byte("[]byte")
 				}
@@ -3795,12 +3299,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -3809,12 +3311,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -3823,12 +3323,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Duration
-
 				{
 					elem = time.Duration(5 * time.Second)
 				}
@@ -3837,12 +3335,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -3851,12 +3347,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -3865,12 +3359,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -3879,12 +3371,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -3893,12 +3383,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -3907,12 +3395,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -3921,12 +3407,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -3935,12 +3419,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
-
 				{
 					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 				}
@@ -3949,12 +3431,10 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem uuid.UUID
-
 				{
 					elem = uuid.New()
 				}
@@ -3963,23 +3443,19 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalBoolean.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem []jx.Raw
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem jx.Raw
-
 						{
 							elemElem = []byte("null")
 						}
@@ -3991,17 +3467,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem []bool
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem bool
-
 						{
 							elemElem = true
 						}
@@ -4013,17 +3486,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int
-
 						{
 							elemElem = int(0)
 						}
@@ -4035,17 +3505,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -4057,17 +3524,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -4079,17 +3543,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -4101,17 +3562,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -4123,17 +3581,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem []float32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float32
-
 						{
 							elemElem = float32(0)
 						}
@@ -4145,17 +3600,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -4167,17 +3619,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -4189,17 +3638,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -4211,17 +3657,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -4233,17 +3676,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem [][]byte
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem []byte
-
 						{
 							elemElem = []byte("[]byte")
 						}
@@ -4255,17 +3695,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -4277,17 +3714,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -4299,17 +3733,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Duration
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Duration
-
 						{
 							elemElem = time.Duration(5 * time.Second)
 						}
@@ -4321,17 +3752,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -4343,17 +3771,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -4365,17 +3790,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -4387,17 +3809,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -4409,17 +3828,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -4431,17 +3847,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -4453,17 +3866,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -4475,17 +3885,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem url.URL
-
 						{
 							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 						}
@@ -4497,17 +3904,14 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem []uuid.UUID
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem uuid.UUID
-
 						{
 							elemElem = uuid.New()
 						}
@@ -4519,139 +3923,116 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalInteger.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalIntegerInt32.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalIntegerInt64.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumber.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberDouble.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberFloat.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberInt32.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberInt64.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalString.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringBinary.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringByte = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDate.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDateMinusTime.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDuration.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringEmail.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringHostname.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIP.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIpv4.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIpv6.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringPassword.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringTime.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringURI.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringUUID.SetFake()
 		}
@@ -4665,18 +4046,15 @@ func (s *TestResponseEmptyStructOK) SetFake() {
 // SetFake set fake values.
 func (s *TestResponseFormatTestOK) SetFake() {
 	{
-
 		{
 			s.RequiredAny = []byte("null")
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem jx.Raw
-
 				{
 					elem = []byte("null")
 				}
@@ -4685,12 +4063,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem bool
-
 				{
 					elem = true
 				}
@@ -4699,12 +4075,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -4713,12 +4087,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -4727,12 +4099,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -4741,12 +4111,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -4755,12 +4123,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -4769,12 +4135,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem float32
-
 				{
 					elem = float32(0)
 				}
@@ -4783,12 +4147,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -4797,12 +4159,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -4811,12 +4171,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -4825,12 +4183,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -4839,12 +4195,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem []byte
-
 				{
 					elem = []byte("[]byte")
 				}
@@ -4853,12 +4207,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -4867,12 +4219,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -4881,12 +4231,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Duration
-
 				{
 					elem = time.Duration(5 * time.Second)
 				}
@@ -4895,12 +4243,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -4909,12 +4255,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -4923,12 +4267,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -4937,12 +4279,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -4951,12 +4291,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -4965,12 +4303,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -4979,12 +4315,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -4993,12 +4327,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
-
 				{
 					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 				}
@@ -5007,12 +4339,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem uuid.UUID
-
 				{
 					elem = uuid.New()
 				}
@@ -5021,23 +4351,19 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredBoolean = true
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem []jx.Raw
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem jx.Raw
-
 						{
 							elemElem = []byte("null")
 						}
@@ -5049,17 +4375,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem []bool
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem bool
-
 						{
 							elemElem = true
 						}
@@ -5071,17 +4394,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int
-
 						{
 							elemElem = int(0)
 						}
@@ -5093,17 +4413,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -5115,17 +4432,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -5137,17 +4451,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -5159,17 +4470,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -5181,17 +4489,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem []float32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float32
-
 						{
 							elemElem = float32(0)
 						}
@@ -5203,17 +4508,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -5225,17 +4527,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -5247,17 +4546,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -5269,17 +4565,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -5291,17 +4584,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem [][]byte
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem []byte
-
 						{
 							elemElem = []byte("[]byte")
 						}
@@ -5313,17 +4603,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -5335,17 +4622,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -5357,17 +4641,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Duration
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Duration
-
 						{
 							elemElem = time.Duration(5 * time.Second)
 						}
@@ -5379,17 +4660,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -5401,17 +4679,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -5423,17 +4698,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -5445,17 +4717,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -5467,17 +4736,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -5489,17 +4755,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -5511,17 +4774,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -5533,17 +4793,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem url.URL
-
 						{
 							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 						}
@@ -5555,17 +4812,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredDoubleArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem []uuid.UUID
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem uuid.UUID
-
 						{
 							elemElem = uuid.New()
 						}
@@ -5577,156 +4831,130 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.RequiredInteger = int(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredIntegerInt32 = int32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredIntegerInt64 = int64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumber = float64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberDouble = float64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberFloat = float32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberInt32 = int32(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredNumberInt64 = int64(0)
 		}
 	}
 	{
-
 		{
 			s.RequiredString = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringBinary = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringByte = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDate = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDateMinusTime = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringDuration = time.Duration(5 * time.Second)
 		}
 	}
 	{
-
 		{
 			s.RequiredStringEmail = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringHostname = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIP = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIpv4 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringIpv6 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.RequiredStringPassword = "string"
 		}
 	}
 	{
-
 		{
 			s.RequiredStringTime = time.Now()
 		}
 	}
 	{
-
 		{
 			s.RequiredStringURI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 		}
 	}
 	{
-
 		{
 			s.RequiredStringUUID = uuid.New()
 		}
 	}
 	{
-
 		{
 			s.OptionalAny = []byte("null")
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem jx.Raw
-
 				{
 					elem = []byte("null")
 				}
@@ -5735,12 +4963,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem bool
-
 				{
 					elem = true
 				}
@@ -5749,12 +4975,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -5763,12 +4987,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -5777,12 +4999,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -5791,12 +5011,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -5805,12 +5023,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
-
 				{
 					elem = float64(0)
 				}
@@ -5819,12 +5035,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem float32
-
 				{
 					elem = float32(0)
 				}
@@ -5833,12 +5047,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem int32
-
 				{
 					elem = int32(0)
 				}
@@ -5847,12 +5059,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem int64
-
 				{
 					elem = int64(0)
 				}
@@ -5861,12 +5071,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -5875,12 +5083,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -5889,12 +5095,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem []byte
-
 				{
 					elem = []byte("[]byte")
 				}
@@ -5903,12 +5107,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -5917,12 +5119,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -5931,12 +5131,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Duration
-
 				{
 					elem = time.Duration(5 * time.Second)
 				}
@@ -5945,12 +5143,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -5959,12 +5155,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -5973,12 +5167,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -5987,12 +5179,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -6001,12 +5191,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem net.IP
-
 				{
 					elem = net.ParseIP("127.0.0.1")
 				}
@@ -6015,12 +5203,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -6029,12 +5215,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem time.Time
-
 				{
 					elem = time.Now()
 				}
@@ -6043,12 +5227,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem url.URL
-
 				{
 					elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 				}
@@ -6057,12 +5239,10 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem uuid.UUID
-
 				{
 					elem = uuid.New()
 				}
@@ -6071,23 +5251,19 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalBoolean.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayAny = nil
 			for i := 0; i < 0; i++ {
 				var elem []jx.Raw
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem jx.Raw
-
 						{
 							elemElem = []byte("null")
 						}
@@ -6099,17 +5275,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayBoolean = nil
 			for i := 0; i < 0; i++ {
 				var elem []bool
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem bool
-
 						{
 							elemElem = true
 						}
@@ -6121,17 +5294,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayInteger = nil
 			for i := 0; i < 0; i++ {
 				var elem []int
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int
-
 						{
 							elemElem = int(0)
 						}
@@ -6143,17 +5313,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayIntegerInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -6165,17 +5332,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayIntegerInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -6187,17 +5351,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -6209,17 +5370,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberDouble = nil
 			for i := 0; i < 0; i++ {
 				var elem []float64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float64
-
 						{
 							elemElem = float64(0)
 						}
@@ -6231,17 +5389,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberFloat = nil
 			for i := 0; i < 0; i++ {
 				var elem []float32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem float32
-
 						{
 							elemElem = float32(0)
 						}
@@ -6253,17 +5408,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberInt32 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int32
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int32
-
 						{
 							elemElem = int32(0)
 						}
@@ -6275,17 +5427,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayNumberInt64 = nil
 			for i := 0; i < 0; i++ {
 				var elem []int64
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem int64
-
 						{
 							elemElem = int64(0)
 						}
@@ -6297,17 +5446,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayString = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -6319,17 +5465,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringBinary = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -6341,17 +5484,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringByte = nil
 			for i := 0; i < 0; i++ {
 				var elem [][]byte
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem []byte
-
 						{
 							elemElem = []byte("[]byte")
 						}
@@ -6363,17 +5503,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDate = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -6385,17 +5522,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDateMinusTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -6407,17 +5541,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringDuration = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Duration
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Duration
-
 						{
 							elemElem = time.Duration(5 * time.Second)
 						}
@@ -6429,17 +5560,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringEmail = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -6451,17 +5579,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringHostname = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -6473,17 +5598,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -6495,17 +5617,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -6517,17 +5636,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
 				var elem []net.IP
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem net.IP
-
 						{
 							elemElem = net.ParseIP("127.0.0.1")
 						}
@@ -6539,17 +5655,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringPassword = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -6561,17 +5674,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringTime = nil
 			for i := 0; i < 0; i++ {
 				var elem []time.Time
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem time.Time
-
 						{
 							elemElem = time.Now()
 						}
@@ -6583,17 +5693,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringURI = nil
 			for i := 0; i < 0; i++ {
 				var elem []url.URL
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem url.URL
-
 						{
 							elemElem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 						}
@@ -6605,17 +5712,14 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalDoubleArrayStringUUID = nil
 			for i := 0; i < 0; i++ {
 				var elem []uuid.UUID
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem uuid.UUID
-
 						{
 							elemElem = uuid.New()
 						}
@@ -6627,139 +5731,116 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.OptionalInteger.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalIntegerInt32.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalIntegerInt64.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumber.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberDouble.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberFloat.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberInt32.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalNumberInt64.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalString.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringBinary.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringByte = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDate.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDateMinusTime.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringDuration.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringEmail.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringHostname.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIP.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIpv4.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringIpv6.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringPassword.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringTime.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringURI.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OptionalStringUUID.SetFake()
 		}

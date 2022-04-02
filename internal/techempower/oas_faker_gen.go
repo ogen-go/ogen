@@ -77,7 +77,6 @@ var (
 // SetFake set fake values.
 func (s *HelloWorld) SetFake() {
 	{
-
 		{
 			s.Message = "string"
 		}
@@ -87,13 +86,11 @@ func (s *HelloWorld) SetFake() {
 // SetFake set fake values.
 func (s *WorldObject) SetFake() {
 	{
-
 		{
 			s.ID = int64(0)
 		}
 	}
 	{
-
 		{
 			s.RandomNumber = int64(0)
 		}
@@ -103,12 +100,10 @@ func (s *WorldObject) SetFake() {
 // SetFake set fake values.
 func (s *WorldObjects) SetFake() {
 	var unwrapped []WorldObject
-
 	{
 		unwrapped = nil
 		for i := 0; i < 0; i++ {
 			var elem WorldObject
-
 			{
 				elem.SetFake()
 			}

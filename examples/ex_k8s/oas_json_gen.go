@@ -16891,7 +16891,6 @@ func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Decode(d *jx.
 		return errors.New("invalid: unable to decode IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem []string
 		if err := func() error {
@@ -18509,7 +18508,6 @@ func (s *IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) Decode(d *jx.D
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -18731,7 +18729,6 @@ func (s *IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) Decode(d *jx.Decoder) er
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -20221,7 +20218,6 @@ func (s *IoK8sAPICoreV1ConfigMapBinaryData) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ConfigMapBinaryData to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem []byte
 		if err := func() error {
@@ -20278,7 +20274,6 @@ func (s *IoK8sAPICoreV1ConfigMapData) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ConfigMapData to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -25818,7 +25813,6 @@ func (s *IoK8sAPICoreV1FlexPersistentVolumeSourceOptions) Decode(d *jx.Decoder) 
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1FlexPersistentVolumeSourceOptions to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -26040,7 +26034,6 @@ func (s *IoK8sAPICoreV1FlexVolumeSourceOptions) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1FlexVolumeSourceOptions to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -28404,7 +28397,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemDefault) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefault to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -28459,7 +28451,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemDefaultRequest) Decode(d *jx.Decoder) error
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemDefaultRequest to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -28514,7 +28505,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemMax) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMax to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -28569,7 +28559,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) Decode(d *jx.Decoder)
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -28624,7 +28613,6 @@ func (s *IoK8sAPICoreV1LimitRangeItemMin) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1LimitRangeItemMin to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -31808,7 +31796,6 @@ func (s *IoK8sAPICoreV1NodeStatusAllocatable) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1NodeStatusAllocatable to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -31863,7 +31850,6 @@ func (s *IoK8sAPICoreV1NodeStatusCapacity) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1NodeStatusCapacity to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -33393,7 +33379,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) Decode(d *jx.Decoder
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PersistentVolumeClaimStatusCapacity to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -34414,7 +34399,6 @@ func (s *IoK8sAPICoreV1PersistentVolumeSpecCapacity) Decode(d *jx.Decoder) error
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PersistentVolumeSpecCapacity to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -36908,7 +36892,6 @@ func (s *IoK8sAPICoreV1PodSpecNodeSelector) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PodSpecNodeSelector to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -36965,7 +36948,6 @@ func (s *IoK8sAPICoreV1PodSpecOverhead) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1PodSpecOverhead to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -39570,7 +39552,6 @@ func (s *IoK8sAPICoreV1ReplicationControllerSpecSelector) Decode(d *jx.Decoder) 
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ReplicationControllerSpecSelector to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -40350,7 +40331,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaSpecHard) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceQuotaSpecHard to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -40485,7 +40465,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatusHard) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusHard to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -40540,7 +40519,6 @@ func (s *IoK8sAPICoreV1ResourceQuotaStatusUsed) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceQuotaStatusUsed to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -40675,7 +40653,6 @@ func (s *IoK8sAPICoreV1ResourceRequirementsLimits) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsLimits to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -40730,7 +40707,6 @@ func (s *IoK8sAPICoreV1ResourceRequirementsRequests) Decode(d *jx.Decoder) error
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ResourceRequirementsRequests to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -41899,7 +41875,6 @@ func (s *IoK8sAPICoreV1SecretData) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1SecretData to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem []byte
 		if err := func() error {
@@ -42513,7 +42488,6 @@ func (s *IoK8sAPICoreV1SecretStringData) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1SecretStringData to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -44290,7 +44264,6 @@ func (s *IoK8sAPICoreV1ServiceSpecSelector) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPICoreV1ServiceSpecSelector to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -47521,7 +47494,6 @@ func (s *IoK8sAPIDiscoveryV1EndpointDeprecatedTopology) Decode(d *jx.Decoder) er
 		return errors.New("invalid: unable to decode IoK8sAPIDiscoveryV1EndpointDeprecatedTopology to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -49083,7 +49055,6 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPIDiscoveryV1beta1EndpointTopology to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -58686,7 +58657,6 @@ func (s *IoK8sAPINodeV1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1OverheadPodFixed to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -59172,7 +59142,6 @@ func (s *IoK8sAPINodeV1SchedulingNodeSelector) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1SchedulingNodeSelector to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -59292,7 +59261,6 @@ func (s *IoK8sAPINodeV1alpha1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1alpha1OverheadPodFixed to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -59873,7 +59841,6 @@ func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) Decode(d *jx.Decoder) error
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1alpha1SchedulingNodeSelector to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -59993,7 +59960,6 @@ func (s *IoK8sAPINodeV1beta1OverheadPodFixed) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1beta1OverheadPodFixed to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgAPIResourceQuantity
 		if err := func() error {
@@ -60479,7 +60445,6 @@ func (s *IoK8sAPINodeV1beta1SchedulingNodeSelector) Decode(d *jx.Decoder) error 
 		return errors.New("invalid: unable to decode IoK8sAPINodeV1beta1SchedulingNodeSelector to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -61135,7 +61100,6 @@ func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) Decode(d *jx.De
 		return errors.New("invalid: unable to decode IoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgApisMetaV1Time
 		if err := func() error {
@@ -62384,7 +62348,6 @@ func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) Decode(d *
 		return errors.New("invalid: unable to decode IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApimachineryPkgApisMetaV1Time
 		if err := func() error {
@@ -67600,7 +67563,6 @@ func (s *IoK8sAPIStorageV1StorageClassParameters) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode IoK8sAPIStorageV1StorageClassParameters to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -68451,7 +68413,6 @@ func (s *IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) Decode(d *jx
 		return errors.New("invalid: unable to decode IoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -72208,7 +72169,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinit
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 		if err := func() error {
@@ -72263,7 +72223,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDepende
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray
 		if err := func() error {
@@ -72453,7 +72412,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPattern
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 		if err := func() error {
@@ -72508,7 +72466,6 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPropert
 		return errors.New("invalid: unable to decode IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 		if err := func() error {
@@ -74377,7 +74334,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) Decode(d *jx.De
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -75252,7 +75208,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) Decode(d *jx.Decod
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -75309,7 +75264,6 @@ func (s *IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) Decode(d *jx.Decoder) e
 		return errors.New("invalid: unable to decode IoK8sApimachineryPkgApisMetaV1ObjectMetaLabels to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {

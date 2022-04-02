@@ -77,19 +77,16 @@ var (
 // SetFake set fake values.
 func (s *Balloon) SetFake() {
 	{
-
 		{
 			s.AmountMib = int(0)
 		}
 	}
 	{
-
 		{
 			s.DeflateOnOom = true
 		}
 	}
 	{
-
 		{
 			s.StatsPollingIntervalS.SetFake()
 		}
@@ -99,85 +96,71 @@ func (s *Balloon) SetFake() {
 // SetFake set fake values.
 func (s *BalloonStats) SetFake() {
 	{
-
 		{
 			s.TargetPages = int(0)
 		}
 	}
 	{
-
 		{
 			s.ActualPages = int(0)
 		}
 	}
 	{
-
 		{
 			s.TargetMib = int(0)
 		}
 	}
 	{
-
 		{
 			s.ActualMib = int(0)
 		}
 	}
 	{
-
 		{
 			s.SwapIn.SetFake()
 		}
 	}
 	{
-
 		{
 			s.SwapOut.SetFake()
 		}
 	}
 	{
-
 		{
 			s.MajorFaults.SetFake()
 		}
 	}
 	{
-
 		{
 			s.MinorFaults.SetFake()
 		}
 	}
 	{
-
 		{
 			s.FreeMemory.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TotalMemory.SetFake()
 		}
 	}
 	{
-
 		{
 			s.AvailableMemory.SetFake()
 		}
 	}
 	{
-
 		{
 			s.DiskCaches.SetFake()
 		}
 	}
 	{
-
 		{
 			s.HugetlbAllocations.SetFake()
 		}
 	}
 	{
-
 		{
 			s.HugetlbFailures.SetFake()
 		}
@@ -187,7 +170,6 @@ func (s *BalloonStats) SetFake() {
 // SetFake set fake values.
 func (s *BalloonStatsUpdate) SetFake() {
 	{
-
 		{
 			s.StatsPollingIntervalS = int(0)
 		}
@@ -197,7 +179,6 @@ func (s *BalloonStatsUpdate) SetFake() {
 // SetFake set fake values.
 func (s *BalloonUpdate) SetFake() {
 	{
-
 		{
 			s.AmountMib = int(0)
 		}
@@ -207,19 +188,16 @@ func (s *BalloonUpdate) SetFake() {
 // SetFake set fake values.
 func (s *BootSource) SetFake() {
 	{
-
 		{
 			s.BootArgs.SetFake()
 		}
 	}
 	{
-
 		{
 			s.InitrdPath.SetFake()
 		}
 	}
 	{
-
 		{
 			s.KernelImagePath = "string"
 		}
@@ -234,43 +212,36 @@ func (s *CpuTemplate) SetFake() {
 // SetFake set fake values.
 func (s *Drive) SetFake() {
 	{
-
 		{
 			s.DriveID = "string"
 		}
 	}
 	{
-
 		{
 			s.CacheType.SetFake()
 		}
 	}
 	{
-
 		{
 			s.IsReadOnly = true
 		}
 	}
 	{
-
 		{
 			s.IsRootDevice = true
 		}
 	}
 	{
-
 		{
 			s.Partuuid.SetFake()
 		}
 	}
 	{
-
 		{
 			s.PathOnHost = "string"
 		}
 	}
 	{
-
 		{
 			s.RateLimiter.SetFake()
 		}
@@ -280,7 +251,6 @@ func (s *Drive) SetFake() {
 // SetFake set fake values.
 func (s *Error) SetFake() {
 	{
-
 		{
 			s.FaultMessage.SetFake()
 		}
@@ -290,18 +260,15 @@ func (s *Error) SetFake() {
 // SetFake set fake values.
 func (s *FullVmConfiguration) SetFake() {
 	{
-
 		{
 			s.BalloonDevice.SetFake()
 		}
 	}
 	{
-
 		{
 			s.BlockDevices = nil
 			for i := 0; i < 0; i++ {
 				var elem Drive
-
 				{
 					elem.SetFake()
 				}
@@ -310,42 +277,35 @@ func (s *FullVmConfiguration) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.BootSource.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Logger.SetFake()
 		}
 	}
 	{
-
 		{
 			s.MachineConfig.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Metrics.SetFake()
 		}
 	}
 	{
-
 		{
 			s.MmdsConfig.SetFake()
 		}
 	}
 	{
-
 		{
 			s.NetDevices = nil
 			for i := 0; i < 0; i++ {
 				var elem NetworkInterface
-
 				{
 					elem.SetFake()
 				}
@@ -354,7 +314,6 @@ func (s *FullVmConfiguration) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.VsockDevice.SetFake()
 		}
@@ -364,7 +323,6 @@ func (s *FullVmConfiguration) SetFake() {
 // SetFake set fake values.
 func (s *InstanceActionInfo) SetFake() {
 	{
-
 		{
 			s.ActionType.SetFake()
 		}
@@ -379,25 +337,21 @@ func (s *InstanceActionInfoActionType) SetFake() {
 // SetFake set fake values.
 func (s *InstanceInfo) SetFake() {
 	{
-
 		{
 			s.AppName = "string"
 		}
 	}
 	{
-
 		{
 			s.ID = "string"
 		}
 	}
 	{
-
 		{
 			s.State.SetFake()
 		}
 	}
 	{
-
 		{
 			s.VmmVersion = "string"
 		}
@@ -412,25 +366,21 @@ func (s *InstanceInfoState) SetFake() {
 // SetFake set fake values.
 func (s *Logger) SetFake() {
 	{
-
 		{
 			s.Level.SetFake()
 		}
 	}
 	{
-
 		{
 			s.LogPath = "string"
 		}
 	}
 	{
-
 		{
 			s.ShowLevel.SetFake()
 		}
 	}
 	{
-
 		{
 			s.ShowLogOrigin.SetFake()
 		}
@@ -445,31 +395,26 @@ func (s *LoggerLevel) SetFake() {
 // SetFake set fake values.
 func (s *MachineConfiguration) SetFake() {
 	{
-
 		{
 			s.CPUTemplate.SetFake()
 		}
 	}
 	{
-
 		{
 			s.HtEnabled = true
 		}
 	}
 	{
-
 		{
 			s.MemSizeMib = int(0)
 		}
 	}
 	{
-
 		{
 			s.TrackDirtyPages.SetFake()
 		}
 	}
 	{
-
 		{
 			s.VcpuCount = int(0)
 		}
@@ -479,7 +424,6 @@ func (s *MachineConfiguration) SetFake() {
 // SetFake set fake values.
 func (s *Metrics) SetFake() {
 	{
-
 		{
 			s.MetricsPath = "string"
 		}
@@ -489,7 +433,6 @@ func (s *Metrics) SetFake() {
 // SetFake set fake values.
 func (s *MmdsConfig) SetFake() {
 	{
-
 		{
 			s.Ipv4Address.SetFake()
 		}
@@ -511,37 +454,31 @@ func (s *MmdsPutReq) SetFake() {
 // SetFake set fake values.
 func (s *NetworkInterface) SetFake() {
 	{
-
 		{
 			s.AllowMmdsRequests.SetFake()
 		}
 	}
 	{
-
 		{
 			s.GuestMAC.SetFake()
 		}
 	}
 	{
-
 		{
 			s.HostDevName = "string"
 		}
 	}
 	{
-
 		{
 			s.IfaceID = "string"
 		}
 	}
 	{
-
 		{
 			s.RxRateLimiter.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TxRateLimiter.SetFake()
 		}
@@ -551,7 +488,6 @@ func (s *NetworkInterface) SetFake() {
 // SetFake set fake values.
 func (s *OptBalloon) SetFake() {
 	var elem Balloon
-
 	{
 		elem.SetFake()
 	}
@@ -561,7 +497,6 @@ func (s *OptBalloon) SetFake() {
 // SetFake set fake values.
 func (s *OptBool) SetFake() {
 	var elem bool
-
 	{
 		elem = true
 	}
@@ -571,7 +506,6 @@ func (s *OptBool) SetFake() {
 // SetFake set fake values.
 func (s *OptBootSource) SetFake() {
 	var elem BootSource
-
 	{
 		elem.SetFake()
 	}
@@ -581,7 +515,6 @@ func (s *OptBootSource) SetFake() {
 // SetFake set fake values.
 func (s *OptCpuTemplate) SetFake() {
 	var elem CpuTemplate
-
 	{
 		elem.SetFake()
 	}
@@ -591,7 +524,6 @@ func (s *OptCpuTemplate) SetFake() {
 // SetFake set fake values.
 func (s *OptInt) SetFake() {
 	var elem int
-
 	{
 		elem = int(0)
 	}
@@ -601,7 +533,6 @@ func (s *OptInt) SetFake() {
 // SetFake set fake values.
 func (s *OptInt64) SetFake() {
 	var elem int64
-
 	{
 		elem = int64(0)
 	}
@@ -611,7 +542,6 @@ func (s *OptInt64) SetFake() {
 // SetFake set fake values.
 func (s *OptLogger) SetFake() {
 	var elem Logger
-
 	{
 		elem.SetFake()
 	}
@@ -621,7 +551,6 @@ func (s *OptLogger) SetFake() {
 // SetFake set fake values.
 func (s *OptLoggerLevel) SetFake() {
 	var elem LoggerLevel
-
 	{
 		elem.SetFake()
 	}
@@ -631,7 +560,6 @@ func (s *OptLoggerLevel) SetFake() {
 // SetFake set fake values.
 func (s *OptMachineConfiguration) SetFake() {
 	var elem MachineConfiguration
-
 	{
 		elem.SetFake()
 	}
@@ -641,7 +569,6 @@ func (s *OptMachineConfiguration) SetFake() {
 // SetFake set fake values.
 func (s *OptMetrics) SetFake() {
 	var elem Metrics
-
 	{
 		elem.SetFake()
 	}
@@ -651,7 +578,6 @@ func (s *OptMetrics) SetFake() {
 // SetFake set fake values.
 func (s *OptMmdsConfig) SetFake() {
 	var elem MmdsConfig
-
 	{
 		elem.SetFake()
 	}
@@ -661,7 +587,6 @@ func (s *OptMmdsConfig) SetFake() {
 // SetFake set fake values.
 func (s *OptRateLimiter) SetFake() {
 	var elem RateLimiter
-
 	{
 		elem.SetFake()
 	}
@@ -671,7 +596,6 @@ func (s *OptRateLimiter) SetFake() {
 // SetFake set fake values.
 func (s *OptSnapshotCreateParamsSnapshotType) SetFake() {
 	var elem SnapshotCreateParamsSnapshotType
-
 	{
 		elem.SetFake()
 	}
@@ -681,7 +605,6 @@ func (s *OptSnapshotCreateParamsSnapshotType) SetFake() {
 // SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
-
 	{
 		elem = "string"
 	}
@@ -691,7 +614,6 @@ func (s *OptString) SetFake() {
 // SetFake set fake values.
 func (s *OptTokenBucket) SetFake() {
 	var elem TokenBucket
-
 	{
 		elem.SetFake()
 	}
@@ -701,7 +623,6 @@ func (s *OptTokenBucket) SetFake() {
 // SetFake set fake values.
 func (s *OptVsock) SetFake() {
 	var elem Vsock
-
 	{
 		elem.SetFake()
 	}
@@ -711,19 +632,16 @@ func (s *OptVsock) SetFake() {
 // SetFake set fake values.
 func (s *PartialDrive) SetFake() {
 	{
-
 		{
 			s.DriveID = "string"
 		}
 	}
 	{
-
 		{
 			s.PathOnHost.SetFake()
 		}
 	}
 	{
-
 		{
 			s.RateLimiter.SetFake()
 		}
@@ -733,19 +651,16 @@ func (s *PartialDrive) SetFake() {
 // SetFake set fake values.
 func (s *PartialNetworkInterface) SetFake() {
 	{
-
 		{
 			s.IfaceID = "string"
 		}
 	}
 	{
-
 		{
 			s.RxRateLimiter.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TxRateLimiter.SetFake()
 		}
@@ -755,13 +670,11 @@ func (s *PartialNetworkInterface) SetFake() {
 // SetFake set fake values.
 func (s *RateLimiter) SetFake() {
 	{
-
 		{
 			s.Bandwidth.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Ops.SetFake()
 		}
@@ -771,25 +684,21 @@ func (s *RateLimiter) SetFake() {
 // SetFake set fake values.
 func (s *SnapshotCreateParams) SetFake() {
 	{
-
 		{
 			s.MemFilePath = "string"
 		}
 	}
 	{
-
 		{
 			s.SnapshotPath = "string"
 		}
 	}
 	{
-
 		{
 			s.SnapshotType.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Version.SetFake()
 		}
@@ -804,25 +713,21 @@ func (s *SnapshotCreateParamsSnapshotType) SetFake() {
 // SetFake set fake values.
 func (s *SnapshotLoadParams) SetFake() {
 	{
-
 		{
 			s.EnableDiffSnapshots.SetFake()
 		}
 	}
 	{
-
 		{
 			s.MemFilePath = "string"
 		}
 	}
 	{
-
 		{
 			s.SnapshotPath = "string"
 		}
 	}
 	{
-
 		{
 			s.ResumeVM.SetFake()
 		}
@@ -832,19 +737,16 @@ func (s *SnapshotLoadParams) SetFake() {
 // SetFake set fake values.
 func (s *TokenBucket) SetFake() {
 	{
-
 		{
 			s.OneTimeBurst.SetFake()
 		}
 	}
 	{
-
 		{
 			s.RefillTime = int64(0)
 		}
 	}
 	{
-
 		{
 			s.Size = int64(0)
 		}
@@ -854,7 +756,6 @@ func (s *TokenBucket) SetFake() {
 // SetFake set fake values.
 func (s *VM) SetFake() {
 	{
-
 		{
 			s.State.SetFake()
 		}
@@ -869,19 +770,16 @@ func (s *VMState) SetFake() {
 // SetFake set fake values.
 func (s *Vsock) SetFake() {
 	{
-
 		{
 			s.GuestCid = int(0)
 		}
 	}
 	{
-
 		{
 			s.UdsPath = "string"
 		}
 	}
 	{
-
 		{
 			s.VsockID = "string"
 		}

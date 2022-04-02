@@ -375,7 +375,6 @@ func (s *AnyTestAnyMap) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode AnyTestAnyMap to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem jx.Raw
 		if err := func() error {
@@ -2601,7 +2600,6 @@ func (s *MapWithPropertiesAdditional) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode MapWithPropertiesAdditional to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -2658,7 +2656,6 @@ func (s *MapWithPropertiesInlinedSubMap) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode MapWithPropertiesInlinedSubMap to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -5393,6 +5390,64 @@ func (s *OptValidationStringMap) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s PatternRecursiveMap) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s PatternRecursiveMap) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		elem.Encode(e)
+	}
+}
+
+// Decode decodes PatternRecursiveMap from json.
+func (s *PatternRecursiveMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode PatternRecursiveMap to nil")
+	}
+	m := s.init()
+	pattern := regexMap["foo.*"]
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		if !pattern.Match(k) {
+			return d.Skip()
+		}
+		var elem PatternRecursiveMap
+		if err := func() error {
+			if err := elem.Decode(d); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode PatternRecursiveMap")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s PatternRecursiveMap) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *PatternRecursiveMap) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s Pet) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -6396,7 +6451,6 @@ func (s *RecursiveMapAdditional) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode RecursiveMapAdditional to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem RecursiveMap
 		if err := func() error {
@@ -6430,6 +6484,209 @@ func (s *RecursiveMapAdditional) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
+func (s StringIntMap) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s StringIntMap) encodeFields(e *jx.Encoder) {
+	for k, elem := range s.AdditionalProps {
+		e.FieldStart(k)
+
+		e.Int(elem)
+	}
+	for k, elem := range s.Pattern0Props {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+var jsonFieldsNameOfStringIntMap = [0]string{}
+
+// Decode decodes StringIntMap from json.
+func (s *StringIntMap) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode StringIntMap to nil")
+	}
+	s.AdditionalProps = map[string]int{}
+	s.Pattern0Props = map[string]string{}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			var handled bool
+			if pattern := regexMap["string_.*"]; pattern.Match(k) {
+				handled = true
+				var elem string
+				if err := func() error {
+					v, err := d.Str()
+					elem = string(v)
+					if err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return errors.Wrapf(err, "decode field %q", k)
+				}
+				s.Pattern0Props[string(k)] = elem
+			}
+			if handled {
+				return nil
+			}
+			var elem int
+			if err := func() error {
+				v, err := d.Int()
+				elem = int(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrapf(err, "decode field %q", k)
+			}
+			s.AdditionalProps[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode StringIntMap")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s StringIntMap) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *StringIntMap) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s StringIntMapAdditional) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s StringIntMapAdditional) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Int(elem)
+	}
+}
+
+// Decode decodes StringIntMapAdditional from json.
+func (s *StringIntMapAdditional) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode StringIntMapAdditional to nil")
+	}
+	m := s.init()
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem int
+		if err := func() error {
+			v, err := d.Int()
+			elem = int(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode StringIntMapAdditional")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s StringIntMapAdditional) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *StringIntMapAdditional) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s StringIntMapPattern0) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s StringIntMapPattern0) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+// Decode decodes StringIntMapPattern0 from json.
+func (s *StringIntMapPattern0) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode StringIntMapPattern0 to nil")
+	}
+	m := s.init()
+	pattern := regexMap["string_.*"]
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		if !pattern.Match(k) {
+			return d.Skip()
+		}
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode StringIntMapPattern0")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s StringIntMapPattern0) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *StringIntMapPattern0) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
 func (s StringMap) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -6451,7 +6708,6 @@ func (s *StringMap) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode StringMap to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem string
 		if err := func() error {
@@ -6508,7 +6764,6 @@ func (s *StringStringMap) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode StringStringMap to nil")
 	}
 	m := s.init()
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		var elem StringMap
 		if err := func() error {
@@ -6830,7 +7085,6 @@ func (s *ValidationStringMap) Decode(d *jx.Decoder) error {
 	}
 	m := s.init()
 	var propertiesCount int
-
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		propertiesCount++
 		var elem string

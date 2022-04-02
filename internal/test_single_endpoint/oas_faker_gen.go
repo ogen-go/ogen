@@ -77,13 +77,11 @@ var (
 // SetFake set fake values.
 func (s *Error) SetFake() {
 	{
-
 		{
 			s.Code = int64(0)
 		}
 	}
 	{
-
 		{
 			s.Message = "string"
 		}

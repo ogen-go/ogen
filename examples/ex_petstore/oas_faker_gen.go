@@ -77,13 +77,11 @@ var (
 // SetFake set fake values.
 func (s *Error) SetFake() {
 	{
-
 		{
 			s.Code = int32(0)
 		}
 	}
 	{
-
 		{
 			s.Message = "string"
 		}
@@ -93,7 +91,6 @@ func (s *Error) SetFake() {
 // SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
-
 	{
 		elem = "string"
 	}
@@ -103,19 +100,16 @@ func (s *OptString) SetFake() {
 // SetFake set fake values.
 func (s *Pet) SetFake() {
 	{
-
 		{
 			s.ID = int64(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Tag.SetFake()
 		}
@@ -125,12 +119,10 @@ func (s *Pet) SetFake() {
 // SetFake set fake values.
 func (s *Pets) SetFake() {
 	var unwrapped []Pet
-
 	{
 		unwrapped = nil
 		for i := 0; i < 0; i++ {
 			var elem Pet
-
 			{
 				elem.SetFake()
 			}

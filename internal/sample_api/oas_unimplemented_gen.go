@@ -152,6 +152,13 @@ func (UnimplementedHandler) OneofBug(ctx context.Context, req OneOfBugs) (r Oneo
 	return r, ht.ErrNotImplemented
 }
 
+// PatternRecursiveMapGet implements  operation.
+//
+// GET /patternRecursiveMap
+func (UnimplementedHandler) PatternRecursiveMapGet(ctx context.Context) (r PatternRecursiveMap, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // PetCreate implements petCreate operation.
 //
 // Creates pet.
@@ -256,6 +263,13 @@ func (UnimplementedHandler) RecursiveMapGet(ctx context.Context) (r RecursiveMap
 //
 // GET /securityTest
 func (UnimplementedHandler) SecurityTest(ctx context.Context) (r string, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// StringIntMapGet implements  operation.
+//
+// GET /stringIntMap
+func (UnimplementedHandler) StringIntMapGet(ctx context.Context) (r StringIntMap, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

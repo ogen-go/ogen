@@ -2733,6 +2733,18 @@ func (o OptValidationStringMap) Or(d ValidationStringMap) ValidationStringMap {
 	return d
 }
 
+// Ref: #/components/schemas/PatternRecursiveMap
+type PatternRecursiveMap map[string]PatternRecursiveMap
+
+func (s *PatternRecursiveMap) init() PatternRecursiveMap {
+	m := *s
+	if m == nil {
+		m = map[string]PatternRecursiveMap{}
+		*s = m
+	}
+	return m
+}
+
 // Cute and lovely creature.
 // Ref: #/components/schemas/Pet
 type Pet struct {
@@ -2865,6 +2877,34 @@ func (s *RecursiveMapAdditional) init() RecursiveMapAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]RecursiveMap{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/components/schemas/StringIntMap
+type StringIntMap struct {
+	AdditionalProps StringIntMapAdditional
+	Pattern0Props   StringIntMapPattern0
+}
+
+type StringIntMapAdditional map[string]int
+
+func (s *StringIntMapAdditional) init() StringIntMapAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]int{}
+		*s = m
+	}
+	return m
+}
+
+type StringIntMapPattern0 map[string]string
+
+func (s *StringIntMapPattern0) init() StringIntMapPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
 		*s = m
 	}
 	return m

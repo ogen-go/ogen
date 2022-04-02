@@ -268,117 +268,146 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case 'p': // Prefix: "pet"
-				if l := len("pet"); len(elem) >= l && elem[0:l] == "pet" {
+			case 'p': // Prefix: "p"
+				if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					s.handlePetGetRequest([0]string{}, w, r)
+					s.handlePetFriendsNamesByIDRequest([1]string{
+						args[0],
+					}, w, r)
 
 					return
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				case 'a': // Prefix: "atternRecursiveMap"
+					if l := len("atternRecursiveMap"); len(elem) >= l && elem[0:l] == "atternRecursiveMap" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						s.handlePetGetAvatarByIDRequest([0]string{}, w, r)
+						// Leaf: PatternRecursiveMapGet
+						s.handlePatternRecursiveMapGetRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'e': // Prefix: "et"
+					if l := len("et"); len(elem) >= l && elem[0:l] == "et" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						s.handlePetGetRequest([0]string{}, w, r)
 
 						return
 					}
 					switch elem[0] {
-					case 'a': // Prefix: "avatar"
-						if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							// Leaf: PetGetAvatarByID
 							s.handlePetGetAvatarByIDRequest([0]string{}, w, r)
 
 							return
 						}
-					case 'f': // Prefix: "friendNames/"
-						if l := len("friendNames/"); len(elem) >= l && elem[0:l] == "friendNames/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
+						switch elem[0] {
+						case 'a': // Prefix: "avatar"
+							if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
+								elem = elem[l:]
+							} else {
+								break
+							}
 
-						// Param: "id"
-						// Leaf parameter
-						args[0] = elem
-						elem = ""
+							if len(elem) == 0 {
+								// Leaf: PetGetAvatarByID
+								s.handlePetGetAvatarByIDRequest([0]string{}, w, r)
+
+								return
+							}
+						case 'f': // Prefix: "friendNames/"
+							if l := len("friendNames/"); len(elem) >= l && elem[0:l] == "friendNames/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "id"
+							// Leaf parameter
+							args[0] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: PetFriendsNamesByID
+								s.handlePetFriendsNamesByIDRequest([1]string{
+									args[0],
+								}, w, r)
+
+								return
+							}
+						case 'n': // Prefix: "name/"
+							if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "id"
+							// Leaf parameter
+							args[0] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: PetNameByID
+								s.handlePetNameByIDRequest([1]string{
+									args[0],
+								}, w, r)
+
+								return
+							}
+						}
+						// Param: "name"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
 
 						if len(elem) == 0 {
-							// Leaf: PetFriendsNamesByID
-							s.handlePetFriendsNamesByIDRequest([1]string{
+							s.handlePetGetByNameRequest([1]string{
 								args[0],
 							}, w, r)
 
 							return
 						}
-					case 'n': // Prefix: "name/"
-						if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
+						switch elem[0] {
+						case '/': // Prefix: "/avatar"
+							if l := len("/avatar"); len(elem) >= l && elem[0:l] == "/avatar" {
+								elem = elem[l:]
+							} else {
+								break
+							}
 
-						// Param: "id"
-						// Leaf parameter
-						args[0] = elem
-						elem = ""
+							if len(elem) == 0 {
+								// Leaf: PetGetAvatarByName
+								s.handlePetGetAvatarByNameRequest([1]string{
+									args[0],
+								}, w, r)
 
-						if len(elem) == 0 {
-							// Leaf: PetNameByID
-							s.handlePetNameByIDRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
-						}
-					}
-					// Param: "name"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx < 0 {
-						idx = len(elem)
-					}
-					args[0] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						s.handlePetGetByNameRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/avatar"
-						if l := len("/avatar"); len(elem) >= l && elem[0:l] == "/avatar" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: PetGetAvatarByName
-							s.handlePetGetAvatarByNameRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+								return
+							}
 						}
 					}
 				}
@@ -422,18 +451,45 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
-			case 's': // Prefix: "securityTest"
-				if l := len("securityTest"); len(elem) >= l && elem[0:l] == "securityTest" {
+			case 's': // Prefix: "s"
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: SecurityTest
-					s.handleSecurityTestRequest([0]string{}, w, r)
+					s.handleStringIntMapGetRequest([0]string{}, w, r)
 
 					return
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "ecurityTest"
+					if l := len("ecurityTest"); len(elem) >= l && elem[0:l] == "ecurityTest" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: SecurityTest
+						s.handleSecurityTestRequest([0]string{}, w, r)
+
+						return
+					}
+				case 't': // Prefix: "tringIntMap"
+					if l := len("tringIntMap"); len(elem) >= l && elem[0:l] == "tringIntMap" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: StringIntMapGet
+						s.handleStringIntMapGetRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
@@ -849,116 +905,145 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 				}
-			case 'p': // Prefix: "pet"
-				if l := len("pet"); len(elem) >= l && elem[0:l] == "pet" {
+			case 'p': // Prefix: "p"
+				if l := len("p"); len(elem) >= l && elem[0:l] == "p" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					r.name = "PetGet"
+					r.name = "PetFriendsNamesByID"
 					r.args = args
 					r.count = 0
 					return r, true
 				}
 				switch elem[0] {
-				case '/': // Prefix: "/"
-					if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
+				case 'a': // Prefix: "atternRecursiveMap"
+					if l := len("atternRecursiveMap"); len(elem) >= l && elem[0:l] == "atternRecursiveMap" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						r.name = "PetGetAvatarByID"
+						// Leaf: PatternRecursiveMapGet
+						r.name = "PatternRecursiveMapGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'e': // Prefix: "et"
+					if l := len("et"); len(elem) >= l && elem[0:l] == "et" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						r.name = "PetGet"
 						r.args = args
 						r.count = 0
 						return r, true
 					}
 					switch elem[0] {
-					case 'a': // Prefix: "avatar"
-						if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
+					case '/': // Prefix: "/"
+						if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							// Leaf: PetGetAvatarByID
 							r.name = "PetGetAvatarByID"
 							r.args = args
 							r.count = 0
 							return r, true
 						}
-					case 'f': // Prefix: "friendNames/"
-						if l := len("friendNames/"); len(elem) >= l && elem[0:l] == "friendNames/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
+						switch elem[0] {
+						case 'a': // Prefix: "avatar"
+							if l := len("avatar"); len(elem) >= l && elem[0:l] == "avatar" {
+								elem = elem[l:]
+							} else {
+								break
+							}
 
-						// Param: "id"
-						// Leaf parameter
-						args[0] = elem
-						elem = ""
+							if len(elem) == 0 {
+								// Leaf: PetGetAvatarByID
+								r.name = "PetGetAvatarByID"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+						case 'f': // Prefix: "friendNames/"
+							if l := len("friendNames/"); len(elem) >= l && elem[0:l] == "friendNames/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "id"
+							// Leaf parameter
+							args[0] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: PetFriendsNamesByID
+								r.name = "PetFriendsNamesByID"
+								r.args = args
+								r.count = 1
+								return r, true
+							}
+						case 'n': // Prefix: "name/"
+							if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							// Param: "id"
+							// Leaf parameter
+							args[0] = elem
+							elem = ""
+
+							if len(elem) == 0 {
+								// Leaf: PetNameByID
+								r.name = "PetNameByID"
+								r.args = args
+								r.count = 1
+								return r, true
+							}
+						}
+						// Param: "name"
+						// Match until "/"
+						idx := strings.IndexByte(elem, '/')
+						if idx < 0 {
+							idx = len(elem)
+						}
+						args[0] = elem[:idx]
+						elem = elem[idx:]
 
 						if len(elem) == 0 {
-							// Leaf: PetFriendsNamesByID
-							r.name = "PetFriendsNamesByID"
+							r.name = "PetGetByName"
 							r.args = args
 							r.count = 1
 							return r, true
 						}
-					case 'n': // Prefix: "name/"
-						if l := len("name/"); len(elem) >= l && elem[0:l] == "name/" {
-							elem = elem[l:]
-						} else {
-							break
-						}
+						switch elem[0] {
+						case '/': // Prefix: "/avatar"
+							if l := len("/avatar"); len(elem) >= l && elem[0:l] == "/avatar" {
+								elem = elem[l:]
+							} else {
+								break
+							}
 
-						// Param: "id"
-						// Leaf parameter
-						args[0] = elem
-						elem = ""
-
-						if len(elem) == 0 {
-							// Leaf: PetNameByID
-							r.name = "PetNameByID"
-							r.args = args
-							r.count = 1
-							return r, true
-						}
-					}
-					// Param: "name"
-					// Match until "/"
-					idx := strings.IndexByte(elem, '/')
-					if idx < 0 {
-						idx = len(elem)
-					}
-					args[0] = elem[:idx]
-					elem = elem[idx:]
-
-					if len(elem) == 0 {
-						r.name = "PetGetByName"
-						r.args = args
-						r.count = 1
-						return r, true
-					}
-					switch elem[0] {
-					case '/': // Prefix: "/avatar"
-						if l := len("/avatar"); len(elem) >= l && elem[0:l] == "/avatar" {
-							elem = elem[l:]
-						} else {
-							break
-						}
-
-						if len(elem) == 0 {
-							// Leaf: PetGetAvatarByName
-							r.name = "PetGetAvatarByName"
-							r.args = args
-							r.count = 1
-							return r, true
+							if len(elem) == 0 {
+								// Leaf: PetGetAvatarByName
+								r.name = "PetGetAvatarByName"
+								r.args = args
+								r.count = 1
+								return r, true
+							}
 						}
 					}
 				}
@@ -1005,19 +1090,48 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 				}
-			case 's': // Prefix: "securityTest"
-				if l := len("securityTest"); len(elem) >= l && elem[0:l] == "securityTest" {
+			case 's': // Prefix: "s"
+				if l := len("s"); len(elem) >= l && elem[0:l] == "s" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: SecurityTest
-					r.name = "SecurityTest"
+					r.name = "StringIntMapGet"
 					r.args = args
 					r.count = 0
 					return r, true
+				}
+				switch elem[0] {
+				case 'e': // Prefix: "ecurityTest"
+					if l := len("ecurityTest"); len(elem) >= l && elem[0:l] == "ecurityTest" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: SecurityTest
+						r.name = "SecurityTest"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 't': // Prefix: "tringIntMap"
+					if l := len("tringIntMap"); len(elem) >= l && elem[0:l] == "tringIntMap" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: StringIntMapGet
+						r.name = "StringIntMapGet"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			case 't': // Prefix: "test"
 				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
