@@ -1,6 +1,9 @@
 package jsonschema
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"regexp"
+)
 
 // SchemaType is a JSON Schema type.
 type SchemaType string
@@ -22,10 +25,11 @@ type Schema struct {
 	Description string // Schema description, optional.
 	Ref         string // Whether schema is referenced.
 
-	Item                 *Schema       // Only for Array and Object with additional properties.
-	AdditionalProperties bool          // Whether Object has additional properties.
-	Enum                 []interface{} // Only for Enum.
-	Properties           []Property    // Only for Object.
+	Item                 *Schema           // Only for Array and Object with additional properties.
+	AdditionalProperties bool              // Whether Object has additional properties.
+	PatternProperties    []PatternProperty // Only for Object.
+	Enum                 []interface{}     // Only for Enum.
+	Properties           []Property        // Only for Object.
 
 	Nullable bool // Whether schema is nullable or not. Any types.
 
@@ -73,4 +77,10 @@ type Property struct {
 	Description string  // Property description.
 	Schema      *Schema // Property schema.
 	Required    bool    // Whether the field is required or not.
+}
+
+// PatternProperty is a property pattern.
+type PatternProperty struct {
+	Pattern *regexp.Regexp
+	Schema  *Schema
 }

@@ -122,6 +122,10 @@ type Handler interface {
 	//
 	// POST /oneofBug
 	OneofBug(ctx context.Context, req OneOfBugs) (OneofBugOK, error)
+	// PatternRecursiveMapGet implements  operation.
+	//
+	// GET /patternRecursiveMap
+	PatternRecursiveMapGet(ctx context.Context) (PatternRecursiveMap, error)
 	// PetCreate implements petCreate operation.
 	//
 	// Creates pet.
@@ -190,6 +194,10 @@ type Handler interface {
 	//
 	// GET /securityTest
 	SecurityTest(ctx context.Context) (string, error)
+	// StringIntMapGet implements  operation.
+	//
+	// GET /stringIntMap
+	StringIntMapGet(ctx context.Context) (StringIntMap, error)
 	// TestFloatValidation implements testFloatValidation operation.
 	//
 	// POST /testFloatValidation

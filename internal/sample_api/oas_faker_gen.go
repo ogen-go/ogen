@@ -77,13 +77,11 @@ var (
 // SetFake set fake values.
 func (s *AnyOfTest) SetFake() {
 	{
-
 		{
 			s.Medium = "string"
 		}
 	}
 	{
-
 		{
 			s.SizeLimit.SetFake()
 		}
@@ -103,24 +101,20 @@ func (s *AnyOfTestSizeLimit) SetFake() {
 // SetFake set fake values.
 func (s *AnyTest) SetFake() {
 	{
-
 		{
 			s.Empty = []byte("null")
 		}
 	}
 	{
-
 		{
 			s.AnyMap.SetFake()
 		}
 	}
 	{
-
 		{
 			s.AnyArray = nil
 			for i := 0; i < 0; i++ {
 				var elem jx.Raw
-
 				{
 					elem = []byte("null")
 				}
@@ -144,12 +138,10 @@ func (s *AnyTestAnyMap) SetFake() {
 // SetFake set fake values.
 func (s *ArrayTest) SetFake() {
 	{
-
 		{
 			s.Required = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -158,12 +150,10 @@ func (s *ArrayTest) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.Optional = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -172,12 +162,10 @@ func (s *ArrayTest) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.NullableRequired = nil
 			for i := 0; i < 0; i++ {
 				var elem string
-
 				{
 					elem = "string"
 				}
@@ -186,7 +174,6 @@ func (s *ArrayTest) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.NullableOptional.SetFake()
 		}
@@ -196,43 +183,36 @@ func (s *ArrayTest) SetFake() {
 // SetFake set fake values.
 func (s *Data) SetFake() {
 	{
-
 		{
 			s.ID.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Description.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Email = "string"
 		}
 	}
 	{
-
 		{
 			s.Hostname = "string"
 		}
 	}
 	{
-
 		{
 			s.Format = "string"
 		}
 	}
 	{
-
 		{
 			s.Base64 = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.NullableEnum.SetFake()
 		}
@@ -252,91 +232,76 @@ func (s *DataDescription) SetFake() {
 // SetFake set fake values.
 func (s *DefaultTest) SetFake() {
 	{
-
 		{
 			s.Required = "string"
 		}
 	}
 	{
-
 		{
 			s.Str.SetFake()
 		}
 	}
 	{
-
 		{
 			s.NullStr.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Enum.SetFake()
 		}
 	}
 	{
-
 		{
 			s.UUID.SetFake()
 		}
 	}
 	{
-
 		{
 			s.IP.SetFake()
 		}
 	}
 	{
-
 		{
 			s.IPV4.SetFake()
 		}
 	}
 	{
-
 		{
 			s.IPV6.SetFake()
 		}
 	}
 	{
-
 		{
 			s.URI.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Rate.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Email.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Hostname.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Format.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Base64 = []byte("[]byte")
 		}
@@ -351,19 +316,16 @@ func (s *DefaultTestEnum) SetFake() {
 // SetFake set fake values.
 func (s *DescriptionDetailed) SetFake() {
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Count = int(0)
 		}
 	}
 	{
-
 		{
 			s.ID.SetFake()
 		}
@@ -373,7 +335,6 @@ func (s *DescriptionDetailed) SetFake() {
 // SetFake set fake values.
 func (s *DescriptionSimple) SetFake() {
 	{
-
 		{
 			s.Description = "string"
 		}
@@ -383,13 +344,11 @@ func (s *DescriptionSimple) SetFake() {
 // SetFake set fake values.
 func (s *Error) SetFake() {
 	{
-
 		{
 			s.Code = int64(0)
 		}
 	}
 	{
-
 		{
 			s.Message = "string"
 		}
@@ -399,13 +358,11 @@ func (s *Error) SetFake() {
 // SetFake set fake values.
 func (s *Hash) SetFake() {
 	{
-
 		{
 			s.Raw = []byte("[]byte")
 		}
 	}
 	{
-
 		{
 			s.Hex = "string"
 		}
@@ -435,19 +392,16 @@ func (s *Issue143) SetFake() {
 // SetFake set fake values.
 func (s *Issue1430) SetFake() {
 	{
-
 		{
 			s.CommonMinus1 = "string"
 		}
 	}
 	{
-
 		{
 			s.CommonMinus2 = int(0)
 		}
 	}
 	{
-
 		{
 			s.UniqueMinus1 = "string"
 		}
@@ -457,19 +411,16 @@ func (s *Issue1430) SetFake() {
 // SetFake set fake values.
 func (s *Issue1431) SetFake() {
 	{
-
 		{
 			s.CommonMinus1 = "string"
 		}
 	}
 	{
-
 		{
 			s.CommonMinus2 = int(0)
 		}
 	}
 	{
-
 		{
 			s.UniqueMinus2 = "string"
 		}
@@ -479,25 +430,21 @@ func (s *Issue1431) SetFake() {
 // SetFake set fake values.
 func (s *Issue1432) SetFake() {
 	{
-
 		{
 			s.CommonMinus1 = "string"
 		}
 	}
 	{
-
 		{
 			s.CommonMinus2 = int(0)
 		}
 	}
 	{
-
 		{
 			s.CommonMinus3.SetFake()
 		}
 	}
 	{
-
 		{
 			s.UniqueMinus3 = "string"
 		}
@@ -507,13 +454,11 @@ func (s *Issue1432) SetFake() {
 // SetFake set fake values.
 func (s *Issue1433) SetFake() {
 	{
-
 		{
 			s.CommonMinus3.SetFake()
 		}
 	}
 	{
-
 		{
 			s.UniqueMinus4 = "string"
 		}
@@ -523,37 +468,31 @@ func (s *Issue1433) SetFake() {
 // SetFake set fake values.
 func (s *MapWithProperties) SetFake() {
 	{
-
 		{
 			s.Required = int(0)
 		}
 	}
 	{
-
 		{
 			s.AdditionalProps.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Optional.SetFake()
 		}
 	}
 	{
-
 		{
 			s.SubMap.SetFake()
 		}
 	}
 	{
-
 		{
 			s.InlinedSubMap.SetFake()
 		}
 	}
 	{
-
 		{
 			s.MapValidation.SetFake()
 		}
@@ -585,13 +524,11 @@ func (s *MapWithPropertiesInlinedSubMap) SetFake() {
 // SetFake set fake values.
 func (s *MaxPropertiesTest) SetFake() {
 	{
-
 		{
 			s.Required = int(0)
 		}
 	}
 	{
-
 		{
 			s.OptionalA.SetFake()
 		}
@@ -626,19 +563,16 @@ func (s *NilString) SetFake() {
 // SetFake set fake values.
 func (s *NullableEnums) SetFake() {
 	{
-
 		{
 			s.OnlyNullable.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OnlyNullValue.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Both.SetFake()
 		}
@@ -663,25 +597,21 @@ func (s *NullableEnumsOnlyNullable) SetFake() {
 // SetFake set fake values.
 func (s *OneOfBugs) SetFake() {
 	{
-
 		{
 			s.Issue143.SetFake()
 		}
 	}
 	{
-
 		{
 			s.AdditionalMinusFields.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OneOfMinusUUIDMinusIntMinusEnum.SetFake()
 		}
 	}
 	{
-
 		{
 			s.OneOfMinusMappingMinusReference.SetFake()
 		}
@@ -701,7 +631,6 @@ func (s *OneOfMappingReference) SetFake() {
 // SetFake set fake values.
 func (s *OneOfMappingReferenceA) SetFake() {
 	{
-
 		{
 			s.Description.SetFake()
 		}
@@ -711,19 +640,16 @@ func (s *OneOfMappingReferenceA) SetFake() {
 // SetFake set fake values.
 func (s *OneOfMappingReferenceB) SetFake() {
 	{
-
 		{
 			s.Code.SetFake()
 		}
 	}
 	{
-
 		{ // Keep pointer nil to prevent infinite recursion.
 			s.Data = nil
 		}
 	}
 	{
-
 		{
 			s.Info.SetFake()
 		}
@@ -762,19 +688,16 @@ func (s *OneVariantHasNoUniqueFields) SetFake() {
 // SetFake set fake values.
 func (s *OneVariantHasNoUniqueFields0) SetFake() {
 	{
-
 		{
 			s.A = "string"
 		}
 	}
 	{
-
 		{
 			s.B.SetFake()
 		}
 	}
 	{
-
 		{
 			s.C = "string"
 		}
@@ -784,25 +707,21 @@ func (s *OneVariantHasNoUniqueFields0) SetFake() {
 // SetFake set fake values.
 func (s *OneVariantHasNoUniqueFields1) SetFake() {
 	{
-
 		{
 			s.A = "string"
 		}
 	}
 	{
-
 		{
 			s.B.SetFake()
 		}
 	}
 	{
-
 		{
 			s.C = "string"
 		}
 	}
 	{
-
 		{
 			s.D.SetFake()
 		}
@@ -812,7 +731,6 @@ func (s *OneVariantHasNoUniqueFields1) SetFake() {
 // SetFake set fake values.
 func (s *OptAnyOfTest) SetFake() {
 	var elem AnyOfTest
-
 	{
 		elem.SetFake()
 	}
@@ -822,7 +740,6 @@ func (s *OptAnyOfTest) SetFake() {
 // SetFake set fake values.
 func (s *OptAnyTest) SetFake() {
 	var elem AnyTest
-
 	{
 		elem.SetFake()
 	}
@@ -832,7 +749,6 @@ func (s *OptAnyTest) SetFake() {
 // SetFake set fake values.
 func (s *OptAnyTestAnyMap) SetFake() {
 	var elem AnyTestAnyMap
-
 	{
 		elem.SetFake()
 	}
@@ -842,7 +758,6 @@ func (s *OptAnyTestAnyMap) SetFake() {
 // SetFake set fake values.
 func (s *OptArrayTest) SetFake() {
 	var elem ArrayTest
-
 	{
 		elem.SetFake()
 	}
@@ -852,7 +767,6 @@ func (s *OptArrayTest) SetFake() {
 // SetFake set fake values.
 func (s *OptData) SetFake() {
 	var elem Data
-
 	{
 		elem.SetFake()
 	}
@@ -862,7 +776,6 @@ func (s *OptData) SetFake() {
 // SetFake set fake values.
 func (s *OptDate) SetFake() {
 	var elem time.Time
-
 	{
 		elem = time.Now()
 	}
@@ -872,7 +785,6 @@ func (s *OptDate) SetFake() {
 // SetFake set fake values.
 func (s *OptDateTime) SetFake() {
 	var elem time.Time
-
 	{
 		elem = time.Now()
 	}
@@ -882,7 +794,6 @@ func (s *OptDateTime) SetFake() {
 // SetFake set fake values.
 func (s *OptDefaultTestEnum) SetFake() {
 	var elem DefaultTestEnum
-
 	{
 		elem.SetFake()
 	}
@@ -892,7 +803,6 @@ func (s *OptDefaultTestEnum) SetFake() {
 // SetFake set fake values.
 func (s *OptDuration) SetFake() {
 	var elem time.Duration
-
 	{
 		elem = time.Duration(5 * time.Second)
 	}
@@ -902,7 +812,6 @@ func (s *OptDuration) SetFake() {
 // SetFake set fake values.
 func (s *OptFloat64) SetFake() {
 	var elem float64
-
 	{
 		elem = float64(0)
 	}
@@ -912,7 +821,6 @@ func (s *OptFloat64) SetFake() {
 // SetFake set fake values.
 func (s *OptID) SetFake() {
 	var elem ID
-
 	{
 		elem.SetFake()
 	}
@@ -922,7 +830,6 @@ func (s *OptID) SetFake() {
 // SetFake set fake values.
 func (s *OptIP) SetFake() {
 	var elem net.IP
-
 	{
 		elem = net.ParseIP("127.0.0.1")
 	}
@@ -932,7 +839,6 @@ func (s *OptIP) SetFake() {
 // SetFake set fake values.
 func (s *OptIPv4) SetFake() {
 	var elem net.IP
-
 	{
 		elem = net.ParseIP("127.0.0.1")
 	}
@@ -942,7 +848,6 @@ func (s *OptIPv4) SetFake() {
 // SetFake set fake values.
 func (s *OptIPv6) SetFake() {
 	var elem net.IP
-
 	{
 		elem = net.ParseIP("127.0.0.1")
 	}
@@ -952,7 +857,6 @@ func (s *OptIPv6) SetFake() {
 // SetFake set fake values.
 func (s *OptInt) SetFake() {
 	var elem int
-
 	{
 		elem = int(0)
 	}
@@ -962,7 +866,6 @@ func (s *OptInt) SetFake() {
 // SetFake set fake values.
 func (s *OptInt32) SetFake() {
 	var elem int32
-
 	{
 		elem = int32(0)
 	}
@@ -972,7 +875,6 @@ func (s *OptInt32) SetFake() {
 // SetFake set fake values.
 func (s *OptMapWithProperties) SetFake() {
 	var elem MapWithProperties
-
 	{
 		elem.SetFake()
 	}
@@ -982,7 +884,6 @@ func (s *OptMapWithProperties) SetFake() {
 // SetFake set fake values.
 func (s *OptMapWithPropertiesInlinedSubMap) SetFake() {
 	var elem MapWithPropertiesInlinedSubMap
-
 	{
 		elem.SetFake()
 	}
@@ -992,7 +893,6 @@ func (s *OptMapWithPropertiesInlinedSubMap) SetFake() {
 // SetFake set fake values.
 func (s *OptMaxPropertiesTest) SetFake() {
 	var elem MaxPropertiesTest
-
 	{
 		elem.SetFake()
 	}
@@ -1014,7 +914,6 @@ func (s *OptNilStringArray) SetFake() {
 // SetFake set fake values.
 func (s *OptNullableEnums) SetFake() {
 	var elem NullableEnums
-
 	{
 		elem.SetFake()
 	}
@@ -1024,7 +923,6 @@ func (s *OptNullableEnums) SetFake() {
 // SetFake set fake values.
 func (s *OptOneOfMappingReference) SetFake() {
 	var elem OneOfMappingReference
-
 	{
 		elem.SetFake()
 	}
@@ -1034,7 +932,6 @@ func (s *OptOneOfMappingReference) SetFake() {
 // SetFake set fake values.
 func (s *OptOneOfUUIDAndIntEnum) SetFake() {
 	var elem OneOfUUIDAndIntEnum
-
 	{
 		elem.SetFake()
 	}
@@ -1044,7 +941,6 @@ func (s *OptOneOfUUIDAndIntEnum) SetFake() {
 // SetFake set fake values.
 func (s *OptPet) SetFake() {
 	var elem Pet
-
 	{
 		elem.SetFake()
 	}
@@ -1054,7 +950,6 @@ func (s *OptPet) SetFake() {
 // SetFake set fake values.
 func (s *OptPetName) SetFake() {
 	var elem PetName
-
 	{
 		elem.SetFake()
 	}
@@ -1064,7 +959,6 @@ func (s *OptPetName) SetFake() {
 // SetFake set fake values.
 func (s *OptPetType) SetFake() {
 	var elem PetType
-
 	{
 		elem.SetFake()
 	}
@@ -1074,7 +968,6 @@ func (s *OptPetType) SetFake() {
 // SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
-
 	{
 		elem = "string"
 	}
@@ -1084,7 +977,6 @@ func (s *OptString) SetFake() {
 // SetFake set fake values.
 func (s *OptStringMap) SetFake() {
 	var elem StringMap
-
 	{
 		elem.SetFake()
 	}
@@ -1094,7 +986,6 @@ func (s *OptStringMap) SetFake() {
 // SetFake set fake values.
 func (s *OptStringStringMap) SetFake() {
 	var elem StringStringMap
-
 	{
 		elem.SetFake()
 	}
@@ -1104,7 +995,6 @@ func (s *OptStringStringMap) SetFake() {
 // SetFake set fake values.
 func (s *OptTime) SetFake() {
 	var elem time.Time
-
 	{
 		elem = time.Now()
 	}
@@ -1114,7 +1004,6 @@ func (s *OptTime) SetFake() {
 // SetFake set fake values.
 func (s *OptURI) SetFake() {
 	var elem url.URL
-
 	{
 		elem = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 	}
@@ -1124,7 +1013,6 @@ func (s *OptURI) SetFake() {
 // SetFake set fake values.
 func (s *OptUUID) SetFake() {
 	var elem uuid.UUID
-
 	{
 		elem = uuid.New()
 	}
@@ -1134,7 +1022,6 @@ func (s *OptUUID) SetFake() {
 // SetFake set fake values.
 func (s *OptValidationStringMap) SetFake() {
 	var elem ValidationStringMap
-
 	{
 		elem.SetFake()
 	}
@@ -1142,104 +1029,98 @@ func (s *OptValidationStringMap) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *PatternRecursiveMap) SetFake() {
+	var (
+		elem PatternRecursiveMap
+		m    map[string]PatternRecursiveMap = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
 func (s *Pet) SetFake() {
 	{
-
 		{ // Keep pointer nil to prevent infinite recursion.
 			s.Primary = nil
 		}
 	}
 	{
-
 		{
 			s.ID = int64(0)
 		}
 	}
 	{
-
 		{
 			s.UniqueID = uuid.New()
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Type.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Kind.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Tag.SetFake()
 		}
 	}
 	{
-
 		{
 			s.IP = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.IPV4 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.IPV6 = net.ParseIP("127.0.0.1")
 		}
 	}
 	{
-
 		{
 			s.URI = url.URL{Scheme: "https", Host: "github.com", Path: "/ogen-go/ogen"}
 		}
 	}
 	{
-
 		{
 			s.Birthday = time.Now()
 		}
 	}
 	{
-
 		{
 			s.Rate = time.Duration(5 * time.Second)
 		}
 	}
 	{
-
 		{
 			s.Nickname.SetFake()
 		}
 	}
 	{
-
 		{
 			s.NullStr.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Friends = nil
 			for i := 0; i < 0; i++ {
 				var elem Pet
-
 				{
 					elem.SetFake()
 				}
@@ -1248,35 +1129,29 @@ func (s *Pet) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.Next.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestInteger1.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestFloat1.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestArray1 = nil
 			for i := 0; i < 0; i++ {
 				var elem []string
-
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
 						var elemElem string
-
 						{
 							elemElem = "string"
 						}
@@ -1288,61 +1163,51 @@ func (s *Pet) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.TestArray2.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestMap.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestMapWithProps.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestAny.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestAnyOf.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestMaxProperties.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestDate.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestDuration.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestTime.SetFake()
 		}
 	}
 	{
-
 		{
 			s.TestDateTime.SetFake()
 		}
@@ -1352,7 +1217,6 @@ func (s *Pet) SetFake() {
 // SetFake set fake values.
 func (s *PetGetDef) SetFake() {
 	{
-
 		{
 			s.Message = "string"
 		}
@@ -1367,7 +1231,6 @@ func (s *PetKind) SetFake() {
 // SetFake set fake values.
 func (s *PetName) SetFake() {
 	var unwrapped string
-
 	{
 		unwrapped = "string"
 	}
@@ -1382,12 +1245,10 @@ func (s *PetType) SetFake() {
 // SetFake set fake values.
 func (s *RecursiveArray) SetFake() {
 	var unwrapped []RecursiveArray
-
 	{
 		unwrapped = nil
 		for i := 0; i < 0; i++ {
 			var elem RecursiveArray
-
 			{
 				elem.SetFake()
 			}
@@ -1400,13 +1261,11 @@ func (s *RecursiveArray) SetFake() {
 // SetFake set fake values.
 func (s *RecursiveMap) SetFake() {
 	{
-
 		{ // Keep pointer nil to prevent infinite recursion.
 			s.OptionalRecursiveField = nil
 		}
 	}
 	{
-
 		{
 			s.AdditionalProps.SetFake()
 		}
@@ -1418,6 +1277,42 @@ func (s *RecursiveMapAdditional) SetFake() {
 	var (
 		elem RecursiveMap
 		m    map[string]RecursiveMap = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *StringIntMap) SetFake() {
+	{
+		{
+			s.AdditionalProps.SetFake()
+		}
+	}
+	{
+		{
+			s.Pattern0Props.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *StringIntMapAdditional) SetFake() {
+	var (
+		elem int
+		m    map[string]int = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
+	}
+}
+
+// SetFake set fake values.
+func (s *StringIntMapPattern0) SetFake() {
+	var (
+		elem string
+		m    map[string]string = s.init()
 	)
 	for i := 0; i < 0; i++ {
 		m[fmt.Sprintf("fake%d", i)] = elem
@@ -1449,13 +1344,11 @@ func (s *StringStringMap) SetFake() {
 // SetFake set fake values.
 func (s *TestFloatValidation) SetFake() {
 	{
-
 		{
 			s.Minmax = float64(0)
 		}
 	}
 	{
-
 		{
 			s.MultipleOf = float64(0)
 		}
@@ -1465,25 +1358,21 @@ func (s *TestFloatValidation) SetFake() {
 // SetFake set fake values.
 func (s *TestObjectQueryParameterOK) SetFake() {
 	{
-
 		{
 			s.Style = "string"
 		}
 	}
 	{
-
 		{
 			s.Min = int(0)
 		}
 	}
 	{
-
 		{
 			s.Max = int(0)
 		}
 	}
 	{
-
 		{
 			s.Filter = "string"
 		}

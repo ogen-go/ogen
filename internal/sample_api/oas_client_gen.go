@@ -712,6 +712,47 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	return result, nil
 }
 
+// PatternRecursiveMapGet invokes  operation.
+//
+// GET /patternRecursiveMap
+func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursiveMap, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
+	ctx, span := c.cfg.Tracer.Start(ctx, "PatternRecursiveMapGet",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/patternRecursiveMap"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodePatternRecursiveMapGetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // PetCreate invokes petCreate operation.
 //
 // Creates pet.
@@ -1550,6 +1591,47 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 	defer resp.Body.Close()
 
 	result, err := decodeSecurityTestResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// StringIntMapGet invokes  operation.
+//
+// GET /stringIntMap
+func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
+	ctx, span := c.cfg.Tracer.Start(ctx, "StringIntMapGet",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/stringIntMap"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeStringIntMapGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

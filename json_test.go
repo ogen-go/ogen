@@ -533,6 +533,102 @@ func TestJSONAdditionalProperties(t *testing.T) {
 	})
 }
 
+func TestJSONPatternProperties(t *testing.T) {
+	t.Run("Decode", func(t *testing.T) {
+		t.Run("PatternRecursiveMap", func(t *testing.T) {
+			for i, tc := range []struct {
+				Input    string
+				Expected api.PatternRecursiveMap
+				Error    bool
+			}{
+				{
+					`{}`,
+					api.PatternRecursiveMap{},
+					false,
+				},
+				{
+					`{"foobar":{},"foobaz":{"foobaz":{},"bar":"foo"},"bar":"foo"}`,
+					api.PatternRecursiveMap{
+						"foobar": {},
+						"foobaz": {
+							"foobaz": {},
+						},
+					},
+					false,
+				},
+				{
+					`{"foobar":true}`,
+					api.PatternRecursiveMap{},
+					true,
+				},
+				{
+					`{`,
+					api.PatternRecursiveMap{},
+					true,
+				},
+			} {
+				// Make range value copy to prevent data races.
+				tc := tc
+				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+					r := api.PatternRecursiveMap{}
+					if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
+						require.Error(t, err)
+					} else {
+						require.NoError(t, err)
+						require.Equal(t, tc.Expected, r)
+					}
+				})
+			}
+		})
+		t.Run("", func(t *testing.T) {
+			for i, tc := range []struct {
+				Input    string
+				Expected api.StringIntMap
+				Error    bool
+			}{
+				{
+					`{}`,
+					api.StringIntMap{
+						AdditionalProps: map[string]int{},
+						Pattern0Props:   map[string]string{},
+					},
+					false,
+				},
+				{
+					`{"string_bar":"bar","string_baz":"baz","bar":10}`,
+					api.StringIntMap{
+						AdditionalProps: map[string]int{
+							"bar": 10,
+						},
+						Pattern0Props: map[string]string{
+							"string_bar": "bar",
+							"string_baz": "baz",
+						},
+					},
+					false,
+				},
+				{
+					`{"string_bar":"bar","string_baz":10,"bar":10}`,
+					api.StringIntMap{},
+					true,
+				},
+			} {
+				// Make range value copy to prevent data races.
+				tc := tc
+				t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+					r := api.StringIntMap{}
+					if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
+						require.Error(t, err)
+					} else {
+						require.NoError(t, err)
+						require.Equal(t, tc.Expected, r)
+					}
+				})
+			}
+		})
+	})
+}
+
 func TestJSONNullableEnum(t *testing.T) {
 	for _, tc := range []struct {
 		Type  json.Unmarshaler

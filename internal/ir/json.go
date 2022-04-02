@@ -89,11 +89,21 @@ func (j JSON) Fields() (fields JSONFields) {
 // AdditionalProps return field of Type that should be encoded as inlined map.
 func (j JSON) AdditionalProps() (field *Field) {
 	for _, f := range j.t.Fields {
-		if f.AdditionalProps {
+		if f.Inline == InlineAdditional {
 			return f
 		}
 	}
 	return nil
+}
+
+// PatternProps return field of Type that should be encoded as inlined map with pattern.
+func (j JSON) PatternProps() (fields []*Field) {
+	for _, f := range j.t.Fields {
+		if f.Inline == InlinePattern {
+			fields = append(fields, f)
+		}
+	}
+	return fields
 }
 
 // Format returns format name for handling json encoding or decoding.

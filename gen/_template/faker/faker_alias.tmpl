@@ -3,7 +3,7 @@
 // SetFake set fake values.
 func (s *{{ $.Name }}) SetFake() {
 	var unwrapped {{ $.AliasTo.Go }}
-	{{ template "faker/faker" elem $.AliasTo "unwrapped" }}
+	{{- template "faker/faker" elem $.AliasTo "unwrapped" }}
 	*s = {{ $.Go }}(unwrapped)
 }
 {{- end }}

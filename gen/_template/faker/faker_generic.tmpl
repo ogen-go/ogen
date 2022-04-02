@@ -9,7 +9,7 @@ func (s *{{ $.Name }}) SetFake() {
 		s.Null = true
 	{{- else }}
 		var elem {{ $.GenericOf.Go }}
-        {{ template "faker/faker" elem $.GenericOf "elem" }}
+        {{- template "faker/faker" elem $.GenericOf "elem" }}
 		s.SetTo(elem)
 	{{- end }}
 }

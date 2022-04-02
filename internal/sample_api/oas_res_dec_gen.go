@@ -368,6 +368,40 @@ func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugO
 	}
 }
 
+func decodePatternRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res PatternRecursiveMap, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response PatternRecursiveMap
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
 func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:
@@ -825,6 +859,40 @@ func decodeSecurityTestResponse(resp *http.Response, span trace.Span) (res strin
 				v, err := d.Str()
 				response = string(v)
 				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return res, err
+			}
+
+			return response, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
+func decodeStringIntMapGetResponse(resp *http.Response, span trace.Span) (res StringIntMap, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "application/json":
+			buf := getBuf()
+			defer putBuf(buf)
+			if _, err := io.Copy(buf, resp.Body); err != nil {
+				return res, err
+			}
+
+			d := jx.GetDecoder()
+			defer jx.PutDecoder(d)
+			d.ResetBytes(buf.Bytes())
+
+			var response StringIntMap
+			if err := func() error {
+				if err := response.Decode(d); err != nil {
 					return err
 				}
 				return nil

@@ -13,10 +13,10 @@
     {{ $.Var }} = nil
 	for i := 0; i < {{ $t.Validators.Array.MinLength }}; i++ {
 		var {{ $.NextVar }} {{ $t.Item.Go }}
-		{{ template "faker/faker" sub_array_elem $ $t.Item }}
+		{{- template "faker/faker" sub_array_elem $ $t.Item }}
     	{{ $.Var }} = append({{ $.Var }}, {{ $.NextVar }})
 	}
-{{- else if $t.IsAny }}
+{{- else if $t.IsAny -}}
     {{ $.Var }} = []byte("null")
 {{- else if $t.IsPrimitive -}}
     {{ $.Var }} = {{ $t.FakeValue }}

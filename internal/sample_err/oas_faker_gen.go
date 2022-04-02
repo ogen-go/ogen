@@ -77,7 +77,6 @@ var (
 // SetFake set fake values.
 func (s *Data) SetFake() {
 	{
-
 		{
 			s.Name = "string"
 		}
@@ -87,13 +86,11 @@ func (s *Data) SetFake() {
 // SetFake set fake values.
 func (s *Error) SetFake() {
 	{
-
 		{
 			s.Code = int64(0)
 		}
 	}
 	{
-
 		{
 			s.Message = "string"
 		}
@@ -103,7 +100,6 @@ func (s *Error) SetFake() {
 // SetFake set fake values.
 func (s *OptData) SetFake() {
 	var elem Data
-
 	{
 		elem.SetFake()
 	}

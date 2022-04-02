@@ -102,8 +102,16 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 	switch schema.Type {
 	case jsonschema.Object:
 		kind := ir.KindStruct
-		if schema.AdditionalProperties && len(schema.Properties) == 0 {
-			kind = ir.KindMap
+
+		hasProps := len(schema.Properties) > 0
+		hasAdditionalProps := schema.AdditionalProperties
+		hasPatternProps := len(schema.PatternProperties) > 0
+		isPatternSingle := len(schema.PatternProperties) == 1
+
+		if !hasProps {
+			if (!hasAdditionalProps && isPatternSingle) || (hasAdditionalProps && !hasPatternProps) {
+				kind = ir.KindMap
+			}
 		}
 
 		s := side(&ir.Type{
@@ -145,29 +153,61 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			})
 		}
 
-		if schema.AdditionalProperties {
+		item := func(prefix string, schItem *jsonschema.Schema) (*ir.Type, error) {
+			if schItem == nil {
+				return ir.Any(), nil
+			}
+			return g.generate(prefix+"Item", schItem)
+		}
+
+		if hasAdditionalProps {
 			mapType := s
 			// Create special field for additionalProperties.
-			if props := schema.Properties; len(props) > 0 {
+			if s.Kind != ir.KindMap {
 				mapType = side(&ir.Type{
 					Kind: ir.KindMap,
 					Name: s.Name + "Additional",
 				})
 				// TODO(tdakkota): check name for collision.
 				s.Fields = append(s.Fields, &ir.Field{
-					Name:            "AdditionalProps",
-					Type:            mapType,
-					AdditionalProps: true,
+					Name:   "AdditionalProps",
+					Type:   mapType,
+					Inline: ir.InlineAdditional,
 				})
 			}
 
-			if schItem := schema.Item; schItem != nil {
-				mapType.Item, err = g.generate(mapType.Name+"Item", schItem)
+			mapType.Item, err = item(mapType.Name, schema.Item)
+			if err != nil {
+				return nil, errors.Wrap(err, "item")
+			}
+		}
+		if hasPatternProps {
+			if s.Kind == ir.KindMap {
+				pp := schema.PatternProperties[0]
+				s.MapPattern = pp.Pattern
+				s.Item, err = item(s.Name, pp.Schema)
 				if err != nil {
-					return nil, errors.Wrap(err, "item")
+					return nil, errors.Wrapf(err, "pattern schema %q", s.MapPattern)
 				}
 			} else {
-				mapType.Item = ir.Any()
+				for idx, pp := range schema.PatternProperties {
+					suffix := fmt.Sprintf("Pattern%d", idx)
+					mapType := side(&ir.Type{
+						Kind:       ir.KindMap,
+						Name:       s.Name + suffix,
+						MapPattern: pp.Pattern,
+					})
+					mapType.Item, err = item(mapType.Name, pp.Schema)
+					if err != nil {
+						return nil, errors.Wrapf(err, "pattern schema [%d] %q", idx, pp.Pattern)
+					}
+					// TODO(tdakkota): check name for collision.
+					s.Fields = append(s.Fields, &ir.Field{
+						Name:   suffix + "Props",
+						Type:   mapType,
+						Inline: ir.InlinePattern,
+					})
+				}
 			}
 		}
 

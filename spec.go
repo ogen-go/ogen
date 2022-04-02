@@ -299,6 +299,12 @@ type Schema struct {
 	// and not a standard JSON Schema. Consistent with JSON Schema, additionalProperties defaults to true.
 	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty"`
 
+	// The value of "patternProperties" MUST be an object. Each property
+	// name of this object SHOULD be a valid regular expression, according
+	// to the ECMA-262 regular expression dialect. Each property value of
+	// this object MUST be a valid JSON Schema.
+	PatternProperties PatternProperties `json:"patternProperties,omitempty"`
+
 	// The value of this keyword MUST be an array.
 	// This array MUST have at least one element.
 	// Elements of this array MUST be strings, and MUST be unique.
@@ -550,4 +556,47 @@ func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 	}
 	p.Schema = s
 	return nil
+}
+
+type PatternProperties []PatternProperty
+
+func (r PatternProperties) MarshalJSON() ([]byte, error) {
+	var e jx.Encoder
+	e.ObjStart()
+	for _, prop := range r {
+		e.FieldStart(prop.Pattern)
+		b, err := json.Marshal(prop.Schema)
+		if err != nil {
+			return nil, errors.Wrap(err, "marshal")
+		}
+		e.Raw(b)
+	}
+	e.ObjEnd()
+	return e.Bytes(), nil
+}
+
+func (r *PatternProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return d.Obj(func(d *jx.Decoder, key string) error {
+		s := new(Schema)
+		b, err := d.Raw()
+		if err != nil {
+			return err
+		}
+
+		if err := json.Unmarshal(b, s); err != nil {
+			return err
+		}
+
+		*r = append(*r, PatternProperty{
+			Pattern: key,
+			Schema:  s,
+		})
+		return nil
+	})
+}
+
+type PatternProperty struct {
+	Pattern string
+	Schema  *Schema
 }

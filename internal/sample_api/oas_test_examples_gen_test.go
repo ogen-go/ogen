@@ -537,6 +537,20 @@ func TestOneVariantHasNoUniqueFields1_EncodeDecode(t *testing.T) {
 	var typ2 OneVariantHasNoUniqueFields1
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestPatternRecursiveMap_EncodeDecode(t *testing.T) {
+	var typ PatternRecursiveMap
+	typ = make(PatternRecursiveMap)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 PatternRecursiveMap
+	typ2 = make(PatternRecursiveMap)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestPet_EncodeDecode(t *testing.T) {
 	var typ Pet
 	typ.SetFake()
@@ -633,6 +647,46 @@ func TestRecursiveMapAdditional_EncodeDecode(t *testing.T) {
 
 	var typ2 RecursiveMapAdditional
 	typ2 = make(RecursiveMapAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestStringIntMap_EncodeDecode(t *testing.T) {
+	var typ StringIntMap
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 StringIntMap
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestStringIntMapAdditional_EncodeDecode(t *testing.T) {
+	var typ StringIntMapAdditional
+	typ = make(StringIntMapAdditional)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 StringIntMapAdditional
+	typ2 = make(StringIntMapAdditional)
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestStringIntMapPattern0_EncodeDecode(t *testing.T) {
+	var typ StringIntMapPattern0
+	typ = make(StringIntMapPattern0)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 StringIntMapPattern0
+	typ2 = make(StringIntMapPattern0)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestStringMap_EncodeDecode(t *testing.T) {

@@ -431,6 +431,40 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandlePatternRecursiveMapGetRequest handles  operation.
+//
+// GET /patternRecursiveMap
+func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatternRecursiveMapGet",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+
+	response, err := s.h.PatternRecursiveMapGet(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodePatternRecursiveMapGetResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandlePetCreateRequest handles petCreate operation.
 //
 // POST /pet
@@ -943,6 +977,40 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	}
 
 	if err := encodeSecurityTestResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleStringIntMapGetRequest handles  operation.
+//
+// GET /stringIntMap
+func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "StringIntMapGet",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+
+	response, err := s.h.StringIntMapGet(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		respondError(w, http.StatusInternalServerError, err)
+		return
+	}
+
+	if err := encodeStringIntMapGetResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

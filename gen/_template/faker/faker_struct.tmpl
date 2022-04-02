@@ -4,7 +4,7 @@
 func (s *{{ $.Name }}) SetFake() {
 {{- range $f := $.FakeFields }}
 	{
-    {{ template "faker/faker" field_elem $f }}
+    {{- template "faker/faker" field_elem $f }}
 	}
 {{- end }}
 }

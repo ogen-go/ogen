@@ -77,18 +77,15 @@ var (
 // SetFake set fake values.
 func (s *CreatePetCategoriesReq) SetFake() {
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Pets = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -101,30 +98,25 @@ func (s *CreatePetCategoriesReq) SetFake() {
 // SetFake set fake values.
 func (s *CreatePetFriendsReq) SetFake() {
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Categories = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -133,18 +125,15 @@ func (s *CreatePetFriendsReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.Owner = int(0)
 		}
 	}
 	{
-
 		{
 			s.Friends = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -157,24 +146,20 @@ func (s *CreatePetFriendsReq) SetFake() {
 // SetFake set fake values.
 func (s *CreatePetOwnerReq) SetFake() {
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Age = int(0)
 		}
 	}
 	{
-
 		{
 			s.Pets = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -187,30 +172,25 @@ func (s *CreatePetOwnerReq) SetFake() {
 // SetFake set fake values.
 func (s *CreatePetReq) SetFake() {
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Categories = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -219,18 +199,15 @@ func (s *CreatePetReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.Owner = int(0)
 		}
 	}
 	{
-
 		{
 			s.Friends = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -243,12 +220,10 @@ func (s *CreatePetReq) SetFake() {
 // SetFake set fake values.
 func (s *ListPetCategoriesOKApplicationJSON) SetFake() {
 	var unwrapped []PetCategoriesList
-
 	{
 		unwrapped = nil
 		for i := 0; i < 0; i++ {
 			var elem PetCategoriesList
-
 			{
 				elem.SetFake()
 			}
@@ -261,12 +236,10 @@ func (s *ListPetCategoriesOKApplicationJSON) SetFake() {
 // SetFake set fake values.
 func (s *ListPetFriendsOKApplicationJSON) SetFake() {
 	var unwrapped []PetFriendsList
-
 	{
 		unwrapped = nil
 		for i := 0; i < 0; i++ {
 			var elem PetFriendsList
-
 			{
 				elem.SetFake()
 			}
@@ -279,12 +252,10 @@ func (s *ListPetFriendsOKApplicationJSON) SetFake() {
 // SetFake set fake values.
 func (s *ListPetOKApplicationJSON) SetFake() {
 	var unwrapped []PetList
-
 	{
 		unwrapped = nil
 		for i := 0; i < 0; i++ {
 			var elem PetList
-
 			{
 				elem.SetFake()
 			}
@@ -297,7 +268,6 @@ func (s *ListPetOKApplicationJSON) SetFake() {
 // SetFake set fake values.
 func (s *OptDateTime) SetFake() {
 	var elem time.Time
-
 	{
 		elem = time.Now()
 	}
@@ -307,7 +277,6 @@ func (s *OptDateTime) SetFake() {
 // SetFake set fake values.
 func (s *OptInt) SetFake() {
 	var elem int
-
 	{
 		elem = int(0)
 	}
@@ -317,13 +286,11 @@ func (s *OptInt) SetFake() {
 // SetFake set fake values.
 func (s *PetCategoriesCreate) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
@@ -333,13 +300,11 @@ func (s *PetCategoriesCreate) SetFake() {
 // SetFake set fake values.
 func (s *PetCategoriesList) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
@@ -349,36 +314,30 @@ func (s *PetCategoriesList) SetFake() {
 // SetFake set fake values.
 func (s *PetCreate) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Categories = nil
 			for i := 0; i < 0; i++ {
 				var elem PetCreateCategories
-
 				{
 					elem.SetFake()
 				}
@@ -387,7 +346,6 @@ func (s *PetCreate) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.Owner.SetFake()
 		}
@@ -397,13 +355,11 @@ func (s *PetCreate) SetFake() {
 // SetFake set fake values.
 func (s *PetCreateCategories) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
@@ -413,19 +369,16 @@ func (s *PetCreateCategories) SetFake() {
 // SetFake set fake values.
 func (s *PetCreateOwner) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Age = int(0)
 		}
@@ -435,25 +388,21 @@ func (s *PetCreateOwner) SetFake() {
 // SetFake set fake values.
 func (s *PetFriendsCreate) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
@@ -463,25 +412,21 @@ func (s *PetFriendsCreate) SetFake() {
 // SetFake set fake values.
 func (s *PetFriendsList) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
@@ -491,25 +436,21 @@ func (s *PetFriendsList) SetFake() {
 // SetFake set fake values.
 func (s *PetList) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
@@ -519,19 +460,16 @@ func (s *PetList) SetFake() {
 // SetFake set fake values.
 func (s *PetOwnerCreate) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Age = int(0)
 		}
@@ -541,19 +479,16 @@ func (s *PetOwnerCreate) SetFake() {
 // SetFake set fake values.
 func (s *PetOwnerRead) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Age = int(0)
 		}
@@ -563,25 +498,21 @@ func (s *PetOwnerRead) SetFake() {
 // SetFake set fake values.
 func (s *PetRead) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
@@ -591,25 +522,21 @@ func (s *PetRead) SetFake() {
 // SetFake set fake values.
 func (s *PetUpdate) SetFake() {
 	{
-
 		{
 			s.ID = int(0)
 		}
 	}
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
@@ -619,13 +546,11 @@ func (s *PetUpdate) SetFake() {
 // SetFake set fake values.
 func (s *R400) SetFake() {
 	{
-
 		{
 			s.Code = int(0)
 		}
 	}
 	{
-
 		{
 			s.Status = "string"
 		}
@@ -635,13 +560,11 @@ func (s *R400) SetFake() {
 // SetFake set fake values.
 func (s *R404) SetFake() {
 	{
-
 		{
 			s.Code = int(0)
 		}
 	}
 	{
-
 		{
 			s.Status = "string"
 		}
@@ -651,13 +574,11 @@ func (s *R404) SetFake() {
 // SetFake set fake values.
 func (s *R409) SetFake() {
 	{
-
 		{
 			s.Code = int(0)
 		}
 	}
 	{
-
 		{
 			s.Status = "string"
 		}
@@ -667,13 +588,11 @@ func (s *R409) SetFake() {
 // SetFake set fake values.
 func (s *R500) SetFake() {
 	{
-
 		{
 			s.Code = int(0)
 		}
 	}
 	{
-
 		{
 			s.Status = "string"
 		}
@@ -683,30 +602,25 @@ func (s *R500) SetFake() {
 // SetFake set fake values.
 func (s *UpdatePetReq) SetFake() {
 	{
-
 		{
 			s.Name = "string"
 		}
 	}
 	{
-
 		{
 			s.Weight.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Birthday.SetFake()
 		}
 	}
 	{
-
 		{
 			s.Categories = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
@@ -715,18 +629,15 @@ func (s *UpdatePetReq) SetFake() {
 		}
 	}
 	{
-
 		{
 			s.Owner = int(0)
 		}
 	}
 	{
-
 		{
 			s.Friends = nil
 			for i := 0; i < 0; i++ {
 				var elem int
-
 				{
 					elem = int(0)
 				}
