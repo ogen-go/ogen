@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.3",
+  "openapi": "3.1.0",
   "info": {
     "title": "Sample Pet Store App",
     "description": "This is a sample server for a pet store.",
@@ -655,6 +655,38 @@
         }
       }
     },
+    "/stringIntMap": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringIntMap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patternRecursiveMap": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Returns object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatternRecursiveMap"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/recursiveArray": {
       "get": {
         "responses": {
@@ -810,6 +842,25 @@
         "properties": {
           "optional_recursive_field": {
             "$ref": "#/components/schemas/RecursiveMap"
+          }
+        }
+      },
+      "PatternRecursiveMap": {
+        "type": "object",
+        "patternProperties": {
+          "foo.*": {
+            "$ref": "#/components/schemas/PatternRecursiveMap"
+          }
+        }
+      },
+      "StringIntMap": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "patternProperties": {
+          "string_.*": {
+            "type": "string"
           }
         }
       },

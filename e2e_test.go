@@ -65,6 +65,7 @@ func (t techEmpowerServer) JSON(ctx context.Context) (techempower.HelloWorld, er
 }
 
 type sampleAPIServer struct {
+	api.UnimplementedHandler
 	pet api.Pet
 }
 
