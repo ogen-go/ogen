@@ -2,6 +2,7 @@ package jsonschema
 
 import (
 	"math/big"
+	"regexp"
 
 	"github.com/go-faster/errors"
 )
@@ -144,7 +145,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 	case len(schema.AllOf) > 0:
 		schemas, err := p.parseMany(schema.AllOf, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "allOf")
+			return nil, errors.Wrap(err, "allOf")
 		}
 
 		return hook(&Schema{AllOf: schemas}), nil
@@ -155,6 +156,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 		switch {
 		case len(schema.Properties) > 0 ||
 			schema.AdditionalProperties != nil ||
+			schema.PatternProperties != nil ||
 			schema.MaxProperties != nil ||
 			schema.MinProperties != nil:
 			schema.Type = "object"
@@ -200,6 +202,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 		})
 
 		if ap := schema.AdditionalProperties; ap != nil {
+			// TODO(tdakkota): handle additionalProperties: false
 			s.AdditionalProperties = true
 			if !ap.Bool {
 				item, err := p.parse(&ap.Schema, ctx)
@@ -210,10 +213,30 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 			}
 		}
 
+		if pp := schema.PatternProperties; len(pp) > 0 {
+			patterns := make([]PatternProperty, len(pp))
+			for idx, prop := range pp {
+				pattern := prop.Pattern
+				r, err := regexp.Compile(pattern)
+				if err != nil {
+					return nil, errors.Wrapf(err, "compile pattern %q", pattern)
+				}
+				sch, err := p.parse(prop.Schema, ctx)
+				if err != nil {
+					return nil, errors.Wrapf(err, "pattern schema %q", pattern)
+				}
+				patterns[idx] = PatternProperty{
+					Pattern: r,
+					Schema:  sch,
+				}
+			}
+			s.PatternProperties = patterns
+		}
+
 		for _, propSpec := range schema.Properties {
 			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
-				return nil, errors.Wrapf(err, "%s", propSpec.Name)
+				return nil, errors.Wrapf(err, "property %q", propSpec.Name)
 			}
 
 			s.Properties = append(s.Properties, Property{

@@ -22,6 +22,7 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 		Format:               s.Format,
 		Properties:           s.Properties.ToJSONSchema(),
 		AdditionalProperties: s.AdditionalProperties.ToJSONSchema(),
+		PatternProperties:    s.PatternProperties.ToJSONSchema(),
 		Required:             s.Required,
 		Items:                s.Items.ToJSONSchema(),
 		Nullable:             s.Nullable,
@@ -73,6 +74,16 @@ func (p *AdditionalProperties) ToJSONSchema() *jsonschema.AdditionalProperties {
 		Bool:   p.Bool,
 		Schema: *p.Schema.ToJSONSchema(),
 	}
+}
+
+func (r PatternProperties) ToJSONSchema() (result jsonschema.RawPatternProperties) {
+	for _, val := range r {
+		result = append(result, jsonschema.RawPatternProperty{
+			Pattern: val.Pattern,
+			Schema:  val.Schema.ToJSONSchema(),
+		})
+	}
+	return result
 }
 
 func (d *Discriminator) ToJSONSchema() *jsonschema.Discriminator {

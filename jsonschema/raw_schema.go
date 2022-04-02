@@ -36,6 +36,7 @@ type RawSchema struct {
 	Format               string                `json:"format,omitempty"`
 	Properties           RawProperties         `json:"properties,omitempty"`
 	AdditionalProperties *AdditionalProperties `json:"additionalProperties,omitempty"`
+	PatternProperties    RawPatternProperties  `json:"patternProperties,omitempty"`
 	Required             []string              `json:"required,omitempty"`
 	Items                *RawSchema            `json:"items,omitempty"`
 	Nullable             bool                  `json:"nullable,omitempty"`
@@ -138,6 +139,49 @@ func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 	}
 	p.Schema = s
 	return nil
+}
+
+type RawPatternProperties []RawPatternProperty
+
+func (r RawPatternProperties) MarshalJSON() ([]byte, error) {
+	var e jx.Encoder
+	e.ObjStart()
+	for _, prop := range r {
+		e.FieldStart(prop.Pattern)
+		b, err := json.Marshal(prop.Schema)
+		if err != nil {
+			return nil, errors.Wrap(err, "marshal")
+		}
+		e.Raw(b)
+	}
+	e.ObjEnd()
+	return e.Bytes(), nil
+}
+
+func (r *RawPatternProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return d.Obj(func(d *jx.Decoder, key string) error {
+		s := new(RawSchema)
+		b, err := d.Raw()
+		if err != nil {
+			return err
+		}
+
+		if err := json.Unmarshal(b, s); err != nil {
+			return err
+		}
+
+		*r = append(*r, RawPatternProperty{
+			Pattern: key,
+			Schema:  s,
+		})
+		return nil
+	})
+}
+
+type RawPatternProperty struct {
+	Pattern string
+	Schema  *RawSchema
 }
 
 type Discriminator struct {
