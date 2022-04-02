@@ -81,17 +81,23 @@ func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) (r []stri
 }
 
 // RegexStrings returns slice of all unique regex validators.
-func (t TemplateConfig) RegexStrings() (r []string) {
-	return t.collectStrings(func(typ *ir.Type) []string {
-		if r := typ.Validators.String.Regex; r != nil {
-			return []string{r.String()}
+func (t TemplateConfig) RegexStrings() []string {
+	return t.collectStrings(func(typ *ir.Type) (r []string) {
+		for _, exp := range []*regexp.Regexp{
+			typ.Validators.String.Regex,
+			typ.MapPattern,
+		} {
+			if exp == nil {
+				continue
+			}
+			r = append(r, exp.String())
 		}
-		return nil
+		return r
 	})
 }
 
 // RatStrings returns slice of all unique big.Rat (multipleOf validation).
-func (t TemplateConfig) RatStrings() (r []string) {
+func (t TemplateConfig) RatStrings() []string {
 	return t.collectStrings(func(typ *ir.Type) []string {
 		if r := typ.Validators.Float.MultipleOf; r != nil {
 			return []string{r.String()}

@@ -16,6 +16,15 @@ func (t Tag) EscapedJSON() string {
 	return strconv.Quote(t.JSON)
 }
 
+// InlineField defines how to inline field.
+type InlineField int
+
+const (
+	InlineNone InlineField = iota
+	InlineAdditional
+	InlinePattern
+)
+
 // Field of structure.
 type Field struct {
 	// Go Name of field.
@@ -24,8 +33,8 @@ type Field struct {
 	Type *Type
 	// JSON tag. May be empty.
 	Tag Tag
-	// Whether field is inlined map (i.e. additionalProperties).
-	AdditionalProps bool
+	// Whether field is inlined map (i.e. additionalProperties, patternProperties).
+	Inline InlineField
 	// Spec is property schema. May be empty.
 	Spec *jsonschema.Property
 }

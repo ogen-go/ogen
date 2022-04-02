@@ -2,6 +2,7 @@ package ir
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/ogen-go/ogen/jsonschema"
@@ -65,6 +66,7 @@ type Type struct {
 	NilSemantic      NilSemantic         // only for pointer
 	GenericOf        *Type               // only for generic
 	GenericVariant   GenericVariant      // only for generic
+	MapPattern       *regexp.Regexp      // only for map
 	Validators       Validators
 
 	// Features contains a set of features the type must implement.
