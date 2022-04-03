@@ -126,8 +126,7 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 		}
 		for _, field := range t.Fields {
 			if err := isParamAllowed(field.Type, false, visited); err != nil {
-				// TODO: Check field.Spec existence.
-				return errors.Wrapf(err, "field %q", field.Spec.Name)
+				return errors.Wrapf(err, "field %q", field.Name)
 			}
 		}
 		return nil
