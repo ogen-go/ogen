@@ -35,7 +35,7 @@ type Field struct {
 	Tag Tag
 	// Whether field is inlined map (i.e. additionalProperties, patternProperties).
 	Inline InlineField
-	// Spec is property schema. May be empty.
+	// Spec is property schema. May be nil.
 	Spec *jsonschema.Property
 }
 
