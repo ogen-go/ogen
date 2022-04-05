@@ -8,19 +8,18 @@ import (
 	"encoding/hex"
 	"fmt"
 	"io"
-	"net"
 	"net/http"
 	"net/http/httptest"
+	"net/netip"
 	"net/url"
 	"testing"
 	"time"
 
+	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-
-	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/conv"
 	api "github.com/ogen-go/ogen/internal/sample_api"
@@ -287,10 +286,10 @@ func TestIntegration(t *testing.T) {
 			Name:     "BestFriend",
 			Rate:     time.Second * 5,
 			URI:      url.URL{Scheme: "s3", Host: "foo", Path: "/baz"},
-			IP:       net.IPv4(127, 0, 0, 2),
-			IPV4:     net.IPv4(127, 0, 0, 2),
+			IP:       netip.AddrFrom4([4]byte{127, 0, 0, 2}),
+			IPV4:     netip.AddrFrom4([4]byte{127, 0, 0, 2}),
 			Kind:     api.PetKindBig,
-			IPV6:     net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7335"),
+			IPV6:     netip.MustParseAddr("2001:0db8:85a3:0000:0000:8a2e:0370:7335"),
 			Nickname: api.NewNilString("friend"),
 		}
 		primary := friend // Explicitly allocate new value.
@@ -312,9 +311,9 @@ func TestIntegration(t *testing.T) {
 			TestTime:     api.NewOptTime(conv.Time(date)),
 			UniqueID:     uuid.MustParse("f76e18ae-e5ed-4342-922d-762ed1dfe593"),
 			URI:          url.URL{Scheme: "s3", Host: "foo", Path: "/bar"},
-			IP:           net.IPv4(127, 0, 0, 1),
-			IPV4:         net.IPv4(127, 0, 0, 1),
-			IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
+			IP:           netip.AddrFrom4([4]byte{127, 0, 0, 1}),
+			IPV4:         netip.AddrFrom4([4]byte{127, 0, 0, 1}),
+			IPV6:         netip.MustParseAddr("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 			Kind:         api.PetKindSmol,
 			Primary:      &primary,
 			Friends:      []api.Pet{friend},
@@ -371,9 +370,9 @@ func TestIntegration(t *testing.T) {
 
 			a.Equal(pet.UniqueID, got.UniqueID, "UniqueID")
 
-			a.True(pet.IP.Equal(got.IP), "IP")
-			a.True(pet.IPV4.Equal(got.IPV4), "IPV4")
-			a.True(pet.IPV6.Equal(got.IPV6), "IPV6")
+			a.True(pet.IP.Compare(got.IP) == 0, "IP")
+			a.True(pet.IPV4.Compare(got.IPV4) == 0, "IPV4")
+			a.True(pet.IPV6.Compare(got.IPV6) == 0, "IPV6")
 
 			a.Equal(pet.URI.String(), got.URI.String(), "URI")
 

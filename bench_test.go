@@ -7,6 +7,7 @@ import (
 	"net"
 	"net/http"
 	"net/http/httptest"
+	"net/netip"
 	"net/url"
 	"sync/atomic"
 	"testing"
@@ -358,9 +359,9 @@ func BenchmarkJSON(b *testing.B) {
 				Type:     api.NewOptPetType(api.PetTypeFofa),
 				Kind:     api.PetKindSmol,
 				Tag:      api.NewOptUUID(uuid.New()),
-				IP:       net.IPv4(1, 1, 1, 1),
-				IPV4:     net.IPv4(8, 8, 8, 8),
-				IPV6:     net.IPv6loopback,
+				IP:       netip.AddrFrom4([4]byte{1, 1, 1, 1}),
+				IPV4:     netip.AddrFrom4([4]byte{8, 8, 8, 8}),
+				IPV6:     netip.AddrFrom16([16]byte{15: 1}),
 				URI: func() url.URL {
 					u, _ := url.Parse("https://google.com")
 					return *u

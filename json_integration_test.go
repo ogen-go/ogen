@@ -1,7 +1,7 @@
 package ogen
 
 import (
-	"net"
+	"net/netip"
 	"net/url"
 	"strconv"
 	"testing"
@@ -67,9 +67,9 @@ func TestExampleJSON(t *testing.T) {
 		TestTime:     api.NewOptTime(conv.Time(date)),
 		UniqueID:     uuid.New(),
 		URI:          url.URL{Scheme: "s3", Host: "foo", Path: "bar"},
-		IP:           net.IPv4(127, 0, 0, 1),
-		IPV4:         net.IPv4(127, 0, 0, 1),
-		IPV6:         net.ParseIP("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
+		IP:           netip.AddrFrom4([4]byte{127, 0, 0, 1}),
+		IPV4:         netip.AddrFrom4([4]byte{127, 0, 0, 1}),
+		IPV6:         netip.MustParseAddr("2001:0db8:85a3:0000:0000:8a2e:0370:7334"),
 		Next: api.NewOptData(api.Data{
 			Description: api.NewDescriptionSimpleDataDescription(api.DescriptionSimple{
 				Description: "foo",
