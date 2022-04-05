@@ -1,26 +1,26 @@
 package json
 
 import (
-	"net"
+	"net/netip"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 )
 
-// DecodeIP decodes net.IP.
-func DecodeIP(i *jx.Decoder) (v net.IP, err error) {
+// DecodeIP decodes netip.Addr.
+func DecodeIP(i *jx.Decoder) (v netip.Addr, err error) {
 	s, err := i.Str()
 	if err != nil {
-		return nil, err
+		return v, err
 	}
-	v = net.ParseIP(s)
-	if len(v) == 0 {
-		return nil, errors.New("bad ip format")
+	v, err = netip.ParseAddr(s)
+	if err != nil {
+		return v, errors.Wrap(err, "bad ip format")
 	}
 	return v, nil
 }
 
-// EncodeIP encodes net.IP.
-func EncodeIP(s *jx.Encoder, v net.IP) {
+// EncodeIP encodes netip.Addr.
+func EncodeIP(s *jx.Encoder, v netip.Addr) {
 	s.Str(v.String())
 }
