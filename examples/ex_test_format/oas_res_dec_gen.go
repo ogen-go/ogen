@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 func decodeTestRequestAnyResponse(resp *http.Response, span trace.Span) (res Error, err error) {
@@ -14500,7 +14505,7 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 	}
 }
 
-func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (res net.IP, err error) {
+func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14515,7 +14520,7 @@ func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (r
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response net.IP
+			var response netip.Addr
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				response = v
@@ -14536,7 +14541,7 @@ func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (r
 	}
 }
 
-func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Span) (res []net.IP, err error) {
+func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14551,11 +14556,11 @@ func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []net.IP
+			var response []netip.Addr
 			if err := func() error {
-				response = make([]net.IP, 0)
+				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -14580,7 +14585,7 @@ func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]net.IP, err error) {
+func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14595,14 +14600,14 @@ func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trac
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]net.IP
+			var response [][]netip.Addr
 			if err := func() error {
-				response = make([][]net.IP, 0)
+				response = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -14666,7 +14671,7 @@ func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.
 	}
 }
 
-func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res []net.IP, err error) {
+func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14681,11 +14686,11 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []net.IP
+			var response []netip.Addr
 			if err := func() error {
-				response = make([]net.IP, 0)
+				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -14710,7 +14715,7 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 	}
 }
 
-func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]net.IP, err error) {
+func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14725,14 +14730,14 @@ func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, s
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]net.IP
+			var response [][]netip.Addr
 			if err := func() error {
-				response = make([][]net.IP, 0)
+				response = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -14762,7 +14767,7 @@ func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, s
 	}
 }
 
-func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) (res net.IP, err error) {
+func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14777,7 +14782,7 @@ func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response net.IP
+			var response netip.Addr
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				response = v
@@ -14798,7 +14803,7 @@ func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res []net.IP, err error) {
+func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14813,11 +14818,11 @@ func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.S
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []net.IP
+			var response []netip.Addr
 			if err := func() error {
-				response = make([]net.IP, 0)
+				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -14842,7 +14847,7 @@ func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.S
 	}
 }
 
-func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]net.IP, err error) {
+func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14857,14 +14862,14 @@ func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span tr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]net.IP
+			var response [][]netip.Addr
 			if err := func() error {
-				response = make([][]net.IP, 0)
+				response = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -14928,7 +14933,7 @@ func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trac
 	}
 }
 
-func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res []net.IP, err error) {
+func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14943,11 +14948,11 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []net.IP
+			var response []netip.Addr
 			if err := func() error {
-				response = make([]net.IP, 0)
+				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -14972,7 +14977,7 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 	}
 }
 
-func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]net.IP, err error) {
+func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -14987,14 +14992,14 @@ func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]net.IP
+			var response [][]netip.Addr
 			if err := func() error {
-				response = make([][]net.IP, 0)
+				response = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -15024,7 +15029,7 @@ func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response,
 	}
 }
 
-func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) (res net.IP, err error) {
+func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -15039,7 +15044,7 @@ func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) 
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response net.IP
+			var response netip.Addr
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				response = v
@@ -15060,7 +15065,7 @@ func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res []net.IP, err error) {
+func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -15075,11 +15080,11 @@ func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.S
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []net.IP
+			var response []netip.Addr
 			if err := func() error {
-				response = make([]net.IP, 0)
+				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -15104,7 +15109,7 @@ func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.S
 	}
 }
 
-func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]net.IP, err error) {
+func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -15119,14 +15124,14 @@ func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span tr
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]net.IP
+			var response [][]netip.Addr
 			if err := func() error {
-				response = make([][]net.IP, 0)
+				response = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -15190,7 +15195,7 @@ func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trac
 	}
 }
 
-func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res []net.IP, err error) {
+func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -15205,11 +15210,11 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response []net.IP
+			var response []netip.Addr
 			if err := func() error {
-				response = make([]net.IP, 0)
+				response = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -15234,7 +15239,7 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 	}
 }
 
-func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]net.IP, err error) {
+func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -15249,14 +15254,14 @@ func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response,
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response [][]net.IP
+			var response [][]netip.Addr
 			if err := func() error {
-				response = make([][]net.IP, 0)
+				response = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {

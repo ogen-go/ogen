@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 // Client implements OAS client.
@@ -11531,7 +11536,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 // TestRequestRequiredStringIP invokes test_request_required_string_ip operation.
 //
 // POST /test_request_required_string_ip
-func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ip"),
@@ -11588,7 +11593,7 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request net.IP
 // TestRequestRequiredStringIPArray invokes test_request_required_string_ip_array operation.
 //
 // POST /test_request_required_string_ip_array
-func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11653,7 +11658,7 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 // TestRequestRequiredStringIPArrayArray invokes test_request_required_string_ip_array_array operation.
 //
 // POST /test_request_required_string_ip_array_array
-func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11792,7 +11797,7 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 // TestRequestRequiredStringIPNullableArray invokes test_request_required_string_ip_nullable_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array
-func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11857,7 +11862,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 // TestRequestRequiredStringIPNullableArrayArray invokes test_request_required_string_ip_nullable_array_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array_array
-func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -11939,7 +11944,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 // TestRequestRequiredStringIpv4 invokes test_request_required_string_ipv4 operation.
 //
 // POST /test_request_required_string_ipv4
-func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv4"),
@@ -11996,7 +12001,7 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request net.
 // TestRequestRequiredStringIpv4Array invokes test_request_required_string_ipv4_array operation.
 //
 // POST /test_request_required_string_ipv4_array
-func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12061,7 +12066,7 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 // TestRequestRequiredStringIpv4ArrayArray invokes test_request_required_string_ipv4_array_array operation.
 //
 // POST /test_request_required_string_ipv4_array_array
-func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12200,7 +12205,7 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 // TestRequestRequiredStringIpv4NullableArray invokes test_request_required_string_ipv4_nullable_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array
-func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12265,7 +12270,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 // TestRequestRequiredStringIpv4NullableArrayArray invokes test_request_required_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array_array
-func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12347,7 +12352,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 // TestRequestRequiredStringIpv6 invokes test_request_required_string_ipv6 operation.
 //
 // POST /test_request_required_string_ipv6
-func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_ipv6"),
@@ -12404,7 +12409,7 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request net.
 // TestRequestRequiredStringIpv6Array invokes test_request_required_string_ipv6_array operation.
 //
 // POST /test_request_required_string_ipv6_array
-func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12469,7 +12474,7 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 // TestRequestRequiredStringIpv6ArrayArray invokes test_request_required_string_ipv6_array_array operation.
 //
 // POST /test_request_required_string_ipv6_array_array
-func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12608,7 +12613,7 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 // TestRequestRequiredStringIpv6NullableArray invokes test_request_required_string_ipv6_nullable_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array
-func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -12673,7 +12678,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 // TestRequestRequiredStringIpv6NullableArrayArray invokes test_request_required_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array_array
-func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		if request == nil {
 			return errors.New("nil is invalid value")
@@ -17859,7 +17864,7 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 // TestRequestStringIPArray invokes test_request_string_ip_array operation.
 //
 // POST /test_request_string_ip_array
-func (c *Client) TestRequestStringIPArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_array"),
@@ -17916,7 +17921,7 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []net.IP)
 // TestRequestStringIPArrayArray invokes test_request_string_ip_array_array operation.
 //
 // POST /test_request_string_ip_array_array
-func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -18052,7 +18057,7 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 // TestRequestStringIPNullableArray invokes test_request_string_ip_nullable_array operation.
 //
 // POST /test_request_string_ip_nullable_array
-func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ip_nullable_array"),
@@ -18109,7 +18114,7 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 // TestRequestStringIPNullableArrayArray invokes test_request_string_ip_nullable_array_array operation.
 //
 // POST /test_request_string_ip_nullable_array_array
-func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -18245,7 +18250,7 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 // TestRequestStringIpv4Array invokes test_request_string_ipv4_array operation.
 //
 // POST /test_request_string_ipv4_array
-func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_array"),
@@ -18302,7 +18307,7 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []net.I
 // TestRequestStringIpv4ArrayArray invokes test_request_string_ipv4_array_array operation.
 //
 // POST /test_request_string_ipv4_array_array
-func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -18438,7 +18443,7 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 // TestRequestStringIpv4NullableArray invokes test_request_string_ipv4_nullable_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array
-func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv4_nullable_array"),
@@ -18495,7 +18500,7 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 // TestRequestStringIpv4NullableArrayArray invokes test_request_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array_array
-func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -18631,7 +18636,7 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 // TestRequestStringIpv6Array invokes test_request_string_ipv6_array operation.
 //
 // POST /test_request_string_ipv6_array
-func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_array"),
@@ -18688,7 +18693,7 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []net.I
 // TestRequestStringIpv6ArrayArray invokes test_request_string_ipv6_array_array operation.
 //
 // POST /test_request_string_ipv6_array_array
-func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -18824,7 +18829,7 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 // TestRequestStringIpv6NullableArray invokes test_request_string_ipv6_nullable_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array
-func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request []net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request []netip.Addr) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_ipv6_nullable_array"),
@@ -18881,7 +18886,7 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 // TestRequestStringIpv6NullableArrayArray invokes test_request_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array_array
-func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]net.IP) (res Error, err error) {
+func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, request [][]netip.Addr) (res Error, err error) {
 	if err := func() error {
 		var failures []validate.FieldError
 		for i, elem := range request {
@@ -26511,7 +26516,7 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 // TestResponseStringIP invokes test_response_string_ip operation.
 //
 // POST /test_response_string_ip
-func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res net.IP, err error) {
+func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip"),
@@ -26568,7 +26573,7 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 // TestResponseStringIPArray invokes test_response_string_ip_array operation.
 //
 // POST /test_response_string_ip_array
-func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) (res []net.IP, err error) {
+func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) (res []netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array"),
@@ -26625,7 +26630,7 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 // TestResponseStringIPArrayArray invokes test_response_string_ip_array_array operation.
 //
 // POST /test_response_string_ip_array_array
-func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
+func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_array_array"),
@@ -26739,7 +26744,7 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 // TestResponseStringIPNullableArray invokes test_response_string_ip_nullable_array operation.
 //
 // POST /test_response_string_ip_nullable_array
-func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request string) (res []net.IP, err error) {
+func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request string) (res []netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array"),
@@ -26796,7 +26801,7 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 // TestResponseStringIPNullableArrayArray invokes test_response_string_ip_nullable_array_array operation.
 //
 // POST /test_response_string_ip_nullable_array_array
-func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
+func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ip_nullable_array_array"),
@@ -26853,7 +26858,7 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 // TestResponseStringIpv4 invokes test_response_string_ipv4 operation.
 //
 // POST /test_response_string_ipv4
-func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (res net.IP, err error) {
+func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (res netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4"),
@@ -26910,7 +26915,7 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 // TestResponseStringIpv4Array invokes test_response_string_ipv4_array operation.
 //
 // POST /test_response_string_ipv4_array
-func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string) (res []net.IP, err error) {
+func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string) (res []netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array"),
@@ -26967,7 +26972,7 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 // TestResponseStringIpv4ArrayArray invokes test_response_string_ipv4_array_array operation.
 //
 // POST /test_response_string_ipv4_array_array
-func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
+func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_array_array"),
@@ -27081,7 +27086,7 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 // TestResponseStringIpv4NullableArray invokes test_response_string_ipv4_nullable_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array
-func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, request string) (res []net.IP, err error) {
+func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, request string) (res []netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array"),
@@ -27138,7 +27143,7 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 // TestResponseStringIpv4NullableArrayArray invokes test_response_string_ipv4_nullable_array_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array_array
-func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
+func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv4_nullable_array_array"),
@@ -27195,7 +27200,7 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 // TestResponseStringIpv6 invokes test_response_string_ipv6 operation.
 //
 // POST /test_response_string_ipv6
-func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (res net.IP, err error) {
+func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (res netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6"),
@@ -27252,7 +27257,7 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 // TestResponseStringIpv6Array invokes test_response_string_ipv6_array operation.
 //
 // POST /test_response_string_ipv6_array
-func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string) (res []net.IP, err error) {
+func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string) (res []netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array"),
@@ -27309,7 +27314,7 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 // TestResponseStringIpv6ArrayArray invokes test_response_string_ipv6_array_array operation.
 //
 // POST /test_response_string_ipv6_array_array
-func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
+func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_array_array"),
@@ -27423,7 +27428,7 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 // TestResponseStringIpv6NullableArray invokes test_response_string_ipv6_nullable_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array
-func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, request string) (res []net.IP, err error) {
+func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, request string) (res []netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array"),
@@ -27480,7 +27485,7 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 // TestResponseStringIpv6NullableArrayArray invokes test_response_string_ipv6_nullable_array_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array_array
-func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) (res [][]net.IP, err error) {
+func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, request string) (res [][]netip.Addr, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_ipv6_nullable_array_array"),

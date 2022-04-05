@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 func encodeTestRequestAnyRequestJSON(req jx.Raw, span trace.Span) (data *jx.Encoder, err error) {
@@ -2018,7 +2023,7 @@ func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequestJSON(req []
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIPRequestJSON(req net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIPRequestJSON(req netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	json.EncodeIP(e, req)
@@ -2026,7 +2031,7 @@ func encodeTestRequestRequiredStringIPRequestJSON(req net.IP, span trace.Span) (
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIPArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIPArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2038,7 +2043,7 @@ func encodeTestRequestRequiredStringIPArrayRequestJSON(req []net.IP, span trace.
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIPArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIPArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2062,7 +2067,7 @@ func encodeTestRequestRequiredStringIPNullableRequestJSON(req NilIP, span trace.
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIPNullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIPNullableArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2074,7 +2079,7 @@ func encodeTestRequestRequiredStringIPNullableArrayRequestJSON(req []net.IP, spa
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2090,7 +2095,7 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(req [][]net.
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv4RequestJSON(req net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv4RequestJSON(req netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	json.EncodeIP(e, req)
@@ -2098,7 +2103,7 @@ func encodeTestRequestRequiredStringIpv4RequestJSON(req net.IP, span trace.Span)
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv4ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv4ArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2110,7 +2115,7 @@ func encodeTestRequestRequiredStringIpv4ArrayRequestJSON(req []net.IP, span trac
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv4ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv4ArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2134,7 +2139,7 @@ func encodeTestRequestRequiredStringIpv4NullableRequestJSON(req NilIPv4, span tr
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2146,7 +2151,7 @@ func encodeTestRequestRequiredStringIpv4NullableArrayRequestJSON(req []net.IP, s
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2162,7 +2167,7 @@ func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequestJSON(req [][]ne
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv6RequestJSON(req net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv6RequestJSON(req netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	json.EncodeIP(e, req)
@@ -2170,7 +2175,7 @@ func encodeTestRequestRequiredStringIpv6RequestJSON(req net.IP, span trace.Span)
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv6ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv6ArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2182,7 +2187,7 @@ func encodeTestRequestRequiredStringIpv6ArrayRequestJSON(req []net.IP, span trac
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv6ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv6ArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2206,7 +2211,7 @@ func encodeTestRequestRequiredStringIpv6NullableRequestJSON(req NilIPv6, span tr
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -2218,7 +2223,7 @@ func encodeTestRequestRequiredStringIpv6NullableArrayRequestJSON(req []net.IP, s
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.ArrStart()
@@ -3151,7 +3156,7 @@ func encodeTestRequestStringIPRequestJSON(req OptIP, span trace.Span) (data *jx.
 	return e, nil
 }
 
-func encodeTestRequestStringIPArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIPArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3164,7 +3169,7 @@ func encodeTestRequestStringIPArrayRequestJSON(req []net.IP, span trace.Span) (d
 	return e, nil
 }
 
-func encodeTestRequestStringIPArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIPArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3190,7 +3195,7 @@ func encodeTestRequestStringIPNullableRequestJSON(req OptNilIP, span trace.Span)
 	return e, nil
 }
 
-func encodeTestRequestStringIPNullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIPNullableArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3203,7 +3208,7 @@ func encodeTestRequestStringIPNullableArrayRequestJSON(req []net.IP, span trace.
 	return e, nil
 }
 
-func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3229,7 +3234,7 @@ func encodeTestRequestStringIpv4RequestJSON(req OptIPv4, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv4ArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3242,7 +3247,7 @@ func encodeTestRequestStringIpv4ArrayRequestJSON(req []net.IP, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv4ArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3268,7 +3273,7 @@ func encodeTestRequestStringIpv4NullableRequestJSON(req OptNilIPv4, span trace.S
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv4NullableArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3281,7 +3286,7 @@ func encodeTestRequestStringIpv4NullableArrayRequestJSON(req []net.IP, span trac
 	return e, nil
 }
 
-func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv4NullableArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3307,7 +3312,7 @@ func encodeTestRequestStringIpv6RequestJSON(req OptIPv6, span trace.Span) (data 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6ArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv6ArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3320,7 +3325,7 @@ func encodeTestRequestStringIpv6ArrayRequestJSON(req []net.IP, span trace.Span) 
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv6ArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3346,7 +3351,7 @@ func encodeTestRequestStringIpv6NullableRequestJSON(req OptNilIPv6, span trace.S
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6NullableArrayRequestJSON(req []net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv6NullableArrayRequestJSON(req []netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()
@@ -3359,7 +3364,7 @@ func encodeTestRequestStringIpv6NullableArrayRequestJSON(req []net.IP, span trac
 	return e, nil
 }
 
-func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(req [][]net.IP, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringIpv6NullableArrayArrayRequestJSON(req [][]netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req != nil {
 		e.ArrStart()

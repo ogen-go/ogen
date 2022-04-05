@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 // Handler handles operations described by OpenAPI v3 specification.
@@ -715,15 +720,15 @@ type Handler interface {
 	// TestRequestRequiredStringIP implements test_request_required_string_ip operation.
 	//
 	// POST /test_request_required_string_ip
-	TestRequestRequiredStringIP(ctx context.Context, req net.IP) (Error, error)
+	TestRequestRequiredStringIP(ctx context.Context, req netip.Addr) (Error, error)
 	// TestRequestRequiredStringIPArray implements test_request_required_string_ip_array operation.
 	//
 	// POST /test_request_required_string_ip_array
-	TestRequestRequiredStringIPArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestRequiredStringIPArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestRequiredStringIPArrayArray implements test_request_required_string_ip_array_array operation.
 	//
 	// POST /test_request_required_string_ip_array_array
-	TestRequestRequiredStringIPArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestRequiredStringIPArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestRequiredStringIPNullable implements test_request_required_string_ip_nullable operation.
 	//
 	// POST /test_request_required_string_ip_nullable
@@ -731,23 +736,23 @@ type Handler interface {
 	// TestRequestRequiredStringIPNullableArray implements test_request_required_string_ip_nullable_array operation.
 	//
 	// POST /test_request_required_string_ip_nullable_array
-	TestRequestRequiredStringIPNullableArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestRequiredStringIPNullableArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestRequiredStringIPNullableArrayArray implements test_request_required_string_ip_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_ip_nullable_array_array
-	TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestRequiredStringIPNullableArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv4 implements test_request_required_string_ipv4 operation.
 	//
 	// POST /test_request_required_string_ipv4
-	TestRequestRequiredStringIpv4(ctx context.Context, req net.IP) (Error, error)
+	TestRequestRequiredStringIpv4(ctx context.Context, req netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv4Array implements test_request_required_string_ipv4_array operation.
 	//
 	// POST /test_request_required_string_ipv4_array
-	TestRequestRequiredStringIpv4Array(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestRequiredStringIpv4Array(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv4ArrayArray implements test_request_required_string_ipv4_array_array operation.
 	//
 	// POST /test_request_required_string_ipv4_array_array
-	TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv4Nullable implements test_request_required_string_ipv4_nullable operation.
 	//
 	// POST /test_request_required_string_ipv4_nullable
@@ -755,23 +760,23 @@ type Handler interface {
 	// TestRequestRequiredStringIpv4NullableArray implements test_request_required_string_ipv4_nullable_array operation.
 	//
 	// POST /test_request_required_string_ipv4_nullable_array
-	TestRequestRequiredStringIpv4NullableArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestRequiredStringIpv4NullableArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv4NullableArrayArray implements test_request_required_string_ipv4_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_ipv4_nullable_array_array
-	TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv6 implements test_request_required_string_ipv6 operation.
 	//
 	// POST /test_request_required_string_ipv6
-	TestRequestRequiredStringIpv6(ctx context.Context, req net.IP) (Error, error)
+	TestRequestRequiredStringIpv6(ctx context.Context, req netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv6Array implements test_request_required_string_ipv6_array operation.
 	//
 	// POST /test_request_required_string_ipv6_array
-	TestRequestRequiredStringIpv6Array(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestRequiredStringIpv6Array(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv6ArrayArray implements test_request_required_string_ipv6_array_array operation.
 	//
 	// POST /test_request_required_string_ipv6_array_array
-	TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv6Nullable implements test_request_required_string_ipv6_nullable operation.
 	//
 	// POST /test_request_required_string_ipv6_nullable
@@ -779,11 +784,11 @@ type Handler interface {
 	// TestRequestRequiredStringIpv6NullableArray implements test_request_required_string_ipv6_nullable_array operation.
 	//
 	// POST /test_request_required_string_ipv6_nullable_array
-	TestRequestRequiredStringIpv6NullableArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestRequiredStringIpv6NullableArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestRequiredStringIpv6NullableArrayArray implements test_request_required_string_ipv6_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_ipv6_nullable_array_array
-	TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestRequiredStringNullable implements test_request_required_string_nullable operation.
 	//
 	// POST /test_request_required_string_nullable
@@ -1079,11 +1084,11 @@ type Handler interface {
 	// TestRequestStringIPArray implements test_request_string_ip_array operation.
 	//
 	// POST /test_request_string_ip_array
-	TestRequestStringIPArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestStringIPArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestStringIPArrayArray implements test_request_string_ip_array_array operation.
 	//
 	// POST /test_request_string_ip_array_array
-	TestRequestStringIPArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestStringIPArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestStringIPNullable implements test_request_string_ip_nullable operation.
 	//
 	// POST /test_request_string_ip_nullable
@@ -1091,11 +1096,11 @@ type Handler interface {
 	// TestRequestStringIPNullableArray implements test_request_string_ip_nullable_array operation.
 	//
 	// POST /test_request_string_ip_nullable_array
-	TestRequestStringIPNullableArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestStringIPNullableArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestStringIPNullableArrayArray implements test_request_string_ip_nullable_array_array operation.
 	//
 	// POST /test_request_string_ip_nullable_array_array
-	TestRequestStringIPNullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestStringIPNullableArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestStringIpv4 implements test_request_string_ipv4 operation.
 	//
 	// POST /test_request_string_ipv4
@@ -1103,11 +1108,11 @@ type Handler interface {
 	// TestRequestStringIpv4Array implements test_request_string_ipv4_array operation.
 	//
 	// POST /test_request_string_ipv4_array
-	TestRequestStringIpv4Array(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestStringIpv4Array(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestStringIpv4ArrayArray implements test_request_string_ipv4_array_array operation.
 	//
 	// POST /test_request_string_ipv4_array_array
-	TestRequestStringIpv4ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestStringIpv4ArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestStringIpv4Nullable implements test_request_string_ipv4_nullable operation.
 	//
 	// POST /test_request_string_ipv4_nullable
@@ -1115,11 +1120,11 @@ type Handler interface {
 	// TestRequestStringIpv4NullableArray implements test_request_string_ipv4_nullable_array operation.
 	//
 	// POST /test_request_string_ipv4_nullable_array
-	TestRequestStringIpv4NullableArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestStringIpv4NullableArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestStringIpv4NullableArrayArray implements test_request_string_ipv4_nullable_array_array operation.
 	//
 	// POST /test_request_string_ipv4_nullable_array_array
-	TestRequestStringIpv4NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestStringIpv4NullableArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestStringIpv6 implements test_request_string_ipv6 operation.
 	//
 	// POST /test_request_string_ipv6
@@ -1127,11 +1132,11 @@ type Handler interface {
 	// TestRequestStringIpv6Array implements test_request_string_ipv6_array operation.
 	//
 	// POST /test_request_string_ipv6_array
-	TestRequestStringIpv6Array(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestStringIpv6Array(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestStringIpv6ArrayArray implements test_request_string_ipv6_array_array operation.
 	//
 	// POST /test_request_string_ipv6_array_array
-	TestRequestStringIpv6ArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestStringIpv6ArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestStringIpv6Nullable implements test_request_string_ipv6_nullable operation.
 	//
 	// POST /test_request_string_ipv6_nullable
@@ -1139,11 +1144,11 @@ type Handler interface {
 	// TestRequestStringIpv6NullableArray implements test_request_string_ipv6_nullable_array operation.
 	//
 	// POST /test_request_string_ipv6_nullable_array
-	TestRequestStringIpv6NullableArray(ctx context.Context, req []net.IP) (Error, error)
+	TestRequestStringIpv6NullableArray(ctx context.Context, req []netip.Addr) (Error, error)
 	// TestRequestStringIpv6NullableArrayArray implements test_request_string_ipv6_nullable_array_array operation.
 	//
 	// POST /test_request_string_ipv6_nullable_array_array
-	TestRequestStringIpv6NullableArrayArray(ctx context.Context, req [][]net.IP) (Error, error)
+	TestRequestStringIpv6NullableArrayArray(ctx context.Context, req [][]netip.Addr) (Error, error)
 	// TestRequestStringNullable implements test_request_string_nullable operation.
 	//
 	// POST /test_request_string_nullable
@@ -1663,15 +1668,15 @@ type Handler interface {
 	// TestResponseStringIP implements test_response_string_ip operation.
 	//
 	// POST /test_response_string_ip
-	TestResponseStringIP(ctx context.Context, req string) (net.IP, error)
+	TestResponseStringIP(ctx context.Context, req string) (netip.Addr, error)
 	// TestResponseStringIPArray implements test_response_string_ip_array operation.
 	//
 	// POST /test_response_string_ip_array
-	TestResponseStringIPArray(ctx context.Context, req string) ([]net.IP, error)
+	TestResponseStringIPArray(ctx context.Context, req string) ([]netip.Addr, error)
 	// TestResponseStringIPArrayArray implements test_response_string_ip_array_array operation.
 	//
 	// POST /test_response_string_ip_array_array
-	TestResponseStringIPArrayArray(ctx context.Context, req string) ([][]net.IP, error)
+	TestResponseStringIPArrayArray(ctx context.Context, req string) ([][]netip.Addr, error)
 	// TestResponseStringIPNullable implements test_response_string_ip_nullable operation.
 	//
 	// POST /test_response_string_ip_nullable
@@ -1679,23 +1684,23 @@ type Handler interface {
 	// TestResponseStringIPNullableArray implements test_response_string_ip_nullable_array operation.
 	//
 	// POST /test_response_string_ip_nullable_array
-	TestResponseStringIPNullableArray(ctx context.Context, req string) ([]net.IP, error)
+	TestResponseStringIPNullableArray(ctx context.Context, req string) ([]netip.Addr, error)
 	// TestResponseStringIPNullableArrayArray implements test_response_string_ip_nullable_array_array operation.
 	//
 	// POST /test_response_string_ip_nullable_array_array
-	TestResponseStringIPNullableArrayArray(ctx context.Context, req string) ([][]net.IP, error)
+	TestResponseStringIPNullableArrayArray(ctx context.Context, req string) ([][]netip.Addr, error)
 	// TestResponseStringIpv4 implements test_response_string_ipv4 operation.
 	//
 	// POST /test_response_string_ipv4
-	TestResponseStringIpv4(ctx context.Context, req string) (net.IP, error)
+	TestResponseStringIpv4(ctx context.Context, req string) (netip.Addr, error)
 	// TestResponseStringIpv4Array implements test_response_string_ipv4_array operation.
 	//
 	// POST /test_response_string_ipv4_array
-	TestResponseStringIpv4Array(ctx context.Context, req string) ([]net.IP, error)
+	TestResponseStringIpv4Array(ctx context.Context, req string) ([]netip.Addr, error)
 	// TestResponseStringIpv4ArrayArray implements test_response_string_ipv4_array_array operation.
 	//
 	// POST /test_response_string_ipv4_array_array
-	TestResponseStringIpv4ArrayArray(ctx context.Context, req string) ([][]net.IP, error)
+	TestResponseStringIpv4ArrayArray(ctx context.Context, req string) ([][]netip.Addr, error)
 	// TestResponseStringIpv4Nullable implements test_response_string_ipv4_nullable operation.
 	//
 	// POST /test_response_string_ipv4_nullable
@@ -1703,23 +1708,23 @@ type Handler interface {
 	// TestResponseStringIpv4NullableArray implements test_response_string_ipv4_nullable_array operation.
 	//
 	// POST /test_response_string_ipv4_nullable_array
-	TestResponseStringIpv4NullableArray(ctx context.Context, req string) ([]net.IP, error)
+	TestResponseStringIpv4NullableArray(ctx context.Context, req string) ([]netip.Addr, error)
 	// TestResponseStringIpv4NullableArrayArray implements test_response_string_ipv4_nullable_array_array operation.
 	//
 	// POST /test_response_string_ipv4_nullable_array_array
-	TestResponseStringIpv4NullableArrayArray(ctx context.Context, req string) ([][]net.IP, error)
+	TestResponseStringIpv4NullableArrayArray(ctx context.Context, req string) ([][]netip.Addr, error)
 	// TestResponseStringIpv6 implements test_response_string_ipv6 operation.
 	//
 	// POST /test_response_string_ipv6
-	TestResponseStringIpv6(ctx context.Context, req string) (net.IP, error)
+	TestResponseStringIpv6(ctx context.Context, req string) (netip.Addr, error)
 	// TestResponseStringIpv6Array implements test_response_string_ipv6_array operation.
 	//
 	// POST /test_response_string_ipv6_array
-	TestResponseStringIpv6Array(ctx context.Context, req string) ([]net.IP, error)
+	TestResponseStringIpv6Array(ctx context.Context, req string) ([]netip.Addr, error)
 	// TestResponseStringIpv6ArrayArray implements test_response_string_ipv6_array_array operation.
 	//
 	// POST /test_response_string_ipv6_array_array
-	TestResponseStringIpv6ArrayArray(ctx context.Context, req string) ([][]net.IP, error)
+	TestResponseStringIpv6ArrayArray(ctx context.Context, req string) ([][]netip.Addr, error)
 	// TestResponseStringIpv6Nullable implements test_response_string_ipv6_nullable operation.
 	//
 	// POST /test_response_string_ipv6_nullable
@@ -1727,11 +1732,11 @@ type Handler interface {
 	// TestResponseStringIpv6NullableArray implements test_response_string_ipv6_nullable_array operation.
 	//
 	// POST /test_response_string_ipv6_nullable_array
-	TestResponseStringIpv6NullableArray(ctx context.Context, req string) ([]net.IP, error)
+	TestResponseStringIpv6NullableArray(ctx context.Context, req string) ([]netip.Addr, error)
 	// TestResponseStringIpv6NullableArrayArray implements test_response_string_ipv6_nullable_array_array operation.
 	//
 	// POST /test_response_string_ipv6_nullable_array_array
-	TestResponseStringIpv6NullableArrayArray(ctx context.Context, req string) ([][]net.IP, error)
+	TestResponseStringIpv6NullableArrayArray(ctx context.Context, req string) ([][]netip.Addr, error)
 	// TestResponseStringNullable implements test_response_string_nullable operation.
 	//
 	// POST /test_response_string_nullable

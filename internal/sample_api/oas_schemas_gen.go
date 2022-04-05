@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 type APIKey struct {
@@ -1566,16 +1571,16 @@ func (o OptID) Or(d ID) ID {
 }
 
 // NewOptIP returns new OptIP with value set to v.
-func NewOptIP(v net.IP) OptIP {
+func NewOptIP(v netip.Addr) OptIP {
 	return OptIP{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIP is optional net.IP.
+// OptIP is optional netip.Addr.
 type OptIP struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 }
 
@@ -1584,19 +1589,19 @@ func (o OptIP) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIP) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIP) SetTo(v net.IP) {
+func (o *OptIP) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIP) Get() (v net.IP, ok bool) {
+func (o OptIP) Get() (v netip.Addr, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1604,7 +1609,7 @@ func (o OptIP) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIP) Or(d net.IP) net.IP {
+func (o OptIP) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1612,16 +1617,16 @@ func (o OptIP) Or(d net.IP) net.IP {
 }
 
 // NewOptIPv4 returns new OptIPv4 with value set to v.
-func NewOptIPv4(v net.IP) OptIPv4 {
+func NewOptIPv4(v netip.Addr) OptIPv4 {
 	return OptIPv4{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIPv4 is optional net.IP.
+// OptIPv4 is optional netip.Addr.
 type OptIPv4 struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 }
 
@@ -1630,19 +1635,19 @@ func (o OptIPv4) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIPv4) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIPv4) SetTo(v net.IP) {
+func (o *OptIPv4) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIPv4) Get() (v net.IP, ok bool) {
+func (o OptIPv4) Get() (v netip.Addr, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1650,7 +1655,7 @@ func (o OptIPv4) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIPv4) Or(d net.IP) net.IP {
+func (o OptIPv4) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1658,16 +1663,16 @@ func (o OptIPv4) Or(d net.IP) net.IP {
 }
 
 // NewOptIPv6 returns new OptIPv6 with value set to v.
-func NewOptIPv6(v net.IP) OptIPv6 {
+func NewOptIPv6(v netip.Addr) OptIPv6 {
 	return OptIPv6{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIPv6 is optional net.IP.
+// OptIPv6 is optional netip.Addr.
 type OptIPv6 struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 }
 
@@ -1676,19 +1681,19 @@ func (o OptIPv6) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIPv6) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIPv6) SetTo(v net.IP) {
+func (o *OptIPv6) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIPv6) Get() (v net.IP, ok bool) {
+func (o OptIPv6) Get() (v netip.Addr, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1696,7 +1701,7 @@ func (o OptIPv6) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIPv6) Or(d net.IP) net.IP {
+func (o OptIPv6) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2755,9 +2760,9 @@ type Pet struct {
 	Type              OptPetType           "json:\"type\""
 	Kind              PetKind              "json:\"kind\""
 	Tag               OptUUID              "json:\"tag\""
-	IP                net.IP               "json:\"ip\""
-	IPV4              net.IP               "json:\"ip_v4\""
-	IPV6              net.IP               "json:\"ip_v6\""
+	IP                netip.Addr           "json:\"ip\""
+	IPV4              netip.Addr           "json:\"ip_v4\""
+	IPV6              netip.Addr           "json:\"ip_v6\""
 	URI               url.URL              "json:\"uri\""
 	Birthday          time.Time            "json:\"birthday\""
 	Rate              time.Duration        "json:\"rate\""
